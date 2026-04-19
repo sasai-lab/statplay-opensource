@@ -33,100 +33,6 @@
 <link href="icons/icon-192.png" rel="apple-touch-icon"/>
 <link href="icons/icon-192.png" rel="icon" type="image/png"/>
 <link href="css/stat_cyber.css" rel="stylesheet"/>
-<style>
-body.column-page #mainNav .nav-links a,
-body.column-page #mainNav .nav-links button { font-size: 12px; }
-body.column-page section { padding-top: 0; }
-body.column-page .col-breadcrumb {
-  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
-  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
-}
-body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
-body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
-body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
-body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
-
-/* Section styling */
-.col-section {
-  margin-bottom: 48px; position: relative; z-index: 2;
-}
-.col-section h2 {
-  font-family: 'Courier New', monospace; font-size: 18px;
-  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
-}
-.col-section p, .col-section li {
-  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
-}
-.col-section a {
-  color: var(--cyan); text-decoration: none;
-}
-.col-section a:hover { text-decoration: underline; }
-
-/* ── Progress bar ── */
-.progress-bar {
-  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
-  background: linear-gradient(90deg, var(--cyan), var(--magenta));
-  width: 0%; transition: width .1s linear;
-  box-shadow: 0 0 8px var(--cyan);
-}
-body.theme-light .progress-bar { box-shadow: none; }
-
-/* ── Scroll reveal ── */
-.col-section {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.col-section.visible {
-  opacity: 1; transform: translateY(0);
-}
-
-/* ── Section divider ── */
-.col-divider {
-  display: flex; align-items: center; gap: 12px;
-  margin: 56px 0 48px; position: relative; z-index: 2;
-}
-.col-divider::before, .col-divider::after {
-  content: ''; flex: 1; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
-}
-.col-divider .divider-num {
-  font-family: 'Courier New', monospace; font-size: 11px; color: var(--cyan);
-  letter-spacing: 2px; white-space: nowrap; opacity: .6;
-}
-
-/* ── About page header ── */
-.about-header {
-  text-align: center; padding: 80px 0 40px;
-  position: relative; z-index: 2;
-}
-.about-header h1 {
-  font-family: 'Courier New', monospace;
-  font-size: clamp(22px, 4.5vw, 32px);
-  color: var(--text); line-height: 1.4;
-  margin-bottom: 16px;
-}
-.about-header h1 em {
-  font-style: normal; color: var(--cyan);
-}
-.about-header .about-sub {
-  color: var(--dim); font-size: 14px; line-height: 1.7;
-}
-
-/* ── License box ── */
-.license-box {
-  border: 1px solid rgba(0,243,255,.15);
-  background: rgba(0,243,255,.03);
-  padding: 20px 24px; margin: 24px 0;
-  font-family: 'Courier New', monospace; font-size: 13px;
-}
-.license-box .license-label {
-  font-size: 11px; color: var(--dim); letter-spacing: 1px;
-  text-transform: uppercase; margin-bottom: 8px;
-}
-.license-box p {
-  font-size: 13px !important; margin-bottom: 6px !important;
-}
-</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -198,14 +104,15 @@ body.theme-light .progress-bar { box-shadow: none; }
 <!-- ═══ STATPLAY ═══ -->
 <div class="col-section">
 <h2>// StatPlay</h2>
-<p>統計の概念を、インタラクティブなビジュアライゼーションで体感できる学習ツールです。参考書の代わりではなく、「動いて見えたら一発でわかるのに」という瞬間のための装置です。</p>
-<p>計算の練習も、体系的な学習も、参考書と問題集に任せます。このツールにできるのは、イメージで理解する体験を作ることだけです。それで統計って面白いと思っていただけたら、それで十分です。</p>
+<p>統計の概念を、インタラクティブなビジュアライゼーションで体感できる学習ツールです。「動いて見えたら一発でわかるのに」という瞬間のための装置です。</p>
+<p>このツールにできるのは、イメージで理解する体験を作ることだけです。それで統計って面白いと思っていただけたら、それで十分です。</p>
 <p>コードはすべてオープンソースで公開しています。改造して教育に役立てていただくのは大歓迎です。商用利用はCC BY-NC 4.0のライセンスとして取り扱いますので、一度ご相談ください。</p>
 <div class="license-box">
 <div class="license-label">License &amp; Code</div>
 <p><b style="color:var(--cyan)">CC BY-NC 4.0</b> &mdash; 教育・非商用利用自由。改変・再配布可。</p>
 <p>GitHub: <a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">github.com/sasai-lab/statplay-opensource</a></p>
 </div>
+<p>バグ報告や機能のご相談は <a href="https://github.com/sasai-lab/statplay-opensource/issues" rel="noopener" target="_blank">GitHub Issues</a> からお気軽にどうぞ。</p>
 <p style="color:var(--dim); font-size:13px;">&copy; 2026 Sasai Lab</p>
 </div>
 <div class="col-divider"><span class="divider-num">01</span></div>
