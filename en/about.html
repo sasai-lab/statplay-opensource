@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="StatPlay is an interactive visualization tool for learning statistical concepts. Meet the creator and learn about the project." name="description"/>
+<meta content="StatPlay, statistics learning, interactive, visualization, statistical examination, Sasai Lab, Jumpei Sasai" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>About StatPlay — The Creator and the Project | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/about.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/about.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/about.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/about.html" hreflang="x-default" rel="alternate"/>
+<meta content="website" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="About StatPlay — The Creator and the Project" property="og:title"/>
+<meta content="StatPlay is an interactive visualization tool for learning statistical concepts. Meet the creator and learn about the project." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/about.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — About" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="About StatPlay — The Creator and the Project" name="twitter:title"/>
+<meta content="StatPlay is an interactive visualization tool for learning statistical concepts. Meet the creator and learn about the project." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* Section styling */
+.col-section {
+  margin-bottom: 48px; position: relative; z-index: 2;
+}
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+.col-section a {
+  color: var(--cyan); text-decoration: none;
+}
+.col-section a:hover {
+  text-decoration: underline;
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+/* ── Scroll reveal ── */
+.col-section {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.col-section.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ── Section divider ── */
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 48px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+/* ── About-specific ── */
+.about-author-name {
+  font-family: 'Courier New', monospace; font-size: 20px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.about-license-block {
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 20px 24px; margin-top: 16px;
+  font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.8;
+}
+.about-license-block .label {
+  color: var(--dim); font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  display: block; margin-bottom: 2px;
+}
+.about-license-block .value {
+  color: var(--cyan);
+}
+.about-license-block .value a {
+  color: var(--cyan); text-decoration: none;
+}
+.about-license-block .value a:hover {
+  text-decoration: underline;
+}
+.about-license-block .row {
+  margin-bottom: 10px;
+}
+.about-license-block .row:last-child {
+  margin-bottom: 0;
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "About StatPlay — The Creator and the Project",
+      "description": "StatPlay is an interactive visualization tool for learning statistical concepts. Meet the creator and learn about the project.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/about.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jumpei Sasai"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../index.html?lang=en" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../index.html?lang=en">← StatPlay</a>
+<a href="../about.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<div aria-label="Breadcrumb" class="col-breadcrumb">
+<a href="../index.html?lang=en">StatPlay</a><span class="sep">›</span>
+<span>About</span>
+</div>
+<main>
+<!-- ═══ STATPLAY ═══ -->
+<div class="col-section">
+<h2>// StatPlay</h2>
+<p>An interactive visualization tool for experiencing statistical concepts firsthand. Not a replacement for textbooks — a device for those "if only I could see it move, I'd get it instantly" moments.</p>
+<p>Calculation practice, systematic study — leave those to textbooks and problem sets. All this tool can do is create experiences that build understanding through imagery. If it makes you think "statistics is actually interesting," that's enough.</p>
+<p>All code is open source. Feel free to modify and use for education. For commercial use, please consult per the CC BY-NC 4.0 license.</p>
+<div class="about-license-block">
+<div class="row">
+<span class="label">License</span>
+<span class="value"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0</a> &mdash; free for education and non-commercial use.</span>
+</div>
+<div class="row">
+<span class="label">Code</span>
+<span class="value"><a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub &mdash; sasai-lab/statplay-opensource</a></span>
+</div>
+</div>
+<p style="color:var(--dim); font-size:13px;">&copy; 2026 Sasai Lab</p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<!-- ═══ HOW IT WAS BUILT ═══ -->
+<div class="col-section">
+<h2>// How It Was Built</h2>
+<p>While studying for the Grade 2 Statistical Examination, I got stuck on confidence intervals. I could read the text, but it wouldn't click. I kept wishing something like this existed.</p>
+<p>"If I could just see it move, I'd get it instantly" — I was convinced that interactive experience is what transforms concept understanding in an instant.</p>
+<p>Then AI happened to come along as an option, and I decided to build it.</p>
+<p>The thing is, I had no skills to implement interactive visualizations on the frontend. I'm a direction/management person, not a professional coder. Before, this story would have ended at "I want to build it but can't." Working with Claude (Anthropic) through iterative dialogue, I found that what I'd been doing professionally carried over surprisingly well.</p>
+<p>AI writes the code. But what to build — that's the human's call. When you've done direction work, you can tell from watching the terminal when something looks reckless or high-risk. Is this design correct? Will it survive future extensions? Is this feature really necessary? A constant stream of judgment calls — and AI sometimes runs in the wrong direction. Stopping it is the human's job. Technical judgment matters, but even more importantly, if you don't understand the statistical theory correctly, the visualization design itself goes in the wrong direction. You can't build something correctly if you don't understand it yourself. That's what I learned firsthand.</p>
+<p>Building itself was the greatest learning experience. The full story is in the <a href="columns/how_statplay_was_built.html" style="color:var(--cyan)">column</a>.</p>
+<p>I want to bring the fascination of statistics to more people. With that in mind, I'll keep building.</p>
+<p><b style="color:var(--yellow)">Statistics is actually really fascinating.</b></p>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<!-- ═══ AUTHOR ═══ -->
+<div class="col-section">
+<h2>// About the Author</h2>
+<p><b style="color:var(--yellow)">Jumpei Sasai / 笹井淳平</b></p>
+<p>Started my career as a systems engineer at NTT, then directed game, web service, and app development at Square Enix and Drecom. Discovered the fascination of statistics while studying for the Grade 2 Statistical Examination, and built this tool. There's still so much to learn, but building while learning seems to suit me.</p>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>

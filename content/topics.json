@@ -142,5 +142,17 @@
       "ja_path": "/columns/birthday.html",
       "en_path": "/en/columns/birthday.html"
     }
+  ],
+  "pages": [
+    {
+      "slug": "about",
+      "ja_path": "/about.html",
+      "en_path": "/en/about.html"
+    },
+    {
+      "slug": "how_statplay_was_built",
+      "ja_path": "/columns/how_statplay_was_built.html",
+      "en_path": "/en/columns/how_statplay_was_built.html"
+    }
   ]
 }

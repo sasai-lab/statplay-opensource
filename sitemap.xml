@@ -248,4 +248,36 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://statplay.sasailab.com/columns/how_statplay_was_built.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/how_statplay_was_built.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/how_statplay_was_built.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/how_statplay_was_built.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/en/columns/how_statplay_was_built.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/columns/how_statplay_was_built.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/columns/how_statplay_was_built.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/columns/how_statplay_was_built.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/en/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>
