@@ -33,4 +33,5 @@ import './modules/graphDrag.js';
 import './modules/anchor.js';
 import './modules/a11y.js';
 import './modules/toc.js';
+import './modules/scrolltop.js';
 import './modules/pwa.js';

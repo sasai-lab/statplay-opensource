@@ -1,13 +1,13 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v10';
+const CACHE = 'sp-v11';
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "morep", "bayes", "clt", "lln", "ci", "test", "dists", "chitest", "reg", "mreg"];
 const MODULE_FILES = [
   'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
   'errs.js','graphDrag.js','hero.js','htest.js','lang.js','lln.js',
   'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js',
-  'pwa.js','reg.js','reveal.js','share.js','stdnorm.js','theme.js',
+  'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','theme.js',
   'toc.js','urlParams.js'
 ];
 const ASSETS = [
