@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.">
+<meta name="keywords" content="central limit theorem, CLT, sample mean, convergence to normal, inferential statistics, sample size">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>See the Central Limit Theorem in Action — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/clt.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/clt.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/clt.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/clt.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="See the Central Limit Theorem in Action">
+<meta property="og:description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/clt.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — See the Central Limit Theorem in Action">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="See the Central Limit Theorem in Action">
+<meta name="twitter:description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "See the Central Limit Theorem in Action",
+      "description": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "中心極限定理",
+        "標本平均の分布",
+        "正規分布への収束"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/clt.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "See the Central Limit Theorem in Action"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/clt.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#clt">Topics</a><span class="sep">›</span>
+  <span>See the Central Limit Theorem in Action</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">See the Central Limit Theorem in Action</a></h1>
+  <p class="topic-lead">Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.</p>
+  <section class="reveal in" id="clt">
+
+<div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
+
+<h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is <span style="color:var(--yellow)">King</span></span></h2>
+
+<div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
+
+<details class="story-context"><summary>New here?</summary>If you know "normal distribution" and "mean," you're set. Here you'll see WHY the mean becomes normal.</details>
+
+<p class="sec-desc">
+<b style="color:var(--yellow)">Slightly outrageous fact</b> — no matter how skewed the base distribution is,
+    if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
+    converges on its own to <b style="color:var(--cyan)">a bell (normal)</b>.<br/>
+    The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
+    so you can watch the bell emerge. Crank <code>n</code> up and the bell tightens (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).
+  </p>
+<div class="panel" data-autorun="cltRun">
+<div class="controls">
+<div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
+<select id="cltDist">
+<option data-en="Exponential λ=1 (heavy right-skew)" data-ja="指数分布 λ=1（右に超歪み）" selected="" value="exp">指数分布 λ=1（右に超歪み）</option>
+<option data-en="Uniform [0,1] (flat)" data-ja="一様分布 [0,1]（平ら）" value="uniform">一様分布 [0,1]（平ら）</option>
+<option data-en="Bimodal (two peaks)" data-ja="二峰分布（山が2つ）" value="bimodal">二峰分布（山が2つ）</option>
+</select>
+</div>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
+<input id="cltN" max="50" min="1" type="range" value="30"/>
+
+<div class="hint">How many values per sample. Larger n = tighter bell for the sample mean (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).</div>
+</div>
+<button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
+<button class="btn magenta" id="cltClear">CLEAR</button>
+</div>
+<canvas aria-busy="true" aria-label="中心極限定理のシミュレーション。サンプルサイズnを増やすと標本平均の分布が正規分布に近づく" height="300" id="cltCanvas"></canvas>
+
+<div class="bayes-story" id="cltStoryEn"></div>
+<div class="info">
+<div><span>Trials</span><strong id="cltCount">0</strong></div>
+<div><span>Mean of sample means</span><strong id="cltMean">—</strong></div>
+<div><span>SD of sample means</span><strong id="cltSD">—</strong></div>
+<div><span>Theoretical SE = σ/√n</span><strong id="cltSE">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="cltCanvas" data-title="Central Limit Theorem"><span>💾 Save image</span></button>
+</div>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="#lln">I.02 Law of Large Numbers</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./bayes.html" rel="prev">← Bayes' Theorem</a>
+  <a href="./lln.html" rel="next">The Law of Large Numbers →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

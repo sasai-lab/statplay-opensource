@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
+<meta name="keywords" content="カイ二乗検定, 適合度検定, 独立性検定, クロス集計表, χ²統計量, 期待度数, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>カイ二乗検定 — 適合度と独立性 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/chitest.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/chitest.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/chitest.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/chitest.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="カイ二乗検定 — 適合度と独立性">
+<meta property="og:description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/chitest.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — カイ二乗検定">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="カイ二乗検定 — 適合度と独立性">
+<meta name="twitter:description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "カイ二乗検定 — 適合度と独立性",
+      "description": "サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "カイ二乗検定",
+        "適合度検定",
+        "独立性検定",
+        "クロス集計表"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/chitest.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "カイ二乗検定"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/chitest.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#chitest">トピック</a><span class="sep">›</span>
+  <span>カイ二乗検定</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">カイ二乗検定 — 適合度と独立性</a></h1>
+  <p class="topic-lead">サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。</p>
+  <section class="reveal in" id="chitest">
+
+<div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
+<h2 class="sec-title">カイ二乗検定 <span class="sec-sub">— <span style="color:var(--magenta)">ズレ</span>を数値化する</span></h2>
+
+<div class="story-bridge">ここまでは「平均」の検定だった。でも世の中には<b>カテゴリ</b>しかないデータがある — アンケートの選択肢、サイコロの出目、病気と喫煙の組み合わせ。こういうデータの「ズレ」を測るのが <span class="next">カイ二乗検定</span>。期待からのズレが大きいほど、χ² 統計量が光る。</div>
+
+<p class="sec-desc">
+<b style="color:var(--cyan)">適合度検定</b>は「観測されたカテゴリ分布は、理論分布と合っているか？」を調べる。サイコロが公正かどうか、が典型例。<br/>
+<b style="color:var(--magenta)">独立性検定</b>は「2つのカテゴリ変数は独立か？」を調べる。クロス集計表の各セルで期待度数とのズレを計算し、χ² = Σ (O−E)²/E を合計する。<br/>
+<span class="text-sub">なぜ E で割る？ → 「期待10人に対して2人のズレ」と「期待1000人に対して2人のズレ」は重みが違う。E で割ることで<b>相対的なズレ</b>に揃えている。<br/>どちらも χ²分布に従う統計量を使い、右裾の面積が p 値になる。自由度は適合度なら k−1、独立性なら (r−1)(c−1)。</span>
+</p>
+
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① 適合度検定 — サイコロは公正か？</h3>
+
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>🎲 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで−1）</span></div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+<span>有意水準 α</span>
+
+          = <span class="val" id="gofAVal">0.05</span>
+</label>
+<input id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+<div class="hint">帰無仮説を棄却する基準。0.05 = 「5%以下の確率でしか起きないなら偶然ではない」。</div>
+
+</div>
+<div class="ctrl" style="min-width:auto">
+<select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<option data-en="Fair die" data-ja="公正なサイコロ" value="fair">公正なサイコロ</option>
+<option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
+</select>
+</div>
+<button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ 自動投下</span></button>
+<button class="lang-toggle" id="gofReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+</div>
+<canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<div class="info">
+<div><span>投下数 n</span> <strong id="gofN">0</strong></div>
+<div><span>検定統計量 χ²</span> <strong id="gofStat">—</strong></div>
+<div><span>自由度 df</span> <strong id="gofDf">—</strong></div>
+<div><span>p値</span> <strong id="gofP">—</strong></div>
+<div><span>判定</span> <strong id="gofResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="chitestCanvas" data-title="適合度検定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="panel">
+<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
+
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>左側のセルをクリックして観測値を+1（Shift+クリックで−1）</span></div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+<span>有意水準 α</span>
+
+          = <span class="val" id="indAVal">0.05</span>
+</label>
+<input id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+<div class="hint">独立性検定の有意水準。小さいほど慎重な判定になる。</div>
+
+</div>
+<button class="lang-toggle" id="indReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+</div>
+<canvas aria-busy="true" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<div class="info">
+<div><span>総数 n</span> <strong id="indN">0</strong></div>
+<div><span>検定統計量 χ²</span> <strong id="indStat">—</strong></div>
+<div><span>自由度 df</span> <strong id="indDf">—</strong></div>
+<div><span>p値</span> <strong id="indP">—</strong></div>
+<div><span>判定</span> <strong id="indResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="indCanvas" data-title="独立性検定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="#reg">M.01 単回帰分析</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./dists.html" rel="prev">← t分布・χ²分布・F分布</a>
+  <a href="./reg.html" rel="next">単回帰分析 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

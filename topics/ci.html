@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。">
+<meta name="keywords" content="信頼区間, 95%信頼区間, 被覆確率, 信頼水準, 統計検定2級, 推測統計, 誤解">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>信頼区間 — 95%の意味を誤解なく掴む — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/ci.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="信頼区間 — 95%の意味を誤解なく掴む">
+<meta property="og:description" content="「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/ci.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 信頼区間">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="信頼区間 — 95%の意味を誤解なく掴む">
+<meta name="twitter:description" content="「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "信頼区間 — 95%の意味を誤解なく掴む",
+      "description": "「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "信頼区間",
+        "被覆確率",
+        "95%の正しい解釈"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/ci.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "信頼区間"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/ci.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#ci">トピック</a><span class="sep">›</span>
+  <span>信頼区間</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">信頼区間 — 95%の意味を誤解なく掴む</a></h1>
+  <p class="topic-lead">「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。</p>
+  <section class="reveal in" id="ci">
+
+<div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
+<h2 class="sec-title">信頼区間 <span class="sec-sub">— <span style="color:var(--magenta)">95%</span>の本当の意味</span></h2>
+
+<div class="story-bridge">LLN は「∞なら当たる」と言う。でも我々はいつも<b>有限サンプル</b>しか持っていない。なら<span class="term-gloss" title="点推定：1つの数値で母数を推定すること（例：標本平均で母平均を推定）">点推定</span>の<b>周りに網を張って</b>真値を捕まえよう——これが<span class="next">信頼区間</span>。幅を広げれば当たりやすい、狭めれば精密。このトレードオフを目で見て掴む。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>「標本平均」と「標準偏差」の意味がわかっていればOK。ここでは推定の不確実性を「幅」で表現する方法を学びます。</details>
+
+<p class="sec-desc">
+<b>95% 信頼区間</b>って実は<b style="color:var(--yellow)">よく誤解される</b>概念。<br/>
+    「真の値が95%の確率でここに入る」 <b>…ではなくて</b>、
+    「同じサンプリングを何百回も繰り返すと、そのうち約95%の区間が真の値を掴む」が正しい。<br/>
+    下のラボではそれをゴリ押しで実演する。ピンクの細い線が"捕まえられなかった不運な区間"。
+    全体のピンク比率が <b>ちゃんと5%前後</b>に落ち着くのを確認できたら、もう信頼区間は分かったも同然。
+  </p>
+
+<div class="formula">x̄ ± z<sub>α/2</sub> · σ/√n</div>
+<div class="formula-explain">日本語で読むと：標本平均 ± 信頼度に応じた係数 × 標準誤差（バラつき÷√サンプル数）。この幅の「網」で真値を捕まえる。</div>
+
+<div class="panel" data-autorun="ciRun">
+<div class="controls">
+<div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
+<input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
+<div class="hint">1回の標本サイズ。大きいほど区間が狭くなる（精度が上がる）。</div>
+
+</div>
+<div class="ctrl"><label><span>信頼度</span> = <span class="val" id="ciLvlVal">95%</span></label>
+<input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
+<div class="hint">何%の区間が真値を捕まえるか。95% なら100本中約5本がピンク（外れ）になる。</div>
+
+</div>
+<button class="btn" id="ciRun"><span>▶ 300回 生成</span></button>
+<button class="btn magenta" id="ciReset">CLEAR</button>
+</div>
+<canvas aria-busy="true" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" id="ciCanvas"></canvas>
+<div class="info">
+<div><span>作成した区間</span><strong id="ciMade">0</strong></div>
+<div><span>捕捉率</span><strong id="ciCov">—</strong></div>
+<div><span>期待値</span><strong id="ciExp">95%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ciCanvas" data-title="信頼区間"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>幅から YES/NO へ <span class="story-arrow">▸</span> <a href="#test">I.04 仮説検定</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./lln.html" rel="prev">← 大数の法則</a>
+  <a href="./test.html" rel="next">仮説検定 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

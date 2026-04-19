@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="With just 23 people, the probability of a shared birthday exceeds 50%. Experience the Birthday Paradox through interactive simulation." name="description"/>
+<meta content="birthday paradox, birthday problem, probability, 23 people, statistics, complement rule, simulation" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>The Birthday Paradox — 23 People, 50%+ Chance | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/columns/birthday.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/birthday.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/birthday.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/birthday.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="23 people. 50%+ chance of a shared birthday. Surprised?" property="og:title"/>
+<meta content="Experience the Birthday Paradox interactively. See why your intuition fails — and what 253 pairs have to do with it." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/birthday.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — The Birthday Paradox" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="23 people. 50%+ chance of a shared birthday. Surprised?" name="twitter:title"/>
+<meta content="Experience the Birthday Paradox interactively. See why your intuition fails." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 720px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-content h1 {
+  font-family: 'Courier New', monospace; font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.4; color: var(--text); margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7; opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .6s;
+}
+.hero-content .hook-sub strong { color: var(--magenta); }
+.hero-impact {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(56px, 14vw, 120px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -3px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2.5);
+  margin-bottom: 16px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+body.theme-light .hero-impact {
+  text-shadow: 0 0 20px rgba(180,140,0,.3);
+}
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0; animation: heroFadeIn 1s ease 2.5s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  cursor: pointer; z-index: 3; border: none; background: none;
+  padding: 8px 16px; transition: color .2s;
+}
+.hero-scroll:hover { color: var(--cyan); }
+.hero-scroll:hover .chevron { border-color: var(--cyan); }
+.hero-scroll .chevron {
+  width: 20px; height: 20px; border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg); animation: heroChevron 1.5s ease-in-out infinite;
+}
+@keyframes heroChevron {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: .5; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+@keyframes heroFadeIn { to { opacity: 1; } }
+.article-meta {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  letter-spacing: 1px; margin-top: 16px;
+}
+
+.col-section { margin-bottom: 48px; position: relative; z-index: 2; }
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+
+.col-divider { text-align: center; margin: 32px 0; position: relative; }
+.col-divider::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.15), transparent);
+}
+.divider-num {
+  position: relative; background: var(--bg); padding: 0 16px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  letter-spacing: 3px;
+}
+body.theme-light .divider-num { background: #f0f3fa; }
+
+.guess-wrap {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin: 28px 0;
+}
+.guess-wrap input[type="range"] { flex: 1; min-width: 120px; height: 32px; }
+.guess-val {
+  font-family: 'Courier New', monospace; font-size: 36px; font-weight: bold;
+  color: var(--yellow); min-width: 60px; text-align: center;
+}
+.guess-unit { color: var(--dim); font-size: 14px; }
+.guess-btn {
+  padding: 14px 36px; border: 1px solid var(--cyan); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 16px;
+  cursor: pointer; transition: .2s; letter-spacing: 1px;
+}
+.guess-btn:hover { background: rgba(0,243,255,.08); }
+.guess-reveal {
+  display: none; margin-top: 20px; padding: 20px;
+  border: 1px solid rgba(255,230,0,.25); background: rgba(255,230,0,.03);
+  font-size: 15px; line-height: 1.8; color: var(--text);
+}
+
+.step-controls {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px;
+}
+.step-btn {
+  padding: 8px 18px; border: 1px solid rgba(0,243,255,.3); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 13px;
+  cursor: pointer; transition: .2s;
+}
+.step-btn:hover { background: rgba(0,243,255,.08); }
+.step-status {
+  font-family: 'Courier New', monospace; font-size: 13px;
+  color: var(--dim); margin-left: 8px;
+}
+#bdayCalendar { width: 100%; display: block; }
+
+#pairCanvas { width: 100%; display: block; }
+.pair-result { text-align: center; margin: 12px 0; font-family: 'Courier New', monospace; }
+.pair-result .pair-label { font-size: 11px; color: var(--dim); display: block; }
+.pair-result .pair-val { font-size: 32px; font-weight: bold; color: var(--yellow); }
+
+#bdayCurve { width: 100%; display: block; }
+.sim-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 16px 0; padding: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family: 'Courier New', monospace;
+}
+.sim-result .sim-item { text-align: center; }
+.sim-result .sim-label { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
+.sim-result .sim-val { font-size: 22px; font-weight: bold; color: var(--cyan); }
+.sim-result .sim-val.highlight { color: var(--yellow); font-size: 28px; }
+
+.sim-ctrl { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sim-ctrl label {
+  font-family: 'Courier New', monospace; font-size: 13px; color: var(--dim); min-width: 80px;
+}
+.sim-ctrl input[type="range"] { flex: 1; min-width: 100px; }
+.sim-ctrl .val {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); min-width: 36px; text-align: right;
+}
+
+/* Graph share bar */
+.graph-share-bar {
+  display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(0,243,255,.08);
+}
+.graph-share-bar .share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.25);
+  background: transparent; color: var(--cyan);
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; transition: .2s; white-space: nowrap;
+}
+.graph-share-bar .share-btn:hover {
+  background: rgba(0,243,255,.08); border-color: rgba(0,243,255,.5);
+}
+
+#bdayHistCanvas { width: 100%; display: block; }
+.mass-sim-btn {
+  display: block; margin: 16px auto; padding: 12px 32px;
+  border: 1px solid var(--magenta); background: transparent;
+  color: var(--magenta); font-family: 'Courier New', monospace; font-size: 14px;
+  cursor: pointer; transition: .2s; letter-spacing: 1px;
+}
+.mass-sim-btn:hover { background: rgba(255,43,214,.08); }
+.mass-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 12px 0; font-family: 'Courier New', monospace;
+}
+.mass-result .sim-label { font-size: 11px; color: var(--dim); display: block; }
+.mass-result .sim-val { font-size: 18px; font-weight: bold; color: var(--cyan); }
+
+.col-formula {
+  text-align: center; font-family: 'Courier New', monospace;
+  font-size: clamp(13px, 2.5vw, 16px); color: var(--yellow); padding: 20px;
+  border: 1px dashed rgba(255,230,0,.2); margin: 16px 0 24px;
+  background: rgba(255,230,0,.03); line-height: 1.8;
+}
+
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2); background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul { list-style: none; padding: 0; }
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before {
+  content: '\25B8'; position: absolute; left: 0; color: var(--yellow);
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(0,243,255,.1);
+}
+.faq-q {
+  display: flex; align-items: center; width: 100%;
+  padding: 16px 0; background: none; border: none;
+  color: var(--text); font-size: 15px; font-weight: bold;
+  font-family: inherit; cursor: pointer; text-align: left;
+  gap: 12px; transition: color .2s;
+}
+.faq-q::before {
+  content: '+'; flex-shrink: 0;
+  width: 24px; height: 24px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid rgba(0,243,255,.3);
+  font-family: 'Courier New', monospace; font-size: 16px;
+  color: var(--cyan); transition: .2s;
+}
+.faq-item.open .faq-q::before {
+  content: '-'; background: rgba(0,243,255,.1);
+  transform: rotate(180deg);
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  padding: 0 0 0 36px;
+}
+.faq-item.open .faq-a { max-height: 300px; padding: 0 0 16px 36px; }
+.faq-a p { color: var(--dim); font-size: 14px; line-height: 1.8; margin-bottom: 8px; }
+.faq-a p:last-child { margin-bottom: 0; }
+
+.col-cta {
+  text-align: center; border-top: none; margin-top: 0; padding-top: 0; padding-bottom: 16px;
+}
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.2); background: transparent;
+  color: var(--dim); font-size: 12px; cursor: pointer; transition: .2s;
+  font-family: 'Courier New', monospace;
+}
+.share-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0; transition: width .1s;
+  box-shadow: 0 0 8px rgba(0,243,255,.5);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+body.theme-light .hero-cinema { background: #f0f3fa; }
+body.theme-light .hero-content { text-shadow: none; }
+body.theme-light .hero-content h1 { color: #1a2030; }
+body.theme-light .hero-content h1 em { color: #b08800; text-shadow: none; }
+body.theme-light .hero-impact { color: #b08800; text-shadow: 0 0 20px rgba(180,140,0,.3); }
+body.theme-light .hero-content .hook-sub { color: #4a5568; }
+body.theme-light .hero-content .hook-sub strong { color: #9b1d7a; }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+body.theme-light .hero-scroll { color: #4a5568; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "The Birthday Paradox — 23 People, 50%+ Chance",
+      "description": "With just 23 people, the probability of a shared birthday exceeds 50%. Experience the Birthday Paradox through interactive simulation.",
+      "author": { "@type": "Organization", "name": "Sasai Lab" },
+      "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+      "datePublished": "2026-04-19",
+      "mainEntityOfPage": "https://statplay.sasailab.com/en/columns/birthday.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Birthday Paradox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a group of 23 people, the probability that at least two share a birthday exceeds 50%. It's called a 'paradox' not because of a logical contradiction, but because human intuition badly underestimates the probability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does 23 people exceed 50%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With 23 people there are 23×22÷2 = 253 possible pairs. People tend to think about 'me vs. someone,' but the actual question is 'anyone vs. anyone.' The explosion of pairs drives the probability up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the probability with 70 people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With 70 people, the probability exceeds 99.9%. At 57 people it's 99%, at 40 people it's 89%. The probability rises steeply with each additional person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this on statistics exams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Birthday Paradox itself rarely appears, but the underlying concepts — the complement rule P(A) = 1 − P(Aᶜ) and multiplication of independent probabilities — are fundamental exam topics."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Columns", "item": "https://statplay.sasailab.com/en/columns/" },
+        { "@type": "ListItem", "position": 3, "name": "The Birthday Paradox" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../../index.html?lang=en" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../../index.html?lang=en">← StatPlay</a>
+<a href="../../columns/birthday.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ 1. CINEMATIC HERO ═══ -->
+<div class="hero-cinema" id="heroCinema">
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-impact" id="heroImpact">23</div>
+<h1 id="heroTitle">In a room of just 23 people,<br/>the chance of a shared birthday<br/><em>exceeds 50%.</em></h1>
+<p class="hook-sub" id="heroSub">
+      Most people guess "around 183."<br/>
+      The real answer is <strong>1/8th of that</strong>. See how far your intuition is off.
+    </p>
+<div class="article-meta" id="heroMeta" style="opacity:0">
+<span>3-min read</span>
+<span>Interactive explainer</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="Scroll to content" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
+<a href="../../index.html?lang=en">StatPlay</a><span class="sep">›</span>
+<span>Columns</span><span class="sep">›</span>
+<span>The Birthday Paradox</span>
+</div>
+<main>
+<div class="col-section">
+<p>
+    "How many people does it take for two to share a birthday?"<br/>
+    With 365 days in a year, you'd think you need a lot.<br/>
+    But probability gives <b style="color:var(--cyan)">a completely different answer</b>.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<div class="col-section">
+<h2>// Guess First</h2>
+<p>For a <b style="color:var(--yellow)">50% chance</b> of a shared birthday, how many people do you need?</p>
+<div class="guess-wrap">
+<input id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
+<span class="guess-val" id="guessVal">50</span>
+<span class="guess-unit">people</span>
+</div>
+<button class="guess-btn" id="guessBtn" type="button">Submit</button>
+<div class="guess-reveal" id="guessReveal">
+<p id="guessMsg"></p>
+<p style="margin-top:8px;color:var(--dim);font-size:13px">Why does this happen? Try the simulation below.</p>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<div class="col-section" id="step-sim">
+<h2>// Hands-On Simulator</h2>
+<p>Add people one by one. Each birthday lights up on the 365-day calendar.<br/>When <b style="color:var(--magenta)">two dots share a day</b>, that's a match.</p>
+<div class="step-controls">
+<button class="step-btn" id="bdayAuto" type="button">▶ Start</button>
+<button class="step-btn" id="bdayReset" type="button">↺ Reset</button>
+<span style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin-left:auto"><span id="bdayStepCount">0</span> people</span>
+</div>
+<canvas aria-label="365-day calendar grid. Birthdays light up as people are added; matches glow magenta" id="bdayCalendar"></canvas>
+<p class="step-status" id="bdayStepStatus">Auto-starts on scroll</p>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayCalendar" data-title="Birthday Calendar">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="bdayCalendar" data-title="Birthday Calendar">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="bdayCalendar" data-title="Birthday Calendar">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="bdayCalendar" data-title="Birthday Calendar">📤 Share</button>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<div class="col-section" id="pairs">
+<h2>// Why? — The Pair Explosion</h2>
+<p>
+    The reason your intuition fails is simple.<br/>
+    You think about "<b>me vs. someone</b>," but it's actually "<b style="color:var(--cyan)">anyone vs. anyone</b>" — every pair counts.<br/>
+<b style="color:var(--yellow)">Increase n</b> and watch the lines (pairs) explode.
+  </p>
+<div class="sim-ctrl">
+<label>People n</label>
+<input id="pairN" max="20" min="2" step="1" type="range" value="5"/>
+<span class="val" id="pairNVal">5</span>
+</div>
+<canvas aria-label="Network diagram showing all possible pairs among n people" id="pairCanvas"></canvas>
+<div class="pair-result">
+<span class="pair-label">Pairs = n(n−1)/2</span>
+<span class="pair-val" id="pairCount">10</span>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="pairCanvas" data-title="Pair Explosion">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="pairCanvas" data-title="Pair Explosion">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="pairCanvas" data-title="Pair Explosion">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="pairCanvas" data-title="Pair Explosion">📤 Share</button>
+</div>
+<div class="col-formula">
+    23 people → 23 × 22 ÷ 2 = <b>253 pairs</b><br/>
+<span style="font-size:13px;color:var(--dim)">With 253 chances for a match, hitting at least one is more likely than not</span>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<div class="col-section" id="curve">
+<h2>// Probability Curve</h2>
+<p>X-axis: people. Y-axis: P(at least one match). Watch the curve <b style="color:var(--yellow)">cross 50% at n = 23</b>.</p>
+<div class="sim-ctrl">
+<label>People n</label>
+<input id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
+<span class="val" id="bdayNVal">23</span>
+</div>
+<canvas aria-label="Probability curve of birthday matches vs. number of people" id="bdayCurve"></canvas>
+<div class="sim-result">
+<div class="sim-item">
+<span class="sim-label">People</span>
+<span class="sim-val highlight" id="bdayNDisp">23</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">Match probability</span>
+<span class="sim-val" id="bdayProb">—</span><span style="color:var(--dim);font-size:14px">%</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">Intuition</span>
+<span class="sim-val" id="bdayOdds" style="font-size:14px">—</span>
+</div>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="Probability Curve">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="Probability Curve">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="bdayCurve" data-title="Probability Curve">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="Probability Curve">📤 Share</button>
+</div>
+<div class="col-formula">
+    P(match) = 1 − <span style="font-size:14px">(364/365) × (363/365) × … × ((365−n+1)/365)</span><br/>
+<span style="font-size:13px;color:var(--dim)">Subtract the "all different" probability from 1 — the complement rule in action</span>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">05</span></div>
+<div class="col-section" id="mass-sim">
+<h2>// 1,000 Trials</h2>
+<p>Theory is one thing. Run 1,000 actual simulations and see where<br/>the first match tends to land.</p>
+<button class="mass-sim-btn" id="bdaySim" type="button">▶ Run 1,000 Simulations</button>
+<canvas aria-label="Histogram of 1000 simulation trials showing distribution of first-match person count" id="bdayHistCanvas"></canvas>
+<div class="mass-result">
+<div>
+<span class="sim-label">Trials</span>
+<span class="sim-val" id="bdaySimCount">0</span>
+</div>
+<div>
+<span class="sim-label">Avg first match</span>
+<span class="sim-val" id="bdaySimAvg">—</span>
+</div>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayHistCanvas" data-title="1000 Trials">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="bdayHistCanvas" data-title="1000 Trials">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="bdayHistCanvas" data-title="1000 Trials">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="bdayHistCanvas" data-title="1000 Trials">📤 Share</button>
+</div>
+</div>
+<!-- ═══ TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li>23 people → <b style="color:var(--yellow)">50.7%</b> chance of a shared birthday. 57 people → <b style="color:var(--yellow)">99%+</b></li>
+<li>Intuition fails because of <b style="color:var(--cyan)">pair explosion</b> — 23 people means 253 comparison pairs</li>
+<li>The core technique is the <b style="color:var(--magenta)">complement rule</b>: compute P(all different), then subtract from 1</li>
+<li>It's not "me vs. someone" — it's "<b style="color:var(--cyan)">anyone vs. anyone</b>." Shifting perspective changes everything</li>
+</ul>
+</div>
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<div class="col-section">
+<h2>// FAQ</h2>
+<div class="faq-item">
+<button class="faq-q" type="button">What is the Birthday Paradox?</button>
+<div class="faq-a">
+<p>In a group of 23 people, the probability that at least two share a birthday exceeds 50%. It's called a "paradox" not because of a logical contradiction, but because <b style="color:var(--cyan)">human intuition badly underestimates the probability</b>.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Why does 23 people cross 50%?</button>
+<div class="faq-a">
+<p>With 23 people there are 23×22÷2 = <b style="color:var(--yellow)">253 possible pairs</b>. People think about "me vs. someone," but the real question is "anyone vs. anyone." The explosion of pairs drives the probability past 50%.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">What's the probability with 70 people?</button>
+<div class="faq-a">
+<p><b style="color:var(--magenta)">Over 99.9%.</b> At 57 people it's 99%, at 40 it's 89%. The probability rises steeply with each additional person. Try the curve slider above to see for yourself.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Does this appear on statistics exams?</button>
+<div class="faq-a">
+<p>The Birthday Paradox itself is rarely tested, but the underlying concepts — the <b style="color:var(--cyan)">complement rule</b> P(A) = 1 − P(Aᶜ) and multiplication of independent probabilities — are fundamental and frequently tested.</p>
+</div>
+</div>
+</div>
+<div class="col-cta">
+<p class="cta-headline">Master the complement rule, and probability stops being scary.</p>
+<p class="cta-sub">
+    Dive deeper into the probability concepts from this page.<br/>
+    StatPlay's interactive tools let you learn statistics by touching.
+  </p>
+<div class="cta-links">
+<a href="../../en/topics/prob.html">Probability Rules →</a>
+<a href="../../en/topics/stdnorm.html">Standard Normal →</a>
+<a href="../../index.html?lang=en">All Topics →</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">📤 Share</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+<script src="../../js/modules/birthday.js" type="module"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  document.getElementById('heroScroll')?.addEventListener('click', () => {
+    document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section, .takeaway').forEach(el => obs.observe(el));
+
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => { q.parentElement.classList.toggle('open'); });
+  });
+
+  // Hero animation
+  const hc = document.getElementById('heroCanvas');
+  if (hc) {
+    const TAU = Math.PI * 2;
+    const dpr = window.devicePixelRatio || 1;
+    let w, h, ctx;
+    const lt = () => document.body.classList.contains('theme-light');
+
+    function sizeCanvas() {
+      const rect = hc.parentElement.getBoundingClientRect();
+      hc.width = rect.width * dpr;
+      hc.height = rect.height * dpr;
+      w = rect.width; h = rect.height;
+      ctx = hc.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const dots = [];
+    const cols = 19, rows = 20;
+    let dotW, dotH, ox, oy;
+
+    function layoutDots() {
+      dotW = Math.min(18, (w * 0.7) / cols);
+      dotH = Math.min(14, (h * 0.5) / rows);
+      ox = (w - cols * dotW) / 2;
+      oy = (h - rows * dotH) / 2 + 60;
+      dots.length = 0;
+      for (let d = 0; d < 365; d++) {
+        dots.push({
+          x: ox + (d % cols) * dotW + dotW / 2,
+          y: oy + Math.floor(d / cols) * dotH + dotH / 2,
+          r: Math.min(dotW, dotH) * 0.25
+        });
+      }
+    }
+
+    let litOrder = [];
+    function pickDays() {
+      litOrder = [];
+      const used = new Set();
+      const days = [];
+      for (let i = 0; i < 22; i++) {
+        let d;
+        do { d = Math.floor(Math.random() * 365); } while (used.has(d));
+        used.add(d);
+        days.push(d);
+      }
+      days.push(days[Math.floor(Math.random() * days.length)]);
+      litOrder = days;
+    }
+
+    let animStart = null;
+    let animDone = false;
+    const dotInterval = 50;
+    const collisionTime = 23 * dotInterval;
+
+    function drawFrame(ts) {
+      if (!animStart) animStart = ts;
+      const elapsed = ts - animStart;
+      sizeCanvas();
+      layoutDots();
+      ctx.clearRect(0, 0, w, h);
+
+      dots.forEach(d => {
+        ctx.fillStyle = lt() ? 'rgba(0,60,90,.15)' : 'rgba(0,243,255,.03)';
+        ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, TAU); ctx.fill();
+      });
+
+      const litCount = Math.min(23, Math.floor(elapsed / dotInterval));
+      const matchIdx = litOrder[litOrder.length - 1];
+      const matchSrcIdx = litOrder.indexOf(matchIdx);
+
+      for (let i = 0; i < litCount; i++) {
+        const dayIdx = litOrder[i];
+        if (dayIdx === undefined) continue;
+        const d = dots[dayIdx];
+        const isMatch = (i === 22) || (i === matchSrcIdx && litCount >= 23);
+        ctx.save();
+        if (isMatch && litCount >= 23) {
+          ctx.fillStyle = lt() ? '#9b1d7a' : '#ff2bd6';
+          ctx.shadowBlur = lt() ? 6 : 16;
+          ctx.shadowColor = '#ff2bd6';
+          const pulseR = d.r * (1.5 + 0.3 * Math.sin(elapsed * 0.005));
+          ctx.beginPath(); ctx.arc(d.x, d.y, pulseR, 0, TAU); ctx.fill();
+        } else {
+          ctx.fillStyle = lt() ? 'rgba(0,80,110,.7)' : 'rgba(0,243,255,.5)';
+          ctx.shadowBlur = lt() ? 2 : 6;
+          ctx.shadowColor = 'rgba(0,243,255,.5)';
+          ctx.beginPath(); ctx.arc(d.x, d.y, d.r * 1.2, 0, TAU); ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      if (litCount >= 23 && matchIdx >= 0) {
+        const rippleElapsed = elapsed - collisionTime;
+        if (rippleElapsed > 0 && rippleElapsed < 1500) {
+          const d = dots[matchIdx];
+          ctx.save();
+          ctx.strokeStyle = lt() ? `rgba(180,0,120,${Math.max(0, 1 - rippleElapsed / 1500) * 0.4})` : `rgba(255,43,214,${Math.max(0, 1 - rippleElapsed / 1500) * 0.5})`;
+          ctx.lineWidth = 2;
+          ctx.beginPath(); ctx.arc(d.x, d.y, rippleElapsed * 0.15, 0, TAU); ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      if (Math.max(0, Math.min(1, (elapsed - collisionTime) / 400)) > 0) document.getElementById('heroImpact').classList.add('hero-in');
+      if (Math.max(0, Math.min(1, (elapsed - collisionTime - 300) / 600)) > 0) document.getElementById('heroTitle').classList.add('hero-in');
+      if (Math.max(0, Math.min(1, (elapsed - collisionTime - 800) / 600)) > 0) document.getElementById('heroSub').classList.add('hero-in');
+      document.getElementById('heroMeta').style.opacity = Math.max(0, Math.min(1, (elapsed - collisionTime - 1400) / 400));
+
+      if (!animDone || litCount < 23) {
+        if (litCount >= 23 && elapsed > collisionTime + 2500) animDone = true;
+        requestAnimationFrame(drawFrame);
+      }
+    }
+
+    sizeCanvas(); layoutDots(); pickDays();
+    requestAnimationFrame(drawFrame);
+    window.addEventListener('resize', () => { sizeCanvas(); layoutDots(); });
+  }
+
+  const nSlider = document.getElementById('bdayN');
+  const nDisp = document.getElementById('bdayNDisp');
+  if (nSlider && nDisp) {
+    nSlider.addEventListener('input', () => { nDisp.textContent = nSlider.value; });
+  }
+
+  // Share buttons handler
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const kind = btn.dataset.kind;
+      const canvasId = btn.dataset.share;
+      const title = btn.dataset.title || 'StatPlay';
+      const pageUrl = location.href;
+
+      if (kind === 'dl') {
+        const c = document.getElementById(canvasId);
+        if (!c) return;
+        c.toBlob(blob => {
+          if (!blob) return;
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = (title.replace(/[^a-zA-Z0-9]/g, '_')) + '.png';
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+        });
+      } else if (kind === 'url') {
+        navigator.clipboard.writeText(pageUrl).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '\u2713 Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+      } else if (kind === 'x') {
+        const text = title + ' ' + pageUrl;
+        window.open('https://x.com/intent/post?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+      } else if (kind === 'native') {
+        if (navigator.share) {
+          navigator.share({ title: title, url: pageUrl }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(pageUrl).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '\u2713 Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

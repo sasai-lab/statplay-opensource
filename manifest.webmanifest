@@ -1,0 +1,25 @@
+{
+  "name": "StatPlay — Interactive Statistics Visualizer",
+  "short_name": "StatPlay",
+  "description": "Learn statistics by interacting with sliders and animations. Covers standard normal, CLT, confidence intervals, hypothesis testing, regression, Bayes, and more.",
+  "description_ja": "統計検定2級の範囲を、スライダーとアニメーションで直感的に掴むための学習サイト",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#00f3ff",
+  "background_color": "#05060f",
+  "categories": ["education", "productivity"],
+  "shortcuts": [
+    {"name": "Standard Normal", "short_name": "StdNorm", "url": "./topics/stdnorm.html", "description": "標準正規分布 N(0,1)"},
+    {"name": "Central Limit Theorem", "short_name": "CLT", "url": "./topics/clt.html", "description": "中心極限定理"},
+    {"name": "Hypothesis Testing", "short_name": "Test", "url": "./topics/test.html", "description": "仮説検定"}
+  ],
+  "icons": [
+    {"src": "icons/icon-192.png",          "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"},
+    {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

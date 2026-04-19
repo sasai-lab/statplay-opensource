@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+<meta name="keywords" content="standard normal distribution, N(0,1), z-score, 68-95-99.7 rule, probability density, statistics visualization">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Feel the Standard Normal Distribution — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/stdnorm.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/stdnorm.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/stdnorm.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/stdnorm.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Feel the Standard Normal Distribution">
+<meta property="og:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/stdnorm.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Feel the Standard Normal Distribution">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Feel the Standard Normal Distribution">
+<meta name="twitter:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Feel the Standard Normal Distribution",
+      "description": "Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "標準正規分布",
+        "68-95-99.7ルール",
+        "z値と区間確率"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/stdnorm.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Feel the Standard Normal Distribution"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/stdnorm.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#stdnorm">Topics</a><span class="sep">›</span>
+  <span>Feel the Standard Normal Distribution</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Feel the Standard Normal Distribution</a></h1>
+  <p class="topic-lead">Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.</p>
+  <section class="reveal in" id="stdnorm">
+
+<div class="sec-tag">P.01 / STANDARD NORMAL</div>
+
+<h2 class="sec-title">Standard Normal <span class="sec-sub">— <span style="color:var(--yellow)">The Origin</span> of Everything</span></h2>
+
+<div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. CLT, hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
+
+<details class="story-context"><summary>New here?</summary>No prerequisites. This is the starting point. If you've heard "bell curve," you're ready.</details>
+
+<p class="sec-desc">
+    Honestly — <b style="color:var(--yellow)">without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br/>
+    The <b>standard normal <code>N(0, 1)</code></b> is a bell curve with mean 0 and standard deviation 1.
+    The one-line trick "<code>z = (x − μ) / σ</code>" lets <b style="color:var(--cyan)">every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br/>
+    In other words, it's not the final boss of statistics; it's the <b style="color:var(--magenta)">origin</b>. Once you own this, the rest of the page reads as "applications of the standard normal".
+  </p>
+<div class="formula">z = (x − μ) / σ  ,   φ(z) = (1/√(2π)) · exp( −z²/2 )</div>
+
+<div class="formula-explain">z = "how many standard deviations from the mean." φ(z) = height of the curve there (the <span class="term-gloss" title="Probability density: how 'concentrated' the probability is at that point. Higher = more likely to see values nearby. Integrate (sum the area) to get actual probability">density</span>). exp creates the bell shape — no need to memorize it.</div>
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
+
+<p class="sec-desc" style="margin-bottom:14px;font-size:13px">
+      Slide the width <code>k</code>; the blue-filled area IS the probability.
+      ± 1σ already covers ~68%, ± 2σ is 95%, ± 3σ is nearly everything.<br/>
+      That famous number <b style="color:var(--yellow)">z = 1.96</b>? It's the two-tail 5% critical value — hypothesis tests and confidence intervals all start there.
+    </p>
+<div class="controls">
+<div class="ctrl"><label><span>Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
+<input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
+
+<div class="hint">1.0 = ±1σ from the mean. Set to 1.96 for the famous "two-tail 5%" critical value.</div>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" id="snCanvas"></canvas>
+<div class="info">
+<div>P( |Z| ≤ k )<strong id="snInside">—</strong></div>
+<div>P( Z ≤ k )<strong id="snLeft">—</strong></div>
+<div><span>Outside prob.</span><strong id="snOutside">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snCanvas" data-title="Standard Normal"><span>💾 Save image</span></button>
+</div>
+</div>
+<div class="panel" data-autorun="snAnim">
+
+<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
+
+<p class="sec-desc" style="margin-bottom:14px">
+      Height, IQ, daily stock returns, factory part errors — real-world normal-ish things all have different means and spreads.
+      Yet apply <b style="color:var(--cyan)">z = (x − μ) / σ</b> and they all snap onto <b style="color:var(--magenta)">that pink curve</b>.<br/>
+      It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
+    </p>
+<div class="controls">
+<div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
+<input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
+
+<div class="hint">Center of this normal distribution. Standardization moves it to 0.</div>
+</div>
+<div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
+<input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
+
+<div class="hint">Spread. Larger = flatter bell. Standardization rescales it to 1.</div>
+</div>
+<div class="ctrl"><label><span>Progress</span> = <span class="val" id="snTVal">0</span></label>
+<input id="snT" max="100" min="0" type="range" value="0"/>
+
+<div class="hint">0% = original, 100% = fully standardized. Watch the transformation in slow motion.</div>
+</div>
+<button class="btn" id="snAnim"><span>▶ Standardize</span></button>
+</div>
+<canvas aria-busy="true" aria-label="任意の正規分布を標準正規分布に標準化する過程のアニメーション" height="240" id="snMorphCanvas"></canvas>
+<div class="info">
+<div><span>Original</span><strong id="snOrig">N(2.0, 1.5²)</strong></div>
+<div><span>Transformed mean</span><strong id="snNewMu">—</strong></div>
+<div><span>Transformed σ</span><strong id="snNewSd">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snMorphCanvas" data-title="Standardization Morph"><span>💾 Save image</span></button>
+</div>
+</div>
+
+<p class="sec-desc" style="margin-top:20px;font-size:13px;border-left:3px solid var(--yellow);padding:10px 14px;background:rgba(255,230,0,.05)">
+<b style="color:var(--yellow)">▼ What comes next</b><br/>
+    The <b>Central Limit Theorem</b> ahead says: "any distribution's mean approaches the standard normal".
+    <b>Confidence intervals</b> and <b>hypothesis tests</b> all use the "±1.96σ" numbers from this curve.
+    <b>t, χ², F</b> are its siblings. Even <b>regression</b> coefficient errors are approximated with the standard normal.<br/>
+    Short version: <b style="color:var(--cyan)">nail this one page and the rest becomes "applications"</b>. Have fun.
+  </p>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P.02 Normal Distribution</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a class="empty" aria-hidden="true">—</a>
+  <a href="./normal.html" rel="next">Normal Distribution & Standardization →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

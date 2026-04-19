@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+<meta name="keywords" content="confidence interval, coverage probability, 95 percent, inferential statistics, common misreading">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Confidence Intervals — What 95% Really Means — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/ci.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Confidence Intervals — What 95% Really Means">
+<meta property="og:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/ci.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Confidence Intervals">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Confidence Intervals — What 95% Really Means">
+<meta name="twitter:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Confidence Intervals — What 95% Really Means",
+      "description": "Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "信頼区間",
+        "被覆確率",
+        "95%の正しい解釈"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/ci.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Confidence Intervals"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/ci.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#ci">Topics</a><span class="sep">›</span>
+  <span>Confidence Intervals</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Confidence Intervals — What 95% Really Means</a></h1>
+  <p class="topic-lead">Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.</p>
+  <section class="reveal in" id="ci">
+
+<div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
+
+<h2 class="sec-title">Confidence Interval <span class="sec-sub">— What <span style="color:var(--magenta)">95%</span> Really Means</span></h2>
+
+<div class="story-bridge">LLN says "at infinity, you're right." But in practice we always have a <b>finite sample</b>. So instead of a single point, <b>drape a net around it</b> — that's a <span class="next">confidence interval</span>. Wider net, easier to catch; narrower, more precise. Watch the trade-off play out.</div>
+
+<details class="story-context"><summary>New here?</summary>If you know "sample mean" and "standard deviation," you're ready. Here we express estimation uncertainty as a "width."</details>
+
+<p class="sec-desc">
+    The <b>95% confidence interval</b> is <b style="color:var(--yellow)">famously misunderstood</b>.<br/>
+    It does <b>NOT</b> mean "the true value is inside with 95% probability". The correct reading:
+    "repeat this sampling many times, and ~95% of the resulting intervals will capture the true value".<br/>
+    The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
+    Once the pink share settles around <b>~5%</b>, you've got it.
+  </p>
+<div class="formula">x̄ ± z<sub>α/2</sub> · σ/√n</div>
+
+<div class="formula-explain">In words: sample mean ± confidence multiplier × standard error (spread ÷ √sample size). This "net" catches the true value.</div>
+<div class="panel" data-autorun="ciRun">
+<div class="controls">
+<div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
+<input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
+
+<div class="hint">Sample size per interval. Larger n = narrower interval (higher precision).</div>
+</div>
+<div class="ctrl"><label><span>Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
+<input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
+
+<div class="hint">What % of intervals catch the true value. At 95%, about 5 of 100 bars turn pink (miss).</div>
+</div>
+<button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
+<button class="btn magenta" id="ciReset">CLEAR</button>
+</div>
+<canvas aria-busy="true" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" id="ciCanvas"></canvas>
+<div class="info">
+<div><span>Intervals built</span><strong id="ciMade">0</strong></div>
+<div><span>Coverage</span><strong id="ciCov">—</strong></div>
+<div><span>Expected</span><strong id="ciExp">95%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ciCanvas" data-title="Confidence Interval"><span>💾 Save image</span></button>
+</div>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="#test">I.04 Hypothesis Testing</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./lln.html" rel="prev">← The Law of Large Numbers</a>
+  <a href="./test.html" rel="next">Hypothesis Testing →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

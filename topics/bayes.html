@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta name="keywords" content="ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 統計検定2級, 条件付き確率">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>ベイズ定理 — 陽性的中率を直感で — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/bayes.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="ベイズ定理 — 陽性的中率を直感で">
+<meta property="og:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/bayes.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — ベイズ定理">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ベイズ定理 — 陽性的中率を直感で">
+<meta name="twitter:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "ベイズ定理 — 陽性的中率を直感で",
+      "description": "有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "ベイズ定理",
+        "条件付き確率",
+        "陽性的中率"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/bayes.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ベイズ定理"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/bayes.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#bayes">トピック</a><span class="sep">›</span>
+  <span>ベイズ定理</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">ベイズ定理 — 陽性的中率を直感で</a></h1>
+  <p class="topic-lead">有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。</p>
+  <section class="reveal in" id="bayes">
+
+<div class="sec-tag">P.05 / BAYES THEOREM</div>
+<h2 class="sec-title">ベイズの定理 <span class="sec-sub">— <span style="color:var(--magenta)">事後確率</span>の逆転劇</span></h2>
+
+<div class="story-bridge">分布の道具箱が揃った。最後に<b>条件付き確率を反転させる</b>——これが<span class="next">ベイズの定理</span>。検査で陽性が出た→病気の確率は？ ここで直感はよく裏切られる。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>条件付き確率 P(A|B) の意味を知っていると理解しやすいです。知らなくても、スライダーを触れば直感的にわかります。</details>
+
+<p class="sec-desc">
+<b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br/>
+    …<b style="color:var(--yellow)">答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br/>
+    ポイントは"<b>もともと病気の人がめっちゃ少ない</b>"という事実を忘れてしまうこと。
+    下の"1000人の町"を見ながら、3つのつまみを動かして<b>自分の目で</b>確かめよう。
+  </p>
+
+<div class="panel">
+<div class="controls">
+<div class="ctrl">
+<label><span>有病率 — 1000人のうち何人が病気？</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
+<input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
+<div class="hint">低いほど"めったにいない病気"。つまみを右に動かすと"よくある病気"になる。</div>
+
+</div>
+<div class="ctrl">
+<label><span>感度 — 病気の人を「陽性」と当てる割合</span> = <span class="val" id="bSensVal">99%</span></label>
+<input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+<div class="hint">病気の人100人中、何人を「あなたは陽性です」と検査が見つけられるか。</div>
+
+</div>
+<div class="ctrl">
+<label><span>特異度 — 健康な人を「陰性」と判定する割合</span> = <span class="val" id="bSpecVal">95%</span></label>
+<input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+<div class="hint">健康な100人中、何人を「あなたは陰性です」と正しく返せるか。残りは誤って陽性になる＝偽陽性。</div>
+
+</div>
+</div>
+<canvas aria-busy="true" aria-label="ベイズ定理の可視化。事前確率と尤度を変更して事後確率の変化を確認できる" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
+<div class="bayes-story" id="bayesStory"></div>
+
+<div class="info">
+<div><span>陽性だった人が本当に病気の確率</span><strong id="bPpv">—</strong></div>
+<div><span>陰性だった人が本当に健康な確率</span><strong id="bNpv">—</strong></div>
+<div><span>真陽性 TP（病気 &amp; 陽性）</span><strong id="bTp">—</strong></div>
+<div><span>偽陽性 FP（健康なのに陽性）</span><strong id="bFp">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="ベイズの定理"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="#clt">I.01 中心極限定理</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./morep.html" rel="prev">← 二項分布・ポアソン分布・指数分布</a>
+  <a href="./clt.html" rel="next">中心極限定理を目で見て腹落ちさせる →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

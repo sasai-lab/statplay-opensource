@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
+<meta name="keywords" content="重回帰分析, 多重回帰, 偏回帰係数, 3D 可視化, 高次元, 統計検定2級, 回帰分析">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>重回帰分析 — 2+変数の世界 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/mreg.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="重回帰分析 — 2+変数の世界">
+<meta property="og:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/mreg.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 重回帰分析">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="重回帰分析 — 2+変数の世界">
+<meta name="twitter:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "重回帰分析 — 2+変数の世界",
+      "description": "2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "重回帰分析",
+        "偏回帰係数",
+        "多変量の直線・平面"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/mreg.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "重回帰分析"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/mreg.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#mreg">トピック</a><span class="sep">›</span>
+  <span>重回帰分析</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">重回帰分析 — 2+変数の世界</a></h1>
+  <p class="topic-lead">2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。</p>
+  <section class="reveal in" id="mreg">
+
+<div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
+<h2 class="sec-title">重回帰分析 <span class="sec-sub">— <span style="color:var(--magenta)">3D</span>で平面を回す</span></h2>
+
+<div class="story-bridge">単回帰は 1 本の線。でも<b>他の影響を取り除きたい</b>——広告費の効果を「曜日や季節を固定したうえで」見たい。それが<span class="next">重回帰</span>。軸が増え、<b>偏回帰係数</b>はまわりを<b>コントロールした上での効き目</b>になる。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>単回帰（1本の直線を引く）を知っていると理解しやすいです。ここでは直線が「平面」に拡張されます。</details>
+
+<p class="sec-desc">
+    説明変数が<b>2つ以上</b>ある場合が<b>重回帰</b>。
+    x₁（例：勉強時間）と x₂（例：睡眠時間）から y（テスト点）を予測する、のように複数の要因を同時に扱う。
+    回帰"直線"ではなく、回帰<b>平面</b>になる。x₁ を1増やしたときの y への効果（他の変数を固定したうえで）が β₁、x₂ に対するのが β₂。
+    真のパラメータを設定してデータを生成し、推定された係数と真の値を比較しよう。
+    ドラッグでキャンバスを<b>回転</b>すると、平面とデータ点の立体構造が見える。<br/>
+<b style="color:var(--yellow)">※ 可視化できるのは x₁, x₂ の 2 変数まで（人間の目は 3 次元が限界）。</b>
+    でも数式上は <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> と<b>いくらでも変数を足せる</b>。
+    x₃ 以降は "グラフにできないだけ" で、推定の手続き <code>β̂ = (XᵀX)⁻¹Xᵀy</code> はそのまま機能する。
+    実務では 5〜50 変数くらいがごく普通。
+  </p>
+
+<div class="formula">ŷ = β₀ + β₁x₁ + β₂x₂ ,   β̂ = (XᵀX)⁻¹Xᵀy</div>
+<div class="formula-explain">行列で書くと一行だが、やっていることは「全変数を同時に考慮した最小二乗法」。手計算は不要——コンピュータがやる部分。</div>
+
+<div class="guided-steps">
+<b style="color:var(--yellow)">実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> ノイズ σ を <b>0</b> にして再サンプリング → 推定値と真の値がぴったり一致することを確認。</li>
+<li><b>Step 2:</b> σ を <b>0.5</b> に上げる → 推定値が真の値からズレ始める。何度か再サンプリングして、推定値のバラつきを見よう。</li>
+<li><b>Step 3:</b> n を <b>10</b> にして再サンプリング → 推定が不安定。n を <b>200</b> にすると安定する。これが大数の法則。</li>
+<li><b>Step 4:</b> β₁ を <b>0</b> にする → x₁ は y に影響しない。推定 β̂₁ が 0 に近いか確認しよう。</li>
+</ol>
+</div>
+
+<div class="panel" data-autorun="mGen">
+<div class="controls">
+<div class="ctrl"><label><span>真の β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
+<input id="mB1" max="1.5" min="-1.5" step="0.05" type="range" value="0.8"/>
+<div class="hint">「正解」の β₁。推定値 β̂₁ と比べて、どれだけ正確に当てられるか確認しよう。</div>
+
+</div>
+<div class="ctrl"><label><span>真の β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
+<input id="mB2" max="1.5" min="-1.5" step="0.05" type="range" value="-0.5"/>
+<div class="hint">「正解」の β₂。β₁ と独立に設定できる。片方を 0 にすると「影響なし」になる。</div>
+
+</div>
+<div class="ctrl"><label><span>ノイズ σ</span> = <span class="val" id="mSVal">0.50</span></label>
+<input id="mS" max="2" min="0" step="0.05" type="range" value="0.5"/>
+<div class="hint">ノイズの大きさ。0 にすると完璧にフィット。大きくすると推定がブレやすくなる。</div>
+
+</div>
+<div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
+<input id="mN" max="200" min="10" type="range" value="40"/>
+<div class="hint">サンプル数。多いほど推定が安定する（大数の法則）。10→200 で変化を見よう。</div>
+
+</div>
+<button class="btn" id="mGen"><span>▶ 再サンプリング</span></button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ ドラッグで回転（軸: <span style="color:var(--cyan)">x₁</span> · <span style="color:var(--magenta)">x₂</span> · <span style="color:var(--yellow)">y</span>）</span></span>
+</div>
+<canvas aria-busy="true" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" id="mregCanvas" style="cursor:grab"></canvas>
+<div class="info">
+<div><span>推定 β̂₀</span><strong id="mE0">—</strong></div>
+<div><span>推定 β̂₁</span><strong id="mE1">—</strong></div>
+<div><span>推定 β̂₂</span><strong id="mE2">—</strong></div>
+<div>R²<strong id="mR2">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="重回帰分析"><span>💾 画像保存</span></button>
+</div>
+</div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./reg.html" rel="prev">← 単回帰分析</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

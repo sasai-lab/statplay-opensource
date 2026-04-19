@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta name="keywords" content="binomial distribution, poisson distribution, exponential distribution, discrete, memoryless">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Binomial, Poisson, and Exponential Distributions — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/morep.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Binomial, Poisson, and Exponential Distributions">
+<meta property="og:description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/morep.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Binomial, Poisson, and Exponential Distributions">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Binomial, Poisson, and Exponential Distributions">
+<meta name="twitter:description" content="Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Binomial, Poisson, and Exponential Distributions",
+      "description": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "二項分布 B(n,p)",
+        "ポアソン分布 Pois(λ)",
+        "指数分布 Exp(λ)"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/morep.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Binomial, Poisson, and Exponential Distributions"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/morep.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#morep">Topics</a><span class="sep">›</span>
+  <span>Binomial, Poisson, and Exponential Distributions</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Binomial, Poisson, and Exponential Distributions</a></h1>
+  <p class="topic-lead">Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.</p>
+  <section class="reveal in" id="morep">
+
+<div class="sec-tag">P.04 / DISCRETE + EXPONENTIAL</div>
+
+<h2 class="sec-title">Discrete &amp; Exponential <span class="sec-sub">— <span style="color:var(--yellow)">Counting</span> Probability Models</span></h2>
+
+<div class="story-bridge">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
+
+<details class="story-context"><summary>New here?</summary>Just knowing the basic normal distribution shape is enough. Here we learn 3 other distributions.</details>
+
+<div class="sec-desc">The three distributions on the level-2 exam: <b>binomial</b>, <b>Poisson</b>, and <b>exponential</b>. Slide through success counts, event counts, and waiting times to feel the bridge between discrete and continuous.</div>
+<div class="canvas-bg">
+<div class="panel">
+
+
+<div class="use-case">When? → How many heads in 10 coin flips; how many defects in 100 items</div>
+<div class="panel-title">Binomial B(n, p)</div>
+<canvas aria-busy="true" aria-label="二項分布のシミュレーション。試行回数nと成功確率pを変更できる" height="240" id="binomCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>trials n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+
+<div class="hint">How many coin flips. As n grows, the shape approaches the normal.</div><span class="val" id="binomNVal">20</span></div>
+<div class="ctrl"><label>success p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+
+<div class="hint">Probability of success per trial. 0.5 = fair coin, 0.1 = 10% defect rate.</div><span class="val" id="binomPVal">0.35</span></div>
+</div>
+
+<div class="sec-bridge">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
+</div>
+<div class="panel">
+
+
+<div class="use-case">When? → Phone calls per hour at a call center; traffic accidents per day</div>
+<div class="panel-title">Poisson(λ)</div>
+<canvas aria-busy="true" aria-label="ポアソン分布のシミュレーション。パラメータλを変更できる" height="240" id="poissonCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>rate λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+
+<div class="hint">Average events per unit time. Example: 3 calls per hour → λ=3.</div><span class="val" id="poisLVal">3</span></div>
+</div>
+
+<div class="sec-bridge">As λ grows, Poisson approaches the normal distribution.</div>
+</div>
+<div class="panel">
+
+
+<div class="use-case">When? → Time until next phone call; how long until a light bulb burns out</div>
+<div class="panel-title">Exponential(λ) — waiting time</div>
+<canvas aria-busy="true" aria-label="指数分布の確率密度関数。パラメータλを変更できる" height="240" id="expCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>rate λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+
+<div class="hint">Average events per unit time. Larger λ = shorter wait times.</div><span class="val" id="expLVal">1</span></div>
+</div>
+
+<div class="sec-bridge">Memoryless: past waiting time tells you nothing about the future.</div>
+</div>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P.05 Bayes' Theorem</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./prob.html" rel="prev">← Probability Rules</a>
+  <a href="./bayes.html" rel="next">Bayes' Theorem →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

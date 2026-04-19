@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta name="keywords" content="確率, 条件付き確率, 加法定理, ベン図, 独立性, 乗法定理, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>確率の基本法則 — ベン図で直感をつかむ — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/prob.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="確率の基本法則 — ベン図で直感をつかむ">
+<meta property="og:description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/prob.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 確率の基本法則">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="確率の基本法則 — ベン図で直感をつかむ">
+<meta name="twitter:description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "確率の基本法則 — ベン図で直感をつかむ",
+      "description": "加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "加法定理",
+        "条件付き確率 P(A|B)",
+        "事象の独立性"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/prob.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "確率の基本法則"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/prob.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#prob">トピック</a><span class="sep">›</span>
+  <span>確率の基本法則</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">確率の基本法則 — ベン図で直感をつかむ</a></h1>
+  <p class="topic-lead">加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。</p>
+  <section class="reveal in" id="prob">
+
+<div class="sec-tag">P.03 / PROBABILITY RULES</div>
+<h2 class="sec-title">確率の基本法則 <span class="sec-sub">— <span style="color:var(--magenta)">ベン図</span>で直感をつかむ</span></h2>
+
+<div class="story-bridge">正規分布の形を掴んだ。ここで<b>基礎に立ち返る</b>——すべてを支える<span class="next">確率の基本法則</span>。加法定理、乗法定理、条件付き確率を<b>面積</b>で直感的に掴む。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>正規分布の知識は不要です。高校の「場合の数と確率」の延長で読めます。</details>
+
+<p class="sec-desc">
+    加法定理、乗法定理、条件付き確率 — 公式を暗記する前に、面積で「見て」しまおう。<br/>
+<b style="color:var(--cyan)">P(A∪B) = P(A) + P(B) − P(A∩B)</b> は「2つの円を重ねた面積から、重なりを引く」だけ。
+    条件付き確率 P(A|B) は「B の円の中で A が占める割合」。<br/>
+<b style="color:var(--yellow)">独立ボタン</b>を押すと P(A∩B) = P(A)·P(B) に自動調整 — 独立ってこういうこと。
+  </p>
+
+<div class="example-box">
+<b style="color:var(--yellow)">具体例で考えてみよう</b><br/>
+    52枚のトランプから1枚引く。A = ハートが出る（13/52 = 0.25）、B = 絵札が出る（12/52 ≈ 0.23）。<br/>
+    A∩B = ハートの絵札（3/52 ≈ 0.06）。→ P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>。<br/>
+<span style="color:var(--dim)">独立の例：サイコロ2個。A = 1個目が偶数、B = 2個目が3以上。1個目の結果は2個目に影響しないので独立。P(A∩B) = 1/2 × 2/3 = 1/3。</span>
+</div>
+
+<div class="formula">P(A|B) = P(A∩B) / P(B)  ,  P(A∪B) = P(A) + P(B) − P(A∩B)</div>
+<div class="formula-explain">左：「Bが起きた世界で、Aも起きている割合」。右：「AかBの少なくとも片方が起きる確率」＝足して重複を引く。</div>
+
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ インタラクティブ・ベン図</h3>
+
+<div class="controls">
+<div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+<input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+<div class="hint">事象 A が起きる確率。0.40 = 40%。ベン図の左の円の大きさが変わる。</div>
+
+</div>
+<div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+<input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+<div class="hint">事象 B が起きる確率。ベン図の右の円の大きさが変わる。</div>
+
+</div>
+<div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
+<input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+<div class="hint">A と B が同時に起きる確率。円の重なり部分。独立なら P(A)×P(B) になる。</div>
+
+</div>
+<button class="btn yellow" id="probIndep"><span>独立にする</span></button>
+</div>
+<canvas aria-busy="true" aria-label="確率の基本法則：ベン図による可視化" height="320" id="probCanvas"></canvas>
+<div class="info">
+<div>P(A∪B)<strong id="probUnion">—</strong></div>
+<div>P(A|B)<strong id="probCondAB">—</strong></div>
+<div>P(B|A)<strong id="probCondBA">—</strong></div>
+<div><span>独立？</span><strong id="probIndepCheck">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>離散分布と指数分布 <span class="story-arrow">▸</span> <a href="#morep">P.04 離散分布と指数分布</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./normal.html" rel="prev">← 正規分布と標準化</a>
+  <a href="./morep.html" rel="next">二項分布・ポアソン分布・指数分布 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

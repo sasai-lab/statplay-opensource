@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+<meta name="keywords" content="probability, conditional probability, addition rule, Venn diagram, independence, multiplication rule">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Probability Rules — Venn Diagrams — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/prob.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Probability Rules — Venn Diagrams">
+<meta property="og:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/prob.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Probability Rules">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Probability Rules — Venn Diagrams">
+<meta name="twitter:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Probability Rules — Venn Diagrams",
+      "description": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "加法定理",
+        "条件付き確率 P(A|B)",
+        "事象の独立性"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/prob.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability Rules"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/prob.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#prob">Topics</a><span class="sep">›</span>
+  <span>Probability Rules</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Probability Rules — Venn Diagrams</a></h1>
+  <p class="topic-lead">Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.</p>
+  <section class="reveal in" id="prob">
+
+<div class="sec-tag">P.03 / PROBABILITY RULES</div>
+
+<h2 class="sec-title">Probability Rules <span class="sec-sub">— Intuition with <span style="color:var(--magenta)">Venn Diagrams</span></span></h2>
+
+<div class="story-bridge">You've got the shape of the normal. Now let's step back to the <b>foundations</b> — the probability rules that make all of it work. <span class="next">Addition, multiplication, and conditional probability</span> visualized as overlapping areas.</div>
+
+<details class="story-context"><summary>New here?</summary>No normal distribution knowledge needed. This extends high school probability.</details>
+
+<p class="sec-desc">
+    Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br/>
+<b style="color:var(--cyan)">P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
+    Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br/>
+    Press the <b style="color:var(--yellow)">Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
+  </p>
+
+<div class="example-box">
+<b style="color:var(--yellow)">Concrete example</b><br/>
+    Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br/>
+    A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br/>
+<span style="color:var(--dim)">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+</div>
+<div class="formula">P(A|B) = P(A∩B) / P(B)  ,  P(A∪B) = P(A) + P(B) − P(A∩B)</div>
+
+<div class="formula-explain">Left: "given B happened, what fraction also had A." Right: "probability of at least one" = add both, subtract the overlap.</div>
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Interactive Venn Diagram</h3>
+<div class="controls">
+<div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+<input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+
+<div class="hint">Probability of event A. 0.40 = 40%. Changes the size of the left circle.</div>
+</div>
+<div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+<input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+
+<div class="hint">Probability of event B. Changes the size of the right circle.</div>
+</div>
+<div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
+<input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+
+<div class="hint">Probability of both A and B. The overlap. If independent, equals P(A)×P(B).</div>
+</div>
+<button class="btn yellow" id="probIndep"><span>Set Independent</span></button>
+</div>
+<canvas aria-busy="true" aria-label="確率の基本法則：ベン図による可視化" height="320" id="probCanvas"></canvas>
+<div class="info">
+<div>P(A∪B)<strong id="probUnion">—</strong></div>
+<div>P(A|B)<strong id="probCondAB">—</strong></div>
+<div>P(B|A)<strong id="probCondBA">—</strong></div>
+<div><span>Independent?</span><strong id="probIndepCheck">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則"><span>💾 画像保存</span></button>
+</div>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="#morep">P.04 Discrete &amp; Exponential</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./normal.html" rel="prev">← Normal Distribution & Standardization</a>
+  <a href="./morep.html" rel="next">Binomial, Poisson, and Exponential Distributions →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

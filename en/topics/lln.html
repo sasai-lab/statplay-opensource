@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+<meta name="keywords" content="law of large numbers, LLN, trial count, sample mean, convergence to expectation">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>The Law of Large Numbers — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/lln.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="The Law of Large Numbers">
+<meta property="og:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/lln.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — The Law of Large Numbers">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Law of Large Numbers">
+<meta name="twitter:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "The Law of Large Numbers",
+      "description": "See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "大数の法則",
+        "標本平均の収束",
+        "期待値"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/lln.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Law of Large Numbers"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/lln.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#lln">Topics</a><span class="sep">›</span>
+  <span>The Law of Large Numbers</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">The Law of Large Numbers</a></h1>
+  <p class="topic-lead">See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.</p>
+  <section class="reveal in" id="lln">
+
+<div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
+
+<h2 class="sec-title">Law of Large Numbers <span class="sec-sub">— Converging to <span style="color:var(--yellow)">Truth</span></span></h2>
+
+<div class="story-bridge">CLT showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. CLT describes the <i>shape</i>; LLN says <b>the center won't run away</b>.</div>
+
+<details class="story-context"><summary>New here?</summary>Haven't seen CLT? That's fine. "Flip a coin 10,000 times and the heads ratio approaches 50%" — that's this page.</details>
+
+<p class="sec-desc">
+    10 heads in a row at the start of a coin-flip? Not that weird.
+    But flip it <b>10,000 times</b> and the head-ratio locks onto <b>almost exactly 0.5</b>.<br/>
+    That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
+    <b style="color:var(--yellow)">This is why statistics counts as evidence, not a vague hunch.</b>
+</p>
+<div class="panel" data-autorun="llnRun">
+<div class="controls">
+<div class="ctrl"><label><span>Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
+<input id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
+
+<div class="hint">Probability of heads. 0.5 = fair coin. Try 0.7 for a biased coin — the law still holds.</div>
+</div>
+<button class="btn" id="llnRun"><span>▶ Simulate</span></button>
+<button class="btn magenta" id="llnReset">RESET</button>
+</div>
+<canvas aria-busy="true" aria-label="大数の法則のシミュレーション。試行回数を増やすと標本平均が母平均に収束する" height="240" id="llnCanvas"></canvas>
+<div class="info">
+<div><span>Trials</span><strong id="llnN">0</strong></div>
+<div><span>Current mean</span><strong id="llnCur">—</strong></div>
+<div><span>Theoretical</span><strong id="llnTrue">0.50</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="llnCanvas" data-title="Law of Large Numbers"><span>💾 Save image</span></button>
+</div>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="#ci">I.03 Confidence Interval</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./clt.html" rel="prev">← See the Central Limit Theorem in Action</a>
+  <a href="./ci.html" rel="next">Confidence Intervals →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

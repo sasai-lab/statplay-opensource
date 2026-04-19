@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta name="keywords" content="大数の法則, LLN, 試行回数, 標本平均, 期待値への収束, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>大数の法則 — 試行回数と真の平均 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/lln.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="大数の法則 — 試行回数と真の平均">
+<meta property="og:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/lln.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 大数の法則">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="大数の法則 — 試行回数と真の平均">
+<meta name="twitter:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "大数の法則 — 試行回数と真の平均",
+      "description": "コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "大数の法則",
+        "標本平均の収束",
+        "期待値"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/lln.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "大数の法則"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/lln.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#lln">トピック</a><span class="sep">›</span>
+  <span>大数の法則</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">大数の法則 — 試行回数と真の平均</a></h1>
+  <p class="topic-lead">コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。</p>
+  <section class="reveal in" id="lln">
+
+<div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
+<h2 class="sec-title">大数の法則 <span class="sec-sub">— 試行を重ねれば<span style="color:var(--yellow)">真値</span>に近づく</span></h2>
+
+<div class="story-bridge">CLT で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。CLT が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>CLT を見ていなくても大丈夫。「コインを何万回も投げると表の割合は50%に近づく」— それがこのページのすべて。</details>
+
+<p class="sec-desc">
+    コイン投げで最初の10回連続で表が出た — これ、別に珍しいことじゃない。
+    でも <b>1万回</b>投げたら、表の割合はほぼ <b>ぴったり 0.5</b> に収まる。<br/>
+    これが<b>大数の法則</b>。サンプルを増やすほど、観測値は"真の値"に吸い寄せられていく。
+    <b style="color:var(--yellow)">統計が"なんとなく"じゃなく"証拠"になる理由</b>がここにある。
+  </p>
+
+<div class="panel" data-autorun="llnRun">
+<div class="controls">
+<div class="ctrl"><label><span>確率 p</span> = <span class="val" id="llnPVal">0.5</span></label>
+<input id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
+<div class="hint">表が出る確率。0.5 なら公正なコイン。0.7 にすると「偏ったコイン」。それでも大数の法則は成り立つ。</div>
+
+</div>
+<button class="btn" id="llnRun"><span>▶ シミュレート</span></button>
+<button class="btn magenta" id="llnReset">RESET</button>
+</div>
+<canvas aria-busy="true" aria-label="大数の法則のシミュレーション。試行回数を増やすと標本平均が母平均に収束する" height="240" id="llnCanvas"></canvas>
+<div class="info">
+<div><span>試行回数</span><strong id="llnN">0</strong></div>
+<div><span>現在の平均</span><strong id="llnCur">—</strong></div>
+<div><span>理論値</span><strong id="llnTrue">0.50</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="llnCanvas" data-title="大数の法則"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="#ci">I.03 信頼区間</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./clt.html" rel="prev">← 中心極限定理を目で見て腹落ちさせる</a>
+  <a href="./ci.html" rel="next">信頼区間 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

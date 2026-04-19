@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
+<meta name="keywords" content="multiple regression, partial coefficients, 3D visualization, high dimensional">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Multiple Regression — Beyond Two Variables — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/mreg.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Multiple Regression — Beyond Two Variables">
+<meta property="og:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/mreg.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Multiple Regression">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multiple Regression — Beyond Two Variables">
+<meta name="twitter:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Multiple Regression — Beyond Two Variables",
+      "description": "Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "重回帰分析",
+        "偏回帰係数",
+        "多変量の直線・平面"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/mreg.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Multiple Regression"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/mreg.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#mreg">Topics</a><span class="sep">›</span>
+  <span>Multiple Regression</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Multiple Regression — Beyond Two Variables</a></h1>
+  <p class="topic-lead">Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.</p>
+  <section class="reveal in" id="mreg">
+
+<div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
+
+<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Rotate the <span style="color:var(--magenta)">3D</span> Plane</span></h2>
+
+<div class="story-bridge">Simple regression is one line. But often you want to <b>strip away other effects</b> — the impact of ad spend <i>holding day-of-week and season fixed</i>. That's <span class="next">multiple regression</span>. Add dimensions, and each <b>partial coefficient</b> tells you the effect <b>controlling for everything else</b>.</div>
+
+<details class="story-context"><summary>New here?</summary>Easier if you know simple regression (fitting one line). Here the line extends to a "plane."</details>
+
+<p class="sec-desc">
+    With <b>two or more</b> explanatory variables, it's <b>multiple regression</b>.
+    Predict y (e.g., test score) from x₁ (study hours) and x₂ (sleep hours), handling several factors at once.
+    Instead of a regression <i>line</i>, you get a regression <b>plane</b>. β₁ is the effect on y of a unit change in x₁ holding x₂ fixed; β₂ is the same for x₂.
+    Set true parameters, generate data, and compare the estimates to the truth.
+    <b>Drag</b> the canvas to rotate and see the plane and data in 3D.<br/>
+<b style="color:var(--yellow)">Note: only 2 predictors can be drawn (our eyes top out at 3-D).</b>
+    But the equation keeps going — <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> — <b>you can add as many variables as you like</b>.
+    From x₃ onward you just "can't draw it", but the estimator <code>β̂ = (XᵀX)⁻¹Xᵀy</code> works exactly the same.
+    In practice, 5–50 predictors is very normal.
+  </p>
+<div class="formula">ŷ = β₀ + β₁x₁ + β₂x₂ ,   β̂ = (XᵀX)⁻¹Xᵀy</div>
+
+<div class="formula-explain">Compact matrix notation, but it's just "OLS considering all variables at once." No hand calculation needed — the computer handles this.</div>
+
+<div class="guided-steps">
+<b style="color:var(--yellow)">Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set noise σ to <b>0</b> and resample → estimates match the true values exactly.</li>
+<li><b>Step 2:</b> Raise σ to <b>0.5</b> → estimates start drifting. Resample several times to see the variation.</li>
+<li><b>Step 3:</b> Set n to <b>10</b> and resample → unstable. Set n to <b>200</b> → stable. That's the law of large numbers.</li>
+<li><b>Step 4:</b> Set β₁ to <b>0</b> → x₁ has no effect on y. Check that estimated β̂₁ is close to 0.</li>
+</ol>
+</div>
+<div class="panel" data-autorun="mGen">
+<div class="controls">
+<div class="ctrl"><label><span>True β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
+<input id="mB1" max="1.5" min="-1.5" step="0.05" type="range" value="0.8"/>
+
+<div class="hint">The "true" β₁. Compare with the estimated β̂₁ to see how close the estimate gets.</div>
+</div>
+<div class="ctrl"><label><span>True β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
+<input id="mB2" max="1.5" min="-1.5" step="0.05" type="range" value="-0.5"/>
+
+<div class="hint">The "true" β₂. Set independently from β₁. Setting to 0 means "no effect."</div>
+</div>
+<div class="ctrl"><label><span>Noise σ</span> = <span class="val" id="mSVal">0.50</span></label>
+<input id="mS" max="2" min="0" step="0.05" type="range" value="0.5"/>
+
+<div class="hint">Noise magnitude. 0 = perfect fit. Larger = noisier estimates.</div>
+</div>
+<div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
+<input id="mN" max="200" min="10" type="range" value="40"/>
+
+<div class="hint">Sample size. More = more stable estimates (law of large numbers). Try 10 vs. 200.</div>
+</div>
+<button class="btn" id="mGen"><span>▶ Resample</span></button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ Drag to rotate (axes: <span style="color:var(--cyan)">x₁</span> · <span style="color:var(--magenta)">x₂</span> · <span style="color:var(--yellow)">y</span>)</span></span>
+</div>
+<canvas aria-busy="true" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" id="mregCanvas" style="cursor:grab"></canvas>
+<div class="info">
+<div><span>Est. β̂₀</span><strong id="mE0">—</strong></div>
+<div><span>Est. β̂₁</span><strong id="mE1">—</strong></div>
+<div><span>Est. β̂₂</span><strong id="mE2">—</strong></div>
+<div>R²<strong id="mR2">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="Multiple Regression"><span>💾 Save image</span></button>
+</div>
+</div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./reg.html" rel="prev">← Simple Linear Regression</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+</body>
+</html>

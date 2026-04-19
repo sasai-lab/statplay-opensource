@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。">
+<meta name="keywords" content="仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>仮説検定 — p値・α・棄却域を可視化 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/test.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/test.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/test.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/test.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="仮説検定 — p値・α・棄却域を可視化">
+<meta property="og:description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/test.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 仮説検定">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="仮説検定 — p値・α・棄却域を可視化">
+<meta name="twitter:description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "仮説検定 — p値・α・棄却域を可視化",
+      "description": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "仮説検定",
+        "p値と有意水準",
+        "棄却域"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/test.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "仮説検定"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/test.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#test">トピック</a><span class="sep">›</span>
+  <span>仮説検定</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">仮説検定 — p値・α・棄却域を可視化</a></h1>
+  <p class="topic-lead">両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。</p>
+  <section class="reveal in" id="test">
+
+<div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
+<h2 class="sec-title">仮説検定 <span class="sec-sub">— <span style="color:var(--magenta)">棄却</span>か<span style="color:var(--yellow)">採択</span>か</span></h2>
+
+<div class="story-bridge">信頼区間が「幅として」不確実性を出す道具なら、<span class="next">仮説検定</span>は「YES/NO として」それを使う道具。<b>帰無仮説の世界</b>でこのデータは起こりえるか？ 起こりにくいなら reject——同じ分布、同じ σ／n、<b>質問が違うだけ</b>。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>信頼区間の考え方と正規分布の基本がわかると理解しやすいです。「p値」は聞いたことがあるレベルでOK。</details>
+
+<p class="sec-desc">
+<b>検定 = 裁判</b>だと思うと超わかりやすい。<br/>
+    「<code>H₀</code>（<span class="term-gloss" title="帰無仮説：「効果なし」「差なし」という控えめな仮説。まずこれを正しいと仮定して検定する">帰無仮説</span>）：この薬は効かない（＝無罪）」をいったん仮置きし、データから計算した <b>検定統計量 z</b> が
+    <b style="color:var(--yellow)">事前に決めた棄却域</b> に落ちたら有罪宣告 — つまり <b>H₀ を棄却</b> する。<br/>
+    ここでは2画面で攻める：<b>① z値と棄却域の幾何学（両側・右側・左側）</b>・
+    <b>② 冤罪(α)と見逃し(β)のトレードオフ</b>。
+  </p>
+
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① 基本：z値と棄却域</h3>
+
+<div class="controls">
+<div class="ctrl"><label><span>観測 z</span> = <span class="val" id="tZVal">1.96</span></label>
+<input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
+<div class="hint">データから計算した検定統計量。棄却域（赤い領域）に入れば H₀ を棄却する。</div>
+
+</div>
+<div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
+<input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+<div class="hint">有意水準。「冤罪リスクをどこまで許容するか」。通常は 0.05（5%）を使う。</div>
+
+</div>
+<div class="ctrl"><label><span>検定タイプ</span></label>
+<select id="tType">
+<option data-en="Two-sided" data-ja="両側" value="two">両側</option>
+<option data-en="Right" data-ja="右側" value="right">右側</option>
+<option data-en="Left" data-ja="左側" value="left">左側</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" height="260" id="testCanvas"></canvas>
+<div class="info">
+<div><span>検定統計量 z</span><strong id="tZstat">—</strong></div>
+<div><span>臨界値</span><strong id="tCrit">—</strong></div>
+<div><span>p値</span><strong id="tPval">—</strong></div>
+<div><span>判定</span><strong id="tDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="testCanvas" data-title="仮説検定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="panel">
+<h3 style="color:var(--yellow);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
+
+<p class="sec-desc" style="margin-bottom:14px">
+      検定には2種類の間違いがある。<br/>
+<b style="color:var(--magenta)">第1種の誤り α</b>: H₀ が本当なのに棄却してしまう（冤罪）。<br/>
+<b style="color:var(--purple)">第2種の誤り β</b>: H₁ が本当なのに見逃してしまう（真犯人を逃す）。<br/>
+      そして <code>1 − β</code> が<b style="color:var(--green)">検出力 (Power)</b>。
+      <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> δ（本当の差の大きさ）や α を動かすと、青(H₀)と紫(H₁)の曲線がせめぎ合い、
+      "間違いを減らすと見逃しが増える"というトレードオフが見える。
+      <br/><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
+</p>
+
+<div class="controls">
+<div class="ctrl"><label><span>効果量 δ</span> = <span class="val" id="eDVal">2.0</span></label>
+<input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
+<div class="hint">効果量 = 本当の差の大きさ。「薬がどれくらい効くか」の指標。大きいほど検出しやすい。</div>
+
+</div>
+<div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
+<input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
+<div class="hint">α を厳しく（小さく）すると冤罪は減るが、見逃し（β）が増える。このトレードオフを観察しよう。</div>
+
+</div>
+</div>
+<canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
+<div class="info">
+<div><span>α (第1種の誤り)</span><strong id="eAlpha">—</strong></div>
+<div><span>β (第2種の誤り)</span><strong id="eBeta">—</strong></div>
+<div><span>検出力 1−β</span><strong id="ePower">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="errCanvas" data-title="α・β・検出力"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I.05 t・χ²・F</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./ci.html" rel="prev">← 信頼区間</a>
+  <a href="./dists.html" rel="next">t分布・χ²分布・F分布 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="A deviation score of 70 means top 2 out of 100. Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." name="description"/>
+<meta content="deviation value, standard score, percentile, normal distribution, statistics, what is deviation, bell curve" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>What Is a Deviation Value? — See "Top X%" in 3 Seconds | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/columns/deviation.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/deviation.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/deviation.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/deviation.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="A score of 70 means only 2 out of 100 — did you know?" property="og:title"/>
+<meta content="Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/deviation.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — What Is a Deviation Value?" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="A score of 70 means only 2 out of 100 — did you know?" name="twitter:title"/>
+<meta content="Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ── Cinematic hero ── */
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 720px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-content h1 {
+  font-family: 'Courier New', monospace; font-size: clamp(26px, 5.5vw, 42px);
+  line-height: 1.35; color: var(--text); margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7;
+  opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .6s;
+}
+.hero-content .hook-sub strong { color: var(--magenta); }
+.hero-impact {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(48px, 12vw, 96px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -2px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2);
+  margin-bottom: 20px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+body.theme-light .hero-impact {
+  text-shadow: 0 0 20px rgba(180,140,0,.3);
+}
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0; animation: heroFadeIn 1s ease 3.5s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  cursor: pointer; z-index: 3; border: none; background: none;
+  padding: 8px 16px; transition: color .2s;
+}
+.hero-scroll:hover { color: var(--cyan); }
+.hero-scroll:hover .chevron { border-color: var(--cyan); }
+.hero-scroll .chevron {
+  width: 20px; height: 20px; border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg); animation: heroChevron 1.5s ease-in-out infinite;
+}
+@keyframes heroChevron {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: .5; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+@keyframes heroFadeIn { to { opacity: 1; } }
+
+/* Section styling */
+.col-section {
+  margin-bottom: 48px; position: relative; z-index: 2;
+}
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+
+/* Quiz */
+.quiz-item { margin-bottom: 24px; }
+.quiz-item .quiz-q {
+  font-size: 15px; font-weight: bold; color: var(--text); margin-bottom: 10px;
+}
+.quiz-choices { display: flex; gap: 8px; flex-wrap: wrap; }
+.quiz-choice {
+  padding: 8px 20px; border: 1px solid rgba(0,243,255,.3); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 14px;
+  cursor: pointer; transition: .2s;
+}
+.quiz-choice:hover { background: rgba(0,243,255,.08); }
+.quiz-choice.correct { border-color: var(--green); color: var(--green); background: rgba(0,255,156,.1); }
+.quiz-choice.wrong { border-color: var(--magenta); color: var(--magenta); background: rgba(255,43,214,.1); }
+.quiz-explain {
+  display: none; margin-top: 10px; padding: 12px 16px;
+  border-left: 3px solid var(--cyan); color: var(--dim); font-size: 13px; line-height: 1.7;
+}
+
+/* Formula */
+.col-formula {
+  text-align: center; font-family: 'Courier New', monospace;
+  font-size: clamp(14px, 3vw, 18px); color: var(--yellow); padding: 20px;
+  border: 1px dashed rgba(255,230,0,.2); margin: 16px 0 24px;
+  background: rgba(255,230,0,.03);
+}
+
+/* Unified simulator + rarity */
+#devCanvas { width: 100%; height: 280px; display: block; }
+.sim-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 16px 0; padding: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family: 'Courier New', monospace;
+}
+.sim-result .sim-item { text-align: center; }
+.sim-result .sim-label { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
+.sim-result .sim-val { font-size: 22px; font-weight: bold; color: var(--cyan); }
+.sim-result .sim-val.dev-val { color: var(--yellow); font-size: 28px; }
+
+.sim-interact {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  margin-top: 20px; align-items: start;
+}
+@media (max-width: 640px) {
+  .sim-interact { grid-template-columns: 1fr; }
+}
+
+/* Sliders panel */
+.sim-panel-label {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase;
+}
+.sim-controls { margin-bottom: 0; }
+.sim-ctrl { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sim-ctrl label {
+  font-family: 'Courier New', monospace; font-size: 13px; color: var(--dim);
+  min-width: 100px;
+}
+.sim-ctrl input[type="range"] { flex: 1; min-width: 80px; }
+.sim-ctrl .val {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); min-width: 36px; text-align: right;
+}
+
+/* Rarity table */
+.rarity-table { width: 100%; border-collapse: collapse; }
+.rarity-table th {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  padding: 6px 8px; text-align: left; border-bottom: 1px solid rgba(0,243,255,.2);
+}
+.rarity-row {
+  cursor: pointer; transition: background .15s;
+}
+.rarity-row:hover { background: rgba(0,243,255,.06); }
+.rarity-row td {
+  padding: 5px 8px; font-size: 13px; font-family: 'Courier New', monospace;
+  border-bottom: 1px solid rgba(0,243,255,.06);
+}
+.rarity-row td:first-child { color: var(--yellow); font-weight: bold; }
+.rarity-row td:nth-child(2) { color: var(--cyan); }
+.rarity-row td:nth-child(3) { color: var(--magenta); }
+.rarity-row td:last-child { color: var(--dim); font-size: 11px; font-family: sans-serif; }
+.rarity-row.rarity-active {
+  background: rgba(0,243,255,.08);
+  box-shadow: inset 3px 0 0 var(--cyan);
+}
+.rarity-row.rarity-active td:first-child { text-shadow: 0 0 10px rgba(255,230,0,.5); }
+body.theme-light .rarity-row.rarity-active { background: rgba(0,100,130,.08); }
+body.theme-light .rarity-row:hover { background: rgba(0,100,130,.04); }
+
+/* Skew section */
+.skew-controls { margin-bottom: 16px; }
+#skewCanvas { width: 100%; height: 280px; display: block; }
+.skew-compare {
+  display: flex; align-items: center; justify-content: center;
+  gap: 16px; margin: 16px 0 8px; flex-wrap: wrap;
+}
+.skew-box {
+  text-align: center; padding: 12px 20px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family: 'Courier New', monospace; min-width: 140px;
+}
+.skew-label {
+  display: block; font-size: 11px; color: var(--dim); margin-bottom: 4px;
+}
+.skew-val {
+  font-size: 24px; font-weight: bold; color: var(--cyan);
+}
+.skew-val-actual { color: var(--magenta); }
+.skew-unit { color: var(--dim); font-size: 13px; font-family: 'Courier New', monospace; }
+.skew-vs {
+  font-family: 'Courier New', monospace; font-size: 16px; color: var(--dim);
+  font-weight: bold;
+}
+.skew-gap {
+  text-align: center; padding: 10px 16px; margin-top: 8px;
+  border: 1px solid rgba(0,243,255,.15);
+  font-family: 'Courier New', monospace; font-size: 14px; color: var(--dim);
+  transition: border-color .3s;
+}
+.skew-gap strong {
+  font-size: 20px; color: var(--yellow); margin: 0 4px;
+}
+
+/* CTA / share */
+.col-cta {
+  text-align: center; padding: 32px 0 48px;
+  border-top: 1px dashed rgba(0,243,255,.15); margin-top: 32px;
+}
+.col-cta p { color: var(--dim); font-size: 14px; line-height: 1.7; margin-bottom: 16px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+/* ── Article meta ── */
+.article-meta {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+.article-meta span::before {
+  content: ''; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--cyan); margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ── Scroll reveal ── */
+.col-section {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.col-section.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ── Section divider ── */
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 48px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+/* ── Takeaway box ── */
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2);
+  background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul {
+  list-style: none; padding: 0;
+}
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before {
+  content: '&#9656;'; position: absolute; left: 0; color: var(--yellow);
+}
+
+/* ── Graph share bar ── */
+.graph-share-bar {
+  display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(0,243,255,.08);
+}
+.graph-share-bar .share-btn,
+.share-row .share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.25);
+  background: transparent; color: var(--cyan);
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; transition: .2s; white-space: nowrap;
+}
+.graph-share-bar .share-btn:hover,
+.share-row .share-btn:hover {
+  background: rgba(0,243,255,.08); border-color: rgba(0,243,255,.5);
+}
+
+/* ── FAQ accordion ── */
+.faq-item {
+  border-bottom: 1px solid rgba(0,243,255,.1);
+}
+.faq-q {
+  display: flex; align-items: center; width: 100%;
+  padding: 16px 0; background: none; border: none;
+  color: var(--text); font-size: 15px; font-weight: bold;
+  font-family: inherit; cursor: pointer; text-align: left;
+  gap: 12px; transition: color .2s;
+}
+.faq-q::before {
+  content: '+'; flex-shrink: 0;
+  width: 24px; height: 24px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid rgba(0,243,255,.3);
+  font-family: 'Courier New', monospace; font-size: 16px;
+  color: var(--cyan); transition: .3s;
+}
+.faq-item.open .faq-q::before {
+  content: '-'; background: rgba(0,243,255,.1);
+  transform: rotate(180deg);
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  padding: 0 0 0 36px;
+}
+.faq-item.open .faq-a {
+  max-height: 300px; padding: 0 0 16px 36px;
+}
+.faq-a p {
+  color: var(--dim); font-size: 14px; line-height: 1.8; margin-bottom: 8px;
+}
+.faq-a p:last-child { margin-bottom: 0; }
+
+/* ── Enhanced CTA ── */
+.col-cta { border-top: none; margin-top: 0; padding-top: 0; padding-bottom: 16px; }
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+
+/* Light theme adjustments */
+body.theme-light .hero-content h1 em { text-shadow: none; }
+body.theme-light .hero-impact { text-shadow: 0 0 20px rgba(180,140,0,.3); }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "What Is a Deviation Value? — See \"Top X%\" in 3 Seconds",
+      "description": "A deviation score of 70 means top 2 out of 100. Grasp the truth behind deviation values in 3 minutes with an interactive simulator.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/columns/deviation.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is a deviation value calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deviation = 50 + 10 x (your score - mean) / standard deviation. First compute the mean and standard deviation from everyone's scores, then convert your score. At the mean you get 50; one standard deviation above gives 60."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a deviation value of 50 mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A deviation of 50 means you scored exactly at the group average. Regardless of the raw score, if you match the mean, your deviation is 50."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What percentile is a deviation of 60?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A deviation of 60 is roughly the top 15.87% (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point jump dramatically increases rarity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is deviation the same as rank?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Deviation assumes a normal distribution and gives a relative position, while rank is an absolute ordering based on actual data. If the distribution is not normal, the predicted rank from deviation can differ significantly from the real rank."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you compare deviation values from different tests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally no. Deviation measures your position within the group that took that specific test. If the test populations differ, the same deviation of 60 can represent very different ability levels."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Columns",
+          "item": "https://statplay.sasailab.com/en/columns/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What Is a Deviation Value?"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../../index.html?lang=en" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../../index.html?lang=en">← StatPlay</a>
+<a href="../../columns/deviation.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ 1. CINEMATIC HERO ═══ -->
+<div class="hero-cinema" id="heroCinema">
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-impact" id="heroImpact">5x</div>
+<h1 id="heroTitle">Deviation 60 vs. 70 —<br/>just 10 points apart.<br/>But the <em>"rarity" differs 5-fold</em>.</h1>
+<p class="hook-sub" id="heroSub">
+      A deviation value isn't a "smartness score."<br/>
+      It's actually <strong>your position on a normal distribution</strong>.
+    </p>
+<div class="article-meta" id="heroMeta" style="opacity:0">
+<span>3 min read</span>
+<span>Interactive explainer</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="Scroll to content" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
+<a href="../../index.html?lang=en">StatPlay</a><span class="sep">›</span>
+<span>Columns</span><span class="sep">›</span>
+<span>What Is a Deviation Value?</span>
+</div>
+<main>
+<!-- ═══ INTRO ═══ -->
+<div class="col-section">
+<p>
+    "High deviation = smart" — does that sound about right?<br/>
+    But surprisingly few people can explain what a deviation value actually means.<br/>
+    In this article, you'll grasp the <b style="color:var(--cyan)">truth</b> behind deviation values in 3 minutes.<br/>
+    Start by playing with this graph.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<!-- ═══ SIMULATOR (first — graphical hook) ═══ -->
+<div class="col-section" id="simulator">
+<h2>// Hands-on Simulator</h2>
+<p>Drag the sliders freely, or pick a preset from the table on the right. Everything stays in sync.</p>
+<canvas aria-label="Deviation value simulator: visualize your position on a normal distribution. Operate with sliders or the rarity table" height="280" id="devCanvas"></canvas>
+<div class="sim-result">
+<div class="sim-item">
+<span class="sim-label">Deviation</span>
+<span class="sim-val dev-val" id="devResult">—</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">Top</span>
+<span class="sim-val" id="devPct">—</span><span style="color:var(--dim);font-size:14px">%</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">1 in ...</span>
+<span class="sim-val" id="devRank">—</span><span style="color:var(--dim);font-size:14px"> people</span>
+</div>
+</div>
+<div class="sim-interact">
+<div class="sim-sliders">
+<div class="sim-panel-label">▶ Adjust with sliders</div>
+<div class="sim-controls">
+<div class="sim-ctrl">
+<label>Your Score</label>
+<input id="devScore" max="100" min="0" step="1" type="range" value="70"/>
+<span class="val" id="devScoreVal">70</span>
+</div>
+<div class="sim-ctrl">
+<label>Mean</label>
+<input id="devMean" max="90" min="10" step="1" type="range" value="55"/>
+<span class="val" id="devMeanVal">55</span>
+</div>
+<div class="sim-ctrl">
+<label>Std Dev</label>
+<input id="devSD" max="30" min="3" step="1" type="range" value="15"/>
+<span class="val" id="devSDVal">15</span>
+</div>
+</div>
+</div>
+<div class="sim-rarity">
+<div class="sim-panel-label">▶ Rarity presets</div>
+<table class="rarity-table">
+<thead>
+<tr><th>Dev</th><th>Top %</th><th>Rarity</th></tr>
+</thead>
+<tbody>
+<tr class="rarity-row" data-dev="75"><td>75</td><td>0.62%</td><td>1-2 per grade</td></tr>
+<tr class="rarity-row" data-dev="70"><td>70</td><td>2.28%</td><td>#1 in class of 40</td></tr>
+<tr class="rarity-row" data-dev="65"><td>65</td><td>6.68%</td><td>Top 2-3 in class</td></tr>
+<tr class="rarity-row" data-dev="60"><td>60</td><td>15.87%</td><td>Top 1/6</td></tr>
+<tr class="rarity-row" data-dev="55"><td>55</td><td>30.85%</td><td>Slightly above avg</td></tr>
+<tr class="rarity-row" data-dev="50"><td>50</td><td>50.00%</td><td>Dead average</td></tr>
+<tr class="rarity-row" data-dev="45"><td>45</td><td>69.15%</td><td>Slightly below avg</td></tr>
+<tr class="rarity-row" data-dev="40"><td>40</td><td>84.13%</td><td>Bottom ~16%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="Deviation Simulator">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="devCanvas" data-title="Deviation Simulator">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="devCanvas" data-title="Deviation Simulator">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="devCanvas" data-title="Deviation Simulator">📤 Share</button>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<!-- ═══ FORMULA ═══ -->
+<div class="col-section">
+<h2>// What a Deviation Value Really Is</h2>
+<p>The "deviation" you just played with — its formula is this simple:</p>
+<div class="col-formula">Deviation = 50 + 10 × (Your Score − Mean) ÷ Std Dev</div>
+<p>
+    It's a straightforward <b>scale transform</b>: re-center the mean to 50 and set the standard deviation (spread) to 10.<br/>
+    In other words, "<b style="color:var(--cyan)">a number that lets you compare your position across any test, using the same ruler</b>" — that's a deviation value.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<!-- ═══ QUIZ ═══ -->
+<div class="col-section">
+<h2>// 3-Question Quiz — Check Your Understanding</h2>
+<div class="quiz-item">
+<p class="quiz-q">Q1. Does a deviation of 80 mean you scored 80 on the test?</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="false">YES</button>
+<button class="quiz-choice" data-correct="true">NO</button>
+</div>
+<div class="quiz-explain">A deviation value is not the raw score — it represents your "position within the group." Even a test with a mean of 30 can produce a deviation of 80.</div>
+</div>
+<div class="quiz-item">
+<p class="quiz-q">Q2. Does a deviation of 50 equal the average score?</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="true">YES</button>
+<button class="quiz-choice" data-correct="false">NO</button>
+</div>
+<div class="quiz-explain">By definition, someone who scores exactly the mean gets a deviation of 50. This is baked into the formula.</div>
+</div>
+<div class="quiz-item">
+<p class="quiz-q">Q3. You got a deviation of 60 on two different tests. Same ability level?</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="false">YES</button>
+<button class="quiz-choice" data-correct="true">NO</button>
+</div>
+<div class="quiz-explain">If the test populations (who took the test) differ, a deviation of 60 means completely different things. An elite-school mock exam and a nationwide exam aren't comparable.</div>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<!-- ═══ PITFALL ═══ -->
+<div class="col-section" id="pitfall">
+<h2>// The Pitfall: When Deviation Values Lie</h2>
+<p>
+    Deviation values are calculated under the assumption that scores follow a normal distribution.<br/>
+    But in reality, test results rarely form a perfect bell curve.<br/>
+<b style="color:var(--yellow)">Drag the skewness slider to the right</b> and feel how much the "top %" diverges for the same deviation value.
+  </p>
+<div class="skew-controls">
+<div class="sim-ctrl">
+<label>Deviation</label>
+<input id="skewDev" max="75" min="40" step="1" type="range" value="65"/>
+<span class="val" id="skewDevVal">65</span>
+</div>
+<div class="sim-ctrl">
+<label>Skewness</label>
+<input id="skewAmount" max="2" min="0" step="0.1" type="range" value="1.0"/>
+<span class="val" id="skewAmountVal">1.0</span>
+</div>
+</div>
+<canvas aria-label="Compare normal and skewed distributions. Adjust deviation and skewness sliders to feel how the top % diverges" height="280" id="skewCanvas"></canvas>
+<div class="skew-compare">
+<div class="skew-box">
+<span class="skew-label">Deviation says top %</span>
+<span class="skew-val" id="skewNormPct">—</span><span class="skew-unit">%</span>
+</div>
+<div class="skew-vs">vs</div>
+<div class="skew-box">
+<span class="skew-label">Actual top %</span>
+<span class="skew-val skew-val-actual" id="skewActualPct">—</span><span class="skew-unit">%</span>
+</div>
+</div>
+<div class="skew-gap">
+    Gap: <strong id="skewGap">—</strong><span class="skew-unit"> points</span>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="skewCanvas" data-title="When Deviation Values Lie">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="skewCanvas" data-title="When Deviation Values Lie">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="skewCanvas" data-title="When Deviation Values Lie">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="skewCanvas" data-title="When Deviation Values Lie">📤 Share</button>
+</div>
+</div>
+<!-- ═══ TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li>Deviation is not a "score" — it's <b style="color:var(--cyan)">your position within a group</b></li>
+<li>The formula simply rescales: mean → 50, standard deviation → 10</li>
+<li>Deviation 60 → top 16%. Deviation 70 → top 2%. <b style="color:var(--yellow)">Just 10 points = 5x rarity</b></li>
+<li>When the distribution is skewed, the "top %" from deviation <b style="color:var(--magenta)">can be misleading</b></li>
+</ul>
+</div>
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-section">
+<h2>// Frequently Asked Questions</h2>
+<div class="faq-item">
+<button class="faq-q" type="button">How is a deviation value calculated?</button>
+<div class="faq-a">
+<p><b>Deviation = 50 + 10 × (Your Score − Mean) ÷ Std Dev</b></p>
+<p>First, compute the mean and standard deviation from all scores. Then plug your score in. At the mean you get 50; one standard deviation above the mean gives 60.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">What does a deviation of 50 mean?</button>
+<div class="faq-a">
+<p>A deviation of 50 means "exactly the group average." No matter what the raw test score is, if it matches the mean, the deviation is 50.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">What percentile is a deviation of 60?</button>
+<div class="faq-a">
+<p>A deviation of 60 is roughly the <b style="color:var(--cyan)">top 15.87%</b> (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point increase causes rarity to jump dramatically.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Is deviation the same as rank?</button>
+<div class="faq-a">
+<p>No. Deviation is a relative position assuming a normal distribution; rank is an absolute ordering from actual data. When scores aren't normally distributed, the rank predicted by deviation can differ significantly from the real rank. Try the "Pitfall" section above to see this in action.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can a deviation exceed 100 or go below 0?</button>
+<div class="faq-a">
+<p>Mathematically, yes. A deviation of 100 means "5 standard deviations above the mean" — extremely rare, but possible with small samples or outliers.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can you compare deviation values from different tests?</button>
+<div class="faq-a">
+<p><b style="color:var(--magenta)">Generally, no.</b> Deviation measures your position within the specific group that took that test. If the test populations differ, a deviation of 60 on one test may represent a completely different ability level than 60 on another.</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">Behind every deviation value is a "normal distribution."</p>
+<p class="cta-sub">
+    Want to understand the bell curve you just saw on a deeper level?<br/>
+    StatPlay's interactive materials let you learn statistics by touching.
+  </p>
+<div class="cta-links">
+<a href="../../en/topics/stdnorm.html">Explore Standard Normal →</a>
+<a href="../../en/topics/normal.html">Dive into Normal Dist. →</a>
+<a href="../../index.html?lang=en">All Topics →</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">📤 Share</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+<script src="../../js/modules/deviation.js" type="module"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // Scroll button
+  const scrollBtn = document.getElementById('heroScroll');
+  scrollBtn?.addEventListener('click', () => {
+    const main = document.querySelector('main');
+    if (main) main.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section, .takeaway').forEach(el => obs.observe(el));
+
+  // Cinematic hero animation
+  const hc = document.getElementById('heroCanvas');
+  if (hc) {
+    const TAU = Math.PI * 2;
+    const pdf = z => Math.exp(-0.5 * z * z) / Math.sqrt(TAU);
+    const dpr = window.devicePixelRatio || 1;
+    let w, h, ctx;
+    const lt = () => document.body.classList.contains('theme-light');
+
+    function sizeCanvas() {
+      const rect = hc.parentElement.getBoundingClientRect();
+      hc.width = rect.width * dpr;
+      hc.height = rect.height * dpr;
+      w = rect.width; h = rect.height;
+      ctx = hc.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const toX = z => w / 2 + (z / 4.2) * (w * 0.42);
+    const toY = v => h * 0.92 - v / 0.42 * (h * 0.35);
+    const z60 = (60 - 50) / 10, z70 = (70 - 50) / 10;
+
+    function drawFrame(progress) {
+      ctx.clearRect(0, 0, w, h);
+      const curveP = Math.min(1, progress / 0.35);
+      const fillP  = Math.max(0, Math.min(1, (progress - 0.25) / 0.2));
+      const markP  = Math.max(0, Math.min(1, (progress - 0.4) / 0.15));
+      const impactP = Math.max(0, Math.min(1, (progress - 0.55) / 0.15));
+      const textP   = Math.max(0, Math.min(1, (progress - 0.65) / 0.2));
+
+      // grid pulse
+      const gridA = lt() ? 0.06 : 0.04;
+      ctx.strokeStyle = lt() ? `rgba(0,60,90,${gridA})` : `rgba(0,243,255,${gridA})`;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < w; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y < h; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // bell curve draw-on
+      if (curveP > 0) {
+        const steps = Math.floor(400 * curveP);
+        const pts = [];
+        for (let i = 0; i <= steps; i++) {
+          const z = -4 + (8 * i / 400);
+          pts.push([toX(z), toY(pdf(z))]);
+        }
+        ctx.save();
+        ctx.strokeStyle = lt() ? 'rgba(0,100,130,.3)' : 'rgba(0,243,255,.35)';
+        ctx.lineWidth = 2.5;
+        ctx.shadowBlur = lt() ? 0 : 16;
+        ctx.shadowColor = 'rgba(0,243,255,.5)';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        pts.forEach((p, i) => i ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]));
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // fill between 60 and 70
+      if (fillP > 0) {
+        const aFill = fillP * (lt() ? 0.08 : 0.12);
+        ctx.save();
+        ctx.fillStyle = lt() ? `rgba(180,0,120,${aFill})` : `rgba(255,43,214,${aFill})`;
+        ctx.beginPath();
+        ctx.moveTo(toX(z60), toY(0));
+        for (let z = z60; z <= z70; z += 0.02) {
+          ctx.lineTo(toX(z), toY(pdf(z)));
+        }
+        ctx.lineTo(toX(z70), toY(0));
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // markers at 60 and 70
+      if (markP > 0) {
+        const a = markP;
+        [z60, z70].forEach((z, i) => {
+          const x = toX(z), yTop = toY(pdf(z)), yBot = toY(0);
+          ctx.save();
+          ctx.globalAlpha = a;
+          ctx.setLineDash([5, 4]);
+          ctx.strokeStyle = lt() ? 'rgba(140,100,0,.4)' : 'rgba(255,230,0,.45)';
+          ctx.lineWidth = 2;
+          ctx.shadowBlur = lt() ? 0 : 10;
+          ctx.shadowColor = 'rgba(255,230,0,.5)';
+          ctx.beginPath();
+          ctx.moveTo(x, yTop);
+          ctx.lineTo(x, yBot);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = lt() ? 'rgba(140,100,0,.4)' : 'rgba(255,230,0,.45)';
+          ctx.font = 'bold 16px "Courier New", monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText(i === 0 ? '60' : '70', x, yBot + 20);
+          ctx.restore();
+        });
+
+        // area labels
+        if (markP > 0.5) {
+          const la = (markP - 0.5) * 2;
+          ctx.save();
+          ctx.globalAlpha = la;
+          ctx.fillStyle = lt() ? 'rgba(180,0,120,.35)' : 'rgba(255,43,214,.4)';
+          ctx.font = '12px "Courier New", monospace';
+          ctx.textAlign = 'center';
+          const midX = (toX(z60) + toX(z70)) / 2;
+          ctx.fillText('Top 16% \u2192 2%', midX, toY(pdf((z60 + z70) / 2)) - 12);
+          ctx.restore();
+        }
+      }
+
+      // impact number
+      const impactEl = document.getElementById('heroImpact');
+      if (impactP > 0 && !impactEl.classList.contains('hero-in')) {
+        impactEl.classList.add('hero-in');
+      }
+      // title
+      const titleEl = document.getElementById('heroTitle');
+      if (textP > 0 && !titleEl.classList.contains('hero-in')) {
+        titleEl.classList.add('hero-in');
+      }
+      // subtitle
+      const subEl = document.getElementById('heroSub');
+      if (textP > 0.5 && !subEl.classList.contains('hero-in')) {
+        subEl.classList.add('hero-in');
+      }
+      // meta
+      const metaEl = document.getElementById('heroMeta');
+      if (progress > 0.9) {
+        metaEl.style.opacity = '1';
+        metaEl.style.transition = 'opacity .8s ease';
+      }
+    }
+
+    sizeCanvas();
+
+    // run animation
+    const duration = 3000;
+    let start = null;
+    function animate(ts) {
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start) / duration);
+      drawFrame(p);
+      if (p < 1) requestAnimationFrame(animate);
+    }
+    requestAnimationFrame(animate);
+
+    // redraw on resize/theme (final frame)
+    const redrawFinal = () => { sizeCanvas(); drawFrame(1); };
+    window.addEventListener('resize', redrawFinal);
+    new MutationObserver(redrawFinal).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+  }
+
+});
+</script>
+</body>
+</html>

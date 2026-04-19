@@ -1,0 +1,146 @@
+{
+  "topics": [
+    {
+      "slug": "stdnorm",
+      "ja_title": "標準正規分布を直感で掴む",
+      "en_title": "Feel the Standard Normal Distribution",
+      "ja_desc": "平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。",
+      "en_desc": "Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.",
+      "ja_kw": "標準正規分布, N(0,1), z値, 68-95-99.7ルール, 統計検定2級, 正規分布可視化, 確率密度関数",
+      "en_kw": "standard normal distribution, N(0,1), z-score, 68-95-99.7 rule, probability density, statistics visualization",
+      "teaches": ["標準正規分布", "68-95-99.7ルール", "z値と区間確率"]
+    },
+    {
+      "slug": "normal",
+      "ja_title": "正規分布と標準化 — μ・σの役割を可視化",
+      "en_title": "Normal Distribution & Standardization",
+      "ja_desc": "一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。研究や統計検定で頻出する計算の裏側を体感する。",
+      "en_desc": "Compute P(a≤X≤b) for any N(μ,σ²) and see how standardization Z=(X-μ)/σ turns every normal into N(0,1). Build the reflex behind every z-table lookup.",
+      "ja_kw": "正規分布, 標準化, Z変換, 区間確率, μ σ, 統計検定2級, 確率計算",
+      "en_kw": "normal distribution, standardization, z-transform, interval probability, mean, standard deviation",
+      "teaches": ["正規分布 N(μ,σ²)", "標準化 Z=(X-μ)/σ", "区間確率 P(a≤X≤b)"]
+    },
+    {
+      "slug": "prob",
+      "ja_title": "確率の基本法則 — ベン図で直感をつかむ",
+      "en_title": "Probability Rules — Venn Diagrams",
+      "ja_desc": "加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。",
+      "en_desc": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
+      "ja_kw": "確率, 条件付き確率, 加法定理, ベン図, 独立性, 乗法定理, 統計検定2級",
+      "en_kw": "probability, conditional probability, addition rule, Venn diagram, independence, multiplication rule",
+      "teaches": ["加法定理", "条件付き確率 P(A|B)", "事象の独立性"]
+    },
+    {
+      "slug": "morep",
+      "ja_title": "二項分布・ポアソン分布・指数分布",
+      "en_title": "Binomial, Poisson, and Exponential Distributions",
+      "ja_desc": "成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。",
+      "en_desc": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
+      "ja_kw": "二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性, 統計検定2級",
+      "en_kw": "binomial distribution, poisson distribution, exponential distribution, discrete, memoryless",
+      "teaches": ["二項分布 B(n,p)", "ポアソン分布 Pois(λ)", "指数分布 Exp(λ)"]
+    },
+    {
+      "slug": "bayes",
+      "ja_title": "ベイズ定理 — 陽性的中率を直感で",
+      "en_title": "Bayes' Theorem — Positive Predictive Value",
+      "ja_desc": "有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。",
+      "en_desc": "Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.",
+      "ja_kw": "ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 統計検定2級, 条件付き確率",
+      "en_kw": "Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives",
+      "teaches": ["ベイズ定理", "条件付き確率", "陽性的中率"]
+    },
+    {
+      "slug": "clt",
+      "ja_title": "中心極限定理を目で見て腹落ちさせる",
+      "en_title": "See the Central Limit Theorem in Action",
+      "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。",
+      "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
+      "ja_kw": "中心極限定理, CLT, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ",
+      "en_kw": "central limit theorem, CLT, sample mean, convergence to normal, inferential statistics, sample size",
+      "teaches": ["中心極限定理", "標本平均の分布", "正規分布への収束"]
+    },
+    {
+      "slug": "lln",
+      "ja_title": "大数の法則 — 試行回数と真の平均",
+      "en_title": "The Law of Large Numbers",
+      "ja_desc": "コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。",
+      "en_desc": "See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.",
+      "ja_kw": "大数の法則, LLN, 試行回数, 標本平均, 期待値への収束, 統計検定2級",
+      "en_kw": "law of large numbers, LLN, trial count, sample mean, convergence to expectation",
+      "teaches": ["大数の法則", "標本平均の収束", "期待値"]
+    },
+    {
+      "slug": "ci",
+      "ja_title": "信頼区間 — 95%の意味を誤解なく掴む",
+      "en_title": "Confidence Intervals — What 95% Really Means",
+      "ja_desc": "「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。",
+      "en_desc": "Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.",
+      "ja_kw": "信頼区間, 95%信頼区間, 被覆確率, 信頼水準, 統計検定2級, 推測統計, 誤解",
+      "en_kw": "confidence interval, coverage probability, 95 percent, inferential statistics, common misreading",
+      "teaches": ["信頼区間", "被覆確率", "95%の正しい解釈"]
+    },
+    {
+      "slug": "test",
+      "ja_title": "仮説検定 — p値・α・棄却域を可視化",
+      "en_title": "Hypothesis Testing — Reject Regions & p-values",
+      "ja_desc": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。",
+      "en_desc": "Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.",
+      "ja_kw": "仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定, 統計検定2級",
+      "en_kw": "hypothesis testing, p-value, significance level, rejection region, z-test, one-sided, two-sided",
+      "teaches": ["仮説検定", "p値と有意水準", "棄却域"]
+    },
+    {
+      "slug": "dists",
+      "ja_title": "t分布・χ²分布・F分布 — 三大検定分布の違い",
+      "en_title": "The Three Test Distributions — t, χ², and F",
+      "ja_desc": "自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。",
+      "en_desc": "Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.",
+      "ja_kw": "t分布, カイ二乗分布, F分布, 自由度, 三大検定分布, 統計検定2級, 推測統計",
+      "en_kw": "t distribution, chi-squared, F distribution, degrees of freedom, test statistics",
+      "teaches": ["t分布", "χ²分布", "F分布", "自由度"]
+    },
+    {
+      "slug": "chitest",
+      "ja_title": "カイ二乗検定 — 適合度と独立性",
+      "en_title": "Chi-Squared Test — Goodness-of-Fit & Independence",
+      "ja_desc": "サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。",
+      "en_desc": "Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.",
+      "ja_kw": "カイ二乗検定, 適合度検定, 独立性検定, クロス集計表, χ²統計量, 期待度数, 統計検定2級",
+      "en_kw": "chi-squared test, goodness of fit, test of independence, contingency table, expected frequency",
+      "teaches": ["カイ二乗検定", "適合度検定", "独立性検定", "クロス集計表"]
+    },
+    {
+      "slug": "reg",
+      "ja_title": "単回帰分析 — 最小二乗法をビジュアルで",
+      "en_title": "Simple Linear Regression — OLS Visualized",
+      "ja_desc": "キャンバスに点を配置して、最小二乗法による回帰直線が動くのを体感。残差、傾きβ₁、切片β₀、決定係数R²の関係を直感的に理解する。",
+      "en_desc": "Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.",
+      "ja_kw": "単回帰分析, 最小二乗法, OLS, 決定係数, 残差, β₁ β₀, 統計検定2級, 線形回帰",
+      "en_kw": "simple linear regression, OLS, ordinary least squares, R squared, residuals, slope, intercept",
+      "teaches": ["単回帰分析", "最小二乗法", "決定係数 R²", "残差"]
+    },
+    {
+      "slug": "mreg",
+      "ja_title": "重回帰分析 — 2+変数の世界",
+      "en_title": "Multiple Regression — Beyond Two Variables",
+      "ja_desc": "2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。",
+      "en_desc": "Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.",
+      "ja_kw": "重回帰分析, 多重回帰, 偏回帰係数, 3D 可視化, 高次元, 統計検定2級, 回帰分析",
+      "en_kw": "multiple regression, partial coefficients, 3D visualization, high dimensional",
+      "teaches": ["重回帰分析", "偏回帰係数", "多変量の直線・平面"]
+    }
+  ],
+  "columns": [
+    {
+      "slug": "deviation",
+      "ja_path": "/columns/deviation.html",
+      "en_path": "/en/columns/deviation.html"
+    },
+    {
+      "slug": "birthday",
+      "ja_path": "/columns/birthday.html",
+      "en_path": "/en/columns/birthday.html"
+    }
+  ]
+}

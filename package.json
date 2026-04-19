@@ -1,0 +1,28 @@
+{
+  "name": "statplay",
+  "version": "1.0.0",
+  "description": "Interactive cyberpunk visualizer for the Japanese 統計検定2級 statistics curriculum.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "build": "python scripts/build_topics.py",
+    "minify": "node scripts/minify.mjs --clean",
+    "build:prod": "npm run build && npm run minify",
+    "test": "node scripts/test_site.mjs",
+    "test:layout": "node scripts/test_layout.mjs",
+    "ci": "npm run lint && npm run build && npm run test && npm run test:layout",
+    "bump": "python scripts/bump_version.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "clean-css-cli": "^5.6.3",
+    "eslint": "^9.10.0",
+    "jsdom": "^24.1.3",
+    "terser": "^5.46.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "CC-BY-NC-4.0"
+}

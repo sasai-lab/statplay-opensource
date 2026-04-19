@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
+<meta name="keywords" content="t分布, カイ二乗分布, F分布, 自由度, 三大検定分布, 統計検定2級, 推測統計">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>t分布・χ²分布・F分布 — 三大検定分布の違い — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/dists.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/dists.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/dists.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/dists.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
+<meta property="og:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/dists.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — t分布・χ²分布・F分布">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
+<meta name="twitter:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "t分布・χ²分布・F分布 — 三大検定分布の違い",
+      "description": "自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "t分布",
+        "χ²分布",
+        "F分布",
+        "自由度"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/dists.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "t分布・χ²分布・F分布"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/dists.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#dists">トピック</a><span class="sep">›</span>
+  <span>t分布・χ²分布・F分布</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">t分布・χ²分布・F分布 — 三大検定分布の違い</a></h1>
+  <p class="topic-lead">自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。</p>
+  <section class="reveal in" id="dists">
+
+<div class="sec-tag">I.05 / t · χ² · F DISTRIBUTIONS</div>
+<h2 class="sec-title">三大検定分布 <span class="sec-sub">— <span style="color:var(--yellow)">t・χ²・F</span> の素顔</span></h2>
+
+<div class="story-bridge">ここまで平均の検定には σ を知っている前提だった。現実では <b>σ も推定</b>するしかない。その瞬間 Z は<span class="next"> t 分布</span>に化ける。分散を直接検定するなら <b>χ²</b>、2つの分散を比べるなら <b>F</b>。全部 <span class="term-gloss" title="N(0,1)：平均0・標準偏差1の標準正規分布。すべての正規分布の基準">N(0,1)</span> の子孫だけど、<b>何を知らないか</b>で名前が変わる。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>標準正規分布と仮説検定の基本を知っていると理解しやすいです。「母分散がわからないとき、どうするか」がテーマです。</details>
+
+<p class="sec-desc">
+<b>t・χ²・F</b> は、どれも<b style="color:var(--cyan)">正規分布から"作って"生まれた派生分布</b>。
+    "もとは標準正規なんだけど、標本からしか情報を取れない現実"を反映するためにスケーリングしたもの、と思うとスッキリする。<br/>
+    ざっくり使い分けると —
+    <b style="color:var(--cyan)">t</b>：母分散を知らずに平均を検定する時（＝現実の平均検定はほぼ全部これ）。
+    <b style="color:var(--magenta)">χ²</b>：分散そのものの検定、独立性や適合度（カテゴリカル）。
+    <b style="color:var(--yellow)">F</b>：分散比の検定（分散分析 ANOVA、回帰の全体 F 検定）。<br/>
+<span class="text-sub"><span class="term-gloss" title="自由度（df）：自由に値を決められるデータの個数。だいたい「サンプル数−1」。少ないほど不確実性が大きく、分布の裾が広がる">自由度</span> df を動かすと、t は df→∞ で N(0,1) に一致し、χ²／F は df が大きいほど対称なベル形に近づく。これ自体、裏では中心極限定理が効いている。</span>
+</p>
+
+<div class="dist-stack">
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+<div class="dist-card">
+<b class="cy">作り方:</b> t = Z / √(χ²ₖ/k) ， Z~N(0,1)。 <br/>
+<b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br/><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br/>
+<b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df→∞ で N(0,1)。
+        <div class="formula-explain" style="margin-top:4px">ざっくり言うと：母集団の σ を知らず標本から推定するので、その分だけ不確実性が増えて裾が厚くなった正規分布。サンプルが増えれば（df→∞）正規分布に戻る。</div>
+</div>
+
+<div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
+<input id="tdDf" max="30" min="1" type="range" value="3"/>
+<div class="hint">自由度 ≒ サンプル数−1。小さいと裾が重い（外れ値に備える）。大きくすると正規分布に一致。</div>
+
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df 変更</span></div>
+<canvas aria-busy="true" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t分布"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="panel">
+<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+<div class="dist-card">
+<b class="mg">作り方:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² （標準正規を k 個足して二乗和）。<br/>
+<b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br/><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br/>
+<b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
+      </div>
+
+<div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
+<input id="chiDf" max="30" min="1" type="range" value="3"/>
+<div class="hint">独立な標準正規変数の個数。平均 = df、分散 = 2×df。大きくすると左右対称に近づく。</div>
+
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df 変更</span></div>
+<canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ²分布"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="panel">
+<h3 style="color:var(--yellow);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+<div class="dist-card">
+<b class="ye">作り方:</b> F = (χ²ₘ/m) / (χ²ₙ/n) （2つの独立な χ² の比）。<br/>
+<b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br/><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br/>
+<b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
+      </div>
+
+<div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
+<input id="fDf1" max="30" min="1" type="range" value="3"/>
+<div class="hint">分子の自由度（グループ数−1）。分散分析ならグループ数で決まる。</div>
+
+</div>
+<div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
+<input id="fDf2" max="30" min="1" type="range" value="10"/>
+<div class="hint">分母の自由度（全データ数−グループ数）。大きいほど分布が安定する。</div>
+
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df₁ 変更　·　df₂ はスライダーで調整</span></div>
+<canvas aria-busy="true" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F分布"><span>💾 画像保存</span></button>
+</div>
+</div>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I.06 カイ二乗検定</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./test.html" rel="prev">← 仮説検定</a>
+  <a href="./chitest.html" rel="next">カイ二乗検定 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

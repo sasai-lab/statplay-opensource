@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。">
+<meta name="keywords" content="標準正規分布, N(0,1), z値, 68-95-99.7ルール, 統計検定2級, 正規分布可視化, 確率密度関数">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>標準正規分布を直感で掴む — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/stdnorm.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/stdnorm.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/stdnorm.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/stdnorm.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="標準正規分布を直感で掴む">
+<meta property="og:description" content="平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/stdnorm.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 標準正規分布を直感で掴む">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="標準正規分布を直感で掴む">
+<meta name="twitter:description" content="平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<style>
+/* Topic page overrides: slim nav, readable centered column */
+body.topic-page #mainNav .nav-links a,
+body.topic-page #mainNav .nav-links button { font-size: 12px; }
+body.topic-page section { padding-top: 0; }
+body.topic-page .topic-breadcrumb {
+  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-h1 {
+  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  color: var(--text); letter-spacing: .02em;
+}
+body.topic-page .topic-lead {
+  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
+  color: var(--dim); font-size: 14px; line-height: 1.85;
+}
+body.topic-page nav.topic-nav {
+  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  display: flex; justify-content: space-between; gap: 16px;
+  border-top: 1px dashed rgba(255,255,255,.1);
+}
+body.topic-page nav.topic-nav a {
+  color: var(--cyan); text-decoration: none;
+  font-family:'Courier New', monospace; font-size: 13px;
+  padding: 8px 14px; border: 1px solid rgba(0,243,255,.3);
+}
+body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
+body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
+body.topic-page .topic-hub-link {
+  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  font-size: 12px;
+}
+body.topic-page .topic-hub-link a {
+  color: var(--magenta); text-decoration: none;
+  font-family:'Courier New', monospace;
+}
+</style>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "標準正規分布を直感で掴む",
+      "description": "平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "標準正規分布",
+        "68-95-99.7ルール",
+        "z値と区間確率"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/stdnorm.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "標準正規分布を直感で掴む"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/stdnorm.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#stdnorm">トピック</a><span class="sep">›</span>
+  <span>標準正規分布を直感で掴む</span>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">標準正規分布を直感で掴む</a></h1>
+  <p class="topic-lead">平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。</p>
+  <section class="reveal in" id="stdnorm">
+
+<div class="sec-tag">P.01 / STANDARD NORMAL</div>
+<h2 class="sec-title">標準正規分布 <span class="sec-sub">— すべての<span style="color:var(--yellow)">はじまり</span></span></h2>
+
+<div class="story-bridge">統計のすべてを支配する<b>あの曲線</b>から始めよう——<span class="next">標準正規分布</span>。CLT も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
+
+<details class="story-context"><summary>初めてこのページに来た方へ</summary>前提知識は不要です。ここが統計学の出発点。「ベルカーブ」という言葉を聞いたことがあれば十分です。</details>
+
+<p class="sec-desc">
+    ぶっちゃけ <b style="color:var(--yellow)">この曲線ひとつ</b>がなければ、
+    この先に出てくる検定も、信頼区間も、t分布も、回帰分析も、<b>ぜんぶ成立しない</b>。<br/>
+<b>標準正規分布 <code>N(0, 1)</code></b> は、平均0・標準偏差1のベル型カーブ。
+    「どんな正規分布も <code>z = (x − μ) / σ</code> でここに重ねられる」という一行のトリックが、
+    <b style="color:var(--cyan)">100年前の統計学者たち</b>に"紙の表ひとつで世界中の確率を計算する"力を与えた。<br/>
+    つまりこれは、統計の<b style="color:var(--magenta)">ラスボスじゃなくて、起源（オリジン）</b>。
+    ここさえ掴めれば、残りのページは"標準正規の応用"として一気通貫で読める。
+  </p>
+
+<div class="formula">z = (x − μ) / σ  ,   φ(z) = (1/√(2π)) · exp( −z²/2 )</div>
+<div class="formula-explain">z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（<span class="term-gloss" title="確率密度：その値が出やすい「濃さ」。高いほどその付近の値が出やすい。面積にすると確率になる">確率密度</span>）。exp は山型を作る関数で、覚えなくてOK。</div>
+
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
+
+<p class="sec-desc" style="margin-bottom:14px;font-size:13px">
+      スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
+      ± 1σ ですでに約7割、± 2σ で95%、± 3σ でほぼ全部。<br/>
+<b style="color:var(--yellow)">z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
+      検定も信頼区間もこの 1.96 から出発する — それくらい、この曲線が主役なのだ。
+    </p>
+
+<div class="controls">
+<div class="ctrl"><label><span>範囲 ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
+<input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
+<div class="hint">1.0 なら平均から左右1σ分。1.96 にすると「両側5%」の臨界値。検定と信頼区間の出発点。</div>
+
+</div>
+</div>
+<canvas aria-busy="true" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" id="snCanvas"></canvas>
+<div class="info">
+<div>P( |Z| ≤ k )<strong id="snInside">—</strong></div>
+<div>P( Z ≤ k )<strong id="snLeft">—</strong></div>
+<div><span>外側の確率</span><strong id="snOutside">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snCanvas" data-title="標準正規分布"><span>💾 画像保存</span></button>
+</div>
+</div>
+<div class="panel" data-autorun="snAnim">
+<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
+
+<p class="sec-desc" style="margin-bottom:14px">
+      身長、IQ、株価の日次リターン、工場の部品誤差 — 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
+      でも <b style="color:var(--cyan)">z = (x − μ) / σ</b> をかませるだけで、全部まとめて<b style="color:var(--magenta)">ピンクのあの曲線</b>にピタッと重なる。<br/>
+      スクロールしたら自動で変身していく（もう一度見たい時は ▶ ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
+    </p>
+
+<div class="controls">
+<div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
+<input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
+<div class="hint">この正規分布の中心位置。標準化すると 0 に移動する。</div>
+
+</div>
+<div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
+<input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
+<div class="hint">広がり具合。大きいほど山が平たく広がる。標準化すると 1 になる。</div>
+
+</div>
+<div class="ctrl"><label><span>進度</span> = <span class="val" id="snTVal">0</span></label>
+<input id="snT" max="100" min="0" type="range" value="0"/>
+<div class="hint">0% = 元のまま、100% = 標準化完了。途中経過を観察できる。</div>
+
+</div>
+<button class="btn" id="snAnim"><span>▶ 標準化する</span></button>
+</div>
+<canvas aria-busy="true" aria-label="任意の正規分布を標準正規分布に標準化する過程のアニメーション" height="240" id="snMorphCanvas"></canvas>
+<div class="info">
+<div><span>元の分布</span><strong id="snOrig">N(2.0, 1.5²)</strong></div>
+<div><span>変換後の平均</span><strong id="snNewMu">—</strong></div>
+<div><span>変換後のσ</span><strong id="snNewSd">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snMorphCanvas" data-title="標準化モーフ"><span>💾 画像保存</span></button>
+</div>
+</div>
+<p class="sec-desc" style="margin-top:20px;font-size:13px;border-left:3px solid var(--yellow);padding:10px 14px;background:rgba(255,230,0,.05)">
+<b style="color:var(--yellow)">▼ この先の展開</b><br/>
+    ここから先に出てくる <b>中心極限定理</b> は「どんな分布でも平均は標準正規に近づく」という宣言。
+    <b>信頼区間</b>も <b>仮説検定</b> も "±1.96σ" というこの曲線の数字を使う。
+    <b>t分布・χ²・F分布</b> は標準正規の兄弟姉妹。<b>回帰</b>の係数推定の誤差も標準正規で近似する。<br/>
+    要するに、<b style="color:var(--cyan)">この 1 ページを押さえると、他が全部"応用問題"</b>になる。楽しんで。
+  </p>
+
+<div class="story-next"><span class="lbl">次は —</span>正規分布そのものを扱う <span class="story-arrow">▸</span> <a href="#normal">P.02 正規分布</a></div>
+
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a class="empty" aria-hidden="true">—</a>
+  <a href="./normal.html" rel="next">正規分布と標準化 →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensouce" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>
