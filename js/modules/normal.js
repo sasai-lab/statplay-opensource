@@ -44,10 +44,23 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       });
     });
 
+    // ±1σ ±2σ labels
+    ctx.fillStyle=withAlpha(tc.purple,.7);ctx.font='10px "Courier New"';
+    [1,2].forEach(k=>{
+      const xr=mu+k*sd;if(xr<hi-0.5) ctx.fillText(`+${k}σ`,xToPx(xr)+2,h-24);
+      const xl=mu-k*sd;if(xl>lo+0.5) ctx.fillText(`−${k}σ`,xToPx(xl)-20,h-24);
+    });
+
     // prob
     const lo2=Math.min(a,b),hi2=Math.max(a,b);
     const p=normCDF(hi2,mu,sd)-normCDF(lo2,mu,sd);
     $('nProb').textContent=p.toFixed(4);
+    // annotation: probability on shaded region
+    const pctLabel=(p*100).toFixed(1)+'%';
+    const midAB=(lo2+hi2)/2;
+    ctx.fillStyle=tc.magenta;ctx.font='bold 14px "Courier New"';ctx.globalAlpha=.9;
+    ctx.fillText(pctLabel,xToPx(midAB)-ctx.measureText(pctLabel).width/2,Math.min(yToPx(normPDF(midAB,mu,sd))+25,h-30));
+    ctx.globalAlpha=1;
     $('nZa').textContent=((a-mu)/sd).toFixed(3);
     $('nZb').textContent=((b-mu)/sd).toFixed(3);
 

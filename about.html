@@ -97,6 +97,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 /* ── About page header ── */
 .about-header {
   text-align: center; padding: 80px 0 40px;
+  position: relative; z-index: 2;
 }
 .about-header h1 {
   font-family: 'Courier New', monospace;
@@ -171,6 +172,10 @@ body.theme-light .progress-bar { box-shadow: none; }
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="./js/katex-render.js"></script>
 </head>
 <body class="column-page">
 <div class="progress-bar" id="progressBar"></div>
@@ -183,8 +188,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 </div>
 </nav>
 <div class="about-header">
-<h1>StatPlayについて<br/><em>作った人と作ったもの</em></h1>
-<p class="about-sub">統計を「触って腹落ちさせる」ためのツール</p>
+<h1>About</h1>
 </div>
 <div aria-label="パンくず" class="col-breadcrumb">
 <a href="index.html">StatPlay</a><span class="sep">&rsaquo;</span>
@@ -196,7 +200,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 <h2>// StatPlay</h2>
 <p>統計の概念を、インタラクティブなビジュアライゼーションで体感できる学習ツールです。参考書の代わりではなく、「動いて見えたら一発でわかるのに」という瞬間のための装置です。</p>
 <p>計算の練習も、体系的な学習も、参考書と問題集に任せます。このツールにできるのは、イメージで理解する体験を作ることだけです。それで統計って面白いと思っていただけたら、それで十分です。</p>
-<p>コードはすべてオープンソースで公開しています。改造して教育に役立てていただくのは大歓迎です。商用利用はCC BY-NC 4.0のライセンス上、一度ご相談ください。</p>
+<p>コードはすべてオープンソースで公開しています。改造して教育に役立てていただくのは大歓迎です。商用利用はCC BY-NC 4.0のライセンスとして取り扱いますので、一度ご相談ください。</p>
 <div class="license-box">
 <div class="license-label">License &amp; Code</div>
 <p><b style="color:var(--cyan)">CC BY-NC 4.0</b> &mdash; 教育・非商用利用自由。改変・再配布可。</p>
@@ -207,21 +211,20 @@ body.theme-light .progress-bar { box-shadow: none; }
 <div class="col-divider"><span class="divider-num">01</span></div>
 <!-- ═══ HOW IT WAS BUILT ═══ -->
 <div class="col-section">
-<h2>// できるまでの話</h2>
-<p>統計検定2級の勉強中、信頼区間のページで手が止まりました。読めるけど腹落ちしない。こういうものがあったらいいのに、とずっと思っていました。</p>
+<h2>// このツールが生まれるまで</h2>
+<p>統計検定2級の勉強中、正規分布への標準化のページで手が止まりました。読めるけど腹落ちしない。こういうものがあったらいいのに、とずっと思っていました。</p>
 <p>「動いたら一発じゃないか」——インタラクティブな体験こそが、概念の理解を一撃で変える。そう確信していました。</p>
-<p>そこにAIという選択肢がたまたま重なって、作ることにしました。</p>
-<p>ただ、自分にはフロントエンドでインタラクティブな可視化を実装する技術がありません。ディレクション方向の人間で、コーダーとして本格的に仕事をしてきたわけではありません。以前なら「作りたいけど作れない」で終わっていた話です。Claude（Anthropic）と対話しながら実装を進めたことで、仕事でやってきたことが、意外とそのまま使えました。</p>
-<p>AIはコードを書く。でも何を作るかは、人間が決める。ディレクションをやっていると、無茶をしていそうなことやリスクの高い実装というのは、ターミナルを見ていれば分かります。設計は正しいか、拡張に耐えられるか、この機能は本当に要るか——判断の連続で、AIが間違った方向に走ることもあります。止めるのは人間の仕事です。技術の判断も大切ですが、それ以上に統計の理論を正しく理解していないと、可視化の設計そのものが間違った方向に進みます。作る人間が理解していないものは、正しく作れない。それを実感しました。</p>
-<p>作ること自体が、最大の学びでした。制作の詳しい経緯は<a href="columns/how_statplay_was_built.html" style="color:var(--cyan)">コラム</a>に書きました。</p>
-<p>統計の面白さをもっと多くの人に届けたい。そう思いながら、これからも作り続けます。</p>
-<p><b style="color:var(--yellow)">統計って、じつはめっちゃ面白い。</b></p>
+<p>ただ、自分にはフロントエンドでインタラクティブな可視化を実装する技術がありません。ディレクション方向の人間で、コーダーとして本格的に仕事をしてきたわけではありません。以前なら、作りたいけど作れないで終わっていた話です。それがたまたまAIという選択肢と重なって、作ることができました。</p>
+<p>AIはコードを書く。でも何を作るかは、人間が決める。ディレクションをやっていると、無茶をしていそうなことやリスクの高い実装というのは、ターミナルを見ていれば分かります。設計は正しいか、拡張に耐えられるか、この機能は本当に要るか。それ以上に、統計の理論を正しく理解していないと、「何を動かせば腹落ちするか」が見えてきません。作る人間が理解していないものは、正しく作れない。それを実感しました。</p>
+<p>作ること自体が、最大の学びでした。</p>
+<p>学ぶほど、作りたいものが増えます。そしてどう動かすかがますます悩ましい。</p>
+<p><b>統計って、じつはめっちゃ面白い。</b></p>
 </div>
 <div class="col-divider"><span class="divider-num">02</span></div>
 <!-- ═══ AUTHOR ═══ -->
 <div class="col-section">
-<h2>// 作った人</h2>
-<p><b style="color:var(--yellow)">Jumpei Sasai / 笹井淳平</b></p>
+<h2>// 制作者</h2>
+<p>Jumpei Sasai / 笹井淳平</p>
 <p>NTTでSEとしてキャリアをスタートし、スクウェア・エニックスやドリコムでゲーム・Webサービス・アプリのディレクションをやってきました。統計検定2級の勉強をきっかけに統計の面白さに気づき、このツールを作りました。まだまだ学ぶことだらけですが、作りながら学ぶのが性に合っているようです。</p>
 </div>
 </main>
@@ -256,7 +259,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 </span>
 </div>
-<div>StatPlay &middot; <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay &middot; <span class="mg" id="app-version">v1.0.1</span></div>
 </div>
 </footer>
 <script>

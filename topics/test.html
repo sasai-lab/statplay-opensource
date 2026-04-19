@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -163,16 +167,15 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="test">
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
-<h2 class="sec-title">仮説検定 <span class="sec-sub">— <span style="color:var(--magenta)">棄却</span>か<span style="color:var(--yellow)">採択</span>か</span></h2>
+<h2 class="sec-title">仮説検定 <span class="sec-sub">— <span style="color:var(--magenta)">棄却</span>か採択か</span></h2>
 
 <div class="story-bridge">信頼区間が「幅として」不確実性を出す道具なら、<span class="next">仮説検定</span>は「YES/NO として」それを使う道具。<b>帰無仮説の世界</b>でこのデータは起こりえるか？ 起こりにくいなら reject——同じ分布、同じ σ／n、<b>質問が違うだけ</b>。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>信頼区間の考え方と正規分布の基本がわかると理解しやすいです。「p値」は聞いたことがあるレベルでOK。</details>
 
 <p class="sec-desc">
 <b>検定 = 裁判</b>だと思うと超わかりやすい。<br/>
     「<code>H₀</code>（<span class="term-gloss" title="帰無仮説：「効果なし」「差なし」という控えめな仮説。まずこれを正しいと仮定して検定する">帰無仮説</span>）：この薬は効かない（＝無罪）」をいったん仮置きし、データから計算した <b>検定統計量 z</b> が
-    <b style="color:var(--yellow)">事前に決めた棄却域</b> に落ちたら有罪宣告 — つまり <b>H₀ を棄却</b> する。<br/>
+    <b>事前に決めた棄却域</b> に落ちたら有罪宣告 — つまり <b>H₀ を棄却</b> する。<br/>
     ここでは2画面で攻める：<b>① z値と棄却域の幾何学（両側・右側・左側）</b>・
     <b>② 冤罪(α)と見逃し(β)のトレードオフ</b>。
   </p>
@@ -183,12 +186,12 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>観測 z</span> = <span class="val" id="tZVal">1.96</span></label>
 <input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
-<div class="hint">データから計算した検定統計量。棄却域（赤い領域）に入れば H₀ を棄却する。</div>
+
 
 </div>
 <div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
 <input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
-<div class="hint">有意水準。「冤罪リスクをどこまで許容するか」。通常は 0.05（5%）を使う。</div>
+
 
 </div>
 <div class="ctrl"><label><span>検定タイプ</span></label>
@@ -211,7 +214,7 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 <div class="panel">
-<h3 style="color:var(--yellow);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
       検定には2種類の間違いがある。<br/>
@@ -226,12 +229,12 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>効果量 δ</span> = <span class="val" id="eDVal">2.0</span></label>
 <input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
-<div class="hint">効果量 = 本当の差の大きさ。「薬がどれくらい効くか」の指標。大きいほど検出しやすい。</div>
+
 
 </div>
 <div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
 <input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
-<div class="hint">α を厳しく（小さく）すると冤罪は減るが、見逃し（β）が増える。このトレードオフを観察しよう。</div>
+
 
 </div>
 </div>
@@ -287,7 +290,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

@@ -51,6 +51,11 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
       ctx.fillStyle = tc.magenta;
       ctx.font = '12px "Courier New", monospace';
       ctx.fillText('μ = np = ' + mu.toFixed(2), xMu + 6, pad + 14);
+      // annotation: variance
+      const variance = n * p * (1-p);
+      ctx.fillStyle = withAlpha(tc.cyan,.7);
+      ctx.font = '10px "Courier New", monospace';
+      ctx.fillText('σ² = np(1−p) = ' + variance.toFixed(2), xMu + 6, pad + 28);
       ctx.fillStyle = tc.dim;
       ctx.font = '10px "Courier New", monospace';
       const hintBin = window.__LANG==='en'?'Drag: n / Shift+Drag: p':'ドラッグ: n / Shift+ドラッグ: p';
@@ -105,6 +110,10 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
           pts.push([pad + x * barW, pad + gh - (y / maxY) * gh]);
         }
         neonLine(ctx, pts, tc.cyan, 10, 1.5);
+        // annotation: normal approximation label
+        ctx.fillStyle = tc.cyan;
+        ctx.font = '10px "Courier New", monospace';
+        ctx.fillText(window.__LANG==='en'?'≈ Normal approx':'≈ 正規近似', pad + gw - 120, pad + 28);
       }
       ctx.fillStyle = tc.yellow;
       ctx.font = '12px "Courier New", monospace';

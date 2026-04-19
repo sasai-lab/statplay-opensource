@@ -131,28 +131,12 @@
       "teaches": ["重回帰分析", "偏回帰係数", "多変量の直線・平面"]
     }
   ],
-  "columns": [
-    {
-      "slug": "deviation",
-      "ja_path": "/columns/deviation.html",
-      "en_path": "/en/columns/deviation.html"
-    },
-    {
-      "slug": "birthday",
-      "ja_path": "/columns/birthday.html",
-      "en_path": "/en/columns/birthday.html"
-    }
-  ],
+  "columns": [],
   "pages": [
     {
       "slug": "about",
       "ja_path": "/about.html",
       "en_path": "/en/about.html"
-    },
-    {
-      "slug": "how_statplay_was_built",
-      "ja_path": "/columns/how_statplay_was_built.html",
-      "en_path": "/en/columns/how_statplay_was_built.html"
     }
   ]
 }

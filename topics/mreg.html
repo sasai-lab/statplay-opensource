@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,7 +171,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">単回帰は 1 本の線。でも<b>他の影響を取り除きたい</b>——広告費の効果を「曜日や季節を固定したうえで」見たい。それが<span class="next">重回帰</span>。軸が増え、<b>偏回帰係数</b>はまわりを<b>コントロールした上での効き目</b>になる。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>単回帰（1本の直線を引く）を知っていると理解しやすいです。ここでは直線が「平面」に拡張されます。</details>
 
 <p class="sec-desc">
     説明変数が<b>2つ以上</b>ある場合が<b>重回帰</b>。
@@ -175,17 +178,18 @@ body.topic-page .topic-hub-link a {
     回帰"直線"ではなく、回帰<b>平面</b>になる。x₁ を1増やしたときの y への効果（他の変数を固定したうえで）が β₁、x₂ に対するのが β₂。
     真のパラメータを設定してデータを生成し、推定された係数と真の値を比較しよう。
     ドラッグでキャンバスを<b>回転</b>すると、平面とデータ点の立体構造が見える。<br/>
-<b style="color:var(--yellow)">※ 可視化できるのは x₁, x₂ の 2 変数まで（人間の目は 3 次元が限界）。</b>
+<b>※ 可視化できるのは x₁, x₂ の 2 変数まで（人間の目は 3 次元が限界）。</b>
     でも数式上は <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> と<b>いくらでも変数を足せる</b>。
     x₃ 以降は "グラフにできないだけ" で、推定の手続き <code>β̂ = (XᵀX)⁻¹Xᵀy</code> はそのまま機能する。
     実務では 5〜50 変数くらいがごく普通。
   </p>
 
-<div class="formula">ŷ = β₀ + β₁x₁ + β₂x₂ ,   β̂ = (XᵀX)⁻¹Xᵀy</div>
-<div class="formula-explain">行列で書くと一行だが、やっていることは「全変数を同時に考慮した最小二乗法」。手計算は不要——コンピュータがやる部分。</div>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>β₁ は「x₂ を固定したうえで x₁ が1増えたときの y の変化量」。単回帰の直線が平面に拡張されたもの。</p></details>
+
 
 <div class="guided-steps">
-<b style="color:var(--yellow)">実験ガイド — 順番に試してみよう</b>
+<b>実験ガイド — 順番に試してみよう</b>
 <ol>
 <li><b>Step 1:</b> ノイズ σ を <b>0</b> にして再サンプリング → 推定値と真の値がぴったり一致することを確認。</li>
 <li><b>Step 2:</b> σ を <b>0.5</b> に上げる → 推定値が真の値からズレ始める。何度か再サンプリングして、推定値のバラつきを見よう。</li>
@@ -198,26 +202,26 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>真の β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
 <input id="mB1" max="1.5" min="-1.5" step="0.05" type="range" value="0.8"/>
-<div class="hint">「正解」の β₁。推定値 β̂₁ と比べて、どれだけ正確に当てられるか確認しよう。</div>
+
 
 </div>
 <div class="ctrl"><label><span>真の β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
 <input id="mB2" max="1.5" min="-1.5" step="0.05" type="range" value="-0.5"/>
-<div class="hint">「正解」の β₂。β₁ と独立に設定できる。片方を 0 にすると「影響なし」になる。</div>
+
 
 </div>
 <div class="ctrl"><label><span>ノイズ σ</span> = <span class="val" id="mSVal">0.50</span></label>
 <input id="mS" max="2" min="0" step="0.05" type="range" value="0.5"/>
-<div class="hint">ノイズの大きさ。0 にすると完璧にフィット。大きくすると推定がブレやすくなる。</div>
+
 
 </div>
 <div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
 <input id="mN" max="200" min="10" type="range" value="40"/>
-<div class="hint">サンプル数。多いほど推定が安定する（大数の法則）。10→200 で変化を見よう。</div>
+
 
 </div>
-<button class="btn" id="mGen"><span>▶ 再サンプリング</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ ドラッグで回転（軸: <span style="color:var(--cyan)">x₁</span> · <span style="color:var(--magenta)">x₂</span> · <span style="color:var(--yellow)">y</span>）</span></span>
+<button class="btn" id="mGen"><span>▶ 実験ガイドを再生</span></button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ ドラッグで回転（軸: <span style="color:var(--cyan)">x₁</span> · <span style="color:var(--magenta)">x₂</span> · y）</span></span>
 </div>
 <canvas aria-busy="true" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" id="mregCanvas" style="cursor:grab"></canvas>
 <div class="info">
@@ -270,7 +274,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

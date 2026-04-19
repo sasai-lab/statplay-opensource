@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -163,47 +167,47 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="normal">
 
 <div class="sec-tag">P.02 / NORMAL DISTRIBUTION</div>
-<h2 class="sec-title">正規分布と標準化 <span class="sec-sub">— 平均と散らばりを<span style="color:var(--yellow)">操る</span></span></h2>
+<h2 class="sec-title">正規分布と標準化 <span class="sec-sub">— 平均と散らばりを操る</span></h2>
 
 <div class="story-bridge">標準正規は μ=0, σ=1 に固定されていた。実際のデータは<b>平均も散らばりも自由</b>。<span class="next">μ と σ</span> を動かして正規分布を道具として使いこなそう。<b>標準化</b>で Z に戻せば、どんな正規分布も標準正規と行き来できる。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>標準正規分布（N(0,1)、平均0・標準偏差1のベルカーブ）を知っていると理解しやすいです。</details>
 
 <p class="sec-desc">
     さっきの標準正規の <b>一般バージョン</b>が正規分布 <code>N(μ, σ²)</code>。
     <code>μ</code> が位置（どこが真ん中か）、<code>σ</code> が広がり（どれくらい散らばるか）。
     スライダーを動かすと曲線がぬるっと動いて、指定した区間 <code>[a, b]</code> に入る確率（ピンクの面積）が
     リアルタイムで出る。<br/>
-<b style="color:var(--yellow)">このピンクの面積こそ「割合」の正体。</b>
+<b>このピンクの面積こそ「割合」の正体。</b>
     たとえば成人男性の身長が <code>N(170, 36)</code>（平均170cm, σ=6cm）として、<b>165〜175cm の人は全体の何%？</b>
     μ=170, σ=6 にして <code>a=165, b=175</code> に合わせると <b>約 59.6%</b>。
     偏差値、テストの点、測定誤差——だいたい正規で近似できるものは、<b>ぜんぶこの面積計算</b>で「〜%の人がこの範囲」が求まる。
     <br/><i style="color:var(--dim)">Tip: グラフ上を直接ドラッグすると、近い方の <code>a</code>/<code>b</code> の境界を動かせる。</i>
 </p>
 
-<div class="formula">f(x) = (1 / √(2πσ²)) · exp( −(x−μ)² / 2σ² )</div>
-<div class="formula-explain">さっきの φ(z) の一般版。μ が中心位置、σ が広がり。x が μ から離れるほど確率密度が下がる、と言っているだけ。</div>
+<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>φ(z) の一般版。μ が中心位置、σ が広がり。x が μ から離れるほど確率密度が下がる。</p></details>
+
 
 <div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>μ (平均)</span> = <span class="val" id="nMuVal">0</span></label>
 <input id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
-<div class="hint">曲線の中心位置。身長なら170、テスト点なら60のように設定する。</div>
+
 
 </div>
 <div class="ctrl"><label><span>σ (標準偏差)</span> = <span class="val" id="nSdVal">1</span></label>
 <input id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
-<div class="hint">広がり具合。大きいほどバラつきが大きい。σ=6 なら「ほとんどの人が ±12 の範囲」。</div>
+
 
 </div>
 <div class="ctrl"><label><span>区間 [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
 <input id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
-<div class="hint">確率を計算したい範囲の左端。b と合わせて「この範囲に入る割合」がピンクの面積で出る。</div>
+
 
 </div>
 <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
 <input id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
-<div class="hint">範囲の右端。a より大きい値に設定する。</div>
+
 
 </div>
 </div>
@@ -259,7 +263,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

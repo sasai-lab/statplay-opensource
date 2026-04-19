@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -139,6 +139,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -164,11 +168,10 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="reg">
 
 <div class="sec-tag">M.01 / SIMPLE REGRESSION</div>
-<h2 class="sec-title">単回帰分析 <span class="sec-sub">— <span style="color:var(--yellow)">最小二乗法</span>で線を引く</span></h2>
+<h2 class="sec-title">単回帰分析 <span class="sec-sub">— 最小二乗法で線を引く</span></h2>
 
 <div class="story-bridge">ここまで <b>1つの変数</b>の話。現実の問題は「身長と体重」「広告費と売上」のように<b>関係</b>を聞いてくる。<span class="next">単回帰</span>は 2 変数に直線を 1 本引くだけ——でも、その傾き β̂ の背後にはさっきまでやった <b>t 検定・信頼区間</b> がしっかり効いている。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>「平均」「標準偏差」「相関」の意味がわかればOK。中学の「y = ax + b」を思い出せれば完璧。</details>
 
 <p class="sec-desc">
     説明変数が1つだけの回帰が<b>単回帰</b>。x が1増えると y は β₁ だけ動く、という線形関係を仮定する。
@@ -177,8 +180,9 @@ body.topic-page .topic-hub-link a {
     緑のバーが残差。R² は「どれだけ直線で説明できたか」の指標（0〜1）。
   </p>
 
-<div class="formula">ŷ = β₀ + β₁x ,  β₁ = Σ(xᵢ−x̄)(yᵢ−ȳ) / Σ(xᵢ−x̄)²</div>
-<div class="formula-explain">β₁ の分子は「x と y が一緒に動く量」、分母は「x のバラつき」。割り算で「x が1増えたら y はいくつ動くか」が出る。</div>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>β₁ の分子は「x と y が一緒に動く量」、分母は「x のバラつき」。割り算で「x が1増えたら y はいくつ動くか」。</p></details>
+
 
 <div class="panel" data-autorun="regRandom">
 <div class="controls">
@@ -240,7 +244,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

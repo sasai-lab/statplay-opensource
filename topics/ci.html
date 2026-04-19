@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,29 +171,29 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">LLN は「∞なら当たる」と言う。でも我々はいつも<b>有限サンプル</b>しか持っていない。なら<span class="term-gloss" title="点推定：1つの数値で母数を推定すること（例：標本平均で母平均を推定）">点推定</span>の<b>周りに網を張って</b>真値を捕まえよう——これが<span class="next">信頼区間</span>。幅を広げれば当たりやすい、狭めれば精密。このトレードオフを目で見て掴む。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>「標本平均」と「標準偏差」の意味がわかっていればOK。ここでは推定の不確実性を「幅」で表現する方法を学びます。</details>
 
 <p class="sec-desc">
-<b>95% 信頼区間</b>って実は<b style="color:var(--yellow)">よく誤解される</b>概念。<br/>
+<b>95% 信頼区間</b>って実は<b>よく誤解される</b>概念。<br/>
     「真の値が95%の確率でここに入る」 <b>…ではなくて</b>、
     「同じサンプリングを何百回も繰り返すと、そのうち約95%の区間が真の値を掴む」が正しい。<br/>
     下のラボではそれをゴリ押しで実演する。ピンクの細い線が"捕まえられなかった不運な区間"。
     全体のピンク比率が <b>ちゃんと5%前後</b>に落ち着くのを確認できたら、もう信頼区間は分かったも同然。
   </p>
 
-<div class="formula">x̄ ± z<sub>α/2</sub> · σ/√n</div>
-<div class="formula-explain">日本語で読むと：標本平均 ± 信頼度に応じた係数 × 標準誤差（バラつき÷√サンプル数）。この幅の「網」で真値を捕まえる。</div>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>標本平均 ± 信頼度に応じた係数 × 標準誤差。この幅の「網」で真値を捕まえる。</p></details>
+
 
 <div class="panel" data-autorun="ciRun">
 <div class="controls">
 <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
 <input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
-<div class="hint">1回の標本サイズ。大きいほど区間が狭くなる（精度が上がる）。</div>
+
 
 </div>
 <div class="ctrl"><label><span>信頼度</span> = <span class="val" id="ciLvlVal">95%</span></label>
 <input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
-<div class="hint">何%の区間が真値を捕まえるか。95% なら100本中約5本がピンク（外れ）になる。</div>
+
 
 </div>
 <button class="btn" id="ciRun"><span>▶ 300回 生成</span></button>
@@ -247,7 +251,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

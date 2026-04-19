@@ -102,6 +102,15 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       ctx.beginPath();ctx.arc(px,py,rad,0,TAU);ctx.fill();ctx.shadowBlur=0;
     }
 
+    // annotation: regression equation on canvas
+    if(n>=2 && isFinite(b0) && isFinite(b1)){
+      ctx.fillStyle=tc.cyan;ctx.font='bold 12px "Courier New"';
+      const eq=`ŷ = ${b0.toFixed(1)} ${b1>=0?'+ ':'− '}${Math.abs(b1).toFixed(2)}x`;
+      ctx.fillText(eq,PAD.left+8,PAD.top+20);
+      ctx.fillStyle=withAlpha(tc.yellow,.9);ctx.font='bold 12px "Courier New"';
+      ctx.fillText(`R² = ${R2.toFixed(3)}`,PAD.left+8,PAD.top+36);
+    }
+
     $('regN').textContent=n;
     $('regB1').textContent=isFinite(b1)?b1.toFixed(4):'—';
     $('regB0').textContent=isFinite(b0)?b0.toFixed(1):'—';

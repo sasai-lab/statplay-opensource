@@ -184,6 +184,12 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
         pts.push([xp,Math.max(py0,yp)]);
       });
       neonLine(ctx,pts,lineColor,12,2);
+      // annotation: label the theory curve
+      if(isMeanPanel && total>10){
+        const isEn=window.__LANG==='en';
+        ctx.fillStyle=lineColor;ctx.font='bold 10px "Courier New"';
+        ctx.fillText(isEn?'Theory N(μ, σ²/n)':'理論 N(μ, σ²/n)',px0+pw-130,py0+padT+6);
+      }
     }
     // axis ticks
     ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';

@@ -638,6 +638,10 @@ import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
     ctx.fillText('c='+critVal.toFixed(2),xToPx(critVal)+3,rp.y+12);
     ctx.fillStyle=tc.magenta;
     ctx.fillText('α='+alpha.toFixed(2),xToPx(critVal)+3,rp.y+24);
+    // annotation: rejection region label
+    ctx.fillStyle=withAlpha(tc.magenta,.8);ctx.font='bold 9px "Courier New"';
+    const rejText=isEn?'Reject H₀':'棄却域';
+    ctx.fillText(rejText,Math.min(xToPx(critVal)+40,rp.x+rp.w-60),rp.y+38);
 
     const statColor=reject?tc.magenta:tc.green;
     ctx.strokeStyle=statColor; ctx.lineWidth=tc.light?2.5:2;

@@ -105,13 +105,13 @@ function bindCanvasDrag(canvas, slider, xToValue) {
     const diff = Math.abs(guess - 23);
     if (diff <= 3) {
       msgEl.innerHTML = ja()
-        ? '<b style="color:var(--green)">すごい！ほぼ正解。</b>正解は <b style="color:var(--yellow)">23人</b>。'
-        : '<b style="color:var(--green)">Impressive!</b> The answer is <b style="color:var(--yellow)">23</b>.';
+        ? '<b style="color:var(--green)">すごい！ほぼ正解。</b>正解は <b style="color:var(--cyan)">23人</b>。'
+        : '<b style="color:var(--green)">Impressive!</b> The answer is <b style="color:var(--cyan)">23</b>.';
     } else {
       msgEl.innerHTML = ja()
-        ? 'あなたの予想：<b style="color:var(--cyan)">' + guess + '人</b>。正解は <b style="color:var(--yellow)">23人</b>。' +
+        ? 'あなたの予想：<b style="color:var(--cyan)">' + guess + '人</b>。正解は <b style="color:var(--cyan)">23人</b>。' +
           (guess > 23 ? 'ほとんどの人が多く見積もる。それが「パラドックス」の正体だ。' : '少なく見積もるのは珍しい！')
-        : 'Your guess: <b style="color:var(--cyan)">' + guess + '</b>. Answer: <b style="color:var(--yellow)">23</b>. ' +
+        : 'Your guess: <b style="color:var(--cyan)">' + guess + '</b>. Answer: <b style="color:var(--cyan)">23</b>. ' +
           (guess > 23 ? 'Most people overestimate. That\'s the "paradox."' : 'Underestimating is rare!');
     }
   });

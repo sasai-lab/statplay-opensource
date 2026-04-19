@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -164,14 +168,13 @@ body.topic-page .topic-hub-link a {
 
 <div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
 
-<h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is <span style="color:var(--yellow)">King</span></span></h2>
+<h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
 
 <div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
 
-<details class="story-context"><summary>New here?</summary>If you know "normal distribution" and "mean," you're set. Here you'll see WHY the mean becomes normal.</details>
 
 <p class="sec-desc">
-<b style="color:var(--yellow)">Slightly outrageous fact</b> — no matter how skewed the base distribution is,
+<b>Slightly outrageous fact</b> — no matter how skewed the base distribution is,
     if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
     converges on its own to <b style="color:var(--cyan)">a bell (normal)</b>.<br/>
     The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
@@ -189,7 +192,6 @@ body.topic-page .topic-hub-link a {
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
 <input id="cltN" max="50" min="1" type="range" value="30"/>
 
-<div class="hint">How many values per sample. Larger n = tighter bell for the sample mean (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).</div>
 </div>
 <button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
 <button class="btn magenta" id="cltClear">CLEAR</button>
@@ -250,7 +252,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.1</span></div>
 </div>
 </footer>
 

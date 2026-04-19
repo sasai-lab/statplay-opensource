@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -163,11 +167,10 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="morep">
 
 <div class="sec-tag">P.04 / DISCRETE + EXPONENTIAL</div>
-<h2 class="sec-title">離散分布と指数分布 <span class="sec-sub">— 数える世界の<span style="color:var(--yellow)">確率モデル</span></span></h2>
+<h2 class="sec-title">離散分布と指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
 
 <div class="story-bridge">正規分布は連続で対称。でも現実のデータはそうとは限らない。コイン投げは離散、来客数はポアソン、待ち時間は指数分布。<span class="next">残りの分布</span>で道具箱を完成させよう。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>正規分布の基本的な形を知っていればOK。ここでは正規分布以外の分布を3つ学びます。</details>
 
 <div class="sec-desc">2級で問われる<b>二項分布</b>・<b>ポアソン分布</b>・<b>指数分布</b>の三つ。成功回数・事象発生回数・待ち時間——離散と連続の橋渡しをスライダーで体感する。</div>
 
@@ -180,10 +183,10 @@ body.topic-page .topic-hub-link a {
 <canvas aria-busy="true" aria-label="二項分布のシミュレーション。試行回数nと成功確率pを変更できる" height="240" id="binomCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>試行回数 n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
-<div class="hint">コインを何回投げるか。n を増やすと山が正規分布に近づいていく。</div>
+
 <span class="val" id="binomNVal">20</span></div>
 <div class="ctrl"><label>成功確率 p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
-<div class="hint">1回の試行で成功する確率。0.5 = 公正なコイン、0.1 = 不良品率10%。</div>
+
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
 <div class="sec-bridge">n → ∞ かつ np → λ で、二項はポアソンへ。</div>
@@ -197,7 +200,7 @@ body.topic-page .topic-hub-link a {
 <canvas aria-busy="true" aria-label="ポアソン分布のシミュレーション。パラメータλを変更できる" height="240" id="poissonCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
-<div class="hint">単位時間あたりの平均発生回数。例：1時間に平均3本の電話 → λ=3。</div>
+
 <span class="val" id="poisLVal">3</span></div>
 </div>
 <div class="sec-bridge">λ が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
@@ -211,7 +214,7 @@ body.topic-page .topic-hub-link a {
 <canvas aria-busy="true" aria-label="指数分布の確率密度関数。パラメータλを変更できる" height="240" id="expCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
-<div class="hint">単位時間あたりの平均発生回数。大きいほど待ち時間が短くなる。</div>
+
 <span class="val" id="expLVal">1</span></div>
 </div>
 <div class="sec-bridge">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
@@ -260,7 +263,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

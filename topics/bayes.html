@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,33 +171,35 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">分布の道具箱が揃った。最後に<b>条件付き確率を反転させる</b>——これが<span class="next">ベイズの定理</span>。検査で陽性が出た→病気の確率は？ ここで直感はよく裏切られる。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>条件付き確率 P(A|B) の意味を知っていると理解しやすいです。知らなくても、スライダーを触れば直感的にわかります。</details>
 
 <p class="sec-desc">
 <b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br/>
-    …<b style="color:var(--yellow)">答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br/>
+    …<b>答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br/>
     ポイントは"<b>もともと病気の人がめっちゃ少ない</b>"という事実を忘れてしまうこと。
     下の"1000人の町"を見ながら、3つのつまみを動かして<b>自分の目で</b>確かめよう。
   </p>
+  <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>「Bが起きた世界でAも起きている確率」＝ 尤度×事前確率 ÷ 周辺確率。</p></details>
+
 
 <div class="panel">
 <div class="controls">
 <div class="ctrl">
 <label><span>有病率 — 1000人のうち何人が病気？</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
 <input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
-<div class="hint">低いほど"めったにいない病気"。つまみを右に動かすと"よくある病気"になる。</div>
+
 
 </div>
 <div class="ctrl">
 <label><span>感度 — 病気の人を「陽性」と当てる割合</span> = <span class="val" id="bSensVal">99%</span></label>
 <input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
-<div class="hint">病気の人100人中、何人を「あなたは陽性です」と検査が見つけられるか。</div>
+
 
 </div>
 <div class="ctrl">
 <label><span>特異度 — 健康な人を「陰性」と判定する割合</span> = <span class="val" id="bSpecVal">95%</span></label>
 <input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
-<div class="hint">健康な100人中、何人を「あなたは陰性です」と正しく返せるか。残りは誤って陽性になる＝偽陽性。</div>
+
 
 </div>
 </div>
@@ -252,7 +258,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

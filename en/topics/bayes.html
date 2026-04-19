@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -168,33 +172,32 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
 
-<details class="story-context"><summary>New here?</summary>Easier if you know conditional probability P(A|B). But even without it, the sliders make it intuitive.</details>
 
 <p class="sec-desc">
 <b>"The test has 99% sensitivity &amp; 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br/>
-    …<b style="color:var(--yellow)">Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br/>
+    …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br/>
     The trick is that we forget <b>how rare the disease actually is</b> in the first place.
     Play with the three sliders below and watch the "town of 1,000" — you'll <b>see</b> why.
   </p>
+  <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+  <details class="formula-accordion"><summary>What this means</summary><p>"Given B happened, the probability of A" = likelihood × prior ÷ marginal.</p></details>
+
 <div class="panel">
 <div class="controls">
 <div class="ctrl">
 <label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
 <input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
 
-<div class="hint">Lower = rare disease. Drag right for "common disease".</div>
 </div>
 <div class="ctrl">
 <label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
 <input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
 
-<div class="hint">Of 100 sick people, how many does the test flag as positive?</div>
 </div>
 <div class="ctrl">
 <label><span>Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
 <input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
 
-<div class="hint">Of 100 healthy people, how many does the test correctly clear? The rest become false positives.</div>
 </div>
 </div>
 <canvas aria-busy="true" aria-label="ベイズ定理の可視化。事前確率と尤度を変更して事後確率の変化を確認できる" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
@@ -253,7 +256,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.1</span></div>
 </div>
 </footer>
 

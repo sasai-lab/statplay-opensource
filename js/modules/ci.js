@@ -53,6 +53,16 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       ctx.strokeStyle=color;ctx.shadowBlur=tc.light?(hit?1:2):(hit?4:8);ctx.shadowColor=color;ctx.lineWidth=Math.max(.7,rowH-.5);
       ctx.beginPath();ctx.moveTo(xToPx(iv.lo),y);ctx.lineTo(xToPx(iv.hi),y);ctx.stroke();ctx.shadowBlur=0;
     });
+    // annotation: legend + coverage
+    if(intervals.length>0){
+      const hits=intervals.filter(iv=>iv.lo<=0&&iv.hi>=0).length;
+      const cov=(hits/intervals.length*100).toFixed(1);
+      ctx.font='bold 12px "Courier New"';
+      ctx.fillStyle=tc.cyan;ctx.fillText(window.__LANG==='en'?'── Hit (contains μ)':'── 捕捉（μを含む）',8,h-26);
+      ctx.fillStyle=tc.magenta;ctx.fillText(window.__LANG==='en'?'── Miss':'── 外れ',8,h-12);
+      ctx.fillStyle=tc.text;ctx.font='bold 13px "Courier New"';
+      ctx.fillText((window.__LANG==='en'?'Coverage: ':'捕捉率: ')+cov+'%',w-160,h-12);
+    }
   }
   draw();
 })();

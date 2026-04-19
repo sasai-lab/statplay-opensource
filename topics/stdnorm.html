@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -163,14 +167,13 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="stdnorm">
 
 <div class="sec-tag">P.01 / STANDARD NORMAL</div>
-<h2 class="sec-title">標準正規分布 <span class="sec-sub">— すべての<span style="color:var(--yellow)">はじまり</span></span></h2>
+<h2 class="sec-title">標準正規分布 <span class="sec-sub">— すべてのはじまり</span></h2>
 
 <div class="story-bridge">統計のすべてを支配する<b>あの曲線</b>から始めよう——<span class="next">標準正規分布</span>。CLT も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
 
-<details class="story-context"><summary>初めてこのページに来た方へ</summary>前提知識は不要です。ここが統計学の出発点。「ベルカーブ」という言葉を聞いたことがあれば十分です。</details>
 
 <p class="sec-desc">
-    ぶっちゃけ <b style="color:var(--yellow)">この曲線ひとつ</b>がなければ、
+    ぶっちゃけ <b>この曲線ひとつ</b>がなければ、
     この先に出てくる検定も、信頼区間も、t分布も、回帰分析も、<b>ぜんぶ成立しない</b>。<br/>
 <b>標準正規分布 <code>N(0, 1)</code></b> は、平均0・標準偏差1のベル型カーブ。
     「どんな正規分布も <code>z = (x − μ) / σ</code> でここに重ねられる」という一行のトリックが、
@@ -179,8 +182,9 @@ body.topic-page .topic-hub-link a {
     ここさえ掴めれば、残りのページは"標準正規の応用"として一気通貫で読める。
   </p>
 
-<div class="formula">z = (x − μ) / σ  ,   φ(z) = (1/√(2π)) · exp( −z²/2 )</div>
-<div class="formula-explain">z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（<span class="term-gloss" title="確率密度：その値が出やすい「濃さ」。高いほどその付近の値が出やすい。面積にすると確率になる">確率密度</span>）。exp は山型を作る関数で、覚えなくてOK。</div>
+<div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
+  <details class="formula-accordion"><summary>式の意味</summary><p>z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（確率密度）。</p></details>
+
 
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
@@ -188,14 +192,14 @@ body.topic-page .topic-hub-link a {
 <p class="sec-desc" style="margin-bottom:14px;font-size:13px">
       スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
       ± 1σ ですでに約7割、± 2σ で95%、± 3σ でほぼ全部。<br/>
-<b style="color:var(--yellow)">z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
+<b>z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
       検定も信頼区間もこの 1.96 から出発する — それくらい、この曲線が主役なのだ。
     </p>
 
 <div class="controls">
 <div class="ctrl"><label><span>範囲 ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
 <input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
-<div class="hint">1.0 なら平均から左右1σ分。1.96 にすると「両側5%」の臨界値。検定と信頼区間の出発点。</div>
+
 
 </div>
 </div>
@@ -221,17 +225,17 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
 <input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
-<div class="hint">この正規分布の中心位置。標準化すると 0 に移動する。</div>
+
 
 </div>
 <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
 <input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
-<div class="hint">広がり具合。大きいほど山が平たく広がる。標準化すると 1 になる。</div>
+
 
 </div>
 <div class="ctrl"><label><span>進度</span> = <span class="val" id="snTVal">0</span></label>
 <input id="snT" max="100" min="0" type="range" value="0"/>
-<div class="hint">0% = 元のまま、100% = 標準化完了。途中経過を観察できる。</div>
+
 
 </div>
 <button class="btn" id="snAnim"><span>▶ 標準化する</span></button>
@@ -247,7 +251,7 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 <p class="sec-desc" style="margin-top:20px;font-size:13px;border-left:3px solid var(--yellow);padding:10px 14px;background:rgba(255,230,0,.05)">
-<b style="color:var(--yellow)">▼ この先の展開</b><br/>
+<b>▼ この先の展開</b><br/>
     ここから先に出てくる <b>中心極限定理</b> は「どんな分布でも平均は標準正規に近づく」という宣言。
     <b>信頼区間</b>も <b>仮説検定</b> も "±1.96σ" というこの曲線の数字を使う。
     <b>t分布・χ²・F分布</b> は標準正規の兄弟姉妹。<b>回帰</b>の係数推定の誤差も標準正規で近似する。<br/>
@@ -296,7 +300,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.1</span></div>
 
 </div>
 </footer>

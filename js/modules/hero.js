@@ -38,7 +38,7 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     t,
     x:Math.random()*W, y:Math.random()*H,
     vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.12,
-    op:0.08+Math.random()*0.12,
+    op:0.18+Math.random()*0.15,
     sz:10+Math.random()*5,
   }));
 

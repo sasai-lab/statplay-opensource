@@ -48,6 +48,18 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     ctx.fillText(window.__LANG==='en'?'N(0,1)  Standard Normal':'N(0,1)  標準正規分布',10,18);
     // compute
     const inside=normCDF(k)-normCDF(-k);
+    // annotation: probability percentage on shaded region
+    const pctText=(inside*100).toFixed(1)+'%';
+    ctx.fillStyle=tc.cyan;ctx.font='bold 16px "Courier New"';ctx.globalAlpha=.9;
+    ctx.fillText(pctText,xToPx(0)-ctx.measureText(pctText).width/2,yToPx(normPDF(0))+30);
+    // tail annotation
+    const tailPct=((1-inside)/2*100).toFixed(1)+'%';
+    if(k<3.2){
+      ctx.fillStyle=tc.magenta;ctx.font='bold 11px "Courier New"';
+      ctx.fillText(tailPct,xToPx(-3.5),yToPx(normPDF(-3.5))-4);
+      ctx.fillText(tailPct,xToPx(2.8),yToPx(normPDF(2.8))-4);
+    }
+    ctx.globalAlpha=1;
     const left=normCDF(k);
     $('snInside').textContent=(inside*100).toFixed(2)+'%';
     $('snLeft').textContent=(left*100).toFixed(2)+'%';

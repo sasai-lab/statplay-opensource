@@ -47,11 +47,21 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     if(history.length>1){
       const pts=history.map((v,i)=>[i/history.length*w,h-20-v*(h-40)]);
       neonLine(ctx,pts,tc.cyan,10,2);
+      // annotation: label on the line's end
+      const lastY=pts[pts.length-1][1];
+      const curVal=(head/n);
+      ctx.fillStyle=tc.cyan;ctx.font='bold 12px "Courier New"';
+      ctx.fillText((window.__LANG==='en'?'Observed: ':'観測値: ')+curVal.toFixed(4),w-180,lastY-8);
     }
     // axis ticks
     ctx.fillStyle=tc.dim;
     ctx.fillText('0.0',4,h-6);ctx.fillText('1.0',4,16);
     ctx.fillText(window.__LANG==='en'?'Trials →':'試行 →',w-70,h-6);
+    // annotation: y-axis label
+    ctx.save();ctx.translate(12,h/2);ctx.rotate(-Math.PI/2);
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
+    ctx.fillText(window.__LANG==='en'?'Proportion':'割合',0,0);
+    ctx.restore();
   }
   draw();
 })();

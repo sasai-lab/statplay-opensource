@@ -96,6 +96,24 @@ body.theme-light .progress-bar { box-shadow: none; }
   letter-spacing: 2px; white-space: nowrap; opacity: .6;
 }
 
+/* ── About page header ── */
+.about-header {
+  text-align: center; padding: 80px 0 40px;
+  position: relative; z-index: 2;
+}
+.about-header h1 {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(22px, 4.5vw, 32px);
+  color: var(--text); line-height: 1.4;
+  margin-bottom: 16px;
+}
+.about-header h1 em {
+  font-style: normal; color: var(--cyan);
+}
+.about-header .about-sub {
+  color: var(--dim); font-size: 14px; line-height: 1.7;
+}
+
 /* ── About-specific ── */
 .about-author-name {
   font-family: 'Courier New', monospace; font-size: 20px;
@@ -171,6 +189,10 @@ body.theme-light .progress-bar { box-shadow: none; }
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="column-page">
 <div class="progress-bar" id="progressBar"></div>
@@ -182,6 +204,9 @@ body.theme-light .progress-bar { box-shadow: none; }
 <button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
 </div>
 </nav>
+<div class="about-header">
+<h1>About</h1>
+</div>
 <div aria-label="Breadcrumb" class="col-breadcrumb">
 <a href="../index.html?lang=en">StatPlay</a><span class="sep">›</span>
 <span>About</span>
@@ -192,7 +217,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 <h2>// StatPlay</h2>
 <p>An interactive visualization tool for experiencing statistical concepts firsthand. Not a replacement for textbooks — a device for those "if only I could see it move, I'd get it instantly" moments.</p>
 <p>Calculation practice, systematic study — leave those to textbooks and problem sets. All this tool can do is create experiences that build understanding through imagery. If it makes you think "statistics is actually interesting," that's enough.</p>
-<p>All code is open source. Feel free to modify and use for education. For commercial use, please consult per the CC BY-NC 4.0 license.</p>
+<p>All code is open source. Feel free to modify and use for education. Commercial use is governed by the CC BY-NC 4.0 license — please get in touch first.</p>
 <div class="about-license-block">
 <div class="row">
 <span class="label">License</span>
@@ -208,21 +233,20 @@ body.theme-light .progress-bar { box-shadow: none; }
 <div class="col-divider"><span class="divider-num">01</span></div>
 <!-- ═══ HOW IT WAS BUILT ═══ -->
 <div class="col-section">
-<h2>// How It Was Built</h2>
-<p>While studying for the Grade 2 Statistical Examination, I got stuck on confidence intervals. I could read the text, but it wouldn't click. I kept wishing something like this existed.</p>
+<h2>// How This Tool Came to Be</h2>
+<p>While studying for the Grade 2 Statistical Examination, I got stuck on standardizing to the normal distribution. I could read the text, but it wouldn't click. I kept wishing something like this existed.</p>
 <p>"If I could just see it move, I'd get it instantly" — I was convinced that interactive experience is what transforms concept understanding in an instant.</p>
-<p>Then AI happened to come along as an option, and I decided to build it.</p>
-<p>The thing is, I had no skills to implement interactive visualizations on the frontend. I'm a direction/management person, not a professional coder. Before, this story would have ended at "I want to build it but can't." Working with Claude (Anthropic) through iterative dialogue, I found that what I'd been doing professionally carried over surprisingly well.</p>
-<p>AI writes the code. But what to build — that's the human's call. When you've done direction work, you can tell from watching the terminal when something looks reckless or high-risk. Is this design correct? Will it survive future extensions? Is this feature really necessary? A constant stream of judgment calls — and AI sometimes runs in the wrong direction. Stopping it is the human's job. Technical judgment matters, but even more importantly, if you don't understand the statistical theory correctly, the visualization design itself goes in the wrong direction. You can't build something correctly if you don't understand it yourself. That's what I learned firsthand.</p>
-<p>Building itself was the greatest learning experience. The full story is in the <a href="columns/how_statplay_was_built.html" style="color:var(--cyan)">column</a>.</p>
-<p>I want to bring the fascination of statistics to more people. With that in mind, I'll keep building.</p>
-<p><b style="color:var(--yellow)">Statistics is actually really fascinating.</b></p>
+<p>The thing is, I had no skills to implement interactive visualizations on the frontend. I'm a direction/management person, not a professional coder. Before, this story would have ended at "I want to build it but can't." AI happened to come along as an option, and that made it possible.</p>
+<p>AI writes the code. But what to build — that's the human's call. When you've done direction work, you can tell from watching the terminal when something looks reckless or high-risk. Is this design correct? Will it survive future extensions? Is this feature really necessary? More importantly, if you don't understand the statistical theory correctly, you can't see "what to make move so it clicks." You can't build something correctly if you don't understand it yourself. That's what I learned firsthand.</p>
+<p>Building itself was the greatest learning experience.</p>
+<p>The more I learn, the more I want to build. And figuring out how to make it move gets ever more challenging.</p>
+<p><b>Statistics is actually really fascinating.</b></p>
 </div>
 <div class="col-divider"><span class="divider-num">02</span></div>
 <!-- ═══ AUTHOR ═══ -->
 <div class="col-section">
-<h2>// About the Author</h2>
-<p><b style="color:var(--yellow)">Jumpei Sasai / 笹井淳平</b></p>
+<h2>// Creator</h2>
+<p>Jumpei Sasai / 笹井淳平</p>
 <p>Started my career as a systems engineer at NTT, then directed game, web service, and app development at Square Enix and Drecom. Discovered the fascination of statistics while studying for the Grade 2 Statistical Examination, and built this tool. There's still so much to learn, but building while learning seems to suit me.</p>
 </div>
 </main>
@@ -257,7 +281,7 @@ body.theme-light .progress-bar { box-shadow: none; }
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.1</span></div>
 </div>
 </footer>
 <script>

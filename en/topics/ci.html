@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,6 +138,10 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -168,29 +172,26 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">LLN says "at infinity, you're right." But in practice we always have a <b>finite sample</b>. So instead of a single point, <b>drape a net around it</b> — that's a <span class="next">confidence interval</span>. Wider net, easier to catch; narrower, more precise. Watch the trade-off play out.</div>
 
-<details class="story-context"><summary>New here?</summary>If you know "sample mean" and "standard deviation," you're ready. Here we express estimation uncertainty as a "width."</details>
 
 <p class="sec-desc">
-    The <b>95% confidence interval</b> is <b style="color:var(--yellow)">famously misunderstood</b>.<br/>
+    The <b>95% confidence interval</b> is <b>famously misunderstood</b>.<br/>
     It does <b>NOT</b> mean "the true value is inside with 95% probability". The correct reading:
     "repeat this sampling many times, and ~95% of the resulting intervals will capture the true value".<br/>
     The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
     Once the pink share settles around <b>~5%</b>, you've got it.
   </p>
-<div class="formula">x̄ ± z<sub>α/2</sub> · σ/√n</div>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+  <details class="formula-accordion"><summary>What this means</summary><p>Sample mean ± confidence multiplier × standard error. This "net" catches the true value.</p></details>
 
-<div class="formula-explain">In words: sample mean ± confidence multiplier × standard error (spread ÷ √sample size). This "net" catches the true value.</div>
 <div class="panel" data-autorun="ciRun">
 <div class="controls">
 <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
 <input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
 
-<div class="hint">Sample size per interval. Larger n = narrower interval (higher precision).</div>
 </div>
 <div class="ctrl"><label><span>Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
 <input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
 
-<div class="hint">What % of intervals catch the true value. At 95%, about 5 of 100 bars turn pink (miss).</div>
 </div>
 <button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
 <button class="btn magenta" id="ciReset">CLEAR</button>
@@ -248,7 +249,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version-en">v1.0.1</span></div>
 </div>
 </footer>
 

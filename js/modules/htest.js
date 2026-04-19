@@ -26,6 +26,17 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       pts.push([xToPx(r[1]),h]);
       neonFill(ctx,pts,tc.magenta,.35);
     });
+    // annotation: rejection region labels
+    ctx.fillStyle=withAlpha(tc.magenta,.85);ctx.font='bold 10px "Courier New"';
+    const rejLabel=window.__LANG==='en'?'Reject H₀':'棄却域';
+    if(t==='two'){
+      ctx.fillText(rejLabel,xToPx(-4.3),h-28);
+      ctx.fillText(rejLabel,xToPx(2.6),h-28);
+    } else if(t==='right'){
+      ctx.fillText(rejLabel,xToPx(2.6),h-28);
+    } else {
+      ctx.fillText(rejLabel,xToPx(-4.3),h-28);
+    }
 
     // curve
     const curve=[];for(let px=0;px<=w;px+=1){const x=lo+px/w*(hi-lo);curve.push([px,yToPx(normPDF(x))]);}
@@ -36,6 +47,14 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     if(t==='two'){[-crit,crit].forEach(cv=>{ctx.beginPath();ctx.moveTo(xToPx(cv),12);ctx.lineTo(xToPx(cv),h-20);ctx.stroke();});}
     else{ctx.beginPath();ctx.moveTo(xToPx(crit),12);ctx.lineTo(xToPx(crit),h-20);ctx.stroke();}
     ctx.setLineDash([]);
+    // annotation: critical value labels
+    ctx.fillStyle=tc.yellow;ctx.font='bold 11px "Courier New"';
+    if(t==='two'){
+      ctx.fillText(`−${Math.abs(crit).toFixed(2)}`,xToPx(-crit)-36,h-24);
+      ctx.fillText(`+${Math.abs(crit).toFixed(2)}`,xToPx(crit)+4,h-24);
+    } else {
+      ctx.fillText(crit.toFixed(2),xToPx(crit)+(t==='left'?-32:4),h-24);
+    }
 
     // z marker (observed)
     ctx.strokeStyle=tc.green;ctx.lineWidth=tc.light?2.5:2;ctx.shadowBlur=tc.light?2:14;ctx.shadowColor=tc.green;

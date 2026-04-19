@@ -42,6 +42,15 @@ function drawDist(canvas,func,xmax,color){
     ctx.fillStyle=tc.yellow;
     const conv = df>=30 ? (isEn?' ≈ N(0,1)':' ≈ N(0,1)') : (isEn?' fatter tails':' 裾が重い');
     ctx.fillText(conv, 80, 14);
+    // annotation: tail comparison at x=2.5
+    if(df<20){
+      const tY=tPDF(2.5,df),nY=normPDF(2.5);
+      if(tY>nY*1.2){
+        const ax=xToPx(2.5),ay=yToPx(tY);
+        ctx.fillStyle=withAlpha(tc.cyan,.7);ctx.font='9px "Courier New"';
+        ctx.fillText(isEn?'↑ heavier tail':'↑ 裾が重い',ax+4,ay-4);
+      }
+    }
   }
   draw();
 })();
