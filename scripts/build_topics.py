@@ -483,6 +483,27 @@ def main():
     hub = hub.replace('<!-- __GA_SNIPPET__ -->', ga_tag)
     SRC.write_text(hub, encoding='utf-8')
 
+    # Inject topic/column slugs into sw.js
+    sw_path = ROOT / 'sw.js'
+    sw = sw_path.read_text(encoding='utf-8')
+    topic_arr = json.dumps([t['slug'] for t in TOPICS], ensure_ascii=False)
+    sw = re.sub(
+        r'/\* __TOPIC_SLUGS__ \*/ \[.*?\]',
+        f'/* __TOPIC_SLUGS__ */ {topic_arr}',
+        sw
+    )
+    col_lines = ',\n  '.join(
+        f"'.{c['ja_path']}',\n  '.{c['en_path']}'"
+        for c in COLUMNS
+    )
+    sw = re.sub(
+        r'/\* __COLUMN_PATHS__ \*/.*?(?=\n\];)',
+        f'/* __COLUMN_PATHS__ */ {col_lines}',
+        sw,
+        flags=re.DOTALL
+    )
+    sw_path.write_text(sw, encoding='utf-8')
+
     print(f'Built {count} topic pages (JA+EN), {col_count} column footers, sitemap.xml, robots.txt - domain={domain}')
     if args.ga_id:
         print(f'GA Measurement ID: {args.ga_id}')

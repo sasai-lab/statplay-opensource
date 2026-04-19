@@ -1,7 +1,7 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
 const CACHE = 'sp-v7';
-const TOPIC_SLUGS = ['clt','lln','ci','test','dists','chitest','reg','mreg','prob','stdnorm','normal','morep','bayes'];
+const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "morep", "bayes", "clt", "lln", "ci", "test", "dists", "chitest", "reg", "mreg"];
 const MODULE_FILES = [
   'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
@@ -24,8 +24,10 @@ const ASSETS = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   ...TOPIC_SLUGS.flatMap(s => [`./topics/${s}.html`, `./en/topics/${s}.html`]),
-  './columns/deviation.html',
-  './en/columns/deviation.html'
+  /* __COLUMN_PATHS__ */ './columns/deviation.html',
+  './en/columns/deviation.html',
+  './columns/birthday.html',
+  './en/columns/birthday.html'
 ];
 
 self.addEventListener('install', (e) => {
