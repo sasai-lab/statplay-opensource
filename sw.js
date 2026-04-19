@@ -8,7 +8,7 @@ const MODULE_FILES = [
   'errs.js','graphDrag.js','hero.js','htest.js','lang.js','lln.js',
   'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js',
   'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','theme.js',
-  'toc.js','urlParams.js'
+  'toc.js','urlParams.js','version.js'
 ];
 const ASSETS = [
   './',
