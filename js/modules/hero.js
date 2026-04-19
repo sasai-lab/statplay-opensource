@@ -14,7 +14,7 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
      -------------------------------------------------------------- */
   const c=$('heroCanvas');
   let ctx,W,H;
-  function fit(){W=c.clientWidth||window.innerWidth;H=c.clientHeight||window.innerHeight;const dpr=window.devicePixelRatio||1;c.width=W*dpr;c.height=H*dpr;ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function fit(){W=c.clientWidth||window.innerWidth;H=c.clientHeight||window.innerHeight;const raw=window.devicePixelRatio||1;const dpr=(Number.isFinite(raw)&&raw>0)?Math.min(raw,8):1;c.width=W*dpr;c.height=H*dpr;ctx=c.getContext('2d');if(!ctx)return;ctx.setTransform(dpr,0,0,dpr,0,0);}
   fit();
   let resizeTimer=null;
   addEventListener('resize',()=>{fit();clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(typeof setTarget==='function'){phase--;setTarget();}},120);});
@@ -171,7 +171,21 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     });
     ctx.shadowBlur=0;
 
-    requestAnimationFrame(loop);
+    if(running) rafId=requestAnimationFrame(loop);
   }
-  requestAnimationFrame(loop);
+  let running=true, rafId=0;
+  if(window.__REDUCED_MOTION){
+    setTarget();
+    pts.forEach(p=>{p.x=p.tx;p.y=p.ty;});
+    loop(performance.now());
+  } else {
+    rafId=requestAnimationFrame(loop);
+  }
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){running=false;cancelAnimationFrame(rafId);}
+    else{running=true;t0=performance.now();rafId=requestAnimationFrame(loop);}
+  });
+  window.addEventListener('prefs:change',()=>{
+    if(window.__REDUCED_MOTION){running=false;cancelAnimationFrame(rafId);}
+  });
 })();

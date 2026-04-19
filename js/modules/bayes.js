@@ -1,5 +1,5 @@
 // StatPlay — module: 8) BAYES
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function bayes(){
   if(!document.getElementById('bayesCanvas')) return;
@@ -10,7 +10,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     bSens:v=>(v*100).toFixed(1)+'%',
     bSpec:v=>(v*100).toFixed(1)+'%'
   };
-  ids.forEach(id=>{const el=$(id);el.oninput=()=>{const v=parseFloat(el.value);$(id+'Val').textContent=fmt[id](v);draw();};});
+  const sched=throttledDraw(()=>draw());
+  ids.forEach(id=>{const el=$(id);el.oninput=()=>{const v=parseFloat(el.value);$(id+'Val').textContent=fmt[id](v);sched();};});
   window.addEventListener('langchange',()=>{
     ids.forEach(id=>{const el=$(id);$(id+'Val').textContent=fmt[id](parseFloat(el.value));});
     draw();

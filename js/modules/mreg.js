@@ -1,5 +1,5 @@
 // StatPlay — module: MULTIPLE REGRESSION - 3D plane with drag-to-rotate
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function mreg(){
   const canvas=$('mregCanvas');
@@ -7,7 +7,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   const b1S=$('mB1'),b2S=$('mB2'),sS=$('mS'),nS=$('mN'),gen=$('mGen');
   let rot={x:-0.35,y:0.55};
   let pts=[];const TRUE_B0=0.2;
-  function bind(s,id,fmt){s.oninput=()=>{$(id).textContent=fmt(parseFloat(s.value));draw();};}
+  const sched=throttledDraw(()=>draw());
+  function bind(s,id,fmt){s.oninput=()=>{$(id).textContent=fmt(parseFloat(s.value));sched();};}
   bind(b1S,'mB1Val',v=>v.toFixed(2));
   bind(b2S,'mB2Val',v=>v.toFixed(2));
   bind(sS,'mSVal',v=>v.toFixed(2));

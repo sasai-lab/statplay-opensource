@@ -1,11 +1,12 @@
 // StatPlay — module: 5) HYPOTHESIS TEST
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function htest(){
   if(!document.getElementById('testCanvas')) return;
   const canvas=$('testCanvas');
   const z=$('tZ'),a=$('tA'),type=$('tType');
-  [z,a].forEach(s=>s.oninput=()=>{$('tZVal').textContent=parseFloat(z.value).toFixed(2);$('tAVal').textContent=parseFloat(a.value).toFixed(3);draw();});
+  const sched=throttledDraw(()=>draw());
+  [z,a].forEach(s=>s.oninput=()=>{$('tZVal').textContent=parseFloat(z.value).toFixed(2);$('tAVal').textContent=parseFloat(a.value).toFixed(3);sched();});
   type.onchange=draw;
   function draw(){
     const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();

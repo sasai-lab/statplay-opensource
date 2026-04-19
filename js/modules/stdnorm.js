@@ -1,11 +1,12 @@
 // StatPlay — module: 0) STANDARD NORMAL — intro
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function stdnorm(){
   if(!document.getElementById('snCanvas')) return;
   // ---- panel A: 68-95-99.7
   const kS=$('snK'),cvA=$('snCanvas');
-  kS.oninput=()=>{$('snKVal').textContent=parseFloat(kS.value).toFixed(1);drawA();};
+  const schedA=throttledDraw(drawA);
+  kS.oninput=()=>{$('snKVal').textContent=parseFloat(kS.value).toFixed(1);schedA();};
   function drawA(){
     const {ctx,w,h}=resizeCanvas(cvA);drawGrid(ctx,w,h);const tc=themeColors();
     const k=parseFloat(kS.value);
@@ -56,13 +57,14 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
 
   // ---- panel B: standardization morph
   const muS=$('snMu'),sdS=$('snSd'),tS=$('snT'),cvB=$('snMorphCanvas');
+  const schedB=throttledDraw(()=>drawB());
   [muS,sdS].forEach(s=>s.oninput=()=>{
     $('snMuVal').textContent=parseFloat(muS.value).toFixed(1);
     $('snSdVal').textContent=parseFloat(sdS.value).toFixed(1);
     $('snOrig').textContent=`N(${(+muS.value).toFixed(1)}, ${(+sdS.value).toFixed(1)}²)`;
-    drawB();
+    schedB();
   });
-  tS.oninput=()=>{$('snTVal').textContent=tS.value;drawB();};
+  tS.oninput=()=>{$('snTVal').textContent=tS.value;schedB();};
   let animBTimer=null;
   $('snAnim').onclick=()=>{
     if(animBTimer) return;

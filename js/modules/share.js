@@ -15,7 +15,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   function buildImage(srcId,title){
     const src=document.getElementById(srcId);
     // Canvas src.width/height are already DPR-scaled; compute logical size.
-    const dpr=window.devicePixelRatio||1;
+    const _raw=window.devicePixelRatio||1;
+    const dpr=(Number.isFinite(_raw)&&_raw>0)?Math.min(_raw,8):1;
     const srcLogicalW=src.width/dpr, srcLogicalH=src.height/dpr;
     // Render the output at 2× density so text/borders stay crisp.
     const outDpr=2;
@@ -24,6 +25,7 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     const out=document.createElement('canvas');
     out.width=outW*outDpr; out.height=outH*outDpr;
     const ctx=out.getContext('2d');
+    if(!ctx) return null;
     ctx.setTransform(outDpr,0,0,outDpr,0,0);
     ctx.imageSmoothingQuality='high';
     // Background + grid

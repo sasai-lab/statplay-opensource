@@ -1,5 +1,5 @@
 // StatPlay — module: CHI-SQUARED TEST (click-to-add interaction)
-import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha } from '../utils.js';
+import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 (function chitest(){
   if(!document.getElementById('chitestCanvas')) return;
@@ -115,11 +115,11 @@ import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
       return px>=midX;
     }
 
-    if(alphaSlider) alphaSlider.oninput=()=>{
+    if(alphaSlider){const schedGof=throttledDraw(draw);alphaSlider.oninput=()=>{
       const el=$('gofAVal');
       if(el) el.textContent=parseFloat(alphaSlider.value).toFixed(2);
-      draw();
-    };
+      schedGof();
+    };}
 
     if(btnReset) btnReset.onclick=()=>{
       for(let i=0;i<6;i++) O[i]=0;
@@ -405,11 +405,11 @@ import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
       return {r:row, c:col, rx:Math.max(0.05,Math.min(0.95,rx)), ry:Math.max(0.05,Math.min(0.95,ry))};
     }
 
-    if(alphaSlider) alphaSlider.oninput=()=>{
+    if(alphaSlider){const schedInd=throttledDraw(draw);alphaSlider.oninput=()=>{
       const el=$('indAVal');
       if(el) el.textContent=parseFloat(alphaSlider.value).toFixed(2);
-      draw();
-    };
+      schedInd();
+    };}
 
     if(btnReset) btnReset.onclick=()=>{
       for(let i=0;i<4;i++) dots[i].length=0;

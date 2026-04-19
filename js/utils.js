@@ -88,21 +88,29 @@ export function themeColors(){
 }
 
 export function resizeCanvas(c){
-  const dpr=window.devicePixelRatio||1;
-  const w=c.clientWidth;const h=c.clientHeight||parseInt(c.getAttribute('height')||300,10);
+  if(!c||typeof c.getContext!=='function') return {ctx:null,w:0,h:0};
+  const raw=window.devicePixelRatio||1;
+  const dpr=(Number.isFinite(raw)&&raw>0)?Math.min(raw,8):1;
+  const w=c.clientWidth||parseInt(c.getAttribute('width')||300,10);
+  const h=c.clientHeight||parseInt(c.getAttribute('height')||300,10);
+  if(w<=0||h<=0) return {ctx:null,w:0,h:0};
   c.width=w*dpr;c.height=h*dpr;
-  const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);
+  const ctx=c.getContext('2d');
+  if(!ctx) return {ctx:null,w:0,h:0};
+  ctx.setTransform(dpr,0,0,dpr,0,0);
   if(c.getAttribute('aria-busy')==='true') c.removeAttribute('aria-busy');
   return {ctx,w,h};
 }
 
 export function drawGrid(ctx,w,h,color){
+  if(!ctx||w<=0||h<=0) return;
   if(!color) color=themeColors().grid;
   ctx.strokeStyle=color;ctx.lineWidth=1;
   for(let x=0;x<w;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
   for(let y=0;y<h;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
 }
 export function neonLine(ctx,pts,color,glow=12,lw=2){
+  if(!ctx||!pts||pts.length<2) return;
   const lt=document.body.classList.contains('theme-light');
   ctx.save();
   ctx.shadowBlur=lt?0:glow;ctx.shadowColor=color;ctx.strokeStyle=color;
@@ -111,6 +119,7 @@ export function neonLine(ctx,pts,color,glow=12,lw=2){
   ctx.restore();
 }
 export function neonFill(ctx,pts,color,alpha=.25){
+  if(!ctx||!pts||pts.length<2) return;
   const lt=document.body.classList.contains('theme-light');
   ctx.save();ctx.fillStyle=color;ctx.globalAlpha=lt?Math.min(1,alpha*1.8):alpha;
   ctx.shadowBlur=lt?0:16;ctx.shadowColor=color;
@@ -119,6 +128,15 @@ export function neonFill(ctx,pts,color,alpha=.25){
     i?ctx.lineTo(x,y):ctx.moveTo(x,y);
   });ctx.closePath();ctx.fill();
   ctx.restore();
+}
+
+export function throttledDraw(fn){
+  let id=0;
+  return function(){id||(id=requestAnimationFrame(()=>{id=0;fn();}));};
+}
+export function debouncedResize(fn,ms=120){
+  let t=0;
+  return function(){clearTimeout(t);t=setTimeout(fn,ms);};
 }
 
 // --- Phase 7: discrete distributions + exponential ------------------------

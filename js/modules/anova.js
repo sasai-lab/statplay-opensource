@@ -1,5 +1,5 @@
 // StatPlay — module: ANOVA (one-way analysis of variance)
-import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha } from '../utils.js';
+import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 (function anova(){
   if(!document.getElementById('anovaCanvas')) return;
@@ -233,10 +233,11 @@ import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neo
   }
 
   // --- event bindings ---
-  slK.oninput=()=>{if($('anovaKVal'))$('anovaKVal').textContent=slK.value;generate();};
-  slEff.oninput=()=>{if($('anovaEffectVal'))$('anovaEffectVal').textContent=parseFloat(slEff.value).toFixed(1);generate();};
-  slW.oninput=()=>{if($('anovaWithinVal'))$('anovaWithinVal').textContent=parseFloat(slW.value).toFixed(1);generate();};
-  slNk.oninput=()=>{if($('anovaNkVal'))$('anovaNkVal').textContent=slNk.value;generate();};
+  const schedGen=throttledDraw(generate);
+  slK.oninput=()=>{if($('anovaKVal'))$('anovaKVal').textContent=slK.value;schedGen();};
+  slEff.oninput=()=>{if($('anovaEffectVal'))$('anovaEffectVal').textContent=parseFloat(slEff.value).toFixed(1);schedGen();};
+  slW.oninput=()=>{if($('anovaWithinVal'))$('anovaWithinVal').textContent=parseFloat(slW.value).toFixed(1);schedGen();};
+  slNk.oninput=()=>{if($('anovaNkVal'))$('anovaNkVal').textContent=slNk.value;schedGen();};
   $('anovaGen').onclick=()=>{generate();window.__notifyDone&&window.__notifyDone('anovaGen');};
 
   // initial draw

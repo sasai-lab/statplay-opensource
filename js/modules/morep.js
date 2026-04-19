@@ -1,5 +1,5 @@
 // StatPlay - module: MORE DISTRIBUTIONS (binomial, Poisson, exponential)
-import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha } from '../utils.js';
+import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 (function morep(){
   if(!document.getElementById('binomCanvas')) return;
@@ -56,9 +56,10 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
       const hintBin = window.__LANG==='en'?'Drag: n / Shift+Drag: p':'ドラッグ: n / Shift+ドラッグ: p';
       ctx.fillText(hintBin, pad + 4, pad + gh - 4);
     }
-    slN.addEventListener('input', draw);
-    slP.addEventListener('input', draw);
-    window.addEventListener('resize', draw);
+    const schedBin=throttledDraw(draw);
+    slN.addEventListener('input', schedBin);
+    slP.addEventListener('input', schedBin);
+    window.addEventListener('resize', debouncedResize(draw));
     draw();
   }
 
@@ -112,8 +113,9 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
       ctx.font = '10px "Courier New", monospace';
       ctx.fillText(window.__LANG==='en'?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
     }
-    slL.addEventListener('input', draw);
-    window.addEventListener('resize', draw);
+    const schedPois=throttledDraw(draw);
+    slL.addEventListener('input', schedPois);
+    window.addEventListener('resize', debouncedResize(draw));
     draw();
   }
 
@@ -159,8 +161,9 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
       ctx.font = '10px "Courier New", monospace';
       ctx.fillText(window.__LANG==='en'?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
     }
-    slL.addEventListener('input', draw);
-    window.addEventListener('resize', draw);
+    const schedExp=throttledDraw(draw);
+    slL.addEventListener('input', schedExp);
+    window.addEventListener('resize', debouncedResize(draw));
     draw();
   }
 })();

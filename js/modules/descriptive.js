@@ -1,5 +1,5 @@
 // StatPlay — module: DESCRIPTIVE STATISTICS
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 (function descriptive(){
   if(!document.getElementById('descCanvas')) return;
@@ -294,10 +294,11 @@ import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
   }
 
   // --- Event listeners ---
-  slN.addEventListener('input', () => { syncDisplay(); generate(); });
-  slSkew.addEventListener('input', () => { syncDisplay(); generate(); });
+  const schedGen=throttledDraw(generate);
+  slN.addEventListener('input', () => { syncDisplay(); schedGen(); });
+  slSkew.addEventListener('input', () => { syncDisplay(); schedGen(); });
   btnGen.addEventListener('click', generate);
-  window.addEventListener('resize', draw);
+  window.addEventListener('resize', debouncedResize(draw));
 
   // Initial generation
   generate();

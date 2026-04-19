@@ -1,11 +1,12 @@
 // StatPlay — module: TYPE I / II ERROR VISUALIZATION
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function errs(){
   if(!document.getElementById('errCanvas')) return;
   const canvas=$('errCanvas');
   const dS=$('eD'),aS=$('eA');
-  [dS,aS].forEach(s=>s.oninput=()=>{$('eDVal').textContent=parseFloat(dS.value).toFixed(1);$('eAVal').textContent=parseFloat(aS.value).toFixed(3);draw();});
+  const sched=throttledDraw(()=>draw());
+  [dS,aS].forEach(s=>s.oninput=()=>{$('eDVal').textContent=parseFloat(dS.value).toFixed(1);$('eAVal').textContent=parseFloat(aS.value).toFixed(3);sched();});
   function draw(){
     const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
     const d=parseFloat(dS.value);const a=parseFloat(aS.value);

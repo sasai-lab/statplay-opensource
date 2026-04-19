@@ -1,5 +1,5 @@
 // StatPlay — module: Probability Rules (Venn Diagram)
-import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha } from '../utils.js';
+import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 (function prob(){
   if(!document.getElementById('probCanvas')) return;
@@ -168,9 +168,10 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAl
   }
 
   // --- event handlers ---
-  slPA.oninput=()=>{clampPAB();updateInfo();draw();};
-  slPB.oninput=()=>{clampPAB();updateInfo();draw();};
-  slPAB.oninput=()=>{updateInfo();draw();};
+  const sched=throttledDraw(()=>draw());
+  slPA.oninput=()=>{clampPAB();updateInfo();sched();};
+  slPB.oninput=()=>{clampPAB();updateInfo();sched();};
+  slPAB.oninput=()=>{updateInfo();sched();};
 
   btnIndep.onclick=()=>{
     const pA=getPA(), pB=getPB();

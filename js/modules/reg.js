@@ -1,5 +1,5 @@
 // StatPlay — module: 7) REGRESSION
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, debouncedResize} from '../utils.js';
 
 (function reg(){
   if(!document.getElementById('regCanvas')) return;
@@ -34,7 +34,7 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   }loop();}
 
   // On resize, redraw immediately so points + line reflow without delay.
-  window.addEventListener('resize',draw);
+  window.addEventListener('resize',debouncedResize(draw));
 
   // Pedagogical axis: x ∈ [0, 10], y ∈ [0, 10] (canvas y is inverted)
   const AXIS_MAX = 10;

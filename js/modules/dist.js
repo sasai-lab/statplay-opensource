@@ -1,5 +1,5 @@
 // StatPlay — module: 6) DISTS
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 function drawDist(canvas,func,xmax,color){
   const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
@@ -14,7 +14,7 @@ function drawDist(canvas,func,xmax,color){
 }
 (function tdist(){
   if(!document.getElementById('tDistCanvas')) return;
-  const dfS=$('tdDf');dfS.oninput=()=>{$('tdVal').textContent=dfS.value;draw();};
+  const dfS=$('tdDf');const sched=throttledDraw(()=>draw());dfS.oninput=()=>{$('tdVal').textContent=dfS.value;sched();};
   function draw(){
     const df=parseInt(dfS.value);
     const c=$('tDistCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();
@@ -47,7 +47,7 @@ function drawDist(canvas,func,xmax,color){
 })();
 (function chi(){
   if(!document.getElementById('chiCanvas')) return;
-  const dfS=$('chiDf');dfS.oninput=()=>{$('chiVal').textContent=dfS.value;draw();};
+  const dfS=$('chiDf');const sched=throttledDraw(()=>draw());dfS.oninput=()=>{$('chiVal').textContent=dfS.value;sched();};
   function draw(){
     const df=parseInt(dfS.value);
     const c=$('chiCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();
@@ -100,7 +100,7 @@ function drawDist(canvas,func,xmax,color){
 })();
 (function fdist(){
   if(!document.getElementById('fCanvas')) return;
-  [$('fDf1'),$('fDf2')].forEach(s=>s.oninput=()=>{$('fDf1Val').textContent=$('fDf1').value;$('fDf2Val').textContent=$('fDf2').value;draw();});
+  const sched=throttledDraw(()=>draw());[$('fDf1'),$('fDf2')].forEach(s=>s.oninput=()=>{$('fDf1Val').textContent=$('fDf1').value;$('fDf2Val').textContent=$('fDf2').value;sched();});
   function draw(){
     const d1=parseInt($('fDf1').value),d2=parseInt($('fDf2').value);
     const c=$('fCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();

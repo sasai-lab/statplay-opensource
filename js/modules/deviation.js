@@ -2,7 +2,7 @@
  * StatPlay — deviation column module
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors } from '../utils.js';
+import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, throttledDraw } from '../utils.js';
 
 const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const L = (ja, en) => isEn() ? en : ja;
@@ -154,7 +154,8 @@ function initSimulator() {
   }
 
   // slider → draw
-  [cScore, cMean, cSD].forEach(el => el.addEventListener('input', draw));
+  const schedDraw=throttledDraw(draw);
+  [cScore, cMean, cSD].forEach(el => el.addEventListener('input', schedDraw));
 
   // rarity row → slider → draw
   rows.forEach(row => {
@@ -317,7 +318,8 @@ function initSkewDemo() {
     drawPanel(pad.l + halfW + gap2, v => skewPDF(v, skew), L('歪んだ分布（現実）', 'Skewed (real)'), actualPct, maxY);
   }
 
-  [cDev, cSkew].forEach(el => el.addEventListener('input', draw));
+  const schedDraw2=throttledDraw(draw);
+  [cDev, cSkew].forEach(el => el.addEventListener('input', schedDraw2));
   draw();
 
   const mo = new MutationObserver(draw);
@@ -381,7 +383,8 @@ function toast(msg) {
 function buildImage(srcId, title) {
   const src = document.getElementById(srcId);
   if (!src) return null;
-  const dpr = window.devicePixelRatio || 1;
+  const _raw = window.devicePixelRatio || 1;
+  const dpr = (Number.isFinite(_raw) && _raw > 0) ? Math.min(_raw, 8) : 1;
   const srcLW = src.width / dpr, srcLH = src.height / dpr;
   const outDpr = 2;
   const pad = 24, headerH = 82, footerH = 40;
@@ -389,6 +392,7 @@ function buildImage(srcId, title) {
   const out = document.createElement('canvas');
   out.width = outW * outDpr; out.height = outH * outDpr;
   const ctx = out.getContext('2d');
+  if (!ctx) return null;
   ctx.setTransform(outDpr, 0, 0, outDpr, 0, 0);
   ctx.imageSmoothingQuality = 'high';
   ctx.fillStyle = '#050816'; ctx.fillRect(0, 0, outW, outH);

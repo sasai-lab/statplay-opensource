@@ -1,11 +1,12 @@
 // StatPlay — module: 2) NORMAL
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 (function normal(){
   if(!document.getElementById('normalCanvas')) return;
   const canvas=$('normalCanvas');
   const ids=['nMu','nSd','nA','nB'];
-  ids.forEach(id=>{const el=$(id);el.oninput=()=>{$(id+'Val').textContent=(id==='nMu'||id==='nSd'||id==='nA'||id==='nB')?parseFloat(el.value).toFixed(1):el.value;draw();};});
+  const sched=throttledDraw(()=>draw());
+  ids.forEach(id=>{const el=$(id);el.oninput=()=>{$(id+'Val').textContent=(id==='nMu'||id==='nSd'||id==='nA'||id==='nB')?parseFloat(el.value).toFixed(1):el.value;sched();};});
   function draw(){
     const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
     const mu=parseFloat($('nMu').value),sd=parseFloat($('nSd').value);
