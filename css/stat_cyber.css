@@ -175,6 +175,23 @@
     outline:none;
   }
   .lang-toggle:active{transform:translateY(1px)}
+  .nav-about{
+    color:var(--dim);
+    font-family:'Courier New',monospace;
+    font-size:11px;
+    letter-spacing:1.5px;
+    text-decoration:none;
+    padding:5px 9px;
+    border:1px solid rgba(0,243,255,.18);
+    border-radius:2px;
+    transition:color .2s, border-color .2s, text-shadow .2s;
+  }
+  .nav-about:hover,
+  .nav-about:focus-visible{
+    color:var(--cyan);
+    border-color:rgba(0,243,255,.55);
+    text-shadow:0 0 6px rgba(0,243,255,.5);
+  }
   .theme-toggle{
     /* Uses the same subtle chip as .lang-toggle */
   }
@@ -214,6 +231,10 @@
     .nav-dropdown:hover .nav-dropdown-menu{display:none}
     .nav-dropdown.open:hover .nav-dropdown-menu{display:block}
     .nav-dropdown-menu a{padding:8px 16px 8px 32px;font-size:12px;border-bottom:1px solid rgba(0,243,255,.08)}
+    .nav-links .nav-about{
+      align-self:stretch;padding:10px 16px;font-size:12px;text-align:center;
+      margin-top:4px;display:block;
+    }
     .nav-links .lang-toggle{
       align-self:stretch;padding:10px 16px;font-size:12px;text-align:center;
       margin-top:4px;
@@ -633,6 +654,13 @@
   body.theme-light .lang-toggle:focus-visible{
     color:var(--cyan);border-color:var(--cyan);text-shadow:none;
   }
+  body.theme-light .nav-about{
+    color:var(--dim);border-color:#d8dce6;
+  }
+  body.theme-light .nav-about:hover,
+  body.theme-light .nav-about:focus-visible{
+    color:var(--cyan);border-color:var(--cyan);text-shadow:none;
+  }
 
   /* Hero --------------------------------------------------------- */
   body.theme-light .hero{background:none}
@@ -992,6 +1020,15 @@ body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padd
 }
 .col-section a { color: var(--cyan); text-decoration: none; }
 .col-section a:hover { text-decoration: underline; }
+.ref-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.ref-list li {
+  padding-left: 1.2em; position: relative;
+}
+.ref-list li::before {
+  content: '—'; position: absolute; left: 0; color: var(--cyan);
+}
 
 .progress-bar {
   position: fixed; top: 0; left: 0; height: 3px; z-index: 200;

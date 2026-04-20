@@ -1,6 +1,6 @@
 {
   "name": "statplay",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "description": "Interactive cyberpunk visualizer for the Japanese 統計検定2級 statistics curriculum.",
   "private": true,
   "type": "module",
