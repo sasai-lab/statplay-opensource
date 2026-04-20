@@ -2,6 +2,13 @@
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
 
 export function initHero(){
+  const startBtn=document.getElementById('heroStart');
+  if(startBtn){
+    startBtn.addEventListener('click',()=>{
+      const t=document.getElementById('stdnorm');
+      if(t) t.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  }
   if(!document.getElementById('heroCanvas')) return;
   /* --------------------------------------------------------------
      CONCEPT: 「公式の暗記」→「あ、そうか！」と気づく瞬間

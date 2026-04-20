@@ -233,8 +233,12 @@
     .nav-dropdown-menu a{padding:8px 16px 8px 32px;font-size:12px;border-bottom:1px solid rgba(0,243,255,.08)}
     .nav-links .nav-about{
       align-self:stretch;padding:10px 16px;font-size:12px;text-align:center;
-      margin-top:4px;display:block;
+      margin-top:4px;
     }
+    body:not(.lang-en) .nav-links .nav-about[data-lang="ja"]{display:block}
+    body:not(.lang-en) .nav-links .nav-about[data-lang="en"]{display:none}
+    body.lang-en .nav-links .nav-about[data-lang="en"]{display:block}
+    body.lang-en .nav-links .nav-about[data-lang="ja"]{display:none}
     .nav-links .lang-toggle{
       align-self:stretch;padding:10px 16px;font-size:12px;text-align:center;
       margin-top:4px;
@@ -263,6 +267,7 @@
   .hero-cta{
     margin-top:40px;padding:14px 34px;background:transparent;border:2px solid var(--cyan);color:var(--cyan);
     font-family:'Courier New',monospace;letter-spacing:3px;font-size:14px;cursor:pointer;position:relative;overflow:hidden;
+    z-index:2;-webkit-tap-highlight-color:transparent;touch-action:manipulation;
   }
   .hero-cta::before{content:"";position:absolute;inset:0;background:var(--cyan);transform:translateX(-101%);transition:.3s}
   .hero-cta:hover{color:var(--bg);text-shadow:none}
