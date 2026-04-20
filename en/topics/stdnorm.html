@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -172,16 +168,25 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. CLT, hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
 
-
 <p class="sec-desc">
     Honestly — <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br/>
     The <b>standard normal <code>N(0, 1)</code></b> is a bell curve with mean 0 and standard deviation 1.
-    The one-line trick "<code>z = (x − μ) / σ</code>" lets <b style="color:var(--cyan)">every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br/>
-    In other words, it's not the final boss of statistics; it's the <b style="color:var(--magenta)">origin</b>. Once you own this, the rest of the page reads as "applications of the standard normal".
+    The one-line trick "<code>z = (x − μ) / σ</code>" lets <b>every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br/>
+    In other words, it's not the final boss of statistics; it's the <b>origin</b>. Once you own this, the rest of the page reads as "applications of the standard normal".
   </p>
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
-  <details class="formula-accordion"><summary>What this means</summary><p>z = "how many standard deviations from the mean." φ(z) = height of the curve there (the density).</p></details>
 
+<details class="formula-accordion"><summary>What this means</summary><p>z = "how many standard deviations from the mean." φ(z) = height of the curve there (the density).</p></details>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers about 70%."</li>
+<li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>
+<li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
+<li><b>Step 4:</b> Hit the ▶ button on the standardization animation below → watch any normal snap onto this one curve.</li>
+</ol>
+</div>
 <div class="panel">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
@@ -194,7 +199,6 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
 <input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" id="snCanvas"></canvas>
@@ -209,25 +213,22 @@ body.topic-page .topic-hub-link a {
 </div>
 <div class="panel" data-autorun="snAnim">
 
-<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
       Height, IQ, daily stock returns, factory part errors — real-world normal-ish things all have different means and spreads.
-      Yet apply <b style="color:var(--cyan)">z = (x − μ) / σ</b> and they all snap onto <b style="color:var(--magenta)">that pink curve</b>.<br/>
+      Yet apply <b>z = (x − μ) / σ</b> and they all snap onto <b>that pink curve</b>.<br/>
       It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
     </p>
 <div class="controls">
 <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
 <input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
-
 </div>
 <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
 <input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
-
 </div>
 <div class="ctrl"><label><span>Progress</span> = <span class="val" id="snTVal">0</span></label>
 <input id="snT" max="100" min="0" type="range" value="0"/>
-
 </div>
 <button class="btn" id="snAnim"><span>▶ Standardize</span></button>
 </div>
@@ -247,7 +248,7 @@ body.topic-page .topic-hub-link a {
     The <b>Central Limit Theorem</b> ahead says: "any distribution's mean approaches the standard normal".
     <b>Confidence intervals</b> and <b>hypothesis tests</b> all use the "±1.96σ" numbers from this curve.
     <b>t, χ², F</b> are its siblings. Even <b>regression</b> coefficient errors are approximated with the standard normal.<br/>
-    Short version: <b style="color:var(--cyan)">nail this one page and the rest becomes "applications"</b>. Have fun.
+    Short version: <b>nail this one page and the rest becomes "applications"</b>. Have fun.
   </p>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P.02 Normal Distribution</a></div>
@@ -292,7 +293,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

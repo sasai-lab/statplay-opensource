@@ -1,7 +1,7 @@
 // StatPlay — module: AUTO-RUN ON SCROLL
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
-(function autorun(){
+export function initAutorun(){
   const panels=document.querySelectorAll('[data-autorun]');
   const seen=new WeakSet();
   const io=new IntersectionObserver(entries=>{
@@ -13,4 +13,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     });
   },{threshold:0.35});
   panels.forEach(p=>io.observe(p));
-})();
+}

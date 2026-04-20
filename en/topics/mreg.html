@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -168,10 +164,9 @@ body.topic-page .topic-hub-link a {
 
 <div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
 
-<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Rotate the <span style="color:var(--magenta)">3D</span> Plane</span></h2>
+<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Rotate the 3D Plane</span></h2>
 
 <div class="story-bridge">Simple regression is one line. But often you want to <b>strip away other effects</b> — the impact of ad spend <i>holding day-of-week and season fixed</i>. That's <span class="next">multiple regression</span>. Add dimensions, and each <b>partial coefficient</b> tells you the effect <b>controlling for everything else</b>.</div>
-
 
 <p class="sec-desc">
     With <b>two or more</b> explanatory variables, it's <b>multiple regression</b>.
@@ -181,12 +176,12 @@ body.topic-page .topic-hub-link a {
     <b>Drag</b> the canvas to rotate and see the plane and data in 3D.<br/>
 <b>Note: only 2 predictors can be drawn (our eyes top out at 3-D).</b>
     But the equation keeps going — <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> — <b>you can add as many variables as you like</b>.
-    From x₃ onward you just "can't draw it", but the estimator <code>β̂ = (XᵀX)⁻¹Xᵀy</code> works exactly the same.
+    From x₃ onward you just "can't draw it", but the estimation works exactly the same.
     In practice, 5–50 predictors is very normal.
   </p>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
-  <details class="formula-accordion"><summary>What this means</summary><p>β₁ = "change in y per unit x₁, holding x₂ fixed." The simple regression line extended to a plane.</p></details>
 
+<details class="formula-accordion"><summary>What this means</summary><p>β₁ = "change in y per unit x₁, holding x₂ fixed." The simple regression line extended to a plane.</p></details>
 
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
@@ -197,26 +192,22 @@ body.topic-page .topic-hub-link a {
 <li><b>Step 4:</b> Set β₁ to <b>0</b> → x₁ has no effect on y. Check that estimated β̂₁ is close to 0.</li>
 </ol>
 </div>
-<div class="panel" data-autorun="mGen">
+<div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>True β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
 <input id="mB1" max="1.5" min="-1.5" step="0.05" type="range" value="0.8"/>
-
 </div>
 <div class="ctrl"><label><span>True β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
 <input id="mB2" max="1.5" min="-1.5" step="0.05" type="range" value="-0.5"/>
-
 </div>
 <div class="ctrl"><label><span>Noise σ</span> = <span class="val" id="mSVal">0.50</span></label>
 <input id="mS" max="2" min="0" step="0.05" type="range" value="0.5"/>
-
 </div>
 <div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
 <input id="mN" max="200" min="10" type="range" value="40"/>
-
 </div>
-<button class="btn" id="mGen"><span>▶ Play Guide</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ Drag to rotate (axes: <span style="color:var(--cyan)">x₁</span> · <span style="color:var(--magenta)">x₂</span> · y)</span></span>
+<button class="btn" id="mGen"><span>↺ Reset</span></button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ Drag to rotate (axes: x₁ · x₂ · y)</span></span>
 </div>
 <canvas aria-busy="true" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" id="mregCanvas" style="cursor:grab"></canvas>
 <div class="info">
@@ -270,7 +261,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

@@ -1,7 +1,7 @@
 // StatPlay — module: CANVAS DRAG INTERACTIONS
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
-(function graphDrag(){
+export function initGraphDrag(){
   function bindHorizontal(canvasId,sliderId,pxToData){
     const cv=document.getElementById(canvasId),sl=document.getElementById(sliderId);
     if(!cv||!sl) return;
@@ -73,8 +73,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   // We interpret the drag position as where the rejection boundary lies,
   // and invert to an α value based on the currently-selected test type.
   bindHorizontal('testCanvas','tA',(px,py,w)=>{
-    const lo=-4.5,hi=4.5;const x=lo+px/w*(hi-lo);
-    const tt=(document.getElementById('tType')||{}).value||'two';
+    const lo = -4.5, hi = 4.5;
+    const x = lo + px / w * (hi - lo);
+    const tt = (document.getElementById('tType') || {}).value || 'two';
     let alpha;
     if(tt==='two'){ alpha = 2*(1-normCDF(Math.abs(x))); }
     else if(tt==='right'){ alpha = 1-normCDF(x); }
@@ -83,8 +84,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   });
   // errCanvas: horizontal drag on critical-z boundary → α
   bindHorizontal('errCanvas','eA',(px,py,w)=>{
-    const lo=-4,hi=8;const xCrit=lo+px/w*(hi-lo);
-    return 1-normCDF(xCrit); // α = P(Z > xCrit) (right-tailed, one-sided)
+    const lo = -4, hi = 8;
+    const xCrit = lo + px / w * (hi - lo);
+    return 1 - normCDF(xCrit);
   });
 
   // horizontal drag → integer-step slider (used by t df, χ² df)
@@ -139,21 +141,25 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   }
   // snCanvas — drag X to set k
   bindHorizontal('snCanvas','snK',(px,py,w)=>{
-    const xMin=-4,xMax=4;const x=xMin+px/w*(xMax-xMin);
+    const xMin = -4, xMax = 4;
+    const x = xMin + px / w * (xMax - xMin);
     return Math.abs(x);
   });
   // normalCanvas — drag to move nearest of a/b
   bindTwoHandles('normalCanvas','nA','nB',(px,py,w)=>{
-    const xMin=-5,xMax=5;return xMin+px/w*(xMax-xMin);
+    const xMin = -5, xMax = 5;
+    return xMin + px / w * (xMax - xMin);
   });
   // testCanvas — drag to set z
   bindHorizontal('testCanvas','tZ',(px,py,w)=>{
-    const xMin=-4,xMax=4;return xMin+px/w*(xMax-xMin);
+    const xMin = -4, xMax = 4;
+    return xMin + px / w * (xMax - xMin);
   });
   // errCanvas — drag to set α via critical line x-position
   bindHorizontal('errCanvas','eA',(px,py,w)=>{
-    const lo=-4,hi=8;const xCrit=lo+px/w*(hi-lo);
-    return 1-normCDF(xCrit);
+    const lo = -4, hi = 8;
+    const xCrit = lo + px / w * (hi - lo);
+    return 1 - normCDF(xCrit);
   });
 
   // --- 離散分布+指数分布 ドラッグ ------------------------------------
@@ -311,4 +317,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
   })();
 
-})();
+}

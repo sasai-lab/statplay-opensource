@@ -2,7 +2,9 @@
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
 function drawDist(canvas,func,xmax,color){
-  const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+  const {ctx,w,h} = resizeCanvas(canvas);
+  drawGrid(ctx,w,h);
+  const tc = themeColors();
   // sample peak
   let peak=0;for(let x=0;x<=xmax;x+=xmax/200){const y=func(x);if(y>peak)peak=y;}
   if(peak===0)peak=1;
@@ -12,16 +14,23 @@ function drawDist(canvas,func,xmax,color){
   // fill
   const fill=[[0,h],...pts,[w,h]];neonFill(ctx,fill,color,.18);
 }
-(function tdist(){
+function tdist(){
   if(!document.getElementById('tDistCanvas')) return;
-  const dfS=$('tdDf');const sched=throttledDraw(()=>draw());dfS.oninput=()=>{$('tdVal').textContent=dfS.value;sched();};
+  const dfS = $('tdDf');
+  const sched = throttledDraw(() => draw());
+  dfS.oninput = () => { $('tdVal').textContent = dfS.value; sched(); };
   function draw(){
     const df=parseInt(dfS.value);
-    const c=$('tDistCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();
+    const c = $('tDistCanvas');
+    const {ctx,w,h} = resizeCanvas(c);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const isEn=window.__LANG==='en';
-    const lo=-5,hi=5;const xToPx=x=>(x-lo)/(hi-lo)*w;
+    const lo = -5, hi = 5;
+    const xToPx = x => (x - lo) / (hi - lo) * w;
     // include N(0,1) overlay in peak so sharp t curves don't clip the reference (and vice versa)
-    let peak=Math.max(tPDF(0,df), normPDF(0));const yToPx=y=>h-22-y/peak*(h-42);
+    let peak = Math.max(tPDF(0, df), normPDF(0));
+    const yToPx = y => h - 22 - y / peak * (h - 42);
     // baseline
     ctx.strokeStyle=withAlpha(tc.cyan,.3);ctx.lineWidth=1;
     ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();
@@ -53,13 +62,18 @@ function drawDist(canvas,func,xmax,color){
     }
   }
   draw();
-})();
-(function chi(){
+}
+function chi(){
   if(!document.getElementById('chiCanvas')) return;
-  const dfS=$('chiDf');const sched=throttledDraw(()=>draw());dfS.oninput=()=>{$('chiVal').textContent=dfS.value;sched();};
+  const dfS = $('chiDf');
+  const sched = throttledDraw(() => draw());
+  dfS.oninput = () => { $('chiVal').textContent = dfS.value; sched(); };
   function draw(){
     const df=parseInt(dfS.value);
-    const c=$('chiCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();
+    const c = $('chiCanvas');
+    const {ctx,w,h} = resizeCanvas(c);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const isEn=window.__LANG==='en';
     const xmax=Math.max(15, df*2.5);
     const xToPx=x=>x/xmax*w;
@@ -68,7 +82,9 @@ function drawDist(canvas,func,xmax,color){
     // χ² own peak
     for(let x=0.02;x<=xmax;x+=xmax/300){const y=chi2PDF(x,df);if(y>peak)peak=y;}
     // include N(k,2k) reference peak so the overlay never clips
-    {const nSd=Math.sqrt(2*df);const nPk=1/(nSd*Math.sqrt(2*Math.PI));if(nPk>peak)peak=nPk;}
+    { const nSd = Math.sqrt(2 * df);
+      const nPk = 1 / (nSd * Math.sqrt(2 * Math.PI));
+      if(nPk > peak) peak = nPk; }
     if(peak===0)peak=1;
     const yToPx=y=>h-22-y/peak*(h-42);
     // baseline
@@ -103,18 +119,24 @@ function drawDist(canvas,func,xmax,color){
     for(let t=0;t<=xmax;t+=Math.ceil(xmax/6)){ctx.fillText(String(t),xToPx(t)-4,h-8);}
     ctx.fillStyle=tc.magenta;ctx.fillText('χ²  (df='+df+')',8,14);
     ctx.fillStyle=tc.purple;ctx.fillText('┄ N(k, 2k)',8,28);
-    ctx.fillStyle=tc.yellow;const conv=df>=20?(isEn?' ≈ normal':' ≈ 正規に近い'):(isEn?' right-skewed':' 右に歪む');ctx.fillText(conv,100,14);
+    ctx.fillStyle = tc.yellow;
+    const conv = df >= 20 ? (isEn ? ' ≈ normal' : ' ≈ 正規に近い') : (isEn ? ' right-skewed' : ' 右に歪む');
+    ctx.fillText(conv, 100, 14);
   }
   draw();
-})();
-(function fdist(){
+}
+function fdist(){
   if(!document.getElementById('fCanvas')) return;
   const sched=throttledDraw(()=>draw());[$('fDf1'),$('fDf2')].forEach(s=>s.oninput=()=>{$('fDf1Val').textContent=$('fDf1').value;$('fDf2Val').textContent=$('fDf2').value;sched();});
   function draw(){
     const d1=parseInt($('fDf1').value),d2=parseInt($('fDf2').value);
-    const c=$('fCanvas');const {ctx,w,h}=resizeCanvas(c);drawGrid(ctx,w,h);const tc=themeColors();
+    const c = $('fCanvas');
+    const {ctx,w,h} = resizeCanvas(c);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const isEn=window.__LANG==='en';
-    const xmax=4;const xToPx=x=>x/xmax*w;
+    const xmax = 4;
+    const xToPx = x => x / xmax * w;
     let peak=0;
     for(let x=0.01;x<=xmax;x+=xmax/300){const y=fPDF(x,d1,d2);if(y>peak)peak=y;}
     // include the dashed normal approx peak so it isn't chopped
@@ -162,7 +184,15 @@ function drawDist(canvas,func,xmax,color){
     for(let t=0;t<=xmax;t+=1){ctx.fillText(t.toFixed(0),xToPx(t)-4,h-8);}
     ctx.fillStyle=tc.yellow;ctx.fillText('F  ('+d1+', '+d2+')',8,14);
     ctx.fillStyle=tc.purple;ctx.fillText('┄ 近似正規 / normal approx',8,42);
-    ctx.fillStyle=tc.yellow;const fconv=(d1>=20&&d2>=20)?(isEn?' ≈ normal':' ≈ 正規に近い'):(isEn?' right-skewed':' 右に歪む');ctx.fillText(fconv,100,14);
+    ctx.fillStyle = tc.yellow;
+    const fconv = (d1 >= 20 && d2 >= 20) ? (isEn ? ' ≈ normal' : ' ≈ 正規に近い') : (isEn ? ' right-skewed' : ' 右に歪む');
+    ctx.fillText(fconv, 100, 14);
   }
   draw();
-})();
+}
+
+export function initDist(){
+  tdist();
+  chi();
+  fdist();
+}

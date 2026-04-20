@@ -8,7 +8,7 @@
 // ?theme= override is present. Animation modules (hero, CLT, LLN, etc.) can
 // consult __REDUCED_MOTION to shortcut long animations.
 
-(function prefs(){
+export function initPrefs(){
   const mqMotion = (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)')) || null;
   const mqLight  = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)')) || null;
 
@@ -38,4 +38,4 @@
       }
     });
   }
-})();
+}

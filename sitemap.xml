@@ -222,7 +222,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://statplay.sasailab.com/en/about.html</loc>
@@ -230,6 +230,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/about.html"/>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>

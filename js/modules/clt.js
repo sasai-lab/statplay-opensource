@@ -1,7 +1,7 @@
 // StatPlay — module: 1) CLT
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
 
-(function clt(){
+export function initClt(){
   if(!document.getElementById('cltCanvas')) return;
   const canvas=$('cltCanvas');
   const BINS_SRC=60, BINS_MEAN=50;
@@ -77,8 +77,10 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     meanHist[im]++;sum+=m;sum2+=m*m;total++;
   }
   function animateRun(){
-    const MAX=CLT_MAX;const TARGET_MS=9500;
-    const t0=performance.now();let i=0;
+    const MAX = CLT_MAX;
+    const TARGET_MS = 9500;
+    const t0 = performance.now();
+    let i = 0;
     function step(){
       const elapsed=performance.now()-t0;
       const frac=Math.min(1,elapsed/TARGET_MS);
@@ -108,7 +110,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     $('cltCount').textContent=total;
     if(total<2){$('cltMean').textContent='—';$('cltSD').textContent='—';$('cltSE').textContent='—';}
     else{
-      const m=sum/total;const v=sum2/total-m*m;const sd=Math.sqrt(Math.max(0,v));
+      const m = sum / total;
+      const v = sum2 / total - m * m;
+      const sd = Math.sqrt(Math.max(0, v));
       $('cltMean').textContent=m.toFixed(4);$('cltSD').textContent=sd.toFixed(4);
       const th=theory();$('cltSE').textContent=Math.sqrt(th.v/parseInt(nSlider.value)).toFixed(4);
     }
@@ -164,7 +168,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     // Theory overlay
     if(theoryFn){
       // sample the theory function densely, then scale so its max matches the hist max count (approx)
-      const pts=[];const steps=200;
+      const pts = [];
+      const steps = 200;
       // expected bin count at bin i = pdf(xmid)*binWidth*totalSamples
       // we want to scale so that the max over bins matches ... but we normalize to ph*.95 too
       const binW=(range[1]-range[0])/bins;
@@ -197,7 +202,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     ctx.fillText(range[1].toFixed(2),px0+pw-28,py0+ph+14);
   }
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const isEn=window.__LANG==='en';
     const gap=16;
     const panelW=(w-gap)/2;
@@ -236,4 +243,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     ctx.fillText(`n = ${nSlider.value}`,w/2-24,h-4);
   }
   draw();
-})();
+}

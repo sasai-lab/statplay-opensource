@@ -1,7 +1,7 @@
 // StatPlay — module: 8) BAYES
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
-(function bayes(){
+export function initBayes(){
   if(!document.getElementById('bayesCanvas')) return;
   const canvas=$('bayesCanvas');
   const ids=['bPd','bSens','bSpec'];
@@ -82,13 +82,21 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     const targetH=mobile?Math.max(280,Math.round(canvas.clientWidth*0.85)):380;
     canvas.style.height=targetH+'px';
 
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
-    const pd=parseFloat($('bPd').value);const sens=parseFloat($('bSens').value);const spec=parseFloat($('bSpec').value);
-    const total=1000;
-    const D=pd*total;const notD=total-D;
-    const TP=D*sens;const FN=D-TP;
-    const FP=notD*(1-spec);const TN=notD-FP;
-    const ppv=TP/(TP+FP)||0;const npv=TN/(TN+FN)||0;
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
+    const pd = parseFloat($('bPd').value);
+    const sens = parseFloat($('bSens').value);
+    const spec = parseFloat($('bSpec').value);
+    const total = 1000;
+    const D = pd * total;
+    const notD = total - D;
+    const TP = D * sens;
+    const FN = D - TP;
+    const FP = notD * (1 - spec);
+    const TN = notD - FP;
+    const ppv = TP / (TP + FP) || 0;
+    const npv = TN / (TN + FN) || 0;
 
     const isEn=window.__LANG==='en';
 
@@ -218,4 +226,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   }
   draw();
   window.addEventListener('resize',()=>{clearTimeout(window.__bayesTimer);window.__bayesTimer=setTimeout(draw,150);});
-})();
+}

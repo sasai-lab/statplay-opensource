@@ -1,7 +1,7 @@
 // StatPlay — module: CORRELATION & SCATTER PLOTS
 import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, debouncedResize } from '../utils.js';
 
-(function corr(){
+export function initCorr(){
   if(!document.getElementById('corrCanvas')) return;
   const canvas=$('corrCanvas');
   canvas.style.cursor='crosshair';
@@ -91,7 +91,9 @@ import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
   window.addEventListener('resize',debouncedResize(draw));
 
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const en=window.__LANG==='en';
     const pad=30;
 
@@ -187,4 +189,4 @@ import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
 
   // Initial draw
   draw();
-})();
+}

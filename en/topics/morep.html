@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -172,8 +168,17 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
 
-
 <div class="sec-desc">The three distributions on the level-2 exam: <b>binomial</b>, <b>Poisson</b>, and <b>exponential</b>. Slide through success counts, event counts, and waiting times to feel the bridge between discrete and continuous.</div>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Binomial: set n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
+<li><b>Step 2:</b> Set binomial n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) — nearly identical shapes.</li>
+<li><b>Step 3:</b> Raise Poisson λ from <b>1 to 20</b> → it approaches a bell (a preview of the CLT).</li>
+<li><b>Step 4:</b> Slide exponential λ → larger λ = "happens sooner." Mean wait = 1/λ.</li>
+</ol>
+</div>
 <div class="canvas-bg">
 <div class="panel">
 
@@ -260,7 +265,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

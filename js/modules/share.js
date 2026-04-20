@@ -1,7 +1,7 @@
 // StatPlay — module: SHARE / SAVE IMAGE
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
-(function share(){
+export function initShare(){
   const toastEl=document.createElement('div');
   toastEl.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:rgba(0,8,20,.92);color:#d8f7ff;border:1px solid rgba(0,243,255,.45);padding:10px 18px;font-family:"Courier New",monospace;font-size:13px;letter-spacing:1px;opacity:0;transition:.3s;z-index:10000;pointer-events:none;box-shadow:0 0 20px rgba(0,243,255,.35)';
   document.body.appendChild(toastEl);
@@ -183,4 +183,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   document.querySelectorAll('.share-btn').forEach(btn=>{
     btn.addEventListener('click',()=>doShare(btn.dataset.kind,btn.dataset.share,btn.dataset.title));
   });
-})();
+}

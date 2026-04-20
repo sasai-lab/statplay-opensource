@@ -1,5 +1,5 @@
 // StatPlay - module: scroll-to-top floating button.
-(function scrolltop(){
+export function initScrolltop(){
   const btn = document.createElement('button');
   btn.className = 'scroll-top-btn';
   btn.setAttribute('aria-label', 'Scroll to top');
@@ -20,4 +20,4 @@
   btn.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
   });
-})();
+}

@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,14 +163,13 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="prob">
 
 <div class="sec-tag">P.03 / PROBABILITY RULES</div>
-<h2 class="sec-title">確率の基本法則 <span class="sec-sub">— <span style="color:var(--magenta)">ベン図</span>で直感をつかむ</span></h2>
+<h2 class="sec-title">確率の基本法則 <span class="sec-sub">— ベン図で直感をつかむ</span></h2>
 
 <div class="story-bridge">正規分布の形を掴んだ。ここで<b>基礎に立ち返る</b>——すべてを支える<span class="next">確率の基本法則</span>。加法定理、乗法定理、条件付き確率を<b>面積</b>で直感的に掴む。</div>
 
-
 <p class="sec-desc">
     加法定理、乗法定理、条件付き確率 — 公式を暗記する前に、面積で「見て」しまおう。<br/>
-<b style="color:var(--cyan)">P(A∪B) = P(A) + P(B) − P(A∩B)</b> は「2つの円を重ねた面積から、重なりを引く」だけ。
+<b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> は「2つの円を重ねた面積から、重なりを引く」だけ。
     条件付き確率 P(A|B) は「B の円の中で A が占める割合」。<br/>
 <b>独立ボタン</b>を押すと P(A∩B) = P(A)·P(B) に自動調整 — 独立ってこういうこと。
   </p>
@@ -187,8 +182,17 @@ body.topic-page .topic-hub-link a {
 </div>
 
 <div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
-  <details class="formula-accordion"><summary>式の意味</summary><p>左：「Bが起きた世界でAも起きている割合」。右：「少なくとも片方が起きる確率」＝足して重複を引く。</p></details>
+<details class="formula-accordion"><summary>式の意味</summary><p>左：「Bが起きた世界でAも起きている割合」。右：「少なくとも片方が起きる確率」＝足して重複を引く。</p></details>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → P(A∪B) が加法定理で 0.58 になることを確認。</li>
+<li><b>Step 2:</b> 「独立にする」ボタンを押す → P(A∩B) が自動的に P(A)·P(B) に調整される。これが独立の意味。</li>
+<li><b>Step 3:</b> P(A∩B) を <b>0</b> 付近にする → 2つの円が離れる。これが「排反」（同時に起きない）。</li>
+<li><b>Step 4:</b> P(A∩B) を P(B) に近づける → A|B が1に近づく。B が起きたらほぼ A も起きる、という関係。</li>
+</ol>
+</div>
 
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ インタラクティブ・ベン図</h3>
@@ -196,18 +200,12 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
 <input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
-
-
 </div>
 <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
 <input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
-
-
 </div>
 <div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
 <input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
-
-
 </div>
 <button class="btn yellow" id="probIndep"><span>独立にする</span></button>
 </div>
@@ -264,7 +262,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

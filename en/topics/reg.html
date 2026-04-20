@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -139,10 +139,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -173,7 +169,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">Up to here, <b>one variable</b> at a time. Real questions involve <b>relationships</b> — height vs. weight, ad spend vs. sales. <span class="next">Simple regression</span> draws one line through two variables — and the <b>t-tests and CIs</b> you just learned power the inference on its slope β̂.</div>
 
-
 <p class="sec-desc">
     Regression with just one explanatory variable is <b>simple regression</b>. It assumes a linear relationship: when x increases by 1, y moves by β₁.
     <b>Ordinary least squares (OLS)</b> picks the line that minimizes the sum of squared vertical residuals.
@@ -181,8 +176,18 @@ body.topic-page .topic-hub-link a {
     Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
   </p>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
-  <details class="formula-accordion"><summary>What this means</summary><p>Numerator = "how much x and y move together." Denominator = "how much x varies." Ratio = change in y per unit x.</p></details>
 
+<details class="formula-accordion"><summary>What this means</summary><p>Numerator = "how much x and y move together." Denominator = "how much x varies." Ratio = change in y per unit x.</p></details>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Hit "Random 20 pts" → a regression line and R² appear. Check the green bars (residuals).</li>
+<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Feel the leverage of outliers.</li>
+<li><b>Step 3:</b> CLEAR and place <b>5 points</b> nearly in a line → R² ≈ 1.0. A perfect linear relationship.</li>
+<li><b>Step 4:</b> CLEAR and arrange points in a circle → R² ≈ 0. A line can't capture this pattern.</li>
+</ol>
+</div>
 <div class="panel" data-autorun="regRandom">
 <div class="controls">
 <button class="btn" id="regRandom"><span>▶ Random 20 pts</span></button>
@@ -244,7 +249,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

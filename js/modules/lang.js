@@ -1,7 +1,7 @@
 // StatPlay — module: LANGUAGE TOGGLE (JA <-> EN)
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
-(function lang(){
+export function initLang(){
   const htmlLang = document.documentElement.lang || 'ja';
   window.__LANG = htmlLang === 'en' ? 'en' : 'ja';
   const btn=document.getElementById('langToggle');
@@ -30,4 +30,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   });
   const saved=(() => {try{return localStorage.getItem('statplay-lang');}catch(_){return null;}})();
   setLang(saved || window.__LANG || 'ja');
-})();
+}

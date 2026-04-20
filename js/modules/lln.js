@@ -1,16 +1,21 @@
 // StatPlay — module: 3) LLN
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
 
-(function lln(){
+export function initLln(){
   if(!document.getElementById('llnCanvas')) return;
-  const canvas=$('llnCanvas');const history=[];let running=false;let head=0,n=0;
+  const canvas = $('llnCanvas');
+  const history = [];
+  let running = false;
+  let head = 0, n = 0;
   const pSlider=$('llnP');pSlider.oninput=()=>{$('llnPVal').textContent=parseFloat(pSlider.value).toFixed(2);$('llnTrue').textContent=parseFloat(pSlider.value).toFixed(2);reset();};
   const LLN_MAX=3000;
   $('llnRun').onclick=()=>{if(running) return; if(n>=LLN_MAX) reset(); running=true; run();};
   $('llnReset').onclick=reset;
   function reset(){history.length=0;head=0;n=0;running=false;draw();}
   function run(){
-    const p=parseFloat(pSlider.value);const MAX=LLN_MAX;const TARGET_MS=10000;
+    const p = parseFloat(pSlider.value);
+    const MAX = LLN_MAX;
+    const TARGET_MS = 10000;
     const t0=performance.now();
     function frame(){
       const elapsed=performance.now()-t0;
@@ -36,7 +41,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     frame();
   }
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const p=parseFloat(pSlider.value);
     // target line
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([6,4]);
@@ -64,4 +71,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     ctx.restore();
   }
   draw();
-})();
+}

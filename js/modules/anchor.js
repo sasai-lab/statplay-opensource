@@ -1,7 +1,7 @@
 // StatPlay - module: ANCHOR - click h2 to copy section URL
 import { $ } from '../utils.js';
 
-(function anchor(){
+export function initAnchor(){
   const titles = document.querySelectorAll('.sec-title');
   if(!titles.length) return;
 
@@ -38,4 +38,4 @@ import { $ } from '../utils.js';
       if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); copyURL(id, h); }
     });
   });
-})();
+}

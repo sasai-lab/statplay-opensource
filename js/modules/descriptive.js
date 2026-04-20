@@ -1,7 +1,7 @@
 // StatPlay — module: DESCRIPTIVE STATISTICS
 import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
-(function descriptive(){
+export function initDescriptive(){
   if(!document.getElementById('descCanvas')) return;
   const canvas = $('descCanvas');
   canvas.style.cursor = 'ew-resize';
@@ -302,4 +302,4 @@ import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
 
   // Initial generation
   generate();
-})();
+}

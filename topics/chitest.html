@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -139,10 +139,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -168,15 +164,25 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="chitest">
 
 <div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
-<h2 class="sec-title">カイ二乗検定 <span class="sec-sub">— <span style="color:var(--magenta)">ズレ</span>を数値化する</span></h2>
+<h2 class="sec-title">カイ二乗検定 <span class="sec-sub">— ズレを数値化する</span></h2>
 
 <div class="story-bridge">ここまでは「平均」の検定だった。でも世の中には<b>カテゴリ</b>しかないデータがある — アンケートの選択肢、サイコロの出目、病気と喫煙の組み合わせ。こういうデータの「ズレ」を測るのが <span class="next">カイ二乗検定</span>。期待からのズレが大きいほど、χ² 統計量が光る。</div>
 
 <p class="sec-desc">
-<b style="color:var(--cyan)">適合度検定</b>は「観測されたカテゴリ分布は、理論分布と合っているか？」を調べる。サイコロが公正かどうか、が典型例。<br/>
-<b style="color:var(--magenta)">独立性検定</b>は「2つのカテゴリ変数は独立か？」を調べる。クロス集計表の各セルで期待度数とのズレを計算し、χ² = Σ (O−E)²/E を合計する。<br/>
+<b>適合度検定</b>は「観測されたカテゴリ分布は、理論分布と合っているか？」を調べる。サイコロが公正かどうか、が典型例。<br/>
+<b>独立性検定</b>は「2つのカテゴリ変数は独立か？」を調べる。クロス集計表の各セルで期待度数とのズレを計算し、χ² = Σ (O−E)²/E を合計する。<br/>
 <span class="text-sub">なぜ E で割る？ → 「期待10人に対して2人のズレ」と「期待1000人に対して2人のズレ」は重みが違う。E で割ることで<b>相対的なズレ</b>に揃えている。<br/>どちらも χ²分布に従う統計量を使い、右裾の面積が p 値になる。自由度は適合度なら k−1、独立性なら (r−1)(c−1)。</span>
 </p>
+
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動投下 → n が増えるほど χ² が安定し、p値が大きいまま（帰無仮説を棄却しない）。</li>
+<li><b>Step 2:</b> 「イカサマ」に切り替えて自動投下 → χ² が急上昇し、p値が α を下回る。不正が検出される瞬間。</li>
+<li><b>Step 3:</b> ② 独立性：左上のセルだけクリックして偏りを作る → χ² が跳ね上がり、独立性が棄却される。</li>
+<li><b>Step 4:</b> リセットして、各セルを均等にクリック → χ² は小さいまま。偏りがなければ独立と判定。</li>
+</ol>
+</div>
 
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① 適合度検定 — サイコロは公正か？</h3>
@@ -190,8 +196,6 @@ body.topic-page .topic-hub-link a {
           = <span class="val" id="gofAVal">0.05</span>
 </label>
 <input id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
-
-
 </div>
 <div class="ctrl" style="min-width:auto">
 <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
@@ -215,7 +219,7 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 <div class="panel">
-<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
 
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>左側のセルをクリックして観測値を+1（Shift+クリックで−1）</span></div>
 <div class="controls" style="gap:6px;margin-bottom:6px">
@@ -226,8 +230,6 @@ body.topic-page .topic-hub-link a {
           = <span class="val" id="indAVal">0.05</span>
 </label>
 <input id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
-
-
 </div>
 <button class="lang-toggle" id="indReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
 </div>
@@ -285,7 +287,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

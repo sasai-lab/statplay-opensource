@@ -1,7 +1,7 @@
 // StatPlay - module: MORE DISTRIBUTIONS (binomial, Poisson, exponential)
 import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
-(function morep(){
+export function initMorep(){
   if(!document.getElementById('binomCanvas')) return;
   // -------------------- Binomial ------------------------------------------
   const binCanvas = $('binomCanvas');
@@ -12,7 +12,8 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
     function draw(){
       const {ctx, w, h} = resizeCanvas(binCanvas);
       ctx.clearRect(0,0,w,h);
-      drawGrid(ctx, w, h);const tc=themeColors();
+      drawGrid(ctx, w, h);
+      const tc = themeColors();
       const n = parseInt(slN.value, 10);
       const p = parseFloat(slP.value);
       vN.textContent = n;
@@ -76,7 +77,8 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
     function draw(){
       const {ctx, w, h} = resizeCanvas(poisCanvas);
       ctx.clearRect(0,0,w,h);
-      drawGrid(ctx, w, h);const tc=themeColors();
+      drawGrid(ctx, w, h);
+      const tc = themeColors();
       const lam = parseFloat(slL.value);
       vL.textContent = lam.toFixed(1);
       const kMax = Math.max(10, Math.ceil(lam * 3));
@@ -136,7 +138,8 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
     function draw(){
       const {ctx, w, h} = resizeCanvas(expCv);
       ctx.clearRect(0,0,w,h);
-      drawGrid(ctx, w, h);const tc=themeColors();
+      drawGrid(ctx, w, h);
+      const tc = themeColors();
       const lam = parseFloat(slL.value);
       vL.textContent = lam.toFixed(2);
       const pad = 28;
@@ -175,4 +178,4 @@ import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, 
     window.addEventListener('resize', debouncedResize(draw));
     draw();
   }
-})();
+}

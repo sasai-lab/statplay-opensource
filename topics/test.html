@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,10 +163,9 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="test">
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
-<h2 class="sec-title">仮説検定 <span class="sec-sub">— <span style="color:var(--magenta)">棄却</span>か採択か</span></h2>
+<h2 class="sec-title">仮説検定 <span class="sec-sub">— 棄却か採択か</span></h2>
 
 <div class="story-bridge">信頼区間が「幅として」不確実性を出す道具なら、<span class="next">仮説検定</span>は「YES/NO として」それを使う道具。<b>帰無仮説の世界</b>でこのデータは起こりえるか？ 起こりにくいなら reject——同じ分布、同じ σ／n、<b>質問が違うだけ</b>。</div>
-
 
 <p class="sec-desc">
 <b>検定 = 裁判</b>だと思うと超わかりやすい。<br/>
@@ -180,19 +175,25 @@ body.topic-page .topic-hub-link a {
     <b>② 冤罪(α)と見逃し(β)のトレードオフ</b>。
   </p>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。</li>
+<li><b>Step 2:</b> z を <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>
+<li><b>Step 3:</b> 検定タイプを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>
+<li><b>Step 4:</b> ② で効果量 δ を <b>0→3</b> にスライド → 紫の曲線(H₁)が右に離れ、検出力が上がる様子を見る。</li>
+</ol>
+</div>
+
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① 基本：z値と棄却域</h3>
 
 <div class="controls">
 <div class="ctrl"><label><span>観測 z</span> = <span class="val" id="tZVal">1.96</span></label>
 <input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
-
-
 </div>
 <div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
 <input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
-
-
 </div>
 <div class="ctrl"><label><span>検定タイプ</span></label>
 <select id="tType">
@@ -218,9 +219,9 @@ body.topic-page .topic-hub-link a {
 
 <p class="sec-desc" style="margin-bottom:14px">
       検定には2種類の間違いがある。<br/>
-<b style="color:var(--magenta)">第1種の誤り α</b>: H₀ が本当なのに棄却してしまう（冤罪）。<br/>
-<b style="color:var(--purple)">第2種の誤り β</b>: H₁ が本当なのに見逃してしまう（真犯人を逃す）。<br/>
-      そして <code>1 − β</code> が<b style="color:var(--green)">検出力 (Power)</b>。
+<b>第1種の誤り α</b>: H₀ が本当なのに棄却してしまう（冤罪）。<br/>
+<b>第2種の誤り β</b>: H₁ が本当なのに見逃してしまう（真犯人を逃す）。<br/>
+      そして <code>1 − β</code> が<b>検出力 (Power)</b>。
       <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> δ（本当の差の大きさ）や α を動かすと、青(H₀)と紫(H₁)の曲線がせめぎ合い、
       "間違いを減らすと見逃しが増える"というトレードオフが見える。
       <br/><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
@@ -229,13 +230,9 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>効果量 δ</span> = <span class="val" id="eDVal">2.0</span></label>
 <input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
-
-
 </div>
 <div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
 <input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
-
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
@@ -290,7 +287,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

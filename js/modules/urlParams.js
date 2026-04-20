@@ -1,7 +1,7 @@
 // StatPlay — module: URL PARAM RESTORE — reads ?id1=v1&id2=v2 and applies saved slider state
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
-(function urlParams(){
+export function initUrlParams(){
   const params=new URLSearchParams(location.search);
   if([...params.keys()].length===0) return;
   // Apply values, then fire events to trigger each module's draw/clear logic.
@@ -23,4 +23,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       try{el.dispatchEvent(new Event(type,{bubbles:true}));}catch(_){}
     });
   },50);
-})();
+}

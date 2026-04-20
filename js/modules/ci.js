@@ -1,9 +1,10 @@
 // StatPlay — module: 4) CI
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
 
-(function ci(){
+export function initCi(){
   if(!document.getElementById('ciCanvas')) return;
-  const canvas=$('ciCanvas');const intervals=[];
+  const canvas = $('ciCanvas');
+  const intervals = [];
   const nS=$('ciN'),lvl=$('ciLvl');
   nS.oninput=()=>{$('ciNVal').textContent=nS.value;reset();};
   lvl.oninput=()=>{$('ciLvlVal').textContent=lvl.value+'%';$('ciExp').textContent=lvl.value+'%';reset();};
@@ -14,9 +15,14 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   let running=false;
   function run(){
     if(running)return;running=true;
-    const n=parseInt(nS.value);const conf=parseFloat(lvl.value)/100;const alpha=1-conf;const z=zCritical(alpha);
-    const MAX=CI_MAX;const TARGET_MS=4200;
-    const t0=performance.now();let i=0;
+    const n = parseInt(nS.value);
+    const conf = parseFloat(lvl.value) / 100;
+    const alpha = 1 - conf;
+    const z = zCritical(alpha);
+    const MAX = CI_MAX;
+    const TARGET_MS = 4200;
+    const t0 = performance.now();
+    let i = 0;
     function frame(){
       const elapsed=performance.now()-t0;
       const frac=Math.min(1,elapsed/TARGET_MS);
@@ -25,7 +31,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       const targetI=Math.min(MAX,Math.ceil(eased*MAX));
       while(i<targetI){
         let s=0,s2=0;for(let j=0;j<n;j++){const x=rng_normal(0,1);s+=x;s2+=x*x;}
-        const m=s/n;const se=1/Math.sqrt(n);
+        const m = s / n;
+        const se = 1 / Math.sqrt(n);
         intervals.push({m,lo:m-z*se,hi:m+z*se});i++;
       }
       draw();updateCov();
@@ -39,16 +46,20 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     $('ciCov').textContent=intervals.length?(hits/intervals.length*100).toFixed(1)+'%':'—';
   }
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     // true mean line
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);
     const xMid=w/2;ctx.beginPath();ctx.moveTo(xMid,0);ctx.lineTo(xMid,h);ctx.stroke();ctx.setLineDash([]);
     ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText('μ = 0',xMid+4,14);
 
-    const range=1.5;const xToPx=x=>xMid+x/range*(w/2-20);
+    const range = 1.5;
+    const xToPx = x => xMid + x / range * (w / 2 - 20);
     const rowH=Math.max(1,(h-20)/Math.max(300,intervals.length));
     intervals.forEach((iv,i)=>{
-      const y=10+i*rowH;const hit=iv.lo<=0&&iv.hi>=0;
+      const y = 10 + i * rowH;
+      const hit = iv.lo <= 0 && iv.hi >= 0;
       const color=hit?tc.cyan:tc.magenta;
       ctx.strokeStyle=color;ctx.shadowBlur=tc.light?(hit?1:2):(hit?4:8);ctx.shadowColor=color;ctx.lineWidth=Math.max(.7,rowH-.5);
       ctx.beginPath();ctx.moveTo(xToPx(iv.lo),y);ctx.lineTo(xToPx(iv.hi),y);ctx.stroke();ctx.shadowBlur=0;
@@ -65,4 +76,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     }
   }
   draw();
-})();
+}

@@ -5,5 +5,5 @@ dist/
 package-lock.json
 scripts/cf-*.json
 scripts/publish_opensource.sh
-PROJECT_CHARTER.md
-agents/
+docs/PROJECT_CHARTER.md
+docs/agents/

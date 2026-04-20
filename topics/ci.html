@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -167,10 +163,9 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="ci">
 
 <div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
-<h2 class="sec-title">信頼区間 <span class="sec-sub">— <span style="color:var(--magenta)">95%</span>の本当の意味</span></h2>
+<h2 class="sec-title">信頼区間 <span class="sec-sub">— 95%の本当の意味</span></h2>
 
 <div class="story-bridge">LLN は「∞なら当たる」と言う。でも我々はいつも<b>有限サンプル</b>しか持っていない。なら<span class="term-gloss" title="点推定：1つの数値で母数を推定すること（例：標本平均で母平均を推定）">点推定</span>の<b>周りに網を張って</b>真値を捕まえよう——これが<span class="next">信頼区間</span>。幅を広げれば当たりやすい、狭めれば精密。このトレードオフを目で見て掴む。</div>
-
 
 <p class="sec-desc">
 <b>95% 信頼区間</b>って実は<b>よく誤解される</b>概念。<br/>
@@ -181,20 +176,25 @@ body.topic-page .topic-hub-link a {
   </p>
 
 <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
-  <details class="formula-accordion"><summary>式の意味</summary><p>標本平均 ± 信頼度に応じた係数 × 標準誤差。この幅の「網」で真値を捕まえる。</p></details>
+<details class="formula-accordion"><summary>式の意味</summary><p>標本平均 ± 信頼度に応じた係数 × 標準誤差。この幅の「網」で真値を捕まえる。</p></details>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> 信頼度95%, n=30 で ▶ 300回生成 → ピンク（外した区間）がちょうど5%前後になることを確認。</li>
+<li><b>Step 2:</b> 信頼度を <b>80%</b> に下げて再生成 → ピンクが増える。幅を狭めた分、当たりにくい。</li>
+<li><b>Step 3:</b> 信頼度95%に戻し、n を <b>200</b> にする → 区間の幅がグッと狭くなる。サンプル数の力。</li>
+<li><b>Step 4:</b> n を <b>5</b> にする → 幅がめちゃ広い。少ないサンプルでは"掴む網"が大きくないと当たらない。</li>
+</ol>
+</div>
 
 <div class="panel" data-autorun="ciRun">
 <div class="controls">
 <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
 <input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
-
-
 </div>
 <div class="ctrl"><label><span>信頼度</span> = <span class="val" id="ciLvlVal">95%</span></label>
 <input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
-
-
 </div>
 <button class="btn" id="ciRun"><span>▶ 300回 生成</span></button>
 <button class="btn magenta" id="ciReset">CLEAR</button>
@@ -251,7 +251,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

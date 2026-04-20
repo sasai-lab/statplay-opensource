@@ -1,7 +1,7 @@
 // StatPlay — module: HERO PARTICLES
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
 
-(function heroAnim(){
+export function initHero(){
   if(!document.getElementById('heroCanvas')) return;
   /* --------------------------------------------------------------
      CONCEPT: 「公式の暗記」→「あ、そうか！」と気づく瞬間
@@ -14,7 +14,17 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
      -------------------------------------------------------------- */
   const c=$('heroCanvas');
   let ctx,W,H;
-  function fit(){W=c.clientWidth||window.innerWidth;H=c.clientHeight||window.innerHeight;const raw=window.devicePixelRatio||1;const dpr=(Number.isFinite(raw)&&raw>0)?Math.min(raw,8):1;c.width=W*dpr;c.height=H*dpr;ctx=c.getContext('2d');if(!ctx)return;ctx.setTransform(dpr,0,0,dpr,0,0);}
+  function fit(){
+    W = c.clientWidth || window.innerWidth;
+    H = c.clientHeight || window.innerHeight;
+    const raw = window.devicePixelRatio || 1;
+    const dpr = (Number.isFinite(raw) && raw > 0) ? Math.min(raw, 8) : 1;
+    c.width = W * dpr;
+    c.height = H * dpr;
+    ctx = c.getContext('2d');
+    if(!ctx) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
   fit();
   let resizeTimer=null;
   addEventListener('resize',()=>{fit();clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(typeof setTarget==='function'){phase--;setTarget();}},120);});
@@ -188,4 +198,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   window.addEventListener('prefs:change',()=>{
     if(window.__REDUCED_MOTION){running=false;cancelAnimationFrame(rafId);}
   });
-})();
+}

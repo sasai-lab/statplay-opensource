@@ -2,10 +2,12 @@
  * StatPlay — shared utilities
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-export const TAU=Math.PI*2;
+export const TAU = Math.PI * 2;
 export function $(id){return document.getElementById(id);}
 export function rng_normal(mu=0,sd=1){ // Box-Muller
-  let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();
+  let u = 0, v = 0;
+  while(u === 0) u = Math.random();
+  while(v === 0) v = Math.random();
   return mu+sd*Math.sqrt(-2*Math.log(u))*Math.cos(TAU*v);
 }
 export function rng_exp(lam=1){return -Math.log(1-Math.random())/lam;}
@@ -14,9 +16,11 @@ export function rng_bimodal(){return Math.random()<0.5 ? rng_normal(0.25,0.08):r
 
 // erf approx (Abramowitz & Stegun)
 export function erf(x){
-  const a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911;
-  const sign=x<0?-1:1;x=Math.abs(x);
-  const t=1/(1+p*x);
+  const a1 = .254829592, a2 = -.284496736, a3 = 1.421413741,
+        a4 = -1.453152027, a5 = 1.061405429, p = .3275911;
+  const sign = x < 0 ? -1 : 1;
+  x = Math.abs(x);
+  const t = 1 / (1 + p * x);
   const y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);
   return sign*y;
 }
@@ -38,7 +42,8 @@ export function lgamma(z){
   const c=[0.99999999999980993,676.5203681218851,-1259.1392167224028,771.32342877765313,
     -176.61502916214059,12.507343278686905,-0.13857109526572012,9.9843695780195716e-6,1.5056327351493116e-7];
   if(z<0.5) return Math.log(Math.PI/Math.sin(Math.PI*z))-lgamma(1-z);
-  z-=1;let x=c[0];
+  z -= 1;
+  let x = c[0];
   for(let i=1;i<g+2;i++) x+=c[i]/(z+i);
   const t=z+g+0.5;
   return 0.5*Math.log(TAU)+(z+0.5)*Math.log(t)-t+Math.log(x);
@@ -94,7 +99,8 @@ export function resizeCanvas(c){
   const w=c.clientWidth||parseInt(c.getAttribute('width')||300,10);
   const h=c.clientHeight||parseInt(c.getAttribute('height')||300,10);
   if(w<=0||h<=0) return {ctx:null,w:0,h:0};
-  c.width=w*dpr;c.height=h*dpr;
+  c.width = w * dpr;
+  c.height = h * dpr;
   const ctx=c.getContext('2d');
   if(!ctx) return {ctx:null,w:0,h:0};
   ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -105,7 +111,8 @@ export function resizeCanvas(c){
 export function drawGrid(ctx,w,h,color){
   if(!ctx||w<=0||h<=0) return;
   if(!color) color=themeColors().grid;
-  ctx.strokeStyle=color;ctx.lineWidth=1;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 1;
   for(let x=0;x<w;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke();}
   for(let y=0;y<h;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();}
 }

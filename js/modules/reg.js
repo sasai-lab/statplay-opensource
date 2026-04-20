@@ -1,7 +1,7 @@
 // StatPlay — module: 7) REGRESSION
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, debouncedResize} from '../utils.js';
 
-(function reg(){
+export function initReg(){
   if(!document.getElementById('regCanvas')) return;
   const canvas=$('regCanvas');
   // Store points in normalized coords (nx, ny) ∈ [0,1]. Rendering always
@@ -66,7 +66,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   }
 
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     drawAxes(ctx, w, h, tc);
     if(pts.length===0){ctx.fillStyle=tc.dim;ctx.font='14px "Courier New"';ctx.fillText(window.__LANG==='en'?'Click the canvas to add points':'キャンバスをクリックして点を追加',PAD.left+10,PAD.top+30);return;}
 
@@ -80,8 +82,10 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     const denom=sxx-n*mx*mx;
     const b1=denom===0?0:(sxy-n*mx*my)/denom;
     const b0=my-b1*mx;
-    const num2=(sxy-n*mx*my);const den2=Math.sqrt((sxx-n*mx*mx)*(syy-n*my*my));
-    const r=den2===0?0:num2/den2;const R2=r*r;
+    const num2 = sxy - n * mx * my;
+    const den2 = Math.sqrt((sxx - n * mx * mx) * (syy - n * my * my));
+    const r = den2 === 0 ? 0 : num2 / den2;
+    const R2 = r * r;
 
     // regression line in canvas coords
     const lx0=0, lx1=AXIS_MAX;
@@ -118,4 +122,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     $('regR').textContent=r.toFixed(4);
   }
   draw();
-})();
+}

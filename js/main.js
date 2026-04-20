@@ -1,38 +1,65 @@
 /*!
  * StatPlay - entry point
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
- *
- * Modules are imported in the original order from the monolithic
- * build. Each module is side-effectful: the IIFE inside each file
- * runs at import time and wires up its own DOM handlers.
  */
-import './modules/prefs.js';
-import './modules/hero.js';
-import './modules/reveal.js';
-import './modules/nav.js';
-import './modules/stdnorm.js';
-import './modules/normal.js';
-import './modules/morep.js';
-import './modules/prob.js';
-import './modules/clt.js';
-import './modules/lln.js';
-import './modules/ci.js';
-import './modules/htest.js';
-import './modules/dist.js';
-import './modules/chitest.js';
-import './modules/reg.js';
-import './modules/bayes.js';
-import './modules/errs.js';
-import './modules/mreg.js';
-import './modules/autorun.js';
-import './modules/share.js';
-import './modules/urlParams.js';
-import './modules/lang.js';
-import './modules/theme.js';
-import './modules/graphDrag.js';
-import './modules/anchor.js';
-import './modules/a11y.js';
-import './modules/toc.js';
-import './modules/scrolltop.js';
-import './modules/version.js';
-import './modules/pwa.js';
+import { initPrefs } from './modules/prefs.js';
+import { initHero } from './modules/hero.js';
+import { initReveal } from './modules/reveal.js';
+import { initNav } from './modules/nav.js';
+import { initStdnorm } from './modules/stdnorm.js';
+import { initNormal } from './modules/normal.js';
+import { initMorep } from './modules/morep.js';
+import { initProb } from './modules/prob.js';
+import { initClt } from './modules/clt.js';
+import { initLln } from './modules/lln.js';
+import { initCi } from './modules/ci.js';
+import { initHtest } from './modules/htest.js';
+import { initDist } from './modules/dist.js';
+import { initChitest } from './modules/chitest.js';
+import { initReg } from './modules/reg.js';
+import { initBayes } from './modules/bayes.js';
+import { initErrs } from './modules/errs.js';
+import { initMreg } from './modules/mreg.js';
+import { initAutorun } from './modules/autorun.js';
+import { initShare } from './modules/share.js';
+import { initUrlParams } from './modules/urlParams.js';
+import { initLang } from './modules/lang.js';
+import { initTheme } from './modules/theme.js';
+import { initGraphDrag } from './modules/graphDrag.js';
+import { initAnchor } from './modules/anchor.js';
+import { initA11y } from './modules/a11y.js';
+import { initToc } from './modules/toc.js';
+import { initScrolltop } from './modules/scrolltop.js';
+import { initVersion } from './modules/version.js';
+import { initPwa } from './modules/pwa.js';
+
+initPrefs();
+initHero();
+initReveal();
+initNav();
+initStdnorm();
+initNormal();
+initMorep();
+initProb();
+initClt();
+initLln();
+initCi();
+initHtest();
+initDist();
+initChitest();
+initReg();
+initBayes();
+initErrs();
+initMreg();
+initAutorun();
+initShare();
+initUrlParams();
+initLang();
+initTheme();
+initGraphDrag();
+initAnchor();
+initA11y();
+initToc();
+initScrolltop();
+initVersion();
+initPwa();

@@ -1,17 +1,21 @@
 // StatPlay — module: 0) STANDARD NORMAL — intro
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
-(function stdnorm(){
+export function initStdnorm(){
   if(!document.getElementById('snCanvas')) return;
   // ---- panel A: 68-95-99.7
   const kS=$('snK'),cvA=$('snCanvas');
   const schedA=throttledDraw(drawA);
   kS.oninput=()=>{$('snKVal').textContent=parseFloat(kS.value).toFixed(1);schedA();};
   function drawA(){
-    const {ctx,w,h}=resizeCanvas(cvA);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(cvA);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const k=parseFloat(kS.value);
-    const lo=-4,hi=4;const xToPx=x=>(x-lo)/(hi-lo)*w;
-    const peak=normPDF(0);const yToPx=y=>h-22-y/peak*(h-60);
+    const lo = -4, hi = 4;
+    const xToPx = x => (x - lo) / (hi - lo) * w;
+    const peak = normPDF(0);
+    const yToPx = y => h - 22 - y / peak * (h - 60);
     // fill inside ±k — snap boundary pixels to eliminate seams
     const kPxL=Math.round(xToPx(-k)),kPxR=Math.round(xToPx(k));
     const pts=[[kPxL,h]];
@@ -98,12 +102,17 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   };
   cvB.style.cursor='ew-resize';
   function drawB(){
-    const {ctx,w,h}=resizeCanvas(cvB);drawGrid(ctx,w,h);const tc=themeColors();
-    const mu=parseFloat(muS.value);const sd=parseFloat(sdS.value);
+    const {ctx,w,h} = resizeCanvas(cvB);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
+    const mu = parseFloat(muS.value);
+    const sd = parseFloat(sdS.value);
     const tt=parseFloat(tS.value)/100; // 0 = 元, 1 = 標準化
     // blend params
-    const bMu=mu*(1-tt);const bSd=sd*(1-tt)+1*tt;
-    const lo=-5,hi=5;const xToPx=x=>(x-lo)/(hi-lo)*w;
+    const bMu = mu * (1 - tt);
+    const bSd = sd * (1 - tt) + 1 * tt;
+    const lo = -5, hi = 5;
+    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak=Math.max(normPDF(bMu,bMu,bSd),normPDF(0));
     const yToPx=y=>h-22-y/peak*(h-60);
     // ghost: target N(0,1)
@@ -130,4 +139,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     $('snNewSd').textContent=bSd.toFixed(3);
   }
   drawB();
-})();
+}

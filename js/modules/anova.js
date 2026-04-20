@@ -1,7 +1,7 @@
 // StatPlay — module: ANOVA (one-way analysis of variance)
 import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
-(function anova(){
+export function initAnova(){
   if(!document.getElementById('anovaCanvas')) return;
   const canvas=$('anovaCanvas');
   const slK=$('anovaK'),slEff=$('anovaEffect'),slW=$('anovaWithin'),slNk=$('anovaNk');
@@ -109,7 +109,9 @@ import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neo
 
   // --- drawing ---
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const colors=[tc.cyan,tc.magenta,tc.yellow,tc.green,tc.purple];
     const {k,nk,gMeans,grandMean,F,Fcrit,dfB,dfW}=stats;
     const splitX=Math.round(w*0.55);
@@ -242,4 +244,4 @@ import { $, TAU, rng_normal, lgamma, fPDF, resizeCanvas, drawGrid, neonLine, neo
 
   // initial draw
   generate();
-})();
+}

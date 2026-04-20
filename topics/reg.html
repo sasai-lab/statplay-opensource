@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -139,10 +139,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -172,7 +168,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">ここまで <b>1つの変数</b>の話。現実の問題は「身長と体重」「広告費と売上」のように<b>関係</b>を聞いてくる。<span class="next">単回帰</span>は 2 変数に直線を 1 本引くだけ——でも、その傾き β̂ の背後にはさっきまでやった <b>t 検定・信頼区間</b> がしっかり効いている。</div>
 
-
 <p class="sec-desc">
     説明変数が1つだけの回帰が<b>単回帰</b>。x が1増えると y は β₁ だけ動く、という線形関係を仮定する。
     <b>最小二乗法</b>は、全ての点との縦方向の差（残差）の二乗和を最小化する直線を選ぶ方法。
@@ -181,8 +176,17 @@ body.topic-page .topic-hub-link a {
   </p>
 
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
-  <details class="formula-accordion"><summary>式の意味</summary><p>β₁ の分子は「x と y が一緒に動く量」、分母は「x のバラつき」。割り算で「x が1増えたら y はいくつ動くか」。</p></details>
+<details class="formula-accordion"><summary>式の意味</summary><p>β₁ の分子は「x と y が一緒に動く量」、分母は「x のバラつき」。割り算で「x が1増えたら y はいくつ動くか」。</p></details>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> 「ランダム20点」を押す → 回帰直線と R² が出る。緑のバー（残差）の大きさを見る。</li>
+<li><b>Step 2:</b> 直線から遠い場所にクリックで <b>外れ値を1つ追加</b> → 直線がグイッと引っ張られる。外れ値の影響力。</li>
+<li><b>Step 3:</b> CLEAR して、ほぼ一直線に <b>5点</b> だけ打つ → R²≈1.0。完全な線形関係。</li>
+<li><b>Step 4:</b> CLEAR して、丸く（円形に）点を配置 → R²≈0。直線では捉えられない関係。</li>
+</ol>
+</div>
 
 <div class="panel" data-autorun="regRandom">
 <div class="controls">
@@ -244,7 +248,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

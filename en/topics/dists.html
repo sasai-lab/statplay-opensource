@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -139,10 +139,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -173,14 +169,23 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">Up to now we've tested means assuming σ is known. In practice you must <b>estimate σ</b> too — and the moment you do, Z morphs into <span class="next">t</span>. Test a variance directly: <b>χ²</b>. Compare two variances: <b>F</b>. All descendants of N(0,1); the name changes based on <b>what you don't know</b>.</div>
 
-
 <p class="sec-desc">
-<b>t, χ², F</b> are all <b style="color:var(--cyan)">derived from the normal</b>. Think of them as "the standard normal, scaled to reflect that we only ever see a sample".<br/>
-    Use them for: <b style="color:var(--cyan)">t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
-    <b style="color:var(--magenta)">χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
+<b>t, χ², F</b> are all <b>derived from the normal</b>. Think of them as "the standard normal, scaled to reflect that we only ever see a sample".<br/>
+    Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
+    <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br/>
 <span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
 </p>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> t-distribution: df=<b>1</b> → extremely heavy tails (Cauchy). df=<b>30</b> → indistinguishable from N(0,1).</li>
+<li><b>Step 2:</b> χ²: df=<b>1</b> → sharply right-skewed. df=<b>30</b> → approaches a bell. Note: mean = df.</li>
+<li><b>Step 3:</b> F: set df1=3, slide df2 from <b>10 to 30</b> → the shape stabilizes as denominator df grows.</li>
+<li><b>Step 4:</b> All three graphs support horizontal drag to change df — more intuitive than the slider.</li>
+</ol>
+</div>
 <div class="dist-stack">
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
@@ -190,10 +195,9 @@ body.topic-page .topic-hub-link a {
 <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br/>
 <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
 
-</div>
+      </div>
 <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
 <input id="tdDf" max="30" min="1" type="range" value="3"/>
-
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
 <canvas aria-busy="true" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
@@ -202,7 +206,7 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 <div class="panel">
-<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
 
 <div class="dist-card">
 <b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br/>
@@ -211,7 +215,6 @@ body.topic-page .topic-hub-link a {
       </div>
 <div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
 <input id="chiDf" max="30" min="1" type="range" value="3"/>
-
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
 <canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
@@ -229,11 +232,9 @@ body.topic-page .topic-hub-link a {
       </div>
 <div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
 <input id="fDf1" max="30" min="1" type="range" value="3"/>
-
 </div>
 <div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
 <input id="fDf2" max="30" min="1" type="range" value="10"/>
-
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag horizontally to change df₁ · df₂ is set via slider</span></div>
 <canvas aria-busy="true" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
@@ -285,7 +286,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

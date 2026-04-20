@@ -9,7 +9,7 @@
 // Canvas -> slider(s) mapping table mirrors what graphDrag.js binds. If you
 // add a new draggable canvas there, append it here too.
 
-(function a11y(){
+export function initA11y(){
   // [canvasId, primarySliderId, secondarySliderId|null, label]
   const MAP = [
     ['snCanvas',       'snK',  null,    'Standard normal: |k| (sigma)'],
@@ -97,4 +97,4 @@
       if(handled){ e.preventDefault(); }
     });
   });
-})();
+}

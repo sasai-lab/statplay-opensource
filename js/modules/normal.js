@@ -1,18 +1,23 @@
 // StatPlay — module: 2) NORMAL
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
-(function normal(){
+export function initNormal(){
   if(!document.getElementById('normalCanvas')) return;
   const canvas=$('normalCanvas');
   const ids=['nMu','nSd','nA','nB'];
   const sched=throttledDraw(()=>draw());
   ids.forEach(id=>{const el=$(id);el.oninput=()=>{$(id+'Val').textContent=(id==='nMu'||id==='nSd'||id==='nA'||id==='nB')?parseFloat(el.value).toFixed(1):el.value;sched();};});
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const mu=parseFloat($('nMu').value),sd=parseFloat($('nSd').value);
     const a=parseFloat($('nA').value),b=parseFloat($('nB').value);
-    const lo=-6,hi=6;const xToPx=x=>(x-lo)/(hi-lo)*w;const pxToX=p=>lo+p/w*(hi-lo);
-    const peak=normPDF(mu,mu,sd);const yToPx=y=>h-20-y/peak*(h-60);
+    const lo = -6, hi = 6;
+    const xToPx = x => (x - lo) / (hi - lo) * w;
+    const pxToX = p => lo + p / w * (hi - lo);
+    const peak = normPDF(mu, mu, sd);
+    const yToPx = y => h - 20 - y / peak * (h - 60);
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-20);ctx.lineTo(w,h-20);ctx.stroke();
     // labels
@@ -69,4 +74,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     ctx.fillText(`N(μ=${mu.toFixed(1)}, σ=${sd.toFixed(1)})   P[${lo2.toFixed(1)} ≤ X ≤ ${hi2.toFixed(1)}] = ${p.toFixed(4)}`,10,20);
   }
   draw();
-})();
+}

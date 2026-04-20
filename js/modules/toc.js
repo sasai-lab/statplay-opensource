@@ -4,7 +4,7 @@
 // side-rail with section links. Highlights the current-visible section using
 // IntersectionObserver. Also draws a thin progress bar at the top of viewport
 // showing overall scroll progress.
-(function toc(){
+export function initToc(){
   const sections = Array.from(document.querySelectorAll('section[id]'))
     .filter(s => s.querySelector('.sec-title'));
   if(!sections.length) return;
@@ -119,4 +119,4 @@
   }
   highlightCurrent();
   window.addEventListener('scroll', highlightCurrent, {passive:true});
-})();
+}

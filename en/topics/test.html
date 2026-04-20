@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -168,27 +164,34 @@ body.topic-page .topic-hub-link a {
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
 
-<h2 class="sec-title">Hypothesis Testing <span class="sec-sub">— <span style="color:var(--magenta)">Reject</span> or Fail to Reject</span></h2>
+<h2 class="sec-title">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
 
 <div class="story-bridge">If a CI expresses uncertainty as a <i>width</i>, <span class="next">hypothesis testing</span> turns it into a <b>yes/no</b> decision. Under the <b>null world</b>, could this data have happened? If it's too unlikely, reject. Same distribution, same σ/n — just a different question.</div>
-
 
 <p class="sec-desc">
     Think of <b>testing as a trial</b>.<br/>
     You start by assuming <code>H₀</code> ("the drug has no effect" = "innocent"). Then if your computed <b>test statistic z</b> lands in the <b>pre-chosen rejection region</b>, you convict — that is, <b>reject H₀</b>.<br/>
     Two panels below: <b>① geometry of z and rejection regions (two-sided, right, left)</b>, and <b>② false alarms (α) vs. misses (β)</b>.
   </p>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.</li>
+<li><b>Step 2:</b> Push z to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
+<li><b>Step 3:</b> Switch to "Right" test → same z=1.96 but rejection area is one-sided; p-value halves.</li>
+<li><b>Step 4:</b> Panel ②: slide effect size δ from <b>0 to 3</b> → the purple (H₁) curve drifts right, power climbs.</li>
+</ol>
+</div>
 <div class="panel">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic &amp; rejection region</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
 <input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
-
 </div>
 <div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
 <input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
-
 </div>
 <div class="ctrl"><label><span>Test type</span></label>
 <select id="tType">
@@ -215,20 +218,18 @@ body.topic-page .topic-hub-link a {
 
 <p class="sec-desc" style="margin-bottom:14px">
       Testing has two kinds of mistakes.<br/>
-<b style="color:var(--magenta)">Type I error α</b>: rejecting H₀ when it's actually true (false alarm).<br/>
-<b style="color:var(--purple)">Type II error β</b>: failing to reject H₀ when H₁ is actually true (a miss).<br/>
-      And <code>1 − β</code> is the <b style="color:var(--green)">power</b>.
+<b>Type I error α</b>: rejecting H₀ when it's actually true (false alarm).<br/>
+<b>Type II error β</b>: failing to reject H₀ when H₁ is actually true (a miss).<br/>
+      And <code>1 − β</code> is the <b>power</b>.
       Change effect size δ or α: the blue (H₀) and purple (H₁) curves fight it out — you can literally see the trade-off "fewer false alarms = more misses".
       <br/><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
 </p>
 <div class="controls">
 <div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
 <input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
-
 </div>
 <div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
 <input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
@@ -284,7 +285,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -172,7 +168,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">The standard normal was fixed at μ=0, σ=1. Real data has <b>any mean and spread</b>. Move <span class="next">μ and σ</span> to wield the normal as a tool. <b>Standardization</b> maps it back to Z, so any normal connects to the standard normal.</div>
 
-
 <p class="sec-desc">
     The <b>general version</b> of the standard normal is <code>N(μ, σ²)</code>.
     <code>μ</code> sets the center, <code>σ</code> sets the spread.
@@ -184,25 +179,31 @@ body.topic-page .topic-hub-link a {
     <br/><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
 </p>
 <div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
-  <details class="formula-accordion"><summary>What this means</summary><p>The general version of φ(z). μ sets the center, σ the spread. Farther from μ → lower density.</p></details>
 
+<details class="formula-accordion"><summary>What this means</summary><p>The general version of φ(z). μ sets the center, σ the spread. Farther from μ → lower density.</p></details>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set μ=170, σ=6, a=165, b=175 → ~59.6%. The share of people within 5cm of the mean height.</li>
+<li><b>Step 2:</b> Shrink σ to <b>2</b> → the pink area for the same [165,175] explodes. Less spread = almost everyone is in range.</li>
+<li><b>Step 3:</b> Slide μ to <b>−2</b> → the whole curve shifts. Same a,b, but area changes dramatically.</li>
+<li><b>Step 4:</b> Drag directly on the graph → the nearest a/b boundary follows your finger.</li>
+</ol>
+</div>
 <div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>μ (mean)</span> = <span class="val" id="nMuVal">0</span></label>
 <input id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
-
 </div>
 <div class="ctrl"><label><span>σ (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
 <input id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
-
 </div>
 <div class="ctrl"><label><span>Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
 <input id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
-
 </div>
 <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
 <input id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="正規分布 N(μ,σ²) の確率密度関数。平均μと標準偏差σをスライダーで変更できる" height="260" id="normalCanvas"></canvas>
@@ -258,7 +259,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

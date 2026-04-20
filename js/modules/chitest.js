@@ -1,7 +1,7 @@
 // StatPlay — module: CHI-SQUARED TEST (click-to-add interaction)
 import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
-(function chitest(){
+export function initChitest(){
   if(!document.getElementById('chitestCanvas')) return;
 
   // --- Click feedback animation system ---
@@ -686,4 +686,4 @@ import { $, lgamma, chi2PDF, resizeCanvas, drawGrid, neonLine, neonFill, themeCo
       elResult.style.color=reject?'var(--magenta)':'var(--cyan)';
     }
   }
-})();
+}

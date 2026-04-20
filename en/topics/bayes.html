@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -168,10 +164,9 @@ body.topic-page .topic-hub-link a {
 
 <div class="sec-tag">P.05 / BAYES THEOREM</div>
 
-<h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The <span style="color:var(--magenta)">Posterior</span> Plot Twist</span></h2>
+<h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
 
 <div class="story-bridge">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
-
 
 <p class="sec-desc">
 <b>"The test has 99% sensitivity &amp; 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br/>
@@ -179,25 +174,32 @@ body.topic-page .topic-hub-link a {
     The trick is that we forget <b>how rare the disease actually is</b> in the first place.
     Play with the three sliders below and watch the "town of 1,000" — you'll <b>see</b> why.
   </p>
-  <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-  <details class="formula-accordion"><summary>What this means</summary><p>"Given B happened, the probability of A" = likelihood × prior ÷ marginal.</p></details>
+<div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
 
+<details class="formula-accordion"><summary>What this means</summary><p>"Given B happened, the probability of A" = likelihood × prior ÷ marginal.</p></details>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
+<li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
+<li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+<li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
+</ol>
+</div>
 <div class="panel">
 <div class="controls">
 <div class="ctrl">
 <label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
 <input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
-
 </div>
 <div class="ctrl">
 <label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
 <input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
-
 </div>
 <div class="ctrl">
 <label><span>Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
 <input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="ベイズ定理の可視化。事前確率と尤度を変更して事後確率の変化を確認できる" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
@@ -256,7 +258,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

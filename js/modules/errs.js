@@ -1,17 +1,22 @@
 // StatPlay — module: TYPE I / II ERROR VISUALIZATION
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
-(function errs(){
+export function initErrs(){
   if(!document.getElementById('errCanvas')) return;
   const canvas=$('errCanvas');
   const dS=$('eD'),aS=$('eA');
   const sched=throttledDraw(()=>draw());
   [dS,aS].forEach(s=>s.oninput=()=>{$('eDVal').textContent=parseFloat(dS.value).toFixed(1);$('eAVal').textContent=parseFloat(aS.value).toFixed(3);sched();});
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
-    const d=parseFloat(dS.value);const a=parseFloat(aS.value);
-    const lo=-4,hi=8;const xToPx=x=>(x-lo)/(hi-lo)*w;
-    const peak=normPDF(0);const yToPx=y=>h-28-y/peak*(h-70);
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
+    const d = parseFloat(dS.value);
+    const a = parseFloat(aS.value);
+    const lo = -4, hi = 8;
+    const xToPx = x => (x - lo) / (hi - lo) * w;
+    const peak = normPDF(0);
+    const yToPx = y => h - 28 - y / peak * (h - 70);
     const crit=zCritical(a*2); // right-tailed critical
     // beta region under H1, up to crit
     const critPx=Math.round(xToPx(crit));
@@ -53,4 +58,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     $('ePower').textContent=(1-beta).toFixed(3);
   }
   draw();
-})();
+}

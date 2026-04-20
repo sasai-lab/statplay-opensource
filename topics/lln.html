@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -171,7 +167,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">CLT で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。CLT が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
 
-
 <p class="sec-desc">
     コイン投げで最初の10回連続で表が出た — これ、別に珍しいことじゃない。
     でも <b>1万回</b>投げたら、表の割合はほぼ <b>ぴったり 0.5</b> に収まる。<br/>
@@ -179,12 +174,20 @@ body.topic-page .topic-hub-link a {
     <b>統計が"なんとなく"じゃなく"証拠"になる理由</b>がここにある。
   </p>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> p=0.5 で ▶ シミュレート → 最初は暴れるが、右に行くほど 0.5 に吸い寄せられる。</li>
+<li><b>Step 2:</b> RESET して、もう一度 ▶ → 序盤の軌道は毎回違うが、終盤は毎回同じ場所に収束する。</li>
+<li><b>Step 3:</b> p を <b>0.8</b> に変えてシミュレート → 赤線が 0.8 に引き寄せられることを確認。</li>
+<li><b>Step 4:</b> p を <b>0.05</b>（レアイベント）に → 最初はゼロ付近で張り付くが、やはり p に収束する。</li>
+</ol>
+</div>
+
 <div class="panel" data-autorun="llnRun">
 <div class="controls">
 <div class="ctrl"><label><span>確率 p</span> = <span class="val" id="llnPVal">0.5</span></label>
 <input id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
-
-
 </div>
 <button class="btn" id="llnRun"><span>▶ シミュレート</span></button>
 <button class="btn magenta" id="llnReset">RESET</button>
@@ -241,7 +244,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

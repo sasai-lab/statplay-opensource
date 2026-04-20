@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -172,14 +168,23 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
 
-
 <p class="sec-desc">
 <b>Slightly outrageous fact</b> — no matter how skewed the base distribution is,
     if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
-    converges on its own to <b style="color:var(--cyan)">a bell (normal)</b>.<br/>
+    converges on its own to <b>a bell (normal)</b>.<br/>
     The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
     so you can watch the bell emerge. Crank <code>n</code> up and the bell tightens (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).
   </p>
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Choose "Exponential" and set n=<b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>
+<li><b>Step 2:</b> Set n to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>
+<li><b>Step 3:</b> Set n to <b>30</b> and run → nearly normal. This is why "n≥30 is enough for the CLT."</li>
+<li><b>Step 4:</b> Switch to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
+</ol>
+</div>
 <div class="panel" data-autorun="cltRun">
 <div class="controls">
 <div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
@@ -191,7 +196,6 @@ body.topic-page .topic-hub-link a {
 </div>
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
 <input id="cltN" max="50" min="1" type="range" value="30"/>
-
 </div>
 <button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
 <button class="btn magenta" id="cltClear">CLEAR</button>
@@ -252,7 +256,7 @@ body.topic-page .topic-hub-link a {
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="en/about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 </div>
 </footer>
 

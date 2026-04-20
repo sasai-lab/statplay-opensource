@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -171,20 +167,28 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">統計のすべてを支配する<b>あの曲線</b>から始めよう——<span class="next">標準正規分布</span>。CLT も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
 
-
 <p class="sec-desc">
     ぶっちゃけ <b>この曲線ひとつ</b>がなければ、
     この先に出てくる検定も、信頼区間も、t分布も、回帰分析も、<b>ぜんぶ成立しない</b>。<br/>
 <b>標準正規分布 <code>N(0, 1)</code></b> は、平均0・標準偏差1のベル型カーブ。
     「どんな正規分布も <code>z = (x − μ) / σ</code> でここに重ねられる」という一行のトリックが、
-    <b style="color:var(--cyan)">100年前の統計学者たち</b>に"紙の表ひとつで世界中の確率を計算する"力を与えた。<br/>
-    つまりこれは、統計の<b style="color:var(--magenta)">ラスボスじゃなくて、起源（オリジン）</b>。
+    <b>100年前の統計学者たち</b>に"紙の表ひとつで世界中の確率を計算する"力を与えた。<br/>
+    つまりこれは、統計の<b>ラスボスじゃなくて、起源（オリジン）</b>。
     ここさえ掴めれば、残りのページは"標準正規の応用"として一気通貫で読める。
   </p>
 
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
-  <details class="formula-accordion"><summary>式の意味</summary><p>z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（確率密度）。</p></details>
+<details class="formula-accordion"><summary>式の意味</summary><p>z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（確率密度）。</p></details>
 
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> k のスライダーを <b>1.0</b> にする → 面積は約68%。これが「±1σ に約7割」。</li>
+<li><b>Step 2:</b> k を <b>1.96</b> にする → 面積は約95%。この数字、検定や信頼区間で何度も出てくる。</li>
+<li><b>Step 3:</b> k を <b>3.0</b> まで広げる → ほぼ100%。外側はもうほとんどない。</li>
+<li><b>Step 4:</b> 下の標準化アニメで ▶ ボタンを押す → どんな正規分布もこの1本に化ける瞬間を見届けよう。</li>
+</ol>
+</div>
 
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
@@ -199,8 +203,6 @@ body.topic-page .topic-hub-link a {
 <div class="controls">
 <div class="ctrl"><label><span>範囲 ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
 <input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
-
-
 </div>
 </div>
 <canvas aria-busy="true" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" id="snCanvas"></canvas>
@@ -214,29 +216,23 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 <div class="panel" data-autorun="snAnim">
-<h3 style="color:var(--magenta);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
 
 <p class="sec-desc" style="margin-bottom:14px">
       身長、IQ、株価の日次リターン、工場の部品誤差 — 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
-      でも <b style="color:var(--cyan)">z = (x − μ) / σ</b> をかませるだけで、全部まとめて<b style="color:var(--magenta)">ピンクのあの曲線</b>にピタッと重なる。<br/>
+      でも <b>z = (x − μ) / σ</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br/>
       スクロールしたら自動で変身していく（もう一度見たい時は ▶ ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
     </p>
 
 <div class="controls">
 <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
 <input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
-
-
 </div>
 <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
 <input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
-
-
 </div>
 <div class="ctrl"><label><span>進度</span> = <span class="val" id="snTVal">0</span></label>
 <input id="snT" max="100" min="0" type="range" value="0"/>
-
-
 </div>
 <button class="btn" id="snAnim"><span>▶ 標準化する</span></button>
 </div>
@@ -255,7 +251,7 @@ body.topic-page .topic-hub-link a {
     ここから先に出てくる <b>中心極限定理</b> は「どんな分布でも平均は標準正規に近づく」という宣言。
     <b>信頼区間</b>も <b>仮説検定</b> も "±1.96σ" というこの曲線の数字を使う。
     <b>t分布・χ²・F分布</b> は標準正規の兄弟姉妹。<b>回帰</b>の係数推定の誤差も標準正規で近似する。<br/>
-    要するに、<b style="color:var(--cyan)">この 1 ページを押さえると、他が全部"応用問題"</b>になる。楽しんで。
+    要するに、<b>この 1 ページを押さえると、他が全部"応用問題"</b>になる。楽しんで。
   </p>
 
 <div class="story-next"><span class="lbl">次は —</span>正規分布そのものを扱う <span class="story-arrow">▸</span> <a href="#normal">P.02 正規分布</a></div>
@@ -300,7 +296,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

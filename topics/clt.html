@@ -36,7 +36,7 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -138,10 +138,6 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
-<!-- KaTeX -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -171,14 +167,23 @@ body.topic-page .topic-hub-link a {
 
 <div class="story-bridge">正規分布の基礎を掴んだ。ここからは<b>推測統計</b>。1つのデータから<b>平均</b>を取ったらどんな形になる？ ——ここで<span class="next">中心極限定理</span>が効いてくる。サイコロでもポアソンでも、出発点は何でもいい。<b>平均</b>にした瞬間、世界はあの正規曲線に吸い込まれていく。</div>
 
-
 <p class="sec-desc">
 <b>ちょっとヤバい事実</b> — もとの分布がどんなに歪んでいても、
     そこから <code>n</code>個 取って平均する操作を繰り返すと、<b>その平均たちの分布</b>は勝手に
-    <b style="color:var(--cyan)">ベル型（正規分布）</b>に化ける。<br/>
+    <b>ベル型（正規分布）</b>に化ける。<br/>
     下のラボでは <b>左＝もとの分布（めっちゃ歪んでいる）</b>、<b>右＝標本平均の分布（正規に化けていく）</b>を並べて見せている。
     <code>n</code> を大きくするほど、右のベルがシュッと細くなる（<span class="term-gloss" title="標準誤差（Standard Error）：標本平均のバラつきの大きさ。σ をサンプル数の平方根で割ったもの">SE</span> = σ/√n）。
   </p>
+
+<div class="guided-steps">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> 元の分布を「指数分布」にして n=<b>1</b> で ▶ → 右に歪んだまま。まだ全然ベルじゃない。</li>
+<li><b>Step 2:</b> n を <b>5</b> にして ▶ → 少しベルっぽくなるが、まだ歪み。</li>
+<li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。これが「n≥30 なら CLT が効く」の根拠。</li>
+<li><b>Step 4:</b> 「二峰分布」に切り替えて同じことをやる → 山2つのやつですらベルに化ける衝撃。</li>
+</ol>
+</div>
 
 <div class="panel" data-autorun="cltRun">
 <div class="controls">
@@ -191,8 +196,6 @@ body.topic-page .topic-hub-link a {
 </div>
 <div class="ctrl"><label><span>サンプルサイズ n</span> = <span class="val" id="cltNVal">30</span></label>
 <input id="cltN" max="50" min="1" type="range" value="30"/>
-
-
 </div>
 <button class="btn" id="cltRun"><span>▶ 3000回 試行</span></button>
 <button class="btn magenta" id="cltClear">CLEAR</button>
@@ -252,7 +255,7 @@ body.topic-page .topic-hub-link a {
 
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="about.html" style="color:var(--cyan);font-size:11px">About</a></div>
 
 </div>
 </footer>

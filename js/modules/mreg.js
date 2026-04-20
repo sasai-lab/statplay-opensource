@@ -1,7 +1,7 @@
 // StatPlay — module: MULTIPLE REGRESSION - 3D plane with drag-to-rotate
 import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
 
-(function mreg(){
+export function initMreg(){
   const canvas=$('mregCanvas');
   if(!canvas) return;
   const b1S=$('mB1'),b2S=$('mB2'),sS=$('mS'),nS=$('mN'),gen=$('mGen');
@@ -57,7 +57,8 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     inv[2][2]=(M[0][0]*M[1][1]-M[0][1]*M[1][0])/det;
     const b=[0,0,0];
     for(let i=0;i<3;i++)for(let j=0;j<3;j++) b[i]+=inv[i][j]*v[j];
-    const ym=v[0]/n;let ssTot=0,ssRes=0;
+    const ym = v[0] / n;
+    let ssTot = 0, ssRes = 0;
     pts.forEach(p=>{const yhat=b[0]+b[1]*p.x1+b[2]*p.x2;ssTot+=(p.y-ym)**2;ssRes+=(p.y-yhat)**2;});
     const R2=1-ssRes/(ssTot||1);
     $('mE0').textContent=b[0].toFixed(3);$('mE1').textContent=b[1].toFixed(3);$('mE2').textContent=b[2].toFixed(3);
@@ -75,7 +76,9 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   }
 
   function draw(){
-    const {ctx,w,h}=resizeCanvas(canvas);drawGrid(ctx,w,h);const tc=themeColors();
+    const {ctx,w,h} = resizeCanvas(canvas);
+    drawGrid(ctx,w,h);
+    const tc = themeColors();
     const axes=[[[-2.5,0,0],[2.5,0,0],tc.cyan,'x1'],
                 [[0,-2.5,0],[0,2.5,0],tc.magenta,'y'],
                 [[0,0,-2.5],[0,0,2.5],tc.yellow,'x2']];
@@ -111,8 +114,10 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
       ctx.beginPath();ctx.arc(pr[0],pr[1],3,0,TAU);ctx.fill();ctx.shadowBlur=0;
     });
     // annotation: regression equation + R²
-    const pts2=getPoints();const b2=fitOLS(pts2);
-    let ss_res=0,ss_tot=0;const ybar=pts2.reduce((s,p)=>s+p.y,0)/pts2.length;
+    const pts2 = getPoints();
+    const b2 = fitOLS(pts2);
+    let ss_res = 0, ss_tot = 0;
+    const ybar = pts2.reduce((s, p) => s + p.y, 0) / pts2.length;
     pts2.forEach(p=>{const yhat=b2[0]+b2[1]*p.x1+b2[2]*p.x2;ss_res+=(p.y-yhat)**2;ss_tot+=(p.y-ybar)**2;});
     const R2=ss_tot>0?1-ss_res/ss_tot:0;
     ctx.fillStyle=tc.cyan;ctx.font='bold 11px "Courier New"';
@@ -157,7 +162,13 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
   [b1S,b2S,sS,nS].forEach(s=>s.addEventListener('pointerdown',stopDemo));
   canvas.addEventListener('pointerdown',stopDemo);
 
-  function wait(ms){return new Promise(r=>{const id=setTimeout(r,ms);const check=()=>{if(demoAbort){clearTimeout(id);r();}};setTimeout(check,50);});}
+  function wait(ms){
+    return new Promise(r => {
+      const id = setTimeout(r, ms);
+      const check = () => { if(demoAbort){ clearTimeout(id); r(); } };
+      setTimeout(check, 50);
+    });
+  }
 
   function animateSlider(slider,target,valId,fmt,duration){
     return new Promise(resolve=>{
@@ -232,4 +243,4 @@ import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, no
     demoRunning=false;
   }
 
-})();
+}
