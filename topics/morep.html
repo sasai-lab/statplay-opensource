@@ -36,33 +36,37 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
-/* Topic page overrides: slim nav, readable centered column */
+/* Topic page overrides: compact header, slim nav */
 body.topic-page #mainNav .nav-links a,
 body.topic-page #mainNav .nav-links button { font-size: 12px; }
 body.topic-page section { padding-top: 0; }
 body.topic-page .topic-breadcrumb {
-  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
-  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  max-width: 1180px; margin: 52px auto 2px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 11px; color: var(--dim);
 }
 body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
 body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
-body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
-body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 6px; opacity: .5; }
+body.topic-page main { padding-top: 0; }
 body.topic-page .topic-h1 {
-  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
-  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  max-width: 1180px; margin: 0 auto 2px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 22px; line-height:1.3;
   color: var(--text); letter-spacing: .02em;
 }
 body.topic-page .topic-lead {
-  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
-  color: var(--dim); font-size: 14px; line-height: 1.85;
+  max-width: 1180px; margin: 0 auto 12px; padding: 0 32px;
+  color: var(--dim); font-size: 12px; line-height: 1.7;
 }
+body.topic-page .sec-tag { margin-top: 0; }
+body.topic-page .sec-title { margin-bottom: 8px; }
+body.topic-page .story-bridge { margin-bottom: 8px; }
+body.topic-page .sec-desc { margin-bottom: 12px; }
 body.topic-page nav.topic-nav {
-  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  max-width: 1180px; margin: 32px auto 48px; padding: 16px 32px;
   display: flex; justify-content: space-between; gap: 16px;
   border-top: 1px dashed rgba(255,255,255,.1);
 }
@@ -74,7 +78,7 @@ body.topic-page nav.topic-nav a {
 body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
 body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
 body.topic-page .topic-hub-link {
-  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  max-width: 1180px; margin: 0 auto 10px; padding: 0 32px;
   font-size: 12px;
 }
 body.topic-page .topic-hub-link a {
@@ -169,17 +173,15 @@ body.topic-page .topic-hub-link a {
 
 <div class="sec-desc">2級で問われる<b>二項分布</b>・<b>ポアソン分布</b>・<b>指数分布</b>の三つ。成功回数・事象発生回数・待ち時間——離散と連続の橋渡しをスライダーで体感する。</div>
 
+<div class="sim-layout">
 <div class="guided-steps">
-<b>実験ガイド — 順番に試してみよう</b>
+<b>実験ガイド — 二項分布</b>
 <ol>
-<li><b>Step 1:</b> 二項分布で n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>
-<li><b>Step 2:</b> 二項の n を <b>50</b>、p を <b>0.06</b> に → np≈3。ポアソン(λ=3) と見比べてみよう。ほぼ同じ形。</li>
-<li><b>Step 3:</b> ポアソンの λ を <b>1→20</b> に上げる → 正規分布のベル型に近づいていく（CLTの予告）。</li>
-<li><b>Step 4:</b> 指数分布の λ を動かす → λ が大きいほど「すぐ起きる」。平均待ち時間 = 1/λ。</li>
+<li><b>Step 1:</b> n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>
+<li><b>Step 2:</b> n を <b>50</b>、p を <b>0.06</b> に → np≈3。下のポアソン(λ=3)とほぼ同じ形になる。</li>
+<li><b>Step 3:</b> n を大きく、p を小さく保つ → ポアソンに収束していく過程が見える。</li>
 </ol>
 </div>
-
-<div class="canvas-bg">
 <div class="panel">
 <div class="panel-title">二項分布 B(n, p)</div>
 <div class="use-case">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
@@ -195,6 +197,17 @@ body.topic-page .topic-hub-link a {
 <div class="sec-bridge">n → ∞ かつ np → λ で、二項はポアソンへ。</div>
 
 </div>
+</div>
+
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — ポアソン分布</b>
+<ol>
+<li><b>Step 1:</b> λ=1 → 0付近に集中した急降下の形。λ=5 → ベル型に近づく。</li>
+<li><b>Step 2:</b> λ を <b>20</b> まで上げる → 正規分布のベル型にそっくり（CLTの予告）。</li>
+<li><b>Step 3:</b> λ が平均でもあり分散でもある。λ=3 なら平均=3、分散=3 を確認。</li>
+</ol>
+</div>
 <div class="panel">
 <div class="panel-title">ポアソン分布 Poisson(λ)</div>
 <div class="use-case">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
@@ -207,6 +220,17 @@ body.topic-page .topic-hub-link a {
 </div>
 <div class="sec-bridge">λ が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
 
+</div>
+</div>
+
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — 指数分布</b>
+<ol>
+<li><b>Step 1:</b> λ=1 → 平均待ち時間1。λ=2 → 平均0.5。λ が大きいほど「すぐ起きる」。</li>
+<li><b>Step 2:</b> λ を 0.1 に → 裾が長い。稀にしか起きない事象の待ち時間。</li>
+<li><b>Step 3:</b> 無記憶性：もう10分待っても、あと何分待つかは今来た人と同じ。</li>
+</ol>
 </div>
 <div class="panel">
 <div class="panel-title">指数分布 Exp(λ) — 待ち時間</div>

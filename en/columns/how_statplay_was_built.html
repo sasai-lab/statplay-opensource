@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="How a non-engineer built an interactive statistics learning tool through AI collaboration. Development experience became the foundation for working with AI." name="description"/>
+<meta content="StatPlay, AI collaboration, Claude, statistics tool, development, non-engineer, interactive, education tool" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>Building a Statistics Tool with AI — The StatPlay Story | StatPlay</title>
+<link href="https://statplay.sasailab.com/en/columns/how_statplay_was_built.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/how_statplay_was_built.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/how_statplay_was_built.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/how_statplay_was_built.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="Building a Statistics Tool with AI — The StatPlay Story" property="og:title"/>
+<meta content="How a non-engineer built an interactive statistics learning tool through AI collaboration. Development experience became the foundation for working with AI." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/how_statplay_was_built.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — Building a Statistics Tool with AI" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Building a Statistics Tool with AI — The StatPlay Story" name="twitter:title"/>
+<meta content="How a non-engineer built an interactive statistics learning tool through AI collaboration." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+.col-section { margin-bottom: 48px; position: relative; z-index: 2; }
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+
+.col-divider { text-align: center; margin: 32px 0; position: relative; }
+.col-divider::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.15), transparent);
+}
+.divider-num {
+  position: relative; background: var(--bg); padding: 0 16px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  letter-spacing: 3px;
+}
+body.theme-light .divider-num { background: #f0f3fa; }
+
+.col-cta {
+  text-align: center; border-top: none; margin-top: 0; padding-top: 0; padding-bottom: 16px;
+}
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.2); background: transparent;
+  color: var(--dim); font-size: 12px; cursor: pointer; transition: .2s;
+  font-family: 'Courier New', monospace;
+}
+.share-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0; transition: width .1s;
+  box-shadow: 0 0 8px rgba(0,243,255,.5);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+.col-signature {
+  font-family: 'Courier New', monospace; font-size: 13px;
+  color: var(--dim); text-align: right; margin-top: 32px; padding-top: 16px;
+  border-top: 1px solid rgba(0,243,255,.1);
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Building a Statistics Tool with AI — The StatPlay Story",
+      "description": "How a non-engineer built an interactive statistics learning tool through AI collaboration. Development experience became the foundation for working with AI.",
+      "author": { "@type": "Person", "name": "Jumpei Sasai" },
+      "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+      "datePublished": "2026-04-19",
+      "mainEntityOfPage": "https://statplay.sasailab.com/en/columns/how_statplay_was_built.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Columns", "item": "https://statplay.sasailab.com/en/columns/" },
+        { "@type": "ListItem", "position": 3, "name": "Building with AI" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../../index.html?lang=en" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../../index.html?lang=en">&larr; StatPlay</a>
+<a href="../../columns/how_statplay_was_built.html" style="font-size:12px">JA</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<div aria-label="Breadcrumb" class="col-breadcrumb">
+<a href="../../index.html?lang=en">StatPlay</a><span class="sep">&rsaquo;</span>
+<span>Columns</span><span class="sep">&rsaquo;</span>
+<span>Building with AI</span>
+</div>
+<main>
+<div class="col-section">
+<h2>// Building a Statistics Tool with AI</h2>
+<p>
+    Let me start by saying: I'm not an engineer.
+  </p>
+<p>
+    I started as a systems engineer at NTT, then worked on games and web services at Square Enix and Drecom. I've built web applications on my own and have touched infrastructure end to end. But I'm fundamentally someone who "has tried to understand what development teams do" &mdash; a direction and management person, not a professional coder.
+  </p>
+<p>
+    I'd never built interactive data visualizations for the frontend professionally. Honestly, I never thought I could build something like this.
+  </p>
+<p>
+    This is the story of how someone like me built a statistics learning tool.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<div class="col-section">
+<h2>// Why I Built It</h2>
+<p>
+    I started studying for the Grade 2 Statistical Examination and opened the textbook. Got stuck on confidence intervals. I could read the text, but it wouldn't click. Kept going back, feeling like I understood, then the fog would return.
+  </p>
+<p>
+    Then I thought: <b style="color:var(--yellow)">"If I could just see it move, I'd get it instantly."</b>
+  </p>
+<p>
+    My years in game and app development taught me that interactive experiences transform concept understanding. Move a slider, watch the graph change, see the numbers shift &mdash; that's what creates the "aha" moment. It reaches people that text and formulas alone can't.
+  </p>
+<p>
+    But such tools didn't exist. At best, a few static diagrams with arrows, explaining "if it moved, it would look like this." Barely anything you could actually interact with.
+  </p>
+<p>
+    So I decided to build one.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<div class="col-section">
+<h2>// Couldn't Have Done It Without AI</h2>
+<p>
+    I didn't have the technical skills to build this. Before, this would have ended at "I want to build it but can't."
+  </p>
+<p>
+    But now there's AI.
+  </p>
+<p>
+    I worked with <b style="color:var(--cyan)">Claude</b> (Anthropic), iterating through conversations &mdash; not just "prompt in, code out," but continuous dialogue about "I want it to move like this," "is this design decision right," "will this break later?"
+  </p>
+<p>
+    As a longtime director, I could articulate requirements and evaluate output reasonably well. The experience of trying to understand technology in development teams carried over directly to AI collaboration.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<div class="col-section">
+<h2>// "Having AI Build It Is Easy" &mdash; Half Wrong</h2>
+<p>
+    A digression, but this needs saying.
+  </p>
+<p>
+    Give AI instructions and code comes out &mdash; looks easy. But in practice, it was a <b style="color:var(--magenta)">constant stream of decisions</b>. Is this design correct? Will this implementation survive future extensions? Is this feature really necessary? What to include, what to cut? You have to make all these calls yourself.
+  </p>
+<p>
+    AI sometimes says "sure, I can do that" and runs in the wrong direction. Evaluating and stopping it is the human's job. Without understanding technical structure to some degree, you can't make these judgments.
+  </p>
+<p>
+    If you can't evaluate whether "ES modules or not" or "add a dependency library or not" is the right call, you'll just accept whatever AI proposes. The result: something that works but breaks easily, works but nobody can touch in three years.
+  </p>
+<p>
+    I managed this because my experience trying to understand technology in development gave me just enough foundation for judgment. Conversely, approaching AI collaboration with zero foundation is harder than it looks.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<div class="col-section">
+<h2>// Where This Tool Sits</h2>
+<p>
+    I have absolutely no intention of replacing textbooks. If you want systematic learning, use textbooks and problem sets. You can't practice calculations here, can't prep for exams.
+  </p>
+<p>
+    But if you open it at that moment when you think <b style="color:var(--yellow)">"I only vaguely understand this concept"</b> &mdash; that's enough.
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">05</span></div>
+<div class="col-section">
+<h2>// Finally</h2>
+<p>
+    The motivation was simple: <b style="color:var(--cyan)">I built it because I wanted it myself.</b>
+  </p>
+<p>
+    And while building it, I discovered the fascination of statistics. Trying to visualize a concept forces you to truly understand it &mdash; building became learning.
+  </p>
+<p>
+    That's why I want to keep learning. Statistics runs deep; there's so much I don't know. I want to keep adding content, making it more intuitive, incorporating more gamification &mdash; building something that makes people feel <b style="color:var(--yellow)">"statistics is actually interesting."</b>
+  </p>
+<p>
+    All code is <a href="https://github.com/sasai-lab/statplay-opensource" style="color:var(--cyan)" target="_blank" rel="noopener">on GitHub</a>, open source. Feel free to modify it. Want to use it in class, embed it in your site, add new concepts &mdash; if it helps education, that makes me very happy. For commercial use, please consult per the <a href="https://creativecommons.org/licenses/by-nc/4.0/" style="color:var(--cyan)" target="_blank" rel="noopener">CC BY-NC 4.0</a> license.
+  </p>
+<p>
+    If it reaches someone who thinks "if only I could see it move, I'd get it" &mdash; that's enough.
+  </p>
+<p>
+    Statistics is actually really fascinating.
+  </p>
+<div class="col-signature">
+    &mdash; Jumpei Sasai / Sasai Lab, 2026.04
+  </div>
+</div>
+<div class="col-cta">
+<p class="cta-headline">Experience statistics by touching.</p>
+<p class="cta-sub">
+    StatPlay's interactive tools let you learn statistics intuitively.<br/>
+    Every concept, one slider at a time.
+  </p>
+<div class="cta-links">
+<a href="../../about.html">&larr; About</a>
+<a href="../../index.html?lang=en">All Topics &rarr;</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F4BE; Save image</button>
+<button class="share-btn" data-kind="url" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F517; Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">Share on &#x1D54F;</button>
+<button class="share-btn" data-kind="native" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F4E4; Share</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS &middot; Canvas 2D &middot; ES Modules<br/>
+<span style="opacity:.7">Zero dependencies &middot; PWA &middot; Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic &middot; 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 &#x2197;</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub &#x2197;</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      &copy; 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay &middot; <span class="mg" id="app-version-en">v1.0.0</span></div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section').forEach(el => obs.observe(el));
+
+  // Share buttons handler
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const kind = btn.dataset.kind;
+      const title = btn.dataset.title || 'StatPlay';
+      const pageUrl = location.href;
+
+      if (kind === 'dl') {
+        // No canvas on this page — capture page as screenshot fallback
+        navigator.clipboard.writeText(pageUrl).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '\u2713 URL Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+      } else if (kind === 'url') {
+        navigator.clipboard.writeText(pageUrl).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '\u2713 Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+      } else if (kind === 'x') {
+        const text = title + ' ' + pageUrl;
+        window.open('https://x.com/intent/post?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+      } else if (kind === 'native') {
+        if (navigator.share) {
+          navigator.share({ title: title, url: pageUrl }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(pageUrl).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '\u2713 Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

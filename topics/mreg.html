@@ -36,33 +36,37 @@
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
-/* Topic page overrides: slim nav, readable centered column */
+/* Topic page overrides: compact header, slim nav */
 body.topic-page #mainNav .nav-links a,
 body.topic-page #mainNav .nav-links button { font-size: 12px; }
 body.topic-page section { padding-top: 0; }
 body.topic-page .topic-breadcrumb {
-  max-width: 1180px; margin: 48px auto 4px; padding: 0 32px;
-  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+  max-width: 1180px; margin: 52px auto 2px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 11px; color: var(--dim);
 }
 body.topic-page .topic-breadcrumb a { color: var(--cyan); text-decoration: none; }
 body.topic-page .topic-breadcrumb a:hover { text-decoration: underline; }
-body.topic-page .topic-breadcrumb .sep { margin: 0 8px; opacity: .5; }
-body.topic-page main { padding-top: 4px; }
+body.topic-page .topic-breadcrumb .sep { margin: 0 6px; opacity: .5; }
+body.topic-page main { padding-top: 0; }
 body.topic-page .topic-h1 {
-  max-width: 1180px; margin: 0 auto 8px; padding: 0 32px;
-  font-family:'Courier New', monospace; font-size: 28px; line-height:1.35;
+  max-width: 1180px; margin: 0 auto 2px; padding: 0 32px;
+  font-family:'Courier New', monospace; font-size: 22px; line-height:1.3;
   color: var(--text); letter-spacing: .02em;
 }
 body.topic-page .topic-lead {
-  max-width: 1180px; margin: 0 auto 32px; padding: 0 32px;
-  color: var(--dim); font-size: 14px; line-height: 1.85;
+  max-width: 1180px; margin: 0 auto 12px; padding: 0 32px;
+  color: var(--dim); font-size: 12px; line-height: 1.7;
 }
+body.topic-page .sec-tag { margin-top: 0; }
+body.topic-page .sec-title { margin-bottom: 8px; }
+body.topic-page .story-bridge { margin-bottom: 8px; }
+body.topic-page .sec-desc { margin-bottom: 12px; }
 body.topic-page nav.topic-nav {
-  max-width: 1180px; margin: 48px auto 80px; padding: 24px 32px;
+  max-width: 1180px; margin: 32px auto 48px; padding: 16px 32px;
   display: flex; justify-content: space-between; gap: 16px;
   border-top: 1px dashed rgba(255,255,255,.1);
 }
@@ -74,7 +78,7 @@ body.topic-page nav.topic-nav a {
 body.topic-page nav.topic-nav a:hover { background: rgba(0,243,255,.08); }
 body.topic-page nav.topic-nav a.empty { visibility: hidden; pointer-events: none; }
 body.topic-page .topic-hub-link {
-  max-width: 1180px; margin: 0 auto 20px; padding: 0 32px;
+  max-width: 1180px; margin: 0 auto 10px; padding: 0 32px;
   font-size: 12px;
 }
 body.topic-page .topic-hub-link a {
@@ -163,63 +167,65 @@ body.topic-page .topic-hub-link a {
   <section class="reveal in" id="mreg">
 
 <div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
-<h2 class="sec-title">重回帰分析 <span class="sec-sub">— 3Dで平面を回す</span></h2>
+<h2 class="sec-title">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
 
-<div class="story-bridge">単回帰は 1 本の線。でも<b>他の影響を取り除きたい</b>——広告費の効果を「曜日や季節を固定したうえで」見たい。それが<span class="next">重回帰</span>。軸が増え、<b>偏回帰係数</b>はまわりを<b>コントロールした上での効き目</b>になる。</div>
+<div class="story-bridge">単回帰の「直線」が、変数を増やすと<b>3D空間の平面</b>になる。ドラッグして回転させてみよう——データ点が平面に沿って並ぶ様子が見える。</div>
 
 <p class="sec-desc">
-    説明変数が<b>2つ以上</b>ある場合が<b>重回帰</b>。
-    x₁（例：勉強時間）と x₂（例：睡眠時間）から y（テスト点）を予測する、のように複数の要因を同時に扱う。
-    回帰"直線"ではなく、回帰<b>平面</b>になる。x₁ を1増やしたときの y への効果（他の変数を固定したうえで）が β₁、x₂ に対するのが β₂。
-    真のパラメータを設定してデータを生成し、推定された係数と真の値を比較しよう。
-    ドラッグでキャンバスを<b>回転</b>すると、平面とデータ点の立体構造が見える。<br/>
-<b>※ 可視化できるのは x₁, x₂ の 2 変数まで（人間の目は 3 次元が限界）。</b>
-    でも数式上は <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> と<b>いくらでも変数を足せる</b>。
-    x₃ 以降は "グラフにできないだけ" で、推定の仕組みはそのまま機能する。
-    実務では 5〜50 変数くらいがごく普通。
+    単回帰では変数が1つで、フィットは直線だった。
+    重回帰は<b>2つ以上の変数</b>を組み合わせて予測する——フィットは<b>平面</b>になる。
+    3Dグラフをぐるぐる回して、平面がデータを捉える様子を体感しよう。
   </p>
 
-<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
-<details class="formula-accordion"><summary>式の意味</summary><p>β₁ は「x₂ を固定したうえで x₁ が1増えたときの y の変化量」。単回帰の直線が平面に拡張されたもの。</p></details>
-
+<div class="mreg-layout">
 <div class="guided-steps">
 <b>実験ガイド — 順番に試してみよう</b>
 <ol>
-<li><b>Step 1:</b> ノイズ σ を <b>0</b> にして再サンプリング → 推定値と真の値がぴったり一致することを確認。</li>
-<li><b>Step 2:</b> σ を <b>0.5</b> に上げる → 推定値が真の値からズレ始める。何度か再サンプリングして、推定値のバラつきを見よう。</li>
-<li><b>Step 3:</b> n を <b>10</b> にして再サンプリング → 推定が不安定。n を <b>200</b> にすると安定する。これが大数の法則。</li>
-<li><b>Step 4:</b> β₁ を <b>0</b> にする → x₁ は y に影響しない。推定 β̂₁ が 0 に近いか確認しよう。</li>
+<li><b>Step 1:</b> 3Dグラフをドラッグして回転させてみよう。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
+<li><b>Step 2:</b> 各点から平面への破線が残差（予測のズレ）。短いほど予測が当たっている。</li>
+<li><b>Step 3:</b> 勉強時間のスライダーを動かす → 大きな●が平面上を移動する。これが「予測値」。</li>
+<li><b>Step 4:</b> 睡眠時間も動かしてみよう → 平面上の別の方向に動く。2つの変数を組み合わせて予測できる。</li>
 </ol>
 </div>
 
 <div class="panel">
 <div class="controls">
-<div class="ctrl"><label><span>真の β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
-<input id="mB1" max="1.5" min="-1.5" step="0.05" type="range" value="0.8"/>
+<div class="ctrl"><label>勉強時間 x₁ = <span class="val" id="mStudyVal">5.0</span>時間</label>
+<input id="mStudy" max="9" min="1" step="0.1" type="range" value="5"/>
 </div>
-<div class="ctrl"><label><span>真の β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
-<input id="mB2" max="1.5" min="-1.5" step="0.05" type="range" value="-0.5"/>
+<div class="ctrl"><label>睡眠時間 x₂ = <span class="val" id="mSleepVal">7.0</span>時間</label>
+<input id="mSleep" max="10" min="4" step="0.1" type="range" value="7"/>
 </div>
-<div class="ctrl"><label><span>ノイズ σ</span> = <span class="val" id="mSVal">0.50</span></label>
-<input id="mS" max="2" min="0" step="0.05" type="range" value="0.5"/>
+<button class="btn" id="mGen"><span>↺ 再サンプリング</span></button>
 </div>
-<div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
-<input id="mN" max="200" min="10" type="range" value="40"/>
-</div>
-<button class="btn" id="mGen"><span>↺ リセット</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span>↔↕ ドラッグで回転（軸: x₁ · x₂ · y）</span></span>
-</div>
-<canvas aria-busy="true" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" id="mregCanvas" style="cursor:grab"></canvas>
+<canvas id="mregCanvas" aria-label="3D回帰平面の散布図" height="500" aria-busy="true"></canvas>
 <div class="info">
-<div><span>推定 β̂₀</span><strong id="mE0">—</strong></div>
-<div><span>推定 β̂₁</span><strong id="mE1">—</strong></div>
-<div><span>推定 β̂₂</span><strong id="mE2">—</strong></div>
+<div><span id="mPredLabel"></span><strong id="mPredBig">—</strong></div>
+<div><span>β̂₁（勉強1hあたり）</span><strong id="mCoefStudy">—</strong></div>
+<div><span>β̂₂（睡眠1hあたり）</span><strong id="mCoefSleep">—</strong></div>
 <div>R²<strong id="mR2">—</strong></div>
 </div>
+<div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="重回帰分析"><span>💾 画像保存</span></button>
 </div>
 </div>
+</div>
+
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+<details class="formula-accordion"><summary>式の意味を読む</summary>
+<p><b>各パーツの役割</b><br/>
+・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br/>
+・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
+・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</p>
+<p><b>単回帰との違い</b><br/>
+・単回帰の傾きは他の変数を考慮しない「粗い効果」<br/>
+・重回帰の β₁ は x₂ の影響を差し引いた「純粋な x₁ の効果」（偏回帰係数）<br/>
+・例：勉強時間と睡眠時間が相関していても、重回帰ならそれぞれの「独立した貢献」を分離できる</p>
+<p><b>幾何的イメージ</b><br/>
+・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
+</details>
+
 </section>
 </main>
 

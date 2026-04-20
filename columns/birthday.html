@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="23人いれば、誕生日が被る確率は50%を超える。直感を裏切る「誕生日のパラドックス」をシミュレーションで体感しよう。" name="description"/>
+<meta content="誕生日のパラドックス, 誕生日 確率, 23人, 確率, 統計, 余事象, birthday paradox" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>誕生日のパラドックス — 23人で50%超え？ | StatPlay</title>
+<link href="https://statplay.sasailab.com/columns/birthday.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/birthday.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/birthday.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/birthday.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="23人で誕生日が被る確率、知ってる？" property="og:title"/>
+<meta content="23人いれば50%超え。直感を裏切る「誕生日のパラドックス」をインタラクティブに体感。" property="og:description"/>
+<meta content="https://statplay.sasailab.com/columns/birthday.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — 誕生日のパラドックス" property="og:image:alt"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="23人で誕生日が被る確率、知ってる？" name="twitter:title"/>
+<meta content="23人いれば50%超え。直感を裏切る「誕生日のパラドックス」をインタラクティブに体感。" name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ── Cinematic hero ── */
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 720px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-content h1 {
+  font-family: 'Courier New', monospace; font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.4; color: var(--text); margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7; opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .6s;
+}
+.hero-content .hook-sub strong { color: var(--magenta); }
+.hero-impact {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(56px, 14vw, 120px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -3px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2.5);
+  margin-bottom: 16px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+body.theme-light .hero-impact {
+  text-shadow: 0 0 20px rgba(180,140,0,.3);
+}
+.hero-scroll {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  opacity: 0; animation: heroFadeIn 1s ease 2.5s forwards;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  cursor: pointer; z-index: 3; border: none; background: none;
+  padding: 8px 16px; transition: color .2s;
+}
+.hero-scroll:hover { color: var(--cyan); }
+.hero-scroll:hover .chevron { border-color: var(--cyan); }
+.hero-scroll .chevron {
+  width: 20px; height: 20px; border-right: 2px solid var(--cyan);
+  border-bottom: 2px solid var(--cyan);
+  transform: rotate(45deg); animation: heroChevron 1.5s ease-in-out infinite;
+}
+@keyframes heroChevron {
+  0%, 100% { transform: rotate(45deg) translateY(0); opacity: .5; }
+  50% { transform: rotate(45deg) translateY(6px); opacity: 1; }
+}
+@keyframes heroFadeIn { to { opacity: 1; } }
+.article-meta {
+  display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  letter-spacing: 1px; margin-top: 16px;
+}
+
+/* Section styling */
+.col-section {
+  margin-bottom: 48px; position: relative; z-index: 2;
+}
+.col-section h2 {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--cyan); margin-bottom: 16px; letter-spacing: 1px;
+}
+.col-section p, .col-section li {
+  color: var(--text); font-size: 15px; line-height: 1.85; margin-bottom: 12px;
+}
+
+/* Divider */
+.col-divider {
+  text-align: center; margin: 32px 0; position: relative;
+}
+.col-divider::before {
+  content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.15), transparent);
+}
+.divider-num {
+  position: relative; background: var(--bg); padding: 0 16px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+  letter-spacing: 3px;
+}
+body.theme-light .divider-num { background: #f0f3fa; }
+
+/* Quiz (intuition) */
+.guess-wrap {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  margin: 28px 0;
+}
+.guess-wrap input[type="range"] { flex: 1; min-width: 120px; height: 32px; }
+.guess-val {
+  font-family: 'Courier New', monospace; font-size: 36px; font-weight: bold;
+  color: var(--yellow); min-width: 60px; text-align: center;
+}
+.guess-unit { color: var(--dim); font-size: 14px; }
+.guess-btn {
+  padding: 14px 36px; border: 1px solid var(--cyan); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 16px;
+  cursor: pointer; transition: .2s; letter-spacing: 1px;
+}
+.guess-btn:hover { background: rgba(0,243,255,.08); }
+.guess-reveal {
+  display: none; margin-top: 20px; padding: 20px;
+  border: 1px solid rgba(255,230,0,.25); background: rgba(255,230,0,.03);
+  font-size: 15px; line-height: 1.8; color: var(--text);
+}
+
+/* Step sim */
+.step-controls {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.step-btn {
+  padding: 8px 18px; border: 1px solid rgba(0,243,255,.3); background: transparent;
+  color: var(--cyan); font-family: 'Courier New', monospace; font-size: 13px;
+  cursor: pointer; transition: .2s;
+}
+.step-btn:hover { background: rgba(0,243,255,.08); }
+.step-status {
+  font-family: 'Courier New', monospace; font-size: 13px;
+  color: var(--dim); margin-left: 8px;
+}
+#bdayCalendar { width: 100%; display: block; }
+
+/* Pair network */
+#pairCanvas { width: 100%; display: block; }
+.pair-result {
+  text-align: center; margin: 12px 0;
+  font-family: 'Courier New', monospace;
+}
+.pair-result .pair-label { font-size: 11px; color: var(--dim); display: block; }
+.pair-result .pair-val { font-size: 32px; font-weight: bold; color: var(--yellow); }
+
+/* Curve */
+#bdayCurve { width: 100%; display: block; }
+.sim-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 16px 0; padding: 16px;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  font-family: 'Courier New', monospace;
+}
+.sim-result .sim-item { text-align: center; }
+.sim-result .sim-label { font-size: 11px; color: var(--dim); display: block; margin-bottom: 4px; }
+.sim-result .sim-val { font-size: 22px; font-weight: bold; color: var(--cyan); }
+.sim-result .sim-val.highlight { color: var(--yellow); font-size: 28px; }
+
+.sim-ctrl { margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.sim-ctrl label {
+  font-family: 'Courier New', monospace; font-size: 13px; color: var(--dim);
+  min-width: 80px;
+}
+.sim-ctrl input[type="range"] { flex: 1; min-width: 100px; }
+.sim-ctrl .val {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); min-width: 36px; text-align: right;
+}
+
+/* Graph share bar */
+.graph-share-bar {
+  display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap;
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid rgba(0,243,255,.08);
+}
+.graph-share-bar .share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.25);
+  background: transparent; color: var(--cyan);
+  font-family: 'Courier New', monospace; font-size: 12px;
+  cursor: pointer; transition: .2s; white-space: nowrap;
+}
+.graph-share-bar .share-btn:hover {
+  background: rgba(0,243,255,.08); border-color: rgba(0,243,255,.5);
+}
+
+/* Mass simulation */
+#bdayHistCanvas { width: 100%; display: block; }
+.mass-sim-btn {
+  display: block; margin: 16px auto; padding: 12px 32px;
+  border: 1px solid var(--magenta); background: transparent;
+  color: var(--magenta); font-family: 'Courier New', monospace; font-size: 14px;
+  cursor: pointer; transition: .2s; letter-spacing: 1px;
+}
+.mass-sim-btn:hover { background: rgba(255,43,214,.08); }
+.mass-result {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+  margin: 12px 0; font-family: 'Courier New', monospace;
+}
+.mass-result .sim-label { font-size: 11px; color: var(--dim); display: block; }
+.mass-result .sim-val { font-size: 18px; font-weight: bold; color: var(--cyan); }
+
+/* Formula */
+.col-formula {
+  text-align: center; font-family: 'Courier New', monospace;
+  font-size: clamp(13px, 2.5vw, 16px); color: var(--yellow); padding: 20px;
+  border: 1px dashed rgba(255,230,0,.2); margin: 16px 0 24px;
+  background: rgba(255,230,0,.03); line-height: 1.8;
+}
+
+/* Takeaway */
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2); background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul { list-style: none; padding: 0; }
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before {
+  content: '\25B8'; position: absolute; left: 0; color: var(--yellow);
+}
+
+/* FAQ accordion */
+.faq-item {
+  border-bottom: 1px solid rgba(0,243,255,.1);
+}
+.faq-q {
+  display: flex; align-items: center; width: 100%;
+  padding: 16px 0; background: none; border: none;
+  color: var(--text); font-size: 15px; font-weight: bold;
+  font-family: inherit; cursor: pointer; text-align: left;
+  gap: 12px; transition: color .2s;
+}
+.faq-q::before {
+  content: '+'; flex-shrink: 0;
+  width: 24px; height: 24px; display: flex;
+  align-items: center; justify-content: center;
+  border: 1px solid rgba(0,243,255,.3);
+  font-family: 'Courier New', monospace; font-size: 16px;
+  color: var(--cyan); transition: .2s;
+}
+.faq-item.open .faq-q::before {
+  content: '-'; background: rgba(0,243,255,.1);
+  transform: rotate(180deg);
+}
+.faq-q:hover { color: var(--cyan); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease, padding .35s ease;
+  padding: 0 0 0 36px;
+}
+.faq-item.open .faq-a {
+  max-height: 300px; padding: 0 0 16px 36px;
+}
+.faq-a p {
+  color: var(--dim); font-size: 14px; line-height: 1.8; margin-bottom: 8px;
+}
+.faq-a p:last-child { margin-bottom: 0; }
+
+/* CTA */
+.col-cta {
+  text-align: center; border-top: none; margin-top: 0; padding-top: 0; padding-bottom: 16px;
+}
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.share-btn {
+  padding: 6px 14px; border: 1px solid rgba(0,243,255,.2); background: transparent;
+  color: var(--dim); font-size: 12px; cursor: pointer; transition: .2s;
+  font-family: 'Courier New', monospace;
+}
+.share-btn:hover { color: var(--cyan); border-color: var(--cyan); }
+
+/* Progress bar */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 2px; z-index: 9999;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0; transition: width .1s;
+  box-shadow: 0 0 8px rgba(0,243,255,.5);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+/* Light theme */
+body.theme-light .hero-cinema { background: #f0f3fa; }
+body.theme-light .hero-content { text-shadow: none; }
+body.theme-light .hero-content h1 { color: #1a2030; }
+body.theme-light .hero-content h1 em { color: #b08800; text-shadow: none; }
+body.theme-light .hero-impact { color: #b08800; text-shadow: 0 0 20px rgba(180,140,0,.3); }
+body.theme-light .hero-content .hook-sub { color: #4a5568; }
+body.theme-light .hero-content .hook-sub strong { color: #9b1d7a; }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+body.theme-light .hero-scroll { color: #4a5568; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "誕生日のパラドックス — 23人で50%超え？",
+      "description": "23人いれば、誕生日が被る確率は50%を超える。直感を裏切る「誕生日のパラドックス」をシミュレーションで体感しよう。",
+      "author": { "@type": "Organization", "name": "Sasai Lab" },
+      "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+      "datePublished": "2026-04-19",
+      "mainEntityOfPage": "https://statplay.sasailab.com/columns/birthday.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "誕生日のパラドックスとは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "23人の集団で、少なくとも2人の誕生日が一致する確率が50%を超えるという、直感に反する確率の問題。「パラドックス」と呼ばれるが論理的矛盾ではなく、人間の直感が確率を正しく見積もれないことを示している。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "なぜ23人で50%を超えるの？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "23人いると比較するペア数は23×22÷2＝253組になる。人は「自分と誰かが被る確率」を考えがちだが、実際は全ペアのどれか1組でも被ればよいので、ペア数の爆発が確率を押し上げる。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "70人いたら確率はどのくらい？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "70人なら誕生日が被る確率は99.9%を超える。57人で99%、23人で約50.7%。人数が増えるにつれ確率は急激に上昇する。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "これは統計検定に出る？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "誕生日のパラドックスそのものは出題されにくいが、根底にある「余事象」の考え方（P(A) = 1 − P(Aの補事象)）や独立事象の積は統計検定2級の頻出テーマ。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+        { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://statplay.sasailab.com/columns/" },
+        { "@type": "ListItem", "position": 3, "name": "誕生日のパラドックス" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../index.html">← StatPlay</a>
+<a href="../en/columns/birthday.html" style="font-size:12px">EN</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ 1. CINEMATIC HERO ═══ -->
+<div class="hero-cinema" id="heroCinema">
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-impact" id="heroImpact">23</div>
+<h1 id="heroTitle">たった23人の教室で、<br/>誕生日が被る確率は<br/><em>50%を超える。</em></h1>
+<p class="hook-sub" id="heroSub">
+      ほとんどの人は「183人くらい？」と答える。<br/>
+      正解はその<strong>8分の1</strong>。直感がどれだけ外れるか、体感しよう。
+    </p>
+<div class="article-meta" id="heroMeta" style="opacity:0">
+<span>3分で読める</span>
+<span>インタラクティブ解説</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="コンテンツへスクロール" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px">
+<a href="../index.html">StatPlay</a><span class="sep">›</span>
+<span>コラム</span><span class="sep">›</span>
+<span>誕生日のパラドックス</span>
+</div>
+<main>
+<!-- ═══ INTRO ═══ -->
+<div class="col-section">
+<p>
+    「何人集まれば、誕生日が被る人が出ると思う？」<br/>
+    365日あるのだから、かなりの人数が必要——そう感じるのが自然だ。<br/>
+    でも確率は、<b style="color:var(--cyan)">直感とはまったく違う答え</b>を出す。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<!-- ═══ 01 INTUITION TEST ═══ -->
+<div class="col-section">
+<h2>// まず予想してみよう</h2>
+<p>50%の確率で誕生日が被るには、<b style="color:var(--yellow)">最低何人</b>必要だと思う？</p>
+<div class="guess-wrap">
+<input id="guessSlider" max="200" min="2" step="1" type="range" value="50"/>
+<span class="guess-val" id="guessVal">50</span>
+<span class="guess-unit">人</span>
+</div>
+<button class="guess-btn" id="guessBtn" type="button">回答する</button>
+<div class="guess-reveal" id="guessReveal">
+<p id="guessMsg"></p>
+<p style="margin-top:8px;color:var(--dim);font-size:13px">なぜこうなるのか？ 下のシミュレーションで体感してみよう。</p>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<!-- ═══ 02 STEP-BY-STEP CALENDAR ═══ -->
+<div class="col-section" id="step-sim">
+<h2>// 体感シミュレーター</h2>
+<p>1人ずつ部屋に入れてみよう。365日のカレンダーに誕生日が灯る。<br/><b style="color:var(--magenta)">2つ光った日</b>があれば、それが「一致」だ。</p>
+<div class="step-controls">
+<button class="step-btn" id="bdayAuto" type="button">▶ スタート</button>
+<button class="step-btn" id="bdayReset" type="button">↺ リセット</button>
+<span style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin-left:auto"><span id="bdayStepCount">0</span> 人</span>
+</div>
+<canvas aria-label="365日カレンダー。人を追加するごとに誕生日がハイライトされ、一致するとマゼンタに光る" id="bdayCalendar"></canvas>
+<p class="step-status" id="bdayStepStatus">スクロールで自動スタート</p>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayCalendar" data-title="誕生日カレンダー">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="bdayCalendar" data-title="誕生日カレンダー">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="bdayCalendar" data-title="誕生日カレンダー">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="bdayCalendar" data-title="誕生日カレンダー">📤 シェア</button>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<!-- ═══ 03 PAIR EXPLOSION ═══ -->
+<div class="col-section" id="pairs">
+<h2>// なぜ？ — ペアの爆発</h2>
+<p>
+    直感が外れる原因はシンプル。<br/>
+    人は「<b>自分と誰か</b>」が被る確率を考えるが、実際は「<b style="color:var(--cyan)">誰かと誰か</b>」の全ペアが対象。<br/>
+<b style="color:var(--yellow)">人数を増やして</b>、線（＝ペア）がどれだけ爆発するか見てみよう。
+  </p>
+<div class="sim-ctrl">
+<label>人数 n</label>
+<input id="pairN" max="20" min="2" step="1" type="range" value="5"/>
+<span class="val" id="pairNVal">5</span>
+</div>
+<canvas aria-label="n人のペア数を視覚化するネットワーク図。ノード間の線がペアを表す" id="pairCanvas"></canvas>
+<div class="pair-result">
+<span class="pair-label">ペア数 = n(n−1)/2</span>
+<span class="pair-val" id="pairCount">10</span>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="pairCanvas" data-title="ペアの爆発">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="pairCanvas" data-title="ペアの爆発">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="pairCanvas" data-title="ペアの爆発">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="pairCanvas" data-title="ペアの爆発">📤 シェア</button>
+</div>
+<div class="col-formula">
+    23人 → 23 × 22 ÷ 2 = <b>253組</b><br/>
+<span style="font-size:13px;color:var(--dim)">253回の「被らないチャンス」が積み重なれば、1回くらい当たるのは自然だ</span>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<!-- ═══ 04 PROBABILITY CURVE ═══ -->
+<div class="col-section" id="curve">
+<h2>// 確率曲線</h2>
+<p>横軸が人数、縦軸が「少なくとも1組一致する確率」。<b style="color:var(--yellow)">23人で50%ライン</b>を超える瞬間を確認しよう。</p>
+<div class="sim-ctrl">
+<label>人数 n</label>
+<input id="bdayN" max="50" min="1" step="1" type="range" value="23"/>
+<span class="val" id="bdayNVal">23</span>
+</div>
+<canvas aria-label="人数nに対する誕生日一致確率のグラフ。23人で50%を超える" id="bdayCurve"></canvas>
+<div class="sim-result">
+<div class="sim-item">
+<span class="sim-label">人数</span>
+<span class="sim-val highlight" id="bdayNDisp">23</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">一致確率</span>
+<span class="sim-val" id="bdayProb">—</span><span style="color:var(--dim);font-size:14px">%</span>
+</div>
+<div class="sim-item">
+<span class="sim-label">体感</span>
+<span class="sim-val" id="bdayOdds" style="font-size:14px">—</span>
+</div>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="確率曲線">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="確率曲線">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="bdayCurve" data-title="確率曲線">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="確率曲線">📤 シェア</button>
+</div>
+<div class="col-formula">
+    P(一致) = 1 − <span style="font-size:14px">(364/365) × (363/365) × … × ((365−n+1)/365)</span><br/>
+<span style="font-size:13px;color:var(--dim)">「全員バラバラの確率」を1から引く。余事象の考え方そのもの</span>
+</div>
+</div>
+<div class="col-divider"><span class="divider-num">05</span></div>
+<!-- ═══ 05 MASS SIMULATION ═══ -->
+<div class="col-section" id="mass-sim">
+<h2>// 1000回実験</h2>
+<p>理論値ではなく、実際に1000回シミュレーションしてみよう。<br/>「初めて誕生日が被った人数」のヒストグラムが描かれる。</p>
+<button class="mass-sim-btn" id="bdaySim" type="button">▶ 1000回シミュレーション実行</button>
+<canvas aria-label="1000回シミュレーションの結果ヒストグラム。初めて誕生日が一致した人数の分布" id="bdayHistCanvas"></canvas>
+<div class="mass-result">
+<div>
+<span class="sim-label">試行回数</span>
+<span class="sim-val" id="bdaySimCount">0</span>
+</div>
+<div>
+<span class="sim-label">平均一致人数</span>
+<span class="sim-val" id="bdaySimAvg">—</span>
+</div>
+</div>
+<div class="graph-share-bar">
+<button class="share-btn" data-kind="dl" data-share="bdayHistCanvas" data-title="1000回実験">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="bdayHistCanvas" data-title="1000回実験">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="bdayHistCanvas" data-title="1000回実験">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="bdayHistCanvas" data-title="1000回実験">📤 シェア</button>
+</div>
+</div>
+<!-- ═══ TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li>23人で誕生日が被る確率は<b style="color:var(--yellow)">50.7%</b>。57人なら<b style="color:var(--yellow)">99%超</b></li>
+<li>直感が外れる理由は<b style="color:var(--cyan)">ペア数の爆発</b>——23人いれば比較ペアは253組にもなる</li>
+<li>計算の核は<b style="color:var(--magenta)">余事象</b>：「全員バラバラの確率」を求め、1から引く</li>
+<li>「自分と誰か」ではなく「<b style="color:var(--cyan)">誰かと誰か</b>」——視点を切り替えるだけで確率は激変する</li>
+</ul>
+</div>
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-section">
+<h2>// よくある質問</h2>
+<div class="faq-item">
+<button class="faq-q" type="button">誕生日のパラドックスとは？</button>
+<div class="faq-a">
+<p>23人の集団で、少なくとも2人の誕生日が一致する確率が50%を超えるという、直感に反する確率の問題。「パラドックス」と呼ばれるが論理的矛盾ではなく、<b style="color:var(--cyan)">人間の直感が確率を正しく見積もれないこと</b>を示している。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">なぜ23人で50%を超えるの？</button>
+<div class="faq-a">
+<p>23人いると比較するペア数は 23×22÷2 ＝ <b style="color:var(--yellow)">253組</b>。人は「自分と誰かが被る確率」を考えがちだが、実際は全ペアのどれか1組でも被ればよいので、ペア数の爆発が確率を押し上げる。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">70人いたら確率はどのくらい？</button>
+<div class="faq-a">
+<p><b style="color:var(--magenta)">99.9%を超える。</b>57人で99%、40人で89%。人数が増えるにつれ確率は急激に上昇する。上の確率曲線スライダーで確認してみよう。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">統計検定に出る？</button>
+<div class="faq-a">
+<p>誕生日のパラドックスそのものは出題されにくいが、根底にある「<b style="color:var(--cyan)">余事象</b>」の考え方 P(A) = 1 − P(Aᶜ) や、独立事象の確率の積は統計検定2級の頻出テーマ。この問題を理解していれば、確率計算の応用力が身につく。</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">「余事象」を使いこなせれば、確率は怖くない。</p>
+<p class="cta-sub">
+    このページで使った確率の考え方を、もっと深く掴んでみよう。<br/>
+    StatPlay のインタラクティブ教材で、統計を「触って」理解できる。
+  </p>
+<div class="cta-links">
+<a href="../topics/prob.html">確率の基本法則 →</a>
+<a href="../topics/stdnorm.html">標準正規分布を掴む →</a>
+<a href="../index.html">全トピック一覧 →</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">💾 画像保存</button>
+<button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">📤 シェア</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version">v1.0.0</span></div>
+</div>
+</footer>
+<script src="../js/modules/birthday.js" type="module"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // Scroll button
+  document.getElementById('heroScroll')?.addEventListener('click', () => {
+    document.querySelector('main')?.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section, .takeaway').forEach(el => obs.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => { q.parentElement.classList.toggle('open'); });
+  });
+
+  // Hero animation: 365 dots, 23rd causes collision
+  const hc = document.getElementById('heroCanvas');
+  if (hc) {
+    const TAU = Math.PI * 2;
+    const dpr = window.devicePixelRatio || 1;
+    let w, h, ctx;
+    const lt = () => document.body.classList.contains('theme-light');
+
+    function sizeCanvas() {
+      const rect = hc.parentElement.getBoundingClientRect();
+      hc.width = rect.width * dpr;
+      hc.height = rect.height * dpr;
+      w = rect.width; h = rect.height;
+      ctx = hc.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const dots = [];
+    const cols = 19, rows = 20;
+    let dotW, dotH, ox, oy;
+
+    function layoutDots() {
+      dotW = Math.min(18, (w * 0.7) / cols);
+      dotH = Math.min(14, (h * 0.5) / rows);
+      ox = (w - cols * dotW) / 2;
+      oy = (h - rows * dotH) / 2 + 60;
+      dots.length = 0;
+      for (let d = 0; d < 365; d++) {
+        dots.push({
+          x: ox + (d % cols) * dotW + dotW / 2,
+          y: oy + Math.floor(d / cols) * dotH + dotH / 2,
+          r: Math.min(dotW, dotH) * 0.25,
+          lit: false, match: false
+        });
+      }
+    }
+
+    // pick 23 random unique days, with one duplicate
+    let litOrder = [];
+    function pickDays() {
+      litOrder = [];
+      const used = new Set();
+      const days = [];
+      for (let i = 0; i < 22; i++) {
+        let d;
+        do { d = Math.floor(Math.random() * 365); } while (used.has(d));
+        used.add(d);
+        days.push(d);
+      }
+      // 23rd duplicates a random earlier one
+      const dupIdx = Math.floor(Math.random() * days.length);
+      days.push(days[dupIdx]);
+      litOrder = days;
+    }
+
+    let animStart = null;
+    let animDone = false;
+    const dotInterval = 50; // ms per dot — fast start
+    const collisionTime = 23 * dotInterval;
+
+    function drawFrame(ts) {
+      if (!animStart) animStart = ts;
+      const elapsed = ts - animStart;
+      sizeCanvas();
+      layoutDots();
+      ctx.clearRect(0, 0, w, h);
+
+      // dim grid of all 365 dots
+      dots.forEach(d => {
+        ctx.fillStyle = lt() ? 'rgba(0,60,90,.15)' : 'rgba(0,243,255,.03)';
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, TAU);
+        ctx.fill();
+      });
+
+      // light up dots
+      const litCount = Math.min(23, Math.floor(elapsed / dotInterval));
+      const matchIdx = litOrder.length > 0 ? litOrder[litOrder.length - 1] : -1;
+      const matchSrcIdx = litOrder.length > 0 ? litOrder.indexOf(matchIdx) : -1;
+
+      for (let i = 0; i < litCount; i++) {
+        const dayIdx = litOrder[i];
+        if (dayIdx === undefined) continue;
+        const d = dots[dayIdx];
+        const isMatch = (i === 22) || (i === matchSrcIdx && litCount >= 23);
+
+        ctx.save();
+        if (isMatch && litCount >= 23) {
+          ctx.fillStyle = lt() ? '#9b1d7a' : '#ff2bd6';
+          ctx.shadowBlur = lt() ? 6 : 16;
+          ctx.shadowColor = '#ff2bd6';
+          ctx.beginPath();
+          const pulseR = d.r * (1.5 + 0.3 * Math.sin(elapsed * 0.005));
+          ctx.arc(d.x, d.y, pulseR, 0, TAU);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = lt() ? 'rgba(0,80,110,.7)' : 'rgba(0,243,255,.5)';
+          ctx.shadowBlur = lt() ? 2 : 6;
+          ctx.shadowColor = 'rgba(0,243,255,.5)';
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, d.r * 1.2, 0, TAU);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+
+      // collision ripple
+      if (litCount >= 23 && matchIdx >= 0) {
+        const rippleElapsed = elapsed - collisionTime;
+        if (rippleElapsed > 0 && rippleElapsed < 1500) {
+          const d = dots[matchIdx];
+          const rippleR = rippleElapsed * 0.15;
+          const rippleA = Math.max(0, 1 - rippleElapsed / 1500);
+          ctx.save();
+          ctx.strokeStyle = lt() ? `rgba(180,0,120,${rippleA * 0.4})` : `rgba(255,43,214,${rippleA * 0.5})`;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(d.x, d.y, rippleR, 0, TAU);
+          ctx.stroke();
+          ctx.restore();
+        }
+      }
+
+      // hero text animation
+      const titleP = Math.max(0, Math.min(1, (elapsed - collisionTime - 300) / 600));
+      const impactP = Math.max(0, Math.min(1, (elapsed - collisionTime) / 400));
+      const subP = Math.max(0, Math.min(1, (elapsed - collisionTime - 800) / 600));
+      const metaP = Math.max(0, Math.min(1, (elapsed - collisionTime - 1400) / 400));
+
+      if (impactP > 0) document.getElementById('heroImpact').classList.add('hero-in');
+      if (titleP > 0) document.getElementById('heroTitle').classList.add('hero-in');
+      if (subP > 0) document.getElementById('heroSub').classList.add('hero-in');
+      if (metaP > 0) document.getElementById('heroMeta').style.opacity = metaP;
+
+      if (!animDone || litCount < 23) {
+        if (litCount >= 23 && elapsed > collisionTime + 2500) {
+          animDone = true;
+        }
+        requestAnimationFrame(drawFrame);
+      }
+    }
+
+    sizeCanvas();
+    layoutDots();
+    pickDays();
+    requestAnimationFrame(drawFrame);
+    window.addEventListener('resize', () => { sizeCanvas(); layoutDots(); });
+  }
+
+  // N display sync for curve section
+  const nSlider = document.getElementById('bdayN');
+  const nDisp = document.getElementById('bdayNDisp');
+  if (nSlider && nDisp) {
+    nSlider.addEventListener('input', () => { nDisp.textContent = nSlider.value; });
+  }
+
+  // Share buttons handler
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const kind = btn.dataset.kind;
+      const canvasId = btn.dataset.share;
+      const title = btn.dataset.title || 'StatPlay';
+      const pageUrl = location.href;
+
+      if (kind === 'dl') {
+        const c = document.getElementById(canvasId);
+        if (!c) return;
+        c.toBlob(blob => {
+          if (!blob) return;
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = (title.replace(/[^a-zA-Z0-9\u3000-\u9fff]/g, '_')) + '.png';
+          a.click();
+          setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+        });
+      } else if (kind === 'url') {
+        navigator.clipboard.writeText(pageUrl).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = '\u2713 Copied!';
+          setTimeout(() => { btn.textContent = orig; }, 1500);
+        });
+      } else if (kind === 'x') {
+        const text = title + ' ' + pageUrl;
+        window.open('https://x.com/intent/post?text=' + encodeURIComponent(text), '_blank', 'width=550,height=420');
+      } else if (kind === 'native') {
+        if (navigator.share) {
+          navigator.share({ title: title, url: pageUrl }).catch(() => {});
+        } else {
+          navigator.clipboard.writeText(pageUrl).then(() => {
+            const orig = btn.textContent;
+            btn.textContent = '\u2713 Copied!';
+            setTimeout(() => { btn.textContent = orig; }, 1500);
+          });
+        }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>

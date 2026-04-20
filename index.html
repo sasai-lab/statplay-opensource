@@ -134,6 +134,13 @@
         <a href="#mreg" data-lang="ja">重回帰分析</a><a href="#mreg" data-lang="en">Multiple Regression</a>
       </div>
     </div>
+    <div class="nav-dropdown">
+      <a href="#columns" class="nav-cat-link" data-cat="columns"><span data-lang="ja">コラム</span><span data-lang="en">COLUMN</span></a>
+      <div class="nav-dropdown-menu">
+        <a href="columns/deviation.html" data-lang="ja">偏差値って何？</a><a href="en/columns/deviation.html" data-lang="en">What Is Deviation?</a>
+        <a href="columns/birthday.html" data-lang="ja">誕生日のパラドックス</a><a href="en/columns/birthday.html" data-lang="en">Birthday Paradox</a>
+      </div>
+    </div>
     <a href="about.html" class="nav-about" data-lang="ja">About</a>
     <a href="en/about.html" class="nav-about" data-lang="en">About</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
@@ -174,6 +181,31 @@
   </div>
 </section>
 
+
+<!-- ============ COLUMN PICKS ============ -->
+<section id="columns" class="reveal" style="padding-top:10px;padding-bottom:20px">
+  <h2 class="sec-title" data-lang="ja" style="font-size:16px;margin-bottom:16px">コラム</h2>
+  <h2 class="sec-title" data-lang="en" style="font-size:16px;margin-bottom:16px">Columns</h2>
+  <div data-lang="ja" class="col-intro">統計は数式だけ眺めていても腹落ちしない。身近な「あるある」から入ると、公式の意味がすっと見えてくる。</div>
+  <div data-lang="en" class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
+  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
+    <a href="columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">偏差値って何？ &mdash; 「上位○%」が3秒で見える &rarr;</a><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">偏差値60と70の差はたった10。でもレア度は5倍。その正体をインタラクティブに掴む。</span>
+  </div>
+  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--magenta)">
+    <a href="columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">誕生日のパラドックス &mdash; 23人で50%超え？ &rarr;</a><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">23人集まれば誕生日が被る確率は50%超。直感を裏切る確率の世界をシミュレーションで体感。</span>
+  </div>
+  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
+    <a href="en/columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is a Deviation Value? &mdash; See "Top X%" in 3 Seconds &rarr;</a><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+  </div>
+  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--magenta)">
+    <a href="en/columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">The Birthday Paradox &mdash; 23 People, 50%+ Chance &rarr;</a><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
+  </div>
+</section>
+
 <!-- ============ CATEGORY: PROBABILITY ============ -->
 <div class="category-header reveal" id="cat-probability">
   <div class="cat-tag"><span data-lang="ja">確率と分布</span><span data-lang="en">PROBABILITY</span></div>
@@ -187,140 +219,140 @@
 
 
 <section id="stdnorm" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/stdnorm.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/stdnorm.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/stdnorm.html">&#9659; このトピックのページへ</a><a data-lang="en" href="topics/stdnorm.html">&#9659; Dedicated page for this topic</a></div>
   <div class="sec-tag">P.01 / STANDARD NORMAL</div>
-  <h2 class="sec-title" data-lang="ja">標準正規分布 <span class="sec-sub">— すべてのはじまり</span></h2>
-  <h2 class="sec-title" data-lang="en">Standard Normal <span class="sec-sub">— The Origin of Everything</span></h2>
-  <div class="story-bridge" data-lang="ja">統計のすべてを支配する<b>あの曲線</b>から始めよう——<span class="next">標準正規分布</span>。CLT も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
-  <div class="story-bridge" data-lang="en">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. CLT, hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
+  <h2 class="sec-title" data-lang="ja">標準正規分布 <span class="sec-sub">&#x2014; すべてのはじまり</span></h2>
+  <h2 class="sec-title" data-lang="en">Standard Normal <span class="sec-sub">&#x2014; The Origin of Everything</span></h2>
+  <div class="story-bridge" data-lang="ja">統計のすべてを支配する<b>あの曲線</b>から始めよう&#x2014;&#x2014;<span class="next">標準正規分布</span>。CLT も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
+  <div class="story-bridge" data-lang="en">Let's start with the <b>curve</b> that dominates all of statistics &#x2014; the <span class="next">standard normal</span>. CLT, hypothesis testing, confidence intervals &#x2014; everything circles back here. <b>Touch</b> the bell curve first.</div>
   <p class="sec-desc" data-lang="ja">
     ぶっちゃけ <b>この曲線ひとつ</b>がなければ、
     この先に出てくる検定も、信頼区間も、t分布も、回帰分析も、<b>ぜんぶ成立しない</b>。<br>
     <b>標準正規分布 <code>N(0, 1)</code></b> は、平均0・標準偏差1のベル型カーブ。
-    「どんな正規分布も <code>z = (x − μ) / σ</code> でここに重ねられる」という一行のトリックが、
+    「どんな正規分布も <code>z = (x &#x2212; &#x03BC;) / &#x03C3;</code> でここに重ねられる」という一行のトリックが、
     <b>100年前の統計学者たち</b>に"紙の表ひとつで世界中の確率を計算する"力を与えた。<br>
     つまりこれは、統計の<b>ラスボスじゃなくて、起源（オリジン）</b>。
     ここさえ掴めれば、残りのページは"標準正規の応用"として一気通貫で読める。
   </p>
   <p class="sec-desc" data-lang="en">
-    Honestly — <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br>
+    Honestly &#x2014; <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br>
     The <b>standard normal <code>N(0, 1)</code></b> is a bell curve with mean 0 and standard deviation 1.
-    The one-line trick "<code>z = (x − μ) / σ</code>" lets <b>every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br>
-    In other words, it's not the final boss of statistics; it's the <b>origin</b>. Once you own this, the rest of the page reads as "applications of the standard normal".
+    The one-line trick lets <b>every normal distribution</b> collapse onto this same curve &#x2014; and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br>
+    In other words, it's not the final boss of statistics; it's the <b>origin</b>. Once you own this, the rest reads as "applications of the standard normal".
   </p>
-  <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>z は「平均から標準偏差何個分離れたか」。φ(z) はその位置での曲線の高さ（確率密度）。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>z = "how many standard deviations from the mean." φ(z) = height of the curve there (the density).</p></details>
+
+  <div class="sim-layout">
   <div class="guided-steps" data-lang="ja">
-    <b>実験ガイド — 順番に試してみよう</b>
+    <b>実験ガイド &#x2014; 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> k のスライダーを <b>1.0</b> にする → 面積は約68%。これが「±1σ に約7割」。</li>
-      <li><b>Step 2:</b> k を <b>1.96</b> にする → 面積は約95%。この数字、検定や信頼区間で何度も出てくる。</li>
-      <li><b>Step 3:</b> k を <b>3.0</b> まで広げる → ほぼ100%。外側はもうほとんどない。</li>
-      <li><b>Step 4:</b> 下の標準化アニメで ▶ ボタンを押す → どんな正規分布もこの1本に化ける瞬間を見届けよう。</li>
+      <li><b>Step 1:</b> k のスライダーを <b>1.0</b> にする &#x2192; 面積は約68%。これが「&#xB1;1&#x03C3; に約7割」。</li>
+      <li><b>Step 2:</b> k を <b>1.96</b> にする &#x2192; 面積は約95%。この数字、検定や信頼区間で何度も出てくる。</li>
+      <li><b>Step 3:</b> k を <b>3.0</b> まで広げる &#x2192; ほぼ100%。外側はもうほとんどない。</li>
+      <li><b>Step 4:</b> 下の標準化アニメで &#x25B6; ボタンを押す &#x2192; どんな正規分布もこの1本に化ける瞬間を見届けよう。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
-    <b>Experiment Guide — try these in order</b>
+    <b>Experiment Guide &#x2014; try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers about 70%."</li>
-      <li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>
-      <li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
-      <li><b>Step 4:</b> Hit the ▶ button on the standardization animation below → watch any normal snap onto this one curve.</li>
+      <li><b>Step 1:</b> Set k to <b>1.0</b> &#x2192; area is ~68%. That's "&#xB1;1&#x03C3; covers about 70%."</li>
+      <li><b>Step 2:</b> Set k to <b>1.96</b> &#x2192; area is ~95%. You'll see this number everywhere in testing and CIs.</li>
+      <li><b>Step 3:</b> Stretch k to <b>3.0</b> &#x2192; nearly 100%. Almost nothing lies outside.</li>
+      <li><b>Step 4:</b> Hit the &#x25B6; button on the standardization animation below &#x2192; watch any normal snap onto this one curve.</li>
     </ol>
   </div>
-
-
   <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px;font-size:13px">
       スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
-      ± 1σ ですでに約7割、± 2σ で95%、± 3σ でほぼ全部。<br>
+      &#xB1; 1&#x03C3; ですでに約7割、&#xB1; 2&#x03C3; で95%、&#xB1; 3&#x03C3; でほぼ全部。<br>
       <b>z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
-      検定も信頼区間もこの 1.96 から出発する — それくらい、この曲線が主役なのだ。
+      検定も信頼区間もこの 1.96 から出発する &#x2014; それくらい、この曲線が主役なのだ。
     </p>
     <p class="sec-desc" data-lang="en" style="margin-bottom:14px;font-size:13px">
       Slide the width <code>k</code>; the blue-filled area IS the probability.
-      ± 1σ already covers ~68%, ± 2σ is 95%, ± 3σ is nearly everything.<br>
-      That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value — hypothesis tests and confidence intervals all start there.
+      &#xB1; 1&#x03C3; already covers ~68%, &#xB1; 2&#x03C3; is 95%, &#xB1; 3&#x03C3; is nearly everything.<br>
+      That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value &#x2014; hypothesis tests and confidence intervals all start there.
     </p>
     <div class="controls">
-      <div class="ctrl"><label><span data-lang="ja">範囲 ±k σ</span><span data-lang="en">Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
+      <div class="ctrl"><label><span data-lang="ja">範囲 &#xB1;k &#x03C3;</span><span data-lang="en">Range &#xB1;k &#x03C3;</span> = <span class="val" id="snKVal">1.0</span></label>
         <input type="range" id="snK" min="0.1" max="3.5" step="0.1" value="1.0">
-
-
       </div>
     </div>
-    <canvas id="snCanvas" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" aria-busy="true"></canvas>
+    <canvas id="snCanvas" aria-label="Standard normal N(0,1) PDF" height="240" aria-busy="true"></canvas>
     <div class="info">
-      <div>P( |Z| ≤ k )<strong id="snInside">—</strong></div>
-      <div>P( Z ≤ k )<strong id="snLeft">—</strong></div>
-      <div><span data-lang="ja">外側の確率</span><span data-lang="en">Outside prob.</span><strong id="snOutside">—</strong></div>
+      <div>P( |Z| &#x2264; k )<strong id="snInside">&#x2014;</strong></div>
+      <div>P( Z &#x2264; k )<strong id="snLeft">&#x2014;</strong></div>
+      <div><span data-lang="ja">外側の確率</span><span data-lang="en">Outside prob.</span><strong id="snOutside">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="snCanvas" data-title="標準正規分布" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="snCanvas" data-title="Standard Normal" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+  </div>
 
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド &#x2014; 順番に試してみよう</b>
+    <ol>
+      <li><b>Step 1:</b> &#x25B6; 標準化する を押す &#x2192; &#x03BC;=2, &#x03C3;=1.5 の曲線がスーッと N(0,1) に変身する。</li>
+      <li><b>Step 2:</b> &#x03BC; を <b>&#x2212;2</b>、&#x03C3; を <b>2.5</b> に変えて再度 &#x25B6; &#x2192; 全然違う形なのに、同じピンクの曲線にピタッ。</li>
+      <li><b>Step 3:</b> 進度スライダーを途中で止める &#x2192; 変換の"途中経過"を観察。&#x03BC; が0に、&#x03C3; が1に近づいていく。</li>
+      <li><b>Step 4:</b> &#x03C3; を <b>0.5</b> に &#x2192; 尖った曲線が平たくなりながら標準正規に合流。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide &#x2014; try these in order</b>
+    <ol>
+      <li><b>Step 1:</b> Press &#x25B6; Standardize &#x2192; the &#x03BC;=2, &#x03C3;=1.5 curve morphs smoothly into N(0,1).</li>
+      <li><b>Step 2:</b> Change &#x03BC; to <b>&#x2212;2</b>, &#x03C3; to <b>2.5</b>, then &#x25B6; again &#x2192; a totally different curve snaps onto the same pink one.</li>
+      <li><b>Step 3:</b> Pause the progress slider midway &#x2192; watch &#x03BC; approach 0 and &#x03C3; approach 1 in real time.</li>
+      <li><b>Step 4:</b> Set &#x03C3; to <b>0.5</b> &#x2192; a sharp peak flattens as it merges into the standard normal.</li>
+    </ol>
+  </div>
   <div class="panel" data-autorun="snAnim">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
-      身長、IQ、株価の日次リターン、工場の部品誤差 — 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
-      でも <b>z = (x − μ) / σ</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
-      スクロールしたら自動で変身していく（もう一度見たい時は ▶ ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
+      身長、IQ、株価の日次リターン、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
+      でも <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
+      スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
     </p>
     <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
-      Height, IQ, daily stock returns, factory part errors — real-world normal-ish things all have different means and spreads.
-      Yet apply <b>z = (x − μ) / σ</b> and they all snap onto <b>that pink curve</b>.<br>
-      It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
+      Height, IQ, daily stock returns, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
+      Yet apply <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> and they all snap onto <b>that pink curve</b>.<br>
+      It auto-plays on scroll (&#x25B6; to replay). That's why every statistical formula needs only one standard-normal table.
     </p>
     <div class="controls">
-      <div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
+      <div class="ctrl"><label>&#x03BC; = <span class="val" id="snMuVal">2.0</span></label>
         <input type="range" id="snMu" min="-3" max="3" step="0.1" value="2.0">
-
-
       </div>
-      <div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
+      <div class="ctrl"><label>&#x03C3; = <span class="val" id="snSdVal">1.5</span></label>
         <input type="range" id="snSd" min="0.3" max="3" step="0.1" value="1.5">
-
-
       </div>
       <div class="ctrl"><label><span data-lang="ja">進度</span><span data-lang="en">Progress</span> = <span class="val" id="snTVal">0</span></label>
         <input type="range" id="snT" min="0" max="100" value="0">
-
-
       </div>
-      <button class="btn" id="snAnim"><span data-lang="ja">▶ 標準化する</span><span data-lang="en">▶ Standardize</span></button>
+      <button class="btn" id="snAnim"><span data-lang="ja">&#x25B6; 標準化する</span><span data-lang="en">&#x25B6; Standardize</span></button>
     </div>
-    <canvas id="snMorphCanvas" aria-label="任意の正規分布を標準正規分布に標準化する過程のアニメーション" height="240" aria-busy="true"></canvas>
+    <canvas id="snMorphCanvas" aria-label="Standardization morphing animation" height="240" aria-busy="true"></canvas>
     <div class="info">
-      <div><span data-lang="ja">元の分布</span><span data-lang="en">Original</span><strong id="snOrig">N(2.0, 1.5²)</strong></div>
-      <div><span data-lang="ja">変換後の平均</span><span data-lang="en">Transformed mean</span><strong id="snNewMu">—</strong></div>
-      <div><span data-lang="ja">変換後のσ</span><span data-lang="en">Transformed σ</span><strong id="snNewSd">—</strong></div>
+      <div><span data-lang="ja">元の分布</span><span data-lang="en">Original</span><strong id="snOrig">N(2.0, 1.5&#xB2;)</strong></div>
+      <div><span data-lang="ja">変換後の平均</span><span data-lang="en">Transformed mean</span><strong id="snNewMu">&#x2014;</strong></div>
+      <div><span data-lang="ja">変換後の&#x03C3;</span><span data-lang="en">Transformed &#x03C3;</span><strong id="snNewSd">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="snMorphCanvas" data-title="標準化モーフ" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="snMorphCanvas" data-title="Standardization Morph" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+  </div>
 
-  <p class="sec-desc" data-lang="ja" style="margin-top:20px;font-size:13px;border-left:3px solid var(--yellow);padding:10px 14px;background:rgba(255,230,0,.05)">
-    <b>▼ この先の展開</b><br>
-    ここから先に出てくる <b>中心極限定理</b> は「どんな分布でも平均は標準正規に近づく」という宣言。
-    <b>信頼区間</b>も <b>仮説検定</b> も "±1.96σ" というこの曲線の数字を使う。
-    <b>t分布・χ²・F分布</b> は標準正規の兄弟姉妹。<b>回帰</b>の係数推定の誤差も標準正規で近似する。<br>
-    要するに、<b>この 1 ページを押さえると、他が全部"応用問題"</b>になる。楽しんで。
-  </p>
-  <p class="sec-desc" data-lang="en" style="margin-top:20px;font-size:13px;border-left:3px solid var(--yellow);padding:10px 14px;background:rgba(255,230,0,.05)">
-    <b>▼ What comes next</b><br>
-    The <b>Central Limit Theorem</b> ahead says: "any distribution's mean approaches the standard normal".
-    <b>Confidence intervals</b> and <b>hypothesis tests</b> all use the "±1.96σ" numbers from this curve.
-    <b>t, χ², F</b> are its siblings. Even <b>regression</b> coefficient errors are approximated with the standard normal.<br>
-    Short version: <b>nail this one page and the rest becomes "applications"</b>. Have fun.
-  </p>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>正規分布そのものを扱う <span class="story-arrow">▸</span> <a href="#normal">P.02 正規分布</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P.02 Normal Distribution</a></div>
+  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/stdnorm.html">&#x1F4D6; 数式・詳細解説を読む &#x2192; 個別ページへ</a>
+    <a data-lang="en" href="en/topics/stdnorm.html">&#x1F4D6; Formulas &amp; detailed explanation &#x2192; dedicated page</a>
+  </div>
+  <div class="story-next" data-lang="ja"><span class="lbl">次は &#x2014;</span>正規分布そのものを扱う <span class="story-arrow">&#x25B8;</span> <a href="#normal">P.02 正規分布</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT &#x2014;</span>the normal as a tool <span class="story-arrow">&#x25B8;</span> <a href="#normal">P.02 Normal Distribution</a></div>
 </section>
 
 
@@ -330,7 +362,7 @@
 
 
 <section id="normal" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/normal.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/normal.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/normal.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/normal.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P.02 / NORMAL DISTRIBUTION</div>
   <h2 class="sec-title" data-lang="ja">正規分布と標準化 <span class="sec-sub">— 平均と散らばりを操る</span></h2>
   <h2 class="sec-title" data-lang="en">Normal Distribution <span class="sec-sub">— Shaping Mean & Spread</span></h2>
@@ -358,10 +390,8 @@
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
     <br><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
   </p>
-  <div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>φ(z) の一般版。μ が中心位置、σ が広がり。x が μ から離れるほど確率密度が下がる。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>The general version of φ(z). μ sets the center, σ the spread. Farther from μ → lower density.</p></details>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> μ=170, σ=6 にして a=165, b=175 → 約59.6%。身長170cm±5cmに入る人の割合。</li>
@@ -414,7 +444,12 @@
       <button class="share-btn dl" data-share="normalCanvas" data-title="正規分布" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="#prob">P.03 確率の基本法則</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/normal.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/normal.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="#prob">P.03 確率の基本法則</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P.03 Probability Rules</a></div>
 </section>
 
@@ -425,7 +460,7 @@
 
 
 <section id="prob" class="reveal">
-    <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/prob.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/prob.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+    <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/prob.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/prob.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P.03 / PROBABILITY RULES</div>
   <h2 class="sec-title" data-lang="ja">確率の基本法則 <span class="sec-sub">— ベン図で直感をつかむ</span></h2>
   <h2 class="sec-title" data-lang="en">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
@@ -455,10 +490,8 @@
     A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br>
     <span style="color:var(--dim)">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
   </div>
-  <div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>左：「Bが起きた世界でAも起きている割合」。右：「少なくとも片方が起きる確率」＝足して重複を引く。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>Left: "given B, what fraction also had A." Right: "at least one" = add both, subtract overlap.</p></details>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → P(A∪B) が加法定理で 0.58 になることを確認。</li>
@@ -510,7 +543,12 @@
       <button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則"><span>💾 画像保存</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>離散分布と指数分布 <span class="story-arrow">▸</span> <a href="#morep">P.04 離散分布と指数分布</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/prob.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/prob.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>離散分布と指数分布 <span class="story-arrow">▸</span> <a href="#morep">P.04 離散分布と指数分布</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="#morep">P.04 Discrete &amp; Exponential</a></div>
 </section>
 
@@ -521,7 +559,7 @@
 
 
 <section id="morep" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/morep.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/morep.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/morep.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/morep.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P.04 / DISCRETE + EXPONENTIAL</div>
   <h2 class="sec-title" data-lang="ja">離散分布と指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
   <h2 class="sec-title" data-lang="en">Discrete & Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
@@ -529,7 +567,8 @@
   <div class="story-bridge" data-lang="en">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
   <div class="sec-desc" data-lang="ja">2級で問われる<b>二項分布</b>・<b>ポアソン分布</b>・<b>指数分布</b>の三つ。成功回数・事象発生回数・待ち時間——離散と連続の橋渡しをスライダーで体感する。</div>
   <div class="sec-desc" data-lang="en">The three distributions on the level-2 exam: <b>binomial</b>, <b>Poisson</b>, and <b>exponential</b>. Slide through success counts, event counts, and waiting times to feel the bridge between discrete and continuous.</div>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> 二項分布で n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>
@@ -548,7 +587,7 @@
     </ol>
   </div>
 
-  <div class="canvas-bg">
+  
     <div class="panel">
       <div class="panel-title" data-lang="ja">二項分布 B(n, p)</div>
       <div class="use-case" data-lang="ja">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
@@ -566,8 +605,28 @@
       <div class="sec-bridge" data-lang="ja">n → ∞ かつ np → λ で、二項はポアソンへ。</div>
       <div class="sec-bridge" data-lang="en">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
     </div>
+</div>
 
-    <div class="panel">
+    <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — ポアソン分布</b>
+<ol>
+<li><b>Step 1:</b> λ=3 → 平均3回の事象。0〜6回あたりに集中している。</li>
+<li><b>Step 2:</b> λ を <b>1</b> に → ピークが左端に寄り、0回が最頻値。めったに起きない事象。</li>
+<li><b>Step 3:</b> λ を <b>10</b> に → ベル型に近づく。正規分布の面影が見えてくる。</li>
+<li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ完全な正規分布。ポアソンは正規の"離散版"。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — Poisson</b>
+<ol>
+<li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6.</li>
+<li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
+<li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
+<li><b>Step 4:</b> Push λ to <b>20</b> → nearly a perfect normal. Poisson is the "discrete normal."</li>
+</ol>
+</div>
+<div class="panel">
       <div class="panel-title" data-lang="ja">ポアソン分布 Poisson(λ)</div>
       <div class="use-case" data-lang="ja">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
       <div class="use-case" data-lang="en">When? → Phone calls per hour at a call center; traffic accidents per day</div>
@@ -581,8 +640,28 @@
       <div class="sec-bridge" data-lang="ja">λ が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
       <div class="sec-bridge" data-lang="en">As λ grows, Poisson approaches the normal distribution.</div>
     </div>
+</div>
 
-    <div class="panel">
+    <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — 指数分布</b>
+<ol>
+<li><b>Step 1:</b> λ=1 → 平均待ち時間 = 1。曲線は急激に減衰する。</li>
+<li><b>Step 2:</b> λ を <b>0.2</b> に → なだらかに減衰。めったに起きない事象は長く待つ。</li>
+<li><b>Step 3:</b> λ を <b>3</b> に → 急降下。頻繁に起きる事象は待ち時間が短い（平均 1/3）。</li>
+<li><b>Step 4:</b> どの λ でも曲線の形は同じ「L字」。これが無記憶性 — 過去の待ち時間は将来に影響しない。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — Exponential</b>
+<ol>
+<li><b>Step 1:</b> λ=1 → mean wait time = 1. The curve drops sharply.</li>
+<li><b>Step 2:</b> Set λ to <b>0.2</b> → gentle decay. Rare events mean long waits.</li>
+<li><b>Step 3:</b> Set λ to <b>3</b> → steep drop. Frequent events = short waits (mean 1/3).</li>
+<li><b>Step 4:</b> Every λ gives the same "L" shape. That is memorylessness — past waiting does not affect the future.</li>
+</ol>
+</div>
+<div class="panel">
       <div class="panel-title" data-lang="ja">指数分布 Exp(λ) — 待ち時間</div>
       <div class="use-case" data-lang="ja">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
       <div class="use-case" data-lang="en">When? → Time until next phone call; how long until a light bulb burns out</div>
@@ -596,9 +675,15 @@
       <div class="sec-bridge" data-lang="ja">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
       <div class="sec-bridge" data-lang="en">Memoryless: past waiting time tells you nothing about the future.</div>
     </div>
-  </div>
+</div>
+  
 
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="#bayes">P.05 ベイズの定理</a></div>
+
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/morep.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/morep.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="#bayes">P.05 ベイズの定理</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P.05 Bayes' Theorem</a></div>
 </section>
 
@@ -609,7 +694,7 @@
 
 
 <section id="bayes" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/bayes.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/bayes.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/bayes.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P.05 / BAYES THEOREM</div>
   <h2 class="sec-title" data-lang="ja">ベイズの定理 <span class="sec-sub">— 事後確率の逆転劇</span></h2>
   <h2 class="sec-title" data-lang="en">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
@@ -628,10 +713,8 @@
     The trick is that we forget <b>how rare the disease actually is</b> in the first place.
     Play with the three sliders below and watch the "town of 1,000" — you'll <b>see</b> why.
   </p>
-  <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>「Bが起きた世界でAも起きている確率」＝ 尤度×事前確率 ÷ 周辺確率。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>"Given B happened, the probability of A" = likelihood × prior ÷ marginal.</p></details>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> 初期設定（有病率1%, 感度99%, 特異度95%）で陽性的中率を確認 → たった16.7%。直感とのズレを味わう。</li>
@@ -685,12 +768,38 @@
       <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="#clt">I.01 中心極限定理</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/bayes.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="#clt">I.01 中心極限定理</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="#clt">I.01 Central Limit Theorem</a></div>
 </section>
 
 
 
+
+
+<div class="category-preview reveal">
+  <div class="cat-preview-inner">
+    <h3 data-lang="ja" class="cat-preview-title">▼ この先の展開 — 推測統計へ</h3>
+    <h3 data-lang="en" class="cat-preview-title">▼ What comes next — into Inference</h3>
+    <p data-lang="ja" class="cat-preview-desc">
+      確率と分布の基盤を固めた。ここから先は<b>「サンプルから母集団を推測する」</b>ステージ。<br>
+      <b>中心極限定理</b>が「どんな分布でも平均は正規に近づく」と保証し、
+      <b>大数の法則</b>で「n を増やせば真値に収束する」という安心感を得る。
+      その上で<b>信頼区間</b>（どれくらいの精度？）と<b>仮説検定</b>（差はあるか？）を使いこなし、
+      最後に <b>t・χ²・F</b> の三大検定分布で「σ を知らない現実」に立ち向かう。
+    </p>
+    <p data-lang="en" class="cat-preview-desc">
+      Probability and distributions are locked in. Next up: <b>inferring population truths from samples</b>.<br>
+      The <b>CLT</b> guarantees sample means go normal, the <b>LLN</b> says they converge to the truth.
+      Then <b>confidence intervals</b> (how precise?) and <b>hypothesis tests</b> (is there a difference?),
+      capped by the <b>t, χ², F</b> trio for the real world where σ is unknown.
+    </p>
+  </div>
+</div>
 
 <!-- ============ CATEGORY: INFERENCE ============ -->
 <div class="category-header reveal" id="cat-inference">
@@ -703,7 +812,7 @@
 
 
 <section id="clt" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/clt.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/clt.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/clt.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/clt.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
   <h2 class="sec-title" data-lang="ja">中心極限定理 <span class="sec-sub">— なぜ正規分布は最強なのか</span></h2>
   <h2 class="sec-title" data-lang="en">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
@@ -724,7 +833,8 @@
     The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
     so you can watch the bell emerge. Crank <code>n</code> up and the bell tightens (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).
   </p>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> 元の分布を「指数分布」にして n=<b>1</b> で ▶ → 右に歪んだまま。まだ全然ベルじゃない。</li>
@@ -772,7 +882,13 @@
       <button class="share-btn dl" data-share="cltCanvas" data-title="中心極限定理" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均は本当に真値に近づく？ <span class="story-arrow">▸</span> <a href="#lln">I.02 大数の法則</a></div>
+</div>
+
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/clt.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/clt.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均は本当に真値に近づく？ <span class="story-arrow">▸</span> <a href="#lln">I.02 大数の法則</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="#lln">I.02 Law of Large Numbers</a></div>
 </section>
 
@@ -783,7 +899,7 @@
 
 
 <section id="lln" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/lln.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/lln.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/lln.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/lln.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
   <h2 class="sec-title" data-lang="ja">大数の法則 <span class="sec-sub">— 試行を重ねれば真値に近づく</span></h2>
   <h2 class="sec-title" data-lang="en">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
@@ -802,7 +918,8 @@
     That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
     <b>This is why statistics counts as evidence, not a vague hunch.</b>
   </p>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> p=0.5 で ▶ シミュレート → 最初は暴れるが、右に行くほど 0.5 に吸い寄せられる。</li>
@@ -840,7 +957,13 @@
       <button class="share-btn dl" data-share="llnCanvas" data-title="大数の法則" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="#ci">I.03 信頼区間</a></div>
+</div>
+
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/lln.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/lln.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="#ci">I.03 信頼区間</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="#ci">I.03 Confidence Interval</a></div>
 </section>
 
@@ -851,7 +974,7 @@
 
 
 <section id="ci" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/ci.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/ci.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/ci.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/ci.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
   <h2 class="sec-title" data-lang="ja">信頼区間 <span class="sec-sub">— 95%の本当の意味</span></h2>
   <h2 class="sec-title" data-lang="en">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
@@ -872,10 +995,8 @@
     The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
     Once the pink share settles around <b>~5%</b>, you've got it.
   </p>
-  <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>標本平均 ± 信頼度に応じた係数 × 標準誤差。この幅の「網」で真値を捕まえる。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>Sample mean ± confidence multiplier × standard error. This "net" catches the true value.</p></details>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> 信頼度95%, n=30 で ▶ 300回生成 → ピンク（外した区間）がちょうど5%前後になることを確認。</li>
@@ -920,7 +1041,12 @@
       <button class="share-btn dl" data-share="ciCanvas" data-title="信頼区間" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>幅から YES/NO へ <span class="story-arrow">▸</span> <a href="#test">I.04 仮説検定</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/ci.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/ci.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>幅から YES/NO へ <span class="story-arrow">▸</span> <a href="#test">I.04 仮説検定</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="#test">I.04 Hypothesis Testing</a></div>
 </section>
 
@@ -931,7 +1057,7 @@
 
 
 <section id="test" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/test.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/test.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/test.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/test.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
   <h2 class="sec-title" data-lang="ja">仮説検定 <span class="sec-sub">— 棄却か採択か</span></h2>
   <h2 class="sec-title" data-lang="en">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
@@ -950,7 +1076,8 @@
     You start by assuming <code>H₀</code> ("the drug has no effect" = "innocent"). Then if your computed <b>test statistic z</b> lands in the <b>pre-chosen rejection region</b>, you convict — that is, <b>reject H₀</b>.<br>
     Two panels below: <b>① geometry of z and rejection regions (two-sided, right, left)</b>, and <b>② false alarms (α) vs. misses (β)</b>.
   </p>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。</li>
@@ -1001,8 +1128,29 @@
       <button class="share-btn dl" data-share="testCanvas" data-title="仮説検定" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
+</div>
 
-  <div class="panel">
+
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> δ=2, α=0.05 → 検出力が高い（紫のほとんどが棄却域に入る）。</li>
+<li><b>Step 2:</b> δ を <b>0.5</b> に → 紫と青がほぼ重なり、検出力がガクッと落ちる。小さな差は見逃しやすい。</li>
+<li><b>Step 3:</b> α を <b>0.01</b> に厳しくする → 棄却域が狭まり、β（見逃し）が増える。トレードオフ。</li>
+<li><b>Step 4:</b> グラフ上を左右にドラッグ → 臨界値を直接動かして α と β の綱引きを体感。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> δ=2, α=0.05 → high power (most of the purple curve falls in the rejection region).</li>
+<li><b>Step 2:</b> Lower δ to <b>0.5</b> → purple and blue nearly overlap; power drops sharply. Small effects are hard to detect.</li>
+<li><b>Step 3:</b> Tighten α to <b>0.01</b> → rejection region shrinks, β (misses) increases. The trade-off in action.</li>
+<li><b>Step 4:</b> Drag horizontally on the chart → move the critical boundary and feel the α vs β tug-of-war.</li>
+</ol>
+</div>
+<div class="panel">
     <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
@@ -1044,7 +1192,12 @@
       <button class="share-btn dl" data-share="errCanvas" data-title="α・β・検出力" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I.05 t・χ²・F</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/test.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/test.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I.05 t・χ²・F</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="#dists">I.05 t, χ², F</a></div>
 </section>
 
@@ -1055,7 +1208,7 @@
 
 
 <section id="dists" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/dists.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/dists.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/dists.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/dists.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.05 / t · χ² · F DISTRIBUTIONS</div>
   <h2 class="sec-title" data-lang="ja">三大検定分布 <span class="sec-sub">— t・χ²・F の素顔</span></h2>
   <h2 class="sec-title" data-lang="en">Three Test Distributions <span class="sec-sub">— Meet t, χ² & F</span></h2>
@@ -1078,7 +1231,8 @@
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br>
     <span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
   </p>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> t分布で df=<b>1</b> → 裾がめちゃくちゃ重い（コーシー分布）。df=<b>30</b> → ほぼ正規分布と区別がつかない。</li>
@@ -1096,9 +1250,10 @@
       <li><b>Step 4:</b> All three graphs support horizontal drag to change df — more intuitive than the slider.</li>
     </ol>
   </div>
-  <div class="dist-stack">
+  
     <div class="panel">
-      <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="cy">作り方:</b> t = Z / √(χ²ₖ/k) ， Z~N(0,1)。 <br>
         <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br>
@@ -1122,9 +1277,31 @@
         <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
       </div>
     </div>
+</div>
 
-    <div class="panel">
-      <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+
+    <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — χ²分布</b>
+<ol>
+<li><b>Step 1:</b> df=3 → 右に歪んだ形。非負なので左端が0で切れる。</li>
+<li><b>Step 2:</b> df を <b>1</b> に → L字型。標準正規の二乗 Z² そのもの。</li>
+<li><b>Step 3:</b> df を <b>20</b> に → ベル型に近づく。平均 = df, 分散 = 2·df。</li>
+<li><b>Step 4:</b> df を <b>30</b> に → ほぼ正規分布。大標本でカイ二乗検定の近似精度が上がる理由。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — χ² distribution</b>
+<ol>
+<li><b>Step 1:</b> df=3 → right-skewed. Non-negative, so it is cut off at 0.</li>
+<li><b>Step 2:</b> Set df to <b>1</b> → L-shaped. This is literally Z² for a single standard normal.</li>
+<li><b>Step 3:</b> Set df to <b>20</b> → approaches bell shape. Mean = df, variance = 2·df.</li>
+<li><b>Step 4:</b> Set df to <b>30</b> → nearly normal. This is why chi-square tests improve with large samples.</li>
+</ol>
+</div>
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="mg">作り方:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² （標準正規を k 個足して二乗和）。<br>
         <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
@@ -1146,9 +1323,30 @@
         <button class="share-btn dl" data-share="chiCanvas" data-title="χ²分布" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
       </div>
     </div>
+</div>
 
-    <div class="panel">
-      <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+    <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — F分布</b>
+<ol>
+<li><b>Step 1:</b> df1=3, df2=10 → 右に歪んだ形。分散の「比」だから非負。</li>
+<li><b>Step 2:</b> df1 を <b>1</b> に → L字型に近づく。df1=1 の F 検定は t 検定の二乗と同じ。</li>
+<li><b>Step 3:</b> df2 を <b>30</b> に → 分母の自由度が大きいと分布が安定する。</li>
+<li><b>Step 4:</b> df1, df2 を両方 <b>30</b> に → ベル型に近づく。ANOVAの近似精度が上がる。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — F distribution</b>
+<ol>
+<li><b>Step 1:</b> df1=3, df2=10 → right-skewed. It is a ratio of variances, so always non-negative.</li>
+<li><b>Step 2:</b> Set df1 to <b>1</b> → approaches L-shape. F-test with df1=1 equals t-test squared.</li>
+<li><b>Step 3:</b> Set df2 to <b>30</b> → the denominator stabilizes the distribution.</li>
+<li><b>Step 4:</b> Set both df1 and df2 to <b>30</b> → approaches bell shape. ANOVA approximation improves.</li>
+</ol>
+</div>
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="ye">作り方:</b> F = (χ²ₘ/m) / (χ²ₙ/n) （2つの独立な χ² の比）。<br>
         <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
@@ -1175,8 +1373,13 @@
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
       </div>
     </div>
+</div>
+  
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/dists.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/dists.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I.06 カイ二乗検定</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I.06 カイ二乗検定</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I.06 Chi-Squared Test</a></div>
 </section>
 
@@ -1184,7 +1387,7 @@
 <!-- ============ CHI-SQUARED TEST ============ -->
 
 <section id="chitest" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/chitest.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/chitest.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/chitest.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
   <h2 class="sec-title" data-lang="ja">カイ二乗検定 <span class="sec-sub">— ズレを数値化する</span></h2>
   <h2 class="sec-title" data-lang="en">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
@@ -1202,7 +1405,8 @@
     <b>Test of independence</b> asks: "Are two categorical variables independent?" Compute χ² = Σ (O−E)²/E across every cell of the contingency table.<br>
     <span class="text-sub">Why divide by E? → A deviation of 2 from an expected 10 matters more than 2 from an expected 1,000. Dividing by E turns raw gaps into <b>relative</b> ones.<br>Both use a χ²-distributed statistic; the p-value is the right-tail area. df = k−1 for goodness-of-fit, (r−1)(c−1) for independence.</span>
   </p>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動投下 → n が増えるほど χ² が安定し、p値が大きいまま（帰無仮説を棄却しない）。</li>
@@ -1261,8 +1465,29 @@
       <button class="share-btn dl" data-share="chitestCanvas" data-title="適合度検定" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
+</div>
 
-  <div class="panel">
+
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+<b>実験ガイド — 順番に試してみよう</b>
+<ol>
+<li><b>Step 1:</b> 左上セルと右下セルを多めにクリック → 対角に偏ると χ² が上がり「独立でない」と判定。</li>
+<li><b>Step 2:</b> ↺ リセットし、全セルを均等にクリック → χ² が小さいまま。偏りがなければ独立。</li>
+<li><b>Step 3:</b> α を <b>0.01</b> に → 棄却のハードルが上がる。同じデータでも判定が変わることがある。</li>
+<li><b>Step 4:</b> 極端に1つのセルだけ大量クリック → 期待度数との乖離が大きく、p値が激減する。</li>
+</ol>
+</div>
+<div class="guided-steps" data-lang="en">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Click the top-left and bottom-right cells repeatedly → diagonal bias raises χ², verdict: "not independent."</li>
+<li><b>Step 2:</b> Reset, then click all cells evenly → χ² stays small. No bias = independent.</li>
+<li><b>Step 3:</b> Set α to <b>0.01</b> → higher bar for rejection. Same data might flip the verdict.</li>
+<li><b>Step 4:</b> Flood a single cell → huge gap from expected frequencies, p-value plummets.</li>
+</ol>
+</div>
+<div class="panel">
     <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② Test of Independence — Are Two Variables Independent?</h3>
 
@@ -1295,12 +1520,37 @@
       <button class="share-btn dl" data-share="indCanvas" data-title="独立性検定" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
+</div>
 
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="#reg">M.01 単回帰分析</a></div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/chitest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/chitest.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="#reg">M.01 単回帰分析</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>catching a relationship with a line <span class="story-arrow">▸</span> <a href="#reg">M.01 Simple Regression</a></div>
 </section>
 
 
+
+
+<div class="category-preview reveal">
+  <div class="cat-preview-inner">
+    <h3 data-lang="ja" class="cat-preview-title">▼ この先の展開 — モデリングへ</h3>
+    <h3 data-lang="en" class="cat-preview-title">▼ What comes next — into Modeling</h3>
+    <p data-lang="ja" class="cat-preview-desc">
+      検定で「差があるか」「独立か」を判定できるようになった。ここから先は<b>「関係を見つけて予測する」</b>ステージ。<br>
+      <b>単回帰</b>で 2 変数に直線を引き、傾きの有意性を t 検定で判断する。
+      そして<b>重回帰</b>で「他の要因を制御しながら、本当の効果を測る」——
+      検定・信頼区間・F 分布が全部ここに合流する。統計の道具箱の集大成へ。
+    </p>
+    <p data-lang="en" class="cat-preview-desc">
+      You can now test for differences and independence. Next: <b>finding relationships and predicting</b>.<br>
+      <b>Simple regression</b> draws a line through two variables, testing the slope with a t-test.
+      Then <b>multiple regression</b> controls for confounders to measure true effects —
+      tests, CIs, and the F-distribution all converge here. The full statistical toolkit comes together.
+    </p>
+  </div>
+</div>
 
 <!-- ============ CATEGORY: MODELING ============ -->
 <div class="category-header reveal" id="cat-modeling">
@@ -1313,7 +1563,7 @@
 
 
 <section id="reg" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/reg.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/reg.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/reg.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/reg.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M.01 / SIMPLE REGRESSION</div>
   <h2 class="sec-title" data-lang="ja">単回帰分析 <span class="sec-sub">— 最小二乗法で線を引く</span></h2>
   <h2 class="sec-title" data-lang="en">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
@@ -1332,10 +1582,8 @@
     <b>Click</b> the canvas to add points and watch the line snap into place.
     Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
   </p>
-  <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>β₁ の分子は「x と y が一緒に動く量」、分母は「x のバラつき」。割り算で「x が1増えたら y はいくつ動くか」。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>Numerator = "how much x and y move together." Denominator = "how much x varies." Ratio = change in y per unit x.</p></details>
-  <div class="guided-steps" data-lang="ja">
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> 「ランダム20点」を押す → 回帰直線と R² が出る。緑のバー（残差）の大きさを見る。</li>
@@ -1373,7 +1621,12 @@
       <button class="share-btn dl" data-share="regCanvas" data-title="単回帰分析" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
-  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>他の影響を取り除く <span class="story-arrow">▸</span> <a href="#mreg">M.02 重回帰分析</a></div>
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/reg.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/reg.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>他の影響を取り除く <span class="story-arrow">▸</span> <a href="#mreg">M.02 重回帰分析</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="#mreg">M.02 Multiple Regression</a></div>
 </section>
 
@@ -1384,96 +1637,91 @@
 
 
 <section id="mreg" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/mreg.html" style="color:var(--magenta);text-decoration:none">▸ このトピックのページへ</a><a data-lang="en" href="topics/mreg.html" style="color:var(--magenta);text-decoration:none">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/mreg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/mreg.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
-  <h2 class="sec-title" data-lang="ja">重回帰分析 <span class="sec-sub">— 3Dで平面を回す</span></h2>
-  <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Rotate the 3D Plane</span></h2>
+  <h2 class="sec-title" data-lang="ja">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
+  <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
 
-  <div class="story-bridge" data-lang="ja">単回帰は 1 本の線。でも<b>他の影響を取り除きたい</b>——広告費の効果を「曜日や季節を固定したうえで」見たい。それが<span class="next">重回帰</span>。軸が増え、<b>偏回帰係数</b>はまわりを<b>コントロールした上での効き目</b>になる。</div>
-  <div class="story-bridge" data-lang="en">Simple regression is one line. But often you want to <b>strip away other effects</b> — the impact of ad spend <i>holding day-of-week and season fixed</i>. That's <span class="next">multiple regression</span>. Add dimensions, and each <b>partial coefficient</b> tells you the effect <b>controlling for everything else</b>.</div>
+  <div class="story-bridge" data-lang="ja">単回帰の「直線」が、変数を増やすと<b>3D空間の平面</b>になる。ドラッグして回転させてみよう——データ点が平面に沿って並ぶ様子が見える。</div>
+  <div class="story-bridge" data-lang="en">The "line" of simple regression becomes a <b>plane in 3D space</b> when you add variables. Drag to rotate — see how data points align along the surface.</div>
   <p class="sec-desc" data-lang="ja">
-    説明変数が<b>2つ以上</b>ある場合が<b>重回帰</b>。
-    x₁（例：勉強時間）と x₂（例：睡眠時間）から y（テスト点）を予測する、のように複数の要因を同時に扱う。
-    回帰"直線"ではなく、回帰<b>平面</b>になる。x₁ を1増やしたときの y への効果（他の変数を固定したうえで）が β₁、x₂ に対するのが β₂。
-    真のパラメータを設定してデータを生成し、推定された係数と真の値を比較しよう。
-    ドラッグでキャンバスを<b>回転</b>すると、平面とデータ点の立体構造が見える。<br>
-    <b>※ 可視化できるのは x₁, x₂ の 2 変数まで（人間の目は 3 次元が限界）。</b>
-    でも数式上は <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> と<b>いくらでも変数を足せる</b>。
-    x₃ 以降は "グラフにできないだけ" で、推定の仕組みはそのまま機能する。
-    実務では 5〜50 変数くらいがごく普通。
+    単回帰では変数が1つで、フィットは直線だった。
+    重回帰は<b>2つ以上の変数</b>を組み合わせて予測する——フィットは<b>平面</b>になる。
+    3Dグラフをぐるぐる回して、平面がデータを捉える様子を体感しよう。
   </p>
   <p class="sec-desc" data-lang="en">
-    With <b>two or more</b> explanatory variables, it's <b>multiple regression</b>.
-    Predict y (e.g., test score) from x₁ (study hours) and x₂ (sleep hours), handling several factors at once.
-    Instead of a regression <i>line</i>, you get a regression <b>plane</b>. β₁ is the effect on y of a unit change in x₁ holding x₂ fixed; β₂ is the same for x₂.
-    Set true parameters, generate data, and compare the estimates to the truth.
-    <b>Drag</b> the canvas to rotate and see the plane and data in 3D.<br>
-    <b>Note: only 2 predictors can be drawn (our eyes top out at 3-D).</b>
-    But the equation keeps going — <code>ŷ = β₀ + β₁x₁ + β₂x₂ + β₃x₃ + … + β<sub>k</sub>x<sub>k</sub></code> — <b>you can add as many variables as you like</b>.
-    From x₃ onward you just "can't draw it", but the estimation works exactly the same.
-    In practice, 5–50 predictors is very normal.
+    Simple regression used one variable and fit a line.
+    Multiple regression combines <b>two or more variables</b> — the fit becomes a <b>plane</b>.
+    Rotate the 3D plot and see how the plane captures the data.
   </p>
-  <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
-  <details class="formula-accordion" data-lang="ja"><summary>式の意味</summary><p>β₁ は「x₂ を固定したうえで x₁ が1増えたときの y の変化量」。単回帰の直線が平面に拡張されたもの。</p></details>
-  <details class="formula-accordion" data-lang="en"><summary>What this means</summary><p>β₁ = "change in y per unit x₁, holding x₂ fixed." The simple regression line extended to a plane.</p></details>
-
-
+  <div class="mreg-layout">
   <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> ノイズ σ を <b>0</b> にして再サンプリング → 推定値と真の値がぴったり一致することを確認。</li>
-      <li><b>Step 2:</b> σ を <b>0.5</b> に上げる → 推定値が真の値からズレ始める。何度か再サンプリングして、推定値のバラつきを見よう。</li>
-      <li><b>Step 3:</b> n を <b>10</b> にして再サンプリング → 推定が不安定。n を <b>200</b> にすると安定する。これが大数の法則。</li>
-      <li><b>Step 4:</b> β₁ を <b>0</b> にする → x₁ は y に影響しない。推定 β̂₁ が 0 に近いか確認しよう。</li>
+      <li><b>Step 1:</b> 3Dグラフをドラッグして回転させてみよう。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
+      <li><b>Step 2:</b> 各点から平面への破線が残差（予測のズレ）。短いほど予測が当たっている。</li>
+      <li><b>Step 3:</b> 勉強時間のスライダーを動かす → 大きな●が平面上を移動する。これが「予測値」。</li>
+      <li><b>Step 4:</b> 睡眠時間も動かしてみよう → 平面上の別の方向に動く。2つの変数を組み合わせて予測できる。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Set noise σ to <b>0</b> and resample → estimates match the true values exactly.</li>
-      <li><b>Step 2:</b> Raise σ to <b>0.5</b> → estimates start drifting. Resample several times to see the variation.</li>
-      <li><b>Step 3:</b> Set n to <b>10</b> and resample → unstable. Set n to <b>200</b> → stable. That's the law of large numbers.</li>
-      <li><b>Step 4:</b> Set β₁ to <b>0</b> → x₁ has no effect on y. Check that estimated β̂₁ is close to 0.</li>
+      <li><b>Step 1:</b> Drag the 3D plot to rotate it. The translucent surface is the regression plane — data points align along it.</li>
+      <li><b>Step 2:</b> Dashed lines from points to the plane are residuals (prediction errors). Shorter = better fit.</li>
+      <li><b>Step 3:</b> Move the study slider → the large dot moves along the plane. That's the predicted score.</li>
+      <li><b>Step 4:</b> Move sleep too → it moves in a different direction on the plane. Two variables combine for prediction.</li>
     </ol>
   </div>
+
   <div class="panel">
     <div class="controls">
-      <div class="ctrl"><label><span data-lang="ja">真の β₁</span><span data-lang="en">True β₁</span> = <span class="val" id="mB1Val">0.80</span></label>
-        <input type="range" id="mB1" min="-1.5" max="1.5" step="0.05" value="0.8">
-
-
+      <div class="ctrl"><label><span data-lang="ja">勉強時間 x₁</span><span data-lang="en">Study hours x₁</span> = <span class="val" id="mStudyVal">5.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+        <input type="range" id="mStudy" min="1" max="9" step="0.1" value="5">
       </div>
-      <div class="ctrl"><label><span data-lang="ja">真の β₂</span><span data-lang="en">True β₂</span> = <span class="val" id="mB2Val">-0.50</span></label>
-        <input type="range" id="mB2" min="-1.5" max="1.5" step="0.05" value="-0.5">
-
-
+      <div class="ctrl"><label><span data-lang="ja">睡眠時間 x₂</span><span data-lang="en">Sleep hours x₂</span> = <span class="val" id="mSleepVal">7.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+        <input type="range" id="mSleep" min="4" max="10" step="0.1" value="7">
       </div>
-      <div class="ctrl"><label><span data-lang="ja">ノイズ σ</span><span data-lang="en">Noise σ</span> = <span class="val" id="mSVal">0.50</span></label>
-        <input type="range" id="mS" min="0" max="2" step="0.05" value="0.5">
-
-
-      </div>
-      <div class="ctrl"><label>n = <span class="val" id="mNVal">40</span></label>
-        <input type="range" id="mN" min="10" max="200" value="40">
-
-
-      </div>
-      <button class="btn" id="mGen"><span data-lang="ja">↺ リセット</span><span data-lang="en">↺ Reset</span></button>
-      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px"><span data-lang="ja">↔↕ ドラッグで回転（軸: x₁ · x₂ · y）</span><span data-lang="en">↔↕ Drag to rotate (axes: x₁ · x₂ · y)</span></span>
+      <button class="btn" id="mGen"><span data-lang="ja">↺ 再サンプリング</span><span data-lang="en">↺ Resample</span></button>
     </div>
-    <canvas id="mregCanvas" aria-label="重回帰分析の3D可視化。回帰平面とデータ点の関係を確認できる" height="320" style="cursor:grab" aria-busy="true"></canvas>
+    <canvas id="mregCanvas" aria-label="3D回帰平面の散布図" height="500" aria-busy="true"></canvas>
     <div class="info">
-      <div><span data-lang="ja">推定 β̂₀</span><span data-lang="en">Est. β̂₀</span><strong id="mE0">—</strong></div>
-      <div><span data-lang="ja">推定 β̂₁</span><span data-lang="en">Est. β̂₁</span><strong id="mE1">—</strong></div>
-      <div><span data-lang="ja">推定 β̂₂</span><span data-lang="en">Est. β̂₂</span><strong id="mE2">—</strong></div>
+      <div><span data-lang="ja" id="mPredLabel"></span><span data-lang="en" id="mPredLabelEn"></span><strong id="mPredBig">—</strong></div>
+      <div><span data-lang="ja">β̂₁（勉強1hあたり）</span><span data-lang="en">β̂₁ (per study hour)</span><strong id="mCoefStudy">—</strong></div>
+      <div><span data-lang="ja">β̂₂（睡眠1hあたり）</span><span data-lang="en">β̂₂ (per sleep hour)</span><strong id="mCoefSleep">—</strong></div>
       <div>R²<strong id="mR2">—</strong></div>
     </div>
+    <div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
     <div class="share-row">
       <button class="share-btn dl" data-share="mregCanvas" data-title="重回帰分析" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
     </div>
   </div>
+  </div>
+  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/mreg.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/mreg.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
 </section>
 
+
+<div class="category-preview reveal">
+  <div class="cat-preview-inner">
+    <h3 data-lang="ja" class="cat-preview-title">▼ ここまでの全体像</h3>
+    <h3 data-lang="en" class="cat-preview-title">▼ The Big Picture</h3>
+    <p data-lang="ja" class="cat-preview-desc">
+      標準正規から始まり、確率→分布→推測統計→回帰モデルと、統計検定2級の全範囲を一気通貫で体験した。<br>
+      すべてのページは<b>標準正規分布 N(0,1)</b> から派生している——
+      t 分布は「σ を知らない正規」、χ² は「正規の二乗和」、F は「χ² の比」、回帰の検定は t と F。
+      <b>各トピックの個別ページ</b>で数式や詳細な解説をさらに深掘りできる。
+    </p>
+    <p data-lang="en" class="cat-preview-desc">
+      From the standard normal through probability, distributions, inference, and regression — the full scope of the Level-2 exam, end to end.<br>
+      Every page is a descendant of <b>N(0,1)</b>:
+      t = "normal with unknown σ," χ² = "sum of squared normals," F = "ratio of χ²'s," regression tests use t and F.
+      Dive deeper into <b>each topic's dedicated page</b> for formulas and detailed explanations.
+    </p>
+  </div>
+</div>
 
 </main>
 
