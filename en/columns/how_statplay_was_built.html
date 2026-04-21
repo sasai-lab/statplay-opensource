@@ -135,14 +135,14 @@ body.theme-light .progress-bar { box-shadow: none; }
 <nav id="mainNav">
 <a class="logo" href="../../index.html?lang=en" title="Back to hub">StatPlay</a>
 <div class="nav-links" id="navLinks">
-<a href="../../index.html?lang=en">&larr; StatPlay</a>
+<a href="../../index.html?lang=en">← StatPlay</a>
 <a href="../../columns/how_statplay_was_built.html" style="font-size:12px">JA</a>
 <button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
 </div>
 </nav>
 <div aria-label="Breadcrumb" class="col-breadcrumb">
-<a href="../../index.html?lang=en">StatPlay</a><span class="sep">&rsaquo;</span>
-<span>Columns</span><span class="sep">&rsaquo;</span>
+<a href="../../index.html?lang=en">StatPlay</a><span class="sep">›</span>
+<span>Columns</span><span class="sep">›</span>
 <span>Building with AI</span>
 </div>
 <main>
@@ -152,7 +152,7 @@ body.theme-light .progress-bar { box-shadow: none; }
     Let me start by saying: I'm not an engineer.
   </p>
 <p>
-    I started as a systems engineer at NTT, then worked on games and web services at Square Enix and Drecom. I've built web applications on my own and have touched infrastructure end to end. But I'm fundamentally someone who "has tried to understand what development teams do" &mdash; a direction and management person, not a professional coder.
+    I started as a systems engineer at NTT, then worked on games and web services at Square Enix and Drecom. I've built web applications on my own and have touched infrastructure end to end. But I'm fundamentally someone who "has tried to understand what development teams do" — a direction and management person, not a professional coder.
   </p>
 <p>
     I'd never built interactive data visualizations for the frontend professionally. Honestly, I never thought I could build something like this.
@@ -169,9 +169,9 @@ body.theme-light .progress-bar { box-shadow: none; }
   </p>
 <p>
     Then I thought: <b style="color:var(--yellow)">"If I could just see it move, I'd get it instantly."</b>
-  </p>
+</p>
 <p>
-    My years in game and app development taught me that interactive experiences transform concept understanding. Move a slider, watch the graph change, see the numbers shift &mdash; that's what creates the "aha" moment. It reaches people that text and formulas alone can't.
+    My years in game and app development taught me that interactive experiences transform concept understanding. Move a slider, watch the graph change, see the numbers shift — that's what creates the "aha" moment. It reaches people that text and formulas alone can't.
   </p>
 <p>
     But such tools didn't exist. At best, a few static diagrams with arrows, explaining "if it moved, it would look like this." Barely anything you could actually interact with.
@@ -190,7 +190,7 @@ body.theme-light .progress-bar { box-shadow: none; }
     But now there's AI.
   </p>
 <p>
-    I worked with <b style="color:var(--cyan)">Claude</b> (Anthropic), iterating through conversations &mdash; not just "prompt in, code out," but continuous dialogue about "I want it to move like this," "is this design decision right," "will this break later?"
+    I worked with <b style="color:var(--cyan)">Claude</b> (Anthropic), iterating through conversations — not just "prompt in, code out," but continuous dialogue about "I want it to move like this," "is this design decision right," "will this break later?"
   </p>
 <p>
     As a longtime director, I could articulate requirements and evaluate output reasonably well. The experience of trying to understand technology in development teams carried over directly to AI collaboration.
@@ -198,12 +198,12 @@ body.theme-light .progress-bar { box-shadow: none; }
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
 <div class="col-section">
-<h2>// "Having AI Build It Is Easy" &mdash; Half Wrong</h2>
+<h2>// "Having AI Build It Is Easy" — Half Wrong</h2>
 <p>
     A digression, but this needs saying.
   </p>
 <p>
-    Give AI instructions and code comes out &mdash; looks easy. But in practice, it was a <b style="color:var(--magenta)">constant stream of decisions</b>. Is this design correct? Will this implementation survive future extensions? Is this feature really necessary? What to include, what to cut? You have to make all these calls yourself.
+    Give AI instructions and code comes out — looks easy. But in practice, it was a <b style="color:var(--magenta)">constant stream of decisions</b>. Is this design correct? Will this implementation survive future extensions? Is this feature really necessary? What to include, what to cut? You have to make all these calls yourself.
   </p>
 <p>
     AI sometimes says "sure, I can do that" and runs in the wrong direction. Evaluating and stopping it is the human's job. Without understanding technical structure to some degree, you can't make these judgments.
@@ -222,7 +222,7 @@ body.theme-light .progress-bar { box-shadow: none; }
     I have absolutely no intention of replacing textbooks. If you want systematic learning, use textbooks and problem sets. You can't practice calculations here, can't prep for exams.
   </p>
 <p>
-    But if you open it at that moment when you think <b style="color:var(--yellow)">"I only vaguely understand this concept"</b> &mdash; that's enough.
+    But if you open it at that moment when you think <b style="color:var(--yellow)">"I only vaguely understand this concept"</b> — that's enough.
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">05</span></div>
@@ -230,24 +230,24 @@ body.theme-light .progress-bar { box-shadow: none; }
 <h2>// Finally</h2>
 <p>
     The motivation was simple: <b style="color:var(--cyan)">I built it because I wanted it myself.</b>
+</p>
+<p>
+    And while building it, I discovered the fascination of statistics. Trying to visualize a concept forces you to truly understand it — building became learning.
   </p>
 <p>
-    And while building it, I discovered the fascination of statistics. Trying to visualize a concept forces you to truly understand it &mdash; building became learning.
+    That's why I want to keep learning. Statistics runs deep; there's so much I don't know. I want to keep adding content, making it more intuitive, incorporating more gamification — building something that makes people feel <b style="color:var(--yellow)">"statistics is actually interesting."</b>
+</p>
+<p>
+    All code is <a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan)" target="_blank">on GitHub</a>, open source. Feel free to modify it. Want to use it in class, embed it in your site, add new concepts — if it helps education, that makes me very happy. For commercial use, please consult per the <a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0</a> license.
   </p>
 <p>
-    That's why I want to keep learning. Statistics runs deep; there's so much I don't know. I want to keep adding content, making it more intuitive, incorporating more gamification &mdash; building something that makes people feel <b style="color:var(--yellow)">"statistics is actually interesting."</b>
-  </p>
-<p>
-    All code is <a href="https://github.com/sasai-lab/statplay-opensource" style="color:var(--cyan)" target="_blank" rel="noopener">on GitHub</a>, open source. Feel free to modify it. Want to use it in class, embed it in your site, add new concepts &mdash; if it helps education, that makes me very happy. For commercial use, please consult per the <a href="https://creativecommons.org/licenses/by-nc/4.0/" style="color:var(--cyan)" target="_blank" rel="noopener">CC BY-NC 4.0</a> license.
-  </p>
-<p>
-    If it reaches someone who thinks "if only I could see it move, I'd get it" &mdash; that's enough.
+    If it reaches someone who thinks "if only I could see it move, I'd get it" — that's enough.
   </p>
 <p>
     Statistics is actually really fascinating.
   </p>
 <div class="col-signature">
-    &mdash; Jumpei Sasai / Sasai Lab, 2026.04
+    — Jumpei Sasai / Sasai Lab, 2026.04
   </div>
 </div>
 <div class="col-cta">
@@ -257,14 +257,14 @@ body.theme-light .progress-bar { box-shadow: none; }
     Every concept, one slider at a time.
   </p>
 <div class="cta-links">
-<a href="../../about.html">&larr; About</a>
-<a href="../../index.html?lang=en">All Topics &rarr;</a>
+<a href="../../about.html">← About</a>
+<a href="../../index.html?lang=en">All Topics →</a>
 </div>
 <div class="share-row">
-<button class="share-btn" data-kind="dl" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F4BE; Save image</button>
-<button class="share-btn" data-kind="url" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F517; Copy URL</button>
-<button class="share-btn" data-kind="x" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">Share on &#x1D54F;</button>
-<button class="share-btn" data-kind="native" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">&#x1F4E4; Share</button>
+<button class="share-btn" data-kind="dl" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="" data-title="Building a Statistics Tool with AI — StatPlay">📤 Share</button>
 </div>
 </div>
 </main>
@@ -273,33 +273,33 @@ body.theme-light .progress-bar { box-shadow: none; }
 <div class="foot-col">
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
-        Vanilla JS &middot; Canvas 2D &middot; ES Modules<br/>
-<span style="opacity:.7">Zero dependencies &middot; PWA &middot; Static hosting</span>
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic &middot; 2026</span>
+<span style="opacity:.7">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 &#x2197;</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub &#x2197;</a>
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
-      &copy; 2026 <b>Sasai Lab</b><br/>
+      © 2026 <b>Sasai Lab</b><br/>
 <span style="opacity:.75">
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
 </div>
-<div>StatPlay &middot; <span class="mg" id="app-version-en">v1.0.0</span></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
 </div>
 </footer>
 <script>

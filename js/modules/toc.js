@@ -5,6 +5,9 @@
 // IntersectionObserver. Also draws a thin progress bar at the top of viewport
 // showing overall scroll progress.
 export function initToc(){
+  // Topic pages have their own static sidebar (.topic-sidebar)
+  if(document.body.classList.contains('topic-page')) return;
+
   const sections = Array.from(document.querySelectorAll('section[id]'))
     .filter(s => s.querySelector('.sec-title'));
   if(!sections.length) return;

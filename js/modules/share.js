@@ -58,6 +58,10 @@ export function initShare(){
     document.body.appendChild(a);a.click();
     setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
   }
+  function resolveTitle(btn){
+    const isEn=window.__LANG==='en';
+    return (isEn && btn.dataset.titleEn) ? btn.dataset.titleEn : btn.dataset.title;
+  }
   function tweetText(title){
     const isEn=window.__LANG==='en';
     return isEn
@@ -159,28 +163,29 @@ export function initShare(){
   document.querySelectorAll('.share-btn.dl').forEach(dlBtn=>{
     const srcId=dlBtn.dataset.share;
     const title=dlBtn.dataset.title;
+    const titleEn=dlBtn.dataset.titleEn||'';
     // URL share button — copies a link that encodes this graph's sliders
     const uBtn=document.createElement('button');
     uBtn.className='share-btn url';
-    uBtn.dataset.share=srcId;uBtn.dataset.title=title;uBtn.dataset.kind='url';
+    uBtn.dataset.share=srcId;uBtn.dataset.title=title;if(titleEn)uBtn.dataset.titleEn=titleEn;uBtn.dataset.kind='url';
     uBtn.innerHTML='<span data-lang="ja">🔗 URLコピー</span><span data-lang="en">🔗 Copy URL</span>';
     dlBtn.insertAdjacentElement('afterend',uBtn);
     // X (Twitter) button
     const xBtn=document.createElement('button');
     xBtn.className='share-btn x';
-    xBtn.dataset.share=srcId;xBtn.dataset.title=title;xBtn.dataset.kind='x';
+    xBtn.dataset.share=srcId;xBtn.dataset.title=title;if(titleEn)xBtn.dataset.titleEn=titleEn;xBtn.dataset.kind='x';
     xBtn.innerHTML='<span data-lang="ja">𝕏 でシェア</span><span data-lang="en">Share on 𝕏</span>';
     uBtn.insertAdjacentElement('afterend',xBtn);
     // Native share button (only on devices/browsers that support it)
     if(hasNativeShare){
       const nBtn=document.createElement('button');
       nBtn.className='share-btn native';
-      nBtn.dataset.share=srcId;nBtn.dataset.title=title;nBtn.dataset.kind='native';
+      nBtn.dataset.share=srcId;nBtn.dataset.title=title;if(titleEn)nBtn.dataset.titleEn=titleEn;nBtn.dataset.kind='native';
       nBtn.innerHTML='<span data-lang="ja">📤 シェア</span><span data-lang="en">📤 Share</span>';
       xBtn.insertAdjacentElement('afterend',nBtn);
     }
   });
   document.querySelectorAll('.share-btn').forEach(btn=>{
-    btn.addEventListener('click',()=>doShare(btn.dataset.kind,btn.dataset.share,btn.dataset.title));
+    btn.addEventListener('click',()=>doShare(btn.dataset.kind,btn.dataset.share,resolveTitle(btn)));
   });
 }
