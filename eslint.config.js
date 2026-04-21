@@ -7,7 +7,8 @@ export default [
       'sw.js',
       'stat_cyber_og.jpg',
       '**/*.min.js',
-      'scripts/test_layout.mjs'
+      'scripts/test_layout.mjs',
+      'scripts/capture_ogp.mjs'
     ]
   },
   {
