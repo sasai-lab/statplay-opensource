@@ -22,21 +22,21 @@
 <meta property="og:title" content="Multiple Regression — Beyond Two Variables">
 <meta property="og:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/mreg.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — Multiple Regression">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Multiple Regression — Beyond Two Variables">
 <meta name="twitter:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/mreg.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -214,7 +217,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
 
-<details class="formula-accordion"><summary>Read what this means</summary>
 <p><b>Each part</b><br/>
 ・β₀ (intercept): baseline prediction when all variables = 0<br/>
 ・β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
@@ -225,7 +227,7 @@ body.topic-page .topic-hub-link a {
 ・Even if study hours and sleep correlate, multiple regression separates their independent contributions</p>
 <p><b>Geometric picture</b><br/>
 ・With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
-</details>
+
 
 </section>
 </main>

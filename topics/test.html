@@ -22,21 +22,21 @@
 <meta property="og:title" content="仮説検定 — p値・α・棄却域を可視化">
 <meta property="og:description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/test.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 仮説検定">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="仮説検定 — p値・α・棄却域を可視化">
 <meta name="twitter:description" content="両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/test.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -262,6 +265,82 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 </div>
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\,,\quad \text{p値} = P\!\left(|Z| \geq |z_{\text{obs}}|\;\middle|\;H_0\right)"></div>
+<p><b>左の式を日本語にすると</b><br/>
+・「この薬に本当は効果がない（H₀: μ=μ₀）としたら、今回のデータの平均が μ₀ からこんなにずれるのは、標準誤差の何個分か？」</p>
+<p><b>各パーツの役割</b><br/>
+・X̄ − μ₀：実験結果と「効果なし」のズレ ← これが大きいほど疑わしい<br/>
+・÷ σ/√n：「そのズレ、σ何個分？」に変換 ← σ1個分ならよくあること、3個分なら滅多にない</p>
+<p><b>右の式：p値（両側検定）</b><br/>
+・「H₀ が正しい世界で、今回の |z| 以上に極端な値が出る確率」← これが知りたい<br/>
+・p値 ≤ α（有意水準）→ 棄却。「こんな極端な結果は偶然とは思えない」<br/>
+・p値 > α → 棄却できない。「偶然でも十分ありえる範囲」</p>
+<p><b>⚠️ p値 ≠「H₀ が正しい確率」</b><br/>
+・p値は「H₀ が正しいと仮定した上で」計算している。H₀ の真偽そのものは分からない<br/>
+・これは統計学で最もハマりやすい誤解</p>
+</div>
+
+
+
+<!-- ═══ 詳細解説 ═══ -->
+<div class="detail-section">
+<h3>// 検定の5ステップ — 毎回この順番で考える</h3>
+<ol>
+<li><b>仮説を立てる</b>：H₀:「差はない」 vs H₁:「差がある」</li>
+<li><b>有意水準 α を決める</b>：実験前に決める。0.05 が慣例だが分野による</li>
+<li><b>検定統計量を計算</b>：z, t, χ² など。「データが H₀ からどれだけずれたか」を1つの数字にまとめる</li>
+<li><b>p値を求める</b>：統計量から確率を引く</li>
+<li><b>判定</b>：p ≤ α なら棄却。p > α なら棄却できない</li>
+</ol>
+
+<h3>// 裁判のたとえ — もう一歩踏み込む</h3>
+<ul>
+<li>H₀ =「被告は無罪」、H₁ =「被告は有罪」</li>
+<li>H₀ 棄却 = 有罪判決：「無罪なのにこんな証拠が出るのは不自然すぎる」</li>
+<li>棄却できない = 証拠不十分：「無罪を証明した」のではなく「有罪にする証拠が足りなかった」</li>
+<li>だから「H₀ を採択する」とは言わず「H₀ を棄却できない」と言う</li>
+</ul>
+
+<h3>// 信頼区間との対応</h3>
+<p>95%信頼区間に μ₀ が入っている ⟺ α=0.05 で H₀ を棄却できない。同じ計算を「幅」で見るか「YES/NO」で見るかの違い。結論は必ず一致する。</p>
+
+<h3>// α と β のトレードオフ</h3>
+<ul>
+<li>α を下げる（例：0.05→0.01）→ 慎重になりすぎて、本当に差があっても見逃しやすくなる（β↑）</li>
+<li>β を下げたいなら → n を増やす。これが「大規模臨床試験」が必要な理由</li>
+</ul>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「p値が小さい = 効果が大きい」</b>
+<p>p値は「データが珍しいかどうか」であって「効果の大きさ」ではない。n=100万なら、ほんの少しの差でもp&lt;0.001 になる。効果の大きさは別途確認が必要。</p>
+</div>
+<div class="misc-item">
+<b>❌「有意でない = 差がない」</b>
+<p>サンプルが少ないと、実際に差があっても p > 0.05 になる（検出力不足）。「差がない」を主張するには n が十分であることを示す必要がある。</p>
+</div>
+<div class="misc-item">
+<b>❌「α を小さくすればするほど良い」</b>
+<p>α を 0.001 にしたら、本当に効く薬でも「効かない」と判定しやすくなる。αとβはシーソーの関係。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>p値と判定</b>：「p=0.03, α=0.01 のとき？」→ 0.03 > 0.01 なので棄却できない</li>
+<li><b>両側 vs 片側</b>：「薬に効果があるか」= 片側、「薬に効果があるかないか」= 両側</li>
+<li><b>誤りの分類</b>：「H₀ が正しいのに棄却した → 第1種の誤り」「H₀ が間違っているのに棄却できなかった → 第2種の誤り」</li>
+<li><b>検出力</b>：1 − β。「本当に差があるときに、ちゃんと検出できる確率」</li>
+</ul>
+</div>
+
 <div class="story-next"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="#dists">I.05 t・χ²・F</a></div>
 
 </section>

@@ -22,21 +22,21 @@
 <meta property="og:title" content="正規分布と標準化 — μ・σの役割を可視化">
 <meta property="og:description" content="一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。研究や統計検定で頻出する計算の裏側を体感する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/normal.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 正規分布と標準化">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="正規分布と標準化 — μ・σの役割を可視化">
 <meta name="twitter:description" content="一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。研究や統計検定で頻出する計算の裏側を体感する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/normal.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -221,8 +224,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>各パーツの役割</b><br/>
 ・(x − μ)²：平均 μ からの距離の二乗 → 左右対称の釣鐘型を作る原因<br/>
 ・÷ 2σ²：σ が大きいほど指数の減衰がゆるやか → 裾が広がり、山が低くなる<br/>
@@ -231,7 +235,37 @@ body.topic-page .topic-hub-link a {
 <p><b>標準正規との関係</b><br/>
 ・μ=0, σ=1 を代入するとそのまま φ(z) = e<sup>−z²/2</sup>/√(2π) になる<br/>
 ・つまり一般正規は「標準正規を横に σ 倍引き伸ばし、μ だけ平行移動」したもの</p>
-</details>
+</div>
+
+
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「σ が大きい = 推定が不安定」</b>
+<p>σ は「1個1個のデータがどれだけバラつくか」。推定の不安定さは SE = σ/√n で表す。σ=100 でも n=10000 なら SE=1 で推定はかなり安定。</p>
+</div>
+<div class="misc-item">
+<b>❌「現実のデータはだいたい正規分布」</b>
+<p>身長や測定誤差は正規分布に近いが、所得分布（右に歪む）、クリック率（0近辺に偏る）、故障時間（指数分布的）など、正規分布に従わないデータはたくさんある。</p>
+</div>
+<div class="misc-item">
+<b>❌「平均 = 最頻値 = 中央値 は正規分布の証拠」</b>
+<p>正規分布ならこの3つは一致する。しかし逆は成り立たない。一様分布でもこの3つは一致する。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>z変換→表引き</b>：「N(50, 10²) で 65 以上になる確率」→ z = (65−50)/10 = 1.5 → 表を引く</li>
+<li><b>上側・下側のα%点</b>：x = μ + z_α · σ で計算</li>
+<li><b>正規分布の加法性</b>：X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) が独立 → X+Y 〜 N(μ₁+μ₂, σ₁²+σ₂²)</li>
+<li><b>標準化の計算</b>：z = (x−μ)/σ を確実に使えるかどうか</li>
+</ul>
+</div>
 
 <div class="story-next"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="#prob">P.03 確率の基本法則</a></div>
 

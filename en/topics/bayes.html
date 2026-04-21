@@ -22,21 +22,21 @@
 <meta property="og:title" content="Bayes' Theorem — Positive Predictive Value">
 <meta property="og:description" content="Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/bayes.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — Bayes' Theorem">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bayes' Theorem — Positive Predictive Value">
 <meta name="twitter:description" content="Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/bayes.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -220,7 +223,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
 
-<details class="formula-accordion"><summary>Read what this means</summary>
 <p><b>Each part (medical test example)</b><br/>
 ・P(A|B): "tested positive — am I actually sick?" ← what we want<br/>
 ・P(B|A) (likelihood): probability a sick person tests positive = sensitivity<br/>
@@ -230,7 +232,7 @@ body.topic-page .topic-hub-link a {
 ・When P(A) is tiny (rare disease), the numerator P(B|A)·P(A) stays small no matter how good the test<br/>
 ・Meanwhile P(B) is inflated by false positives from the large healthy population<br/>
 ・Result: small ÷ not-so-small = "positive test often doesn't mean sick"</p>
-</details>
+
 
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="#clt">I.01 Central Limit Theorem</a></div>

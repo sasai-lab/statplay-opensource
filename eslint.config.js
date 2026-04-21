@@ -5,7 +5,7 @@ export default [
       'node_modules/**',
       'icons/**',
       'sw.js',
-      'stat_cyber_og.png',
+      'stat_cyber_og.jpg',
       '**/*.min.js',
       'scripts/test_layout.mjs'
     ]

@@ -22,21 +22,21 @@
 <meta property="og:title" content="重回帰分析 — 2+変数の世界">
 <meta property="og:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/mreg.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 重回帰分析">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="重回帰分析 — 2+変数の世界">
 <meta name="twitter:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/mreg.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -212,8 +215,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>各パーツの役割</b><br/>
 ・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br/>
 ・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
@@ -224,7 +228,38 @@ body.topic-page .topic-hub-link a {
 ・例：勉強時間と睡眠時間が相関していても、重回帰ならそれぞれの「独立した貢献」を分離できる</p>
 <p><b>幾何的イメージ</b><br/>
 ・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
-</details>
+</div>
+
+
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「偏回帰係数が大きい変数ほど重要」</b>
+<p>「勉強時間（0〜10時間）」と「睡眠時間（4〜10時間）」ではスケールが違う。係数の大きさを比べるには標準化偏回帰係数（どちらも標準偏差1に揃えた係数）を使う必要がある。</p>
+</div>
+<div class="misc-item">
+<b>❌「説明変数は多ければ多いほど良い」</b>
+<p>R² は変数を増やせば必ず上がるが、自由度調整済み R² は下がることがある。不要な変数はノイズを増やして推定を不安定にする。上のシミュレーションで、係数がほぼ0の変数があるなら、それは不要かもしれない。</p>
+</div>
+<div class="misc-item">
+<b>❌「多重共線性は気にしなくていい」</b>
+<p>「勉強時間」と「図書館にいた時間」のように強く相関する2変数を同時に入れると、個々の係数がガタつく（片方の符号が逆転することも）。VIF > 10 が危険信号。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>偏回帰係数の解釈</b>：「β₁=3 → x₂を固定したとき、x₁が1増えるとyは平均3増える」</li>
+<li><b>R² と自由度調整済み R²</b>：変数を追加して調整済みが下がったら、その変数は不要</li>
+<li><b>F検定</b>：「すべての偏回帰係数が0」を一括で検定（モデル全体の有意性）</li>
+<li><b>t検定</b>：「各係数が個別に0かどうか」の検定</li>
+<li><b>多重共線性</b>：VIF の意味と目安（VIF > 10 で要注意）</li>
+</ul>
+</div>
 
 </section>
 </main>

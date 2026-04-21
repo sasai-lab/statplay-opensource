@@ -22,21 +22,21 @@
 <meta property="og:title" content="カイ二乗検定 — 適合度と独立性">
 <meta property="og:description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/chitest.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — カイ二乗検定">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="カイ二乗検定 — 適合度と独立性">
 <meta name="twitter:description" content="サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -111,7 +111,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/chitest.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -143,6 +143,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -223,6 +226,24 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
+<p><b>具体例で読む（サイコロを120回振った）</b><br/>
+・公正なサイコロなら各目が E=20 回ずつ出るはず<br/>
+・実際の結果：[25, 17, 15, 23, 22, 18]<br/>
+・1の目：(25−20)²/20 = 1.25<br/>
+・2の目：(17−20)²/20 = 0.45 ...と全部足す → χ² = 3.70<br/>
+・df=6−1=5 で α=0.05 の臨界値は 11.07。3.70 &lt; 11.07 → 棄却できない。公正と矛盾しない</p>
+<p><b>各パーツの役割</b><br/>
+・O：観測度数（実際に数えた値）<br/>
+・E：期待度数（理論が正しいなら「こうなるはず」の値）<br/>
+・(O−E)²/E：単純に(O−E)²だと、もともと大きいカテゴリほどズレが大きく出て不公平。E で割って「期待に対する相対的なズレ」にする<br/>
+・全カテゴリ分を合計 → 1つの数字で「全体のフィット具合」が分かる</p>
+</div>
+
+
+
 <div class="sim-layout">
 <div class="guided-steps">
 <b>実験ガイド — 独立性検定</b>
@@ -260,6 +281,74 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 </div>
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
+<p><b>具体例で読む（性別×喫煙の2×2表）</b><br/>
+・男性200人中60人が喫煙、女性300人中60人が喫煙、計500人<br/>
+・「性別と喫煙が無関係（独立）」なら、男性の喫煙者の期待値は？<br/>
+・E = 200×120/500 = 48人 ← 行合計×列合計÷総数<br/>
+・「もし独立なら48人のはずなのに実際は60人」→ この差が大きいほど「独立じゃなさそう」</p>
+<p><b>自由度 = (r−1)(c−1) の直感</b><br/>
+・2×2 表：行合計と列合計が決まれば、1つのセルの値を決めると残り3つは自動的に決まる → df=1<br/>
+・3×4 表：df = 2×3 = 6</p>
+<p><b>注意：期待度数が5未満のセルが多いと</b><br/>
+・χ²近似が不正確になる。目安として「Eが5未満のセルが全体の20%以上」なら、フィッシャーの正確検定を使うか、カテゴリを統合する</p>
+</div>
+
+
+
+<!-- ═══ 詳細解説 ═══ -->
+<div class="detail-section">
+<h3>// 適合度検定 と 独立性検定 — 何が違う？</h3>
+<p>どちらも χ² = Σ(O−E)²/E を使うけど、問いが違う：</p>
+<ul>
+<li><b>適合度検定</b>：「このサイコロは公正か？」「このデータは正規分布に従うか？」→ <b>1つの変数</b>を理論分布と比較</li>
+<li><b>独立性検定</b>：「性別と喫煙に関連はあるか？」→ <b>2つの変数</b>の関連を調べる</li>
+</ul>
+<p>期待度数 E の計算方法も違う：</p>
+<ul>
+<li>適合度：理論から直接計算（サイコロなら n/6）</li>
+<li>独立性：データの行合計×列合計÷総数（独立を仮定して逆算）</li>
+</ul>
+
+<h3>// 常に「右裾だけ」を見る理由</h3>
+<p>χ²の値は「ズレの二乗の合計」なので、必ず 0 以上。ズレが大きいほど右に大きくなる。</p>
+<ul>
+<li>χ² が大きい → 理論と合わない → 棄却</li>
+<li>χ² が小さい → 理論とよく合っている → 棄却しない</li>
+<li>だから棄却域は常に右裾のみ。左側の棄却域はない</li>
+</ul>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「χ²検定で有意 = 因果関係がある」</b>
+<p>「関連がある」と言えるだけ。「喫煙と肺がんに関連」≠「喫煙が原因」。背後に交絡因子がある可能性は排除できない。</p>
+</div>
+<div class="misc-item">
+<b>❌「適合度も独立性も自由度は k−1」</b>
+<p>適合度は k−1 だけど、独立性は (r−1)(c−1)。2×3 表なら df=2 であって df=5 ではない。</p>
+</div>
+<div class="misc-item">
+<b>❌「χ²値が小さいほうが良い結果」</b>
+<p>χ²が小さいのは「データが理論とよく合っている」だけで、「良い・悪い」の問題ではない。検定の目的は「合っているか疑わしいか」を判定すること。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>自由度の計算</b>：「2×3 表の独立性検定の自由度は？」→ (2−1)(3−1) = 2</li>
+<li><b>期待度数の手計算</b>：行合計×列合計÷総数を電卓で計算</li>
+<li><b>適合度の計算問題</b>：各カテゴリで (O−E)²/E を求めて合計 → 臨界値と比較</li>
+<li><b>「期待度数5未満のとき」</b>：フィッシャーの正確検定またはカテゴリの統合</li>
+</ul>
+</div>
+
 <div class="story-next"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="#reg">M.01 単回帰分析</a></div>
 
 </section>

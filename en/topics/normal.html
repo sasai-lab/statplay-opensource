@@ -22,21 +22,21 @@
 <meta property="og:title" content="Normal Distribution & Standardization">
 <meta property="og:description" content="Compute P(a≤X≤b) for any N(μ,σ²) and see how standardization Z=(X-μ)/σ turns every normal into N(0,1). Build the reflex behind every z-table lookup.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/normal.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — Normal Distribution & Standardization">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Normal Distribution & Standardization">
 <meta name="twitter:description" content="Compute P(a≤X≤b) for any N(μ,σ²) and see how standardization Z=(X-μ)/σ turns every normal into N(0,1). Build the reflex behind every z-table lookup.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/normal.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -221,7 +224,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
 
-<details class="formula-accordion"><summary>Read what this means</summary>
 <p><b>Each part</b><br/>
 ・(x − μ)²: squared distance from mean → creates the symmetric bell shape<br/>
 ・÷ 2σ²: larger σ means slower exponential decay → wider, flatter curve<br/>
@@ -230,7 +232,7 @@ body.topic-page .topic-hub-link a {
 <p><b>Relation to standard normal</b><br/>
 ・Plug in μ=0, σ=1 and you recover φ(z) = e<sup>−z²/2</sup>/√(2π)<br/>
 ・General normal = standard normal stretched horizontally by σ and shifted by μ</p>
-</details>
+
 
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P.03 Probability Rules</a></div>

@@ -22,21 +22,21 @@
 <meta property="og:title" content="大数の法則 — 試行回数と真の平均">
 <meta property="og:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/lln.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 大数の法則">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="大数の法則 — 試行回数と真の平均">
 <meta name="twitter:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/lln.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -208,6 +211,77 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 </div>
+
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
+<p><b>左辺を日本語にすると</b><br/>
+・「n人の平均身長が、日本人全体の平均身長から ε cm 以上ずれちゃう確率」</p>
+<p><b>右辺の意味</b><br/>
+・σ²/nε²：この確率の<b>上限</b>。実際にはもっと小さいかもしれないけど、少なくともこれ以下<br/>
+・分母に n がある → n を大きくすれば上限がどんどんゼロに近づく<br/>
+・つまり「サンプルを増やせば、平均はいくらでも真値に近づけられる」← これが大数の法則</p>
+<p><b>具体例（コイン投げ）</b><br/>
+・p=0.5（表の確率）、σ²=0.25、ε=0.01（1%以内のズレ）のとき——<br/>
+・n=100：P ≤ 0.25/(100×0.0001) = 25 → 上限が25じゃ何も言えない（確率は1以下なので）<br/>
+・n=100,000：P ≤ 0.025 → 2.5%以下に抑えられる<br/>
+・n=1,000,000：P ≤ 0.0025 → 0.25%以下。ほぼ真値に張り付く<br/>
+・チェビシェフの不等式は"ゆるい"上限なので、実際にはもっと速く収束する</p>
+</div>
+
+
+
+<!-- ═══ 詳細解説 ═══ -->
+<div class="detail-section">
+<h3>// なぜこの定理が統計学の「免許証」なのか</h3>
+<p>これ、最初ピンと来なかったんだけど——大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
+<ul>
+<li>世論調査で1000人に聞いて「支持率48%」と出ても、それが全体に近い保証がない</li>
+<li>新薬の治験で「改善率が高い」と出ても、偶然かもしれない</li>
+<li>保険会社が過去データから事故率を見積もって保険料を決める、あれも成り立たない</li>
+</ul>
+<p>LLN が「n を大きくすれば標本平均は母平均に近づく」と保証してくれてるから、上のぜんぶが正当化される。地味だけど、ないと困る定理。</p>
+
+<h3>// 「ギャンブラーの誤謬」に注意</h3>
+<p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
+
+<h3>// LLN と CLT の違い — ここ、試験に出る</h3>
+<table>
+<tr><th></th><th>LLN（大数の法則）</th><th>CLT（中心極限定理）</th></tr>
+<tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
+<tr><td>一言で</td><td>「どこに向かうか」</td><td>「途中でどう散らばるか」</td></tr>
+<tr><td>必要な条件</td><td>平均が存在すること</td><td>平均と分散が存在すること</td></tr>
+</table>
+<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、CLT が「ゴールまでの道の形」を教えてくれる。</p>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「100回投げれば表がちょうど50回出る」</b>
+<p>LLN が言っているのは"割合"が 0.5 に近づくこと。回数の<b>差</b>（|表の回数 − 50|）はむしろ広がることがある。100回で48回（割合48%、差2）、10000回で4950回（割合49.5%、差50）。割合は近づいたけど差は広がっている。</p>
+</div>
+<div class="misc-item">
+<b>❌「LLN があれば CLT は要らない」</b>
+<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが CLT。両方必要。</p>
+</div>
+<div class="misc-item">
+<b>❌「どんな分布でも LLN は成り立つ」</b>
+<p>「平均が存在する」ことが条件。コーシー分布のように平均が定義できない分布では、サンプルをどれだけ増やしても平均は収束しない。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
+<li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
+<li><b>LLN vs CLT の区別</b>：「分布の形について述べている定理は？」→ CLT</li>
+</ul>
+</div>
+
 <div class="story-next"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="#ci">I.03 信頼区間</a></div>
 
 </section>

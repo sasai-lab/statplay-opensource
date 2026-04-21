@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta content="身長160cmと年収500万円、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。3分で腹落ちするインタラクティブ解説。" name="description"/>
+<meta content="標準化, 標準化とは, Z変換, Zスコア, 正規分布, 統計, 偏差値, σ, 統計検定2級" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>標準化って何？ — 世界中の「ふつう」を比べる翻訳機 | StatPlay</title>
+<link href="https://statplay.sasailab.com/columns/standardization.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/standardization.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/standardization.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/standardization.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="身長160cmと年収500万円、どっちが「ふつう」から遠い？" property="og:title"/>
+<meta content="標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。3分で腹落ちするインタラクティブ解説。" property="og:description"/>
+<meta content="https://statplay.sasailab.com/columns/standardization.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.jpg" property="og:image"/>
+<meta content="StatPlay — 標準化って何？" property="og:image:alt"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="身長160cmと年収500万円、どっちが「ふつう」から遠い？" name="twitter:title"/>
+<meta content="標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。" name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.jpg" name="twitter:image"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../icons/icon-192.png" rel="icon" type="image/png"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<style>
+body.column-page #mainNav .nav-links a,
+body.column-page #mainNav .nav-links button { font-size: 12px; }
+body.column-page section { padding-top: 0; }
+body.column-page .col-breadcrumb {
+  max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+  font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+
+/* ── Cinematic hero ── */
+.hero-cinema {
+  position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  overflow: hidden; z-index: 2;
+}
+#heroCanvas {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  max-width: 720px; padding: 0 24px;
+  text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+}
+body.theme-light .hero-content {
+  text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+}
+.hero-content h1 {
+  font-family: 'Courier New', monospace; font-size: clamp(26px, 5.5vw, 42px);
+  line-height: 1.35; color: var(--text); margin-bottom: 20px;
+  opacity: 0; transform: translateY(20px);
+}
+.hero-content h1.hero-in {
+  opacity: 1; transform: translateY(0);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.hero-content h1 em {
+  font-style: normal; color: var(--yellow);
+  text-shadow: 0 0 24px rgba(255,230,0,.5);
+}
+.hero-content .hook-sub {
+  color: var(--dim); font-size: 15px; line-height: 1.7;
+  opacity: 0;
+}
+.hero-content .hook-sub.hero-in {
+  opacity: 1; transition: opacity .8s ease .6s;
+}
+.hero-content .hook-sub strong { color: var(--magenta); }
+.hero-impact {
+  font-family: 'Courier New', monospace;
+  font-size: clamp(48px, 12vw, 96px); font-weight: 900;
+  color: var(--yellow); letter-spacing: -2px;
+  text-shadow: 0 0 40px rgba(255,230,0,.6), 0 0 80px rgba(255,230,0,.3);
+  opacity: 0; transform: scale(2);
+  margin-bottom: 20px;
+}
+.hero-impact.hero-in {
+  opacity: 1; transform: scale(1);
+  transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+}
+body.theme-light .hero-impact {
+  text-shadow: 0 0 20px rgba(180,140,0,.3);
+}
+.hero-scroll {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: none; border: none; cursor: pointer;
+  font-family: 'Courier New', monospace; font-size: 10px; color: var(--dim);
+  letter-spacing: 3px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  opacity: 0; animation: fadeIn 1s ease 2s forwards;
+}
+.hero-scroll .chevron {
+  width: 12px; height: 12px; border-right: 1.5px solid var(--dim);
+  border-bottom: 1.5px solid var(--dim); transform: rotate(45deg);
+  animation: bounce 1.5s ease infinite;
+}
+@keyframes fadeIn { to { opacity: .5; } }
+@keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(4px); } }
+
+/* ── Article meta ── */
+.article-meta {
+  display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace; font-size: 12px; color: var(--dim);
+}
+.article-meta span::before {
+  content: ''; display: inline-block;
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--cyan); margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* ── Scroll reveal ── */
+.col-section {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.col-section.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+/* ── Section divider ── */
+.col-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 56px 0 48px; position: relative; z-index: 2;
+}
+.col-divider::before, .col-divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+}
+.col-divider .divider-num {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--cyan);
+  letter-spacing: 2px; white-space: nowrap; opacity: .6;
+}
+
+/* ── Formula box ── */
+.col-formula {
+  font-family: 'Courier New', monospace; font-size: clamp(16px, 3.5vw, 22px);
+  text-align: center; padding: 24px 16px; margin: 20px 0;
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  color: var(--cyan); line-height: 1.6;
+}
+
+/* ── Takeaway box ── */
+.takeaway {
+  position: relative; z-index: 2;
+  border: 1px solid rgba(255,230,0,.2);
+  background: rgba(255,230,0,.03);
+  padding: 24px 28px; margin: 48px 0 32px;
+}
+.takeaway h3 {
+  font-family: 'Courier New', monospace; font-size: 14px;
+  color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+}
+.takeaway ul {
+  list-style: none; padding: 0;
+}
+.takeaway li {
+  color: var(--text); font-size: 14px; line-height: 1.8;
+  padding-left: 16px; position: relative; margin-bottom: 6px;
+}
+.takeaway li::before {
+  content: '▸'; position: absolute; left: 0; color: var(--yellow);
+}
+
+/* ── Translator demo ── */
+.translator-demo {
+  border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+  padding: 24px; margin: 24px 0;
+}
+.translator-row {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 16px;
+}
+.translator-box {
+  text-align: center; padding: 12px 20px; min-width: 120px;
+  border: 1px solid rgba(0,243,255,.1);
+  font-family: 'Courier New', monospace;
+}
+.translator-label {
+  display: block; font-size: 11px; color: var(--dim); margin-bottom: 4px;
+}
+.translator-val {
+  font-size: 22px; font-weight: bold;
+}
+.translator-unit {
+  font-size: 12px; color: var(--dim); margin-left: 2px;
+}
+.translator-arrow {
+  font-size: 20px; color: var(--cyan); font-family: 'Courier New', monospace;
+}
+.translator-result {
+  text-align: center; padding: 16px;
+  border-top: 1px dashed rgba(0,243,255,.15); margin-top: 8px;
+  font-family: 'Courier New', monospace; font-size: 14px; color: var(--dim);
+}
+.translator-result strong {
+  font-size: 28px; color: var(--yellow); margin: 0 4px;
+}
+
+/* ── Comparison table ── */
+.compare-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.compare-table th {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--dim);
+  padding: 8px; text-align: center; border-bottom: 1px solid rgba(0,243,255,.2);
+}
+.compare-table td {
+  padding: 8px; font-size: 13px; font-family: 'Courier New', monospace;
+  text-align: center; border-bottom: 1px solid rgba(0,243,255,.06);
+}
+.compare-table tr:hover { background: rgba(0,243,255,.04); }
+
+/* ── Quiz ── */
+.quiz-item { margin-bottom: 24px; }
+.quiz-q {
+  font-size: 15px; font-weight: bold; color: var(--text); margin-bottom: 10px;
+}
+.quiz-choices {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.quiz-choice {
+  padding: 8px 20px; border: 1px solid rgba(0,243,255,.3);
+  background: transparent; color: var(--cyan); cursor: pointer;
+  font-family: 'Courier New', monospace; font-size: 13px;
+  transition: .2s;
+}
+.quiz-choice:hover { background: rgba(0,243,255,.08); }
+.quiz-choice.correct { border-color: var(--cyan); background: rgba(0,243,255,.15); color: var(--text); }
+.quiz-choice.wrong { border-color: var(--magenta); background: rgba(255,0,170,.1); color: var(--magenta); }
+.quiz-explain {
+  display: none; font-size: 13px; color: var(--dim); line-height: 1.7;
+  padding: 10px 14px; border-left: 2px solid var(--cyan); margin-top: 8px;
+}
+
+/* ── FAQ ── */
+.faq-item { margin-bottom: 12px; }
+.faq-q {
+  display: block; width: 100%; text-align: left; padding: 12px 16px;
+  background: rgba(0,243,255,.03); border: 1px solid rgba(0,243,255,.1);
+  color: var(--text); font-size: 14px; cursor: pointer;
+  font-family: 'Courier New', monospace; transition: .2s;
+}
+.faq-q:hover { background: rgba(0,243,255,.06); }
+.faq-q::before { content: '▸ '; color: var(--cyan); }
+.faq-q.open::before { content: '▾ '; }
+.faq-a {
+  display: none; padding: 12px 16px; font-size: 14px;
+  line-height: 1.8; color: var(--text);
+  border: 1px solid rgba(0,243,255,.06); border-top: none;
+}
+.faq-a p:last-child { margin-bottom: 0; }
+
+/* ── Enhanced CTA ── */
+.col-cta { text-align: center; padding: 32px 0 48px; padding-bottom: 16px; }
+.cta-headline {
+  font-family: 'Courier New', monospace; font-size: 18px;
+  color: var(--text); margin-bottom: 8px;
+}
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+.col-cta .cta-links a {
+  padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
+  color: var(--cyan); text-decoration: none;
+  font-family: 'Courier New', monospace; font-size: 13px; transition: .2s;
+}
+.col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
+.share-row {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* ── Progress bar ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  width: 0%; transition: width .1s linear;
+  box-shadow: 0 0 8px var(--cyan);
+}
+body.theme-light .progress-bar { box-shadow: none; }
+
+/* ── Graph share bar ── */
+.graph-share-bar {
+  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  margin-top: 16px; padding: 12px 0;
+}
+
+/* Light theme adjustments */
+body.theme-light .hero-content h1 em { text-shadow: none; }
+body.theme-light .hero-impact { text-shadow: 0 0 20px rgba(180,140,0,.3); }
+body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
+body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "標準化って何？ — 世界中の「ふつう」を比べる翻訳機",
+      "description": "身長160cmと年収500万円、どっちが「普通から遠い」？標準化 Z=(X-μ)/σ は、単位も平均もバラバラな数値を「σ何個分」という共通言語に翻訳する。",
+      "inLanguage": "ja",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/columns/standardization.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "標準化とは何ですか？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準化とは、データから平均を引いて標準偏差で割る変換 Z=(X-μ)/σ のこと。単位や尺度が異なるデータを「平均からσ何個分離れているか」という共通の物差しに変換する操作です。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "標準化と偏差値の違いは？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zスコアは平均0・標準偏差1のスケール、偏差値は平均50・標準偏差10のスケール。偏差値 = 50 + 10 × Z なので、偏差値は標準化にスケール変換を加えたものです。本質的に同じ操作をしています。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "標準化するとなぜ比較できるようになる？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを「σ（標準偏差）何個分」という無次元の共通言語に変換します。これにより、身長と年収のように本来比較できないものも「どちらがより珍しいか」を比較できるようになります。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "標準化はどんな場面で使われる？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "仮説検定（z検定・t検定）、機械学習の前処理、偏差値の計算、異なる指標間の比較など、統計学のあらゆる場面で使われます。統計検定2級では正規分布の確率計算で必ず登場します。"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "コラム",
+          "item": "https://statplay.sasailab.com/columns/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "標準化って何？"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="column-page">
+<div class="progress-bar" id="progressBar"></div>
+<nav id="mainNav">
+<a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+<div class="nav-links" id="navLinks">
+<a href="../index.html">&larr; StatPlay</a>
+<a href="../en/columns/standardization.html" style="font-size:12px">EN</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+</div>
+</nav>
+<!-- ═══ 1. CINEMATIC HERO ═══ -->
+<div class="hero-cinema" id="heroCinema">
+<canvas aria-hidden="true" id="heroCanvas"></canvas>
+<div class="hero-content">
+<div class="hero-impact" id="heroImpact">Z</div>
+<h1 id="heroTitle">身長160cmと年収500万円。<br/>どっちが<em>「ふつう」から遠い</em>？</h1>
+<p class="hook-sub" id="heroSub">
+      単位も平均もバラバラなのに、比べられる。<br/>
+      その魔法の名前は、<strong>標準化</strong>。
+    </p>
+<div class="article-meta" id="heroMeta" style="opacity:0">
+<span>3分で読める</span>
+<span>インタラクティブ解説</span>
+<span>Sasai Lab</span>
+</div>
+</div>
+<button aria-label="コンテンツへスクロール" class="hero-scroll" id="heroScroll" type="button">
+<span>SCROLL</span>
+<div class="chevron"></div>
+</button>
+</div>
+<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px">
+<a href="../index.html">StatPlay</a><span class="sep">&rsaquo;</span>
+<span>コラム</span><span class="sep">&rsaquo;</span>
+<span>標準化って何？</span>
+</div>
+<main>
+<!-- ═══ INTRO ═══ -->
+<div class="col-section">
+<p>
+    「身長160cm」と「年収500万円」—— どちらが「普通」から遠いだろう？<br/>
+    そもそも cm と円を比べるなんて、意味がなさそうに見える。<br/>
+    でも統計学には、<b style="color:var(--cyan)">あらゆる数値を同じ土俵に乗せる翻訳機</b>がある。<br/>
+    それが「標準化」だ。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">01</span></div>
+<!-- ═══ THE PROBLEM ═══ -->
+<div class="col-section">
+<h2>// 比べられない、を比べたい</h2>
+<p>
+    たとえば、あなたの友人がこう言ったとする。
+  </p>
+<p style="padding:16px; border-left:2px solid var(--cyan); color:var(--dim); font-style:italic; margin:20px 0;">
+    「俺、身長182cmなんだよね」<br/>
+    「私、TOEIC 860点だよ」
+  </p>
+<p>
+    どちらも「すごい」のはなんとなくわかる。<br/>
+    でも<b style="color:var(--yellow)">「どっちがより珍しいか」</b>は、このままじゃ答えられない。<br/>
+    なぜなら——
+  </p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li>身長の単位は <b style="color:var(--text)">cm</b>、TOEICの単位は <b style="color:var(--text)">点</b></li>
+<li>身長の平均は約 <b style="color:var(--text)">171cm</b>（成人男性）、TOEICの平均は約 <b style="color:var(--text)">610点</b></li>
+<li>身長のばらつきは <b style="color:var(--text)">小さい</b>、TOEICのばらつきは <b style="color:var(--text)">大きい</b></li>
+</ul>
+<p>
+    単位も平均もばらつきも全部違う。<b style="color:var(--cyan)">りんごとオレンジ</b>だ。<br/>
+    この「比較不可能」を「比較可能」に変えるのが、標準化の仕事。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">02</span></div>
+<!-- ═══ THE FORMULA ═══ -->
+<div class="col-section">
+<h2>// 翻訳機の正体</h2>
+<p>標準化の式は、これだけ。</p>
+<div class="col-formula">Z = (X &minus; &mu;) &divide; &sigma;</div>
+<p>
+    やっていることは2ステップだけだ。
+  </p>
+<p style="margin:16px 0;">
+<b style="color:var(--cyan)">Step 1：平均を引く</b><br/>
+<span style="color:var(--dim)">
+      (X &minus; &mu;) で「平均からどれだけ離れているか」を出す。<br/>
+      これで<b style="color:var(--text)">基準点がゼロに揃う</b>。
+    </span>
+</p>
+<p style="margin:16px 0;">
+<b style="color:var(--magenta)">Step 2：標準偏差で割る</b><br/>
+<span style="color:var(--dim)">
+      &sigma; で割ることで「cm」「点」「円」といった<b style="color:var(--text)">単位が消える</b>。<br/>
+      残るのは「&sigma; 何個分」という<b style="color:var(--text)">無次元の数</b>だけ。
+    </span>
+</p>
+<p>
+    この2ステップで、どんなデータも<b style="color:var(--yellow)">「平均0・標準偏差1」の共通言語</b>に翻訳される。<br/>
+    翻訳後の値を <b style="color:var(--cyan)">Z スコア</b>と呼ぶ。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">03</span></div>
+<!-- ═══ TRANSLATOR DEMO ═══ -->
+<div class="col-section" id="translatorSection">
+<h2>// 翻訳してみよう</h2>
+<p>さっきの「身長182cm」と「TOEIC 860点」を実際に標準化してみる。</p>
+<div class="translator-demo">
+<p style="font-family:'Courier New',monospace; font-size:12px; color:var(--dim); margin-bottom:16px; text-align:center;">▼ 身長（成人男性）</p>
+<div class="translator-row">
+<div class="translator-box">
+<span class="translator-label">値 X</span>
+<span class="translator-val" style="color:var(--text)">182</span><span class="translator-unit">cm</span>
+</div>
+<span class="translator-arrow">&minus;</span>
+<div class="translator-box">
+<span class="translator-label">平均 &mu;</span>
+<span class="translator-val" style="color:var(--text)">171</span><span class="translator-unit">cm</span>
+</div>
+<span class="translator-arrow">&divide;</span>
+<div class="translator-box">
+<span class="translator-label">標準偏差 &sigma;</span>
+<span class="translator-val" style="color:var(--text)">6</span><span class="translator-unit">cm</span>
+</div>
+<span class="translator-arrow">=</span>
+<div class="translator-box" style="border-color:rgba(255,230,0,.3)">
+<span class="translator-label">Z スコア</span>
+<span class="translator-val" style="color:var(--yellow)">+1.83</span>
+</div>
+</div>
+<p style="font-family:'Courier New',monospace; font-size:12px; color:var(--dim); margin:16px 0; text-align:center;">▼ TOEIC</p>
+<div class="translator-row">
+<div class="translator-box">
+<span class="translator-label">値 X</span>
+<span class="translator-val" style="color:var(--text)">860</span><span class="translator-unit">点</span>
+</div>
+<span class="translator-arrow">&minus;</span>
+<div class="translator-box">
+<span class="translator-label">平均 &mu;</span>
+<span class="translator-val" style="color:var(--text)">610</span><span class="translator-unit">点</span>
+</div>
+<span class="translator-arrow">&divide;</span>
+<div class="translator-box">
+<span class="translator-label">標準偏差 &sigma;</span>
+<span class="translator-val" style="color:var(--text)">170</span><span class="translator-unit">点</span>
+</div>
+<span class="translator-arrow">=</span>
+<div class="translator-box" style="border-color:rgba(255,230,0,.3)">
+<span class="translator-label">Z スコア</span>
+<span class="translator-val" style="color:var(--yellow)">+1.47</span>
+</div>
+</div>
+<div class="translator-result">
+      身長182cm は平均から<strong>1.83&sigma;</strong>上。<br/>
+      TOEIC 860点 は平均から<strong>1.47&sigma;</strong>上。<br/>
+<span style="color:var(--magenta); margin-top:8px; display:inline-block;">
+        &rarr; 同じ「すごい」でも、身長182cmのほうが統計的にはレア。
+      </span>
+</div>
+</div>
+<p>
+    cm も点も消えた。残ったのは「&sigma; 何個分」だけ。<br/>
+    これが標準化の力だ——<b style="color:var(--cyan)">りんごとオレンジを、同じ天秤に乗せた</b>。
+  </p>
+</div>
+<div class="col-divider"><span class="divider-num">04</span></div>
+<!-- ═══ WHY IT'S DEEP ═══ -->
+<div class="col-section">
+<h2>// なぜこれが「面白い」のか</h2>
+<p>
+    標準化が面白いのは、単なる計算テクニックじゃないからだ。<br/>
+    よく考えてみてほしい。
+  </p>
+<p style="padding:16px; border-left:2px solid var(--yellow); margin:20px 0; line-height:1.8;">
+<b style="color:var(--yellow)">「ふつう」とは何か？</b><br/>
+<span style="color:var(--dim)">
+      標準化は暗に「平均がふつうで、そこからの距離が珍しさだ」と定義している。<br/>
+      つまり標準化は、<b style="color:var(--text)">「ふつう」の数学的定義</b>を与えている。
+    </span>
+</p>
+<p style="padding:16px; border-left:2px solid var(--magenta); margin:20px 0; line-height:1.8;">
+<b style="color:var(--magenta)">単位が消える、ということ</b><br/>
+<span style="color:var(--dim)">
+      cm を &sigma; で割ると、cm が約分されて消える。<br/>
+      残るのは<b style="color:var(--text)">純粋な比率</b>。物理学で言う「無次元量」。<br/>
+      標準化は、データから<b style="color:var(--text)">「意味」だけを抽出する蒸留器</b>だ。
+    </span>
+</p>
+<p style="padding:16px; border-left:2px solid var(--cyan); margin:20px 0; line-height:1.8;">
+<b style="color:var(--cyan)">統計学の「共通語」になっている</b><br/>
+<span style="color:var(--dim)">
+      z検定、t検定、偏差値、信頼区間——<br/>
+      統計学の重要な道具のほとんどが、<b style="color:var(--text)">裏側で標準化を使っている</b>。<br/>
+      標準化を理解すれば、それらが「全部同じことをやっている」と気づく。
+    </span>
+</p>
+</div>
+<div class="col-divider"><span class="divider-num">05</span></div>
+<!-- ═══ DEVIATION VALUE CONNECTION ═══ -->
+<div class="col-section">
+<h2>// 偏差値の正体、ふたたび</h2>
+<p>
+    ところで、日本人なら誰でも知っている「偏差値」。<br/>
+    あれの正体は、<b style="color:var(--yellow)">標準化に化粧をしただけ</b>だ。
+  </p>
+<div class="col-formula">偏差値 = 50 + 10 &times; Z</div>
+<p>
+    標準化した値（Zスコア）に10を掛けて50を足す。それだけ。<br/>
+    なぜこんな変換をするかというと——
+  </p>
+<ul style="color:var(--dim); line-height:2; margin:16px 0;">
+<li>Zスコアは「-1.5」「+0.8」のように<b style="color:var(--text)">小数でマイナスもある</b></li>
+<li>偏差値なら「45」「58」のように<b style="color:var(--text)">整数で直感的</b></li>
+<li>平均が50なので<b style="color:var(--text)">「50より上か下か」で即判断できる</b></li>
+</ul>
+<p>
+    つまり偏差値は、標準化の<b style="color:var(--cyan)">ユーザーフレンドリー版</b>。<br/>
+    本質は同じ。「平均からσ何個分か」を測っているだけだ。
+  </p>
+<table class="compare-table">
+<thead>
+<tr>
+<th></th>
+<th style="color:var(--cyan)">Z スコア</th>
+<th style="color:var(--magenta)">偏差値</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="color:var(--dim)">平均</td><td>0</td><td>50</td></tr>
+<tr><td style="color:var(--dim)">+1&sigma;</td><td style="color:var(--cyan)">+1.0</td><td style="color:var(--magenta)">60</td></tr>
+<tr><td style="color:var(--dim)">+2&sigma;</td><td style="color:var(--cyan)">+2.0</td><td style="color:var(--magenta)">70</td></tr>
+<tr><td style="color:var(--dim)">-1&sigma;</td><td style="color:var(--cyan)">-1.0</td><td style="color:var(--magenta)">40</td></tr>
+<tr><td style="color:var(--dim)">-2&sigma;</td><td style="color:var(--cyan)">-2.0</td><td style="color:var(--magenta)">30</td></tr>
+</tbody>
+</table>
+</div>
+<div class="col-divider"><span class="divider-num">06</span></div>
+<!-- ═══ QUIZ ═══ -->
+<div class="col-section">
+<h2>// 3問クイズ — ここまでの理解を確認</h2>
+<div class="quiz-item">
+<p class="quiz-q">Q1. 標準化すると、元の単位（cm、点、円）はどうなる？</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="false">そのまま残る</button>
+<button class="quiz-choice" data-correct="true">消える（無次元になる）</button>
+</div>
+<div class="quiz-explain">標準偏差の単位は元のデータと同じ（cm なら cm）。割り算で単位が約分され、Z スコアは「&sigma; 何個分」という無次元の比率になる。</div>
+</div>
+<div class="quiz-item">
+<p class="quiz-q">Q2. Z = -0.5 は「平均より上」？「平均より下」？</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="false">平均より上</button>
+<button class="quiz-choice" data-correct="true">平均より下</button>
+</div>
+<div class="quiz-explain">Z が負なら平均より下。Z = -0.5 は「平均から標準偏差の半分だけ下」を意味する。</div>
+</div>
+<div class="quiz-item">
+<p class="quiz-q">Q3. 偏差値60は、Zスコアでいくつ？</p>
+<div class="quiz-choices">
+<button class="quiz-choice" data-correct="false">Z = 0.6</button>
+<button class="quiz-choice" data-correct="true">Z = 1.0</button>
+<button class="quiz-choice" data-correct="false">Z = 6.0</button>
+</div>
+<div class="quiz-explain">偏差値 = 50 + 10 &times; Z なので、60 = 50 + 10 &times; Z &rarr; Z = 1.0。偏差値60は「平均から &sigma; ちょうど1つ分上」。</div>
+</div>
+</div>
+<!-- ═══ TAKEAWAY ═══ -->
+<div class="takeaway">
+<h3>// KEY TAKEAWAY</h3>
+<ul>
+<li>標準化 Z=(X&minus;&mu;)/&sigma; は、<b style="color:var(--cyan)">あらゆるデータを「&sigma;何個分」に翻訳する</b></li>
+<li>平均を引いて基準をゼロにし、&sigma;で割って単位を消す——<b style="color:var(--yellow)">たった2ステップ</b></li>
+<li>偏差値は標準化に 50+10&times;Z の化粧をしただけ。<b style="color:var(--magenta)">本質は同じ</b></li>
+<li>z検定、t検定、信頼区間——統計学の主要ツールは<b style="color:var(--cyan)">全部、裏で標準化を使っている</b></li>
+</ul>
+</div>
+<div class="col-divider"><span class="divider-num">FAQ</span></div>
+<!-- ═══ FAQ ═══ -->
+<div class="col-section">
+<h2>// よくある質問</h2>
+<div class="faq-item">
+<button class="faq-q" type="button">標準化とは何ですか？</button>
+<div class="faq-a">
+<p><b>Z = (X &minus; &mu;) &divide; &sigma;</b>。データから平均を引いて標準偏差で割る変換のこと。単位や尺度が異なるデータを「平均から&sigma;何個分離れているか」という共通の物差しに変換する操作。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">標準化と偏差値の違いは？</button>
+<div class="faq-a">
+<p>Zスコアは<b style="color:var(--cyan)">平均0・標準偏差1</b>のスケール。偏差値は<b style="color:var(--magenta)">平均50・標準偏差10</b>のスケール。偏差値 = 50 + 10 &times; Z なので、偏差値は標準化にスケール変換を加えたもの。本質的に同じ操作をしている。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">標準化するとなぜ比較できるようになる？</button>
+<div class="faq-a">
+<p>標準化は「cm」「円」「点」といった元の単位を消し去り、すべてを<b style="color:var(--cyan)">「&sigma;何個分」という無次元の共通言語</b>に変換する。これにより、身長と年収のように本来比較できないものも「どちらがより珍しいか」を比較できるようになる。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">標準化はどんな場面で使われる？</button>
+<div class="faq-a">
+<p><b>仮説検定</b>（z検定・t検定）、<b>機械学習の前処理</b>（特徴量スケーリング）、<b>偏差値</b>の計算、<b>異なる指標間の比較</b>など、統計学のあらゆる場面で使われる。統計検定2級では正規分布の確率計算で必ず登場する。</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">標準化しても分布の形は変わらない？</button>
+<div class="faq-a">
+<p>変わらない。標準化は「平行移動（平均を引く）」と「拡大縮小（&sigma;で割る）」だけなので、<b style="color:var(--yellow)">分布の形はそのまま保存される</b>。歪んだ分布を標準化しても、歪んだまま。正規分布を標準化すると、標準正規分布 N(0,1) になる。</p>
+</div>
+</div>
+</div>
+<!-- ═══ CTA ═══ -->
+<div class="col-cta">
+<p class="cta-headline">標準化は、統計学の「ロゼッタストーン」だ。</p>
+<p class="cta-sub">
+    この共通言語を使って、正規分布の確率計算や仮説検定がどう動くのかを体感しよう。<br/>
+    StatPlay のインタラクティブ教材で、数式の向こう側を触れる。
+  </p>
+<div class="cta-links">
+<a href="../topics/normal.html">正規分布と標準化を深掘り &rarr;</a>
+<a href="../topics/stdnorm.html">標準正規分布を掴む &rarr;</a>
+<a href="../columns/deviation.html">偏差値って何？ &rarr;</a>
+<a href="../index.html">全トピック一覧 &rarr;</a>
+</div>
+<div class="share-row">
+<button class="share-btn" data-kind="url" data-share="page" data-title="標準化って何？ — StatPlay">🔗 URLコピー</button>
+<button class="share-btn" data-kind="x" data-share="page" data-title="標準化って何？ — StatPlay">𝕏 でシェア</button>
+<button class="share-btn" data-kind="native" data-share="page" data-title="標準化って何？ — StatPlay">📤 シェア</button>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS &middot; Canvas 2D &middot; ES Modules<br/>
+<span style="opacity:.7">Zero dependencies &middot; PWA &middot; Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic &middot; 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 &nearr;</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub &nearr;</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      &copy; 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+</span>
+</div>
+<div>StatPlay &middot; <span class="mg" id="app-version">v1.0.0</span></div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const btn = document.getElementById('themeToggle');
+  const saved = localStorage.getItem('svl_theme');
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
+  btn?.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('theme-light');
+    btn.textContent = isLight ? 'DARK' : 'LIGHT';
+    btn.setAttribute('aria-pressed', String(isLight));
+    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
+  });
+
+  // Progress bar
+  const bar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+  }, { passive: true });
+
+  // Scroll button
+  const scrollBtn = document.getElementById('heroScroll');
+  scrollBtn?.addEventListener('click', () => {
+    const main = document.querySelector('main');
+    if (main) main.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.col-section, .takeaway').forEach(el => obs.observe(el));
+
+  // Cinematic hero animation
+  const hc = document.getElementById('heroCanvas');
+  if (hc) {
+    const TAU = Math.PI * 2;
+    const pdf = z => Math.exp(-0.5 * z * z) / Math.sqrt(TAU);
+    const dpr = window.devicePixelRatio || 1;
+    let w, h, ctx;
+    const lt = () => document.body.classList.contains('theme-light');
+
+    function sizeCanvas() {
+      const rect = hc.parentElement.getBoundingClientRect();
+      hc.width = rect.width * dpr;
+      hc.height = rect.height * dpr;
+      w = rect.width; h = rect.height;
+      ctx = hc.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    const toX = z => w / 2 + (z / 4.2) * (w * 0.42);
+    const toY = v => h * 0.88 - v / 0.42 * (h * 0.30);
+
+    let animStart = null;
+    function drawFrame(ts) {
+      if (!animStart) animStart = ts;
+      const progress = Math.min(1, (ts - animStart) / 3000);
+      ctx.clearRect(0, 0, w, h);
+
+      // grid
+      const gridA = lt() ? 0.06 : 0.04;
+      ctx.strokeStyle = lt() ? `rgba(0,60,90,${gridA})` : `rgba(0,243,255,${gridA})`;
+      ctx.lineWidth = 1;
+      for (let x = 0; x < w; x += 40) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = 0; y < h; y += 40) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // bell curve draw-on
+      const curveP = Math.min(1, progress / 0.4);
+      if (curveP > 0) {
+        const steps = Math.floor(400 * curveP);
+        ctx.beginPath();
+        for (let i = 0; i <= steps; i++) {
+          const z = -4 + (8 * i / 400);
+          const x = toX(z), y = toY(pdf(z));
+          i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        const cyanColor = lt() ? 'rgba(0,120,160,' : 'rgba(0,243,255,';
+        ctx.strokeStyle = cyanColor + (0.6 * curveP) + ')';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      // z-line markers
+      const markP = Math.max(0, Math.min(1, (progress - 0.5) / 0.2));
+      if (markP > 0) {
+        [1, -1, 2, -2].forEach((z, i) => {
+          const x = toX(z);
+          const alpha = markP * (i < 2 ? 1 : 0.5);
+          ctx.strokeStyle = lt() ? `rgba(180,140,0,${alpha * 0.4})` : `rgba(255,230,0,${alpha * 0.4})`;
+          ctx.lineWidth = 1;
+          ctx.setLineDash([4, 4]);
+          ctx.beginPath();
+          ctx.moveTo(x, toY(pdf(z)));
+          ctx.lineTo(x, toY(0));
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.fillStyle = lt() ? `rgba(0,80,100,${alpha})` : `rgba(0,243,255,${alpha})`;
+          ctx.font = '11px Courier New';
+          ctx.textAlign = 'center';
+          ctx.fillText(z > 0 ? `+${z}σ` : `${z}σ`, x, toY(0) + 16);
+        });
+        // zero line
+        const x0 = toX(0);
+        ctx.fillStyle = lt() ? `rgba(0,80,100,${markP})` : `rgba(0,243,255,${markP})`;
+        ctx.font = '11px Courier New';
+        ctx.textAlign = 'center';
+        ctx.fillText('μ (=0)', x0, toY(0) + 16);
+      }
+
+      // hero text animation
+      const titleP = Math.max(0, Math.min(1, (progress - 0.3) / 0.15));
+      const impactP = Math.max(0, Math.min(1, (progress - 0.15) / 0.15));
+      const subP = Math.max(0, Math.min(1, (progress - 0.45) / 0.2));
+      const metaP = Math.max(0, Math.min(1, (progress - 0.7) / 0.15));
+
+      const impact = document.getElementById('heroImpact');
+      const title = document.getElementById('heroTitle');
+      const sub = document.getElementById('heroSub');
+      const meta = document.getElementById('heroMeta');
+
+      if (impactP > 0) {
+        impact.style.opacity = impactP;
+        impact.style.transform = `scale(${2 - impactP})`;
+      }
+      if (titleP > 0) { title.style.opacity = titleP; title.style.transform = `translateY(${20 * (1 - titleP)}px)`; }
+      if (subP > 0) sub.style.opacity = subP;
+      if (metaP > 0) meta.style.opacity = metaP;
+
+      if (progress < 1) requestAnimationFrame(drawFrame);
+    }
+
+    sizeCanvas();
+    requestAnimationFrame(drawFrame);
+    window.addEventListener('resize', () => { sizeCanvas(); animStart = null; requestAnimationFrame(drawFrame); });
+  }
+
+  // Quiz logic
+  document.querySelectorAll('.quiz-choice').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.quiz-item');
+      if (item.dataset.answered) return;
+      item.dataset.answered = '1';
+      const correct = btn.dataset.correct === 'true';
+      btn.classList.add(correct ? 'correct' : 'wrong');
+      if (!correct) {
+        item.querySelector('[data-correct="true"]').classList.add('correct');
+      }
+      item.querySelector('.quiz-explain').style.display = 'block';
+    });
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const a = q.nextElementSibling;
+      const isOpen = q.classList.toggle('open');
+      a.style.display = isOpen ? 'block' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

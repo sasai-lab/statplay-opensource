@@ -18,7 +18,7 @@ const ASSETS = [
   './js/main.js',
   './js/utils.js',
   ...MODULE_FILES.map(f => `./js/modules/${f}`),
-  './stat_cyber_og.png',
+  './stat_cyber_og.jpg',
   './manifest.webmanifest',
   './sitemap.xml',
   './robots.txt',

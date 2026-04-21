@@ -22,21 +22,21 @@
 <meta property="og:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
 <meta property="og:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/dists.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — t分布・χ²分布・F分布">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
 <meta name="twitter:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -111,7 +111,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/dists.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -143,6 +143,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -269,6 +272,80 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 </div>
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="t_k = \frac{Z}{\sqrt{\chi^2_k / k}}\,,\quad \chi^2_k = \sum_{i=1}^{k} Z_i^2\,,\quad F_{m,n} = \frac{\chi^2_m / m}{\chi^2_n / n}"></div>
+<p><b>ぜんぶ N(0,1) の子ども</b><br/>
+・Z, Z₁, Z₂, ... は全部ふつうの標準正規分布。これを材料に3つの分布が作れる</p>
+<p><b>χ²分布：Z を二乗して足す ← 「バラつきの合計」</b><br/>
+・Z₁² + Z₂² + ... + Zₖ² がχ²(k)に従う。二乗してるから常に正の値で、右に歪んだ形<br/>
+・k が大きくなると左右対称に近づく（中心極限定理の帰結！）</p>
+<p><b>t分布：Z を「推定したσ」で割る ← 「σを知らない正規分布」</b><br/>
+・t = Z / √(χ²/k)。分母の χ²/k は σ² の推定量だと思えばいい<br/>
+・k が小さい（データが少ない）→ σ の推定が不安定 → 裾が太くなる<br/>
+・k→∞ で分母が1に安定 → t が Z とまったく同じになる（標準正規に一致）</p>
+<p><b>F分布：2つの χ² の比 ← 「2つの分散の比」</b><br/>
+・「Aグループの分散 ÷ Bグループの分散」を検定するための分布<br/>
+・分子と分母で自由度が違うから、入れ替えると別の分布になる ← 注意</p>
+</div>
+
+
+
+<!-- ═══ 詳細解説 ═══ -->
+<div class="detail-section">
+<h3>// 自由度 (df) って結局なに？</h3>
+<p>自分もこれ、最初まったく意味が分からなかった。今の理解はこう：「自由に値を決められるデータの個数」。</p>
+<p>例：3人のテストの平均が60点だと分かっているとする。<br/>
+・1人目：70点（自由）<br/>
+・2人目：55点（自由）<br/>
+・3人目：？ → 60×3 − 70 − 55 = 55 で自動的に決まる（不自由）<br/>
+→ 3人なのに自由に決められるのは2人 → df = n−1 = 2</p>
+<p>自由度が小さいとどうなるか：<br/>
+・情報が少ない → 推定が不安定 → 分布の裾が広がる（極端な値が出やすい）<br/>
+・df=1 の t分布はかなり裾が太い。df=30 になると正規分布とほぼ見分けがつかない<br/>
+・上のシミュレーションで df を動かして確かめてみよう</p>
+
+<h3>// いつどれを使う？早見表</h3>
+<table>
+<tr><th>やりたいこと</th><th>σ を知ってる？</th><th>使う分布</th></tr>
+<tr><td>平均の検定</td><td>知ってる（珍しい）</td><td>z（標準正規）</td></tr>
+<tr><td>平均の検定</td><td>知らない（普通こっち）</td><td>t分布</td></tr>
+<tr><td>分散の検定（1群）</td><td>—</td><td>χ²分布</td></tr>
+<tr><td>分散の比較（2群）</td><td>—</td><td>F分布</td></tr>
+<tr><td>回帰の係数が有意か</td><td>—</td><td>t分布</td></tr>
+<tr><td>回帰モデル全体が有意か</td><td>—</td><td>F分布</td></tr>
+<tr><td>カテゴリの適合度・独立性</td><td>—</td><td>χ²分布</td></tr>
+</table>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「t分布は正規分布とまったく別の分布」</b>
+<p>t分布は「σを知らないから推定値で代用した正規分布」。df→∞ で N(0,1) に一致する。裾の太さの違いだけ。</p>
+</div>
+<div class="misc-item">
+<b>❌「χ²分布の自由度 = n」</b>
+<p>ほとんどの場合 n−1。平均を推定するたびに自由度が1つ減る。適合度検定は k−1、独立性検定は (r−1)(c−1)。</p>
+</div>
+<div class="misc-item">
+<b>❌「F分布の df₁ と df₂ を入れ替えても同じ」</b>
+<p>F 分布は非対称。分子の自由度と分母の自由度を間違えると臨界値が変わって判定も変わる。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>自由度の計算</b>：「標本サイズ20の1標本t検定の自由度は？」→ 19</li>
+<li><b>df→∞ の挙動</b>：「自由度を大きくすると t分布はどうなるか？」→ N(0,1) に近づく</li>
+<li><b>χ²の公式</b>：「(n−1)S²/σ² はどの分布に従うか？」→ χ²(n−1)</li>
+<li><b>関係性</b>：「t² はどの分布に一致するか？」→ F(1, k)</li>
+</ul>
+</div>
+
 <div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="#chitest">I.06 カイ二乗検定</a></div>
 
 </section>

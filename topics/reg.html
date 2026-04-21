@@ -22,21 +22,21 @@
 <meta property="og:title" content="単回帰分析 — 最小二乗法をビジュアルで">
 <meta property="og:description" content="キャンバスに点を配置して、最小二乗法による回帰直線が動くのを体感。残差、傾きβ₁、切片β₀、決定係数R²の関係を直感的に理解する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/reg.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 単回帰分析">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="単回帰分析 — 最小二乗法をビジュアルで">
 <meta name="twitter:description" content="キャンバスに点を配置して、最小二乗法による回帰直線が動くのを体感。残差、傾きβ₁、切片β₀、決定係数R²の関係を直感的に理解する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -111,7 +111,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/reg.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -143,6 +143,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -210,8 +213,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>ŷ = β₀ + β₁x（予測式）</b><br/>
 ・β₁（傾き）：x が1単位増えたとき、y が平均的にいくつ変わるか<br/>
 ・β₀（切片）：x = 0 のときの y の予測値。グラフと y 軸の交点</p>
@@ -220,7 +224,37 @@ body.topic-page .topic-hub-link a {
 ・分母 Σ(xᵢ − x̄)²：x 自体のバラつき（変動）<br/>
 ・割り算の意味：「x の変動1単位あたり、y がどれだけ共変動しているか」→ これが傾き<br/>
 ・x のバラつきが大きいほど傾きの推定が安定する（分母が大きい = ブレにくい）</p>
-</details>
+</div>
+
+
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「相関が高い = 因果関係がある」</b>
+<p>アイスの売上と溺死者数は強い正の相関。でも「アイスが人を溺れさせている」わけではない。共通の原因「気温」が両方に影響している（交絡因子）。相関は「一緒に動く」を言うだけで「一方が原因」とは言わない。</p>
+</div>
+<div class="misc-item">
+<b>❌「R² が高ければモデルは正しい」</b>
+<p>R² は説明変数を追加すれば必ず上がる（下がることはない）。無関係な変数を入れても上がる。だから R² だけでモデルの良さを判断するのは危険。自由度調整済み R² を使う。</p>
+</div>
+<div class="misc-item">
+<b>❌「回帰直線が引けた = データに直線関係がある」</b>
+<p>どんなデータにも最小二乗法で直線は必ず引ける。円形に散らばったデータにも直線が出る。上のシミュレーションで「ランダム20点」を試して R² が低いことを確認してみよう。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>β₁ の手計算</b>：共変動/x の変動 = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
+<li><b>R² の解釈</b>：「R²=0.64 → y の分散の64%がxで説明できる」</li>
+<li><b>r と R²</b>：「R²=0.64 なら r=±0.8」（符号は β₁ と一致）</li>
+<li><b>残差の仮定</b>：等分散性・正規性・独立性の3つ</li>
+</ul>
+</div>
 
 <div class="story-next"><span class="lbl">次は —</span>他の影響を取り除く <span class="story-arrow">▸</span> <a href="#mreg">M.02 重回帰分析</a></div>
 

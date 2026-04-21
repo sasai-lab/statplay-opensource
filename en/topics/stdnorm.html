@@ -22,21 +22,21 @@
 <meta property="og:title" content="Feel the Standard Normal Distribution">
 <meta property="og:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/stdnorm.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — Feel the Standard Normal Distribution">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Feel the Standard Normal Distribution">
 <meta name="twitter:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/stdnorm.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -216,7 +219,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
 
-<details class="formula-accordion"><summary>Read what this means</summary>
 <p><b>Left: z = (x − μ) / σ</b><br/>
 ・x − μ: distance from the mean<br/>
 ・÷ σ: convert to "how many σ away" — a universal ruler<br/>
@@ -225,7 +227,7 @@ body.topic-page .topic-hub-link a {
 ・e<sup>−z²/2</sup>: maximum at z=0, drops rapidly as |z| grows → the bell shape<br/>
 ・1/√(2π): normalizing constant ensuring total area = 1 (probabilities sum to 100%)<br/>
 ・φ(z) gives the curve's height (density) at that point; area under the curve = probability</p>
-</details>
+
 
 <div class="sim-layout">
 <div class="guided-steps">

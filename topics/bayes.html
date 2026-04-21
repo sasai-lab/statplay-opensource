@@ -22,21 +22,21 @@
 <meta property="og:title" content="ベイズ定理 — 陽性的中率を直感で">
 <meta property="og:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/bayes.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — ベイズ定理">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ベイズ定理 — 陽性的中率を直感で">
 <meta name="twitter:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/bayes.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -173,7 +176,7 @@ body.topic-page .topic-hub-link a {
 
 <p class="sec-desc">
 <b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br/>
-    …<b>答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br/>
+    …<b>答え：わずか 16.7%</b>。自分も最初「え、99%じゃないの？」と思った。医師ですら半分以上が間違える超有名クイズだから、直感が外れて当然。<br/>
     ポイントは"<b>もともと病気の人がめっちゃ少ない</b>"という事実を忘れてしまうこと。
     下の"1000人の町"を見ながら、3つのつまみを動かして<b>自分の目で</b>確かめよう。
   </p>
@@ -219,8 +222,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>各パーツの役割（検査の例で読む）</b><br/>
 ・P(A|B)：「陽性が出たとき、本当に病気である確率」← これが知りたい<br/>
 ・P(B|A)（尤度）：「病気の人が検査で陽性になる確率」= 感度<br/>
@@ -230,7 +234,36 @@ body.topic-page .topic-hub-link a {
 ・P(A) が小さい（有病率が低い）とき、分子 P(B|A)·P(A) はどんなに感度が高くても小さい<br/>
 ・一方 P(B) には健康な人の偽陽性も含まれるので意外と大きい<br/>
 ・結果：小さい数 ÷ そこそこ大きい数 = 「陽性でも病気じゃないことが多い」</p>
-</details>
+</div>
+
+
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「陽性 = 病気」</b>
+<p>有病率1%, 感度95%, 特異度90% だと、陽性的中率はたった 8.8%。陽性100人中、実際に病気なのは9人だけ。残りの91人は健康なのに陽性（偽陽性）。上のシミュレーションで有病率を下げてみると一目瞭然。</p>
+</div>
+<div class="misc-item">
+<b>❌「感度と特異度が高ければ安心」</b>
+<p>有病率が低すぎる集団に使うと、感度・特異度が両方99%でも陽性的中率は50%程度。「誰に対して検査するか」（事前確率の選び方）が結果を大きく左右する。</p>
+</div>
+<div class="misc-item">
+<b>❌「ベイズの定理は1回使って終わり」</b>
+<p>1回目の事後確率を2回目の事前確率として更新できる。2回連続で陽性なら、事後確率はぐっと上がる。これが「ベイズ更新」の考え方。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>定番計算</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」</li>
+<li><b>全確率の公式</b>：P(B) = P(B|A)P(A) + P(B|Ā)P(Ā) を分母に使う</li>
+<li><b>自然頻度で解く</b>：1000人の表を書いて直接数えるのが確実。公式を暗記するより速い</li>
+</ul>
+</div>
 
 <div class="story-next"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="#clt">I.01 中心極限定理</a></div>
 

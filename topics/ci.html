@@ -22,21 +22,21 @@
 <meta property="og:title" content="信頼区間 — 95%の意味を誤解なく掴む">
 <meta property="og:description" content="「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/ci.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 信頼区間">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="信頼区間 — 95%の意味を誤解なく掴む">
 <meta name="twitter:description" content="「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/ci.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -213,8 +216,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>各パーツの役割</b><br/>
 ・x̄（標本平均）：区間の中心。「今回の調査結果で一番もっともらしい値」<br/>
 ・z<sub>α/2</sub>：信頼度に応じた"幅の倍率"。95%なら1.96、99%なら2.576<br/>
@@ -223,7 +227,37 @@ body.topic-page .topic-hub-link a {
 ・「中心 ± 倍率 × ブレ幅」で"網"を張る<br/>
 ・n を4倍にすると √n が2倍 → 区間の幅が半分に。精度を2倍にするにはデータが4倍要る<br/>
 ・信頼度を上げると z<sub>α/2</sub> が大きくなり、網は広がるが「当たる確率」が上がる</p>
-</details>
+</div>
+
+
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「95%信頼区間 = 真値がここに入る確率が95%」← いちばんハマりやすい誤解</b>
+<p>真値 μ は固定された定数。この区間に入っているか入っていないかのどちらか。「確率95%」は「この方法で100回区間を作ったら、約95回は真値を含む」という手続きの性能の話。上のシミュレーションで300本の区間を作って、ピンク（真値を逃した区間）が5%前後であることを確認してみよう。</p>
+</div>
+<div class="misc-item">
+<b>❌「信頼区間が狭い = 正しい」</b>
+<p>狭いのは「精度が高い」ことの現れだが、真値を含んでいるかは別問題。信頼度を下げれば幅は狭くなるけど、外す確率が上がる。</p>
+</div>
+<div class="misc-item">
+<b>❌「信頼区間は平均にだけ使う」</b>
+<p>分散、比率、回帰係数、差の検定など、あらゆる推定量に対して信頼区間が作れる。構造は同じ：「推定値 ± 倍率 × 標準誤差」。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>計算問題</b>：「x̄=50, σ=10, n=25 の95%信頼区間は？」→ 50 ± 1.96×(10/5) = [46.08, 53.92]</li>
+<li><b>幅と n の関係</b>：「幅を半分にするには n を何倍に？」→ 4倍（幅 ∝ 1/√n）</li>
+<li><b>検定との対応</b>：「95%CI = [2.1, 4.3] で μ₀=2 を両側検定すると？」→ 2 は含まれていない → 棄却</li>
+<li><b>信頼度と幅</b>：「99%にすると？」→ z が 1.96→2.576 になるので幅は広がる</li>
+</ul>
+</div>
 
 <div class="story-next"><span class="lbl">次は —</span>幅から YES/NO へ <span class="story-arrow">▸</span> <a href="#test">I.04 仮説検定</a></div>
 

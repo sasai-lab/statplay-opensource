@@ -22,21 +22,21 @@
 <meta property="og:title" content="標準正規分布を直感で掴む">
 <meta property="og:description" content="平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/stdnorm.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — 標準正規分布を直感で掴む">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="標準正規分布を直感で掴む">
 <meta name="twitter:description" content="平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/stdnorm.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -219,8 +222,9 @@ body.topic-page .topic-hub-link a {
 </div>
 </div>
 
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
-<details class="formula-accordion"><summary>式の意味を読む</summary>
 <p><b>左の式 z = (x − μ) / σ</b><br/>
 ・x − μ：データから平均を引く → 「平均からどれだけ離れているか」<br/>
 ・÷ σ：それを標準偏差で割る → 単位を「σ何個分」に統一する<br/>
@@ -229,7 +233,9 @@ body.topic-page .topic-hub-link a {
 ・e<sup>−z²/2</sup>：z=0（平均）で最大、離れるほど急激に小さくなる → 釣鐘型の正体<br/>
 ・1/√(2π)：面積の合計がちょうど1（= 確率の総和）になるための調整係数<br/>
 ・φ(z) の値：その z における曲線の「高さ」（確率密度）。面積が確率になる</p>
-</details>
+</div>
+
+
 
 <div class="sim-layout">
 <div class="guided-steps">
@@ -271,6 +277,34 @@ body.topic-page .topic-hub-link a {
 <button class="share-btn dl" data-kind="dl" data-share="snMorphCanvas" data-title="標準化モーフ"><span>💾 画像保存</span></button>
 </div>
 </div>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「z=1.96 はキリのいい数字だから採用された」</b>
+<p>1.96 は「両側確率がちょうど 5% になる z の値」として計算で出てきた数字。キリが良いわけでもなく、約束事でもない。P(−1.96 ≤ Z ≤ 1.96) = 0.9500 は近似。試験では 1.96 で十分。</p>
+</div>
+<div class="misc-item">
+<b>❌「標準化したらデータの情報が消える」</b>
+<p>z = (x−μ)/σ は可逆。x = μ + zσ で元に戻せる。標準化はスケールを揃えるだけで、情報は一切失われない。</p>
+</div>
+<div class="misc-item">
+<b>❌「標準正規分布は理論だけのもの」</b>
+<p>どんな正規分布も z = (x−μ)/σ で標準正規に変換できるから、この1つの分布を知っていれば全部の確率が計算できる。だからこそ「すべてのはじまり」。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>表の読み方</b>：問題の表が「上側確率」か「累積確率」か確認。間違えると答えが全然違う</li>
+<li><b>引き算パターン</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
+<li><b>標準化してから表を引く</b>：「N(170, 6²) で 180 以上の確率」→ z = (180−170)/6 ≈ 1.67 → 表を引く</li>
+<li><b>逆引き</b>：「上側5%点は？」→ z = 1.645</li>
+</ul>
 </div>
 
 <div class="story-next"><span class="lbl">次は —</span>正規分布そのものを扱う <span class="story-arrow">▸</span> <a href="#normal">P.02 正規分布</a></div>

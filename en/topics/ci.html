@@ -22,21 +22,21 @@
 <meta property="og:title" content="Confidence Intervals — What 95% Really Means">
 <meta property="og:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/ci.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 <meta property="og:image:alt" content="StatPlay — Confidence Intervals">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Confidence Intervals — What 95% Really Means">
 <meta name="twitter:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
 <style>
@@ -110,7 +110,7 @@ body.topic-page .topic-hub-link a {
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/ci.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -142,6 +142,9 @@ body.topic-page .topic-hub-link a {
   ]
 }
 </script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -214,7 +217,6 @@ body.topic-page .topic-hub-link a {
 
 <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
 
-<details class="formula-accordion"><summary>Read what this means</summary>
 <p><b>Each part</b><br/>
 ・x̄ (sample mean): center of the interval — our best single guess<br/>
 ・z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
@@ -223,7 +225,7 @@ body.topic-page .topic-hub-link a {
 ・"center ± multiplier × wobble" casts a net around the truth<br/>
 ・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
 ・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
-</details>
+
 
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="#test">I.04 Hypothesis Testing</a></div>
