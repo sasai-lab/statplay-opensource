@@ -7,3 +7,9 @@ scripts/cf-*.json
 scripts/publish_opensource.sh
 docs/PROJECT_CHARTER.md
 docs/agents/
+screencapture-*.png
+screencapture-*.jpg
+スクリーンショット*
+_c[0-9]*.png
+_w[0-9]*.png
+.env

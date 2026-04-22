@@ -124,9 +124,9 @@
 <p class="sec-desc">
 <b>"The test has 99% sensitivity &amp; 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br/>
     …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br/>
-    The trick is that we forget <b>how rare the disease actually is</b> in the first place.
-    Play with the three sliders below and watch the "town of 1,000" — you'll <b>see</b> why.
+    Walk through the numbers. In a <b>town of 1,000</b>, 10 people are sick and 990 are healthy. Test everyone and <b>60 come back positive</b> — 10 truly sick (true positives) + 50 healthy but wrongly flagged (false positives). If you're one of those 60, your chance of actually being sick is <b>10 ÷ 60 = 16.7%</b>. The larger the healthy majority, the more false positives dilute the real cases.
   </p>
+
 <div class="sim-layout">
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
@@ -154,13 +154,11 @@
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
-
-<div class="bayes-story" id="bayesStoryEn"></div>
 <div class="info">
-<div><span>If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
-<div><span>If you tested NEG, chance you're healthy</span><strong id="bNpv">—</strong></div>
 <div><span>True positives (sick &amp; tested +)</span><strong id="bTp">—</strong></div>
 <div><span>False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
+<div><span>If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
+<div><span>If you tested NEG, chance you're healthy</span><strong id="bNpv">—</strong></div>
 </div>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="Bayes' Theorem"><span>💾 Save image</span></button>
@@ -169,19 +167,12 @@
 <!-- /@panel -->
 </div>
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
 <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-
-<p><b>Each part (medical test example)</b><br/>
-・P(A|B): "tested positive — am I actually sick?" ← what we want<br/>
-・P(B|A) (likelihood): probability a sick person tests positive = sensitivity<br/>
-・P(A) (prior): base rate of disease before any test<br/>
-・P(B) (marginal): overall chance of testing positive — includes both true and false positives</p>
-<p><b>Why intuition fails</b><br/>
-・When P(A) is tiny (rare disease), the numerator P(B|A)·P(A) stays small no matter how good the test<br/>
-・Meanwhile P(B) is inflated by false positives from the large healthy population<br/>
-・Result: small ÷ not-so-small = "positive test often doesn't mean sick"</p>
-
-
+<p>P(A|B) = probability of being sick given a positive test, P(B|A) = sensitivity, P(A) = prevalence, P(B) = overall probability of testing positive.<br/>
+When prevalence is tiny the numerator shrinks while the denominator, swollen with false positives, stays large — that's exactly the "10 out of 60" above.</p>
+</div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="./clt.html">I.01 Central Limit Theorem</a></div>
 </section>
@@ -243,8 +234,8 @@
   </ol>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
-  <a href="./morep.html" rel="prev">← Prev</a>
-  <a href="./clt.html" rel="next">Next →</a>
+  <a href="./prob.html" rel="prev">← Prev</a>
+  <a href="./morep.html" rel="next">Next →</a>
 </nav>
 </body>
 </html>

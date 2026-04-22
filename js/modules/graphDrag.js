@@ -1,5 +1,5 @@
 // StatPlay — module: CANVAS DRAG INTERACTIONS
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
+import { normCDF } from '../utils.js';
 
 export function initGraphDrag(){
   function bindHorizontal(canvasId,sliderId,pxToData){
@@ -89,56 +89,6 @@ export function initGraphDrag(){
     return 1 - normCDF(xCrit);
   });
 
-  // horizontal drag → integer-step slider (used by t df, χ² df)
-  function bindHorizInt(canvasId,sliderId,loHi){
-    const cv=document.getElementById(canvasId),sl=document.getElementById(sliderId);
-    if(!cv||!sl) return;
-    cv.style.touchAction='none';
-    cv.style.cursor='ew-resize';
-    let dragging=false;
-    const pad=8;
-    function apply(clientX){
-      const r=cv.getBoundingClientRect();
-      const pxLocal=Math.max(pad,Math.min(r.width-pad,clientX-r.left));
-      const t=(pxLocal-pad)/(r.width-2*pad);
-      const [lo,hi]=loHi();
-      const raw=lo+t*(hi-lo);
-      const min=parseFloat(sl.min),max=parseFloat(sl.max);
-      const nv=Math.max(min,Math.min(max,Math.round(raw)));
-      if(String(nv)!==sl.value){ sl.value=nv; sl.dispatchEvent(new Event('input',{bubbles:true})); }
-    }
-    cv.addEventListener('pointerdown',e=>{dragging=true;cv.setPointerCapture(e.pointerId);apply(e.clientX);});
-    cv.addEventListener('pointermove',e=>{if(dragging)apply(e.clientX);});
-    const end=e=>{dragging=false;try{cv.releasePointerCapture(e.pointerId);}catch(_){}};
-    cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
-  }
-  // 2-axis drag: x→sliderX, y→sliderY (used by F)
-  function bindXYInt(canvasId,slXId,slYId){
-    const cv=document.getElementById(canvasId),slX=document.getElementById(slXId),slY=document.getElementById(slYId);
-    if(!cv||!slX||!slY) return;
-    cv.style.touchAction='none';
-    let dragging=false;
-    const pad=10;
-    function apply(clientX,clientY){
-      const r=cv.getBoundingClientRect();
-      const px=Math.max(pad,Math.min(r.width-pad,clientX-r.left));
-      const py=Math.max(pad,Math.min(r.height-pad,clientY-r.top));
-      const tx=(px-pad)/(r.width-2*pad);
-      const ty=1-(py-pad)/(r.height-2*pad); // invert: top = high
-      const [minX,maxX]=[parseFloat(slX.min),parseFloat(slX.max)];
-      const [minY,maxY]=[parseFloat(slY.min),parseFloat(slY.max)];
-      const nvX=Math.max(minX,Math.min(maxX,Math.round(minX+tx*(maxX-minX))));
-      const nvY=Math.max(minY,Math.min(maxY,Math.round(minY+ty*(maxY-minY))));
-      let changed=false;
-      if(String(nvX)!==slX.value){ slX.value=nvX; changed=true; }
-      if(String(nvY)!==slY.value){ slY.value=nvY; changed=true; }
-      if(changed){ slX.dispatchEvent(new Event('input',{bubbles:true})); }
-    }
-    cv.addEventListener('pointerdown',e=>{dragging=true;cv.setPointerCapture(e.pointerId);apply(e.clientX,e.clientY);});
-    cv.addEventListener('pointermove',e=>{if(dragging)apply(e.clientX,e.clientY);});
-    const end=e=>{dragging=false;try{cv.releasePointerCapture(e.pointerId);}catch(_){}};
-    cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
-  }
   // snCanvas — drag X to set k
   bindHorizontal('snCanvas','snK',(px,py,w)=>{
     const xMin = -4, xMax = 4;

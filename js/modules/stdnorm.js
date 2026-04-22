@@ -1,5 +1,5 @@
 // StatPlay — module: 0) STANDARD NORMAL — intro
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
+import { $, normCDF, normPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 export function initStdnorm(){
   if(!document.getElementById('snCanvas')) return;

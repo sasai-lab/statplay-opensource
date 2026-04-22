@@ -1,5 +1,5 @@
 // StatPlay — module: 3) LLN
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha } from '../utils.js';
 
 export function initLln(){
   if(!document.getElementById('llnCanvas')) return;
@@ -49,7 +49,7 @@ export function initLln(){
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([6,4]);
     const yTrue=h-20-p*(h-40);
     ctx.beginPath();ctx.moveTo(0,yTrue);ctx.lineTo(w,yTrue);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText((window.__LANG==='en'?'True value ':'真の値 ')+p.toFixed(2),w-120,yTrue-6);
+    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText((window.__LANG==='en'?'μ = ':'μ = ')+p.toFixed(2),w-90,yTrue-6);
     // running average
     if(history.length>1){
       const pts=history.map((v,i)=>[i/history.length*w,h-20-v*(h-40)]);
@@ -58,7 +58,7 @@ export function initLln(){
       const lastY=pts[pts.length-1][1];
       const curVal=(head/n);
       ctx.fillStyle=tc.cyan;ctx.font='bold 12px "Courier New"';
-      ctx.fillText((window.__LANG==='en'?'Observed: ':'観測値: ')+curVal.toFixed(4),w-180,lastY-8);
+      ctx.fillText((window.__LANG==='en'?'X̄ₙ = ':'X̄ₙ = ')+curVal.toFixed(4),w-160,lastY-8);
     }
     // axis ticks
     ctx.fillStyle=tc.dim;
@@ -67,7 +67,7 @@ export function initLln(){
     // annotation: y-axis label
     ctx.save();ctx.translate(12,h/2);ctx.rotate(-Math.PI/2);
     ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
-    ctx.fillText(window.__LANG==='en'?'Proportion':'割合',0,0);
+    ctx.fillText(window.__LANG==='en'?'X̄ₙ (proportion)':'X̄ₙ（割合）',0,0);
     ctx.restore();
   }
   draw();

@@ -1,5 +1,5 @@
 // StatPlay — module: CORRELATION & SCATTER PLOTS
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, debouncedResize } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize } from '../utils.js';
 
 export function initCorr(){
   if(!document.getElementById('corrCanvas')) return;
@@ -95,7 +95,6 @@ export function initCorr(){
     drawGrid(ctx,w,h);
     const tc = themeColors();
     const en=window.__LANG==='en';
-    const pad=30;
 
     // Empty state hint
     if(pts.length===0){

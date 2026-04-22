@@ -1,5 +1,5 @@
 // StatPlay — module: 7) REGRESSION
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, debouncedResize} from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize } from '../utils.js';
 
 export function initReg(){
   if(!document.getElementById('regCanvas')) return;

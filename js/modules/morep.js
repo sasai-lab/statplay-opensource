@@ -1,5 +1,5 @@
 // StatPlay - module: MORE DISTRIBUTIONS (binomial, Poisson, exponential)
-import { $, TAU, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 export function initMorep(){
   if(!document.getElementById('binomCanvas')) return;

@@ -1,5 +1,4 @@
 // StatPlay - module: ANCHOR - click h2 to copy section URL
-import { $ } from '../utils.js';
 
 export function initAnchor(){
   const titles = document.querySelectorAll('.sec-title');

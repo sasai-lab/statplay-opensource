@@ -542,12 +542,94 @@
     <a data-lang="ja" href="topics/prob.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/prob.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="#bayes">P5 ベイズの定理</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P5 Bayes' Theorem</a></div>
+</section>
+
+
+<!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
+
+
+
+
+<section id="bayes" class="reveal">
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/bayes.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
+  <div class="sec-tag">P5 / ベイズの定理</div>
+  <h2 class="sec-title" data-lang="ja">ベイズの定理 <span class="sec-sub">— 事後確率の逆転劇</span></h2>
+  <h2 class="sec-title" data-lang="en">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
+
+  <div class="story-bridge" data-lang="ja">分布の道具箱が揃った。最後に<b>条件付き確率を反転させる</b>——これが<span class="next">ベイズの定理</span>。検査で陽性が出た→病気の確率は？ ここで直感はよく裏切られる。</div>
+  <div class="story-bridge" data-lang="en">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
+  <p class="sec-desc" data-lang="ja">
+    <b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br>
+    …<b>答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br>
+    数字で追ってみよう。<b>1000人の町</b>のうち 10人が病気、990人が健康。全員に検査すると、陽性と判定されるのは合計 <b>60人</b>。内訳は——本当に病気の10人（真陽性）＋ 健康なのに誤って陽性の50人（偽陽性）。もしあなたがこの60人の中にいるなら、本当に病気の確率は <b>10 ÷ 60 ＝ 16.7%</b>。健康な人の母数が圧倒的に多いほど、偽陽性が"本物"を薄めてしまう。
+  </p>
+  <p class="sec-desc" data-lang="en">
+    <b>"The test has 99% sensitivity & 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br>
+    …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br>
+    Walk through the numbers. In a <b>town of 1,000</b>, 10 people are sick and 990 are healthy. Test everyone and <b>60 come back positive</b> — 10 truly sick (true positives) + 50 healthy but wrongly flagged (false positives). If you're one of those 60, your chance of actually being sick is <b>10 ÷ 60 = 16.7%</b>. The larger the healthy majority, the more false positives dilute the real cases.
+  </p>
+  <div class="sim-layout">
+<div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 順番に試してみよう</b>
+    <ol>
+      <li><b>Step 1:</b> 初期設定（有病率1%, 感度99%, 特異度95%）で陽性的中率を確認 → たった16.7%。直感とのズレを味わう。</li>
+      <li><b>Step 2:</b> 有病率を <b>50%</b> に上げる → 陽性的中率が一気に跳ね上がる。事前確率がすべてを支配している。</li>
+      <li><b>Step 3:</b> 有病率を1%に戻し、特異度を <b>99.9%</b> にする → 偽陽性が激減し、陽性的中率が改善。</li>
+      <li><b>Step 4:</b> 1000人の町の図を見ながら、TP（真陽性）と FP（偽陽性）の人数比を確認しよう。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — try these in order</b>
+    <ol>
+      <li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
+      <li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
+      <li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+      <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
+    </ol>
+  </div>
+
+
+  <!-- @panel:bayes_main -->
+<div class="panel">
+    <div class="controls">
+      <div class="ctrl">
+        <label><span data-lang="ja">有病率 &#x2014; 1000人のうち何人が病気？</span><span data-lang="en">Prevalence &#x2014; how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
+        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01">
+      </div>
+      <div class="ctrl">
+        <label><span data-lang="ja">感度 &#x2014; 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity &#x2014; % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
+        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99">
+      </div>
+      <div class="ctrl">
+        <label><span data-lang="ja">特異度 &#x2014; 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity &#x2014; % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
+        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95">
+      </div>
+    </div>
+    <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">真陽性 TP（病気 &amp; 陽性）</span><span data-lang="en">True positives (sick &amp; tested +)</span><strong id="bTp">&#x2014;</strong></div>
+      <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">&#x2014;</strong></div>
+      <div><span data-lang="ja">陽性だった人が本当に病気の確率</span><span data-lang="en">If you tested +, chance you're sick</span><strong id="bPpv">&#x2014;</strong></div>
+      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested NEG, chance you're healthy</span><strong id="bNpv">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-title-en="Bayes' Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+</div>
+    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/bayes.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
 <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>離散分布と指数分布 <span class="story-arrow">▸</span> <a href="#morep">P4 離散分布と指数分布</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="#morep">P4 Discrete &amp; Exponential</a></div>
 </section>
 
 
-<!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
+<!-- ============ BAYES ============ -->
 
 
 
@@ -678,92 +760,6 @@
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/morep.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/morep.html">📖 Formulas & detailed explanation → dedicated page</a>
-  </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="#bayes">P5 ベイズの定理</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P5 Bayes' Theorem</a></div>
-</section>
-
-
-<!-- ============ BAYES ============ -->
-
-
-
-
-<section id="bayes" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/bayes.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">P5 / ベイズの定理</div>
-  <h2 class="sec-title" data-lang="ja">ベイズの定理 <span class="sec-sub">— 事後確率の逆転劇</span></h2>
-  <h2 class="sec-title" data-lang="en">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
-
-  <div class="story-bridge" data-lang="ja">分布の道具箱が揃った。最後に<b>条件付き確率を反転させる</b>——これが<span class="next">ベイズの定理</span>。検査で陽性が出た→病気の確率は？ ここで直感はよく裏切られる。</div>
-  <div class="story-bridge" data-lang="en">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
-  <p class="sec-desc" data-lang="ja">
-    <b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br>
-    …<b>答え：わずか 16.7%</b>。医師でも半分以上が間違える超有名クイズ。<br>
-    ポイントは"<b>もともと病気の人がめっちゃ少ない</b>"という事実を忘れてしまうこと。
-    下の"1000人の町"を見ながら、3つのつまみを動かして<b>自分の目で</b>確かめよう。
-  </p>
-  <p class="sec-desc" data-lang="en">
-    <b>"The test has 99% sensitivity & 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br>
-    …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br>
-    The trick is that we forget <b>how rare the disease actually is</b> in the first place.
-    Play with the three sliders below and watch the "town of 1,000" — you'll <b>see</b> why.
-  </p>
-  <div class="sim-layout">
-<div class="guided-steps" data-lang="ja">
-    <b>実験ガイド — 順番に試してみよう</b>
-    <ol>
-      <li><b>Step 1:</b> 初期設定（有病率1%, 感度99%, 特異度95%）で陽性的中率を確認 → たった16.7%。直感とのズレを味わう。</li>
-      <li><b>Step 2:</b> 有病率を <b>50%</b> に上げる → 陽性的中率が一気に跳ね上がる。事前確率の効き方がここまで強いとは、自分も動かしてみて初めて実感しました。</li>
-      <li><b>Step 3:</b> 有病率を1%に戻し、特異度を <b>99.9%</b> にする → 偽陽性が激減し、陽性的中率が改善。</li>
-      <li><b>Step 4:</b> 1000人の町の図を見ながら、TP（真陽性）と FP（偽陽性）の人数比を確認しよう。</li>
-    </ol>
-  </div>
-  <div class="guided-steps" data-lang="en">
-    <b>Experiment Guide — try these in order</b>
-    <ol>
-      <li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
-      <li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
-      <li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
-      <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
-    </ol>
-  </div>
-
-
-  <!-- @panel:bayes_main -->
-<div class="panel">
-    <div class="controls">
-      <div class="ctrl">
-        <label><span data-lang="ja">有病率 &#x2014; 1000人のうち何人が病気？</span><span data-lang="en">Prevalence &#x2014; how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
-        <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01">
-      </div>
-      <div class="ctrl">
-        <label><span data-lang="ja">感度 &#x2014; 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity &#x2014; % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
-        <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99">
-      </div>
-      <div class="ctrl">
-        <label><span data-lang="ja">特異度 &#x2014; 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity &#x2014; % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
-        <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95">
-      </div>
-    </div>
-    <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
-    <div id="bayesStory" class="bayes-story" data-lang="ja"></div>
-    <div id="bayesStoryEn" class="bayes-story" data-lang="en"></div>
-    <div class="info">
-      <div><span data-lang="ja">陽性だった人が本当に病気の確率</span><span data-lang="en">If you tested +, chance you're sick</span><strong id="bPpv">&#x2014;</strong></div>
-      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested NEG, chance you're healthy</span><strong id="bNpv">&#x2014;</strong></div>
-      <div><span data-lang="ja">真陽性 TP（病気 &amp; 陽性）</span><span data-lang="en">True positives (sick &amp; tested +)</span><strong id="bTp">&#x2014;</strong></div>
-      <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">&#x2014;</strong></div>
-    </div>
-    <div class="share-row">
-      <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-title-en="Bayes' Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
-    </div>
-  </div>
-<!-- /@panel -->
-</div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
-    <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
-    <a data-lang="en" href="en/topics/bayes.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
 <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="#clt">I1 中心極限定理</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="#clt">I1 Central Limit Theorem</a></div>

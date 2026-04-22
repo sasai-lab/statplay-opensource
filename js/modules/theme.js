@@ -10,7 +10,6 @@
 //     current mode (common UX convention for theme toggles).
 //   - Hero canvas stays dark — it's the site's brand. Other canvases are
 //     filter-inverted for light mode so neon graphs become dark-on-light.
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
 export function initTheme(){
   const btn = document.getElementById('themeToggle');

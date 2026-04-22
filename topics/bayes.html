@@ -122,9 +122,8 @@
 
 <p class="sec-desc">
 <b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br/>
-    …<b>答え：わずか 16.7%</b>。自分も最初「え、99%じゃないの？」と思っていました。医師でも半分以上が外す有名クイズなので、直感とズレても自分だけじゃない、というのが救いです。<br/>
-    ポイントは"<b>もともと病気の人がめっちゃ少ない</b>"という事実を忘れてしまうこと。
-    下の"1000人の町"を見ながら、3つのつまみを動かして<b>自分の目で</b>確かめよう。
+    …<b>答え：わずか 16.7%</b>。自分も最初「え、99%じゃないの？」と思った。医師ですら半分以上が間違える超有名クイズだから、直感が外れて当然。<br/>
+    数字で追ってみよう。<b>1000人の町</b>のうち 10人が病気、990人が健康。全員に検査すると、陽性と判定されるのは合計 <b>60人</b>。内訳は——本当に病気の10人（真陽性）＋ 健康なのに誤って陽性の50人（偽陽性）。もしあなたがこの60人の中にいるなら、本当に病気の確率は <b>10 ÷ 60 ＝ 16.7%</b>。健康な人の母数が圧倒的に多いほど、偽陽性が"本物"を薄めてしまう。
   </p>
 
 <div class="sim-layout">
@@ -155,13 +154,11 @@
 </div>
 </div>
 <canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
-<div class="bayes-story" id="bayesStory"></div>
-
 <div class="info">
-<div><span>陽性だった人が本当に病気の確率</span><strong id="bPpv">—</strong></div>
-<div><span>陰性だった人が本当に健康な確率</span><strong id="bNpv">—</strong></div>
 <div><span>真陽性 TP（病気 &amp; 陽性）</span><strong id="bTp">—</strong></div>
 <div><span>偽陽性 FP（健康なのに陽性）</span><strong id="bFp">—</strong></div>
+<div><span>陽性だった人が本当に病気の確率</span><strong id="bPpv">—</strong></div>
+<div><span>陰性だった人が本当に健康な確率</span><strong id="bNpv">—</strong></div>
 </div>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="ベイズの定理"><span>💾 画像保存</span></button>
@@ -173,17 +170,9 @@
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-<p><b>各パーツの役割（検査の例で読む）</b><br/>
-・P(A|B)：「陽性が出たとき、本当に病気である確率」← これが知りたい<br/>
-・P(B|A)（尤度）：「病気の人が検査で陽性になる確率」= 感度<br/>
-・P(A)（事前確率）：検査する前の「そもそも病気である確率」= 有病率<br/>
-・P(B)（周辺確率）：「検査で陽性が出る確率」全体。病気でも健康でも含む</p>
-<p><b>なぜ直感が外れるのか</b><br/>
-・P(A) が小さい（有病率が低い）とき、分子 P(B|A)·P(A) はどんなに感度が高くても小さい<br/>
-・一方 P(B) には健康な人の偽陽性も含まれるので意外と大きい<br/>
-・結果：小さい数 ÷ そこそこ大きい数 = 「陽性でも病気じゃないことが多い」</p>
+<p>P(A|B)＝陽性→病気の確率、P(B|A)＝感度、P(A)＝有病率、P(B)＝陽性が出る確率全体。<br/>
+有病率が小さいと分子が縮み、偽陽性を含む分母が相対的に大きくなる——上の「60人中10人」がまさにこれ。</p>
 </div>
-
 
 
 <!-- ═══ よくある誤解 ═══ -->
@@ -274,8 +263,8 @@
   </ol>
 </nav>
 <nav class="topic-nav" aria-label="前後のトピック">
-  <a href="./morep.html" rel="prev">← 前へ</a>
-  <a href="./clt.html" rel="next">次へ →</a>
+  <a href="./prob.html" rel="prev">← 前へ</a>
+  <a href="./morep.html" rel="next">次へ →</a>
 </nav>
 </body>
 </html>

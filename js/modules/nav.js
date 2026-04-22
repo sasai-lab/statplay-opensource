@@ -1,10 +1,8 @@
 // StatPlay - module: NAV - hamburger, dropdown, smooth scroll
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
 export function initNav(){
   const navEl=document.getElementById('mainNav');
   const toggle=document.getElementById('navToggle');
-  const links=document.getElementById('navLinks');
   const close=()=>{if(!navEl||!toggle) return; navEl.classList.remove('open'); toggle.setAttribute('aria-expanded','false');};
 
   if(navEl && toggle){

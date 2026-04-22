@@ -485,7 +485,7 @@ async function doShare(kind, srcId, title) {
   }
   if (kind === 'dl') {
     let canvas;
-    try { canvas = buildImage(srcId, title); } catch (e) { toast(L('画像の生成に失敗', 'Failed to build image')); return; }
+    try { canvas = buildImage(srcId, title); } catch (_e) { toast(L('画像の生成に失敗', 'Failed to build image')); return; }
     if (!canvas) { toast(L('対象が見つかりません', 'Target not found')); return; }
     canvas.toBlob(blob => {
       if (!blob) { toast(L('画像化に失敗しました', 'Failed to render image')); return; }

@@ -33,18 +33,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://statplay.sasailab.com/topics/morep.html</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://statplay.sasailab.com/topics/bayes.html</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/topics/morep.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -137,18 +137,18 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://statplay.sasailab.com/en/topics/morep.html</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://statplay.sasailab.com/en/topics/bayes.html</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/en/topics/morep.html</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

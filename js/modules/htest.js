@@ -1,5 +1,5 @@
 // StatPlay — module: 5) HYPOTHESIS TEST
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
+import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 export function initHtest(){
   if(!document.getElementById('testCanvas')) return;
@@ -107,7 +107,7 @@ export function initHtest(){
     $('tCrit').textContent=(t==='two'?'±':'')+Math.abs(crit).toFixed(3);
     $('tPval').textContent=pval.toFixed(4);
     $('tPval').style.color=pval<parseFloat(a.value)?'var(--magenta)':'var(--green)';
-    $('tDecision').textContent=(window.__LANG==='en')?(reject?'Reject H₀':'Fail to reject H₀'):(reject?'H₀ 棄却':'H₀ 採択');
+    $('tDecision').textContent=(window.__LANG==='en')?(reject?'Reject H₀':'Fail to reject H₀'):(reject?'H₀ 棄却':'H₀ 棄却できず');
     $('tDecision').style.color=reject?'var(--magenta)':'var(--green)';
 
     // axis

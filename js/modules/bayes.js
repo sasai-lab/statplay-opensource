@@ -1,5 +1,5 @@
 // StatPlay — module: 8) BAYES
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
+import { $, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
 export function initBayes(){
   if(!document.getElementById('bayesCanvas')) return;
@@ -199,25 +199,6 @@ export function initBayes(){
         : '列の幅 ≒ 人数（病気の人は少ない）。行の高さ ≒ 検査で正しく判定された割合。',
         padL, h-10);
     }
-
-    const tp=Math.round(TP), fp=Math.round(FP), total_pos=tp+fp;
-    const ppvPct=(ppv*100).toFixed(1);
-    const storyJa=(
-      '1000人の町のうち <b class="cy">'+Math.round(D)+'人</b> が病気、<b>'+Math.round(notD)+'人</b> が健康。'+
-      '全員に検査をすると、陽性と判定される人は合計 <b class="ye">'+total_pos+'人</b>。'+
-      'その内訳は — 本当に病気の<b class="cy">'+tp+'人</b>（真陽性）＋ 健康なのに誤って陽性の<b class="mg">'+fp+'人</b>（偽陽性）。<br>'+
-      '→ もしあなたがこの <b class="ye">'+total_pos+'人</b> の中にいるとしたら、本当に病気なのは <b class="ye">'+tp+' ÷ '+total_pos+' ＝ '+ppvPct+'%</b>。'+
-      '<span style="color:var(--dim)"> 健康な人の母数が圧倒的に多いほど、偽陽性が"本物"を薄めてしまう。これがベイズの"背景"効果だ。</span>'
-    );
-    const storyEn=(
-      'Out of 1,000 townspeople, <b class="cy">'+Math.round(D)+'</b> are sick and <b>'+Math.round(notD)+'</b> are healthy. '+
-      'If we test everyone, <b class="ye">'+total_pos+'</b> end up positive: <b class="cy">'+tp+'</b> truly sick (TP) + <b class="mg">'+fp+'</b> healthy false alarms (FP).<br>'+
-      '→ If you are one of those <b class="ye">'+total_pos+'</b> positives, your chance of actually being sick is <b class="ye">'+tp+' / '+total_pos+' = '+ppvPct+'%</b>. '+
-      '<span style="color:var(--dim)">The bigger the healthy population, the more false positives dilute the truly-sick. That\'s the Bayesian "base-rate" effect.</span>'
-    );
-    const elJa=$('bayesStory'),elEn=$('bayesStoryEn');
-    if(elJa) elJa.innerHTML=storyJa;
-    if(elEn) elEn.innerHTML=storyEn;
 
     $('bPpv').textContent=(ppv*100).toFixed(2)+'%';
     $('bNpv').textContent=(npv*100).toFixed(2)+'%';

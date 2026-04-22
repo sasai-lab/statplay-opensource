@@ -31,16 +31,6 @@
       "teaches": ["加法定理", "条件付き確率 P(A|B)", "事象の独立性"]
     },
     {
-      "slug": "morep",
-      "ja_title": "二項分布・ポアソン分布・指数分布",
-      "en_title": "Binomial, Poisson, and Exponential Distributions",
-      "ja_desc": "成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。",
-      "en_desc": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
-      "ja_kw": "二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性, 統計検定2級",
-      "en_kw": "binomial distribution, poisson distribution, exponential distribution, discrete, memoryless",
-      "teaches": ["二項分布 B(n,p)", "ポアソン分布 Pois(λ)", "指数分布 Exp(λ)"]
-    },
-    {
       "slug": "bayes",
       "ja_title": "ベイズ定理 — 陽性的中率を直感で",
       "en_title": "Bayes' Theorem — Positive Predictive Value",
@@ -49,6 +39,16 @@
       "ja_kw": "ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 統計検定2級, 条件付き確率",
       "en_kw": "Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives",
       "teaches": ["ベイズ定理", "条件付き確率", "陽性的中率"]
+    },
+    {
+      "slug": "morep",
+      "ja_title": "二項分布・ポアソン分布・指数分布",
+      "en_title": "Binomial, Poisson, and Exponential Distributions",
+      "ja_desc": "成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。",
+      "en_desc": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
+      "ja_kw": "二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性, 統計検定2級",
+      "en_kw": "binomial distribution, poisson distribution, exponential distribution, discrete, memoryless",
+      "teaches": ["二項分布 B(n,p)", "ポアソン分布 Pois(λ)", "指数分布 Exp(λ)"]
     },
     {
       "slug": "clt",

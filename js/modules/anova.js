@@ -5,8 +5,6 @@ export function initAnova(){
   if(!document.getElementById('anovaCanvas')) return;
   const canvas=$('anovaCanvas');
   const slK=$('anovaK'),slEff=$('anovaEffect'),slW=$('anovaWithin'),slNk=$('anovaNk');
-  const GROUP_COLORS_KEYS=['cyan','magenta','yellow','green','purple'];
-
   let data=[];  // array of arrays, one per group
   let stats={};
 
@@ -113,7 +111,7 @@ export function initAnova(){
     drawGrid(ctx,w,h);
     const tc = themeColors();
     const colors=[tc.cyan,tc.magenta,tc.yellow,tc.green,tc.purple];
-    const {k,nk,gMeans,grandMean,F,Fcrit,dfB,dfW}=stats;
+    const {k,gMeans,grandMean,F,Fcrit,dfB,dfW}=stats;
     const splitX=Math.round(w*0.55);
     const pad=20;
 

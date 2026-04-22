@@ -1,5 +1,5 @@
 // StatPlay — module: DESCRIPTIVE STATISTICS
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 export function initDescriptive(){
   if(!document.getElementById('descCanvas')) return;

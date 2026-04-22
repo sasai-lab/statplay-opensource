@@ -1,19 +1,6 @@
 // StatPlay — module: 6) DISTS
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw} from '../utils.js';
+import { $, normPDF, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
 
-function drawDist(canvas,func,xmax,color){
-  const {ctx,w,h} = resizeCanvas(canvas);
-  drawGrid(ctx,w,h);
-  const tc = themeColors();
-  // sample peak
-  let peak=0;for(let x=0;x<=xmax;x+=xmax/200){const y=func(x);if(y>peak)peak=y;}
-  if(peak===0)peak=1;
-  const pts=[];
-  for(let px=0;px<=w;px+=1){const x=px/w*xmax;const y=func(x);pts.push([px,h-10-y/peak*(h-30)]);}
-  neonLine(ctx,pts,color,14,2.5);
-  // fill
-  const fill=[[0,h],...pts,[w,h]];neonFill(ctx,fill,color,.18);
-}
 function tdist(){
   if(!document.getElementById('tDistCanvas')) return;
   const dfS = $('tdDf');
@@ -141,7 +128,6 @@ function fdist(){
     for(let x=0.01;x<=xmax;x+=xmax/300){const y=fPDF(x,d1,d2);if(y>peak)peak=y;}
     // include the dashed normal approx peak so it isn't chopped
     if(d2>4){
-      const nMean=d2/(d2-2);
       const nVar=(2*d2*d2*(d1+d2-2))/(d1*(d2-2)*(d2-2)*(d2-4));
       const nSd=Math.sqrt(nVar);
       const nPk=1/(nSd*Math.sqrt(2*Math.PI));

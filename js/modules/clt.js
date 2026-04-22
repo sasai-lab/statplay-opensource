@@ -1,5 +1,5 @@
 // StatPlay — module: 1) CLT
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, rng_exp, rng_uniform, rng_bimodal, normPDF, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha } from '../utils.js';
 
 export function initClt(){
   if(!document.getElementById('cltCanvas')) return;
@@ -8,7 +8,7 @@ export function initClt(){
   let srcHist=new Array(BINS_SRC).fill(0);      // raw sample histogram (original skewed)
   let meanHist=new Array(BINS_MEAN).fill(0);    // histogram of sample means
   let sum=0,sum2=0,total=0;                     // stats for means
-  let srcSum=0,srcTotal=0;                      // raw source count
+  let _srcSum=0,srcTotal=0;                      // raw source count
   const nSlider=$('cltN'),nVal=$('cltNVal'),distSel=$('cltDist');
   nSlider.oninput=()=>{nVal.textContent=nSlider.value;clear();draw();};
   distSel.onchange=()=>{clear();draw();};
@@ -45,7 +45,7 @@ export function initClt(){
   function clear(){
     srcHist=new Array(BINS_SRC).fill(0);
     meanHist=new Array(BINS_MEAN).fill(0);
-    sum=0;sum2=0;total=0;srcSum=0;srcTotal=0;
+    sum=0;sum2=0;total=0;_srcSum=0;srcTotal=0;
     updateInfo();draw();
   }
 
@@ -70,7 +70,7 @@ export function initClt(){
     // Record only ONE raw per iteration (same pace as the mean panel).
     // This keeps the two panels building up in lockstep.
     const ix=Math.min(BINS_SRC-1,Math.max(0,Math.floor((firstX-range[0])/(range[1]-range[0])*BINS_SRC)));
-    srcHist[ix]++;srcSum+=firstX;srcTotal++;
+    srcHist[ix]++;_srcSum+=firstX;srcTotal++;
     const m=s/n;
     // bin the sample mean using the ZOOMED range so the bell fills the panel
     const im=Math.min(BINS_MEAN-1,Math.max(0,Math.floor((m-mr[0])/(mr[1]-mr[0])*BINS_MEAN)));
@@ -106,7 +106,6 @@ export function initClt(){
     step();
   }
   function updateInfo(){
-    const isEn=window.__LANG==='en';
     $('cltCount').textContent=total;
     if(total<2){$('cltMean').textContent='—';$('cltSD').textContent='—';$('cltSE').textContent='—';}
     else{

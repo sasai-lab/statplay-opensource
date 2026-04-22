@@ -1,5 +1,4 @@
 // StatPlay — module: SHARE / SAVE IMAGE
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
 export function initShare(){
   const toastEl=document.createElement('div');

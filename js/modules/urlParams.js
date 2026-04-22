@@ -1,5 +1,4 @@
 // StatPlay — module: URL PARAM RESTORE — reads ?id1=v1&id2=v2 and applies saved slider state
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill } from '../utils.js';
 
 export function initUrlParams(){
   const params=new URLSearchParams(location.search);

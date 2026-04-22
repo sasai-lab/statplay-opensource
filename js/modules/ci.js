@@ -1,5 +1,5 @@
 // StatPlay — module: 4) CI
-import { $, TAU, rng_normal, rng_exp, rng_uniform, rng_bimodal, erf, normCDF, normPDF, zCritical, lgamma, gamma, tPDF, chi2PDF, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha} from '../utils.js';
+import { $, rng_normal, zCritical, resizeCanvas, drawGrid, themeColors, withAlpha } from '../utils.js';
 
 export function initCi(){
   if(!document.getElementById('ciCanvas')) return;
@@ -30,7 +30,7 @@ export function initCi(){
       const eased=frac*frac*(1.6-0.6*frac);
       const targetI=Math.min(MAX,Math.ceil(eased*MAX));
       while(i<targetI){
-        let s=0,s2=0;for(let j=0;j<n;j++){const x=rng_normal(0,1);s+=x;s2+=x*x;}
+        let s=0;for(let j=0;j<n;j++){const x=rng_normal(0,1);s+=x;}
         const m = s / n;
         const se = 1 / Math.sqrt(n);
         intervals.push({m,lo:m-z*se,hi:m+z*se});i++;
