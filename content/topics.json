@@ -52,7 +52,7 @@
     },
     {
       "slug": "clt",
-      "ja_title": "中心極限定理を目で見て腹落ちさせる",
+      "ja_title": "中心極限定理を目で見てイメージを掴む",
       "en_title": "See the Central Limit Theorem in Action",
       "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。",
       "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
@@ -84,7 +84,7 @@
       "slug": "test",
       "ja_title": "仮説検定 — p値・α・棄却域を可視化",
       "en_title": "Hypothesis Testing — Reject Regions & p-values",
-      "ja_desc": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気に腹落ちさせる。",
+      "ja_desc": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。",
       "en_desc": "Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.",
       "ja_kw": "仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定, 統計検定2級",
       "en_kw": "hypothesis testing, p-value, significance level, rejection region, z-test, one-sided, two-sided",
