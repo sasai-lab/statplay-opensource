@@ -131,21 +131,23 @@
 <li><b>Step 3:</b> n を大きく、p を小さく保つ → ポアソンに収束していく過程が見える。</li>
 </ol>
 </div>
+<!-- @panel:morep_binom -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 二項分布 B(n, p)</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か<br/>
-n → ∞ かつ np → λ で、二項はポアソンへ。</p>
+<div class="panel-title">二項分布 B(n, p)</div>
+<div class="use-case">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
+
+
+<canvas aria-busy="true" aria-label="Binomial distribution simulation" height="240" id="binomCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>試行回数 n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
 <div class="ctrl"><label>成功確率 p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
-<canvas aria-busy="true" aria-label="二項分布のシミュレーション。試行回数nと成功確率pを変更できる" height="240" id="binomCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="binomCanvas" data-title="二項分布"><span>💾 画像保存</span></button>
+<div class="sec-bridge">n → ∞ かつ np → λ で、二項はポアソンへ。</div>
+
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="detail-section">
@@ -174,19 +176,21 @@ n → ∞ かつ np → λ で、二項はポアソンへ。</p>
 <li><b>Step 3:</b> λ が平均でもあり分散でもある。λ=3 にしてグラフ左上の「E[X] = Var[X] = λ = 3.00」で確認。</li>
 </ol>
 </div>
+<!-- @panel:morep_poisson -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ポアソン分布 Poisson(λ)</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数<br/>
-λ が大きくなるにつれ、ポアソンは正規分布に近づく。</p>
+<div class="panel-title">ポアソン分布 Poisson(λ)</div>
+<div class="use-case">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
+
+
+<canvas aria-busy="true" aria-label="Poisson distribution simulation" height="240" id="poissonCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
-<canvas aria-busy="true" aria-label="ポアソン分布のシミュレーション。パラメータλを変更できる" height="240" id="poissonCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="poissonCanvas" data-title="ポアソン分布"><span>💾 画像保存</span></button>
+<div class="sec-bridge">λ が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
+
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="detail-section">
@@ -215,19 +219,21 @@ n → ∞ かつ np → λ で、二項はポアソンへ。</p>
 <li><b>Step 3:</b> 無記憶性：もう10分待っても、あと何分待つかは今来た人と同じ。</li>
 </ol>
 </div>
+<!-- @panel:morep_exp -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ 指数分布 Exp(λ) — 待ち時間</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命<br/>
-無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</p>
+<div class="panel-title">指数分布 Exp(λ) — 待ち時間</div>
+<div class="use-case">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
+
+
+<canvas aria-busy="true" aria-label="Exponential distribution PDF" height="240" id="expCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
-<canvas aria-busy="true" aria-label="指数分布の確率密度関数。パラメータλを変更できる" height="240" id="expCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="expCanvas" data-title="指数分布"><span>💾 画像保存</span></button>
+<div class="sec-bridge">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
+
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="detail-section">

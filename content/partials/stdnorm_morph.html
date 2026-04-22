@@ -1,0 +1,35 @@
+<div class="panel" data-autorun="snAnim">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
+    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+      身長、IQ、株価の日次リターン、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
+      でも <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
+      スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
+    </p>
+    <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+      Height, IQ, daily stock returns, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
+      Yet apply <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> and they all snap onto <b>that pink curve</b>.<br>
+      It auto-plays on scroll (&#x25B6; to replay). That's why every statistical formula needs only one standard-normal table.
+    </p>
+    <div class="controls">
+      <div class="ctrl"><label>&#x03BC; = <span class="val" id="snMuVal">2.0</span></label>
+        <input type="range" id="snMu" min="-3" max="3" step="0.1" value="2.0">
+      </div>
+      <div class="ctrl"><label>&#x03C3; = <span class="val" id="snSdVal">1.5</span></label>
+        <input type="range" id="snSd" min="0.3" max="3" step="0.1" value="1.5">
+      </div>
+      <div class="ctrl"><label><span data-lang="ja">進度</span><span data-lang="en">Progress</span> = <span class="val" id="snTVal">0</span></label>
+        <input type="range" id="snT" min="0" max="100" value="0">
+      </div>
+      <button class="btn" id="snAnim"><span data-lang="ja">&#x25B6; 標準化する</span><span data-lang="en">&#x25B6; Standardize</span></button>
+    </div>
+    <canvas id="snMorphCanvas" aria-label="Standardization morphing animation" height="240" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">元の分布</span><span data-lang="en">Original</span><strong id="snOrig">N(2.0, 1.5&#xB2;)</strong></div>
+      <div><span data-lang="ja">変換後の平均</span><span data-lang="en">Transformed mean</span><strong id="snNewMu">&#x2014;</strong></div>
+      <div><span data-lang="ja">変換後の&#x03C3;</span><span data-lang="en">Transformed &#x03C3;</span><strong id="snNewSd">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="snMorphCanvas" data-title="標準化モーフ" data-title-en="Standardization Morph" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

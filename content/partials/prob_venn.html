@@ -1,0 +1,26 @@
+<div class="panel">
+    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="ja">&#x25B6; インタラクティブ・ベン図</h3>
+    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="en">&#x25B6; Interactive Venn Diagram</h3>
+    <div class="controls">
+      <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+        <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4">
+      </div>
+      <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+        <input id="probPB" min="0.05" max="0.95" step="0.01" type="range" value="0.3">
+      </div>
+      <div class="ctrl"><label>P(A&#x2229;B) = <span class="val" id="probPABVal">0.12</span></label>
+        <input id="probPAB" min="0" max="0.30" step="0.01" type="range" value="0.12">
+      </div>
+      <button class="btn yellow" id="probIndep"><span data-lang="ja">独立にする</span><span data-lang="en">Set Independent</span></button>
+    </div>
+    <canvas id="probCanvas" aria-label="Probability rules: Venn diagram visualization" aria-busy="true" height="320"></canvas>
+    <div class="info">
+      <div>P(A&#x222A;B)<strong id="probUnion">&#x2014;</strong></div>
+      <div>P(A|B)<strong id="probCondAB">&#x2014;</strong></div>
+      <div>P(B|A)<strong id="probCondBA">&#x2014;</strong></div>
+      <div><span data-lang="ja">独立？</span><span data-lang="en">Independent?</span><strong id="probIndepCheck">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則" data-title-en="Basic Rules of Probability"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

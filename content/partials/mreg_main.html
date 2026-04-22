@@ -1,0 +1,22 @@
+<div class="panel">
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">勉強時間 x&#x2081;</span><span data-lang="en">Study hours x&#x2081;</span> = <span class="val" id="mStudyVal">5.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+        <input type="range" id="mStudy" min="1" max="9" step="0.1" value="5">
+      </div>
+      <div class="ctrl"><label><span data-lang="ja">睡眠時間 x&#x2082;</span><span data-lang="en">Sleep hours x&#x2082;</span> = <span class="val" id="mSleepVal">7.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+        <input type="range" id="mSleep" min="4" max="10" step="0.1" value="7">
+      </div>
+      <button class="btn" id="mGen"><span data-lang="ja">&#x21BA; 再サンプリング</span><span data-lang="en">&#x21BA; Resample</span></button>
+    </div>
+    <canvas id="mregCanvas" aria-label="3D回帰平面の散布図" height="500" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja" id="mPredLabel"></span><span data-lang="en" id="mPredLabelEn"></span><strong id="mPredBig">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2;&#x0302;&#x2081;（勉強1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2081; (per study hour)</span><strong id="mCoefStudy">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2;&#x0302;&#x2082;（睡眠1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2082; (per sleep hour)</span><strong id="mCoefSleep">&#x2014;</strong></div>
+      <div>R&#x00B2;<strong id="mR2">&#x2014;</strong></div>
+    </div>
+    <div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="mregCanvas" data-title="重回帰分析" data-title-en="Multiple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

@@ -1,0 +1,29 @@
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 基本：z値と棄却域</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">観測 z</span><span data-lang="en">Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
+        <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96">
+      </div>
+      <div class="ctrl"><label>&#x03B1; = <span class="val" id="tAVal">0.05</span></label>
+        <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05">
+      </div>
+      <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
+        <select id="tType">
+          <option value="two" data-ja="両側" data-en="Two-sided">両側</option>
+          <option value="right" data-ja="右側" data-en="Right">右側</option>
+          <option value="left" data-ja="左側" data-en="Left">左側</option>
+        </select>
+      </div>
+    </div>
+    <canvas id="testCanvas" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" height="260" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="tZstat">&#x2014;</strong></div>
+      <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="tCrit">&#x2014;</strong></div>
+      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="tPval">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="tDecision">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="testCanvas" data-title="仮説検定" data-title-en="Hypothesis Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

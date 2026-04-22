@@ -136,6 +136,7 @@
 <li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
 </ol>
 </div>
+<!-- @panel:stdnorm_68 -->
 <div class="panel">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
@@ -150,7 +151,7 @@
 <input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="標準正規分布 N(0,1) の確率密度関数。スライダーで±kσ範囲を変更し面積（確率）を確認できる" height="240" id="snCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Standard normal N(0,1) PDF" height="240" id="snCanvas"></canvas>
 <div class="info">
 <div>P( |Z| ≤ k )<strong id="snInside">—</strong></div>
 <div>P( Z ≤ k )<strong id="snLeft">—</strong></div>
@@ -160,6 +161,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="snCanvas" data-title="Standard Normal"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
@@ -183,6 +185,7 @@
 <li><b>Step 3:</b> Pause the progress slider midway → watch μ approach 0 and σ approach 1 in real time.</li>
 </ol>
 </div>
+<!-- @panel:stdnorm_morph -->
 <div class="panel" data-autorun="snAnim">
 
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
@@ -204,7 +207,7 @@
 </div>
 <button class="btn" id="snAnim"><span>▶ Standardize</span></button>
 </div>
-<canvas aria-busy="true" aria-label="任意の正規分布を標準正規分布に標準化する過程のアニメーション" height="240" id="snMorphCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Standardization morphing animation" height="240" id="snMorphCanvas"></canvas>
 <div class="info">
 <div><span>Original</span><strong id="snOrig">N(2.0, 1.5²)</strong></div>
 <div><span>Transformed mean</span><strong id="snNewMu">—</strong></div>
@@ -214,6 +217,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="snMorphCanvas" data-title="Standardization Morph"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 

@@ -1,0 +1,25 @@
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F distribution</h3>
+      <div class="dist-card" data-lang="ja">
+        <b class="ye">作り方:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) （2つの独立な &#x03C7;&#x00B2; の比）。<br>
+        <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
+        <b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
+      </div>
+      <div class="dist-card" data-lang="en">
+        <b class="ye">Built from:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) (ratio of two independent &#x03C7;&#x00B2; / df).<br>
+        <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
+        <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
+      </div>
+      <div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
+        <input type="range" id="fDf1" min="1" max="30" value="3">
+      </div>
+      <div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
+        <input type="range" id="fDf2" min="1" max="30" value="10">
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df&#x2081; 変更　&#x00B7;　df&#x2082; はスライダーで調整</span><span data-lang="en">&#x2194; Drag horizontally to change df&#x2081; &#x00B7; df&#x2082; is set via slider</span></div>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="share-row">
+        <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+      </div>
+    </div>

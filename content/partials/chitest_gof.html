@@ -1,0 +1,38 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
+
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">有意水準 &#x03B1;</span>
+          <span data-lang="en">Significance &#x03B1;</span>
+          = <span class="val" id="gofAVal">0.05</span>
+        </label>
+        <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05">
+      </div>
+      <div class="ctrl" style="min-width:auto">
+        <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+          <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
+          <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
+        </select>
+      </div>
+      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 自動投下</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
+      <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+    </div>
+
+    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+
+    <div class="info">
+      <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
+      <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="gofStat">&#x2014;</strong></div>
+      <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="gofDf">&#x2014;</strong></div>
+      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="gofP">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="gofResult">&#x2014;</strong></div>
+    </div>
+
+    <div class="share-row">
+      <button class="share-btn dl" data-share="chitestCanvas" data-title="適合度検定" data-title-en="Goodness-of-Fit Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

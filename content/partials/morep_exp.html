@@ -1,0 +1,13 @@
+<div class="panel">
+      <div class="panel-title" data-lang="ja">指数分布 Exp(&#x03BB;) &#x2014; 待ち時間</div>
+      <div class="use-case" data-lang="ja">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
+      <div class="use-case" data-lang="en">When? &#x2192; Time until next phone call; how long until a light bulb burns out</div>
+      <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; waiting time</div>
+      <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="240" aria-busy="true"></canvas>
+      <div class="controls">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1">
+<span class="val" id="expLVal">1</span></div>
+      </div>
+      <div class="sec-bridge" data-lang="ja">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
+      <div class="sec-bridge" data-lang="en">Memoryless: past waiting time tells you nothing about the future.</div>
+    </div>

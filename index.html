@@ -248,7 +248,6 @@
       <li><b>Step 1:</b> k のスライダーを <b>1.0</b> にする &#x2192; 面積は約68%。これが「&#xB1;1&#x03C3; に約7割」。</li>
       <li><b>Step 2:</b> k を <b>1.96</b> にする &#x2192; 面積は約95%。この数字、検定や信頼区間で何度も出てくる。</li>
       <li><b>Step 3:</b> k を <b>3.0</b> まで広げる &#x2192; ほぼ100%。外側はもうほとんどない。</li>
-      <li><b>Step 4:</b> 下の標準化アニメで &#x25B6; ボタンを押す &#x2192; どんな正規分布もこの1本に化ける瞬間を見届けよう。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
@@ -257,10 +256,10 @@
       <li><b>Step 1:</b> Set k to <b>1.0</b> &#x2192; area is ~68%. That's "&#xB1;1&#x03C3; covers about 70%."</li>
       <li><b>Step 2:</b> Set k to <b>1.96</b> &#x2192; area is ~95%. You'll see this number everywhere in testing and CIs.</li>
       <li><b>Step 3:</b> Stretch k to <b>3.0</b> &#x2192; nearly 100%. Almost nothing lies outside.</li>
-      <li><b>Step 4:</b> Hit the &#x25B6; button on the standardization animation below &#x2192; watch any normal snap onto this one curve.</li>
     </ol>
   </div>
-  <div class="panel">
+  <!-- @panel:stdnorm_68 -->
+<div class="panel">
     <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px;font-size:13px">
@@ -289,6 +288,7 @@
       <button class="share-btn dl" data-share="snCanvas" data-title="標準正規分布" data-title-en="Standard Normal" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
   </div>
 
   <div class="sim-layout">
@@ -310,7 +310,8 @@
       <li><b>Step 4:</b> Set &#x03C3; to <b>0.5</b> &#x2192; a sharp peak flattens as it merges into the standard normal.</li>
     </ol>
   </div>
-  <div class="panel" data-autorun="snAnim">
+  <!-- @panel:stdnorm_morph -->
+<div class="panel" data-autorun="snAnim">
     <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
     <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
@@ -345,6 +346,7 @@
       <button class="share-btn dl" data-share="snMorphCanvas" data-title="標準化モーフ" data-title-en="Standardization Morph" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
   </div>
 
   <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -375,9 +377,10 @@
     スライダーを動かすと曲線がぬるっと動いて、指定した区間 <code>[a, b]</code> に入る確率（ピンクの面積）が
     リアルタイムで出る。<br>
     <b>このピンクの面積こそ「割合」の正体。</b>
-    たとえば成人男性の身長が <code>N(170, 36)</code>（平均170cm, σ=6cm）として、<b>165〜175cm の人は全体の何%？</b>
-    μ=170, σ=6 にして <code>a=165, b=175</code> に合わせると <b>約 59.6%</b>。
+    たとえば成人男性の身長が <code>N(170, 36)</code>（平均170cm, σ=6cm）に従うとすると、
+    <b>165〜175cm の人は全体の何%？</b> → 標準化して z を計算すれば <b>約 59.6%</b> と分かる。
     偏差値、テストの点、測定誤差——だいたい正規で近似できるものは、<b>ぜんぶこの面積計算</b>で「〜%の人がこの範囲」が求まる。
+    下のスライダーでは標準化済みのスケール（μ=0, σ=1 付近）で同じ原理を体感できる。
     <br><i style="color:var(--dim)">Tip: グラフ上を直接ドラッグすると、近い方の <code>a</code>/<code>b</code> の境界を動かせる。</i>
   </p>
   <p class="sec-desc" data-lang="en">
@@ -385,65 +388,60 @@
     <code>μ</code> sets the center, <code>σ</code> sets the spread.
     Slide the parameters and the curve glides; the probability of falling inside <code>[a, b]</code> (pink area) updates live.<br>
     <b>That pink area IS the "percentage" you hear in the news.</b>
-    Say adult male heights are <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
-    Set μ=170, σ=6, then <code>a=165, b=175</code> — you get <b>≈ 59.6%</b>.
+    Say adult male heights follow <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
+    Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
+    The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
     <br><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
   </p>
   <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> μ=170, σ=6 にして a=165, b=175 → 約59.6%。身長170cm±5cmに入る人の割合。</li>
-      <li><b>Step 2:</b> σ を <b>2</b> に縮める → 同じ [165,175] でもピンク面積が激増。散らばりが小さい＝ほぼ全員がこの範囲。</li>
-      <li><b>Step 3:</b> μ を <b>−2</b> に動かす → 曲線ごとスライド。a, b はそのままなのに面積が激変。</li>
+      <li><b>Step 1:</b> μ=0, σ=1 のまま a=−1, b=1 → 約68.3%。これが「±1σ に約7割」。</li>
+      <li><b>Step 2:</b> σ を <b>0.5</b> に縮める → 同じ [−1, 1] でもピンク面積が激増。散らばりが小さい＝ほぼ全員がこの範囲。</li>
+      <li><b>Step 3:</b> μ を <b>2</b> に動かす → 曲線ごとスライド。a, b はそのままなのに面積が激変。</li>
       <li><b>Step 4:</b> グラフ上を直接ドラッグ → 近い方の境界 a/b が指に追従する。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Set μ=170, σ=6, a=165, b=175 → ~59.6%. The share of people within 5cm of the mean height.</li>
-      <li><b>Step 2:</b> Shrink σ to <b>2</b> → the pink area for the same [165,175] explodes. Less spread = almost everyone is in range.</li>
-      <li><b>Step 3:</b> Slide μ to <b>−2</b> → the whole curve shifts. Same a,b, but area changes dramatically.</li>
+      <li><b>Step 1:</b> Keep μ=0, σ=1, set a=−1, b=1 → ~68.3%. That's "±1σ covers ~70%."</li>
+      <li><b>Step 2:</b> Shrink σ to <b>0.5</b> → the pink area for the same [−1, 1] explodes. Less spread = almost everyone is in range.</li>
+      <li><b>Step 3:</b> Slide μ to <b>2</b> → the whole curve shifts. Same a,b, but area changes dramatically.</li>
       <li><b>Step 4:</b> Drag directly on the graph → the nearest a/b boundary follows your finger.</li>
     </ol>
   </div>
 
 
-  <div class="panel">
+  <!-- @panel:normal_main -->
+<div class="panel">
     <div class="controls">
-      <div class="ctrl"><label><span data-lang="ja">μ (平均)</span><span data-lang="en">μ (mean)</span> = <span class="val" id="nMuVal">0</span></label>
+      <div class="ctrl"><label><span data-lang="ja">&#x03BC; (平均)</span><span data-lang="en">&#x03BC; (mean)</span> = <span class="val" id="nMuVal">0</span></label>
         <input type="range" id="nMu" min="-4" max="4" step="0.1" value="0">
-
-
       </div>
-      <div class="ctrl"><label><span data-lang="ja">σ (標準偏差)</span><span data-lang="en">σ (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
+      <div class="ctrl"><label><span data-lang="ja">&#x03C3; (標準偏差)</span><span data-lang="en">&#x03C3; (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
         <input type="range" id="nSd" min="0.3" max="3" step="0.1" value="1">
-
-
       </div>
       <div class="ctrl"><label><span data-lang="ja">区間 [a,b] : a</span><span data-lang="en">Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
         <input type="range" id="nA" min="-5" max="5" step="0.1" value="-1">
-
-
       </div>
       <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
         <input type="range" id="nB" min="-5" max="5" step="0.1" value="1">
-
-
       </div>
     </div>
-    <canvas id="normalCanvas" aria-label="正規分布 N(μ,σ²) の確率密度関数。平均μと標準偏差σをスライダーで変更できる" height="260" aria-busy="true"></canvas>
+    <canvas id="normalCanvas" aria-label="Normal distribution N(&#x03BC;,&#x03C3;&#xB2;) PDF" height="260" aria-busy="true"></canvas>
     <div class="info">
-      <div>P(a ≤ X ≤ b)<strong id="nProb">—</strong></div>
-      <div>z-score (a)<strong id="nZa">—</strong></div>
-      <div>z-score (b)<strong id="nZb">—</strong></div>
+      <div>P(a &#x2264; X &#x2264; b)<strong id="nProb">&#x2014;</strong></div>
+      <div>z-score (a)<strong id="nZa">&#x2014;</strong></div>
+      <div>z-score (b)<strong id="nZb">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="normalCanvas" data-title="正規分布" data-title-en="Normal Distribution" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="normalCanvas" data-title="正規分布" data-title-en="Normal Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/normal.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -494,55 +492,51 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → P(A∪B) が加法定理で 0.58 になることを確認。</li>
+      <li><b>Step 1:</b> P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → グラフ下の <b>P(A∪B)</b> 欄が <b>0.58</b> になるのを確認。0.4+0.3−0.12 = 0.58、これが加法定理。</li>
       <li><b>Step 2:</b> 「独立にする」ボタンを押す → P(A∩B) が自動的に P(A)·P(B) に調整される。これが独立の意味。</li>
       <li><b>Step 3:</b> P(A∩B) を <b>0</b> 付近にする → 2つの円が離れる。これが「排反」（同時に起きない）。</li>
-      <li><b>Step 4:</b> P(A∩B) を P(B) に近づける → A|B が1に近づく。B が起きたらほぼ A も起きる、という関係。</li>
+      <li><b>Step 4:</b> P(A∩B) を P(B) に近づける → <b>P(A|B)</b> 欄が1に近づく。B が起きたらほぼ A も起きる、という関係。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → verify P(A∪B) = 0.58 via the addition rule.</li>
+      <li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → check the <b>P(A∪B)</b> readout below the graph shows <b>0.58</b>. That's 0.4+0.3−0.12 = 0.58, the addition rule.</li>
       <li><b>Step 2:</b> Press "Set Independent" → P(A∩B) auto-adjusts to P(A)·P(B). That's what independence means.</li>
       <li><b>Step 3:</b> Drag P(A∩B) near <b>0</b> → the circles separate. This is "mutually exclusive" (can't happen together).</li>
-      <li><b>Step 4:</b> Push P(A∩B) close to P(B) → P(A|B) approaches 1. If B happens, A almost certainly happens too.</li>
+      <li><b>Step 4:</b> Push P(A∩B) close to P(B) → the <b>P(A|B)</b> readout approaches 1. If B happens, A almost certainly happens too.</li>
     </ol>
   </div>
 
 
-  <div class="panel">
-    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="ja">▶ インタラクティブ・ベン図</h3>
-    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="en">▶ Interactive Venn Diagram</h3>
+  <!-- @panel:prob_venn -->
+<div class="panel">
+    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="ja">&#x25B6; インタラクティブ・ベン図</h3>
+    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="en">&#x25B6; Interactive Venn Diagram</h3>
     <div class="controls">
       <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
-        <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4"/>
-
-
+        <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4">
       </div>
       <div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
-        <input id="probPB" min="0.05" max="0.95" step="0.01" type="range" value="0.3"/>
-
-
+        <input id="probPB" min="0.05" max="0.95" step="0.01" type="range" value="0.3">
       </div>
-      <div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
-        <input id="probPAB" min="0" max="0.30" step="0.01" type="range" value="0.12"/>
-
-
+      <div class="ctrl"><label>P(A&#x2229;B) = <span class="val" id="probPABVal">0.12</span></label>
+        <input id="probPAB" min="0" max="0.30" step="0.01" type="range" value="0.12">
       </div>
       <button class="btn yellow" id="probIndep"><span data-lang="ja">独立にする</span><span data-lang="en">Set Independent</span></button>
     </div>
-    <canvas id="probCanvas" aria-label="確率の基本法則：ベン図による可視化" aria-busy="true" height="320"></canvas>
+    <canvas id="probCanvas" aria-label="Probability rules: Venn diagram visualization" aria-busy="true" height="320"></canvas>
     <div class="info">
-      <div>P(A∪B)<strong id="probUnion">—</strong></div>
-      <div>P(A|B)<strong id="probCondAB">—</strong></div>
-      <div>P(B|A)<strong id="probCondBA">—</strong></div>
-      <div><span data-lang="ja">独立？</span><span data-lang="en">Independent?</span><strong id="probIndepCheck">—</strong></div>
+      <div>P(A&#x222A;B)<strong id="probUnion">&#x2014;</strong></div>
+      <div>P(A|B)<strong id="probCondAB">&#x2014;</strong></div>
+      <div>P(B|A)<strong id="probCondBA">&#x2014;</strong></div>
+      <div><span data-lang="ja">独立？</span><span data-lang="en">Independent?</span><strong id="probIndepCheck">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則" data-title-en="Basic Rules of Probability"><span>💾 画像保存</span></button>
+      <button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則" data-title-en="Basic Rules of Probability"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/prob.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -573,7 +567,7 @@
     <ol>
       <li><b>Step 1:</b> 二項分布で n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>
       <li><b>Step 2:</b> 二項の n を <b>50</b>、p を <b>0.06</b> に → np≈3。ポアソン(λ=3) と見比べてみよう。ほぼ同じ形。</li>
-      <li><b>Step 3:</b> ポアソンの λ を <b>1→20</b> に上げる → 正規分布のベル型に近づいていく（CLTの予告）。</li>
+      <li><b>Step 3:</b> ポアソンの λ=3 にしてグラフ左上の「E[X] = Var[X] = λ = 3.00」で平均=分散を確認。λ を <b>20</b> まで上げるとベル型に近づく。</li>
       <li><b>Step 4:</b> 指数分布の λ を動かす → λ が大きいほど「すぐ起きる」。平均待ち時間 = 1/λ。</li>
     </ol>
   </div>
@@ -582,36 +576,36 @@
     <ol>
       <li><b>Step 1:</b> Binomial: set n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
       <li><b>Step 2:</b> Set binomial n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) — nearly identical shapes.</li>
-      <li><b>Step 3:</b> Raise Poisson λ from <b>1 to 20</b> → it approaches a bell (a preview of the CLT).</li>
+      <li><b>Step 3:</b> Set Poisson λ=3 and check "E[X] = Var[X] = λ = 3.00" in the top-left of the graph. Raise λ to <b>20</b> → it approaches a bell.</li>
       <li><b>Step 4:</b> Slide exponential λ → larger λ = "happens sooner." Mean wait = 1/λ.</li>
     </ol>
   </div>
 
   
-    <div class="panel">
+    <!-- @panel:morep_binom -->
+<div class="panel">
       <div class="panel-title" data-lang="ja">二項分布 B(n, p)</div>
       <div class="use-case" data-lang="ja">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
-      <div class="use-case" data-lang="en">When? → How many heads in 10 coin flips; how many defects in 100 items</div>
+      <div class="use-case" data-lang="en">When? &#x2192; How many heads in 10 coin flips; how many defects in 100 items</div>
       <div class="panel-title" data-lang="en">Binomial B(n, p)</div>
-      <canvas id="binomCanvas" aria-label="二項分布のシミュレーション。試行回数nと成功確率pを変更できる" height="240" aria-busy="true"></canvas>
+      <canvas id="binomCanvas" aria-label="Binomial distribution simulation" height="240" aria-busy="true"></canvas>
       <div class="controls">
         <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20">
-
 <span class="val" id="binomNVal">20</span></div>
         <div class="ctrl"><label data-lang="ja">成功確率 p</label><label data-lang="en">success p</label><input id="binomP" type="range" min="0.01" max="0.99" step="0.01" value="0.35">
-
 <span class="val" id="binomPVal">0.35</span></div>
       </div>
-      <div class="sec-bridge" data-lang="ja">n → ∞ かつ np → λ で、二項はポアソンへ。</div>
-      <div class="sec-bridge" data-lang="en">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
+      <div class="sec-bridge" data-lang="ja">n &#x2192; &#x221E; かつ np &#x2192; &#x03BB; で、二項はポアソンへ。</div>
+      <div class="sec-bridge" data-lang="en">As n &#x2192; &#x221E; with np &#x2192; &#x03BB;, the binomial approaches Poisson.</div>
     </div>
+<!-- /@panel -->
 </div>
 
     <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">
 <b>実験ガイド — ポアソン分布</b>
 <ol>
-<li><b>Step 1:</b> λ=3 → 平均3回の事象。0〜6回あたりに集中している。</li>
+<li><b>Step 1:</b> λ=3 → 平均3回の事象。0〜6回あたりに集中している。グラフ左上の「E[X] = Var[X] = λ = 3.00」で平均=分散を確認。</li>
 <li><b>Step 2:</b> λ を <b>1</b> に → ピークが左端に寄り、0回が最頻値。めったに起きない事象。</li>
 <li><b>Step 3:</b> λ を <b>10</b> に → ベル型に近づく。正規分布の面影が見えてくる。</li>
 <li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ完全な正規分布。ポアソンは正規の"離散版"。</li>
@@ -620,26 +614,27 @@
 <div class="guided-steps" data-lang="en">
 <b>Experiment Guide — Poisson</b>
 <ol>
-<li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6.</li>
+<li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6. Check "E[X] = Var[X] = λ = 3.00" at the top-left.</li>
 <li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
 <li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
 <li><b>Step 4:</b> Push λ to <b>20</b> → nearly a perfect normal. Poisson is the "discrete normal."</li>
 </ol>
 </div>
+<!-- @panel:morep_poisson -->
 <div class="panel">
-      <div class="panel-title" data-lang="ja">ポアソン分布 Poisson(λ)</div>
+      <div class="panel-title" data-lang="ja">ポアソン分布 Poisson(&#x03BB;)</div>
       <div class="use-case" data-lang="ja">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
-      <div class="use-case" data-lang="en">When? → Phone calls per hour at a call center; traffic accidents per day</div>
-      <div class="panel-title" data-lang="en">Poisson(λ)</div>
-      <canvas id="poissonCanvas" aria-label="ポアソン分布のシミュレーション。パラメータλを変更できる" height="240" aria-busy="true"></canvas>
+      <div class="use-case" data-lang="en">When? &#x2192; Phone calls per hour at a call center; traffic accidents per day</div>
+      <div class="panel-title" data-lang="en">Poisson(&#x03BB;)</div>
+      <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="240" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 λ</label><label data-lang="en">rate λ</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3">
-
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3">
 <span class="val" id="poisLVal">3</span></div>
       </div>
-      <div class="sec-bridge" data-lang="ja">λ が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
-      <div class="sec-bridge" data-lang="en">As λ grows, Poisson approaches the normal distribution.</div>
+      <div class="sec-bridge" data-lang="ja">&#x03BB; が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
+      <div class="sec-bridge" data-lang="en">As &#x03BB; grows, Poisson approaches the normal distribution.</div>
     </div>
+<!-- /@panel -->
 </div>
 
     <div class="sim-layout">
@@ -661,20 +656,21 @@
 <li><b>Step 4:</b> Every λ gives the same "L" shape. That is memorylessness — past waiting does not affect the future.</li>
 </ol>
 </div>
+<!-- @panel:morep_exp -->
 <div class="panel">
-      <div class="panel-title" data-lang="ja">指数分布 Exp(λ) — 待ち時間</div>
+      <div class="panel-title" data-lang="ja">指数分布 Exp(&#x03BB;) &#x2014; 待ち時間</div>
       <div class="use-case" data-lang="ja">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
-      <div class="use-case" data-lang="en">When? → Time until next phone call; how long until a light bulb burns out</div>
-      <div class="panel-title" data-lang="en">Exponential(λ) — waiting time</div>
-      <canvas id="expCanvas" aria-label="指数分布の確率密度関数。パラメータλを変更できる" height="240" aria-busy="true"></canvas>
+      <div class="use-case" data-lang="en">When? &#x2192; Time until next phone call; how long until a light bulb burns out</div>
+      <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; waiting time</div>
+      <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="240" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 λ</label><label data-lang="en">rate λ</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1">
-
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1">
 <span class="val" id="expLVal">1</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
       <div class="sec-bridge" data-lang="en">Memoryless: past waiting time tells you nothing about the future.</div>
     </div>
+<!-- /@panel -->
 </div>
   
 
@@ -734,40 +730,36 @@
   </div>
 
 
-  <div class="panel">
+  <!-- @panel:bayes_main -->
+<div class="panel">
     <div class="controls">
       <div class="ctrl">
-        <label><span data-lang="ja">有病率 — 1000人のうち何人が病気？</span><span data-lang="en">Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
+        <label><span data-lang="ja">有病率 &#x2014; 1000人のうち何人が病気？</span><span data-lang="en">Prevalence &#x2014; how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
         <input type="range" id="bPd" min="0.001" max="0.5" step="0.001" value="0.01">
-
-
       </div>
       <div class="ctrl">
-        <label><span data-lang="ja">感度 — 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
+        <label><span data-lang="ja">感度 &#x2014; 病気の人を「陽性」と当てる割合</span><span data-lang="en">Sensitivity &#x2014; % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
         <input type="range" id="bSens" min="0.5" max="0.999" step="0.001" value="0.99">
-
-
       </div>
       <div class="ctrl">
-        <label><span data-lang="ja">特異度 — 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
+        <label><span data-lang="ja">特異度 &#x2014; 健康な人を「陰性」と判定する割合</span><span data-lang="en">Specificity &#x2014; % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
         <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95">
-
-
       </div>
     </div>
-    <canvas id="bayesCanvas" aria-label="ベイズ定理の可視化。事前確率と尤度を変更して事後確率の変化を確認できる" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
+    <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
     <div id="bayesStory" class="bayes-story" data-lang="ja"></div>
     <div id="bayesStoryEn" class="bayes-story" data-lang="en"></div>
     <div class="info">
-      <div><span data-lang="ja">陽性だった人が本当に病気の確率</span><span data-lang="en">If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
-      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested NEG, chance you're healthy</span><strong id="bNpv">—</strong></div>
-      <div><span data-lang="ja">真陽性 TP（病気 & 陽性）</span><span data-lang="en">True positives (sick & tested +)</span><strong id="bTp">—</strong></div>
-      <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
+      <div><span data-lang="ja">陽性だった人が本当に病気の確率</span><span data-lang="en">If you tested +, chance you're sick</span><strong id="bPpv">&#x2014;</strong></div>
+      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested NEG, chance you're healthy</span><strong id="bNpv">&#x2014;</strong></div>
+      <div><span data-lang="ja">真陽性 TP（病気 &amp; 陽性）</span><span data-lang="en">True positives (sick &amp; tested +)</span><strong id="bTp">&#x2014;</strong></div>
+      <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-title-en="Bayes' Theorem" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-title-en="Bayes' Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -852,36 +844,36 @@
       <li><b>Step 4:</b> Switch to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
     </ol>
   </div>
-  <div class="panel" data-autorun="cltRun">
+  <!-- @panel:clt_main -->
+<div class="panel" data-autorun="cltRun">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">元の分布（歪んでるやつ）</span><span data-lang="en">Base distribution (the skewed one)</span></label>
         <select id="cltDist">
-          <option value="exp" selected data-ja="指数分布 λ=1（右に超歪み）" data-en="Exponential λ=1 (heavy right-skew)">指数分布 λ=1（右に超歪み）</option>
+          <option value="exp" selected data-ja="指数分布 &#x03BB;=1（右に超歪み）" data-en="Exponential &#x03BB;=1 (heavy right-skew)">指数分布 &#x03BB;=1（右に超歪み）</option>
           <option value="uniform" data-ja="一様分布 [0,1]（平ら）" data-en="Uniform [0,1] (flat)">一様分布 [0,1]（平ら）</option>
           <option value="bimodal" data-ja="二峰分布（山が2つ）" data-en="Bimodal (two peaks)">二峰分布（山が2つ）</option>
         </select>
       </div>
       <div class="ctrl"><label><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
         <input type="range" id="cltN" min="1" max="50" value="30">
-
-
       </div>
-      <button class="btn" id="cltRun"><span data-lang="ja">▶ 3000回 試行</span><span data-lang="en">▶ Run 3000 trials</span></button>
+      <button class="btn" id="cltRun"><span data-lang="ja">&#x25B6; 3000回 試行</span><span data-lang="en">&#x25B6; Run 3000 trials</span></button>
       <button class="btn magenta" id="cltClear">CLEAR</button>
     </div>
-    <canvas id="cltCanvas" aria-label="中心極限定理のシミュレーション。サンプルサイズnを増やすと標本平均の分布が正規分布に近づく" height="300" aria-busy="true"></canvas>
+    <canvas id="cltCanvas" aria-label="Central Limit Theorem simulation" height="300" aria-busy="true"></canvas>
     <div id="cltStory" class="bayes-story" data-lang="ja"></div>
     <div id="cltStoryEn" class="bayes-story" data-lang="en"></div>
     <div class="info">
       <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span><strong id="cltCount">0</strong></div>
-      <div><span data-lang="ja">標本平均の平均</span><span data-lang="en">Mean of sample means</span><strong id="cltMean">—</strong></div>
-      <div><span data-lang="ja">標本平均の標準偏差</span><span data-lang="en">SD of sample means</span><strong id="cltSD">—</strong></div>
-      <div><span data-lang="ja">理論SE = σ/√n</span><span data-lang="en">Theoretical SE = σ/√n</span><strong id="cltSE">—</strong></div>
+      <div><span data-lang="ja">標本平均の平均</span><span data-lang="en">Mean of sample means</span><strong id="cltMean">&#x2014;</strong></div>
+      <div><span data-lang="ja">標本平均の標準偏差</span><span data-lang="en">SD of sample means</span><strong id="cltSD">&#x2014;</strong></div>
+      <div><span data-lang="ja">理論SE = &#x03C3;/&#x221A;n</span><span data-lang="en">Theoretical SE = &#x03C3;/&#x221A;n</span><strong id="cltSE">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="cltCanvas" data-title="中心極限定理" data-title-en="Central Limit Theorem" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="cltCanvas" data-title="中心極限定理" data-title-en="Central Limit Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
 
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -937,26 +929,26 @@
       <li><b>Step 4:</b> Set p to <b>0.05</b> (rare event) → it hugs zero early on, but still converges to p. The law holds.</li>
     </ol>
   </div>
-  <div class="panel" data-autorun="llnRun">
+  <!-- @panel:lln_main -->
+<div class="panel" data-autorun="llnRun">
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">確率 p</span><span data-lang="en">Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
         <input type="range" id="llnP" min="0.05" max="0.95" step="0.01" value="0.5">
-
-
       </div>
-      <button class="btn" id="llnRun"><span data-lang="ja">▶ シミュレート</span><span data-lang="en">▶ Simulate</span></button>
+      <button class="btn" id="llnRun"><span data-lang="ja">&#x25B6; シミュレート</span><span data-lang="en">&#x25B6; Simulate</span></button>
       <button class="btn magenta" id="llnReset">RESET</button>
     </div>
-    <canvas id="llnCanvas" aria-label="大数の法則のシミュレーション。試行回数を増やすと標本平均が母平均に収束する" height="240" aria-busy="true"></canvas>
+    <canvas id="llnCanvas" aria-label="Law of Large Numbers simulation" height="240" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span><strong id="llnN">0</strong></div>
-      <div><span data-lang="ja">現在の平均</span><span data-lang="en">Current mean</span><strong id="llnCur">—</strong></div>
+      <div><span data-lang="ja">現在の平均</span><span data-lang="en">Current mean</span><strong id="llnCur">&#x2014;</strong></div>
       <div><span data-lang="ja">理論値</span><span data-lang="en">Theoretical</span><strong id="llnTrue">0.50</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="llnCanvas" data-title="大数の法則" data-title-en="Law of Large Numbers" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="llnCanvas" data-title="大数の法則" data-title-en="Law of Large Numbers" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
 
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -1016,31 +1008,29 @@
   </div>
 
 
-  <div class="panel" data-autorun="ciRun">
+<!-- @panel:ci_main -->
+<div class="panel" data-autorun="ciRun">
     <div class="controls">
       <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
         <input type="range" id="ciN" min="5" max="200" step="1" value="30">
-
-
       </div>
       <div class="ctrl"><label><span data-lang="ja">信頼度</span><span data-lang="en">Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
         <input type="range" id="ciLvl" min="80" max="99" step="1" value="95">
-
-
       </div>
-      <button class="btn" id="ciRun"><span data-lang="ja">▶ 300回 生成</span><span data-lang="en">▶ Generate 300</span></button>
+      <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
       <button class="btn magenta" id="ciReset">CLEAR</button>
     </div>
     <canvas id="ciCanvas" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">作成した区間</span><span data-lang="en">Intervals built</span><strong id="ciMade">0</strong></div>
-      <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage</span><strong id="ciCov">—</strong></div>
+      <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage</span><strong id="ciCov">&#x2014;</strong></div>
       <div><span data-lang="ja">期待値</span><span data-lang="en">Expected</span><strong id="ciExp">95%</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="ciCanvas" data-title="信頼区間" data-title-en="Confidence Interval" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="ciCanvas" data-title="信頼区間" data-title-en="Confidence Interval" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/ci.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -1095,19 +1085,16 @@
       <li><b>Step 4:</b> Panel ②: slide effect size δ from <b>0 to 3</b> → the purple (H₁) curve drifts right, power climbs.</li>
     </ol>
   </div>
-  <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① 基本：z値と棄却域</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic & rejection region</h3>
+<!-- @panel:test_main -->
+<div class="panel">
+  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 基本：z値と棄却域</h3>
+  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">観測 z</span><span data-lang="en">Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
         <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96">
-
-
       </div>
-      <div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
+      <div class="ctrl"><label>&#x03B1; = <span class="val" id="tAVal">0.05</span></label>
         <input type="range" id="tA" min="0.001" max="0.2" step="0.001" value="0.05">
-
-
       </div>
       <div class="ctrl"><label><span data-lang="ja">検定タイプ</span><span data-lang="en">Test type</span></label>
         <select id="tType">
@@ -1119,15 +1106,16 @@
     </div>
     <canvas id="testCanvas" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" height="260" aria-busy="true"></canvas>
     <div class="info">
-      <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="tZstat">—</strong></div>
-      <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="tCrit">—</strong></div>
-      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="tPval">—</strong></div>
-      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="tDecision">—</strong></div>
+      <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="tZstat">&#x2014;</strong></div>
+      <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="tCrit">&#x2014;</strong></div>
+      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span><strong id="tPval">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span><strong id="tDecision">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="testCanvas" data-title="仮説検定" data-title-en="Hypothesis Test" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="testCanvas" data-title="仮説検定" data-title-en="Hypothesis Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
 
 
@@ -1150,48 +1138,46 @@
 <li><b>Step 4:</b> Drag horizontally on the chart → move the critical boundary and feel the α vs β tug-of-war.</li>
 </ol>
 </div>
+<!-- @panel:test_err -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 2つの誤り：&#x03B1;・&#x03B2;・検出力</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; Two kinds of errors: &#x03B1;, &#x03B2;, power</h3>
     <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
       検定には2種類の間違いがある。<br>
-      <b>第1種の誤り α</b>: H₀ が本当なのに棄却してしまう（冤罪）。<br>
-      <b>第2種の誤り β</b>: H₁ が本当なのに見逃してしまう（真犯人を逃す）。<br>
-      そして <code>1 − β</code> が<b>検出力 (Power)</b>。
-      <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> δ（本当の差の大きさ）や α を動かすと、青(H₀)と紫(H₁)の曲線がせめぎ合い、
+      <b>第1種の誤り &#x03B1;</b>: H&#x2080; が本当なのに棄却してしまう（冤罪）。<br>
+      <b>第2種の誤り &#x03B2;</b>: H&#x2081; が本当なのに見逃してしまう（真犯人を逃す）。<br>
+      そして <code>1 &#x2212; &#x03B2;</code> が<b>検出力 (Power)</b>。
+      <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> &#x03B4;（本当の差の大きさ）や &#x03B1; を動かすと、青(H&#x2080;)と紫(H&#x2081;)の曲線がせめぎ合い、
       "間違いを減らすと見逃しが増える"というトレードオフが見える。
-      <br><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
+      <br><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（&#x03B1; の境界）を直接動かせる。</i>
     </p>
     <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
       Testing has two kinds of mistakes.<br>
-      <b>Type I error α</b>: rejecting H₀ when it's actually true (false alarm).<br>
-      <b>Type II error β</b>: failing to reject H₀ when H₁ is actually true (a miss).<br>
-      And <code>1 − β</code> is the <b>power</b>.
-      Change effect size δ or α: the blue (H₀) and purple (H₁) curves fight it out — you can literally see the trade-off "fewer false alarms = more misses".
-      <br><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
+      <b>Type I error &#x03B1;</b>: rejecting H&#x2080; when it's actually true (false alarm).<br>
+      <b>Type II error &#x03B2;</b>: failing to reject H&#x2080; when H&#x2081; is actually true (a miss).<br>
+      And <code>1 &#x2212; &#x03B2;</code> is the <b>power</b>.
+      Change effect size &#x03B4; or &#x03B1;: the blue (H&#x2080;) and purple (H&#x2081;) curves fight it out &#x2014; you can literally see the trade-off "fewer false alarms = more misses".
+      <br><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (&#x03B1;).</i>
     </p>
     <div class="controls">
-      <div class="ctrl"><label><span data-lang="ja">効果量 δ</span><span data-lang="en">Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
+      <div class="ctrl"><label><span data-lang="ja">効果量 &#x03B4;</span><span data-lang="en">Effect size &#x03B4;</span> = <span class="val" id="eDVal">2.0</span></label>
         <input type="range" id="eD" min="0" max="5" step="0.1" value="2">
-
-
       </div>
-      <div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
+      <div class="ctrl"><label>&#x03B1; = <span class="val" id="eAVal">0.050</span></label>
         <input type="range" id="eA" min="0.001" max="0.3" step="0.001" value="0.05">
-
-
       </div>
     </div>
     <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" aria-busy="true"></canvas>
     <div class="info">
-      <div><span data-lang="ja">α (第1種の誤り)</span><span data-lang="en">α (Type I error)</span><strong id="eAlpha">—</strong></div>
-      <div><span data-lang="ja">β (第2種の誤り)</span><span data-lang="en">β (Type II error)</span><strong id="eBeta">—</strong></div>
-      <div><span data-lang="ja">検出力 1−β</span><span data-lang="en">Power 1−β</span><strong id="ePower">—</strong></div>
+      <div><span data-lang="ja">&#x03B1; (第1種の誤り)</span><span data-lang="en">&#x03B1; (Type I error)</span><strong id="eAlpha">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2; (第2種の誤り)</span><span data-lang="en">&#x03B2; (Type II error)</span><strong id="eBeta">&#x2014;</strong></div>
+      <div><span data-lang="ja">検出力 1&#x2212;&#x03B2;</span><span data-lang="en">Power 1&#x2212;&#x03B2;</span><strong id="ePower">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="errCanvas" data-title="α・β・検出力" data-title-en="α · β · Power" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="errCanvas" data-title="&#x03B1;・&#x03B2;・検出力" data-title-en="&#x03B1; &#x00B7; &#x03B2; &#x00B7; Power" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/test.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -1236,7 +1222,7 @@
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> t分布で df=<b>1</b> → 裾がめちゃくちゃ重い（コーシー分布）。df=<b>30</b> → ほぼ正規分布と区別がつかない。</li>
-      <li><b>Step 2:</b> χ²分布で df=<b>1</b> → 右に激しく歪む。df=<b>30</b> → ベル型に近づく。平均=df を確認。</li>
+      <li><b>Step 2:</b> χ²分布で df=<b>1</b> → 右に激しく歪む。df=<b>30</b> → ベル型に近づく。グラフ左上の「平均 = k = 30」で平均=df を確認。</li>
       <li><b>Step 3:</b> F分布で df1=3, df2=<b>10→30</b> → 分母の自由度が増えると形が安定する。</li>
       <li><b>Step 4:</b> どの分布もグラフを左右にドラッグで df を変えられる。スライダーより直感的。</li>
     </ol>
@@ -1245,38 +1231,36 @@
     <b>Experiment Guide — try these in order</b>
     <ol>
       <li><b>Step 1:</b> t-distribution: df=<b>1</b> → extremely heavy tails (Cauchy). df=<b>30</b> → indistinguishable from N(0,1).</li>
-      <li><b>Step 2:</b> χ²: df=<b>1</b> → sharply right-skewed. df=<b>30</b> → approaches a bell. Note: mean = df.</li>
+      <li><b>Step 2:</b> χ²: df=<b>1</b> → sharply right-skewed. df=<b>30</b> → approaches a bell. Check "mean = k = 30" in the top-left of the graph.</li>
       <li><b>Step 3:</b> F: set df1=3, slide df2 from <b>10 to 30</b> → the shape stabilizes as denominator df grows.</li>
       <li><b>Step 4:</b> All three graphs support horizontal drag to change df — more intuitive than the slider.</li>
     </ol>
   </div>
   
-    <div class="panel">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+<!-- @panel:dists_t -->
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t distribution</h3>
       <div class="dist-card" data-lang="ja">
-        <b class="cy">作り方:</b> t = Z / √(χ²ₖ/k) ， Z~N(0,1)。 <br>
+        <b class="cy">作り方:</b> t = Z / &#x221A;(&#x03C7;&#x00B2;&#x2096;/k) &#xFF0C; Z~N(0,1)&#x3002; <br>
         <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br>
-        <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df→∞ で N(0,1)。
-
+        <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df&#x2192;&#x221E; で N(0,1)。
       </div>
       <div class="dist-card" data-lang="en">
-        <b class="cy">Built from:</b> t = Z / √(χ²ₖ/k), Z~N(0,1).<br>
+        <b class="cy">Built from:</b> t = Z / &#x221A;(&#x03C7;&#x00B2;&#x2096;/k), Z~N(0,1).<br>
         <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br>
-        <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
-
+        <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
       </div>
       <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
         <input type="range" id="tdDf" min="1" max="30" value="3">
-
-
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">↔ グラフを左右にドラッグで df 変更</span><span data-lang="en">↔ Drag the graph horizontally to change df</span></div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="share-row">
-        <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+        <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
     </div>
+<!-- /@panel -->
 </div>
 
 
@@ -1286,7 +1270,7 @@
 <ol>
 <li><b>Step 1:</b> df=3 → 右に歪んだ形。非負なので左端が0で切れる。</li>
 <li><b>Step 2:</b> df を <b>1</b> に → L字型。標準正規の二乗 Z² そのもの。</li>
-<li><b>Step 3:</b> df を <b>20</b> に → ベル型に近づく。平均 = df, 分散 = 2·df。</li>
+<li><b>Step 3:</b> df を <b>20</b> に → ベル型に近づく。グラフ左上の「平均 = k = 20」で平均 = df を確認。分散 = 2·df。</li>
 <li><b>Step 4:</b> df を <b>30</b> に → ほぼ正規分布。大標本でカイ二乗検定の近似精度が上がる理由。</li>
 </ol>
 </div>
@@ -1295,34 +1279,34 @@
 <ol>
 <li><b>Step 1:</b> df=3 → right-skewed. Non-negative, so it is cut off at 0.</li>
 <li><b>Step 2:</b> Set df to <b>1</b> → L-shaped. This is literally Z² for a single standard normal.</li>
-<li><b>Step 3:</b> Set df to <b>20</b> → approaches bell shape. Mean = df, variance = 2·df.</li>
+<li><b>Step 3:</b> Set df to <b>20</b> → approaches bell shape. Check "mean = k = 20" in the top-left. Variance = 2·df.</li>
 <li><b>Step 4:</b> Set df to <b>30</b> → nearly normal. This is why chi-square tests improve with large samples.</li>
 </ol>
 </div>
+<!-- @panel:dists_chi -->
 <div class="panel">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
       <div class="dist-card" data-lang="ja">
-        <b class="mg">作り方:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² （標準正規を k 個足して二乗和）。<br>
+        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規を k 個足して二乗和）。<br>
         <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
         <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
       </div>
       <div class="dist-card" data-lang="en">
-        <b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br>
+        <b class="mg">Built from:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; (sum of k squared standard normals).<br>
         <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
       <div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
         <input type="range" id="chiDf" min="1" max="30" value="3">
-
-
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">↔ グラフを左右にドラッグで df 変更</span><span data-lang="en">↔ Drag the graph horizontally to change df</span></div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="share-row">
-        <button class="share-btn dl" data-share="chiCanvas" data-title="χ²分布" data-title-en="χ² Distribution" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+        <button class="share-btn dl" data-share="chiCanvas" data-title="&#x03C7;&#x00B2;分布" data-title-en="&#x03C7;&#x00B2; Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
     </div>
+<!-- /@panel -->
 </div>
 
     <div class="sim-layout">
@@ -1344,35 +1328,33 @@
 <li><b>Step 4:</b> Set both df1 and df2 to <b>30</b> → approaches bell shape. ANOVA approximation improves.</li>
 </ol>
 </div>
+<!-- @panel:dists_f -->
 <div class="panel">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F distribution</h3>
       <div class="dist-card" data-lang="ja">
-        <b class="ye">作り方:</b> F = (χ²ₘ/m) / (χ²ₙ/n) （2つの独立な χ² の比）。<br>
+        <b class="ye">作り方:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) （2つの独立な &#x03C7;&#x00B2; の比）。<br>
         <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
         <b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
       </div>
       <div class="dist-card" data-lang="en">
-        <b class="ye">Built from:</b> F = (χ²ₘ/m) / (χ²ₙ/n) (ratio of two independent χ² / df).<br>
+        <b class="ye">Built from:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) (ratio of two independent &#x03C7;&#x00B2; / df).<br>
         <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
       <div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
         <input type="range" id="fDf1" min="1" max="30" value="3">
-
-
       </div>
       <div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
         <input type="range" id="fDf2" min="1" max="30" value="10">
-
-
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">↔ グラフを左右にドラッグで df₁ 変更　·　df₂ はスライダーで調整</span><span data-lang="en">↔ Drag horizontally to change df₁ · df₂ is set via slider</span></div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df&#x2081; 変更　&#x00B7;　df&#x2082; はスライダーで調整</span><span data-lang="en">&#x2194; Drag horizontally to change df&#x2081; &#x00B7; df&#x2082; is set via slider</span></div>
       <canvas id="fCanvas" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="share-row">
-        <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+        <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
     </div>
+<!-- /@panel -->
 </div>
   
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -1425,46 +1407,46 @@
     </ol>
   </div>
 
-  <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① 適合度検定 — サイコロは公正か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
+<!-- @panel:chitest_gof -->
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">🎲 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで−1）</span><span data-lang="en">🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
     <div class="controls" style="gap:6px;margin-bottom:6px">
       <div class="ctrl">
         <label>
-          <span data-lang="ja">有意水準 α</span>
-          <span data-lang="en">Significance α</span>
+          <span data-lang="ja">有意水準 &#x03B1;</span>
+          <span data-lang="en">Significance &#x03B1;</span>
           = <span class="val" id="gofAVal">0.05</span>
         </label>
         <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05">
-
-
       </div>
       <div class="ctrl" style="min-width:auto">
         <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
           <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
-          <option value="loaded" data-ja="イカサマ（⚅ 重め）" data-en="Loaded (⚅ heavy)">イカサマ（⚅ 重め）</option>
+          <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
       </div>
-      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">▶ 自動投下</span><span data-lang="en">▶ Auto-roll</span></button>
-      <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">↺ リセット</span><span data-lang="en">↺ Reset</span></button>
+      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 自動投下</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
+      <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
     <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
-      <div><span data-lang="ja">検定統計量 χ²</span><span data-lang="en">Test statistic χ²</span> <strong id="gofStat">—</strong></div>
-      <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="gofDf">—</strong></div>
-      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="gofP">—</strong></div>
-      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="gofResult">—</strong></div>
+      <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="gofStat">&#x2014;</strong></div>
+      <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="gofDf">&#x2014;</strong></div>
+      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="gofP">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="gofResult">&#x2014;</strong></div>
     </div>
 
     <div class="share-row">
-      <button class="share-btn dl" data-share="chitestCanvas" data-title="適合度検定" data-title-en="Goodness-of-Fit Test" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="chitestCanvas" data-title="適合度検定" data-title-en="Goodness-of-Fit Test" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
 
 
@@ -1487,39 +1469,39 @@
 <li><b>Step 4:</b> Flood a single cell → huge gap from expected frequencies, p-value plummets.</li>
 </ol>
 </div>
+<!-- @panel:chitest_ind -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② Test of Independence — Are Two Variables Independent?</h3>
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; 独立性検定 &#x2014; 2変数は独立か？</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; Test of Independence &#x2014; Are Two Variables Independent?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで−1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for −1)</span></div>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで&#x2212;1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for &#x2212;1)</span></div>
     <div class="controls" style="gap:6px;margin-bottom:6px">
       <div class="ctrl">
         <label>
-          <span data-lang="ja">有意水準 α</span>
-          <span data-lang="en">Significance α</span>
+          <span data-lang="ja">有意水準 &#x03B1;</span>
+          <span data-lang="en">Significance &#x03B1;</span>
           = <span class="val" id="indAVal">0.05</span>
         </label>
         <input type="range" id="indA" min="0.01" max="0.10" step="0.01" value="0.05">
-
-
       </div>
-      <button id="indReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">↺ リセット</span><span data-lang="en">↺ Reset</span></button>
+      <button id="indReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
     <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">総数 n</span><span data-lang="en">Total n</span> <strong id="indN">0</strong></div>
-      <div><span data-lang="ja">検定統計量 χ²</span><span data-lang="en">Test statistic χ²</span> <strong id="indStat">—</strong></div>
-      <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="indDf">—</strong></div>
-      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="indP">—</strong></div>
-      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="indResult">—</strong></div>
+      <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="indStat">&#x2014;</strong></div>
+      <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="indDf">&#x2014;</strong></div>
+      <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="indP">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="indResult">&#x2014;</strong></div>
     </div>
 
     <div class="share-row">
-      <button class="share-btn dl" data-share="indCanvas" data-title="独立性検定" data-title-en="Test of Independence" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="indCanvas" data-title="独立性検定" data-title-en="Test of Independence" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
 
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -1603,24 +1585,26 @@
   </div>
 
 
-  <div class="panel" data-autorun="regRandom">
+<!-- @panel:reg_main -->
+<div class="panel" data-autorun="regRandom">
     <div class="controls">
-      <button class="btn" id="regRandom"><span data-lang="ja">▶ ランダム 20点</span><span data-lang="en">▶ Random 20 pts</span></button>
+      <button class="btn" id="regRandom"><span data-lang="ja">&#x25B6; ランダム 20点</span><span data-lang="en">&#x25B6; Random 20 pts</span></button>
       <button class="btn magenta" id="regClear">CLEAR</button>
-      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">↑ キャンバスをクリックして点追加</span><span data-lang="en">↑ Click the canvas to add points</span></span>
+      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
     </div>
     <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
     <div class="info">
       <div>n<strong id="regN">0</strong></div>
-      <div><span data-lang="ja">傾き β₁</span><span data-lang="en">Slope β₁</span><strong id="regB1">—</strong></div>
-      <div><span data-lang="ja">切片 β₀</span><span data-lang="en">Intercept β₀</span><strong id="regB0">—</strong></div>
-      <div>R²<strong id="regR2">—</strong></div>
-      <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="regR">—</strong></div>
+      <div><span data-lang="ja">傾き &#x03B2;&#x2081;</span><span data-lang="en">Slope &#x03B2;&#x2081;</span><strong id="regB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">切片 &#x03B2;&#x2080;</span><span data-lang="en">Intercept &#x03B2;&#x2080;</span><strong id="regB0">&#x2014;</strong></div>
+      <div>R&#x00B2;<strong id="regR2">&#x2014;</strong></div>
+      <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="regR">&#x2014;</strong></div>
     </div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="regCanvas" data-title="単回帰分析" data-title-en="Simple Regression" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="regCanvas" data-title="単回帰分析" data-title-en="Simple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
 </div>
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/reg.html">📖 数式・詳細解説を読む → 個別ページへ</a>
@@ -1674,28 +1658,30 @@
     </ol>
   </div>
 
-  <div class="panel">
+<!-- @panel:mreg_main -->
+<div class="panel">
     <div class="controls">
-      <div class="ctrl"><label><span data-lang="ja">勉強時間 x₁</span><span data-lang="en">Study hours x₁</span> = <span class="val" id="mStudyVal">5.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+      <div class="ctrl"><label><span data-lang="ja">勉強時間 x&#x2081;</span><span data-lang="en">Study hours x&#x2081;</span> = <span class="val" id="mStudyVal">5.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
         <input type="range" id="mStudy" min="1" max="9" step="0.1" value="5">
       </div>
-      <div class="ctrl"><label><span data-lang="ja">睡眠時間 x₂</span><span data-lang="en">Sleep hours x₂</span> = <span class="val" id="mSleepVal">7.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
+      <div class="ctrl"><label><span data-lang="ja">睡眠時間 x&#x2082;</span><span data-lang="en">Sleep hours x&#x2082;</span> = <span class="val" id="mSleepVal">7.0</span><span data-lang="ja">時間</span><span data-lang="en">h</span></label>
         <input type="range" id="mSleep" min="4" max="10" step="0.1" value="7">
       </div>
-      <button class="btn" id="mGen"><span data-lang="ja">↺ 再サンプリング</span><span data-lang="en">↺ Resample</span></button>
+      <button class="btn" id="mGen"><span data-lang="ja">&#x21BA; 再サンプリング</span><span data-lang="en">&#x21BA; Resample</span></button>
     </div>
     <canvas id="mregCanvas" aria-label="3D回帰平面の散布図" height="500" aria-busy="true"></canvas>
     <div class="info">
-      <div><span data-lang="ja" id="mPredLabel"></span><span data-lang="en" id="mPredLabelEn"></span><strong id="mPredBig">—</strong></div>
-      <div><span data-lang="ja">β̂₁（勉強1hあたり）</span><span data-lang="en">β̂₁ (per study hour)</span><strong id="mCoefStudy">—</strong></div>
-      <div><span data-lang="ja">β̂₂（睡眠1hあたり）</span><span data-lang="en">β̂₂ (per sleep hour)</span><strong id="mCoefSleep">—</strong></div>
-      <div>R²<strong id="mR2">—</strong></div>
+      <div><span data-lang="ja" id="mPredLabel"></span><span data-lang="en" id="mPredLabelEn"></span><strong id="mPredBig">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2;&#x0302;&#x2081;（勉強1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2081; (per study hour)</span><strong id="mCoefStudy">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2;&#x0302;&#x2082;（睡眠1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2082; (per sleep hour)</span><strong id="mCoefSleep">&#x2014;</strong></div>
+      <div>R&#x00B2;<strong id="mR2">&#x2014;</strong></div>
     </div>
     <div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
     <div class="share-row">
-      <button class="share-btn dl" data-share="mregCanvas" data-title="重回帰分析" data-title-en="Multiple Regression" data-kind="dl"><span data-lang="ja">💾 画像保存</span><span data-lang="en">💾 Save image</span></button>
+      <button class="share-btn dl" data-share="mregCanvas" data-title="重回帰分析" data-title-en="Multiple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
+<!-- /@panel -->
   </div>
   <div class="learn-more-link" style="margin:16px 0;text-align:center">
     <a data-lang="ja" href="topics/mreg.html">📖 数式・詳細解説を読む → 個別ページへ</a>

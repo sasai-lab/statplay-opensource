@@ -1,0 +1,22 @@
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t distribution</h3>
+      <div class="dist-card" data-lang="ja">
+        <b class="cy">作り方:</b> t = Z / &#x221A;(&#x03C7;&#x00B2;&#x2096;/k) &#xFF0C; Z~N(0,1)&#x3002; <br>
+        <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br>
+        <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df&#x2192;&#x221E; で N(0,1)。
+      </div>
+      <div class="dist-card" data-lang="en">
+        <b class="cy">Built from:</b> t = Z / &#x221A;(&#x03C7;&#x00B2;&#x2096;/k), Z~N(0,1).<br>
+        <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br>
+        <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
+      </div>
+      <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
+        <input type="range" id="tdDf" min="1" max="30" value="3">
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
+      <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="share-row">
+        <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+      </div>
+    </div>

@@ -134,7 +134,7 @@ export function initStdnorm(){
     // title
     ctx.fillStyle=color;ctx.font='bold 13px "Courier New"';
     const t100=Math.round(tt*100);
-    ctx.fillText((window.__LANG==='en'?`Standardization: ${t100}%  →  N(μ=${bMu.toFixed(2)}, σ=${bSd.toFixed(2)})`:`標準化進度: ${t100}%  →  N(μ=${bMu.toFixed(2)}, σ=${bSd.toFixed(2)})`),10,18);
+    ctx.fillText((window.__LANG==='en'?`Standardization: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`:`標準化進度: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`),10,18);
     $('snNewMu').textContent=bMu.toFixed(3);
     $('snNewSd').textContent=bSd.toFixed(3);
   }

@@ -1,0 +1,38 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 2つの誤り：&#x03B1;・&#x03B2;・検出力</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; Two kinds of errors: &#x03B1;, &#x03B2;, power</h3>
+    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+      検定には2種類の間違いがある。<br>
+      <b>第1種の誤り &#x03B1;</b>: H&#x2080; が本当なのに棄却してしまう（冤罪）。<br>
+      <b>第2種の誤り &#x03B2;</b>: H&#x2081; が本当なのに見逃してしまう（真犯人を逃す）。<br>
+      そして <code>1 &#x2212; &#x03B2;</code> が<b>検出力 (Power)</b>。
+      <span class="term-gloss" title="効果量：処理の効き目を標準偏差で測った指標。0.2=小、0.5=中、0.8=大が目安">効果量</span> &#x03B4;（本当の差の大きさ）や &#x03B1; を動かすと、青(H&#x2080;)と紫(H&#x2081;)の曲線がせめぎ合い、
+      "間違いを減らすと見逃しが増える"というトレードオフが見える。
+      <br><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（&#x03B1; の境界）を直接動かせる。</i>
+    </p>
+    <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+      Testing has two kinds of mistakes.<br>
+      <b>Type I error &#x03B1;</b>: rejecting H&#x2080; when it's actually true (false alarm).<br>
+      <b>Type II error &#x03B2;</b>: failing to reject H&#x2080; when H&#x2081; is actually true (a miss).<br>
+      And <code>1 &#x2212; &#x03B2;</code> is the <b>power</b>.
+      Change effect size &#x03B4; or &#x03B1;: the blue (H&#x2080;) and purple (H&#x2081;) curves fight it out &#x2014; you can literally see the trade-off "fewer false alarms = more misses".
+      <br><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (&#x03B1;).</i>
+    </p>
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">効果量 &#x03B4;</span><span data-lang="en">Effect size &#x03B4;</span> = <span class="val" id="eDVal">2.0</span></label>
+        <input type="range" id="eD" min="0" max="5" step="0.1" value="2">
+      </div>
+      <div class="ctrl"><label>&#x03B1; = <span class="val" id="eAVal">0.050</span></label>
+        <input type="range" id="eA" min="0.001" max="0.3" step="0.001" value="0.05">
+      </div>
+    </div>
+    <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">&#x03B1; (第1種の誤り)</span><span data-lang="en">&#x03B1; (Type I error)</span><strong id="eAlpha">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x03B2; (第2種の誤り)</span><span data-lang="en">&#x03B2; (Type II error)</span><strong id="eBeta">&#x2014;</strong></div>
+      <div><span data-lang="ja">検出力 1&#x2212;&#x03B2;</span><span data-lang="en">Power 1&#x2212;&#x03B2;</span><strong id="ePower">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="errCanvas" data-title="&#x03B1;・&#x03B2;・検出力" data-title-en="&#x03B1; &#x00B7; &#x03B2; &#x00B7; Power" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

@@ -132,21 +132,23 @@
 <li><b>Step 3:</b> Keep n large, p small → watch binomial converge toward Poisson.</li>
 </ol>
 </div>
+<!-- @panel:morep_binom -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Binomial B(n, p)</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">When? → How many heads in 10 coin flips; how many defects in 100 items<br/>
-As n → ∞ with np → λ, the binomial approaches Poisson.</p>
+
+
+<div class="use-case">When? → How many heads in 10 coin flips; how many defects in 100 items</div>
+<div class="panel-title">Binomial B(n, p)</div>
+<canvas aria-busy="true" aria-label="Binomial distribution simulation" height="240" id="binomCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>trials n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
 <div class="ctrl"><label>success p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
-<canvas aria-busy="true" aria-label="二項分布のシミュレーション。試行回数nと成功確率pを変更できる" height="240" id="binomCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="binomCanvas" data-title="Binomial"><span>💾 Save image</span></button>
+
+<div class="sec-bridge">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="sim-layout">
@@ -158,19 +160,21 @@ As n → ∞ with np → λ, the binomial approaches Poisson.</p>
 <li><b>Step 3:</b> λ is both the mean and variance. Set λ=3 and check "E[X] = Var[X] = λ = 3.00" at the top-left of the graph.</li>
 </ol>
 </div>
+<!-- @panel:morep_poisson -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Poisson(λ)</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">When? → Phone calls per hour at a call center; traffic accidents per day<br/>
-As λ grows, Poisson approaches the normal distribution.</p>
+
+
+<div class="use-case">When? → Phone calls per hour at a call center; traffic accidents per day</div>
+<div class="panel-title">Poisson(λ)</div>
+<canvas aria-busy="true" aria-label="Poisson distribution simulation" height="240" id="poissonCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>rate λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
-<canvas aria-busy="true" aria-label="ポアソン分布のシミュレーション。パラメータλを変更できる" height="240" id="poissonCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="poissonCanvas" data-title="Poisson"><span>💾 Save image</span></button>
+
+<div class="sec-bridge">As λ grows, Poisson approaches the normal distribution.</div>
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="sim-layout">
@@ -182,19 +186,21 @@ As λ grows, Poisson approaches the normal distribution.</p>
 <li><b>Step 3:</b> Memoryless: having waited 10 min doesn't change how much longer you'll wait.</li>
 </ol>
 </div>
+<!-- @panel:morep_exp -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Exponential(λ) — waiting time</h3>
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">When? → Time until next phone call; how long until a light bulb burns out<br/>
-Memoryless: past waiting time tells you nothing about the future.</p>
+
+
+<div class="use-case">When? → Time until next phone call; how long until a light bulb burns out</div>
+<div class="panel-title">Exponential(λ) — waiting time</div>
+<canvas aria-busy="true" aria-label="Exponential distribution PDF" height="240" id="expCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>rate λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
-<canvas aria-busy="true" aria-label="指数分布の確率密度関数。パラメータλを変更できる" height="240" id="expCanvas"></canvas>
-<div class="share-row">
-<button class="share-btn dl" data-kind="dl" data-share="expCanvas" data-title="Exponential"><span>💾 Save image</span></button>
+
+<div class="sec-bridge">Memoryless: past waiting time tells you nothing about the future.</div>
 </div>
-</div>
+<!-- /@panel -->
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="./bayes.html">P.05 Bayes' Theorem</a></div>

@@ -126,9 +126,10 @@
     <code>μ</code> sets the center, <code>σ</code> sets the spread.
     Slide the parameters and the curve glides; the probability of falling inside <code>[a, b]</code> (pink area) updates live.<br/>
 <b>That pink area IS the "percentage" you hear in the news.</b>
-    Say adult male heights are <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
-    Set μ=170, σ=6, then <code>a=165, b=175</code> — you get <b>≈ 59.6%</b>.
+    Say adult male heights follow <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
+    Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
+    The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
     <br/><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
 </p>
 <div class="sim-layout">
@@ -141,6 +142,7 @@
 <li><b>Step 4:</b> Drag directly on the graph → the nearest a/b boundary follows your finger.</li>
 </ol>
 </div>
+<!-- @panel:normal_main -->
 <div class="panel">
 <div class="controls">
 <div class="ctrl"><label><span>μ (mean)</span> = <span class="val" id="nMuVal">0</span></label>
@@ -156,7 +158,7 @@
 <input id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="正規分布 N(μ,σ²) の確率密度関数。平均μと標準偏差σをスライダーで変更できる" height="260" id="normalCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Normal distribution N(μ,σ²) PDF" height="260" id="normalCanvas"></canvas>
 <div class="info">
 <div>P(a ≤ X ≤ b)<strong id="nProb">—</strong></div>
 <div>z-score (a)<strong id="nZa">—</strong></div>
@@ -166,6 +168,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="normalCanvas" data-title="Normal Distribution"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>

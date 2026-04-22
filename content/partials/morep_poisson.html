@@ -1,0 +1,13 @@
+<div class="panel">
+      <div class="panel-title" data-lang="ja">ポアソン分布 Poisson(&#x03BB;)</div>
+      <div class="use-case" data-lang="ja">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
+      <div class="use-case" data-lang="en">When? &#x2192; Phone calls per hour at a call center; traffic accidents per day</div>
+      <div class="panel-title" data-lang="en">Poisson(&#x03BB;)</div>
+      <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="240" aria-busy="true"></canvas>
+      <div class="controls">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3">
+<span class="val" id="poisLVal">3</span></div>
+      </div>
+      <div class="sec-bridge" data-lang="ja">&#x03BB; が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
+      <div class="sec-bridge" data-lang="en">As &#x03BB; grows, Poisson approaches the normal distribution.</div>
+    </div>

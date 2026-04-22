@@ -1,0 +1,29 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
+    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px;font-size:13px">
+      スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
+      &#xB1; 1&#x03C3; ですでに約7割、&#xB1; 2&#x03C3; で95%、&#xB1; 3&#x03C3; でほぼ全部。<br>
+      <b>z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
+      検定も信頼区間もこの 1.96 から出発する &#x2014; それくらい、この曲線が主役なのだ。
+    </p>
+    <p class="sec-desc" data-lang="en" style="margin-bottom:14px;font-size:13px">
+      Slide the width <code>k</code>; the blue-filled area IS the probability.
+      &#xB1; 1&#x03C3; already covers ~68%, &#xB1; 2&#x03C3; is 95%, &#xB1; 3&#x03C3; is nearly everything.<br>
+      That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value &#x2014; hypothesis tests and confidence intervals all start there.
+    </p>
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">範囲 &#xB1;k &#x03C3;</span><span data-lang="en">Range &#xB1;k &#x03C3;</span> = <span class="val" id="snKVal">1.0</span></label>
+        <input type="range" id="snK" min="0.1" max="3.5" step="0.1" value="1.0">
+      </div>
+    </div>
+    <canvas id="snCanvas" aria-label="Standard normal N(0,1) PDF" height="240" aria-busy="true"></canvas>
+    <div class="info">
+      <div>P( |Z| &#x2264; k )<strong id="snInside">&#x2014;</strong></div>
+      <div>P( Z &#x2264; k )<strong id="snLeft">&#x2014;</strong></div>
+      <div><span data-lang="ja">外側の確率</span><span data-lang="en">Outside prob.</span><strong id="snOutside">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="snCanvas" data-title="標準正規分布" data-title-en="Standard Normal" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

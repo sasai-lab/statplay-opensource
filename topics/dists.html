@@ -140,13 +140,14 @@
 <li><b>Step 3:</b> df=<b>30</b> → ほぼ N(0,1) と区別がつかない。グラフを左右ドラッグで df 変更可。</li>
 </ol>
 </div>
+<!-- @panel:dists_t -->
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t 分布</h3>
+
 <div class="dist-card">
 <b class="cy">作り方:</b> t = Z / √(χ²ₖ/k) ， Z~N(0,1)。 <br/>
 <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br/><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br/>
 <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df→∞ で N(0,1)。
-
       </div>
 
 <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
@@ -158,6 +159,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t分布"><span>💾 画像保存</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <div class="sim-layout">
@@ -169,8 +171,10 @@
 <li><b>Step 3:</b> グラフを左右にドラッグして df の効果を直感的に掴もう。</li>
 </ol>
 </div>
+<!-- @panel:dists_chi -->
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² 分布</h3>
+
 <div class="dist-card">
 <b class="mg">作り方:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² （標準正規を k 個足して二乗和）。<br/>
 <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br/><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br/>
@@ -186,6 +190,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ²分布"><span>💾 画像保存</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <div class="sim-layout">
@@ -197,8 +202,10 @@
 <li><b>Step 3:</b> df1 も大きくする → 両方大きいとベル型に近づく。</li>
 </ol>
 </div>
+<!-- @panel:dists_f -->
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F 分布</h3>
+
 <div class="dist-card">
 <b class="ye">作り方:</b> F = (χ²ₘ/m) / (χ²ₙ/n) （2つの独立な χ² の比）。<br/>
 <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br/><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br/>
@@ -217,6 +224,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F分布"><span>💾 画像保存</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>

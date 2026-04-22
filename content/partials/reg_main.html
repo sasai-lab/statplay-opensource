@@ -1,0 +1,18 @@
+<div class="panel" data-autorun="regRandom">
+    <div class="controls">
+      <button class="btn" id="regRandom"><span data-lang="ja">&#x25B6; ランダム 20点</span><span data-lang="en">&#x25B6; Random 20 pts</span></button>
+      <button class="btn magenta" id="regClear">CLEAR</button>
+      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
+    </div>
+    <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
+    <div class="info">
+      <div>n<strong id="regN">0</strong></div>
+      <div><span data-lang="ja">傾き &#x03B2;&#x2081;</span><span data-lang="en">Slope &#x03B2;&#x2081;</span><strong id="regB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">切片 &#x03B2;&#x2080;</span><span data-lang="en">Intercept &#x03B2;&#x2080;</span><strong id="regB0">&#x2014;</strong></div>
+      <div>R&#x00B2;<strong id="regR2">&#x2014;</strong></div>
+      <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="regR">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="regCanvas" data-title="単回帰分析" data-title-en="Simple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

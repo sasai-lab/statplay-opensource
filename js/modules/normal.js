@@ -71,7 +71,7 @@ export function initNormal(){
 
     // title
     ctx.fillStyle=tc.cyan;ctx.font='bold 13px "Courier New"';
-    ctx.fillText(`N(μ=${mu.toFixed(1)}, σ=${sd.toFixed(1)})   P[${lo2.toFixed(1)} ≤ X ≤ ${hi2.toFixed(1)}] = ${p.toFixed(4)}`,10,20);
+    ctx.fillText(`N(${mu.toFixed(1)}, ${sd.toFixed(1)}²)   P[${lo2.toFixed(1)} ≤ X ≤ ${hi2.toFixed(1)}] = ${p.toFixed(4)}`,10,20);
   }
   draw();
 }

@@ -1,0 +1,21 @@
+<div class="panel" data-autorun="ciRun">
+    <div class="controls">
+      <div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
+        <input type="range" id="ciN" min="5" max="200" step="1" value="30">
+      </div>
+      <div class="ctrl"><label><span data-lang="ja">信頼度</span><span data-lang="en">Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
+        <input type="range" id="ciLvl" min="80" max="99" step="1" value="95">
+      </div>
+      <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
+      <button class="btn magenta" id="ciReset">CLEAR</button>
+    </div>
+    <canvas id="ciCanvas" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">作成した区間</span><span data-lang="en">Intervals built</span><strong id="ciMade">0</strong></div>
+      <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage</span><strong id="ciCov">&#x2014;</strong></div>
+      <div><span data-lang="ja">期待値</span><span data-lang="en">Expected</span><strong id="ciExp">95%</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="ciCanvas" data-title="信頼区間" data-title-en="Confidence Interval" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

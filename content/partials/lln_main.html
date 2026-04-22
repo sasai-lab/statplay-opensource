@@ -1,0 +1,18 @@
+<div class="panel" data-autorun="llnRun">
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">確率 p</span><span data-lang="en">Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
+        <input type="range" id="llnP" min="0.05" max="0.95" step="0.01" value="0.5">
+      </div>
+      <button class="btn" id="llnRun"><span data-lang="ja">&#x25B6; シミュレート</span><span data-lang="en">&#x25B6; Simulate</span></button>
+      <button class="btn magenta" id="llnReset">RESET</button>
+    </div>
+    <canvas id="llnCanvas" aria-label="Law of Large Numbers simulation" height="240" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span><strong id="llnN">0</strong></div>
+      <div><span data-lang="ja">現在の平均</span><span data-lang="en">Current mean</span><strong id="llnCur">&#x2014;</strong></div>
+      <div><span data-lang="ja">理論値</span><span data-lang="en">Theoretical</span><strong id="llnTrue">0.50</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="llnCanvas" data-title="大数の法則" data-title-en="Law of Large Numbers" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

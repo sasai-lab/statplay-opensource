@@ -1,0 +1,28 @@
+<div class="panel" data-autorun="cltRun">
+    <div class="controls">
+      <div class="ctrl"><label><span data-lang="ja">元の分布（歪んでるやつ）</span><span data-lang="en">Base distribution (the skewed one)</span></label>
+        <select id="cltDist">
+          <option value="exp" selected data-ja="指数分布 &#x03BB;=1（右に超歪み）" data-en="Exponential &#x03BB;=1 (heavy right-skew)">指数分布 &#x03BB;=1（右に超歪み）</option>
+          <option value="uniform" data-ja="一様分布 [0,1]（平ら）" data-en="Uniform [0,1] (flat)">一様分布 [0,1]（平ら）</option>
+          <option value="bimodal" data-ja="二峰分布（山が2つ）" data-en="Bimodal (two peaks)">二峰分布（山が2つ）</option>
+        </select>
+      </div>
+      <div class="ctrl"><label><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
+        <input type="range" id="cltN" min="1" max="50" value="30">
+      </div>
+      <button class="btn" id="cltRun"><span data-lang="ja">&#x25B6; 3000回 試行</span><span data-lang="en">&#x25B6; Run 3000 trials</span></button>
+      <button class="btn magenta" id="cltClear">CLEAR</button>
+    </div>
+    <canvas id="cltCanvas" aria-label="Central Limit Theorem simulation" height="300" aria-busy="true"></canvas>
+    <div id="cltStory" class="bayes-story" data-lang="ja"></div>
+    <div id="cltStoryEn" class="bayes-story" data-lang="en"></div>
+    <div class="info">
+      <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span><strong id="cltCount">0</strong></div>
+      <div><span data-lang="ja">標本平均の平均</span><span data-lang="en">Mean of sample means</span><strong id="cltMean">&#x2014;</strong></div>
+      <div><span data-lang="ja">標本平均の標準偏差</span><span data-lang="en">SD of sample means</span><strong id="cltSD">&#x2014;</strong></div>
+      <div><span data-lang="ja">理論SE = &#x03C3;/&#x221A;n</span><span data-lang="en">Theoretical SE = &#x03C3;/&#x221A;n</span><strong id="cltSE">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="cltCanvas" data-title="中心極限定理" data-title-en="Central Limit Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

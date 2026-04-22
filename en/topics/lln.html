@@ -138,6 +138,7 @@
 <li><b>Step 4:</b> Set p to <b>0.05</b> (rare event) → it hugs zero early on, but still converges to p. The law holds.</li>
 </ol>
 </div>
+<!-- @panel:lln_main -->
 <div class="panel" data-autorun="llnRun">
 <div class="controls">
 <div class="ctrl"><label><span>Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
@@ -146,7 +147,7 @@
 <button class="btn" id="llnRun"><span>▶ Simulate</span></button>
 <button class="btn magenta" id="llnReset">RESET</button>
 </div>
-<canvas aria-busy="true" aria-label="大数の法則のシミュレーション。試行回数を増やすと標本平均が母平均に収束する" height="240" id="llnCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Law of Large Numbers simulation" height="240" id="llnCanvas"></canvas>
 <div class="info">
 <div><span>Trials</span><strong id="llnN">0</strong></div>
 <div><span>Current mean</span><strong id="llnCur">—</strong></div>
@@ -156,6 +157,7 @@
 <button class="share-btn dl" data-kind="dl" data-share="llnCanvas" data-title="Law of Large Numbers"><span>💾 Save image</span></button>
 </div>
 </div>
+<!-- /@panel -->
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="./ci.html">I.03 Confidence Interval</a></div>

@@ -1,0 +1,22 @@
+<div class="panel">
+      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
+      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
+      <div class="dist-card" data-lang="ja">
+        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規を k 個足して二乗和）。<br>
+        <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
+        <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
+      </div>
+      <div class="dist-card" data-lang="en">
+        <b class="mg">Built from:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; (sum of k squared standard normals).<br>
+        <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
+        <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
+      </div>
+      <div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
+        <input type="range" id="chiDf" min="1" max="30" value="3">
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
+      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="share-row">
+        <button class="share-btn dl" data-share="chiCanvas" data-title="&#x03C7;&#x00B2;分布" data-title-en="&#x03C7;&#x00B2; Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+      </div>
+    </div>
