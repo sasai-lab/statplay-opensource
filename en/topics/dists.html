@@ -22,14 +22,14 @@
 <meta property="og:title" content="The Three Test Distributions — t, χ², and F">
 <meta property="og:description" content="Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/dists.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — The Three Test Distributions">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Three Test Distributions — t, χ², and F">
 <meta name="twitter:description" content="Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
@@ -50,19 +50,14 @@
       "inLanguage": "en",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
-      "teaches": [
-        "t分布",
-        "χ²分布",
-        "F分布",
-        "自由度"
-      ],
+      "teaches": ["t-distribution", "χ² distribution", "F-distribution", "Degrees of freedom"],
       "isPartOf": {
         "@type": "WebSite",
         "name": "StatPlay",
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/en/topics/dists.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -134,9 +129,15 @@
 <div class="guided-steps">
 <b>Experiment Guide — t distribution</b>
 <ol>
-<li><b>Step 1:</b> df=<b>1</b> → extremely heavy tails (same as Cauchy distribution).</li>
-<li><b>Step 2:</b> df=<b>5</b> → heavier tails than normal, but getting closer.</li>
-<li><b>Step 3:</b> df=<b>30</b> → nearly indistinguishable from N(0,1). Drag the graph horizontally to change df.</li>
+<li><b>Step 1:</b> n=<b>3</b> → df=2, extremely heavy tails (nearly Cauchy).</li>
+<li><b>Step 2:</b> n=<b>10</b> → heavier tails than normal, but getting closer.</li>
+<li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
+</ol>
+<b>Feel it with confidence intervals</b>
+<ol start="4">
+<li><b>Step A:</b> n=5, 95% confidence → the t bar is much wider (normal is overconfident).</li>
+<li><b>Step B:</b> Set n=50 → the bars nearly overlap at every confidence level.</li>
+<li><b>Step C:</b> Switch to 99% → the gap widens further (especially for small n).</li>
 </ol>
 </div>
 <!-- @panel:dists_t -->
@@ -149,11 +150,27 @@
 <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br/>
 <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
       </div>
-<div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
-<input id="tdDf" max="30" min="1" type="range" value="3"/>
+<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+<input id="tN" max="100" min="3" type="range" value="5"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
+<div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
+<span style="color:var(--dim)"><span>Confidence:</span></span>
+<label><input name="tConf" type="radio" value="0.10"> 90%</input></label>
+<label><input checked="" name="tConf" type="radio" value="0.05"/> 95%</label>
+<label><input name="tConf" type="radio" value="0.01"/> 99%</label>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
 <canvas aria-busy="true" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="信頼区間の比較" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Sample size n</span> <strong id="tInfoN">5</strong></div>
+<div><span>df</span> <strong id="tInfoDf">4</strong></div>
+<div><span>Confidence</span> <strong id="tInfoConf">95%</strong></div>
+<div><span>t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">±2.776</strong></div>
+<div><span>z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">±1.960</strong></div>
+<div><span>t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -165,9 +182,15 @@
 <div class="guided-steps">
 <b>Experiment Guide — χ² distribution</b>
 <ol>
-<li><b>Step 1:</b> df=<b>1</b> → sharply right-skewed. df=<b>5</b> → still skewed but a peak appears.</li>
-<li><b>Step 2:</b> df=<b>30</b> → approaches a bell shape. The "mean = k = 30" label at top-left confirms mean = df.</li>
-<li><b>Step 3:</b> Drag the graph horizontally to feel df's effect intuitively.</li>
+<li><b>Step 1:</b> Keep "Fair die" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>
+<li><b>Step 2:</b> Switch to "Loaded" and roll → face 1 jumps out, χ² enters the rejection region.</li>
+<li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>
+</ol>
+<b>Explore the distribution shape</b>
+<ol start="4">
+<li><b>Step A:</b> Set df to <b>1</b> → sharply right-skewed.</li>
+<li><b>Step B:</b> df=<b>30</b> → approaches a bell shape. Confirm mean = df.</li>
+<li><b>Step C:</b> Move df and watch how the normal approximation (purple dashes) lines up.</li>
 </ol>
 </div>
 <!-- @panel:dists_chi -->
@@ -180,11 +203,33 @@
 <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br/>
 <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-<div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
-<input id="chiDf" max="30" min="1" type="range" value="3"/>
+<div class="controls" style="gap:8px;margin-bottom:12px">
+<div class="ctrl"><label><span>Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
+<input id="chiRolls" max="300" min="12" type="range" value="60"/>
+</div>
+<div class="ctrl" style="min-width:auto">
+<select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<option data-en="Fair die" data-ja="公正なサイコロ" value="fair">公正なサイコロ</option>
+<option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
+</select>
+</div>
+<button class="sim-btn" id="diceRandom"><span>▶ Roll</span></button>
+</div>
+<canvas aria-busy="true" aria-label="サイコロの出目分布" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
+<div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+<input id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
 <canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Rolls n</span> <strong id="chiInfoN">60</strong></div>
+<div><span>df</span> <strong id="chiInfoDf">5</strong></div>
+<div><span>Test statistic χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
+<div><span>χ² critical</span> <strong id="chiInfoCrit">11.070</strong></div>
+<div><span>p-value</span> <strong id="chiInfoP">—</strong></div>
+<div><span>Verdict</span> <strong id="chiInfoVerdict">—</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ² Distribution"><span>💾 Save image</span></button>
 </div>
@@ -196,9 +241,15 @@
 <div class="guided-steps">
 <b>Experiment Guide — F distribution</b>
 <ol>
-<li><b>Step 1:</b> df1=3, df2=10 → see the baseline right-skewed shape.</li>
-<li><b>Step 2:</b> Slide df2 from <b>10 to 30</b> → shape stabilizes, shorter tail.</li>
-<li><b>Step 3:</b> Increase df1 too → both large makes it approach a bell.</li>
+<li><b>Step 1:</b> Set both SDs equal (e.g. 10 and 10) → F≈1, stays outside rejection zone.</li>
+<li><b>Step 2:</b> Increase only B's SD (e.g. A=5, B=15) → F grows and enters the rejection zone.</li>
+<li><b>Step 3:</b> Increase n → the same SD gap gives a lower p-value (more power).</li>
+</ol>
+<b>Explore the distribution shape</b>
+<ol start="4">
+<li><b>Step A:</b> n=<b>6</b> → heavy tails, unstable shape.</li>
+<li><b>Step B:</b> n=<b>50</b> → approaches a bell. Check the F=1 line.</li>
+<li><b>Step C:</b> Swap A and B's SD values to feel what "variance ratio" means.</li>
 </ol>
 </div>
 <!-- @panel:dists_f -->
@@ -211,14 +262,27 @@
 <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br/>
 <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-<div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
-<input id="fDf1" max="30" min="1" type="range" value="3"/>
+<div class="ctrl" style="margin-bottom:4px"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+<input id="fSdA" max="20" min="1" type="range" value="8"/>
 </div>
-<div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
-<input id="fDf2" max="30" min="1" type="range" value="10"/>
+<div class="ctrl" style="margin-bottom:4px"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+<input id="fSdB" max="20" min="1" type="range" value="15"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag horizontally to change df₁ · df₂ is set via slider</span></div>
-<canvas aria-busy="true" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
+<input id="fGroupN" max="100" min="5" type="range" value="20"/>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="2グループのばらつき比較" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
+<div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
+<div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
+<div><span>F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+<div><span>F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
+<div><span>p-value</span> <strong id="fInfoP">0.005</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F-Distribution"><span>💾 Save image</span></button>
 </div>

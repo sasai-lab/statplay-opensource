@@ -8,7 +8,8 @@
       "en_desc": "Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.",
       "ja_kw": "標準正規分布, N(0,1), z値, 68-95-99.7ルール, 統計検定2級, 正規分布可視化, 確率密度関数",
       "en_kw": "standard normal distribution, N(0,1), z-score, 68-95-99.7 rule, probability density, statistics visualization",
-      "teaches": ["標準正規分布", "68-95-99.7ルール", "z値と区間確率"]
+      "teaches": ["標準正規分布", "68-95-99.7ルール", "z値と区間確率"],
+      "en_teaches": ["Standard normal distribution", "68-95-99.7 rule", "z-scores and interval probability"]
     },
     {
       "slug": "normal",
@@ -18,7 +19,8 @@
       "en_desc": "Compute P(a≤X≤b) for any N(μ,σ²) and see how standardization Z=(X-μ)/σ turns every normal into N(0,1). Build the reflex behind every z-table lookup.",
       "ja_kw": "正規分布, 標準化, Z変換, 区間確率, μ σ, 統計検定2級, 確率計算",
       "en_kw": "normal distribution, standardization, z-transform, interval probability, mean, standard deviation",
-      "teaches": ["正規分布 N(μ,σ²)", "標準化 Z=(X-μ)/σ", "区間確率 P(a≤X≤b)"]
+      "teaches": ["正規分布 N(μ,σ²)", "標準化 Z=(X-μ)/σ", "区間確率 P(a≤X≤b)"],
+      "en_teaches": ["Normal distribution N(μ,σ²)", "Standardization Z=(X-μ)/σ", "Interval probability P(a≤X≤b)"]
     },
     {
       "slug": "prob",
@@ -28,7 +30,8 @@
       "en_desc": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
       "ja_kw": "確率, 条件付き確率, 加法定理, ベン図, 独立性, 乗法定理, 統計検定2級",
       "en_kw": "probability, conditional probability, addition rule, Venn diagram, independence, multiplication rule",
-      "teaches": ["加法定理", "条件付き確率 P(A|B)", "事象の独立性"]
+      "teaches": ["加法定理", "条件付き確率 P(A|B)", "事象の独立性"],
+      "en_teaches": ["Addition rule", "Conditional probability P(A|B)", "Event independence"]
     },
     {
       "slug": "bayes",
@@ -38,7 +41,8 @@
       "en_desc": "Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.",
       "ja_kw": "ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 統計検定2級, 条件付き確率",
       "en_kw": "Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives",
-      "teaches": ["ベイズ定理", "条件付き確率", "陽性的中率"]
+      "teaches": ["ベイズ定理", "条件付き確率", "陽性的中率"],
+      "en_teaches": ["Bayes' theorem", "Conditional probability", "Positive predictive value"]
     },
     {
       "slug": "morep",
@@ -48,7 +52,8 @@
       "en_desc": "Play with the three exam-critical distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
       "ja_kw": "二項分布, ポアソン分布, 指数分布, 離散分布, 連続分布, 無記憶性, 統計検定2級",
       "en_kw": "binomial distribution, poisson distribution, exponential distribution, discrete, memoryless",
-      "teaches": ["二項分布 B(n,p)", "ポアソン分布 Pois(λ)", "指数分布 Exp(λ)"]
+      "teaches": ["二項分布 B(n,p)", "ポアソン分布 Pois(λ)", "指数分布 Exp(λ)"],
+      "en_teaches": ["Binomial distribution B(n,p)", "Poisson distribution Pois(λ)", "Exponential distribution Exp(λ)"]
     },
     {
       "slug": "clt",
@@ -58,7 +63,8 @@
       "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
       "ja_kw": "中心極限定理, CLT, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ",
       "en_kw": "central limit theorem, CLT, sample mean, convergence to normal, inferential statistics, sample size",
-      "teaches": ["中心極限定理", "標本平均の分布", "正規分布への収束"]
+      "teaches": ["中心極限定理", "標本平均の分布", "正規分布への収束"],
+      "en_teaches": ["Central Limit Theorem", "Distribution of sample means", "Convergence to normal"]
     },
     {
       "slug": "lln",
@@ -68,7 +74,8 @@
       "en_desc": "See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.",
       "ja_kw": "大数の法則, LLN, 試行回数, 標本平均, 期待値への収束, 統計検定2級",
       "en_kw": "law of large numbers, LLN, trial count, sample mean, convergence to expectation",
-      "teaches": ["大数の法則", "標本平均の収束", "期待値"]
+      "teaches": ["大数の法則", "標本平均の収束", "期待値"],
+      "en_teaches": ["Law of Large Numbers", "Convergence of sample means", "Expected value"]
     },
     {
       "slug": "ci",
@@ -78,7 +85,8 @@
       "en_desc": "Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.",
       "ja_kw": "信頼区間, 95%信頼区間, 被覆確率, 信頼水準, 統計検定2級, 推測統計, 誤解",
       "en_kw": "confidence interval, coverage probability, 95 percent, inferential statistics, common misreading",
-      "teaches": ["信頼区間", "被覆確率", "95%の正しい解釈"]
+      "teaches": ["信頼区間", "被覆確率", "95%の正しい解釈"],
+      "en_teaches": ["Confidence interval", "Coverage probability", "Correct interpretation of 95%"]
     },
     {
       "slug": "test",
@@ -88,7 +96,8 @@
       "en_desc": "Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.",
       "ja_kw": "仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定, 統計検定2級",
       "en_kw": "hypothesis testing, p-value, significance level, rejection region, z-test, one-sided, two-sided",
-      "teaches": ["仮説検定", "p値と有意水準", "棄却域"]
+      "teaches": ["仮説検定", "p値と有意水準", "棄却域"],
+      "en_teaches": ["Hypothesis testing", "p-value and significance level", "Rejection region"]
     },
     {
       "slug": "dists",
@@ -98,7 +107,8 @@
       "en_desc": "Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.",
       "ja_kw": "t分布, カイ二乗分布, F分布, 自由度, 三大検定分布, 統計検定2級, 推測統計",
       "en_kw": "t distribution, chi-squared, F distribution, degrees of freedom, test statistics",
-      "teaches": ["t分布", "χ²分布", "F分布", "自由度"]
+      "teaches": ["t分布", "χ²分布", "F分布", "自由度"],
+      "en_teaches": ["t-distribution", "χ² distribution", "F-distribution", "Degrees of freedom"]
     },
     {
       "slug": "chitest",
@@ -108,7 +118,8 @@
       "en_desc": "Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.",
       "ja_kw": "カイ二乗検定, 適合度検定, 独立性検定, クロス集計表, χ²統計量, 期待度数, 統計検定2級",
       "en_kw": "chi-squared test, goodness of fit, test of independence, contingency table, expected frequency",
-      "teaches": ["カイ二乗検定", "適合度検定", "独立性検定", "クロス集計表"]
+      "teaches": ["カイ二乗検定", "適合度検定", "独立性検定", "クロス集計表"],
+      "en_teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"]
     },
     {
       "slug": "reg",
@@ -118,7 +129,8 @@
       "en_desc": "Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.",
       "ja_kw": "単回帰分析, 最小二乗法, OLS, 決定係数, 残差, β₁ β₀, 統計検定2級, 線形回帰",
       "en_kw": "simple linear regression, OLS, ordinary least squares, R squared, residuals, slope, intercept",
-      "teaches": ["単回帰分析", "最小二乗法", "決定係数 R²", "残差"]
+      "teaches": ["単回帰分析", "最小二乗法", "決定係数 R²", "残差"],
+      "en_teaches": ["Simple linear regression", "Ordinary least squares", "Coefficient of determination R²", "Residuals"]
     },
     {
       "slug": "mreg",
@@ -128,10 +140,63 @@
       "en_desc": "Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.",
       "ja_kw": "重回帰分析, 多重回帰, 偏回帰係数, 3D 可視化, 高次元, 統計検定2級, 回帰分析",
       "en_kw": "multiple regression, partial coefficients, 3D visualization, high dimensional",
-      "teaches": ["重回帰分析", "偏回帰係数", "多変量の直線・平面"]
+      "teaches": ["重回帰分析", "偏回帰係数", "多変量の直線・平面"],
+      "en_teaches": ["Multiple regression", "Partial regression coefficients", "Multivariate lines and planes"]
     }
   ],
-  "columns": [],
+  "columns": [
+    {
+      "slug": "deviation",
+      "ja_title": "偏差値って何？ — 3秒で「上位何%」が見える",
+      "en_title": "What Is a Deviation Value? — See \"Top X%\" in 3 Seconds",
+      "ja_path": "/columns/deviation.html",
+      "en_path": "/en/columns/deviation.html"
+    },
+    {
+      "slug": "birthday",
+      "ja_title": "誕生日のパラドックス — 23人で50%超え",
+      "en_title": "The Birthday Paradox — 50% with Just 23 People",
+      "ja_path": "/columns/birthday.html",
+      "en_path": "/en/columns/birthday.html"
+    },
+    {
+      "slug": "standardization",
+      "ja_title": "標準化って何？ — 世界中の「ふつう」を比べる翻訳機",
+      "en_title": "What Is Standardization? — The Universal Translator for \"Normal\"",
+      "ja_path": "/columns/standardization.html",
+      "en_path": "/en/columns/standardization.html"
+    },
+    {
+      "slug": "how_statplay_was_built",
+      "ja_title": "StatPlayはどうやって作られた？",
+      "en_title": "How StatPlay Was Built",
+      "ja_path": "/columns/how_statplay_was_built.html",
+      "en_path": "/en/columns/how_statplay_was_built.html"
+    }
+  ],
+  "title_translations": {
+    "標準正規分布": "Standard Normal",
+    "標準化モーフ": "Standardization Morph",
+    "中心極限定理": "Central Limit Theorem",
+    "正規分布": "Normal Distribution",
+    "大数の法則": "Law of Large Numbers",
+    "信頼区間": "Confidence Interval",
+    "仮説検定": "Hypothesis Test",
+    "α・β・検出力": "α · β · Power",
+    "t分布": "t-Distribution",
+    "χ²分布": "χ² Distribution",
+    "F分布": "F-Distribution",
+    "二項分布": "Binomial",
+    "ポアソン分布": "Poisson",
+    "指数分布": "Exponential",
+    "単回帰分析": "Simple Regression",
+    "カイ二乗検定": "Chi-Squared Test",
+    "重回帰分析": "Multiple Regression",
+    "ベイズの定理": "Bayes' Theorem",
+    "確率の基本法則": "Basic Rules of Probability",
+    "適合度検定": "Goodness-of-Fit Test",
+    "独立性検定": "Test of Independence"
+  },
   "pages": [
     {
       "slug": "about",

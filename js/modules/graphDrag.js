@@ -148,50 +148,22 @@ export function initGraphDrag(){
   });
 
   // --- 三大検定分布 ドラッグ -----------------------------------------
-  // t / chi2 : horizontal drag -> df (1..30).
-  // F        : left half drag -> df1, right half -> df2 (same range).
+  // t : drag → sample size n (3..100)
+  // chi2 : drag → df (1..30)
+  // F : drag → sample size n (5..100)
   function pxToDf(px, w){
-    // clamp 0..1 then map linearly to [1, 30]
     const frac = Math.max(0, Math.min(1, px / w));
     return 1 + frac * 29;
   }
-  bindHorizontal('tDistCanvas', 'tdDf', (px, py, w) => pxToDf(px, w));
-  bindHorizontal('chiCanvas',   'chiDf', (px, py, w) => pxToDf(px, w));
-
-  // F canvas: two-zone drag. Left half controls df1, right half df2.
-  (function bindFCanvas(){
-    const cv = document.getElementById('fCanvas');
-    const s1 = document.getElementById('fDf1');
-    const s2 = document.getElementById('fDf2');
-    if (!cv || !s1 || !s2) return;
-    cv.style.touchAction = 'none';
-    let dragging = false, target = s1;
-    function apply(clientX, clientY, initial){
-      const r = cv.getBoundingClientRect();
-      const px = clientX - r.left;
-      const w = r.width;
-      if (initial){
-        // pick the slider on the same side as the pointer-down
-        target = (px < w / 2) ? s1 : s2;
-      }
-      const localPx = target === s1 ? px : (px - w / 2);
-      const localW  = w / 2;
-      const frac = Math.max(0, Math.min(1, localPx / localW));
-      const v = 1 + frac * 29;
-      const min = parseFloat(target.min);
-      const max = parseFloat(target.max);
-      const step = parseFloat(target.step) || 1;
-      let nv = Math.max(min, Math.min(max, v));
-      nv = Math.round(nv / step) * step;
-      target.value = nv;
-      target.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-    cv.addEventListener('pointerdown', e => { dragging = true; try{cv.setPointerCapture(e.pointerId);}catch(_){} apply(e.clientX, e.clientY, true); });
-    cv.addEventListener('pointermove', e => { if (dragging) apply(e.clientX, e.clientY, false); });
-    const end = e => { dragging = false; try{cv.releasePointerCapture(e.pointerId);}catch(_){} };
-    cv.addEventListener('pointerup', end);
-    cv.addEventListener('pointercancel', end);
-  })();
+  bindHorizontal('tDistCanvas', 'tN', (px, py, w) => {
+    const frac = Math.max(0, Math.min(1, px / w));
+    return 3 + frac * 97;
+  });
+  bindHorizontal('chiCanvas', 'chiDf', (px, py, w) => pxToDf(px, w));
+  bindHorizontal('fCanvas', 'fGroupN', (px, py, w) => {
+    const frac = Math.max(0, Math.min(1, px / w));
+    return 5 + frac * 95;
+  });
 
   // --- descriptive: x→N, Shift+drag→skew ---
   (function bindDescCanvas(){

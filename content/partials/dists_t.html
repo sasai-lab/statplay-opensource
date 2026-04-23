@@ -11,11 +11,27 @@
         <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br>
         <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
       </div>
-      <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
-        <input type="range" id="tdDf" min="1" max="30" value="3">
+      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">サンプルサイズ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+        <input type="range" id="tN" min="3" max="100" value="5">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
+      <div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
+        <span style="color:var(--dim)"><span data-lang="ja">信頼水準:</span><span data-lang="en">Confidence:</span></span>
+        <label><input type="radio" name="tConf" value="0.10"/> 90%</label>
+        <label><input type="radio" name="tConf" value="0.05" checked/> 95%</label>
+        <label><input type="radio" name="tConf" value="0.01"/> 99%</label>
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
       <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="tCICanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="信頼区間の比較" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> <strong id="tInfoN">5</strong></div>
+        <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="tInfoDf">4</strong></div>
+        <div><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence</span> <strong id="tInfoConf">95%</strong></div>
+        <div><span data-lang="ja">t 臨界値</span><span data-lang="en">t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">&#x00B1;2.776</strong></div>
+        <div><span data-lang="ja">z 臨界値</span><span data-lang="en">z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">&#x00B1;1.960</strong></div>
+        <div><span data-lang="ja">t / z 比</span><span data-lang="en">t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>

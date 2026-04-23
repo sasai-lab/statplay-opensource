@@ -32,12 +32,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="StatPlay — 統計検定2級を直感で掴む可視化ラボ">
 <meta property="og:description" content="参考書の数式で止まった受験生のための、直感を取り戻す最初の一歩。95%信頼区間の誤解も、t分布がなぜ存在するかも、スライダーを動かせば見える。式の意味が絵で見えたら、参考書に戻ってください。">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — 統計検定2級を直感で掴む可視化ラボ">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="StatPlay — 統計検定2級を直感で掴む可視化ラボ">
 <meta name="twitter:description" content="参考書の数式で止まった受験生のための、直感を取り戻す最初の一歩。95%信頼区間の誤解も、t分布がなぜ存在するかも、スライダーを動かせば見える。式の意味が絵で見えたら、参考書に戻ってください。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta name="twitter:image:alt" content="StatPlay — 統計検定2級を直感で掴む可視化ラボ">
 <link rel="canonical" href="https://statplay.sasailab.com/">
 <meta property="og:url" content="https://statplay.sasailab.com/">
@@ -50,38 +50,54 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LearningResource",
-  "name": "StatPlay",
-  "alternateName": "StatPlay — 統計をさわって学ぶ",
-  "description": "統計検定2級の範囲を、スライダーとアニメーションで直感的に掴むための学習サイト。標準正規分布、中心極限定理、信頼区間、仮説検定、t分布・χ²分布・F分布、回帰分析、ベイズ定理までをインタラクティブに可視化する。",
-  "inLanguage": ["ja", "en"],
-  "educationalLevel": "intermediate",
-  "learningResourceType": "interactive visualization",
-  "teaches": [
-    "標準正規分布",
-    "中心極限定理",
-    "正規分布と標準化",
-    "大数の法則",
-    "信頼区間",
-    "仮説検定",
-    "t分布",
-    "カイ二乗分布",
-    "F分布",
-    "単回帰分析",
-    "重回帰分析",
-    "ベイズ定理"
-  ],
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "student",
-    "audienceType": "統計検定2級受験者および統計学初学者"
-  },
-  "author": {
-    "@type": "Organization",
-    "name": "Sasai Lab"
-  },
-  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-  "isAccessibleForFree": true
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "StatPlay",
+      "alternateName": "StatPlay — 統計をさわって学ぶ",
+      "description": "統計検定2級の範囲を、スライダーとアニメーションで直感的に掴むための学習サイト。標準正規分布、中心極限定理、信頼区間、仮説検定、t分布・χ²分布・F分布、回帰分析、ベイズ定理までをインタラクティブに可視化する。",
+      "url": "https://statplay.sasailab.com/",
+      "inLanguage": ["ja", "en"],
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "標準正規分布",
+        "中心極限定理",
+        "正規分布と標準化",
+        "大数の法則",
+        "信頼区間",
+        "仮説検定",
+        "t分布",
+        "カイ二乗分布",
+        "F分布",
+        "単回帰分析",
+        "重回帰分析",
+        "ベイズ定理"
+      ],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計検定2級受験者および統計学初学者"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        }
+      ]
+    }
+  ]
 }
 </script>
 <link rel="manifest" href="./manifest.webmanifest">
@@ -112,7 +128,7 @@
         <a href="#stdnorm" data-lang="ja">標準正規分布</a><a href="#stdnorm" data-lang="en">Standard Normal</a>
         <a href="#normal" data-lang="ja">正規分布と標準化</a><a href="#normal" data-lang="en">Normal & Standardization</a>
         <a href="#prob" data-lang="ja">確率の基本法則</a><a href="#prob" data-lang="en">Probability Rules</a>
-        <a href="#morep" data-lang="ja">離散分布と指数分布</a><a href="#morep" data-lang="en">Binomial / Poisson / Exp</a>
+        <a href="#morep" data-lang="ja">二項・ポアソン・指数分布</a><a href="#morep" data-lang="en">Binomial / Poisson / Exp</a>
         <a href="#bayes" data-lang="ja">ベイズの定理</a><a href="#bayes" data-lang="en">Bayes' Theorem</a>
       </div>
     </div>
@@ -630,7 +646,7 @@
     <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/bayes.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>離散分布と指数分布 <span class="story-arrow">▸</span> <a href="#morep">P4 離散分布と指数分布</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>二項分布・ポアソン分布・指数分布 <span class="story-arrow">▸</span> <a href="#morep">P4 二項・ポアソン・指数分布</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="#morep">P4 Discrete &amp; Exponential</a></div>
 </section>
 
@@ -642,8 +658,8 @@
 
 <section id="morep" class="reveal">
   <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/morep.html">▸ このトピックのページへ</a><a data-lang="en" href="topics/morep.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">P4 / 離散分布と指数分布</div>
-  <h2 class="sec-title" data-lang="ja">離散分布と指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
+  <div class="sec-tag">P4 / 二項・ポアソン・指数分布</div>
+  <h2 class="sec-title" data-lang="ja">二項分布・ポアソン分布・指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
   <h2 class="sec-title" data-lang="en">Discrete & Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
   <div class="story-bridge" data-lang="ja">正規分布は連続で対称。でも現実のデータはそうとは限らない。コイン投げは離散、来客数はポアソン、待ち時間は指数分布。<span class="next">残りの分布</span>で道具箱を完成させよう。</div>
   <div class="story-bridge" data-lang="en">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
@@ -1223,19 +1239,19 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> t分布で df=<b>1</b> → 裾がめちゃくちゃ重い（コーシー分布）。df=<b>30</b> → ほぼ正規分布と区別がつかない。</li>
-      <li><b>Step 2:</b> χ²分布で df=<b>1</b> → 右に激しく歪む。df=<b>30</b> → ベル型に近づく。グラフ左上の「平均 = k = 30」で平均=df を確認。</li>
-      <li><b>Step 3:</b> F分布で df1=3, df2=<b>10→30</b> → 分母の自由度が増えると形が安定する。</li>
-      <li><b>Step 4:</b> どの分布もグラフを左右にドラッグで df を変えられる。スライダーより直感的。</li>
+      <li><b>Step 1:</b> t分布で n=<b>3</b> → 裾が重い。n=<b>31</b> → 正規分布とほぼ一致。信頼区間の2本のバーも重なる。</li>
+      <li><b>Step 2:</b> χ²で「公正なサイコロ」を選んで投下 → 均等なはずでもバラつく。「イカサマ」に切り替えて投下 → χ²が棄却域に入る。</li>
+      <li><b>Step 3:</b> FでグループAとBのSDを同じにする → F≈1。Bだけ大きくする → 棄却域に入る。</li>
+      <li><b>Step 4:</b> グラフを左右にドラッグでも操作可能。スライダーより直感的。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> t-distribution: df=<b>1</b> → extremely heavy tails (Cauchy). df=<b>30</b> → indistinguishable from N(0,1).</li>
-      <li><b>Step 2:</b> χ²: df=<b>1</b> → sharply right-skewed. df=<b>30</b> → approaches a bell. Check "mean = k = 30" in the top-left of the graph.</li>
-      <li><b>Step 3:</b> F: set df1=3, slide df2 from <b>10 to 30</b> → the shape stabilizes as denominator df grows.</li>
-      <li><b>Step 4:</b> All three graphs support horizontal drag to change df — more intuitive than the slider.</li>
+      <li><b>Step 1:</b> t: set n=<b>3</b> → heavy tails. n=<b>31</b> → nearly identical to N(0,1). CI bars overlap.</li>
+      <li><b>Step 2:</b> χ²: select "Fair die" and roll → even fair dice vary. Switch to "Loaded" and roll → χ² enters the rejection region.</li>
+      <li><b>Step 3:</b> F: set Group A and B to the same SD → F≈1. Increase B only → enters the rejection region.</li>
+      <li><b>Step 4:</b> You can also drag the graphs horizontally — often more intuitive than the slider.</li>
     </ol>
   </div>
   
@@ -1253,11 +1269,27 @@
         <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br>
         <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
       </div>
-      <div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
-        <input type="range" id="tdDf" min="1" max="30" value="3">
+      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">サンプルサイズ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+        <input type="range" id="tN" min="3" max="100" value="5">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
+      <div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
+        <span style="color:var(--dim)"><span data-lang="ja">信頼水準:</span><span data-lang="en">Confidence:</span></span>
+        <label><input type="radio" name="tConf" value="0.10"/> 90%</label>
+        <label><input type="radio" name="tConf" value="0.05" checked/> 95%</label>
+        <label><input type="radio" name="tConf" value="0.01"/> 99%</label>
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
       <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="tCICanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="信頼区間の比較" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> <strong id="tInfoN">5</strong></div>
+        <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="tInfoDf">4</strong></div>
+        <div><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence</span> <strong id="tInfoConf">95%</strong></div>
+        <div><span data-lang="ja">t 臨界値</span><span data-lang="en">t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">&#x00B1;2.776</strong></div>
+        <div><span data-lang="ja">z 臨界値</span><span data-lang="en">z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">&#x00B1;1.960</strong></div>
+        <div><span data-lang="ja">t / z 比</span><span data-lang="en">t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1270,19 +1302,19 @@
 <div class="guided-steps" data-lang="ja">
 <b>実験ガイド — χ²分布</b>
 <ol>
-<li><b>Step 1:</b> df=3 → 右に歪んだ形。非負なので左端が0で切れる。</li>
-<li><b>Step 2:</b> df を <b>1</b> に → L字型。標準正規の二乗 Z² そのもの。</li>
-<li><b>Step 3:</b> df を <b>20</b> に → ベル型に近づく。グラフ左上の「平均 = k = 20」で平均 = df を確認。分散 = 2·df。</li>
-<li><b>Step 4:</b> df を <b>30</b> に → ほぼ正規分布。大標本でカイ二乗検定の近似精度が上がる理由。</li>
+<li><b>Step 1:</b> 「公正なサイコロ」のまま投下ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
+<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて投下 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
+<li><b>Step 3:</b> 投下数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
+<li><b>Step 4:</b> dfスライダーを動かして分布の形状変化も確認。df=30 → ほぼ正規分布に。</li>
 </ol>
 </div>
 <div class="guided-steps" data-lang="en">
 <b>Experiment Guide — χ² distribution</b>
 <ol>
-<li><b>Step 1:</b> df=3 → right-skewed. Non-negative, so it is cut off at 0.</li>
-<li><b>Step 2:</b> Set df to <b>1</b> → L-shaped. This is literally Z² for a single standard normal.</li>
-<li><b>Step 3:</b> Set df to <b>20</b> → approaches bell shape. Check "mean = k = 20" in the top-left. Variance = 2·df.</li>
-<li><b>Step 4:</b> Set df to <b>30</b> → nearly normal. This is why chi-square tests improve with large samples.</li>
+<li><b>Step 1:</b> Keep "Fair die" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>
+<li><b>Step 2:</b> Switch to "Loaded" and roll → face 1 jumps out, χ² enters the rejection region.</li>
+<li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>
+<li><b>Step 4:</b> Move the df slider to explore the shape. df=30 → nearly normal.</li>
 </ol>
 </div>
 <!-- @panel:dists_chi -->
@@ -1299,11 +1331,33 @@
         <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-      <div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
-        <input type="range" id="chiDf" min="1" max="30" value="3">
+      <div class="controls" style="gap:8px;margin-bottom:12px">
+        <div class="ctrl"><label><span data-lang="ja">投下数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
+          <input type="range" id="chiRolls" min="12" max="300" value="60">
+        </div>
+        <div class="ctrl" style="min-width:auto">
+          <select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+            <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
+            <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
+          </select>
+        </div>
+        <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 投下</span><span data-lang="en">&#x25B6; Roll</span></button>
+      </div>
+      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" aria-busy="true"></canvas>
+      <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+        <input type="range" id="chiDf" min="1" max="30" value="5">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
+        <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
+        <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" style="color:var(--magenta)">&#x2014;</strong></div>
+        <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
+        <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="chiInfoP">&#x2014;</strong></div>
+        <div><span data-lang="ja">判定</span><span data-lang="en">Verdict</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="chiCanvas" data-title="&#x03C7;&#x00B2;分布" data-title-en="&#x03C7;&#x00B2; Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1315,19 +1369,19 @@
 <div class="guided-steps" data-lang="ja">
 <b>実験ガイド — F分布</b>
 <ol>
-<li><b>Step 1:</b> df1=3, df2=10 → 右に歪んだ形。分散の「比」だから非負。</li>
-<li><b>Step 2:</b> df1 を <b>1</b> に → L字型に近づく。df1=1 の F 検定は t 検定の二乗と同じ。</li>
-<li><b>Step 3:</b> df2 を <b>30</b> に → 分母の自由度が大きいと分布が安定する。</li>
-<li><b>Step 4:</b> df1, df2 を両方 <b>30</b> に → ベル型に近づく。ANOVAの近似精度が上がる。</li>
+<li><b>Step 1:</b> AとBのSDを同じ（例：10と10）にする → F≈1、棄却されない。</li>
+<li><b>Step 2:</b> BのSDだけ大きくする（例：A=5, B=15）→ Fが大きくなり棄却域に入る。</li>
+<li><b>Step 3:</b> nを増やす → 同じSD差でもp値が下がる（検出力が上がる）。</li>
+<li><b>Step 4:</b> AとBのSDを交互に変えて「分散比」の意味を体感しよう。</li>
 </ol>
 </div>
 <div class="guided-steps" data-lang="en">
 <b>Experiment Guide — F distribution</b>
 <ol>
-<li><b>Step 1:</b> df1=3, df2=10 → right-skewed. It is a ratio of variances, so always non-negative.</li>
-<li><b>Step 2:</b> Set df1 to <b>1</b> → approaches L-shape. F-test with df1=1 equals t-test squared.</li>
-<li><b>Step 3:</b> Set df2 to <b>30</b> → the denominator stabilizes the distribution.</li>
-<li><b>Step 4:</b> Set both df1 and df2 to <b>30</b> → approaches bell shape. ANOVA approximation improves.</li>
+<li><b>Step 1:</b> Set A and B to the same SD (e.g. 10 and 10) → F≈1, not rejected.</li>
+<li><b>Step 2:</b> Increase B only (e.g. A=5, B=15) → F grows and enters the rejection region.</li>
+<li><b>Step 3:</b> Increase n → same SD gap but lower p-value (more power).</li>
+<li><b>Step 4:</b> Alternate A and B's SD to feel what "variance ratio" means.</li>
 </ol>
 </div>
 <!-- @panel:dists_f -->
@@ -1344,14 +1398,27 @@
         <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-      <div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
-        <input type="range" id="fDf1" min="1" max="30" value="3">
+      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+        <input type="range" id="fSdA" min="1" max="20" value="8">
       </div>
-      <div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
-        <input type="range" id="fDf2" min="1" max="30" value="10">
+      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+        <input type="range" id="fSdB" min="1" max="20" value="15">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df&#x2081; 変更　&#x00B7;　df&#x2082; はスライダーで調整</span><span data-lang="en">&#x2194; Drag horizontally to change df&#x2081; &#x00B7; df&#x2082; is set via slider</span></div>
-      <canvas id="fCanvas" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
+        <input type="range" id="fGroupN" min="5" max="100" value="20">
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
+        <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
+        <div>df&#x2081;, df&#x2082; <strong id="fInfoDf">19, 19</strong></div>
+        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+        <div><span data-lang="ja">F 臨界値</span><span data-lang="en">F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
+        <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="fInfoP">0.005</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>

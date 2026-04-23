@@ -22,14 +22,14 @@
 <meta property="og:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
 <meta property="og:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/dists.html">
-<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — t分布・χ²分布・F分布">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="t分布・χ²分布・F分布 — 三大検定分布の違い">
 <meta name="twitter:description" content="自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。">
-<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.jpg">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
@@ -62,7 +62,7 @@
         "url": "https://statplay.sasailab.com/"
       },
       "url": "https://statplay.sasailab.com/topics/dists.html",
-      "image": "https://statplay.sasailab.com/stat_cyber_og.jpg",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
       "author": {
         "@type": "Organization",
         "name": "Sasai Lab"
@@ -135,9 +135,15 @@
 <div class="guided-steps">
 <b>実験ガイド — t分布</b>
 <ol>
-<li><b>Step 1:</b> df=<b>1</b> → 裾がめちゃくちゃ重い（コーシー分布と同じ）。</li>
-<li><b>Step 2:</b> df=<b>5</b> → 正規より裾が厚いが近づいてきた。</li>
-<li><b>Step 3:</b> df=<b>30</b> → ほぼ N(0,1) と区別がつかない。グラフを左右ドラッグで df 変更可。</li>
+<li><b>Step 1:</b> n=<b>3</b> → 自由度1、裾がめちゃくちゃ重い（コーシー分布と同じ）。</li>
+<li><b>Step 2:</b> n=<b>10</b> → まだ正規より裾が厚いが、近づいてきた。</li>
+<li><b>Step 3:</b> n=<b>31</b> → ほぼ N(0,1) と区別がつかない。信頼区間の2本のバーもほぼ重なる。</li>
+</ol>
+<b>信頼区間で体感</b>
+<ol start="4">
+<li><b>Step A:</b> n=5、95%のまま → t分布の方がかなり広い（正規だと過信）。</li>
+<li><b>Step B:</b> n=50にする → どの信頼水準でもほぼ一致。大標本の威力。</li>
+<li><b>Step C:</b> 信頼水準を99%にする → 差がさらに広がる（小標本ほど顕著）。</li>
 </ol>
 </div>
 <!-- @panel:dists_t -->
@@ -150,11 +156,27 @@
 <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df→∞ で N(0,1)。
       </div>
 
-<div class="ctrl"><label>df = <span class="val" id="tdVal">3</span></label>
-<input id="tdDf" max="30" min="1" type="range" value="3"/>
+<div class="ctrl" style="margin-bottom:12px"><label><span>サンプルサイズ n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+<input id="tN" max="100" min="3" type="range" value="5"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df 変更</span></div>
+<div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
+<span style="color:var(--dim)"><span>信頼水準:</span></span>
+<label><input name="tConf" type="radio" value="0.10"> 90%</input></label>
+<label><input checked="" name="tConf" type="radio" value="0.05"/> 95%</label>
+<label><input name="tConf" type="radio" value="0.01"/> 99%</label>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで n 変更</span></div>
 <canvas aria-busy="true" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="信頼区間の比較" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>サンプルサイズ n</span> <strong id="tInfoN">5</strong></div>
+<div><span>自由度 df</span> <strong id="tInfoDf">4</strong></div>
+<div><span>信頼水準</span> <strong id="tInfoConf">95%</strong></div>
+<div><span>t 臨界値</span> <strong id="tInfoTCrit" style="color:var(--cyan)">±2.776</strong></div>
+<div><span>z 臨界値</span> <strong id="tInfoZCrit" style="color:var(--magenta)">±1.960</strong></div>
+<div><span>t / z 比</span> <strong id="tInfoRatio">1.416</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t分布"><span>💾 画像保存</span></button>
 </div>
@@ -166,9 +188,15 @@
 <div class="guided-steps">
 <b>実験ガイド — χ²分布</b>
 <ol>
-<li><b>Step 1:</b> df=<b>1</b> → 右に激しく歪む。df=<b>5</b> → まだ歪むが山ができる。</li>
-<li><b>Step 2:</b> df=<b>30</b> → ベル型に近づく。グラフ左上の「平均 = k = 30」で平均=df を確認。</li>
-<li><b>Step 3:</b> グラフを左右にドラッグして df の効果を直感的に掴もう。</li>
+<li><b>Step 1:</b> 「公正なサイコロ」のまま投下ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
+<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて投下 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
+<li><b>Step 3:</b> 投下数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
+</ol>
+<b>分布の形で体感</b>
+<ol start="4">
+<li><b>Step A:</b> dfスライダーを<b>1</b>にする → 右に激しく歪む。</li>
+<li><b>Step B:</b> df=<b>30</b> → ベル型に近づく。平均=dfを確認。</li>
+<li><b>Step C:</b> 正規近似（紫の破線）との一致度合いを見ながらdfを動かす。</li>
 </ol>
 </div>
 <!-- @panel:dists_chi -->
@@ -181,11 +209,33 @@
 <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
       </div>
 
-<div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
-<input id="chiDf" max="30" min="1" type="range" value="3"/>
+<div class="controls" style="gap:8px;margin-bottom:12px">
+<div class="ctrl"><label><span>投下数 n = </span><span class="val" id="chiRollsVal">60</span></label>
+<input id="chiRolls" max="300" min="12" type="range" value="60"/>
+</div>
+<div class="ctrl" style="min-width:auto">
+<select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<option data-en="Fair die" data-ja="公正なサイコロ" value="fair">公正なサイコロ</option>
+<option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
+</select>
+</div>
+<button class="sim-btn" id="diceRandom"><span>▶ 投下</span></button>
+</div>
+<canvas aria-busy="true" aria-label="サイコロの出目分布" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
+<div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+<input id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df 変更</span></div>
 <canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>投下数 n</span> <strong id="chiInfoN">60</strong></div>
+<div><span>自由度 df</span> <strong id="chiInfoDf">5</strong></div>
+<div><span>検定統計量 χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
+<div><span>χ² 臨界値</span> <strong id="chiInfoCrit">11.070</strong></div>
+<div><span>p 値</span> <strong id="chiInfoP">—</strong></div>
+<div><span>判定</span> <strong id="chiInfoVerdict">—</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ²分布"><span>💾 画像保存</span></button>
 </div>
@@ -197,9 +247,15 @@
 <div class="guided-steps">
 <b>実験ガイド — F分布</b>
 <ol>
-<li><b>Step 1:</b> df1=3, df2=10 の基本形を確認。右に歪んだ形。</li>
-<li><b>Step 2:</b> df2 を <b>10→30</b> に → 形が安定して裾が短くなる。</li>
-<li><b>Step 3:</b> df1 も大きくする → 両方大きいとベル型に近づく。</li>
+<li><b>Step 1:</b> AとBのSDを同じ（例：10と10）にする → F≈1、棄却されない。</li>
+<li><b>Step 2:</b> BのSDだけ大きくする（例：A=5, B=15）→ Fが大きくなり棄却域に入る。</li>
+<li><b>Step 3:</b> nを増やす → 同じSD差でもp値が下がる（検出力が上がる）。</li>
+</ol>
+<b>分布の形で体感</b>
+<ol start="4">
+<li><b>Step A:</b> n=<b>6</b> → 裾が重い不安定な形。</li>
+<li><b>Step B:</b> n=<b>50</b> → ベル型に近づく。F=1のラインを確認。</li>
+<li><b>Step C:</b> AとBのSDを交互に変えて「分散比」の意味を体感する。</li>
 </ol>
 </div>
 <!-- @panel:dists_f -->
@@ -212,14 +268,27 @@
 <b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
       </div>
 
-<div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
-<input id="fDf1" max="30" min="1" type="range" value="3"/>
+<div class="ctrl" style="margin-bottom:4px"><label><span>グループA SD = </span><span class="val" id="fSdAVal">8</span></label>
+<input id="fSdA" max="20" min="1" type="range" value="8"/>
 </div>
-<div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
-<input id="fDf2" max="30" min="1" type="range" value="10"/>
+<div class="ctrl" style="margin-bottom:4px"><label><span>グループB SD = </span><span class="val" id="fSdBVal">15</span></label>
+<input id="fSdB" max="20" min="1" type="range" value="15"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df₁ 変更　·　df₂ はスライダーで調整</span></div>
-<canvas aria-busy="true" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<div class="ctrl" style="margin-bottom:12px"><label><span>各グループ n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
+<input id="fGroupN" max="100" min="5" type="range" value="20"/>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで n 変更</span></div>
+<canvas aria-busy="true" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="2グループのばらつき比較" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>グループA SD</span> <strong id="fInfoSdA">8</strong></div>
+<div><span>グループB SD</span> <strong id="fInfoSdB">15</strong></div>
+<div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
+<div><span>F 統計量</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+<div><span>F 臨界値</span> <strong id="fInfoFCrit">2.168</strong></div>
+<div><span>p 値</span> <strong id="fInfoP">0.005</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F分布"><span>💾 画像保存</span></button>
 </div>

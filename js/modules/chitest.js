@@ -139,6 +139,12 @@ export function initChitest(){
         const face=loaded?rollLoaded():Math.floor(Math.random()*6);
         O[face]++;
         draw();
+        const N=O.reduce((a,b)=>a+b,0);
+        if(N>=300){
+          clearInterval(autoTimer); autoTimer=null;
+          const isEn2=window.__LANG==='en';
+          btnAuto.innerHTML=isEn2?'<span>▶ Auto-roll</span>':'<span>▶ 自動投下</span>';
+        }
       },80);
     };
 

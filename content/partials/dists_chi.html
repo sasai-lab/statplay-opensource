@@ -11,11 +11,33 @@
         <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-      <div class="ctrl"><label>df (k) = <span class="val" id="chiVal">3</span></label>
-        <input type="range" id="chiDf" min="1" max="30" value="3">
+      <div class="controls" style="gap:8px;margin-bottom:12px">
+        <div class="ctrl"><label><span data-lang="ja">投下数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
+          <input type="range" id="chiRolls" min="12" max="300" value="60">
+        </div>
+        <div class="ctrl" style="min-width:auto">
+          <select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+            <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
+            <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
+          </select>
+        </div>
+        <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 投下</span><span data-lang="en">&#x25B6; Roll</span></button>
+      </div>
+      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" aria-busy="true"></canvas>
+      <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+        <input type="range" id="chiDf" min="1" max="30" value="5">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
+        <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
+        <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" style="color:var(--magenta)">&#x2014;</strong></div>
+        <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
+        <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="chiInfoP">&#x2014;</strong></div>
+        <div><span data-lang="ja">判定</span><span data-lang="en">Verdict</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="chiCanvas" data-title="&#x03C7;&#x00B2;分布" data-title-en="&#x03C7;&#x00B2; Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>

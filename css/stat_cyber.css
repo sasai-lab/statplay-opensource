@@ -447,6 +447,13 @@
   .dist-card b.cy{color:var(--cyan)}
   .dist-card b.mg{color:var(--magenta)}
   .dist-card b.ye{color:var(--cyan)}
+
+  .dist-split{display:flex;flex-direction:column;gap:16px}
+  .dist-input,.dist-output{min-width:0}
+  @media(min-width:900px){
+    .dist-split{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;align-items:start}
+  }
+
   .lineage{font-family:'Courier New',monospace;font-size:var(--fs-sm);color:#d8f7ff;line-height:1.6;
     white-space:pre;overflow-x:auto;margin:0;padding:10px 12px;
     background:linear-gradient(180deg,rgba(0,243,255,.05),rgba(255,43,214,.04));

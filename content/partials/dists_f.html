@@ -11,14 +11,27 @@
         <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-      <div class="ctrl"><label>df1 = <span class="val" id="fDf1Val">3</span></label>
-        <input type="range" id="fDf1" min="1" max="30" value="3">
+      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+        <input type="range" id="fSdA" min="1" max="20" value="8">
       </div>
-      <div class="ctrl"><label>df2 = <span class="val" id="fDf2Val">10</span></label>
-        <input type="range" id="fDf2" min="1" max="30" value="10">
+      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+        <input type="range" id="fSdB" min="1" max="20" value="15">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df&#x2081; 変更　&#x00B7;　df&#x2082; はスライダーで調整</span><span data-lang="en">&#x2194; Drag horizontally to change df&#x2081; &#x00B7; df&#x2082; is set via slider</span></div>
-      <canvas id="fCanvas" aria-label="F分布の確率密度関数。分子・分母の自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
+        <input type="range" id="fGroupN" min="5" max="100" value="20">
+      </div>
+      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" aria-busy="true"></canvas>
+      <div class="info" style="margin-top:6px">
+        <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
+        <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
+        <div>df&#x2081;, df&#x2082; <strong id="fInfoDf">19, 19</strong></div>
+        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+        <div><span data-lang="ja">F 臨界値</span><span data-lang="en">F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
+        <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="fInfoP">0.005</strong></div>
+      </div>
+      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
