@@ -188,9 +188,9 @@
 <div class="guided-steps">
 <b>実験ガイド — χ²分布</b>
 <ol>
-<li><b>Step 1:</b> 「公正なサイコロ」のまま投下ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
-<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて投下 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
-<li><b>Step 3:</b> 投下数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
+<li><b>Step 1:</b> 「公正なサイコロ」のまま試行ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
+<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて試行 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
+<li><b>Step 3:</b> 試行回数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
 </ol>
 <b>分布の形で体感</b>
 <ol start="4">
@@ -210,7 +210,7 @@
       </div>
 
 <div class="controls" style="gap:8px;margin-bottom:12px">
-<div class="ctrl"><label><span>投下数 n = </span><span class="val" id="chiRollsVal">60</span></label>
+<div class="ctrl"><label><span>試行回数 n = </span><span class="val" id="chiRollsVal">60</span></label>
 <input id="chiRolls" max="300" min="12" type="range" value="60"/>
 </div>
 <div class="ctrl" style="min-width:auto">
@@ -219,7 +219,7 @@
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
 </select>
 </div>
-<button class="sim-btn" id="diceRandom"><span>▶ 投下</span></button>
+<button class="sim-btn" id="diceRandom"><span>▶ 試行</span></button>
 </div>
 <canvas aria-busy="true" aria-label="サイコロの出目分布" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
 <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
@@ -228,7 +228,7 @@
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ グラフを左右にドラッグで df 変更</span></div>
 <canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
 <div class="info" style="margin-top:6px">
-<div><span>投下数 n</span> <strong id="chiInfoN">60</strong></div>
+<div><span>試行回数 n</span> <strong id="chiInfoN">60</strong></div>
 <div><span>自由度 df</span> <strong id="chiInfoDf">5</strong></div>
 <div><span>検定統計量 χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
 <div><span>χ² 臨界値</span> <strong id="chiInfoCrit">11.070</strong></div>

@@ -602,9 +602,7 @@ function fdist(){
   }
 
   function updateInfo(){
-    const isEn = window.__LANG==='en';
     const sA = parseInt(sdAS.value), sB = parseInt(sdBS.value);
-    const n = parseInt(gnS.value);
     const d1 = getDf(), d2 = getDf();
     const fStat = Math.max(sA*sA, sB*sB) / Math.max(1, Math.min(sA*sA, sB*sB));
     const pVal = Math.min(1, 2 * fPval(fStat, d1, d2));

@@ -1240,7 +1240,7 @@
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
       <li><b>Step 1:</b> t分布で n=<b>3</b> → 裾が重い。n=<b>31</b> → 正規分布とほぼ一致。信頼区間の2本のバーも重なる。</li>
-      <li><b>Step 2:</b> χ²で「公正なサイコロ」を選んで投下 → 均等なはずでもバラつく。「イカサマ」に切り替えて投下 → χ²が棄却域に入る。</li>
+      <li><b>Step 2:</b> χ²で「公正なサイコロ」を選んで試行 → 均等なはずでもバラつく。「イカサマ」に切り替えて試行 → χ²が棄却域に入る。</li>
       <li><b>Step 3:</b> FでグループAとBのSDを同じにする → F≈1。Bだけ大きくする → 棄却域に入る。</li>
       <li><b>Step 4:</b> グラフを左右にドラッグでも操作可能。スライダーより直感的。</li>
     </ol>
@@ -1302,9 +1302,9 @@
 <div class="guided-steps" data-lang="ja">
 <b>実験ガイド — χ²分布</b>
 <ol>
-<li><b>Step 1:</b> 「公正なサイコロ」のまま投下ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
-<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて投下 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
-<li><b>Step 3:</b> 投下数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
+<li><b>Step 1:</b> 「公正なサイコロ」のまま試行ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>
+<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて試行 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>
+<li><b>Step 3:</b> 試行回数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>
 <li><b>Step 4:</b> dfスライダーを動かして分布の形状変化も確認。df=30 → ほぼ正規分布に。</li>
 </ol>
 </div>
@@ -1332,7 +1332,7 @@
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
       <div class="controls" style="gap:8px;margin-bottom:12px">
-        <div class="ctrl"><label><span data-lang="ja">投下数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
+        <div class="ctrl"><label><span data-lang="ja">試行回数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
           <input type="range" id="chiRolls" min="12" max="300" value="60">
         </div>
         <div class="ctrl" style="min-width:auto">
@@ -1341,7 +1341,7 @@
             <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
           </select>
         </div>
-        <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 投下</span><span data-lang="en">&#x25B6; Roll</span></button>
+        <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 試行</span><span data-lang="en">&#x25B6; Roll</span></button>
       </div>
       <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" aria-busy="true"></canvas>
       <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
@@ -1350,7 +1350,7 @@
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
       <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="info" style="margin-top:6px">
-        <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
+        <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
         <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" style="color:var(--magenta)">&#x2014;</strong></div>
         <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
@@ -1460,8 +1460,8 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動投下 → n が増えるほど χ² が安定し、p値が大きいまま（帰無仮説を棄却しない）。</li>
-      <li><b>Step 2:</b> 「イカサマ」に切り替えて自動投下 → χ² が急上昇し、p値が α を下回る。不正が検出される瞬間。</li>
+      <li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動試行 → n が増えるほど χ² が安定し、p値が大きいまま（帰無仮説を棄却しない）。</li>
+      <li><b>Step 2:</b> 「イカサマ」に切り替えて自動試行 → χ² が急上昇し、p値が α を下回る。不正が検出される瞬間。</li>
       <li><b>Step 3:</b> ② 独立性：左上のセルだけクリックして偏りを作る → χ² が跳ね上がり、独立性が棄却される。</li>
       <li><b>Step 4:</b> リセットして、各セルを均等にクリック → χ² は小さいまま。偏りがなければ独立と判定。</li>
     </ol>
@@ -1497,14 +1497,14 @@
           <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
       </div>
-      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 自動投下</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
+      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 自動試行</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
       <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
     <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
 
     <div class="info">
-      <div><span data-lang="ja">投下数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
+      <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
       <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="gofStat">&#x2014;</strong></div>
       <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="gofDf">&#x2014;</strong></div>
       <div><span data-lang="ja">p値</span><span data-lang="en">p-value</span> <strong id="gofP">&#x2014;</strong></div>

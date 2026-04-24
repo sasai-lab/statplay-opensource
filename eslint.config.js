@@ -1,4 +1,5 @@
-// ESLint 9 flat config - lenient browser defaults for ES modules.
+import js from '@eslint/js';
+
 export default [
   {
     ignores: [
@@ -8,11 +9,15 @@ export default [
       'stat_cyber_og.png',
       '**/*.min.js',
       'scripts/test_layout.mjs',
-      'scripts/capture_ogp.mjs'
+      'scripts/capture_ogp.mjs',
+      '.claude/**',
+      'test-results/**',
+      'dist/**'
     ]
   },
   {
     files: ['js/**/*.js'],
+    ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -43,18 +48,19 @@ export default [
       }
     },
     rules: {
+      ...js.configs.recommended.rules,
       'no-unused-vars':   ['warn', {'args':'none', 'varsIgnorePattern':'^_', 'caughtErrorsIgnorePattern':'^_'}],
-      'no-undef':         'error',
       'no-empty':         ['warn', {'allowEmptyCatch': true}],
-      'no-redeclare':     'error',
       'no-fallthrough':   'warn',
       'no-cond-assign':   ['error', 'except-parens'],
       'eqeqeq':           ['warn', 'smart'],
-      'semi':             ['warn', 'always']
+      'semi':             ['warn', 'always'],
+      'no-template-curly-in-string': 'warn'
     }
   },
   {
     files: ['scripts/**/*.mjs'],
+    ...js.configs.recommended,
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -64,8 +70,10 @@ export default [
       }
     },
     rules: {
-      'no-unused-vars': ['warn', {'args':'none', 'varsIgnorePattern':'^_'}],
-      'no-undef': 'error'
+      ...js.configs.recommended.rules,
+      'no-unused-vars': ['warn', {'args':'none', 'varsIgnorePattern':'^_', 'caughtErrorsIgnorePattern':'^_'}],
+      'no-empty':       ['warn', {'allowEmptyCatch': true}],
+      'no-undef':       'error'
     }
   }
 ];

@@ -13,3 +13,8 @@ screencapture-*.jpg
 _c[0-9]*.png
 _w[0-9]*.png
 .env
+.claude/worktrees/
+test-results/
+*_instructions.md
+*_draft.md
+docs/*_draft.md

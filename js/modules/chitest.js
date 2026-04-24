@@ -129,7 +129,7 @@ export function initChitest(){
     if(btnAuto) btnAuto.onclick=()=>{
       if(autoTimer){ clearInterval(autoTimer); autoTimer=null;
         const isEn=window.__LANG==='en';
-        btnAuto.innerHTML=isEn?'<span>▶ Auto-roll</span>':'<span>▶ 自動投下</span>';
+        btnAuto.innerHTML=isEn?'<span>▶ Auto-roll</span>':'<span>▶ 自動試行</span>';
         return;
       }
       const isEn=window.__LANG==='en';
@@ -143,7 +143,7 @@ export function initChitest(){
         if(N>=300){
           clearInterval(autoTimer); autoTimer=null;
           const isEn2=window.__LANG==='en';
-          btnAuto.innerHTML=isEn2?'<span>▶ Auto-roll</span>':'<span>▶ 自動投下</span>';
+          btnAuto.innerHTML=isEn2?'<span>▶ Auto-roll</span>':'<span>▶ 自動試行</span>';
         }
       },80);
     };

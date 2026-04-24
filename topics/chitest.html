@@ -131,8 +131,8 @@
 <div class="guided-steps">
 <b>実験ガイド — 適合度検定</b>
 <ol>
-<li><b>Step 1:</b> 「公正なサイコロ」で ▶ 自動投下 → n が増えても χ² は小さく、p値が大きいまま。</li>
-<li><b>Step 2:</b> 「イカサマ」に切り替えて自動投下 → χ² が急上昇し、p値が α 以下に。不正検出の瞬間。</li>
+<li><b>Step 1:</b> 「公正なサイコロ」で ▶ 自動試行 → n が増えても χ² は小さく、p値が大きいまま。</li>
+<li><b>Step 2:</b> 「イカサマ」に切り替えて自動試行 → χ² が急上昇し、p値が α 以下に。不正検出の瞬間。</li>
 <li><b>Step 3:</b> α を 0.01 に下げると判定が厳しくなる。少しのズレでは棄却されない。</li>
 </ol>
 </div>
@@ -156,12 +156,12 @@
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
 </select>
 </div>
-<button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ 自動投下</span></button>
+<button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ 自動試行</span></button>
 <button class="lang-toggle" id="gofReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
 </div>
 <canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
 <div class="info">
-<div><span>投下数 n</span> <strong id="gofN">0</strong></div>
+<div><span>試行回数 n</span> <strong id="gofN">0</strong></div>
 <div><span>検定統計量 χ²</span> <strong id="gofStat">—</strong></div>
 <div><span>自由度 df</span> <strong id="gofDf">—</strong></div>
 <div><span>p値</span> <strong id="gofP">—</strong></div>
