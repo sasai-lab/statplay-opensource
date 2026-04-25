@@ -692,7 +692,6 @@
       <li><b>Step 1:</b> 二項分布で n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>
       <li><b>Step 2:</b> 二項の n を <b>50</b>、p を <b>0.06</b> に → np≈3。ポアソン(λ=3) と見比べてみよう。ほぼ同じ形。</li>
       <li><b>Step 3:</b> ポアソンの λ=3 にしてグラフ左上の「E[X] = Var[X] = λ = 3.00」で平均=分散を確認。λ を <b>20</b> まで上げるとベル型に近づく。</li>
-      <li><b>Step 4:</b> 指数分布の λ を動かす → λ が大きいほど「すぐ起きる」。平均待ち時間 = 1/λ。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
@@ -701,7 +700,6 @@
       <li><b>Step 1:</b> Binomial: set n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
       <li><b>Step 2:</b> Set binomial n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) — nearly identical shapes.</li>
       <li><b>Step 3:</b> Set Poisson λ=3 and check "E[X] = Var[X] = λ = 3.00" in the top-left of the graph. Raise λ to <b>20</b> → it approaches a bell.</li>
-      <li><b>Step 4:</b> Slide exponential λ → larger λ = "happens sooner." Mean wait = 1/λ.</li>
     </ol>
   </div>
 
@@ -732,7 +730,7 @@
 <li><b>Step 1:</b> λ=3 → 平均3回の事象。0〜6回あたりに集中している。グラフ左上の「E[X] = Var[X] = λ = 3.00」で平均=分散を確認。</li>
 <li><b>Step 2:</b> λ を <b>1</b> に → ピークが左端に寄り、0回が最頻値。めったに起きない事象。</li>
 <li><b>Step 3:</b> λ を <b>10</b> に → ベル型に近づく。正規分布の面影が見えてくる。</li>
-<li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ完全な正規分布。ポアソンは正規の"離散版"。</li>
+<li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ正規分布の形。λ が大きくなると正規分布で近似できる（CLTの効果）。</li>
 </ol>
 </div>
 <div class="guided-steps" data-lang="en">
@@ -741,7 +739,7 @@
 <li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6. Check "E[X] = Var[X] = λ = 3.00" at the top-left.</li>
 <li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
 <li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
-<li><b>Step 4:</b> Push λ to <b>20</b> → nearly a perfect normal. Poisson is the "discrete normal."</li>
+<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (CLT at work).</li>
 </ol>
 </div>
 <!-- @panel:morep_poisson -->
@@ -869,7 +867,7 @@
     <ol>
       <li><b>Step 1:</b> 元の分布を「指数分布」にして n=<b>1</b> で ▶ → 右に歪んだまま。まだ全然ベルじゃない。</li>
       <li><b>Step 2:</b> n を <b>5</b> にして ▶ → 少しベルっぽくなるが、まだ歪み。</li>
-      <li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。これが「n≥30 なら CLT が効く」の根拠。</li>
+      <li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。「n≥30」は定理ではなく実務上の目安。元の分布が極端に歪んでいると、もっと必要なこともある。</li>
       <li><b>Step 4:</b> 「二峰分布」に切り替えて同じことをやる → 山2つのやつですらベルに化ける衝撃。</li>
     </ol>
   </div>
@@ -878,7 +876,7 @@
     <ol>
       <li><b>Step 1:</b> Choose "Exponential" and set n=<b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>
       <li><b>Step 2:</b> Set n to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>
-      <li><b>Step 3:</b> Set n to <b>30</b> and run → nearly normal. This is why "n≥30 is enough for the CLT."</li>
+      <li><b>Step 3:</b> Set n to <b>30</b> and run → nearly normal. "n≥30" is a practical rule of thumb, not a theorem — heavily skewed distributions may need more.</li>
       <li><b>Step 4:</b> Switch to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
     </ol>
   </div>
@@ -1108,19 +1106,17 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。</li>
+      <li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span style="color:var(--dim)">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
       <li><b>Step 2:</b> z を <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>
       <li><b>Step 3:</b> 検定タイプを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>
-      <li><b>Step 4:</b> ② で効果量 δ を <b>0→3</b> にスライド → 紫の曲線(H₁)が右に離れ、検出力が上がる様子を見る。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.</li>
+      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
       <li><b>Step 2:</b> Push z to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
       <li><b>Step 3:</b> Switch to "Right" test → same z=1.96 but rejection area is one-sided; p-value halves.</li>
-      <li><b>Step 4:</b> Panel ②: slide effect size δ from <b>0 to 3</b> → the purple (H₁) curve drifts right, power climbs.</li>
     </ol>
   </div>
 <!-- @panel:test_main -->
@@ -1208,6 +1204,7 @@
     <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">&#x03B1; (第1種の誤り)</span><span data-lang="en">&#x03B1; (Type I error)</span><strong id="eAlpha">&#x2014;</strong></div>
+      <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="eCrit">&#x2014;</strong></div>
       <div><span data-lang="ja">&#x03B2; (第2種の誤り)</span><span data-lang="en">&#x03B2; (Type II error)</span><strong id="eBeta">&#x2014;</strong></div>
       <div><span data-lang="ja">検出力 1&#x2212;&#x03B2;</span><span data-lang="en">Power 1&#x2212;&#x03B2;</span><strong id="ePower">&#x2014;</strong></div>
     </div>
@@ -1259,19 +1256,17 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> t分布で n=<b>3</b> → 裾が重い。n=<b>31</b> → 正規分布とほぼ一致。信頼区間の2本のバーも重なる。</li>
-      <li><b>Step 2:</b> χ²で「公正なサイコロ」を選んで試行 → 均等なはずでもバラつく。「イカサマ」に切り替えて試行 → χ²が棄却域に入る。</li>
-      <li><b>Step 3:</b> FでグループAとBのSDを同じにする → F≈1。Bだけ大きくする → 棄却域に入る。</li>
-      <li><b>Step 4:</b> グラフを左右にドラッグでも操作可能。スライダーより直感的。</li>
+      <li><b>Step 1:</b> n=<b>3</b> → 自由度1、裾がめちゃくちゃ重い。正規分布（灰色の点線）と比べてみよう。</li>
+      <li><b>Step 2:</b> n=<b>10</b> → まだ正規より裾が厚いが、だいぶ近づいてきた。</li>
+      <li><b>Step 3:</b> n=<b>31</b> → ほぼ N(0,1) と区別がつかない。信頼区間の2本のバーもほぼ重なる。</li>
     </ol>
   </div>
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> t: set n=<b>3</b> → heavy tails. n=<b>31</b> → nearly identical to N(0,1). CI bars overlap.</li>
-      <li><b>Step 2:</b> χ²: select "Fair die" and roll → even fair dice vary. Switch to "Loaded" and roll → χ² enters the rejection region.</li>
-      <li><b>Step 3:</b> F: set Group A and B to the same SD → F≈1. Increase B only → enters the rejection region.</li>
-      <li><b>Step 4:</b> You can also drag the graphs horizontally — often more intuitive than the slider.</li>
+      <li><b>Step 1:</b> n=<b>3</b> → df=1, extremely heavy tails. Compare with the normal (gray dashed line).</li>
+      <li><b>Step 2:</b> n=<b>10</b> → still heavier tails than normal, but getting closer.</li>
+      <li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
     </ol>
   </div>
   

@@ -384,7 +384,7 @@
 
   .controls{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:flex-end;margin-bottom:16px;font-family:'Courier New',monospace;font-size:var(--fs-sub)}
   .ctrl{display:flex;flex-direction:column;gap:6px;min-width:150px;flex:1 1 150px}
-  .ctrl label{color:var(--dim);font-size:var(--fs-xs);letter-spacing:2px;text-transform:uppercase;line-height:1.45;display:block;margin-bottom:2px;white-space:normal;word-break:break-word}
+  .ctrl label{color:var(--dim);font-size:var(--fs-xs);letter-spacing:2px;line-height:1.45;display:block;margin-bottom:2px;white-space:normal;word-break:break-word}
   .ctrl label[data-lang="ja"],.ctrl label[data-lang="en"]{display:none}
   body:not(.lang-en) .ctrl label[data-lang="ja"]{display:block}
   body.lang-en .ctrl label[data-lang="en"]{display:block}

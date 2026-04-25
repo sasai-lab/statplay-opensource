@@ -49,7 +49,7 @@ export function initLln(){
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([6,4]);
     const yTrue=h-20-p*(h-40);
     ctx.beginPath();ctx.moveTo(0,yTrue);ctx.lineTo(w,yTrue);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText((window.__LANG==='en'?'μ = ':'μ = ')+p.toFixed(2),w-90,yTrue-6);
+    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText((window.__LANG==='en'?'μ = ':'μ = ')+p.toFixed(2),w-90,yTrue-6);
     // running average
     if(history.length>1){
       const pts=history.map((v,i)=>[i/history.length*w,h-20-v*(h-40)]);

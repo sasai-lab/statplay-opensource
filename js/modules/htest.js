@@ -33,7 +33,8 @@ export function initHtest(){
       neonFill(ctx,pts,tc.magenta,.35);
     });
     // annotation: rejection region labels
-    ctx.fillStyle=withAlpha(tc.magenta,.85);ctx.font='bold 10px "Courier New"';
+    const greekFont10='bold 10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
+    ctx.fillStyle=withAlpha(tc.magenta,.85);ctx.font=greekFont10;
     const rejLabel=window.__LANG==='en'?'Reject H₀':'棄却域';
     if(t==='two'){
       ctx.fillText(rejLabel,xToPx(-4.3),h-28);
@@ -65,7 +66,7 @@ export function initHtest(){
     // z marker (observed)
     ctx.strokeStyle=tc.green;ctx.lineWidth=tc.light?2.5:2;ctx.shadowBlur=tc.light?2:14;ctx.shadowColor=tc.green;
     ctx.beginPath();ctx.moveTo(xToPx(zObs),10);ctx.lineTo(xToPx(zObs),h-20);ctx.stroke();ctx.shadowBlur=0;
-    ctx.fillStyle=tc.green;ctx.font='bold 12px "Courier New"';ctx.fillText(`z = ${zObs.toFixed(2)}`,xToPx(zObs)+4,24);
+    ctx.fillStyle=tc.green;ctx.font='bold 12px "Courier New"';ctx.fillText(`Z = ${zObs.toFixed(2)}`,xToPx(zObs)+4,24);
 
     // p-value shading (orange, distinct from rejection region magenta)
     let pval;

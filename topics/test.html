@@ -132,10 +132,9 @@
 <div class="guided-steps">
 <b>実験ガイド — 順番に試してみよう</b>
 <ol>
-<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。</li>
+<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span style="color:var(--dim)">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
 <li><b>Step 2:</b> z を <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>
 <li><b>Step 3:</b> 検定タイプを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>
-<li><b>Step 4:</b> ② で効果量 δ を <b>0→3</b> にスライド → 紫の曲線(H₁)が右に離れ、検出力が上がる様子を見る。</li>
 </ol>
 </div>
 
@@ -206,6 +205,7 @@
 <canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
 <div class="info">
 <div><span>α (第1種の誤り)</span><strong id="eAlpha">—</strong></div>
+<div><span>臨界値</span><strong id="eCrit">—</strong></div>
 <div><span>β (第2種の誤り)</span><strong id="eBeta">—</strong></div>
 <div><span>検出力 1−β</span><strong id="ePower">—</strong></div>
 </div>

@@ -52,7 +52,7 @@ export function initCi(){
     // true mean line
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);
     const xMid=w/2;ctx.beginPath();ctx.moveTo(xMid,0);ctx.lineTo(xMid,h);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText('μ = 0',xMid+4,14);
+    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ = 0',xMid+4,14);
 
     const range = 1.5;
     const xToPx = x => xMid + x / range * (w / 2 - 20);
@@ -68,7 +68,7 @@ export function initCi(){
     if(intervals.length>0){
       const hits=intervals.filter(iv=>iv.lo<=0&&iv.hi>=0).length;
       const cov=(hits/intervals.length*100).toFixed(1);
-      ctx.font='bold 12px "Courier New"';
+      ctx.font='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
       ctx.fillStyle=tc.cyan;ctx.fillText(window.__LANG==='en'?'── Hit (contains μ)':'── 捕捉（μを含む）',8,h-26);
       ctx.fillStyle=tc.magenta;ctx.fillText(window.__LANG==='en'?'── Miss':'── 外れ',8,h-12);
       ctx.fillStyle=tc.text;ctx.font='bold 13px "Courier New"';

@@ -39,7 +39,7 @@ export function initNormal(){
     // mean line
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(xToPx(mu),20);ctx.lineTo(xToPx(mu),h-20);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.fillText('μ',xToPx(mu)+4,30);
+    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ',xToPx(mu)+4,30);
 
     // ±1σ ±2σ markers
     [1,2].forEach(k=>{
@@ -50,7 +50,7 @@ export function initNormal(){
     });
 
     // ±1σ ±2σ labels
-    ctx.fillStyle=withAlpha(tc.purple,.7);ctx.font='10px "Courier New"';
+    ctx.fillStyle=withAlpha(tc.purple,.7);ctx.font='10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     [1,2].forEach(k=>{
       const xr=mu+k*sd;if(xr<hi-0.5) ctx.fillText(`+${k}σ`,xToPx(xr)+2,h-24);
       const xl=mu-k*sd;if(xl>lo+0.5) ctx.fillText(`−${k}σ`,xToPx(xl)-20,h-24);

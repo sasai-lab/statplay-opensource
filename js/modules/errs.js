@@ -43,17 +43,19 @@ export function initErrs(){
     // critical line
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);ctx.lineWidth=1.5;
     ctx.beginPath();ctx.moveTo(xToPx(crit),12);ctx.lineTo(xToPx(crit),h-28);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText((window.__LANG==='en'?'Critical c=':'臨界値 c=')+crit.toFixed(2),xToPx(crit)+4,26);
+    const alpha=1-normCDF(crit);
+    ctx.fillStyle=tc.yellow;ctx.font='11px "Courier New"';ctx.fillText(crit.toFixed(2),xToPx(crit)+4,26);
     // labels
-    ctx.fillStyle=tc.cyan;ctx.font='bold 12px "Courier New"';ctx.fillText('H₀',xToPx(0)-8,yToPx(peak)-6);
-    ctx.fillStyle=tc.purple;ctx.fillText('H₁',xToPx(d)-8,yToPx(peak)-6);
+    const greekFont='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
+    ctx.fillStyle=tc.cyan;ctx.font=greekFont;ctx.fillText('H₀',xToPx(0)-8,yToPx(peak)-6);
+    ctx.fillStyle=tc.purple;ctx.fillText('H₁ (δ='+d.toFixed(1)+')',xToPx(d)-8,yToPx(peak)-6);
     // axis
     ctx.fillStyle=tc.dim;ctx.font='11px "Courier New"';
     for(let x=lo;x<=hi;x+=2) ctx.fillText(x.toString(),xToPx(x)-4,h-12);
     // readouts
-    const alpha=1-normCDF(crit);
     const beta=normCDF(crit,d,1);
     $('eAlpha').textContent=alpha.toFixed(3);
+    $('eCrit').textContent=crit.toFixed(3);
     $('eBeta').textContent=beta.toFixed(3);
     $('ePower').textContent=(1-beta).toFixed(3);
   }

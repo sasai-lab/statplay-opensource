@@ -191,7 +191,7 @@ export function initClt(){
       // annotation: label the theory curve
       if(isMeanPanel && total>10){
         const isEn=window.__LANG==='en';
-        ctx.fillStyle=lineColor;ctx.font='bold 10px "Courier New"';
+        ctx.fillStyle=lineColor;ctx.font='bold 10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
         ctx.fillText(isEn?'Theory N(μ, σ²/n)':'理論 N(μ, σ²/n)',px0+pw-130,py0+padT+6);
       }
     }
@@ -235,7 +235,7 @@ export function initClt(){
       true);
 
     // Global labels
-    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
+    ctx.fillStyle=tc.dim;ctx.font='10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     ctx.fillText(isEn?'theoretical N(μ, σ²/n)':'理論曲線 N(μ, σ²/n)', panelW+gap+panelW-180, h-4);
     ctx.fillText(isEn?'theoretical pdf':'理論密度', 4, h-4);
     ctx.fillStyle=tc.yellow;ctx.font='bold 11px "Courier New"';

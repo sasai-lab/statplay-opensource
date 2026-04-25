@@ -44,7 +44,7 @@ export function initStdnorm(){
     ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);ctx.lineWidth=1.5;
     [-k,k].forEach(xv=>{ctx.beginPath();ctx.moveTo(xToPx(xv),12);ctx.lineTo(xToPx(xv),h-22);ctx.stroke();});
     ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='bold 12px "Courier New"';
+    ctx.fillStyle=tc.yellow;ctx.font='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     ctx.fillText(`+${k.toFixed(1)}σ`,xToPx(k)+4,26);
     ctx.fillText(`−${k.toFixed(1)}σ`,xToPx(-k)-40,26);
     // title
@@ -125,7 +125,7 @@ export function initStdnorm(){
     // mean lines
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(xToPx(bMu),12);ctx.lineTo(xToPx(bMu),h-22);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='bold 12px "Courier New"';
+    ctx.fillStyle=tc.yellow;ctx.font='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     ctx.fillText(`μ=${bMu.toFixed(2)}`,xToPx(bMu)+4,26);
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-22);ctx.lineTo(w,h-22);ctx.stroke();

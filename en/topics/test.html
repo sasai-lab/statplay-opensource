@@ -127,10 +127,9 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.</li>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
 <li><b>Step 2:</b> Push z to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
 <li><b>Step 3:</b> Switch to "Right" test → same z=1.96 but rejection area is one-sided; p-value halves.</li>
-<li><b>Step 4:</b> Panel ②: slide effect size δ from <b>0 to 3</b> → the purple (H₁) curve drifts right, power climbs.</li>
 </ol>
 </div>
 <!-- @panel:test_main -->
@@ -199,6 +198,7 @@
 <canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
 <div class="info">
 <div><span>α (Type I error)</span><strong id="eAlpha">—</strong></div>
+<div><span>Critical value</span><strong id="eCrit">—</strong></div>
 <div><span>β (Type II error)</span><strong id="eBeta">—</strong></div>
 <div><span>Power 1−β</span><strong id="ePower">—</strong></div>
 </div>
