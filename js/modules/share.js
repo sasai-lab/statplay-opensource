@@ -1,4 +1,5 @@
 // StatPlay — module: SHARE / SAVE IMAGE
+import {themeColors} from '../utils.js';
 
 export function initShare(){
   const toastEl=document.createElement('div');
@@ -11,43 +12,26 @@ export function initShare(){
     clearTimeout(toastT);
     toastT=setTimeout(()=>{toastEl.style.opacity='0';toastEl.style.transform='translateX(-50%) translateY(20px)';},2200);
   }
-  function buildImage(srcId,title){
+  function buildImage(srcId){
     const src=document.getElementById(srcId);
-    // Canvas src.width/height are already DPR-scaled; compute logical size.
+    const tc=themeColors();
     const _raw=window.devicePixelRatio||1;
     const dpr=(Number.isFinite(_raw)&&_raw>0)?Math.min(_raw,8):1;
     const srcLogicalW=src.width/dpr, srcLogicalH=src.height/dpr;
-    // Render the output at 2× density so text/borders stay crisp.
     const outDpr=2;
-    const pad=24,headerH=82,footerH=40;
-    const outW=srcLogicalW+pad*2, outH=srcLogicalH+headerH+footerH;
+    const pad=24,footerH=36;
+    const outW=srcLogicalW+pad*2, outH=srcLogicalH+pad+footerH;
     const out=document.createElement('canvas');
     out.width=outW*outDpr; out.height=outH*outDpr;
     const ctx=out.getContext('2d');
     if(!ctx) return null;
     ctx.setTransform(outDpr,0,0,outDpr,0,0);
     ctx.imageSmoothingQuality='high';
-    // Background + grid
-    ctx.fillStyle='#050816';ctx.fillRect(0,0,outW,outH);
-    ctx.strokeStyle='rgba(0,243,255,.08)';ctx.lineWidth=1;
-    for(let x=0;x<outW;x+=40){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,outH);ctx.stroke();}
-    for(let y=0;y<outH;y+=40){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(outW,y);ctx.stroke();}
-    // Title (gradient)
-    ctx.font='bold 26px "Courier New",monospace';ctx.textBaseline='middle';
-    const tg=ctx.createLinearGradient(0,0,outW,0);
-    tg.addColorStop(0,'#00f3ff');tg.addColorStop(1,'#ff2bd6');
-    ctx.fillStyle=tg;ctx.shadowBlur=14;ctx.shadowColor='#00f3ff';
-    ctx.fillText(title,pad,36);
-    ctx.shadowBlur=0;
-    ctx.font='12px "Courier New",monospace';ctx.fillStyle='#7a8aa6';
-    ctx.fillText(window.__LANG==='en'?'StatPlay - Interactive Statistics':'StatPlay - 統計をさわって学ぶ',pad,62);
-    // Source canvas — drawImage scales src to logical size (src is DPR-crisp, so this stays sharp)
-    ctx.strokeStyle='rgba(0,243,255,.3)';ctx.lineWidth=1;
-    ctx.strokeRect(pad,headerH,srcLogicalW,srcLogicalH);
-    ctx.drawImage(src,0,0,src.width,src.height,pad,headerH,srcLogicalW,srcLogicalH);
-    ctx.font='11px "Courier New",monospace';ctx.fillStyle='#7a8aa6';
+    ctx.fillStyle=tc.bg;ctx.fillRect(0,0,outW,outH);
+    ctx.drawImage(src,0,0,src.width,src.height,pad,pad,srcLogicalW,srcLogicalH);
+    ctx.font='11px "Courier New",monospace';ctx.fillStyle=tc.dim;
     const date=new Date().toISOString().slice(0,10);
-    ctx.fillText((window.__LANG==='en'?'#StatPlay - ':'#StatPlay - ')+date,pad,outH-18);
+    ctx.fillText((window.__LANG==='en'?'#StatPlay - ':'#StatPlay - ')+date,pad,outH-12);
     return out;
   }
   function downloadBlob(blob,filename){
@@ -57,18 +41,31 @@ export function initShare(){
     document.body.appendChild(a);a.click();
     setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
   }
+  const SHARE_CONFIG={
+    ja:{tweet:t=>t+' — スライダーで触ると統計の直感がつかめる',hashtags:'StatPlay,統計検定2級'},
+    en:{tweet:t=>t+' — slide to build statistical intuition',hashtags:'StatPlay'}
+  };
   function resolveTitle(btn){
     const isEn=window.__LANG==='en';
     return (isEn && btn.dataset.titleEn) ? btn.dataset.titleEn : btn.dataset.title;
   }
   function tweetText(title){
-    const isEn=window.__LANG==='en';
-    return isEn
-      ? title+' — interactive statistics viz at StatPlay'
-      : title+' - StatPlay で可視化したよ';
+    const c=SHARE_CONFIG[window.__LANG==='en'?'en':'ja'];
+    return c.tweet(title);
   }
   function hashtagsFor(){
-    return 'StatPlay';
+    const c=SHARE_CONFIG[window.__LANG==='en'?'en':'ja'];
+    return c.hashtags;
+  }
+  function buildTopicURL(srcId){
+    const path=location.pathname;
+    if(path.includes('/topics/')||path.includes('/columns/')) return location.href;
+    const src=document.getElementById(srcId);
+    if(!src) return location.href;
+    const section=src.closest('section');
+    if(!section||!section.id) return location.href;
+    const isEn=window.__LANG==='en';
+    return location.origin+(isEn?'/en/topics/':'/topics/')+section.id+'.html';
   }
   function openX(text,url,hashtags){
     const intent='https://twitter.com/intent/tweet'
@@ -128,28 +125,29 @@ export function initShare(){
     // X (Twitter) intent — opens compose window with text+URL+hashtags.
     // X will fetch the page's OG image to show a card preview.
     if(kind==='x'){
-      openX(tweetText(title), location.href, hashtagsFor());
+      openX(tweetText(title), buildTopicURL(srcId), hashtagsFor());
       toast(isEn?'Opening X…':'Xを開いています…');
       return;
     }
     // Native share: open the system share sheet with title+text+URL (no files).
     if(kind==='native'){
+      const shareURL=buildTopicURL(srcId);
       try{
         if(navigator.share){
-          await navigator.share({title:title,text:tweetText(title)+' #'+hashtagsFor(),url:location.href});
+          await navigator.share({title:title,text:tweetText(title)+' #'+hashtagsFor(),url:shareURL});
           toast(isEn?'Shared':'シェアしました');
           return;
         }
       }catch(e){
         if(e && e.name==='AbortError') return;
       }
-      openX(tweetText(title),location.href,hashtagsFor());
+      openX(tweetText(title),shareURL,hashtagsFor());
       toast(isEn?'Opening X…':'Xを開いています…');
       return;
     }
     // Download — still builds a per-graph image for personal saving.
     let canvas;
-    try{canvas=buildImage(srcId,title);}catch(e){console.error('buildImage error',e);toast(isEn?'Failed to build image':'画像の組み立てに失敗');return;}
+    try{canvas=buildImage(srcId);}catch(e){console.error('buildImage error',e);toast(isEn?'Failed to build image':'画像の組み立てに失敗');return;}
     const filename='statcyber_'+srcId+'.png';
     canvas.toBlob(blob=>{
       if(!blob){toast(isEn?'Failed to render image':'画像化に失敗しました');return;}

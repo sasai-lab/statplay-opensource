@@ -55,7 +55,7 @@ export function initHero(){
     t,
     x:Math.random()*W, y:Math.random()*H,
     vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.12,
-    op:0.18+Math.random()*0.15,
+    op:0.32+Math.random()*0.18,
     sz:10+Math.random()*5,
   }));
 
@@ -142,7 +142,7 @@ export function initHero(){
     if(elapsed>CYCLE) setTarget();
 
     // formula layer — gradually fades OUT as particles converge
-    const fFade=1-progress*0.75;
+    const fFade=1-progress*0.6;
     floats.forEach(f=>{
       f.x+=f.vx; f.y+=f.vy;
       if(f.x<-300) f.x=W+200;
