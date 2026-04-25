@@ -55,8 +55,8 @@ export function initHero(){
     t,
     x:Math.random()*W, y:Math.random()*H,
     vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.12,
-    op:0.32+Math.random()*0.18,
-    sz:10+Math.random()*5,
+    op:0.45+Math.random()*0.2,
+    sz:12+Math.random()*6,
   }));
 
   // --- particle cloud that morphs into meaningful shapes ---
@@ -149,7 +149,7 @@ export function initHero(){
       if(f.x>W+200) f.x=-200;
       if(f.y<-40) f.y=H+20;
       if(f.y>H+40) f.y=-20;
-      ctx.fillStyle=withAlpha(themeColors().purple,f.op*fFade);
+      ctx.fillStyle=withAlpha(themeColors().cyan,f.op*fFade);
       ctx.font=`italic ${f.sz}px "Courier New",monospace`;
       ctx.fillText(f.t,f.x,f.y);
     });

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="正規分布表・t分布表・カイ二乗分布表・F分布表をインタラクティブに参照できるツール。数値を入力または表のセルをクリックすると、分布グラフ上でその位置がリアルタイムにハイライトされます。">
+<meta name="keywords" content="正規分布表, t分布表, カイ二乗分布表, F分布表, 確率分布表, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>確率分布表 — 正規分布・t分布・カイ二乗分布・F分布 | StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/tables/index.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/tables/index.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/tables/index.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/tables/index.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="確率分布表 — 正規分布・t分布・カイ二乗分布・F分布">
+<meta property="og:description" content="正規分布表・t分布表・カイ二乗分布表・F分布表をインタラクティブに参照できるツール。数値を入力または表のセルをクリックすると、分布グラフ上でその位置がリアルタイムにハイライトされます。">
+<meta property="og:url" content="https://statplay.sasailab.com/tables/index.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 確率分布表">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="確率分布表 — 正規分布・t分布・カイ二乗分布・F分布">
+<meta name="twitter:description" content="正規分布表・t分布表・カイ二乗分布表・F分布表をインタラクティブに参照できるツール。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self'; style-src 'self' 'unsafe-inline'">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "確率分布表 — 正規分布・t分布・カイ二乗分布・F分布",
+      "description": "正規分布表・t分布表・カイ二乗分布表・F分布表をインタラクティブに参照できるツール。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive tool",
+      "teaches": ["正規分布表","t分布表","カイ二乗分布表","F分布表"],
+      "isPartOf": {"@type":"WebSite","name":"StatPlay","url":"https://statplay.sasailab.com/"},
+      "url": "https://statplay.sasailab.com/tables/index.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {"@type":"Organization","name":"Sasai Lab"},
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"name":"StatPlay","item":"https://statplay.sasailab.com/"},
+        {"@type":"ListItem","position":2,"name":"確率分布表"}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* Layout */
+/* Override global overflow-x:hidden on html/body — required for position:sticky */
+html,body{overflow-x:clip}
+
+.dt-layout{display:flex;max-width:1200px;margin:0 auto;position:relative;align-items:flex-start}
+.dt-sidebar{width:240px;flex-shrink:0;position:sticky;top:60px;align-self:flex-start;max-height:calc(100vh - 60px);overflow-y:auto;background:var(--bg,#060a1a);border-right:1px solid rgba(0,243,255,.15);padding:16px}
+.dt-sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(0,243,255,.10)}
+.dt-sidebar-header span{font-family:'Courier New',monospace;font-size:9px;color:var(--dim);letter-spacing:2px;opacity:.5;text-transform:uppercase}
+.dt-sidebar-close{display:none;background:transparent;border:none;color:var(--dim);font-size:18px;cursor:pointer;padding:4px 8px}
+.dt-sidebar-close:hover{color:var(--cyan)}
+.dt-main{flex:1;min-width:0;padding:0 16px}
+.dt-sidebar-open{display:none;position:fixed;bottom:20px;left:20px;z-index:98;background:rgba(0,8,20,.92);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;font-size:12px;padding:10px 18px;cursor:pointer;border-radius:2px;transition:.2s}
+.dt-sidebar-open:hover{background:rgba(0,243,255,.1)}
+.dt-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:99}
+.dt-backdrop.show{display:block}
+
+/* Sidebar sections */
+.dt-section{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(0,243,255,.12)}
+.dt-section:last-child{border-bottom:none}
+.dt-section-title{font-family:'Courier New',monospace;font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;opacity:.7}
+.dt-for{display:none}
+.dt-for.active{display:block}
+.dt-for .dt-section-title{margin-top:18px;padding-top:14px;border-top:1px solid rgba(0,243,255,.10)}
+.dt-for .dt-section-title:first-child{margin-top:0;padding-top:0;border-top:none}
+
+/* Distribution buttons */
+.dt-tab{background:transparent;border:1px solid rgba(0,243,255,.15);color:var(--dim);font-family:'Courier New',monospace;font-size:12px;padding:8px 12px;cursor:pointer;transition:.2s;text-align:left;width:100%;box-sizing:border-box}
+.dt-tab:hover{color:var(--cyan);background:rgba(0,243,255,.05)}
+.dt-tab.active{color:var(--cyan);background:rgba(0,243,255,.1);border-color:var(--cyan)}
+.dt-dist-btns{display:flex;flex-direction:column;gap:2px}
+
+/* Panes */
+.dt-pane{display:none}
+.dt-pane.active{display:block}
+.dt-pane canvas{width:100%;max-height:40vh;border:1px solid rgba(0,243,255,.15);background:var(--canvas-bg,rgba(0,0,0,.4));margin-bottom:8px}
+
+/* Sidebar controls */
+.dt-modes,.dt-side{display:flex;flex-direction:column;gap:2px}
+.dt-modes label,.dt-side label{font-family:'Courier New',monospace;font-size:11px;color:var(--dim);cursor:pointer;padding:6px 8px;border:1px solid rgba(0,243,255,.15);transition:.2s;white-space:nowrap}
+.dt-modes label:hover,.dt-side label:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,243,255,.05)}
+.dt-modes input,.dt-side input{display:none}
+.dt-modes label:has(input:checked),.dt-side label:has(input:checked){color:var(--cyan);border-color:var(--cyan);background:rgba(0,243,255,.12)}
+.dt-alpha-btns{display:flex;flex-direction:column;gap:2px}
+.dt-alpha{background:transparent;border:1px solid rgba(0,243,255,.2);color:var(--dim);font-family:'Courier New',monospace;font-size:11px;padding:5px 8px;cursor:pointer;transition:.2s;text-align:left;width:100%;box-sizing:border-box}
+.dt-alpha:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,243,255,.05)}
+.dt-alpha.active{color:var(--cyan);background:rgba(0,243,255,.15);border-color:var(--cyan)}
+.dt-ctrl{margin-bottom:4px}
+
+/* Sliders */
+.dt-slider{-webkit-appearance:none;width:100%;height:4px;background:rgba(0,243,255,.15);outline:none;border-radius:2px;margin:4px 0 2px;cursor:pointer}
+.dt-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--cyan,#00f3ff);border-radius:50%;cursor:pointer;border:2px solid rgba(0,243,255,.4);box-shadow:0 0 8px rgba(0,243,255,.3);margin-top:-6px}
+.dt-slider::-moz-range-thumb{width:16px;height:16px;background:var(--cyan,#00f3ff);border-radius:50%;cursor:pointer;border:2px solid rgba(0,243,255,.4);box-shadow:0 0 8px rgba(0,243,255,.3)}
+.dt-slider::-webkit-slider-runnable-track{height:4px;background:rgba(0,243,255,.15);border-radius:2px}
+.dt-slider::-moz-range-track{height:4px;background:rgba(0,243,255,.15);border-radius:2px}
+.dt-slider-val{font-family:'Courier New',monospace;font-size:14px;color:var(--cyan);font-weight:bold}
+.dt-slider-label{font-family:'Courier New',monospace;font-size:11px;color:var(--dim);display:flex;justify-content:space-between;align-items:center;margin-bottom:2px}
+
+/* Quick constants */
+.dt-quick-btns{display:flex;gap:4px;flex-wrap:wrap}
+.dt-quick-btn{background:transparent;border:1px solid rgba(0,243,255,.2);color:var(--dim);font-family:'Courier New',monospace;font-size:12px;padding:6px 10px;cursor:pointer;transition:.2s;display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.dt-quick-btn:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,243,255,.05)}
+.dt-quick-btn small{opacity:.6;font-size:10px;margin-top:2px;margin-left:0}
+
+/* Inverse lookup */
+.dt-inverse-result{font-family:'Courier New',monospace;font-size:15px;color:#fff;margin-top:10px;display:block;cursor:pointer;padding:10px 14px;background:linear-gradient(135deg,rgba(0,243,255,.18),rgba(255,0,200,.08));border:1px solid rgba(0,243,255,.5);border-left:3px solid var(--cyan);font-weight:bold;text-shadow:0 0 10px rgba(0,243,255,.5);box-shadow:0 0 16px rgba(0,243,255,.1) inset,0 2px 8px rgba(0,0,0,.2);letter-spacing:.3px}
+.dt-inverse-result:hover{background:linear-gradient(135deg,rgba(0,243,255,.28),rgba(255,0,200,.12));border-color:var(--cyan);box-shadow:0 0 20px rgba(0,243,255,.2) inset,0 2px 12px rgba(0,0,0,.3);transform:scale(1.01)}
+
+/* Number input alongside slider */
+.dt-num-input{width:60px;background:rgba(0,243,255,.06);border:1px solid rgba(0,243,255,.25);color:var(--cyan);font-family:'Courier New',monospace;font-size:13px;font-weight:bold;padding:3px 6px;text-align:center;border-radius:2px;outline:none}
+.dt-num-input:focus{border-color:var(--cyan);box-shadow:0 0 8px rgba(0,243,255,.2)}
+
+/* z-slider row */
+.dt-z-row{margin:8px 0}
+.dt-z-row .dt-slider-label{font-size:13px}
+
+/* Info and actions */
+.dt-sel-info{display:flex;gap:24px;flex-wrap:wrap;font-family:'Courier New',monospace;font-size:13px;color:var(--text);padding:8px 16px;margin:8px 0;border-left:3px solid var(--cyan);background:rgba(0,243,255,.03)}
+.dt-sel-info b{color:var(--cyan)}
+.dt-action-row{display:flex;gap:8px;align-items:center;margin:4px 0 12px;flex-wrap:wrap}
+
+/* Table */
+.dt-table-wrap{overflow-x:auto;margin-top:12px;max-height:520px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.dist-table{font-family:'Courier New',monospace;font-size:12px;border-collapse:collapse;min-width:100%}
+.dist-table td{padding:6px 10px;text-align:center;cursor:pointer;border:1px solid rgba(0,243,255,.12);white-space:nowrap;transition:background .15s;min-width:52px}
+.dist-table td:hover{background:rgba(0,243,255,.1)}
+.dist-table td.selected{background:rgba(0,243,255,.2);border-color:var(--cyan);color:var(--cyan);font-weight:bold}
+.dist-table th{background:var(--bg2,#0a0f2c);color:var(--dim);font-size:11px;padding:4px 10px;border:1px solid rgba(0,243,255,.12);white-space:nowrap}
+.dist-table thead th{position:sticky;top:0;z-index:2}
+.dist-table tbody th{position:sticky;left:0;z-index:1;text-align:right}
+.dist-table thead th:first-child{position:sticky;left:0;z-index:3}
+
+/* Light mode */
+body.theme-light .dt-sidebar{background:var(--bg,#f8f8f8);border-right-color:rgba(26,107,122,.15)}
+body.theme-light .dt-sidebar-header{border-bottom-color:rgba(26,107,122,.15)}
+body.theme-light .dt-sidebar-header span{color:#1a6b7a}
+body.theme-light .dt-sidebar-close{color:#5a6275}
+body.theme-light .dt-sidebar-close:hover{color:#1a6b7a}
+body.theme-light .dt-tab{border-color:rgba(26,107,122,.15)}
+body.theme-light .dt-tab.active{color:#1a6b7a;background:rgba(26,107,122,.08);border-color:#1a6b7a}
+body.theme-light .dt-tab:hover{color:#1a6b7a;background:rgba(26,107,122,.05)}
+body.theme-light .dist-table td{border-color:rgba(26,26,46,.12)}
+body.theme-light .dist-table td.selected{background:#e0f7fa;border-color:#1a6b7a;color:#1a6b7a}
+body.theme-light .dist-table th{background:#f5f5f5;color:#5a6275;border-color:rgba(26,26,46,.12)}
+body.theme-light .dt-ctrl input{background:#fff;border-color:rgba(26,107,122,.3);color:#1a6b7a}
+body.theme-light .dt-alpha:hover{color:#1a6b7a;border-color:#1a6b7a;background:rgba(26,107,122,.05)}
+body.theme-light .dt-alpha.active{color:#1a6b7a;background:rgba(26,107,122,.1);border-color:#1a6b7a}
+body.theme-light .dt-sel-info{border-left-color:#1a6b7a;background:rgba(26,107,122,.03)}
+body.theme-light .dt-sel-info b{color:#1a6b7a}
+body.theme-light .dt-modes label:hover,body.theme-light .dt-side label:hover{color:#1a6b7a;border-color:#1a6b7a;background:rgba(26,107,122,.05)}
+body.theme-light .dt-modes label:has(input:checked),body.theme-light .dt-side label:has(input:checked){color:#1a6b7a;border-color:#1a6b7a;background:rgba(26,107,122,.08)}
+body.theme-light .dt-pane canvas{border-color:rgba(26,107,122,.15);background:rgba(245,245,245,.6)}
+body.theme-light .dt-quick-btn{border-color:rgba(26,107,122,.2);color:#5a6275}
+body.theme-light .dt-quick-btn:hover{color:#1a6b7a;border-color:#1a6b7a;background:rgba(26,107,122,.05)}
+body.theme-light .dt-inverse input{background:#fff;border-color:rgba(26,107,122,.3);color:#1a6b7a}
+body.theme-light .dt-section{border-bottom-color:rgba(26,107,122,.10)}
+body.theme-light .dt-for .dt-section-title{border-top-color:rgba(26,107,122,.06)}
+body.theme-light .dt-slider{background:rgba(26,107,122,.15)}
+body.theme-light .dt-slider::-webkit-slider-thumb{background:#1a6b7a;border-color:rgba(26,107,122,.4);box-shadow:0 0 6px rgba(26,107,122,.2);margin-top:-6px}
+body.theme-light .dt-slider::-moz-range-thumb{background:#1a6b7a;border-color:rgba(26,107,122,.4);box-shadow:0 0 6px rgba(26,107,122,.2)}
+body.theme-light .dt-slider::-webkit-slider-runnable-track{background:rgba(26,107,122,.15)}
+body.theme-light .dt-slider::-moz-range-track{background:rgba(26,107,122,.15)}
+body.theme-light .dt-slider-val{color:#1a6b7a}
+body.theme-light .dt-sidebar-open{background:rgba(255,255,255,.95);border-color:#1a6b7a;color:#1a6b7a}
+body.theme-light .dt-num-input{background:rgba(26,107,122,.06);border-color:rgba(26,107,122,.25);color:#1a6b7a}
+body.theme-light .dt-num-input:focus{border-color:#1a6b7a;box-shadow:0 0 6px rgba(26,107,122,.15)}
+body.theme-light .dt-inverse-result{color:#1a6b7a;background:linear-gradient(135deg,rgba(26,107,122,.1),rgba(26,107,122,.04));border-color:rgba(26,107,122,.4);border-left:3px solid #1a6b7a;text-shadow:none;box-shadow:0 1px 6px rgba(26,107,122,.1)}
+body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba(26,107,122,.18),rgba(26,107,122,.08));border-color:#1a6b7a;box-shadow:0 2px 10px rgba(26,107,122,.15)}
+
+/* Mobile */
+@media(max-width:760px){
+  .dt-layout{display:block}
+  .dt-sidebar{position:fixed;left:-260px;top:0;height:100vh;max-height:100vh;width:250px;z-index:100;transition:left .3s ease;border-right:1px solid rgba(0,243,255,.25);padding:16px}
+  .dt-sidebar.open{left:0}
+  .dt-sidebar-close{display:block}
+  .dt-sidebar-open{display:block}
+  .dt-main{padding:0 8px}
+  .dt-sel-info{gap:12px;font-size:12px;padding:6px 12px}
+  .dist-table{font-size:11px}
+  .dist-table td,.dist-table th{padding:4px 6px}
+}
+</style>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/tables/index.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<main id="main-content">
+  <section class="reveal in" id="tables" style="padding-top:0;padding-bottom:12px">
+    <div class="sec-tag">T.01 / DISTRIBUTION TABLES</div>
+    <h2 class="sec-title">インタラクティブ確率分布表 <span class="sec-sub">— 数字と視覚の同期</span></h2>
+
+    <div class="story-bridge">参考書の巻末にある<b>あの表</b>——数字がびっしり並んでいるだけで、自分が見ている値が分布のどこなのかピンと来ない。<span class="next">このツール</span>では、セルをクリックするだけでグラフ上の位置がリアルタイムにハイライトされる。</div>
+
+    <p class="sec-desc" style="margin-bottom:0">
+      <b>正規分布・t分布・カイ二乗分布・F分布</b>の4つの分布表を収録。<br/>
+      パラメータを動かしながら数値と曲線を同時に追える、<b>触れる分布表</b>。
+    </p>
+  </section>
+
+  <div class="dt-layout">
+    <aside class="dt-sidebar" id="dtSidebar">
+      <div class="dt-sidebar-header">
+        <span>SETTINGS</span>
+        <button class="dt-sidebar-close" id="sidebarClose" aria-label="閉じる">✕</button>
+      </div>
+
+      <div class="dt-section">
+        <div class="dt-section-title">分布</div>
+        <div class="dt-dist-btns" id="tabBar">
+          <button class="dt-tab active" data-tab="norm">標準正規分布</button>
+          <button class="dt-tab" data-tab="t">t分布</button>
+          <button class="dt-tab" data-tab="chi2">χ²分布</button>
+          <button class="dt-tab" data-tab="f">F分布</button>
+        </div>
+      </div>
+
+      <!-- Normal -->
+      <div class="dt-section dt-for active" data-for="norm">
+        <div class="dt-section-title">z値</div>
+        <div class="dt-z-row">
+          <div class="dt-slider-label"><span>z</span><input type="number" class="dt-num-input" id="normZText" min="0" max="3.49" step="0.01" value="1.96"></div>
+          <input type="range" class="dt-slider" id="normZ" min="0" max="3.49" step="0.01" value="1.96">
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">表示モード</div>
+        <div class="dt-modes">
+          <label><input type="radio" name="normMode" value="lower" checked> P(Z ≤ z) 累積</label>
+          <label><input type="radio" name="normMode" value="upper"> P(Z ≥ z) 上側</label>
+          <label><input type="radio" name="normMode" value="twosided"> P(|Z| ≤ z) 両側</label>
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">クイック定数</div>
+        <div class="dt-quick-btns">
+          <button class="dt-quick-btn" data-z="1.28">1.28 <small>80%</small></button>
+          <button class="dt-quick-btn" data-z="1.65">1.65 <small>90%</small></button>
+          <button class="dt-quick-btn" data-z="1.96">1.96 <small>95%</small></button>
+          <button class="dt-quick-btn" data-z="2.33">2.33 <small>98%</small></button>
+          <button class="dt-quick-btn" data-z="2.58">2.58 <small>99%</small></button>
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">逆引き（確率 → z値）</div>
+        <div class="dt-inverse">
+          <div class="dt-slider-label"><span>確率 P</span><span class="dt-slider-val" id="inversePVal">0.975</span></div>
+          <input type="range" class="dt-slider" id="inverseP" min="0.001" max="0.999" step="0.001" value="0.975">
+          <span class="dt-inverse-result" id="inverseResult"></span>
+        </div>
+      </div>
+
+      <!-- t -->
+      <div class="dt-section dt-for" data-for="t">
+        <div class="dt-section-title">自由度</div>
+        <div class="dt-ctrl">
+          <div class="dt-slider-label"><span>df</span><span class="dt-slider-val" id="tDfVal">10</span></div>
+          <input type="range" class="dt-slider" id="tTabDf" min="1" max="200" step="1" value="10">
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">有意水準 α</div>
+        <div class="dt-alpha-btns" id="tAlphas">
+          <button class="dt-alpha" data-alpha="0.10">0.10</button>
+          <button class="dt-alpha active" data-alpha="0.05">0.05</button>
+          <button class="dt-alpha" data-alpha="0.025">0.025</button>
+          <button class="dt-alpha" data-alpha="0.01">0.01</button>
+          <button class="dt-alpha" data-alpha="0.005">0.005</button>
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">検定</div>
+        <div class="dt-side">
+          <label><input type="radio" name="tSide" value="two" checked> 両側</label>
+          <label><input type="radio" name="tSide" value="one"> 片側</label>
+        </div>
+      </div>
+
+      <!-- Chi2 -->
+      <div class="dt-section dt-for" data-for="chi2">
+        <div class="dt-section-title">自由度</div>
+        <div class="dt-ctrl">
+          <div class="dt-slider-label"><span>df</span><span class="dt-slider-val" id="chi2DfVal">5</span></div>
+          <input type="range" class="dt-slider" id="chi2TblDf" min="1" max="30" step="1" value="5">
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">有意水準 α</div>
+        <div class="dt-alpha-btns" id="chi2Alphas">
+          <button class="dt-alpha" data-alpha="0.10">0.10</button>
+          <button class="dt-alpha active" data-alpha="0.05">0.05</button>
+          <button class="dt-alpha" data-alpha="0.025">0.025</button>
+          <button class="dt-alpha" data-alpha="0.01">0.01</button>
+          <button class="dt-alpha" data-alpha="0.005">0.005</button>
+        </div>
+      </div>
+
+      <!-- F -->
+      <div class="dt-section dt-for" data-for="f">
+        <div class="dt-section-title">分子の自由度 df₁</div>
+        <div class="dt-ctrl">
+          <div class="dt-slider-label"><span>df₁</span><span class="dt-slider-val" id="fDf1Val">3</span></div>
+          <input type="range" class="dt-slider" id="fTblDf1" min="1" max="120" step="1" value="3">
+        </div>
+        <div class="dt-section-title" style="margin-top:8px">分母の自由度 df₂</div>
+        <div class="dt-ctrl">
+          <div class="dt-slider-label"><span>df₂</span><span class="dt-slider-val" id="fDf2Val">10</span></div>
+          <input type="range" class="dt-slider" id="fTblDf2" min="1" max="120" step="1" value="10">
+        </div>
+        <div class="dt-section-title" style="margin-top:12px">有意水準 α</div>
+        <div class="dt-alpha-btns" id="fAlphas">
+          <button class="dt-alpha" data-alpha="0.10">0.10</button>
+          <button class="dt-alpha active" data-alpha="0.05">0.05</button>
+          <button class="dt-alpha" data-alpha="0.01">0.01</button>
+        </div>
+      </div>
+    </aside>
+
+    <button class="dt-sidebar-open" id="sidebarToggle" aria-label="設定を開く">☰ 設定</button>
+    <div class="dt-backdrop" id="dtBackdrop"></div>
+
+    <div class="dt-main">
+      <!-- Normal -->
+      <div class="dt-pane active" id="pane-norm">
+        <div class="panel" style="margin-top:12px">
+          <canvas id="normCanvas" height="160" aria-busy="true" aria-label="標準正規分布の確率密度関数"></canvas>
+          <div class="dt-sel-info" id="normSelInfo"></div>
+          <div class="dt-action-row">
+            <button class="share-btn url" id="normCopy"><span>📋 値をコピー</span></button>
+            <button class="share-btn dl" data-kind="dl" data-share="normCanvas" data-title="標準正規分布表" data-title-en="Standard Normal Table"><span>💾 画像保存</span></button>
+          </div>
+          <div class="dt-table-wrap"><table class="dist-table" id="normTable"></table></div>
+        </div>
+      </div>
+
+      <!-- t -->
+      <div class="dt-pane" id="pane-t">
+        <div class="panel" style="margin-top:12px">
+          <canvas id="tTabCanvas" height="160" aria-busy="true" aria-label="t分布の確率密度関数"></canvas>
+          <div class="dt-sel-info" id="tSelInfo"></div>
+          <div class="dt-action-row">
+            <button class="share-btn url" id="tCopy"><span>📋 値をコピー</span></button>
+            <button class="share-btn dl" data-kind="dl" data-share="tTabCanvas" data-title="t分布表" data-title-en="t Distribution Table"><span>💾 画像保存</span></button>
+          </div>
+          <div class="dt-table-wrap"><table class="dist-table" id="tTabTable"></table></div>
+        </div>
+      </div>
+
+      <!-- Chi2 -->
+      <div class="dt-pane" id="pane-chi2">
+        <div class="panel" style="margin-top:12px">
+          <canvas id="chi2TblCanvas" height="160" aria-busy="true" aria-label="カイ二乗分布の確率密度関数"></canvas>
+          <div class="dt-sel-info" id="chi2SelInfo"></div>
+          <div class="dt-action-row">
+            <button class="share-btn url" id="chi2Copy"><span>📋 値をコピー</span></button>
+            <button class="share-btn dl" data-kind="dl" data-share="chi2TblCanvas" data-title="カイ二乗分布表" data-title-en="Chi-Square Table"><span>💾 画像保存</span></button>
+          </div>
+          <div class="dt-table-wrap"><table class="dist-table" id="chi2TblTable"></table></div>
+        </div>
+      </div>
+
+      <!-- F -->
+      <div class="dt-pane" id="pane-f">
+        <div class="panel" style="margin-top:12px">
+          <canvas id="fTblCanvas" height="160" aria-busy="true" aria-label="F分布の確率密度関数"></canvas>
+          <div class="dt-sel-info" id="fSelInfo"></div>
+          <div class="dt-action-row">
+            <button class="share-btn url" id="fCopy"><span>📋 値をコピー</span></button>
+            <button class="share-btn dl" data-kind="dl" data-share="fTblCanvas" data-title="F分布表" data-title-en="F Distribution Table"><span>💾 画像保存</span></button>
+          </div>
+          <div class="dt-table-wrap"><table class="dist-table" id="fTblTable"></table></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">Vanilla JS · Canvas 2D · ES Modules<br/><span style="opacity:.7">Zero dependencies · PWA · Static hosting</span></div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">Crafted with Claude<br/><span style="opacity:.7">Anthropic · 2026</span></div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built"><a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/><a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a></div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">© 2026 <b>Sasai Lab</b><br/><span style="opacity:.75">本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。</span></div>
+<div>StatPlay · <span class="mg" id="app-version"></span></div>
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+</body>
+</html>

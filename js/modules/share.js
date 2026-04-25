@@ -59,7 +59,7 @@ export function initShare(){
   }
   function buildTopicURL(srcId){
     const path=location.pathname;
-    if(path.includes('/topics/')||path.includes('/columns/')) return location.href;
+    if(path.includes('/topics/')||path.includes('/columns/')||path.includes('/tables/')) return location.href;
     const src=document.getElementById(srcId);
     if(!src) return location.href;
     const section=src.closest('section');
@@ -75,6 +75,7 @@ export function initShare(){
     window.open(intent,'_blank','noopener,noreferrer');
   }
   function buildGraphURL(srcId){
+    if(location.pathname.includes('/tables/')) return location.href;
     const src=document.getElementById(srcId);
     if(!src) return location.href;
     const panel=src.closest('.panel');

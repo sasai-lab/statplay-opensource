@@ -32,6 +32,7 @@ import { initToc } from './modules/toc.js';
 import { initScrolltop } from './modules/scrolltop.js';
 import { initVersion } from './modules/version.js';
 import { initPwa } from './modules/pwa.js';
+import { initTables } from './modules/tables.js';
 
 initPrefs();
 initHero();
@@ -63,3 +64,4 @@ initToc();
 initScrolltop();
 initVersion();
 initPwa();
+initTables();

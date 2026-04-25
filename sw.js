@@ -1,6 +1,6 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.1.0.9';
+const CACHE = 'sp-v3.2.0';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "how_statplay_was_built"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "dists", "chitest", "reg", "mreg"];
 const MODULE_FILES = [
@@ -8,7 +8,7 @@ const MODULE_FILES = [
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
   'errs.js','graphDrag.js','hero.js','htest.js','lang.js','lln.js',
   'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js',
-  'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','theme.js',
+  'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','tables.js','theme.js',
   'toc.js','urlParams.js','version.js'
 ];
 const ASSETS = [
@@ -27,7 +27,9 @@ const ASSETS = [
   ...TOPIC_SLUGS.flatMap(s => [`./topics/${s}.html`, `./en/topics/${s}.html`]),
   ...COLUMN_SLUGS.flatMap(s => [`./columns/${s}.html`, `./en/columns/${s}.html`]),
   './about.html',
-  './en/about.html'
+  './en/about.html',
+  './tables/index.html',
+  './en/tables/index.html'
 ];
 
 self.addEventListener('install', (e) => {
