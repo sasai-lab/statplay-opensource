@@ -197,6 +197,49 @@ body.theme-light .dt-num-input:focus{border-color:#1a6b7a;box-shadow:0 0 6px rgb
 body.theme-light .dt-inverse-result{color:#1a6b7a;background:linear-gradient(135deg,rgba(26,107,122,.1),rgba(26,107,122,.04));border-color:rgba(26,107,122,.4);border-left:3px solid #1a6b7a;text-shadow:none;box-shadow:0 1px 6px rgba(26,107,122,.1)}
 body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba(26,107,122,.18),rgba(26,107,122,.08));border-color:#1a6b7a;box-shadow:0 2px 10px rgba(26,107,122,.15)}
 
+/* Inline how-it-works link */
+.dt-inline-link{font-size:.85em;color:var(--dim,#7a8aa6);text-decoration:none;opacity:.7;transition:.2s;margin-left:.4em}
+.dt-inline-link:hover{color:var(--cyan,#00f3ff);opacity:1}
+
+/* How it works accordion */
+.dt-how-it-works{max-width:1200px;margin:32px auto 0;padding:0 16px}
+.dt-how-it-works details{border:1px solid rgba(0,243,255,.1);background:rgba(0,243,255,.02)}
+.dt-how-it-works summary{font-family:'Courier New',monospace;font-size:12px;color:var(--dim,#7a8aa6);padding:12px 16px;cursor:pointer;list-style:none;user-select:none}
+.dt-how-it-works summary::-webkit-details-marker{display:none}
+.dt-how-it-works summary::before{content:'▸ ';opacity:.5}
+.dt-how-it-works details[open] summary::before{content:'▾ '}
+.dt-how-it-works summary:hover{color:var(--cyan,#00f3ff)}
+.dt-how-content{padding:0 16px 16px;font-family:'Courier New',monospace;font-size:12px;color:var(--dim,#7a8aa6);line-height:1.8}
+.dt-how-content h4{font-size:12px;color:var(--text,#d8f7ff);margin:16px 0 6px;letter-spacing:.5px}
+.dt-how-content p{margin:0 0 10px}
+.dt-how-list{margin:6px 0 14px;padding-left:20px;list-style:none}
+.dt-how-list li{margin-bottom:8px;position:relative}
+.dt-how-list li::before{content:'—';position:absolute;left:-16px;color:var(--cyan,#00f3ff);opacity:.4}
+.dt-how-list li b{color:var(--text,#d8f7ff);font-size:11px}
+.dt-how-content a{color:var(--cyan,#00f3ff);text-decoration:underline;text-underline-offset:2px}
+.dt-how-content a:hover{opacity:.8}
+.dt-method-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:11px}
+.dt-method-table th{text-align:left;padding:6px 10px;border-bottom:1px solid rgba(0,243,255,.15);color:var(--text,#d8f7ff);font-weight:normal;font-size:10px;letter-spacing:.5px;text-transform:uppercase}
+.dt-method-table td{padding:6px 10px;border-bottom:1px solid rgba(0,243,255,.06);vertical-align:top;line-height:1.6}
+.dt-method-table td:first-child{color:var(--cyan,#00f3ff);white-space:nowrap}
+.dt-ref{opacity:.55;font-size:10px}
+
+/* Light mode: transparency */
+body.theme-light .dt-inline-link{color:#5a6275}
+body.theme-light .dt-inline-link:hover{color:#1a6b7a}
+body.theme-light .dt-how-it-works details{border-color:rgba(26,107,122,.12);background:rgba(26,107,122,.02)}
+body.theme-light .dt-how-it-works summary{color:#5a6275}
+body.theme-light .dt-how-it-works summary:hover{color:#1a6b7a}
+body.theme-light .dt-how-content{color:#5a6275}
+body.theme-light .dt-how-content h4{color:#1a1a2e}
+body.theme-light .dt-how-content dt{color:#1a6b7a}
+body.theme-light .dt-how-content a{color:#1a6b7a}
+body.theme-light .dt-method-table th{color:#1a1a2e;border-bottom-color:rgba(26,107,122,.15)}
+body.theme-light .dt-method-table td{border-bottom-color:rgba(26,26,46,.06)}
+body.theme-light .dt-method-table td:first-child{color:#1a6b7a}
+body.theme-light .dt-how-list li::before{color:#1a6b7a}
+body.theme-light .dt-how-list li b{color:#1a1a2e}
+
 /* Mobile */
 @media(max-width:760px){
   .dt-layout{display:block}
@@ -228,12 +271,7 @@ body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba
     <div class="sec-tag">T.01 / DISTRIBUTION TABLES</div>
     <h2 class="sec-title">Interactive Distribution Tables <span class="sec-sub">— Numbers Meet Curves</span></h2>
 
-    <div class="story-bridge">Those tables in the back of your textbook — rows of tiny numbers with no visual anchor. <span class="next">This tool</span> highlights the exact position on the distribution curve the moment you click a cell.</div>
-
-    <p class="sec-desc" style="margin-bottom:0">
-      Covers the <b>Normal, t, Chi-Square, and F</b> distribution tables.<br/>
-      Adjust parameters and watch the numbers and curves stay in sync — a <b>hands-on distribution table</b>.
-    </p>
+    <div class="story-bridge">Those tables in the back of your textbook — rows of tiny numbers with no visual anchor. Click a cell and its position on the distribution curve is highlighted instantly. <a href="#how-it-works" class="dt-inline-link">All values computed in real time → How it works</a></div>
   </section>
 
   <div class="dt-layout">
@@ -399,6 +437,46 @@ body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba
       </div>
     </div>
   </div>
+
+  <section class="dt-how-it-works" id="how-it-works">
+    <details>
+      <summary>How This Table Works</summary>
+      <div class="dt-how-content">
+        <p>These values are not hardcoded. Two mechanisms are at work:</p>
+        <ul class="dt-how-list">
+          <li><b>Initial render</b> — The moment you open this page, JavaScript calls mathematical functions in your browser to compute every cell from scratch. The same numbers you'd find in a printed table are being derived right here in your browser.</li>
+          <li><b>Live recalculation</b> — When you switch modes (CDF / upper / two-sided) or change parameters via sliders, the math functions are called again and every cell is instantly rewritten. This is impossible with a static table.</li>
+        </ul>
+        <h4>Methods & Precision</h4>
+        <table class="dt-method-table">
+          <thead><tr><th>Distribution</th><th>Method</th><th>Precision</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Normal</td>
+              <td>Polynomial approximation of erf<br><span class="dt-ref">Abramowitz & Stegun (1964), formula 7.1.26. A 5-term polynomial approximates erf, then normCDF(z) = 0.5 × (1 + erf(z/√2))</span></td>
+              <td>Max error ~1.5×10⁻⁷<br><span class="dt-ref">All 4 displayed digits (0.xxxx) match published tables exactly</span></td>
+            </tr>
+            <tr>
+              <td>t</td>
+              <td>Numerical integration of the PDF + bisection<br><span class="dt-ref">tPDF is integrated from −30 to x via Simpson's rule (500 intervals) to obtain the CDF. Critical values are found by bisection on the CDF (60 iterations, precision ~10⁻¹⁸)</span></td>
+              <td>3 displayed digits: reliable<br><span class="dt-ref">At very low df (1–2), the integration step size (~0.07) may cause ±1 in the last digit</span></td>
+            </tr>
+            <tr>
+              <td>Chi-square</td>
+              <td>Regularized incomplete gamma + bisection<br><span class="dt-ref">P(χ²≤x) is expressed via the incomplete gamma function P(a,x). Series expansion below a+1, continued fraction (Lentz's method) above, up to 200 terms. Critical values by bisection (60 iterations)</span></td>
+              <td>Convergence threshold 10⁻¹⁰<br><span class="dt-ref">3 displayed digits match published tables</span></td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>Regularized incomplete beta + bisection<br><span class="dt-ref">The F-distribution CDF is converted to the incomplete beta function I_x(a,b), evaluated via continued fraction (Lentz's method, up to 200 terms). Critical values by bisection (60 iterations)</span></td>
+              <td>Convergence threshold 10⁻¹⁰<br><span class="dt-ref">2–3 displayed digits match published tables</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>All computation logic is open source: <a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/utils.js" target="_blank" rel="noopener">utils.js</a> / <a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/modules/tables.js" target="_blank" rel="noopener">tables.js</a></p>
+      </div>
+    </details>
+  </section>
 </main>
 
 <footer>

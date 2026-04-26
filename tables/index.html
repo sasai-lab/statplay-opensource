@@ -198,6 +198,49 @@ body.theme-light .dt-num-input:focus{border-color:#1a6b7a;box-shadow:0 0 6px rgb
 body.theme-light .dt-inverse-result{color:#1a6b7a;background:linear-gradient(135deg,rgba(26,107,122,.1),rgba(26,107,122,.04));border-color:rgba(26,107,122,.4);border-left:3px solid #1a6b7a;text-shadow:none;box-shadow:0 1px 6px rgba(26,107,122,.1)}
 body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba(26,107,122,.18),rgba(26,107,122,.08));border-color:#1a6b7a;box-shadow:0 2px 10px rgba(26,107,122,.15)}
 
+/* Inline how-it-works link */
+.dt-inline-link{font-size:.85em;color:var(--dim,#7a8aa6);text-decoration:none;opacity:.7;transition:.2s;margin-left:.4em}
+.dt-inline-link:hover{color:var(--cyan,#00f3ff);opacity:1}
+
+/* How it works accordion */
+.dt-how-it-works{max-width:1200px;margin:32px auto 0;padding:0 16px}
+.dt-how-it-works details{border:1px solid rgba(0,243,255,.1);background:rgba(0,243,255,.02)}
+.dt-how-it-works summary{font-family:'Courier New',monospace;font-size:12px;color:var(--dim,#7a8aa6);padding:12px 16px;cursor:pointer;list-style:none;user-select:none}
+.dt-how-it-works summary::-webkit-details-marker{display:none}
+.dt-how-it-works summary::before{content:'▸ ';opacity:.5}
+.dt-how-it-works details[open] summary::before{content:'▾ '}
+.dt-how-it-works summary:hover{color:var(--cyan,#00f3ff)}
+.dt-how-content{padding:0 16px 16px;font-family:'Courier New',monospace;font-size:12px;color:var(--dim,#7a8aa6);line-height:1.8}
+.dt-how-content h4{font-size:12px;color:var(--text,#d8f7ff);margin:16px 0 6px;letter-spacing:.5px}
+.dt-how-content p{margin:0 0 10px}
+.dt-how-list{margin:6px 0 14px;padding-left:20px;list-style:none}
+.dt-how-list li{margin-bottom:8px;position:relative}
+.dt-how-list li::before{content:'—';position:absolute;left:-16px;color:var(--cyan,#00f3ff);opacity:.4}
+.dt-how-list li b{color:var(--text,#d8f7ff);font-size:11px}
+.dt-how-content a{color:var(--cyan,#00f3ff);text-decoration:underline;text-underline-offset:2px}
+.dt-how-content a:hover{opacity:.8}
+.dt-method-table{width:100%;border-collapse:collapse;margin:10px 0 14px;font-size:11px}
+.dt-method-table th{text-align:left;padding:6px 10px;border-bottom:1px solid rgba(0,243,255,.15);color:var(--text,#d8f7ff);font-weight:normal;font-size:10px;letter-spacing:.5px;text-transform:uppercase}
+.dt-method-table td{padding:6px 10px;border-bottom:1px solid rgba(0,243,255,.06);vertical-align:top;line-height:1.6}
+.dt-method-table td:first-child{color:var(--cyan,#00f3ff);white-space:nowrap}
+.dt-ref{opacity:.55;font-size:10px}
+
+/* Light mode: transparency */
+body.theme-light .dt-inline-link{color:#5a6275}
+body.theme-light .dt-inline-link:hover{color:#1a6b7a}
+body.theme-light .dt-how-it-works details{border-color:rgba(26,107,122,.12);background:rgba(26,107,122,.02)}
+body.theme-light .dt-how-it-works summary{color:#5a6275}
+body.theme-light .dt-how-it-works summary:hover{color:#1a6b7a}
+body.theme-light .dt-how-content{color:#5a6275}
+body.theme-light .dt-how-content h4{color:#1a1a2e}
+body.theme-light .dt-how-content dt{color:#1a6b7a}
+body.theme-light .dt-how-content a{color:#1a6b7a}
+body.theme-light .dt-method-table th{color:#1a1a2e;border-bottom-color:rgba(26,107,122,.15)}
+body.theme-light .dt-method-table td{border-bottom-color:rgba(26,26,46,.06)}
+body.theme-light .dt-method-table td:first-child{color:#1a6b7a}
+body.theme-light .dt-how-list li::before{color:#1a6b7a}
+body.theme-light .dt-how-list li b{color:#1a1a2e}
+
 /* Mobile */
 @media(max-width:760px){
   .dt-layout{display:block}
@@ -229,11 +272,7 @@ body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba
     <div class="sec-tag">T.01 / DISTRIBUTION TABLES</div>
     <h2 class="sec-title">インタラクティブ確率分布表 <span class="sec-sub">— 数字と視覚の同期</span></h2>
 
-    <div class="story-bridge">参考書の巻末にある<b>あの表</b>——数字がびっしり並んでいるだけで、自分が見ている値が分布のどこなのかピンと来ない。<span class="next">このツール</span>では、セルをクリックするだけでグラフ上の位置がリアルタイムにハイライトされる。</div>
-
-    <p class="sec-desc" style="margin-bottom:0">
-      <b>正規分布・t分布・カイ二乗分布・F分布</b>の4つの分布表を収録。パラメータを動かしながら数値と曲線を同時に追える、<b>触れる分布表</b>。
-    </p>
+    <div class="story-bridge">参考書の巻末にある<b>あの表</b>——数字がびっしり並んでいるだけで、自分が見ている値が分布のどこなのかピンと来ない。セルをクリックするだけでグラフ上の位置がリアルタイムにハイライトされる。<a href="#how-it-works" class="dt-inline-link">数値はすべてリアルタイム計算 → 仕組み</a></div>
   </section>
 
   <div class="dt-layout">
@@ -399,6 +438,46 @@ body.theme-light .dt-inverse-result:hover{background:linear-gradient(135deg,rgba
       </div>
     </div>
   </div>
+
+  <section class="dt-how-it-works" id="how-it-works">
+    <details>
+      <summary>この表の仕組み</summary>
+      <div class="dt-how-content">
+        <p>この表の数値はハードコードではありません。2つの仕組みが動いています。</p>
+        <ul class="dt-how-list">
+          <li><b>初期表示</b> — ページを開いた瞬間に、ブラウザ上の JavaScript が数学関数を呼び出して全セルの値を計算し、表を生成します。参考書の巻末にある表と同じ数値が、あなたのブラウザの中で一から算出されています。</li>
+          <li><b>操作時の再計算</b> — モード切替（累積 / 上側 / 両側）やスライダーによるパラメータ変更を行うと、変更に応じた数学関数が再び呼ばれ、表の全セルが即座に書き換わります。静的な表では不可能な操作です。</li>
+        </ul>
+        <h4>算出方法と精度</h4>
+        <table class="dt-method-table">
+          <thead><tr><th>分布</th><th>算出方法</th><th>精度</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>正規分布</td>
+              <td>誤差関数 (erf) の多項式近似<br><span class="dt-ref">Abramowitz & Stegun (1964) の 7.1.26 式。5項の多項式で erf を近似し、normCDF(z) = 0.5 × (1 + erf(z/√2)) で累積確率を得る</span></td>
+              <td>最大誤差 ~1.5×10⁻⁷<br><span class="dt-ref">表示4桁（0.xxxx）の範囲で市販の統計表と完全一致</span></td>
+            </tr>
+            <tr>
+              <td>t分布</td>
+              <td>確率密度関数の数値積分 + 二分法<br><span class="dt-ref">tPDF を Simpson 法（区間数 500）で -30 から x まで積分して CDF を得る。臨界値は CDF に対する二分法（60回反復、精度 ~10⁻¹⁸）で逆算</span></td>
+              <td>表示3桁は信頼できる<br><span class="dt-ref">df=1–2 など自由度が極端に小さい場合、積分のステップ幅（~0.07）に起因して末尾1桁が ±1 ずれる可能性がある</span></td>
+            </tr>
+            <tr>
+              <td>χ²分布</td>
+              <td>正則化不完全ガンマ関数 + 二分法<br><span class="dt-ref">P(χ²≤x) を不完全ガンマ関数 P(a,x) で表現。a+1 未満は級数展開、以上は連分数展開（Lentz 法）で最大200項まで計算。臨界値は二分法（60回反復）で逆算</span></td>
+              <td>収束閾値 10⁻¹⁰<br><span class="dt-ref">表示3桁の範囲で市販の統計表と一致</span></td>
+            </tr>
+            <tr>
+              <td>F分布</td>
+              <td>正則化不完全ベータ関数 + 二分法<br><span class="dt-ref">F分布の CDF を不完全ベータ関数 I_x(a,b) に変換。連分数展開（Lentz 法、最大200項）で評価。臨界値は二分法（60回反復）で逆算</span></td>
+              <td>収束閾値 10⁻¹⁰<br><span class="dt-ref">表示2–3桁の範囲で市販の統計表と一致</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>計算ロジックはすべてオープンソースで公開しています：<a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/utils.js" target="_blank" rel="noopener">utils.js</a> / <a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/modules/tables.js" target="_blank" rel="noopener">tables.js</a></p>
+      </div>
+    </details>
+  </section>
 </main>
 
 <footer>
