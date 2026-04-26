@@ -2,7 +2,7 @@
   "name": "StatPlay — Interactive Statistics Visualizer",
   "short_name": "StatPlay",
   "description": "Learn statistics by interacting with sliders and animations. Covers standard normal, CLT, confidence intervals, hypothesis testing, regression, Bayes, and more.",
-  "description_ja": "統計検定2級の範囲を、スライダーとアニメーションで直感的に掴むための学習サイト",
+  "description_ja": "統計学の主要概念を、スライダーとアニメーションで直感的に掴むための学習サイト（統計検定2級の出題範囲を含む）",
   "lang": "ja",
   "start_url": "./",
   "scope": "./",

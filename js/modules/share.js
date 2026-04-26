@@ -42,7 +42,7 @@ export function initShare(){
     setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);
   }
   const SHARE_CONFIG={
-    ja:{tweet:t=>t+' — スライダーで触ると統計の直感がつかめる',hashtags:'StatPlay,統計検定2級'},
+    ja:{tweet:t=>t+' — スライダーで触ると統計の直感がつかめる',hashtags:'StatPlay,統計学,統計検定2級'},
     en:{tweet:t=>t+' — slide to build statistical intuition',hashtags:'StatPlay'}
   };
   function resolveTitle(btn){

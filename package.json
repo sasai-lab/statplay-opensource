@@ -1,7 +1,7 @@
 {
   "name": "statplay",
-  "version": "3.2.3",
-  "description": "Interactive cyberpunk visualizer for the Japanese 統計検定2級 statistics curriculum.",
+  "version": "3.2.4",
+  "description": "Interactive cyberpunk visualizer for introductory statistics — covers standard normal, CLT, confidence intervals, hypothesis testing, regression, and Bayes (includes the Japanese 統計検定2級 syllabus).",
   "private": true,
   "type": "module",
   "scripts": {
