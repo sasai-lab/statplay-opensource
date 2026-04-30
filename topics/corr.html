@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。">
+<meta name="keywords" content="相関係数, ピアソン, 散布図, 共分散, アンスコム, R², 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>相関係数 — 散布図と r を体感する — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/corr.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="相関係数 — 散布図と r を体感する">
+<meta property="og:description" content="散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/corr.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 相関係数">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="相関係数 — 散布図と r を体感する">
+<meta name="twitter:description" content="散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "相関係数 — 散布図と r を体感する",
+      "description": "散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "相関係数",
+        "共分散",
+        "R²",
+        "アンスコムの例"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/corr.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "相関係数",
+          "item": "https://statplay.sasailab.com/topics/corr.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/corr.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">相関係数 — 散布図と r を体感する</a></h1>
+  <p class="topic-lead">散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。</p>
+
+  <section class="reveal in" id="corr">
+
+<div class="sec-tag">M.00 / CORRELATION</div>
+<h2 class="sec-title">相関係数 <span class="sec-sub">— 2変数の「つながり」を測る</span></h2>
+
+<div class="story-bridge">カイ二乗検定は「カテゴリ同士の関連」を数値化した。でも「身長と体重」「勉強時間とテストの点」のように<b>連続な数値どうし</b>の関係はどう測る？ → <span class="next">相関係数 r</span> が「一緒に動く度合い」を <b>−1 〜 +1</b> の1つの数字にまとめてくれる。</div>
+
+<p class="sec-desc">
+    2つの変数が「一緒に動くかどうか」を測るのが<b>相関係数 r</b>。
+    +1 なら完全な正の直線関係、−1 なら完全な負の直線関係、0 なら直線的な関係がない。
+    キャンバスを<b>クリック</b>すると点が追加され、r がリアルタイムで変わる。
+    黄色い破線が平均線で、4つの象限に分かれる——<b>緑の象限</b>に点が多いほど正の相関、<b>赤の象限</b>に多いほど負の相関。
+    この色分けが、公式 Σ(x−x̄)(y−ȳ) の「符号の綱引き」そのもの。
+  </p>
+
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — 相関係数を体感する</b>
+<ol>
+<li><b>Step 1:</b> r = 0.80 で「生成」→ 右上がりの帯。<b>緑の象限</b>に点が集中している。</li>
+<li><b>Step 2:</b> r = −0.60 に変えて「生成」→ 右下がり。<b>赤の象限</b>に点が多い。</li>
+<li><b>Step 3:</b> r = 0.00 で「生成」→ 四象限にほぼ均等に散らばる。帯ではなく「雲」。</li>
+<li><b>Step 4:</b> CLEAR して、<b>U字型</b>に手で点を配置 → r ≈ 0 なのに明らかに関係がある！<br/>→ r は「直線関係」しか捉えられない。Panel 2 へ。</li>
+</ol>
+</div>
+
+<!-- @panel:corr_main -->
+<div class="panel" data-autorun="corrGen">
+<div class="controls">
+<div class="ctrl">
+<label><span>目標 r</span>
+          = <span class="val" id="corrTargetR">0.80</span>
+</label>
+<input id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
+</div>
+<div class="ctrl">
+<label><span>点の数 n</span>
+          = <span class="val" id="corrTargetN">50</span>
+</label>
+<input id="corrN" max="200" min="10" step="1" type="range" value="50"/>
+</div>
+<button class="btn" id="corrGen"><span>▶ 生成</span></button>
+<button class="btn magenta" id="corrClear">CLEAR</button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ キャンバスをクリックで点を追加</span></span>
+</div>
+<canvas aria-busy="true" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<div class="info">
+<div>n<strong id="corrNval">0</strong></div>
+<div><span>相関係数 r</span><strong id="corrRval">—</strong></div>
+<div>R²<strong id="corrR2val">—</strong></div>
+<div><span>共分散 Cov</span><strong id="corrCov">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="corrCanvas" data-title="相関係数"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \cdot \sum(y_i - \bar{y})^2}}"></div>
+<p><b>分子を分解——4象限の意味</b><br/>
+・(xᵢ − x̄)：各点の x が平均からどれだけズレているか<br/>
+・(yᵢ − ȳ)：各点の y が平均からどれだけズレているか<br/>
+・掛け算：同じ方向にズレていれば<b>正</b>（緑の象限）、逆方向なら<b>負</b>（赤の象限）<br/>
+・合計：正の寄与と負の寄与の<b>綱引き</b>。正が勝てば r &gt; 0、負が勝てば r &lt; 0</p>
+<p><b>分母の役割</b><br/>
+・x と y それぞれの標準偏差で割って −1 ≤ r ≤ 1 に正規化する<br/>
+・単位に依存しない（cm でも inch でも同じ r が出る）</p>
+<div class="formula" data-tex="R^2 = r^2"></div>
+<p><b>R² の意味</b><br/>
+・「y の変動のうち、x との直線関係で説明できる割合」<br/>
+・R² = 0.64 → y のバラつきの 64% が x で説明できる<br/>
+・残りの 36% は x 以外の要因やランダムなバラつき</p>
+</div>
+
+
+
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — 数字の裏をのぞく</b>
+<ol>
+<li><b>Step 1:</b> アニメーションを見る。点が順に現れて、パターンが全然違うのに…</li>
+<li><b>Step 2:</b> 各プロットの r ≈ 0.816 を確認。全部ほぼ同じ！</li>
+<li><b>Step 3:</b> 回帰直線が出現 → 直線もほぼ同じ。でも II は曲線、III は外れ値、IV は1点が支配。</li>
+<li><b>Step 4:</b> 「再生」で何度でも見直せる。数字だけでは見えないものがある。</li>
+</ol>
+</div>
+
+<!-- @panel:corr_anscombe -->
+<div class="panel" data-autorun="anscombeReplay">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span>▶ r の落とし穴 — アンスコムの例</span></h3>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<button class="btn" id="anscombeReplay"><span>▶ 再生</span></button>
+</div>
+<canvas aria-busy="true" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="アンスコムの例"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<div class="detail-section">
+<h3>// アンスコムの例が教えていること</h3>
+<p>1973年、統計学者フランシス・アンスコムが「同じ要約統計量でもデータの姿は全く違いうる」ことを示すために作ったデータセット。</p>
+<ul>
+<li><b>I</b>：理想的な直線関係。r がそのまま正しく機能している</li>
+<li><b>II</b>：二次関数的な関係。r は「直線としての相関」しか見ないので、曲線を捉えられない</li>
+<li><b>III</b>：1つの外れ値が r を引き下げている。外れ値に対して脆い</li>
+<li><b>IV</b>：x が1点だけ離れていて、その1点が r を「作っている」。レバレッジが高い</li>
+</ul>
+<p><b>教訓</b>：r や回帰式を計算する<b>前に</b>、必ず散布図を描く。これは統計分析の大原則。</p>
+</div>
+
+<!-- ═══ よくある誤解 ═══ -->
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「相関が高い ＝ 因果関係がある」</b>
+<p>アイスの売上と水難事故は強い正の相関。でもアイスが人を溺れさせているわけではない。共通の原因「気温」が両方を動かしている（交絡因子）。相関は「一緒に動く」と言うだけで「原因→結果」とは言わない。</p>
+</div>
+<div class="misc-item">
+<b>❌「r = 0 なら関係がない」</b>
+<p>U字型のデータは r ≈ 0 でも強い関係がある。r は「直線関係の強さ」を測るだけ。非線形な関係は見逃す。Step 4 で体験済み。</p>
+</div>
+<div class="misc-item">
+<b>❌「r の値だけ見れば十分」</b>
+<p>アンスコムの例が示す通り、r が同じでもデータの構造は全く違いうる。「まず散布図を描く」が統計分析の大原則。</p>
+</div>
+</div>
+
+<!-- ═══ 試験での出方 ═══ -->
+<div class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>r の手計算</b>：Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
+<li><b>r と R² の換算</b>：「R² = 0.49 → r = ±0.7」（符号は散布図の傾きで判断）</li>
+<li><b>無相関の検定</b>：t = r√(n−2) / √(1−r²), df = n−2</li>
+<li><b>共分散と相関係数</b>：r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+</ul>
+</div>
+
+<div class="story-next"><span class="lbl">次は —</span>関係を「予測」に変える <span class="story-arrow">▸</span> <a href="./reg.html">M.01 単回帰分析</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <ol class="side-toc-list">
+    <li><a href="./stdnorm.html">標準正規分布</a></li>
+    <li><a href="./normal.html">正規分布と標準化</a></li>
+    <li><a href="./prob.html">確率の基本法則</a></li>
+    <li><a href="./bayes.html">ベイズの定理</a></li>
+    <li><a href="./morep.html">離散分布と指数分布</a></li>
+    <li><a href="./clt.html">中心極限定理</a></li>
+    <li><a href="./lln.html">大数の法則</a></li>
+    <li><a href="./ci.html">信頼区間</a></li>
+    <li><a href="./test.html">仮説検定</a></li>
+    <li><a href="./dists.html">三大検定分布</a></li>
+    <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./corr.html" class="current">相関係数</a></li>
+    <li><a href="./reg.html">単回帰分析</a></li>
+    <li><a href="./mreg.html">重回帰分析</a></li>
+  </ol>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./chitest.html" rel="prev">← 前へ</a>
+  <a href="./reg.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

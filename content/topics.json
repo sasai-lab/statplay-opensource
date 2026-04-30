@@ -2,6 +2,8 @@
   "topics": [
     {
       "slug": "stdnorm",
+      "ja_sidebar": "標準正規分布",
+      "en_sidebar": "Standard Normal",
       "ja_title": "標準正規分布を直感で掴む",
       "en_title": "Feel the Standard Normal Distribution",
       "ja_desc": "平均0・分散1の標準正規分布 N(0,1) の形と性質を、スライダー操作で可視化。±kσ区間に入る確率、68-95-99.7ルールの意味を実物のグラフで理解する。",
@@ -13,6 +15,8 @@
     },
     {
       "slug": "normal",
+      "ja_sidebar": "正規分布と標準化",
+      "en_sidebar": "Normal Distribution",
       "ja_title": "正規分布と標準化 — μ・σの役割を可視化",
       "en_title": "Normal Distribution & Standardization",
       "ja_desc": "一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。研究や統計検定で頻出する計算の裏側を体感する。",
@@ -24,6 +28,8 @@
     },
     {
       "slug": "prob",
+      "ja_sidebar": "確率の基本法則",
+      "en_sidebar": "Probability Rules",
       "ja_title": "確率の基本法則 — ベン図で直感をつかむ",
       "en_title": "Probability Rules — Venn Diagrams",
       "ja_desc": "加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。",
@@ -35,6 +41,8 @@
     },
     {
       "slug": "bayes",
+      "ja_sidebar": "ベイズの定理",
+      "en_sidebar": "Bayes' Theorem",
       "ja_title": "ベイズ定理 — 陽性的中率を直感で",
       "en_title": "Bayes' Theorem — Positive Predictive Value",
       "ja_desc": "有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。",
@@ -46,6 +54,8 @@
     },
     {
       "slug": "morep",
+      "ja_sidebar": "離散分布と指数分布",
+      "en_sidebar": "Discrete & Exponential",
       "ja_title": "二項分布・ポアソン分布・指数分布",
       "en_title": "Binomial, Poisson, and Exponential Distributions",
       "ja_desc": "成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。",
@@ -57,6 +67,8 @@
     },
     {
       "slug": "clt",
+      "ja_sidebar": "中心極限定理",
+      "en_sidebar": "Central Limit Theorem",
       "ja_title": "中心極限定理を目で見てイメージを掴む",
       "en_title": "See the Central Limit Theorem in Action",
       "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。",
@@ -68,6 +80,8 @@
     },
     {
       "slug": "lln",
+      "ja_sidebar": "大数の法則",
+      "en_sidebar": "Law of Large Numbers",
       "ja_title": "大数の法則 — 試行回数と真の平均",
       "en_title": "The Law of Large Numbers",
       "ja_desc": "コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。",
@@ -79,6 +93,8 @@
     },
     {
       "slug": "ci",
+      "ja_sidebar": "信頼区間",
+      "en_sidebar": "Confidence Interval",
       "ja_title": "信頼区間 — 95%の意味を誤解なく掴む",
       "en_title": "Confidence Intervals — What 95% Really Means",
       "ja_desc": "「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。",
@@ -90,6 +106,8 @@
     },
     {
       "slug": "test",
+      "ja_sidebar": "仮説検定",
+      "en_sidebar": "Hypothesis Testing",
       "ja_title": "仮説検定 — p値・α・棄却域を可視化",
       "en_title": "Hypothesis Testing — Reject Regions & p-values",
       "ja_desc": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。",
@@ -101,6 +119,8 @@
     },
     {
       "slug": "dists",
+      "ja_sidebar": "三大検定分布",
+      "en_sidebar": "Three Test Distributions",
       "ja_title": "t分布・χ²分布・F分布 — 三大検定分布の違い",
       "en_title": "The Three Test Distributions — t, χ², and F",
       "ja_desc": "自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。",
@@ -112,6 +132,8 @@
     },
     {
       "slug": "chitest",
+      "ja_sidebar": "カイ二乗検定",
+      "en_sidebar": "Chi-Squared Test",
       "ja_title": "カイ二乗検定 — 適合度と独立性",
       "en_title": "Chi-Squared Test — Goodness-of-Fit & Independence",
       "ja_desc": "サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。",
@@ -122,7 +144,22 @@
       "en_teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"]
     },
     {
+      "slug": "corr",
+      "ja_sidebar": "相関係数",
+      "en_sidebar": "Correlation",
+      "ja_title": "相関係数 — 散布図と r を体感する",
+      "en_title": "Correlation — Feel r Through Scatter Plots",
+      "ja_desc": "散布図を自由に描いて、相関係数 r が −1〜+1 でどう変わるかを体感。4象限の色分けで公式の意味が見える。アンスコムの例で「数字だけでは分からない」を実感する。",
+      "en_desc": "Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.",
+      "ja_kw": "相関係数, ピアソン, 散布図, 共分散, アンスコム, R², 統計検定2級",
+      "en_kw": "correlation coefficient, Pearson, scatter plot, covariance, Anscombe, R squared, statistics",
+      "teaches": ["相関係数", "共分散", "R²", "アンスコムの例"],
+      "en_teaches": ["Correlation coefficient", "Covariance", "R²", "Anscombe's quartet"]
+    },
+    {
       "slug": "reg",
+      "ja_sidebar": "単回帰分析",
+      "en_sidebar": "Simple Regression",
       "ja_title": "単回帰分析 — 最小二乗法をビジュアルで",
       "en_title": "Simple Linear Regression — OLS Visualized",
       "ja_desc": "キャンバスに点を配置して、最小二乗法による回帰直線が動くのを体感。残差、傾きβ₁、切片β₀、決定係数R²の関係を直感的に理解する。",
@@ -134,6 +171,8 @@
     },
     {
       "slug": "mreg",
+      "ja_sidebar": "重回帰分析",
+      "en_sidebar": "Multiple Regression",
       "ja_title": "重回帰分析 — 2+変数の世界",
       "en_title": "Multiple Regression — Beyond Two Variables",
       "ja_desc": "2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。",
@@ -189,6 +228,7 @@
     "二項分布": "Binomial",
     "ポアソン分布": "Poisson",
     "指数分布": "Exponential",
+    "相関係数": "Correlation",
     "単回帰分析": "Simple Regression",
     "カイ二乗検定": "Chi-Squared Test",
     "重回帰分析": "Multiple Regression",

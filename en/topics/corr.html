@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.">
+<meta name="keywords" content="correlation coefficient, Pearson, scatter plot, covariance, Anscombe, R squared, statistics">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Correlation — Feel r Through Scatter Plots — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/corr.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Correlation — Feel r Through Scatter Plots">
+<meta property="og:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/corr.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Correlation">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Correlation — Feel r Through Scatter Plots">
+<meta name="twitter:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Correlation — Feel r Through Scatter Plots",
+      "description": "Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Correlation coefficient", "Covariance", "R²", "Anscombe's quartet"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/corr.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Correlation"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../../index.html">← StatPlay</a>
+    <a href="../../topics/corr.html" hreflang="ja" rel="alternate">日本語</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+<div class="topic-header-row">
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../index.html#corr">Topics</a><span class="sep">›</span>
+  <span class="current-page">Correlation</span>
+</div>
+<nav class="topic-top-nav" aria-label="Previous / Next topic">
+  <a href="./chitest.html" rel="prev">← Prev</a>
+  <a href="./reg.html" rel="next">Next →</a>
+</nav>
+</div>
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Correlation — Feel r Through Scatter Plots</a></h1>
+  <p class="topic-lead">Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.</p>
+  <section class="reveal in" id="corr">
+
+<div class="sec-tag">M0 / 相関係数</div>
+
+<h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
+
+<div class="story-bridge">The chi-squared test quantified associations between <b>categories</b>. But how do we measure the relationship between <b>continuous numbers</b> — height vs. weight, study time vs. test scores? → The <span class="next">correlation coefficient r</span> compresses "how much they move together" into a single number from <b>−1 to +1</b>.</div>
+
+<p class="sec-desc">
+    The <b>correlation coefficient r</b> measures whether two variables move together.
+    +1 means a perfect positive linear relationship, −1 a perfect negative one, 0 means no linear relationship.
+    <b>Click</b> the canvas to add points and watch r update in real time.
+    The yellow dashed lines mark the means, splitting the space into four quadrants — more points in <b>green quadrants</b> means positive correlation, more in <b>red</b> means negative.
+    This coloring is the "tug-of-war of signs" in the formula Σ(x−x̄)(y−ȳ).
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Feel the Correlation</b>
+<ol>
+<li><b>Step 1:</b> Set r = 0.80, click Generate → an upward-sloping band. Points cluster in the <b>green quadrants</b>.</li>
+<li><b>Step 2:</b> Change to r = −0.60, Generate → downward slope. More points in the <b>red quadrants</b>.</li>
+<li><b>Step 3:</b> Set r = 0.00, Generate → points spread evenly across all four quadrants. A "cloud," not a band.</li>
+<li><b>Step 4:</b> CLEAR, then manually place a <b>U-shape</b> → r ≈ 0 yet there's an obvious pattern! r only captures <b>linear</b> relationships.</li>
+</ol>
+</div>
+<!-- @panel:corr_main -->
+<div class="panel" data-autorun="corrGen">
+<div class="controls">
+<div class="ctrl">
+<label><span>Target r</span>
+          = <span class="val" id="corrTargetR">0.80</span>
+</label>
+<input id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
+</div>
+<div class="ctrl">
+<label><span>Points n</span>
+          = <span class="val" id="corrTargetN">50</span>
+</label>
+<input id="corrN" max="200" min="10" step="1" type="range" value="50"/>
+</div>
+<button class="btn" id="corrGen"><span>▶ Generate</span></button>
+<button class="btn magenta" id="corrClear">CLEAR</button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click canvas to add points</span></span>
+</div>
+<canvas aria-busy="true" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<div class="info">
+<div>n<strong id="corrNval">0</strong></div>
+<div><span>Correlation r</span><strong id="corrRval">—</strong></div>
+<div>R²<strong id="corrR2val">—</strong></div>
+<div><span>Covariance</span><strong id="corrCov">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="corrCanvas" data-title="Correlation"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Peek Behind the Numbers</b>
+<ol>
+<li><b>Step 1:</b> Watch the animation. Points appear one by one, patterns look totally different…</li>
+<li><b>Step 2:</b> Check each plot's r ≈ 0.816. They're all nearly identical!</li>
+<li><b>Step 3:</b> Regression lines appear → lines are nearly identical too. Yet II is curved, III has an outlier, IV is dominated by one point.</li>
+<li><b>Step 4:</b> Click "Replay" to watch again. Numbers alone don't tell the whole story.</li>
+</ol>
+</div>
+<!-- @panel:corr_anscombe -->
+<div class="panel" data-autorun="anscombeReplay">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
+</div>
+<canvas aria-busy="true" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="en/topics/corr.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./chitest.html" rel="prev">← Prev</a>
+  <a href="./reg.html" rel="next">Next →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+<nav class="side-toc" aria-label="All Topics">
+  <ol class="side-toc-list">
+    <li><a href="./stdnorm.html">Standard Normal</a></li>
+    <li><a href="./normal.html">Normal Distribution</a></li>
+    <li><a href="./prob.html">Probability Rules</a></li>
+    <li><a href="./bayes.html">Bayes' Theorem</a></li>
+    <li><a href="./morep.html">Discrete & Exponential</a></li>
+    <li><a href="./clt.html">Central Limit Theorem</a></li>
+    <li><a href="./lln.html">Law of Large Numbers</a></li>
+    <li><a href="./ci.html">Confidence Interval</a></li>
+    <li><a href="./test.html">Hypothesis Testing</a></li>
+    <li><a href="./dists.html">Three Test Distributions</a></li>
+    <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./corr.html" class="current">Correlation</a></li>
+    <li><a href="./reg.html">Simple Regression</a></li>
+    <li><a href="./mreg.html">Multiple Regression</a></li>
+  </ol>
+</nav>
+</body>
+</html>

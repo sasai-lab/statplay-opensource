@@ -147,6 +147,7 @@
     <div class="nav-dropdown">
       <a href="#cat-modeling" class="nav-cat-link" data-cat="modeling"><span data-lang="ja">モデリング</span><span data-lang="en">MODEL</span></a>
       <div class="nav-dropdown-menu">
+        <a href="#corr" data-lang="ja">相関係数</a><a href="#corr" data-lang="en">Correlation</a>
         <a href="#reg" data-lang="ja">単回帰分析</a><a href="#reg" data-lang="en">Simple Regression</a>
         <a href="#mreg" data-lang="ja">重回帰分析</a><a href="#mreg" data-lang="en">Multiple Regression</a>
       </div>
@@ -1593,8 +1594,8 @@
     <a data-lang="ja" href="topics/chitest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/chitest.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="#reg">M1 単回帰分析</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>catching a relationship with a line <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>2変数の「つながり」を測る <span class="story-arrow">▸</span> <a href="#corr">M0 相関係数</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="#corr">M0 Correlation</a></div>
 </section>
 
 
@@ -1606,13 +1607,13 @@
     <h3 data-lang="en" class="cat-preview-title">▼ What comes next — into Modeling</h3>
     <p data-lang="ja" class="cat-preview-desc">
       検定で「差があるか」「独立か」を判定できるようになった。ここから先は<b>「関係を見つけて予測する」</b>ステージ。<br>
-      <b>単回帰</b>で 2 変数に直線を引き、傾きの有意性を t 検定で判断する。
+      <b>相関係数</b>で 2 変数の「つながり」を測り、<b>単回帰</b>で直線を引いて予測に変える。
       そして<b>重回帰</b>で「他の要因を制御しながら、本当の効果を測る」——
       検定・信頼区間・F 分布が全部ここに合流する。統計の道具箱の集大成へ。
     </p>
     <p data-lang="en" class="cat-preview-desc">
       You can now test for differences and independence. Next: <b>finding relationships and predicting</b>.<br>
-      <b>Simple regression</b> draws a line through two variables, testing the slope with a t-test.
+      <b>Correlation</b> measures the "link" between two variables, then <b>simple regression</b> turns it into prediction.
       Then <b>multiple regression</b> controls for confounders to measure true effects —
       tests, CIs, and the F-distribution all converge here. The full statistical toolkit comes together.
     </p>
@@ -1627,6 +1628,126 @@
 </div>
 
 
+<!-- ============ CORRELATION ============ -->
+
+<section id="corr" class="reveal">
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/corr.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/corr.html">▸ Dedicated page for this topic</a></div>
+  <div class="sec-tag">M0 / 相関係数</div>
+  <h2 class="sec-title" data-lang="ja">相関係数 <span class="sec-sub">— 2変数の「つながり」を測る</span></h2>
+  <h2 class="sec-title" data-lang="en">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
+
+  <div class="story-bridge" data-lang="ja">カイ二乗検定は「カテゴリ同士の関連」を数値化した。でも「身長と体重」「勉強時間とテストの点」のように<b>連続な数値どうし</b>の関係はどう測る？ → <span class="next">相関係数 r</span> が「一緒に動く度合い」を <b>−1 〜 +1</b> の1つの数字にまとめてくれる。</div>
+  <div class="story-bridge" data-lang="en">The chi-squared test quantified associations between <b>categories</b>. But how do we measure the relationship between <b>continuous numbers</b> — height vs. weight, study time vs. test scores? → The <span class="next">correlation coefficient r</span> compresses "how much they move together" into a single number from <b>−1 to +1</b>.</div>
+
+  <p class="sec-desc" data-lang="ja">
+    2つの変数が「一緒に動くかどうか」を測るのが<b>相関係数 r</b>。
+    +1 なら完全な正の直線関係、−1 なら完全な負の直線関係、0 なら直線的な関係がない。
+    キャンバスを<b>クリック</b>すると点が追加され、r がリアルタイムで変わる。
+    黄色い破線が平均線で、4つの象限に分かれる——<b>緑の象限</b>に点が多いほど正の相関、<b>赤の象限</b>に多いほど負の相関。
+    この色分けが、公式 Σ(x−x̄)(y−ȳ) の「符号の綱引き」そのもの。
+  </p>
+  <p class="sec-desc" data-lang="en">
+    The <b>correlation coefficient r</b> measures whether two variables move together.
+    +1 means a perfect positive linear relationship, −1 a perfect negative one, 0 means no linear relationship.
+    <b>Click</b> the canvas to add points and watch r update in real time.
+    The yellow dashed lines mark the means, splitting the space into four quadrants — more points in <b>green quadrants</b> means positive correlation, more in <b>red</b> means negative.
+    This coloring is the "tug-of-war of signs" in the formula Σ(x−x̄)(y−ȳ).
+  </p>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 相関係数を体感する</b>
+    <ol>
+      <li><b>Step 1:</b> r = 0.80 で「生成」→ 右上がりの帯。<b>緑の象限</b>に点が集中している。</li>
+      <li><b>Step 2:</b> r = −0.60 に変えて「生成」→ 右下がり。<b>赤の象限</b>に点が多い。</li>
+      <li><b>Step 3:</b> r = 0.00 で「生成」→ 四象限にほぼ均等に散らばる。帯ではなく「雲」。</li>
+      <li><b>Step 4:</b> CLEAR して、<b>U字型</b>に手で点を配置 → r ≈ 0 なのに明らかに関係がある！ → r は「直線関係」しか捉えられない。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — Feel the Correlation</b>
+    <ol>
+      <li><b>Step 1:</b> Set r = 0.80, click Generate → an upward-sloping band. Points cluster in the <b>green quadrants</b>.</li>
+      <li><b>Step 2:</b> Change to r = −0.60, Generate → downward slope. More points in the <b>red quadrants</b>.</li>
+      <li><b>Step 3:</b> Set r = 0.00, Generate → points spread evenly across all four quadrants. A "cloud," not a band.</li>
+      <li><b>Step 4:</b> CLEAR, then manually place a <b>U-shape</b> → r ≈ 0 yet there's an obvious pattern! r only captures <b>linear</b> relationships.</li>
+    </ol>
+  </div>
+
+<!-- @panel:corr_main -->
+<div class="panel" data-autorun="corrGen">
+    <div class="controls">
+      <div class="ctrl">
+        <label><span data-lang="ja">目標 r</span><span data-lang="en">Target r</span>
+          = <span class="val" id="corrTargetR">0.80</span>
+        </label>
+        <input type="range" id="corrR" min="-1" max="1" step="0.01" value="0.80">
+      </div>
+      <div class="ctrl">
+        <label><span data-lang="ja">点の数 n</span><span data-lang="en">Points n</span>
+          = <span class="val" id="corrTargetN">50</span>
+        </label>
+        <input type="range" id="corrN" min="10" max="200" step="1" value="50">
+      </div>
+      <button class="btn" id="corrGen"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Generate</span></button>
+      <button class="btn magenta" id="corrClear">CLEAR</button>
+      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックで点を追加</span><span data-lang="en">&#x2191; Click canvas to add points</span></span>
+    </div>
+    <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" height="320" style="cursor:crosshair" aria-busy="true"></canvas>
+    <div class="info">
+      <div>n<strong id="corrNval">0</strong></div>
+      <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="corrRval">&#x2014;</strong></div>
+      <div>R&#x00B2;<strong id="corrR2val">&#x2014;</strong></div>
+      <div><span data-lang="ja">共分散 Cov</span><span data-lang="en">Covariance</span><strong id="corrCov">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="corrCanvas" data-title="相関係数" data-title-en="Correlation" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+</div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+    <b>実験ガイド — 数字の裏をのぞく</b>
+    <ol>
+      <li><b>Step 1:</b> アニメーションを見る。点が順に現れて、パターンが全然違うのに…</li>
+      <li><b>Step 2:</b> 各プロットの r ≈ 0.816 を確認。全部ほぼ同じ！</li>
+      <li><b>Step 3:</b> 回帰直線が出現 → 直線もほぼ同じ。でも II は曲線、III は外れ値、IV は1点が支配。</li>
+      <li><b>Step 4:</b> 「再生」で何度でも見直せる。数字だけでは見えないものがある。</li>
+    </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+    <b>Experiment Guide — Peek Behind the Numbers</b>
+    <ol>
+      <li><b>Step 1:</b> Watch the animation. Points appear one by one, patterns look totally different…</li>
+      <li><b>Step 2:</b> Check each plot's r ≈ 0.816. They're all nearly identical!</li>
+      <li><b>Step 3:</b> Regression lines appear → lines are nearly identical too. Yet II is curved, III has an outlier, IV is dominated by one point.</li>
+      <li><b>Step 4:</b> Click "Replay" to watch again. Numbers alone don't tell the whole story.</li>
+    </ol>
+  </div>
+
+<!-- @panel:corr_anscombe -->
+<div class="panel" data-autorun="anscombeReplay">
+    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span data-lang="ja">&#x25B6; r の落とし穴 &#x2014; アンスコムの例</span><span data-lang="en">&#x25B6; The pitfall of r &#x2014; Anscombe&#x27;s Quartet</span></h3>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <button class="btn" id="anscombeReplay"><span data-lang="ja">&#x25B6; 再生</span><span data-lang="en">&#x25B6; Replay</span></button>
+    </div>
+    <canvas id="anscombeCanvas" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="anscombeCanvas" data-title="アンスコムの例" data-title-en="Anscombe's Quartet" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+</div>
+
+  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/corr.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/corr.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>関係を「予測」に変える <span class="story-arrow">▸</span> <a href="#reg">M1 単回帰分析</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
+</section>
 
 
 <section id="reg" class="reveal">
@@ -1635,8 +1756,8 @@
   <h2 class="sec-title" data-lang="ja">単回帰分析 <span class="sec-sub">— 最小二乗法で線を引く</span></h2>
   <h2 class="sec-title" data-lang="en">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
 
-  <div class="story-bridge" data-lang="ja">ここまで <b>1つの変数</b>の話。現実の問題は「身長と体重」「広告費と売上」のように<b>関係</b>を聞いてくる。<span class="next">単回帰</span>は 2 変数に直線を 1 本引くだけ——でも、その傾き β̂ の背後にはさっきまでやった <b>t 検定・信頼区間</b> がしっかり効いている。</div>
-  <div class="story-bridge" data-lang="en">Up to here, <b>one variable</b> at a time. Real questions involve <b>relationships</b> — height vs. weight, ad spend vs. sales. <span class="next">Simple regression</span> draws one line through two variables — and the <b>t-tests and CIs</b> you just learned power the inference on its slope β̂.</div>
+  <div class="story-bridge" data-lang="ja">相関係数で「つながりの強さ」は測れた。次は「x が 1 増えたら y はどれだけ動く？」——関係を<b>予測</b>に変えるのが<span class="next">単回帰</span>。2 変数に直線を 1 本引くだけ——でも、その傾き β̂ の背後にはさっきまでやった <b>t 検定・信頼区間</b> がしっかり効いている。</div>
+  <div class="story-bridge" data-lang="en">Correlation measured "how strong the link is." Next: "if x goes up by 1, how much does y move?" — <span class="next">simple regression</span> turns the relationship into <b>prediction</b>. One line through two variables — and the <b>t-tests and CIs</b> you just learned power the inference on its slope β̂.</div>
   <p class="sec-desc" data-lang="ja">
     説明変数が1つだけの回帰が<b>単回帰</b>。x が1増えると y は β₁ だけ動く、という線形関係を仮定する。
     <b>最小二乗法</b>は、全ての点との縦方向の差（残差）の二乗和を最小化する直線を選ぶ方法。
