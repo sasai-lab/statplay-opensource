@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。">
+<meta name="keywords" content="分散分析, ANOVA, F値, 一元配置分散分析, 群間分散, 群内分散, 多重比較, 統計検定2級">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>分散分析（ANOVA）— F値の直感を掴む — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/anova.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/anova.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/anova.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/anova.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="分散分析（ANOVA）— F値の直感を掴む">
+<meta property="og:description" content="3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/anova.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 分散分析（ANOVA）">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="分散分析（ANOVA）— F値の直感を掴む">
+<meta name="twitter:description" content="3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "分散分析（ANOVA）— F値の直感を掴む",
+      "description": "3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "分散分析",
+        "F値",
+        "群間分散と群内分散",
+        "多重比較の問題"
+      ],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/anova.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/topics/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "分散分析（ANOVA）"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav">
+  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">← StatPlay</a>
+    <a href="../en/topics/anova.html" hreflang="en" rel="alternate">EN</a>
+    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+  </div>
+</nav>
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">分散分析（ANOVA）— F値の直感を掴む</a></h1>
+  <p class="topic-lead">3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。</p>
+  <section class="reveal in" id="anova">
+
+<div class="sec-tag">I.07 / ANOVA</div>
+<h2 class="sec-title">分散分析（ANOVA） <span class="sec-sub">— F値の直感を掴む</span></h2>
+
+<div class="story-bridge">カイ二乗検定は「カテゴリのズレ」を測った。では「3グループ以上の<b>平均値</b>に差があるか？」はどう調べる？ t検定を何度も繰り返すと偽陽性が膨らむ — <span class="next">分散分析（ANOVA）</span>なら、全グループを一度に比較できる。</div>
+
+<p class="sec-desc">
+「群間分散（グループ平均のばらつき）÷ 群内分散（グループ内のばらつき）」がF値。<br>
+群間が大きく群内が小さいほど「グループ間に差がある」と判定される。スライダーで動かして体感しよう。
+</p>
+
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — 多重比較の問題</b>
+<ol>
+<li><b>Step 1:</b> ▶ 100回 をクリック — 差がない3群でt検定を3回繰り返す試行を100回実施。</li>
+<li><b>Step 2:</b> 赤い点の割合を確認 — 理論上14.3%のはずが、実測値はどうなる？</li>
+<li><b>Step 3:</b> ▶ 1000回 で試行を追加 — 試行数が増えると14.3%に収束していく。</li>
+</ol>
+</div>
+<!-- @panel:anova_sim -->
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ なぜt検定を繰り返してはいけないか</h3>
+
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<span>まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)×20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
+
+</div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<button class="lang-toggle" id="mcRun" style="padding:5px 12px;font-size:11px"><span>▶ 100回</span></button>
+<button class="lang-toggle" id="mcRun1000" style="padding:5px 12px;font-size:11px"><span>▶ 1000回</span></button>
+<button class="lang-toggle" id="mcReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+</div>
+<canvas aria-busy="true" aria-label="多重比較シミュレーション" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>試行回数</span> <strong id="mcTotal">0</strong></div>
+<div><span>偽陽性</span> <strong id="mcFP">0</strong></div>
+<div><span>偽陽性率</span> <strong id="mcRate">0.0%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mcSimCanvas" data-title="多重比較シミュレーション"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<div class="detail-section">
+<h3>// 「5%なら安心」が通用しないワケ</h3>
+<div class="formula" data-tex="P(\text{少なくとも1回偽陽性}) = 1 - (1 - \alpha)^m = 1 - 0.95^3 \approx 0.143"></div>
+<p>t検定を1回やるとき、「本当は差がないのに"差がある"と言ってしまう」確率は5%。ここまでは大丈夫。<br>
+でも同じ検定を3回繰り返すと、話がだいぶ変わります。</p>
+<p><b>コイン投げで考えてみると</b><br>
+「20面サイコロを振って1が出る確率」は5%。でも3回振って「1回も1が出ない」確率は 0.95³ ≈ 85.7%。<br>
+つまり「少なくとも1回は1が出る」確率は <b>14.3%</b>。検定もまったく同じ構造です。</p>
+<p>3群のペアワイズ比較（A-B、A-C、B-C）は3回のt検定。<br>
+「3回とも間違えない」のが85.7%、「少なくとも1回間違える」のが<b>14.3%</b>。<br>
+5%のつもりが約3倍に膨らんでいます。グループが増えるともっと深刻：5群なら<b>40%</b>、10群なら<b>90%以上</b>。</p>
+<p>ANOVAはこの問題を避けるために「全グループをまとめて1回で検定する」方法です。</p>
+</div>
+
+<div class="sim-layout">
+<div class="guided-steps">
+<p style="margin:0 0 6px;font-size:12px;color:var(--dim)">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
+<b>実験ガイド — F値を体感する</b>
+<ol>
+<li><b>Step 1:</b> 群間の差をゼロにする → F値が1付近に。全群が「同じ集団」のように見える。</li>
+<li><b>Step 2:</b> 群間の差を大きくする → F値が上がり、p値が下がる。棄却域に入る瞬間を確認。</li>
+<li><b>Step 3:</b> 群内のばらつきを大きくする → 同じ差でもF値が下がる。「差があっても検出できない」体験。</li>
+<li><b>Step 4:</b> サンプルサイズを増やす → F値が上がる。大きなサンプルほど小さな差を検出できる（検出力）。</li>
+</ol>
+</div>
+<!-- @panel:anova_main -->
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ 群間分散 vs 群内分散 — F値をスライダーで体感</h3>
+
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+<span>群間の差</span>
+
+          = <span class="val" id="anovaEffectVal">1.5</span>
+</label>
+<input id="anovaEffect" max="5" min="0" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+<span>群内のばらつき (σ)</span>
+
+          = <span class="val" id="anovaWithinVal">1.5</span>
+</label>
+<input id="anovaWithin" max="5" min="0.3" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+<span>各群のn</span>
+
+          = <span class="val" id="anovaNkVal">20</span>
+</label>
+<input id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
+</div>
+<button class="lang-toggle" id="anovaGen" style="padding:5px 12px;font-size:11px"><span>↻ 再生成</span></button>
+</div>
+<canvas aria-busy="true" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>F</span> <strong id="anovaF">—</strong></div>
+<div><span>群間 df</span> <strong id="anovaDfB">—</strong></div>
+<div><span>群内 df</span> <strong id="anovaDfW">—</strong></div>
+<div><span>p</span> <strong id="anovaP">—</strong></div>
+<div><span>SSB</span> <strong id="anovaSSB">—</strong></div>
+<div><span>SSW</span> <strong id="anovaSSW">—</strong></div>
+<div><span>η²</span> <strong id="anovaEta2">—</strong></div>
+<div><span>判定</span> <strong id="anovaResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anovaCanvas" data-title="分散分析（ANOVA）"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:anova_text -->
+<div class="detail-section">
+<h3>// 分散分析表</h3>
+
+<table class="anova-tbl" id="anovaTable" style="width:100%;border-collapse:collapse;font-family:'Courier New',monospace;font-size:13px;margin:8px 0">
+<thead><tr style="color:var(--cyan);border-bottom:1px solid var(--cyan)">
+<th style="text-align:left;padding:4px 8px"><span>要因</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:4px 8px"><span>群間（B）</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
+<tr><td style="padding:4px 8px"><span>群内（W）</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
+<tr style="border-top:1px solid var(--dim)"><td style="padding:4px 8px"><span>全体</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<!-- /@panel -->
+
+<div class="detail-section">
+<h3>// F値って結局なにをしている？</h3>
+<p>3つのクラスのテスト結果を比べたいとします。<br>
+「クラスごとの平均が離れている」＝ 教え方に差がありそう。<br>
+「でもクラス内の個人差も大きい」＝ たまたまかもしれない。</p>
+<p>F値は、この2つを比べた数字です。<br>
+<b>「クラス間のばらつき」÷「クラス内のばらつき」</b> —— それだけ。<br>
+分子が大きいほど「グループ間に差がありそうだ」と判断できます。</p>
+<p>公式にすると↓こうなりますが、いきなり暗記しなくて大丈夫です。<br>
+上のグラフをドラッグして、スライダーを動かしながら眺めるほうが先。</p>
+<div class="formula" data-tex="F = \frac{\text{MSB}}{\text{MSW}} = \frac{SS_B / (k-1)}{SS_W / (N-k)}"></div>
+<p>・SS<sub>B</sub>（群間変動）= グループ平均が全体平均からどれだけズレているか<br>
+・SS<sub>W</sub>（群内変動）= 各グループの中でデータがどれだけ散らばっているか<br>
+・df で割って「1自由度あたり」に揃えたのが MS<br>
+・<b>F ≈ 1</b> なら「差があるとは言えない」、<b>F が大きい</b>ほど「差がありそう」</p>
+<p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br>
+<a href="../tables/index.html?dist=f" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
+</div>
+
+<div class="detail-section">
+<h3>// 手を動かしてみよう — テスト成績の例</h3>
+<p>3つの教授法 A・B・C を各15人で比較したとします。</p>
+<p>① まず平均を見る<br>
+　群A = 65点、群B = 72点、群C = 73点、全体平均 = 70点</p>
+<p>② 群間変動 SS<sub>B</sub> を計算<br>
+　各群の人数 × (群平均 − 全体平均)² を足す<br>
+　= 15×(65−70)² + 15×(72−70)² + 15×(73−70)² = 15×(25+4+9) = <b>570</b></p>
+<p>③ 群内変動 SS<sub>W</sub><br>
+　各群内でデータが平均からどれだけ散らばっているかの合計 = 仮に <b>2520</b></p>
+<p>④ 自由度を出す<br>
+　df<sub>B</sub> = 群の数−1 = 3−1 = 2<br>
+　df<sub>W</sub> = 全人数−群の数 = 45−3 = 42</p>
+<p>⑤ MSを出してF値へ<br>
+　MSB = 570÷2 = 285、MSW = 2520÷42 = 60<br>
+　<b>F = 285÷60 = 4.75</b></p>
+<p>⑥ 判定<br>
+　F(2, 42) の臨界値（α=0.05）は約 3.22。<br>
+　4.75 > 3.22 → <b>棄却</b>（少なくとも1つの群に差がある）。<br>
+　——ただし「どの群とどの群か」は、まだわかりません（→ 多重比較が必要）。</p>
+</div>
+
+<div class="misconception-box">
+<h3>// ここで引っかかりやすいポイント</h3>
+<div class="misc-item">
+<b>「ANOVAで有意 ＝ どの群に差があるか分かる」？</b>
+<p>実はこれ、わかりません。ANOVAが教えてくれるのは「どこかに差がある」だけ。<br>
+どの群同士かを突き止めるには、Tukey法やBonferroni法などの多重比較が必要です。</p>
+</div>
+<div class="misc-item">
+<b>「t検定を何回もやればいいのでは？」</b>
+<p>ページ上部のシミュレーションを見てください。3群の比較で t 検定を繰り返すと、本当は差がなくても約14.3%の確率で「有意」が出てしまいます。<br>
+ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保てる方法です。</p>
+</div>
+<div class="misc-item">
+<b>「F値が大きい ＝ 効果も大きい」？</b>
+<p>サンプルサイズが大きいと、ほんの少しの差でもF値は大きくなります。<br>
+「実際にどれくらい差があるか」は効果量（η²）で見るのがおすすめです。</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// 試験で聞かれやすいところ</h3>
+<p>統計検定や大学の期末試験では、以下のパターンがよく出ます。</p>
+<ul>
+<li><b>分散分析表の穴埋め</b> — SS と df が与えられて「MSとF値を求めよ」。上の具体例をなぞれば解ける計算問題です</li>
+<li><b>自由度の公式</b> — 群間 = k−1、群内 = N−k、全体 = N−1</li>
+<li><b>「t検定を繰り返すと何が問題か」</b> — 多重比較の問題を論述させる問題。シミュレーションの14.3%の話がそのまま使えます</li>
+<li><b>前提条件</b> — 正規性・等分散性・独立性の3つ</li>
+</ul>
+</div>
+
+<div class="story-next"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="./corr.html">M.01 相関係数</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <ol class="side-toc-list">
+    <li><a href="./stdnorm.html">標準正規分布</a></li>
+    <li><a href="./normal.html">正規分布と標準化</a></li>
+    <li><a href="./prob.html">確率の基本法則</a></li>
+    <li><a href="./bayes.html">ベイズの定理</a></li>
+    <li><a href="./morep.html">離散分布と指数分布</a></li>
+    <li><a href="./clt.html">中心極限定理</a></li>
+    <li><a href="./lln.html">大数の法則</a></li>
+    <li><a href="./ci.html">信頼区間</a></li>
+    <li><a href="./test.html">仮説検定</a></li>
+    <li><a href="./dists.html">三大検定分布</a></li>
+    <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html" class="current">分散分析（ANOVA）</a></li>
+    <li><a href="./corr.html">相関係数</a></li>
+    <li><a href="./reg.html">単回帰分析</a></li>
+    <li><a href="./mreg.html">重回帰分析</a></li>
+  </ol>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./chitest.html" rel="prev">← 前へ</a>
+  <a href="./corr.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

@@ -175,6 +175,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:chitest_detail_gof -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
@@ -191,8 +192,7 @@
 ・全カテゴリ分を合計 → 1つの数字で「全体のフィット具合」が分かる</p>
 </div>
 
-
-
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>実験ガイド — 独立性検定</b>
@@ -232,6 +232,7 @@
 </div>
 <!-- /@panel -->
 </div>
+<!-- @panel:chitest_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
@@ -247,9 +248,6 @@
 ・χ²近似が不正確になる。目安として「Eが5未満のセルが全体の20%以上」なら、フィッシャーの正確検定を使うか、カテゴリを統合する</p>
 </div>
 
-
-
-<!-- ═══ 詳細解説 ═══ -->
 <div class="detail-section">
 <h3>// 適合度検定 と 独立性検定 — 何が違う？</h3>
 <p>どちらも χ² = Σ(O−E)²/E を使うけど、問いが違う：</p>
@@ -262,7 +260,6 @@
 <li>適合度：理論から直接計算（サイコロなら n/6）</li>
 <li>独立性：データの行合計×列合計÷総数（独立を仮定して逆算）</li>
 </ul>
-
 <h3>// 常に「右裾だけ」を見る理由</h3>
 <p>χ²の値は「ズレの二乗の合計」なので、必ず 0 以上。ズレが大きいほど右に大きくなる。</p>
 <ul>
@@ -272,7 +269,6 @@
 </ul>
 </div>
 
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
@@ -289,7 +285,6 @@
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -301,6 +296,7 @@
 <p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>関係を直線で捕まえる <span class="story-arrow">▸</span> <a href="./reg.html">M.01 単回帰分析</a></div>
 
 </section>
@@ -357,6 +353,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html">三大検定分布</a></li>
     <li><a href="./chitest.html" class="current">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>
@@ -364,7 +361,7 @@
 </nav>
 <nav class="topic-nav" aria-label="前後のトピック">
   <a href="./dists.html" rel="prev">← 前へ</a>
-  <a href="./corr.html" rel="next">次へ →</a>
+  <a href="./anova.html" rel="next">次へ →</a>
 </nav>
 </body>
 </html>

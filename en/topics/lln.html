@@ -157,6 +157,71 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:lln_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
+<p><b>Left side in plain English</b><br/>
+・"The probability that the average height of n people deviates from the true population mean by ε cm or more"</p>
+<p><b>What the right side tells us</b><br/>
+・σ²/nε²: an upper bound on that probability. The actual probability may be smaller, but it's at most this value<br/>
+・n is in the denominator → as n grows, the upper bound shrinks toward zero<br/>
+・Translation: "collect more samples and the mean can be made as close to the truth as you like" — that's the Law of Large Numbers</p>
+<p><b>Worked example (coin flips)</b><br/>
+・p = 0.5 (probability of heads), σ² = 0.25, ε = 0.01 (within 1%)<br/>
+・n = 100: P ≤ 0.25/(100 × 0.0001) = 25 → the bound exceeds 1, so it says nothing useful<br/>
+・n = 100,000: P ≤ 0.025 → at most 2.5%<br/>
+・n = 1,000,000: P ≤ 0.0025 → at most 0.25%. The mean is virtually pinned to the truth<br/>
+・Chebyshev's inequality gives a loose bound; in practice convergence is much faster</p>
+</div>
+
+<div class="detail-section">
+<h3>// Why this theorem is statistics' "license to operate"</h3>
+<p>This didn't click for me at first, but without the LLN, "inferring the whole from a sample" has no justification. The foundation of statistics crumbles.</p>
+<ul>
+<li>A poll asks 1,000 people and reports "48% approval" — but without the LLN, there's no guarantee this is close to the real number</li>
+<li>A drug trial shows "high improvement rate" — could be pure chance</li>
+<li>An insurance company estimates accident rates from historical data to set premiums — that falls apart too</li>
+</ul>
+<p>The LLN guarantees that "as n grows, the sample mean approaches the population mean." That's what makes all of the above legitimate. A humble theorem, but everything breaks without it.</p>
+<h3>// Watch out for the gambler's fallacy</h3>
+<p>Five heads in a row doesn't make tails more likely on the sixth flip — it's still 0.5. The LLN doesn't say "the next one will balance things out." It says "over thousands of flips, the proportion converges to 0.5." Individual trials remain random.</p>
+<h3>// LLN vs. CLT — this comes up in exams</h3>
+<table>
+<tr><th></th><th>LLN (Law of Large Numbers)</th><th>CLT (Central Limit Theorem)</th></tr>
+<tr><td>About what?</td><td>The mean's <b>value</b> approaches the truth</td><td>The mean's <b>distribution shape</b> approaches normal</td></tr>
+<tr><td>One-liner</td><td>"Where it's heading"</td><td>"How it spreads along the way"</td></tr>
+<tr><td>Requirement</td><td>The mean must exist</td><td>Both mean and variance must exist</td></tr>
+</table>
+<p>In short: the LLN tells you the destination; the CLT tells you the shape of the road.</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "100 flips should give exactly 50 heads"</b>
+<p>The LLN says the proportion approaches 0.5, not the count. The absolute gap |heads − 50| can actually grow. 100 flips: 48 heads (48%, gap 2). 10,000 flips: 4,950 heads (49.5%, gap 50). The proportion got closer, but the gap widened.</p>
+</div>
+<div class="misc-item">
+<b>❌ "If you have the LLN, you don't need the CLT"</b>
+<p>The LLN only says "the mean approaches the truth." It can't answer "how precise is it?" or "what's the shape of the error?" — that's the CLT's job. You need both.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The LLN works for any distribution"</b>
+<p>It requires the mean to exist. For the Cauchy distribution, the mean is undefined, and the sample mean doesn't converge no matter how much data you collect.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Chebyshev's inequality calculation</b>: "σ²=4, n=100. Upper bound for P(|X̄−μ| ≥ 1)?" → 4/(100×1) = 0.04</li>
+<li><b>True/false</b>: "The theorem guaranteeing sample mean convergence is (a) LLN (b) CLT" → (a)</li>
+<li><b>LLN vs. CLT distinction</b>: "Which theorem describes the distribution's shape?" → CLT</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="./ci.html">I.03 Confidence Interval</a></div>
 </section>
 </main>
@@ -212,6 +277,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

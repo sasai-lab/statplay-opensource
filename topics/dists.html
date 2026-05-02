@@ -296,6 +296,7 @@
 </div>
 <!-- /@panel -->
 </div>
+<!-- @panel:dists_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="t_k = \frac{Z}{\sqrt{\chi^2_k / k}}\,,\quad \chi^2_k = \sum_{i=1}^{k} Z_i^2\,,\quad F_{m,n} = \frac{\chi^2_m / m}{\chi^2_n / n}"></div>
@@ -313,9 +314,6 @@
 ・分子と分母で自由度が違うから、入れ替えると別の分布になる ← 注意</p>
 </div>
 
-
-
-<!-- ═══ 詳細解説 ═══ -->
 <div class="detail-section">
 <h3>// 自由度 (df) って結局なに？</h3>
 <p>自分もこれ、最初まったく意味が分からなかった。今の理解はこう：「自由に値を決められるデータの個数」。</p>
@@ -328,7 +326,6 @@
 ・情報が少ない → 推定が不安定 → 分布の裾が広がる（極端な値が出やすい）<br/>
 ・df=1 の t分布はかなり裾が太い。df=30 になると正規分布とほぼ見分けがつかない<br/>
 ・上のシミュレーションで df を動かして確かめてみよう</p>
-
 <h3>// いつどれを使う？早見表</h3>
 <table>
 <tr><th>やりたいこと</th><th>σ を知ってる？</th><th>使う分布</th></tr>
@@ -343,7 +340,6 @@
 <p style="margin:10px 0 0">使う分布が決まったら<a href="../tables/index.html" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値をグラフと一緒に確認</p>
 </div>
 
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
@@ -360,7 +356,6 @@
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -371,6 +366,7 @@
 </ul>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="./chitest.html">I.06 カイ二乗検定</a></div>
 
 </section>
@@ -427,6 +423,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html" class="current">三大検定分布</a></li>
     <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>

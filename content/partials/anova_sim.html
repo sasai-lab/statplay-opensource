@@ -1,0 +1,22 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; なぜt検定を繰り返してはいけないか</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Why You Can't Just Repeat t-Tests</h3>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+      <span data-lang="ja">まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)&#x00D7;20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
+      <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+    </div>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <button id="mcRun" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
+      <button id="mcRun1000" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
+      <button id="mcReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+    </div>
+    <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span> <strong id="mcTotal">0</strong></div>
+      <div><span data-lang="ja">偽陽性</span><span data-lang="en">False positives</span> <strong id="mcFP">0</strong></div>
+      <div><span data-lang="ja">偽陽性率</span><span data-lang="en">FP rate</span> <strong id="mcRate">0.0%</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="mcSimCanvas" data-title="多重比較シミュレーション" data-title-en="Multiple Comparisons Simulation" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

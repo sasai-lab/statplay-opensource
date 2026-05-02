@@ -172,6 +172,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:clt_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
@@ -188,16 +189,12 @@
 ・つまり CLT は「正規分布の道具が何にでも使える理由」</p>
 </div>
 
-
-
-<!-- ═══ 詳細解説 ═══ -->
 <div class="detail-section">
 <h3>// なぜ「平均を取る」と正規分布に化けるのか</h3>
 <p>直感的に言えば——平均を取ると、たまたま大きかった値と小さかった値が打ち消し合う。n 個のプラスのズレとマイナスのズレが相殺されて、極端な平均は出にくくなる。この「出にくさ」の度合いが、ちょうど正規分布のベル型に一致する。</p>
 <p>上のシミュレーションで確かめよう：<br/>
 ・指数分布（右に歪んでいる）を選んで n=5 → 平均の分布はまだ歪んでいる<br/>
 ・n=30 にする → もうかなりベル型。元の分布がどんなに歪んでいても、平均を取れば正規に近づく</p>
-
 <h3>// 「n ≥ 30 ならOK」は本当？</h3>
 <p>よく参考書に「n ≥ 30 なら CLT が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
 <ul>
@@ -205,7 +202,6 @@
 <li>指数分布（強い歪み）なら n=40〜50 でようやく</li>
 <li>二峰分布なら n=30 でもまだ凸凹が残ることがある</li>
 </ul>
-
 <h3>// σ と SE の違い — ここ、混同しやすい</h3>
 <ul>
 <li><b>σ（標準偏差）</b>：個々のデータのバラつき。データそのものの性質</li>
@@ -214,7 +210,6 @@
 </ul>
 </div>
 
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
@@ -231,7 +226,6 @@
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -242,6 +236,7 @@
 </ul>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>平均は本当に真値に近づく？ <span class="story-arrow">▸</span> <a href="./lln.html">I.02 大数の法則</a></div>
 
 </section>
@@ -298,6 +293,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html">三大検定分布</a></li>
     <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>

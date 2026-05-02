@@ -145,7 +145,7 @@
 </div>
 <button class="btn" id="mGen"><span>↺ Resample</span></button>
 </div>
-<canvas aria-busy="true" aria-label="3D回帰平面の散布図" height="500" id="mregCanvas"></canvas>
+<canvas aria-busy="true" aria-label="3D scatter plot with regression plane" height="500" id="mregCanvas"></canvas>
 <div class="info">
 <div><span id="mPredLabelEn"></span><strong id="mPredBig">—</strong></div>
 <div><span>β̂₁ (per study hour)</span><strong id="mCoefStudy">—</strong></div>
@@ -160,8 +160,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+<!-- @panel:mreg_text -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
 <p><b>Each part</b><br/>
 ・β₀ (intercept): baseline prediction when all variables = 0<br/>
 ・β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
@@ -172,7 +175,35 @@
 ・Even if study hours and sleep correlate, multiple regression separates their independent contributions</p>
 <p><b>Geometric picture</b><br/>
 ・With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+</div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The largest partial coefficient is the most important variable"</b>
+<p>"Study hours (0–10)" and "sleep hours (4–10)" are on different scales. Comparing raw coefficients is meaningless. Use standardized coefficients (both variables rescaled to SD = 1) to compare importance.</p>
+</div>
+<div class="misc-item">
+<b>❌ "More predictors are always better"</b>
+<p>R² always increases with more variables, but the adjusted R² can decrease. Irrelevant variables add noise and destabilize estimates. In the simulator above, a coefficient near zero hints that the variable may be unnecessary.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Multicollinearity doesn't matter"</b>
+<p>When two predictors are highly correlated — like "study hours" and "library hours" — individual coefficients become erratic (signs can even flip). Watch for VIF &gt; 10 as a warning sign.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Interpreting partial coefficients</b>: "β₁ = 3 → holding x₂ constant, a 1-unit increase in x₁ raises y by 3 on average"</li>
+<li><b>R² vs. adjusted R²</b>: if adjusted R² drops when you add a variable, that variable hurts the model</li>
+<li><b>F-test</b>: tests "all partial coefficients = 0" simultaneously (overall model significance)</li>
+<li><b>t-test</b>: tests each coefficient individually for zero</li>
+<li><b>Multicollinearity</b>: know what VIF measures and the rule of thumb (VIF &gt; 10 = concern)</li>
+</ul>
+</div>
+<!-- /@panel -->
 <!-- ═══ Related Column ═══ -->
 <div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">
 <h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin:0 0 8px;letter-spacing:1px">// RELATED COLUMN</h3>
@@ -234,6 +265,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html" class="current">Multiple Regression</a></li>

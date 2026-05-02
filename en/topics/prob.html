@@ -171,8 +171,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
+<!-- @panel:prob_text -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
 <p><b>Left: Conditional probability P(A|B)</b><br/>
 ・P(A∩B): probability both A and B happen (the overlap in a Venn diagram)<br/>
 ・÷ P(B): restrict the universe to "B happened"<br/>
@@ -184,9 +187,36 @@
 <p><b>Connection to independence</b><br/>
 ・A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
 ・Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
+</div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Mutually exclusive = independent" — the #1 mix-up</b>
+<p>Mutually exclusive: A∩B = ∅ (rolling a 1 and a 2 on the same die).<br/>
+Independent: P(A∩B) = P(A)P(B) (first roll being 1 doesn't affect the second roll).<br/>
+Two mutually exclusive events (with P &gt; 0) are never independent. If A happens, B's probability drops to 0 — that's the opposite of independence.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The denominator of conditional probability is P(A∪B)"</b>
+<p>P(A|B) divides by P(B), not P(A∪B). You're restricting the universe to "B happened," so you divide by B's probability.</p>
+</div>
+<div class="misc-item">
+<b>❌ "P(A∪B) = P(A) + P(B) always holds"</b>
+<p>Only when A and B are mutually exclusive. In general, you must subtract P(A∩B) to avoid double-counting. Forgetting this can push probabilities above 1.</p>
+</div>
+</div>
 
-
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Venn diagram reading</b>: given three region values, compute P(A|B) and P(A∪B)</li>
+<li><b>Independence check</b>: "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 — independent?" → 0.3×0.4 = 0.12 → yes</li>
+<li><b>Complement trick</b>: "probability of at least one hit" = 1 − P(all misses)</li>
+<li><b>Mutually exclusive vs. independent</b>: true/false questions test whether you confuse the two</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="./morep.html">P.04 Discrete &amp; Exponential</a></div>
 </section>
 </main>
@@ -242,6 +272,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

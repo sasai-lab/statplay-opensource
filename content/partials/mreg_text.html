@@ -1,0 +1,78 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+<p><b>各パーツの役割</b><br/>
+・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br/>
+・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
+・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</p>
+<p><b>単回帰との違い</b><br/>
+・単回帰の傾きは他の変数を考慮しない「粗い効果」<br/>
+・重回帰の β₁ は x₂ の影響を差し引いた「純粋な x₁ の効果」（偏回帰係数）<br/>
+・例：勉強時間と睡眠時間が相関していても、重回帰ならそれぞれの「独立した貢献」を分離できる</p>
+<p><b>幾何的イメージ</b><br/>
+・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+<p><b>Each part</b><br/>
+・β₀ (intercept): baseline prediction when all variables = 0<br/>
+・β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
+・β₂x₂: same idea — the isolated contribution of x₂</p>
+<p><b>How it differs from simple regression</b><br/>
+・Simple regression slope ignores other variables (crude effect)<br/>
+・Multiple regression β isolates each variable's "pure effect" with others held constant (partial regression coefficient)<br/>
+・Even if study hours and sleep correlate, multiple regression separates their independent contributions</p>
+<p><b>Geometric picture</b><br/>
+・With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「偏回帰係数が大きい変数ほど重要」</b>
+<p>「勉強時間（0〜10時間）」と「睡眠時間（4〜10時間）」ではスケールが違う。係数の大きさを比べるには標準化偏回帰係数（どちらも標準偏差1に揃えた係数）を使う必要がある。</p>
+</div>
+<div class="misc-item">
+<b>❌「説明変数は多ければ多いほど良い」</b>
+<p>R² は変数を増やせば必ず上がるが、自由度調整済み R² は下がることがある。不要な変数はノイズを増やして推定を不安定にする。上のシミュレーションで、係数がほぼ0の変数があるなら、それは不要かもしれない。</p>
+</div>
+<div class="misc-item">
+<b>❌「多重共線性は気にしなくていい」</b>
+<p>「勉強時間」と「図書館にいた時間」のように強く相関する2変数を同時に入れると、個々の係数がガタつく（片方の符号が逆転することも）。VIF > 10 が危険信号。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The largest partial coefficient is the most important variable"</b>
+<p>"Study hours (0–10)" and "sleep hours (4–10)" are on different scales. Comparing raw coefficients is meaningless. Use standardized coefficients (both variables rescaled to SD = 1) to compare importance.</p>
+</div>
+<div class="misc-item">
+<b>❌ "More predictors are always better"</b>
+<p>R² always increases with more variables, but the adjusted R² can decrease. Irrelevant variables add noise and destabilize estimates. In the simulator above, a coefficient near zero hints that the variable may be unnecessary.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Multicollinearity doesn't matter"</b>
+<p>When two predictors are highly correlated — like "study hours" and "library hours" — individual coefficients become erratic (signs can even flip). Watch for VIF > 10 as a warning sign.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>偏回帰係数の解釈</b>：「β₁=3 → x₂を固定したとき、x₁が1増えるとyは平均3増える」</li>
+<li><b>R² と自由度調整済み R²</b>：変数を追加して調整済みが下がったら、その変数は不要</li>
+<li><b>F検定</b>：「すべての偏回帰係数が0」を一括で検定（モデル全体の有意性）</li>
+<li><b>t検定</b>：「各係数が個別に0かどうか」の検定</li>
+<li><b>多重共線性</b>：VIF の意味と目安（VIF > 10 で要注意）</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Interpreting partial coefficients</b>: "β₁ = 3 → holding x₂ constant, a 1-unit increase in x₁ raises y by 3 on average"</li>
+<li><b>R² vs. adjusted R²</b>: if adjusted R² drops when you add a variable, that variable hurts the model</li>
+<li><b>F-test</b>: tests "all partial coefficients = 0" simultaneously (overall model significance)</li>
+<li><b>t-test</b>: tests each coefficient individually for zero</li>
+<li><b>Multicollinearity</b>: know what VIF measures and the rule of thumb (VIF > 10 = concern)</li>
+</ul>
+</div>

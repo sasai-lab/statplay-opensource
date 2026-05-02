@@ -215,28 +215,6 @@ export function initGraphDrag(){
 
   // chitest canvases use click-to-add, no drag binding needed
 
-  // anova: horizontal drag → effect, Shift → within SD
-  (function bindAnovaCanvas(){
-    const cv=document.getElementById('anovaCanvas');
-    const slE=document.getElementById('anovaEffect');
-    const slW=document.getElementById('anovaWithin');
-    if(!cv||!slE||!slW) return;
-    cv.style.touchAction='none';
-    let dragging=false, target=slE;
-    function apply(clientX,clientY,initial,shiftKey){
-      const r=cv.getBoundingClientRect();
-      const frac=Math.max(0,Math.min(1,(clientX-r.left)/r.width));
-      if(initial) target=shiftKey?slW:slE;
-      const sl=target;
-      const min=parseFloat(sl.min),max=parseFloat(sl.max),step=parseFloat(sl.step)||0.1;
-      let nv=min+frac*(max-min);
-      nv=Math.max(min,Math.min(max,Math.round(nv/step)*step));
-      if(String(nv)!==sl.value){ sl.value=nv; sl.dispatchEvent(new Event('input',{bubbles:true})); }
-    }
-    cv.addEventListener('pointerdown',e=>{dragging=true;try{cv.setPointerCapture(e.pointerId);}catch(_){} apply(e.clientX,e.clientY,true,e.shiftKey);});
-    cv.addEventListener('pointermove',e=>{if(dragging)apply(e.clientX,e.clientY,false,e.shiftKey);});
-    const end=e=>{dragging=false;try{cv.releasePointerCapture(e.pointerId);}catch(_){}};
-    cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
-  })();
+
 
 }

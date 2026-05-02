@@ -156,7 +156,7 @@
 <button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ Auto-roll</span></button>
 <button class="lang-toggle" id="gofReset" style="padding:5px 12px;font-size:11px"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
 <div class="info">
 <div><span>Rolls n</span> <strong id="gofN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="gofStat">—</strong></div>
@@ -196,7 +196,7 @@
 </div>
 <button class="lang-toggle" id="indReset" style="padding:5px 12px;font-size:11px"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
 <div class="info">
 <div><span>Total n</span> <strong id="indN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="indStat">—</strong></div>
@@ -215,6 +215,89 @@
 <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up χ² critical values for any df
 </div>
 
+<!-- @panel:chitest_detail_gof -->
+
+<div class="detail-section">
+<h3>// Formula used here — Goodness of fit</h3>
+<div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
+<p><b>Worked example (120 rolls of a die)</b><br/>
+・A fair die should give E = 20 per face<br/>
+・Actual results: [25, 17, 15, 23, 22, 18]<br/>
+・Face 1: (25−20)²/20 = 1.25<br/>
+・Face 2: (17−20)²/20 = 0.45 … sum all → χ² = 3.70<br/>
+・df = 6−1 = 5, critical value at α = 0.05 is 11.07. Since 3.70 &lt; 11.07 → fail to reject. Consistent with a fair die</p>
+<p><b>Each part</b><br/>
+・O: observed frequency (what you actually counted)<br/>
+・E: expected frequency (what the theory predicts)<br/>
+・(O−E)²/E: using raw (O−E)² would unfairly penalize large categories. Dividing by E gives "relative departure from expectation"<br/>
+・Sum across all categories → a single number measuring overall fit</p>
+</div>
+<!-- /@panel -->
+<!-- @panel:chitest_text -->
+
+<div class="detail-section">
+<h3>// Formula used here — Independence test</h3>
+<div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
+<p><b>Worked example (2×2 table: gender × smoking)</b><br/>
+・200 men (60 smokers), 300 women (60 smokers), 500 total<br/>
+・If gender and smoking are independent, expected male smokers?<br/>
+・E = 200 × 120/500 = 48 ← row total × column total ÷ grand total<br/>
+・"Under independence we'd expect 48, but observed 60" → the larger the gap, the stronger the evidence against independence</p>
+<p><b>Why df = (r−1)(c−1)</b><br/>
+・In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
+・A 3×4 table: df = 2 × 3 = 6</p>
+<p><b>Caution: expected counts below 5</b><br/>
+・The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use Fisher's exact test or merge categories</p>
+</div>
+
+<div class="detail-section">
+<h3>// Goodness of fit vs. independence test — what's the difference?</h3>
+<p>Both use χ² = Σ(O−E)²/E, but the question is different:</p>
+<ul>
+<li><b>Goodness of fit</b>: "Is this die fair?" "Does this data follow a normal distribution?" → compares <b>one variable</b> to a theoretical distribution</li>
+<li><b>Independence test</b>: "Is gender associated with smoking?" → examines the relationship between <b>two variables</b></li>
+</ul>
+<p>Expected frequencies are computed differently:</p>
+<ul>
+<li>Goodness of fit: directly from theory (e.g., n/6 for a fair die)</li>
+<li>Independence: row total × column total ÷ grand total (back-calculated from the independence assumption)</li>
+</ul>
+<h3>// Why always a right-tail test?</h3>
+<p>χ² values are sums of squared deviations, so they're always ≥ 0. Larger values mean worse fit.</p>
+<ul>
+<li>Large χ² → data doesn't match the theory → reject</li>
+<li>Small χ² → good fit → fail to reject</li>
+<li>The rejection region is always in the right tail. There's no left-tail rejection</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Significant χ² test = causal relationship"</b>
+<p>All it can say is "there's an association." "Smoking is associated with lung cancer" ≠ "smoking causes lung cancer." Confounding variables can't be ruled out by a χ² test alone.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Both tests use df = k−1"</b>
+<p>Goodness of fit uses k−1, but the independence test uses (r−1)(c−1). For a 2×3 table, df = 2, not 5.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Smaller χ² is a better result"</b>
+<p>A small χ² means the data fits the theory well — but that's "good" or "bad" depending on what you're testing. The test just measures agreement, not quality.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>df calculation</b>: "2×3 table, independence test. df = ?" → (2−1)(3−1) = 2</li>
+<li><b>Expected frequency by hand</b>: row total × column total ÷ grand total</li>
+<li><b>Goodness-of-fit calculation</b>: compute (O−E)²/E for each category, sum, compare with critical value</li>
+<li><b>"When E &lt; 5"</b>: use Fisher's exact test or merge categories</li>
+</ul>
+<p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>catching a relationship with a line <span class="story-arrow">▸</span> <a href="./reg.html">M.01 Simple Regression</a></div>
 </section>
 </main>
@@ -270,6 +353,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html" class="current">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>
@@ -277,7 +361,7 @@
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./dists.html" rel="prev">← Prev</a>
-  <a href="./corr.html" rel="next">Next →</a>
+  <a href="./anova.html" rel="next">Next →</a>
 </nav>
 </body>
 </html>

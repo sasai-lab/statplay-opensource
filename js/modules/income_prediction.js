@@ -136,8 +136,8 @@ function initPredictor() {
 
     vAge.textContent = age;
     vMean.textContent = Math.round(result.mean);
-    vRange.textContent = Math.round(Math.max(0, result.predLower)) + L('万円 〜 ', '万¥ – ') + Math.round(result.predUpper) + L('万円', '万¥');
-    if (vConfRange) vConfRange.textContent = Math.round(result.confLower) + L('万円 〜 ', '万¥ – ') + Math.round(result.confUpper) + L('万円', '万¥');
+    vRange.textContent = Math.round(Math.max(0, result.predLower)) + L('万円 〜 ', '×10k¥ – ') + Math.round(result.predUpper) + L('万円', '×10k¥');
+    if (vConfRange) vConfRange.textContent = Math.round(result.confLower) + L('万円 〜 ', '×10k¥ – ') + Math.round(result.confUpper) + L('万円', '×10k¥');
     canvas.setAttribute('aria-valuenow', age);
 
     if (animAge === null) animAge = targetAge;
@@ -198,7 +198,7 @@ function initPredictor() {
       if (y > 0) { ctx.save(); ctx.globalAlpha = 0.06; ctx.beginPath(); ctx.moveTo(pad.l, yp); ctx.lineTo(pad.l + pw, yp); ctx.stroke(); ctx.restore(); }
     }
     ctx.textAlign = 'left';
-    ctx.fillText(L('(万円)', '(万¥)'), pad.l - 4, pad.t - 5);
+    ctx.fillText(L('(万円)', '(×10k¥)'), pad.l - 4, pad.t - 5);
 
     // x ticks (age) — skip ticks near cursor
     ctx.textAlign = 'center';
@@ -268,7 +268,7 @@ function initPredictor() {
     ctx.fillStyle = tc.yellow;
     ctx.font = 'bold 12px "Courier New",monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(Math.round(curMean) + L('万円', '万¥'), cx, toY(curMean) - 10);
+    ctx.fillText(Math.round(curMean) + L('万円', '×10k¥'), cx, toY(curMean) - 10);
 
     // age label (highlighted)
     ctx.fillStyle = tc.cyan;

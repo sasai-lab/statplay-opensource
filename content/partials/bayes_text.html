@@ -1,0 +1,58 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+<p>P(A|B)＝陽性→病気の確率、P(B|A)＝感度、P(A)＝有病率、P(B)＝陽性が出る確率全体。<br/>
+有病率が小さいと分子が縮み、偽陽性を含む分母が相対的に大きくなる——上の「60人中10人」がまさにこれ。</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+<p>P(A|B) = probability of being sick given a positive test, P(B|A) = sensitivity, P(A) = prevalence, P(B) = overall probability of testing positive.<br/>
+When prevalence is tiny the numerator shrinks while the denominator, swollen with false positives, stays large — that's exactly the "10 out of 60" above.</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「陽性 = 病気」</b>
+<p>有病率1%, 感度95%, 特異度90% だと、陽性的中率はたった 8.8%。陽性100人中、実際に病気なのは9人だけ。残りの91人は健康なのに陽性（偽陽性）。上のシミュレーションで有病率を下げていくと、この比率が目で見てじわじわ腑に落ちてきます。</p>
+</div>
+<div class="misc-item">
+<b>❌「感度と特異度が高ければ安心」</b>
+<p>有病率が低すぎる集団に使うと、感度・特異度が両方99%でも陽性的中率は50%程度。「誰に対して検査するか」（事前確率の選び方）が結果を大きく左右する。</p>
+</div>
+<div class="misc-item">
+<b>❌「ベイズの定理は1回使って終わり」</b>
+<p>1回目の事後確率を2回目の事前確率として更新できる。2回連続で陽性なら、事後確率はぐっと上がる。これが「ベイズ更新」の考え方。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Positive test = disease"</b>
+<p>With 1% prevalence, 95% sensitivity, and 90% specificity, the positive predictive value is only about 8.8%. Of 100 people who test positive, roughly 9 actually have the disease — the other 91 are healthy false positives. Drag the prevalence slider down in the simulation above and watch this ratio shift before your eyes.</p>
+</div>
+<div class="misc-item">
+<b>❌ "High sensitivity and specificity are enough"</b>
+<p>Screen a low-prevalence population and even with 99% sensitivity and 99% specificity, the positive predictive value is only about 50%. Who you test (the prior probability) matters as much as how good the test is.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Bayes' theorem is a one-shot calculation"</b>
+<p>The posterior from the first test can become the prior for the second. Two consecutive positives dramatically raise the posterior probability. This is the idea behind Bayesian updating.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>定番計算</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」</li>
+<li><b>全確率の公式</b>：P(B) = P(B|A)P(A) + P(B|Ā)P(Ā) を分母に使う</li>
+<li><b>自然頻度で解く</b>：1000人の表を書いて直接数えるのが確実。公式を暗記するより速い</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Standard calculation</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?"</li>
+<li><b>Law of total probability</b>: use P(B) = P(B|A)P(A) + P(B|Ā)P(Ā) as the denominator</li>
+<li><b>Natural frequency approach</b>: draw a table of 1,000 people and count directly — often faster than memorizing the formula</li>
+</ul>
+</div>

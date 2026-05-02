@@ -164,6 +164,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:mreg_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
@@ -179,9 +180,6 @@
 ・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
 </div>
 
-
-
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
@@ -194,11 +192,10 @@
 </div>
 <div class="misc-item">
 <b>❌「多重共線性は気にしなくていい」</b>
-<p>「勉強時間」と「図書館にいた時間」のように強く相関する2変数を同時に入れると、個々の係数がガタつく（片方の符号が逆転することも）。VIF > 10 が危険信号。</p>
+<p>「勉強時間」と「図書館にいた時間」のように強く相関する2変数を同時に入れると、個々の係数がガタつく（片方の符号が逆転することも）。VIF &gt; 10 が危険信号。</p>
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -206,10 +203,11 @@
 <li><b>R² と自由度調整済み R²</b>：変数を追加して調整済みが下がったら、その変数は不要</li>
 <li><b>F検定</b>：「すべての偏回帰係数が0」を一括で検定（モデル全体の有意性）</li>
 <li><b>t検定</b>：「各係数が個別に0かどうか」の検定</li>
-<li><b>多重共線性</b>：VIF の意味と目安（VIF > 10 で要注意）</li>
+<li><b>多重共線性</b>：VIF の意味と目安（VIF &gt; 10 で要注意）</li>
 </ul>
 </div>
 
+<!-- /@panel -->
 <!-- ═══ 関連コラム ═══ -->
 <div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">
 <h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin:0 0 8px;letter-spacing:1px">// 関連コラム</h3>
@@ -271,6 +269,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html">三大検定分布</a></li>
     <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html" class="current">重回帰分析</a></li>

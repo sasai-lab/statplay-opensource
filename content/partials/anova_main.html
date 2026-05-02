@@ -1,0 +1,45 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">群間の差</span>
+          <span data-lang="en">Between-group diff</span>
+          = <span class="val" id="anovaEffectVal">1.5</span>
+        </label>
+        <input type="range" id="anovaEffect" min="0" max="5" step="0.1" value="1.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">群内のばらつき (&#x03C3;)</span>
+          <span data-lang="en">Within-group spread (&#x03C3;)</span>
+          = <span class="val" id="anovaWithinVal">1.5</span>
+        </label>
+        <input type="range" id="anovaWithin" min="0.3" max="5" step="0.1" value="1.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">各群のn</span>
+          <span data-lang="en">n per group</span>
+          = <span class="val" id="anovaNkVal">20</span>
+        </label>
+        <input type="range" id="anovaNk" min="5" max="80" step="1" value="20">
+      </div>
+      <button id="anovaGen" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
+    </div>
+    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span>F</span> <strong id="anovaF">&#x2014;</strong></div>
+      <div><span data-lang="ja">群間 df</span><span data-lang="en">Between df</span> <strong id="anovaDfB">&#x2014;</strong></div>
+      <div><span data-lang="ja">群内 df</span><span data-lang="en">Within df</span> <strong id="anovaDfW">&#x2014;</strong></div>
+      <div><span>p</span> <strong id="anovaP">&#x2014;</strong></div>
+      <div><span>SSB</span> <strong id="anovaSSB">&#x2014;</strong></div>
+      <div><span>SSW</span> <strong id="anovaSSW">&#x2014;</strong></div>
+      <div><span>η²</span> <strong id="anovaEta2">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="anovaResult">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="anovaCanvas" data-title="分散分析（ANOVA）" data-title-en="ANOVA" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

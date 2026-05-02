@@ -1,0 +1,72 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
+<p><b>各パーツの役割</b><br/>
+・(x − μ)²：平均 μ からの距離の二乗 → 左右対称の釣鐘型を作る原因<br/>
+・÷ 2σ²：σ が大きいほど指数の減衰がゆるやか → 裾が広がり、山が低くなる<br/>
+・exp(…)：距離が増えると急激にゼロへ向かう → 「極端な値はめったに出ない」を表現<br/>
+・1/√(2πσ²)：σ に応じて高さを調整し、面積の合計を常に1に保つ係数</p>
+<p><b>標準正規との関係</b><br/>
+・μ=0, σ=1 を代入するとそのまま φ(z) = e<sup>−z²/2</sup>/√(2π) になる<br/>
+・つまり一般正規は「標準正規を横に σ 倍引き伸ばし、μ だけ平行移動」したもの</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
+<p><b>Each part</b><br/>
+・(x − μ)²: squared distance from mean → creates the symmetric bell shape<br/>
+・÷ 2σ²: larger σ means slower exponential decay → wider, flatter curve<br/>
+・exp(…): drops toward zero for extreme values → "rare events are rare"<br/>
+・1/√(2πσ²): adjusts height so total area always equals 1</p>
+<p><b>Relation to standard normal</b><br/>
+・Plug in μ=0, σ=1 and you recover φ(z) = e<sup>−z²/2</sup>/√(2π)<br/>
+・General normal = standard normal stretched horizontally by σ and shifted by μ</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「σ が大きい = 推定が不安定」</b>
+<p>σ は「1個1個のデータがどれだけバラつくか」。推定の不安定さは SE = σ/√n で表す。σ=100 でも n=10000 なら SE=1 で推定はかなり安定。</p>
+</div>
+<div class="misc-item">
+<b>❌「現実のデータはだいたい正規分布」</b>
+<p>身長や測定誤差は正規分布に近いが、所得分布（右に歪む）、クリック率（0近辺に偏る）、故障時間（指数分布的）など、正規分布に従わないデータはたくさんある。</p>
+</div>
+<div class="misc-item">
+<b>❌「平均 = 最頻値 = 中央値 は正規分布の証拠」</b>
+<p>正規分布ならこの3つは一致する。しかし逆は成り立たない。一様分布でもこの3つは一致する。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Large σ means unstable estimates"</b>
+<p>σ measures how much individual data points vary. Estimation stability is captured by SE = σ/√n. Even with σ = 100, if n = 10,000 then SE = 1 — the estimate is quite stable.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Real data is usually normal"</b>
+<p>Heights and measurement errors are close to normal, but income (right-skewed), click-through rates (piled near 0), and failure times (exponential) are not. Many real distributions are far from normal.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Mean = mode = median proves normality"</b>
+<p>If a distribution is normal, these three coincide. But the converse doesn't hold — the uniform distribution also has mean = mode = median.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>z変換→表引き</b>：「N(50, 10²) で 65 以上になる確率」→ z = (65−50)/10 = 1.5 → 表を引く</li>
+<li><b>上側・下側のα%点</b>：x = μ + z_α · σ で計算</li>
+<li><b>正規分布の加法性</b>：X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) が独立 → X+Y 〜 N(μ₁+μ₂, σ₁²+σ₂²)</li>
+<li><b>標準化の計算</b>：z = (x−μ)/σ を確実に使えるかどうか</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>z-transform → table lookup</b>: "P(X ≥ 65) where X ~ N(50, 10²)" → z = (65−50)/10 = 1.5 → look up the table</li>
+<li><b>Upper/lower α% points</b>: x = μ + z_α · σ</li>
+<li><b>Additivity of normals</b>: if X ~ N(μ₁, σ₁²) and Y ~ N(μ₂, σ₂²) are independent → X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)</li>
+<li><b>Standardization calculation</b>: can you reliably compute z = (x−μ)/σ?</li>
+</ul>
+</div>

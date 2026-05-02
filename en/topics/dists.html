@@ -161,8 +161,8 @@
 <label><input name="tConf" type="radio" value="0.01"/> 99%</label>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="信頼区間の比較" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval comparison" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
 <div class="info" style="margin-top:6px">
 <div><span>Sample size n</span> <strong id="tInfoN">5</strong></div>
 <div><span>df</span> <strong id="tInfoDf">4</strong></div>
@@ -216,12 +216,12 @@
 </div>
 <button class="sim-btn" id="diceRandom"><span>▶ Roll</span></button>
 </div>
-<canvas aria-busy="true" aria-label="サイコロの出目分布" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Dice roll distribution" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
 <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
 <input id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
-<canvas aria-busy="true" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
 <div class="info" style="margin-top:6px">
 <div><span>Rolls n</span> <strong id="chiInfoN">60</strong></div>
 <div><span>df</span> <strong id="chiInfoDf">5</strong></div>
@@ -273,8 +273,8 @@
 <input id="fGroupN" max="100" min="5" type="range" value="20"/>
 </div>
 <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="2グループのばらつき比較" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Variance comparison between two groups" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
 <div class="info" style="margin-top:6px">
 <div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
 <div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
@@ -295,6 +295,77 @@
 <a href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up t, χ², and F critical values with live graph sync
 </div>
 
+<!-- @panel:dists_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="t_k = \frac{Z}{\sqrt{\chi^2_k / k}}\,,\quad \chi^2_k = \sum_{i=1}^{k} Z_i^2\,,\quad F_{m,n} = \frac{\chi^2_m / m}{\chi^2_n / n}"></div>
+<p><b>All three are children of N(0,1)</b><br/>
+・Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
+<p><b>χ² distribution: square Z's and add them up → "total spread"</b><br/>
+・Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
+・As k grows the shape becomes more symmetric (a consequence of the CLT!)</p>
+<p><b>t distribution: Z divided by an estimated σ → "normal when σ is unknown"</b><br/>
+・t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
+・Small k (little data) → unstable σ estimate → fatter tails<br/>
+・k → ∞: denominator stabilizes at 1, and t becomes exactly Z (converges to standard normal)</p>
+<p><b>F distribution: ratio of two χ²'s → "ratio of two variances"</b><br/>
+・Used to test whether group A and group B have the same variance<br/>
+・Numerator and denominator have different df's — swapping them gives a different distribution (careful!)</p>
+</div>
+
+<div class="detail-section">
+<h3>// What is degrees of freedom (df), really?</h3>
+<p>This completely baffled me at first. My current understanding: "the number of data values free to vary."</p>
+<p>Example: three test scores with a known mean of 60.<br/>
+・Student 1: 70 (free)<br/>
+・Student 2: 55 (free)<br/>
+・Student 3: ? → 60×3 − 70 − 55 = 55 (forced)<br/>
+→ 3 students but only 2 free → df = n−1 = 2</p>
+<p>What happens when df is small:<br/>
+・Less information → less stable estimates → wider tails (extreme values more likely)<br/>
+・t distribution at df = 1 has very fat tails; at df = 30 it's nearly indistinguishable from normal<br/>
+・Move the df slider in the simulator above to see this in action</p>
+<h3>// When to use which? Quick reference</h3>
+<table>
+<tr><th>Goal</th><th>σ known?</th><th>Distribution</th></tr>
+<tr><td>Test a mean</td><td>Yes (rare)</td><td>z (standard normal)</td></tr>
+<tr><td>Test a mean</td><td>No (usual case)</td><td>t distribution</td></tr>
+<tr><td>Test a single variance</td><td>—</td><td>χ² distribution</td></tr>
+<tr><td>Compare two variances</td><td>—</td><td>F distribution</td></tr>
+<tr><td>Test regression coefficient</td><td>—</td><td>t distribution</td></tr>
+<tr><td>Test overall regression model</td><td>—</td><td>F distribution</td></tr>
+<tr><td>Goodness of fit / independence</td><td>—</td><td>χ² distribution</td></tr>
+</table>
+<p style="margin:10px 0 0">Once you know which distribution to use, look up critical values in the <a href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The t distribution is completely different from the normal"</b>
+<p>The t distribution is "the normal when you have to estimate σ." As df → ∞ it converges to N(0,1). The only real difference is fatter tails.</p>
+</div>
+<div class="misc-item">
+<b>❌ "χ² degrees of freedom = n"</b>
+<p>Almost always n−1. Each parameter you estimate costs one degree of freedom. Goodness of fit: k−1; independence test: (r−1)(c−1).</p>
+</div>
+<div class="misc-item">
+<b>❌ "Swapping df₁ and df₂ in F doesn't matter"</b>
+<p>The F distribution is asymmetric. Mix up numerator and denominator df and you get a different critical value — and potentially a different conclusion.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>df calculation</b>: "One-sample t-test with n = 20. df = ?" → 19</li>
+<li><b>df → ∞ behavior</b>: "What happens to the t distribution as df increases?" → approaches N(0,1)</li>
+<li><b>χ² formula</b>: "(n−1)S²/σ² follows which distribution?" → χ²(n−1)</li>
+<li><b>Relationships</b>: "t² is equivalent to which distribution?" → F(1, k)</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="./chitest.html">I.06 Chi-Squared Test</a></div>
 </section>
 </main>
@@ -350,6 +421,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html" class="current">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

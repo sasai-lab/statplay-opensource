@@ -40,9 +40,10 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 | 9 | `test` | 仮説検定 | Hypothesis Testing |
 | 10 | `dists` | t / χ² / F 分布 | Three Test Distributions |
 | 11 | `chitest` | カイ二乗検定 | Chi-Squared Test |
-| 12 | `corr` | 相関係数 | Correlation |
-| 13 | `reg` | 単回帰分析 | Simple Regression |
-| 14 | `mreg` | 重回帰分析 | Multiple Regression (3D) |
+| 12 | `anova` | 分散分析 | One-Way ANOVA |
+| 13 | `corr` | 相関係数 | Correlation |
+| 14 | `reg` | 単回帰分析 | Simple Regression |
+| 15 | `mreg` | 重回帰分析 | Multiple Regression (3D) |
 
 ### Columns / コラム
 
@@ -57,8 +58,8 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 index.html                    Hub page / ハブページ
 about.html                    About page (JA)
 en/about.html                 About page (EN)
-topics/<slug>.html            Per-topic pages (JA) × 14
-en/topics/<slug>.html         Per-topic pages (EN) × 14
+topics/<slug>.html            Per-topic pages (JA) × 15
+en/topics/<slug>.html         Per-topic pages (EN) × 15
 columns/<slug>.html           Columns (JA) × 4
 en/columns/<slug>.html        Columns (EN) × 4
 tables/index.html             Statistical tables (JA)

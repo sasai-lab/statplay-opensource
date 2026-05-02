@@ -1,0 +1,28 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"></div>
+<p><b>具体例で読む（10回コインを投げて表が3回出る確率）</b><br/>
+・p=0.5, n=10, k=3 のとき——<br/>
+・p³ = 0.5³：「3回とも表が出る」確率<br/>
+・(1−p)⁷ = 0.5⁷：「残り7回ぜんぶ裏」の確率<br/>
+・この2つを掛けると「表表表裏裏裏裏裏裏裏」という<b>特定の並び</b>の確率になる<br/>
+・でも表が3回出る並びは他にもある（表裏表裏裏…とか）。全部で ₁₀C₃ = 120通り<br/>
+・だから P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
+<p><b>覚えておくと得する性質</b><br/>
+・平均 = np（10回×0.5 = 5回、直感どおり）<br/>
+・分散 = np(1−p)。p=0.5 のとき分散が最大 ← 結果が一番読めないのは五分五分のとき</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here — Binomial</h3>
+<div class="formula" data-tex="P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"></div>
+<p><b>Worked example (flip a coin 10 times, probability of exactly 3 heads)</b><br/>
+・p=0.5, n=10, k=3<br/>
+・p³ = 0.5³: probability of "3 heads in a row"<br/>
+・(1−p)⁷ = 0.5⁷: probability of "remaining 7 are all tails"<br/>
+・Multiply: probability of one specific sequence like HHHTTTTTTТ<br/>
+・But there are other arrangements with exactly 3 heads (HTHTTT… etc.). Total: ₁₀C₃ = 120 ways<br/>
+・So P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
+<p><b>Key properties</b><br/>
+・Mean = np (10 × 0.5 = 5 — matches intuition)<br/>
+・Variance = np(1−p). Variance is largest when p = 0.5 — outcomes are most uncertain when it's a coin toss</p>
+</div>

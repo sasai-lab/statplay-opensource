@@ -1,0 +1,120 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
+<p><b>具体例で読む（性別×喫煙の2×2表）</b><br/>
+・男性200人中60人が喫煙、女性300人中60人が喫煙、計500人<br/>
+・「性別と喫煙が無関係（独立）」なら、男性の喫煙者の期待値は？<br/>
+・E = 200×120/500 = 48人 ← 行合計×列合計÷総数<br/>
+・「もし独立なら48人のはずなのに実際は60人」→ この差が大きいほど「独立じゃなさそう」</p>
+<p><b>自由度 = (r−1)(c−1) の直感</b><br/>
+・2×2 表：行合計と列合計が決まれば、1つのセルの値を決めると残り3つは自動的に決まる → df=1<br/>
+・3×4 表：df = 2×3 = 6</p>
+<p><b>注意：期待度数が5未満のセルが多いと</b><br/>
+・χ²近似が不正確になる。目安として「Eが5未満のセルが全体の20%以上」なら、フィッシャーの正確検定を使うか、カテゴリを統合する</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here — Independence test</h3>
+<div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
+<p><b>Worked example (2×2 table: gender × smoking)</b><br/>
+・200 men (60 smokers), 300 women (60 smokers), 500 total<br/>
+・If gender and smoking are independent, expected male smokers?<br/>
+・E = 200 × 120/500 = 48 ← row total × column total ÷ grand total<br/>
+・"Under independence we'd expect 48, but observed 60" → the larger the gap, the stronger the evidence against independence</p>
+<p><b>Why df = (r−1)(c−1)</b><br/>
+・In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
+・A 3×4 table: df = 2 × 3 = 6</p>
+<p><b>Caution: expected counts below 5</b><br/>
+・The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use Fisher's exact test or merge categories</p>
+</div>
+<div data-lang="ja" class="detail-section">
+<h3>// 適合度検定 と 独立性検定 — 何が違う？</h3>
+<p>どちらも χ² = Σ(O−E)²/E を使うけど、問いが違う：</p>
+<ul>
+<li><b>適合度検定</b>：「このサイコロは公正か？」「このデータは正規分布に従うか？」→ <b>1つの変数</b>を理論分布と比較</li>
+<li><b>独立性検定</b>：「性別と喫煙に関連はあるか？」→ <b>2つの変数</b>の関連を調べる</li>
+</ul>
+<p>期待度数 E の計算方法も違う：</p>
+<ul>
+<li>適合度：理論から直接計算（サイコロなら n/6）</li>
+<li>独立性：データの行合計×列合計÷総数（独立を仮定して逆算）</li>
+</ul>
+
+<h3>// 常に「右裾だけ」を見る理由</h3>
+<p>χ²の値は「ズレの二乗の合計」なので、必ず 0 以上。ズレが大きいほど右に大きくなる。</p>
+<ul>
+<li>χ² が大きい → 理論と合わない → 棄却</li>
+<li>χ² が小さい → 理論とよく合っている → 棄却しない</li>
+<li>だから棄却域は常に右裾のみ。左側の棄却域はない</li>
+</ul>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Goodness of fit vs. independence test — what's the difference?</h3>
+<p>Both use χ² = Σ(O−E)²/E, but the question is different:</p>
+<ul>
+<li><b>Goodness of fit</b>: "Is this die fair?" "Does this data follow a normal distribution?" → compares <b>one variable</b> to a theoretical distribution</li>
+<li><b>Independence test</b>: "Is gender associated with smoking?" → examines the relationship between <b>two variables</b></li>
+</ul>
+<p>Expected frequencies are computed differently:</p>
+<ul>
+<li>Goodness of fit: directly from theory (e.g., n/6 for a fair die)</li>
+<li>Independence: row total × column total ÷ grand total (back-calculated from the independence assumption)</li>
+</ul>
+
+<h3>// Why always a right-tail test?</h3>
+<p>χ² values are sums of squared deviations, so they're always ≥ 0. Larger values mean worse fit.</p>
+<ul>
+<li>Large χ² → data doesn't match the theory → reject</li>
+<li>Small χ² → good fit → fail to reject</li>
+<li>The rejection region is always in the right tail. There's no left-tail rejection</li>
+</ul>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「χ²検定で有意 = 因果関係がある」</b>
+<p>「関連がある」と言えるだけ。「喫煙と肺がんに関連」≠「喫煙が原因」。背後に交絡因子がある可能性は排除できない。</p>
+</div>
+<div class="misc-item">
+<b>❌「適合度も独立性も自由度は k−1」</b>
+<p>適合度は k−1 だけど、独立性は (r−1)(c−1)。2×3 表なら df=2 であって df=5 ではない。</p>
+</div>
+<div class="misc-item">
+<b>❌「χ²値が小さいほうが良い結果」</b>
+<p>χ²が小さいのは「データが理論とよく合っている」だけで、「良い・悪い」の問題ではない。検定の目的は「合っているか疑わしいか」を判定すること。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Significant χ² test = causal relationship"</b>
+<p>All it can say is "there's an association." "Smoking is associated with lung cancer" ≠ "smoking causes lung cancer." Confounding variables can't be ruled out by a χ² test alone.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Both tests use df = k−1"</b>
+<p>Goodness of fit uses k−1, but the independence test uses (r−1)(c−1). For a 2×3 table, df = 2, not 5.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Smaller χ² is a better result"</b>
+<p>A small χ² means the data fits the theory well — but that's "good" or "bad" depending on what you're testing. The test just measures agreement, not quality.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>自由度の計算</b>：「2×3 表の独立性検定の自由度は？」→ (2−1)(3−1) = 2</li>
+<li><b>期待度数の手計算</b>：行合計×列合計÷総数を電卓で計算</li>
+<li><b>適合度の計算問題</b>：各カテゴリで (O−E)²/E を求めて合計 → 臨界値と比較</li>
+<li><b>「期待度数5未満のとき」</b>：フィッシャーの正確検定またはカテゴリの統合</li>
+</ul>
+<p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>df calculation</b>: "2×3 table, independence test. df = ?" → (2−1)(3−1) = 2</li>
+<li><b>Expected frequency by hand</b>: row total × column total ÷ grand total</li>
+<li><b>Goodness-of-fit calculation</b>: compute (O−E)²/E for each category, sum, compare with critical value</li>
+<li><b>"When E &lt; 5"</b>: use Fisher's exact test or merge categories</li>
+</ul>
+<p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+</div>

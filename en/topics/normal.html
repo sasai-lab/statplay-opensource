@@ -168,8 +168,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
+<!-- @panel:normal_text -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
 <p><b>Each part</b><br/>
 ・(x − μ)²: squared distance from mean → creates the symmetric bell shape<br/>
 ・÷ 2σ²: larger σ means slower exponential decay → wider, flatter curve<br/>
@@ -178,9 +181,34 @@
 <p><b>Relation to standard normal</b><br/>
 ・Plug in μ=0, σ=1 and you recover φ(z) = e<sup>−z²/2</sup>/√(2π)<br/>
 ・General normal = standard normal stretched horizontally by σ and shifted by μ</p>
+</div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Large σ means unstable estimates"</b>
+<p>σ measures how much individual data points vary. Estimation stability is captured by SE = σ/√n. Even with σ = 100, if n = 10,000 then SE = 1 — the estimate is quite stable.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Real data is usually normal"</b>
+<p>Heights and measurement errors are close to normal, but income (right-skewed), click-through rates (piled near 0), and failure times (exponential) are not. Many real distributions are far from normal.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Mean = mode = median proves normality"</b>
+<p>If a distribution is normal, these three coincide. But the converse doesn't hold — the uniform distribution also has mean = mode = median.</p>
+</div>
+</div>
 
-
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>z-transform → table lookup</b>: "P(X ≥ 65) where X ~ N(50, 10²)" → z = (65−50)/10 = 1.5 → look up the table</li>
+<li><b>Upper/lower α% points</b>: x = μ + z_α · σ</li>
+<li><b>Additivity of normals</b>: if X ~ N(μ₁, σ₁²) and Y ~ N(μ₂, σ₂²) are independent → X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)</li>
+<li><b>Standardization calculation</b>: can you reliably compute z = (x−μ)/σ?</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="./prob.html">P.03 Probability Rules</a></div>
 </section>
 </main>
@@ -236,6 +264,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

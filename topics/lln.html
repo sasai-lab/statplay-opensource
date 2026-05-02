@@ -161,6 +161,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:lln_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
@@ -178,9 +179,6 @@
 ・チェビシェフの不等式は"ゆるい"上限なので、実際にはもっと速く収束する</p>
 </div>
 
-
-
-<!-- ═══ 詳細解説 ═══ -->
 <div class="detail-section">
 <h3>// なぜこの定理が統計学の「免許証」なのか</h3>
 <p>これ、最初ピンと来なかったんだけど——大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
@@ -190,10 +188,8 @@
 <li>保険会社が過去データから事故率を見積もって保険料を決める、あれも成り立たない</li>
 </ul>
 <p>LLN が「n を大きくすれば標本平均は母平均に近づく」と保証してくれてるから、上のぜんぶが正当化される。地味だけど、ないと困る定理。</p>
-
 <h3>// 「ギャンブラーの誤謬」に注意</h3>
 <p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
-
 <h3>// LLN と CLT の違い — ここ、試験に出る</h3>
 <table>
 <tr><th></th><th>LLN（大数の法則）</th><th>CLT（中心極限定理）</th></tr>
@@ -204,7 +200,6 @@
 <p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、CLT が「ゴールまでの道の形」を教えてくれる。</p>
 </div>
 
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
@@ -221,7 +216,6 @@
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -231,6 +225,7 @@
 </ul>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="./ci.html">I.03 信頼区間</a></div>
 
 </section>
@@ -287,6 +282,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html">三大検定分布</a></li>
     <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>

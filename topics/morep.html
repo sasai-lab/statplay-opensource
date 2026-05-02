@@ -151,6 +151,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_detail_binom -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"></div>
@@ -166,8 +167,7 @@
 ・分散 = np(1−p)。p=0.5 のとき分散が最大 ← 結果が一番読めないのは五分五分のとき</p>
 </div>
 
-
-
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>実験ガイド — ポアソン分布</b>
@@ -194,6 +194,7 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_detail_poisson -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}"></div>
@@ -209,8 +210,7 @@
 ・最大の特徴：<b>平均 = 分散 = λ</b>。これが成り立たないデータにポアソンを当てはめると失敗する</p>
 </div>
 
-
-
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>実験ガイド — 指数分布</b>
@@ -237,12 +237,13 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_text -->
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
-<div class="formula" data-tex="f(x) = \lambda e^{-\lambda x}\,,\quad P(X > t) = e^{-\lambda t}"></div>
+<div class="formula" data-tex="f(x) = \lambda e^{-\lambda x}\,,\quad P(X &gt; t) = e^{-\lambda t}"></div>
 <p><b>具体例で読む（平均5分に1本バスが来る。10分以上待つ確率は？）</b><br/>
 ・λ=1/5（1分あたり0.2本）、t=10 のとき——<br/>
-・P(X > 10) = e⁻⁰·²×¹⁰ = e⁻² ≈ 0.135 → 約13.5%<br/>
+・P(X &gt; 10) = e⁻⁰·²×¹⁰ = e⁻² ≈ 0.135 → 約13.5%<br/>
 ・右の式は「t分以上待っちゃう確率」。t が大きいほど急激にゼロに近づく</p>
 <p><b>ポアソン分布との裏表の関係</b><br/>
 ・ポアソンは「一定時間に何回来るか」（回数の分布）<br/>
@@ -255,9 +256,6 @@
 ・バスや電車は時刻表があるので、実際には無記憶ではない</p>
 </div>
 
-
-
-<!-- ═══ 詳細解説 ═══ -->
 <div class="detail-section">
 <h3>// 3つの分布のつながり — バラバラに覚えたら損</h3>
 <p>この3つ、参考書だと別のページに書いてあるから「3種類の独立した分布」に見えるけど、実はぜんぶつながっている。自分もこれに気づいたとき、急に頭の中が整理された。</p>
@@ -273,12 +271,11 @@
 </ul>
 </div>
 
-<!-- ═══ よくある誤解 ═══ -->
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
 <b>❌「ポアソン分布はいつでも二項分布の代わりに使える」</b>
-<p>p が小さく n が大きいときだけ。p=0.5, n=20 のコイン投げにポアソン近似したら全然合わない。上のシミュレーショ���で実際に比べてみよう。</p>
+<p>p が小さく n が大きいときだけ。p=0.5, n=20 のコイン投げにポアソン近似したら全然合わない。上のシミュレーションで実際に比べてみよう。</p>
 </div>
 <div class="misc-item">
 <b>❌「もう10分待ったんだから、そろそろバスが来るはず」</b>
@@ -290,7 +287,6 @@
 </div>
 </div>
 
-<!-- ═══ 試験での出方 ═══ -->
 <div class="exam-note">
 <h3>// 試験での出方</h3>
 <ul>
@@ -301,6 +297,7 @@
 </ul>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="./bayes.html">P.05 ベイズの定理</a></div>
 
 </section>
@@ -357,6 +354,7 @@
     <li><a href="./test.html">仮説検定</a></li>
     <li><a href="./dists.html">三大検定分布</a></li>
     <li><a href="./chitest.html">カイ二乗検定</a></li>
+    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
     <li><a href="./corr.html">相関係数</a></li>
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>

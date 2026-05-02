@@ -148,6 +148,23 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_detail_binom -->
+
+<div class="detail-section">
+<h3>// Formula used here — Binomial</h3>
+<div class="formula" data-tex="P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"></div>
+<p><b>Worked example (flip a coin 10 times, probability of exactly 3 heads)</b><br/>
+・p=0.5, n=10, k=3<br/>
+・p³ = 0.5³: probability of "3 heads in a row"<br/>
+・(1−p)⁷ = 0.5⁷: probability of "remaining 7 are all tails"<br/>
+・Multiply: probability of one specific sequence like HHHTTTTTTТ<br/>
+・But there are other arrangements with exactly 3 heads (HTHTTT… etc.). Total: ₁₀C₃ = 120 ways<br/>
+・So P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
+<p><b>Key properties</b><br/>
+・Mean = np (10 × 0.5 = 5 — matches intuition)<br/>
+・Variance = np(1−p). Variance is largest when p = 0.5 — outcomes are most uncertain when it's a coin toss</p>
+</div>
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>Experiment Guide — Poisson</b>
@@ -174,6 +191,23 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_detail_poisson -->
+
+<div class="detail-section">
+<h3>// Formula used here — Poisson</h3>
+<div class="formula" data-tex="P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}"></div>
+<p><b>Worked example (average 3 emails per hour — probability of exactly 5?)</b><br/>
+・λ=3, k=5<br/>
+・λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
+・e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
+・5! = 120: we don't care about the order of the 5 arrivals<br/>
+・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
+<p><b>Connection to binomial — this comes up in exams</b><br/>
+・Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
+・Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
+・The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
+</div>
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>Experiment Guide — Exponential</b>
@@ -200,6 +234,67 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:morep_text -->
+
+<div class="detail-section">
+<h3>// Formula used here — Exponential</h3>
+<div class="formula" data-tex="f(x) = \lambda e^{-\lambda x}\,,\quad P(X &gt; t) = e^{-\lambda t}"></div>
+<p><b>Worked example (buses arrive every 5 min on average. Probability of waiting more than 10 min?)</b><br/>
+・λ = 1/5 (0.2 per minute), t = 10<br/>
+・P(X &gt; 10) = e⁻⁰·²ˣ¹⁰ = e⁻² ≈ 0.135 → about 13.5%<br/>
+・The right formula gives "probability of waiting t or more." It drops rapidly toward zero as t grows</p>
+<p><b>Mirror relationship with Poisson</b><br/>
+・Poisson counts "how many events in a fixed time" (count distribution)<br/>
+・Exponential measures "how long until the next event" (time distribution)<br/>
+・Same λ, two perspectives — one for counts, one for waiting times</p>
+<p><b>Memorylessness — the defining feature of the exponential</b><br/>
+・Even after waiting 10 minutes, the probability of "arriving within the next 5 min" is the same as for someone who just showed up<br/>
+・"I've waited a long time so it must come soon" doesn't apply<br/>
+・This only holds when the event rate is constant over time (e.g., radioactive decay)<br/>
+・Real buses have schedules, so real waiting is not memoryless</p>
+</div>
+
+<div class="detail-section">
+<h3>// How the three distributions connect — learning them separately is a waste</h3>
+<p>Textbooks place these on different pages, making them look like three unrelated distributions. In reality they're deeply connected. Once I saw the links, the whole picture snapped into focus.</p>
+<div class="connection-diagram">Binomial ──n large, p small──→ Poisson
+   │                              │
+   │ np, n(1-p) both large        │ "time until
+   ↓                              ↓  next event"
+Normal approximation           Exponential</div>
+<ul>
+<li><b>Binomial → Poisson</b>: defect rate 0.5%, inspect 200 items (n=200, p=0.005) → approximate with Poisson λ=1</li>
+<li><b>Poisson ↔ Exponential</b>: "λ events per hour" is Poisson; "time until next event" is exponential. Same phenomenon, two angles</li>
+<li><b>Binomial → Normal</b>: when np ≥ 5 and n(1−p) ≥ 5, approximate with N(np, np(1−p)) — a consequence of the CLT</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Poisson can always substitute for binomial"</b>
+<p>Only when p is small and n is large. Try using Poisson to approximate a coin flip (p=0.5, n=20) — it won't even be close. Use the simulator above to see for yourself.</p>
+</div>
+<div class="misc-item">
+<b>❌ "I've waited 10 minutes, so the bus must come soon"</b>
+<p>Under exponential (memoryless) assumptions, this is wrong. In reality, buses have schedules, so "it should come soon" is often correct in practice. The exponential model applies only to purely random events.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Binomial variance is np"</b>
+<p>np is the mean. The variance is np(1−p). Forgetting the (1−p) factor is a classic exam trap. Variance is smallest when p is near 0 or 1 (outcomes are nearly certain).</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Complement trick</b>: "P(3 or more successes)" → P(X≥3) = 1 − P(0) − P(1) − P(2) is usually faster</li>
+<li><b>Poisson approximation</b>: "defect rate 2%, 100 items, P(3+ defective)?" → λ=2, use Poisson</li>
+<li><b>Exponential calculation</b>: "mean life 1000 hours. P(lasts more than 500 hours)?" → e⁻⁰·⁵ ≈ 0.607</li>
+<li><b>Mean and variance pairs</b>: "Which is correct?" → Poisson: mean = variance = λ; binomial variance = np(1−p)</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="./bayes.html">P.05 Bayes' Theorem</a></div>
 </section>
 </main>
@@ -255,6 +350,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

@@ -1074,7 +1074,7 @@
       <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
       <button class="btn magenta" id="ciReset">CLEAR</button>
     </div>
-    <canvas id="ciCanvas" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" aria-busy="true"></canvas>
+    <canvas id="ciCanvas" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" data-aria-label-en="Confidence interval simulation. Repeated sampling shows 95% of intervals contain the population mean" height="240" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">作成した区間</span><span data-lang="en">Intervals built</span><strong id="ciMade">0</strong></div>
       <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage</span><strong id="ciCov">&#x2014;</strong></div>
@@ -1156,7 +1156,7 @@
         </select>
       </div>
     </div>
-    <canvas id="testCanvas" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" height="260" aria-busy="true"></canvas>
+    <canvas id="testCanvas" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" data-aria-label-en="Hypothesis testing visualization. Explore the relationship between test statistic and rejection region" height="260" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">検定統計量 z</span><span data-lang="en">Test statistic z</span><strong id="tZstat">&#x2014;</strong></div>
       <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="tCrit">&#x2014;</strong></div>
@@ -1219,7 +1219,7 @@
         <input type="range" id="eA" min="0.001" max="0.3" step="0.001" value="0.05">
       </div>
     </div>
-    <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" aria-busy="true"></canvas>
+    <canvas id="errCanvas" aria-label="第一種・第二種の過誤と検出力の関係を可視化" data-aria-label-en="Visualize the relationship between Type I/II errors and statistical power" height="260" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">&#x03B1; (第1種の誤り)</span><span data-lang="en">&#x03B1; (Type I error)</span><strong id="eAlpha">&#x2014;</strong></div>
       <div><span data-lang="ja">臨界値</span><span data-lang="en">Critical value</span><strong id="eCrit">&#x2014;</strong></div>
@@ -1312,8 +1312,8 @@
         <label><input type="radio" name="tConf" value="0.01"/> 99%</label>
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
-      <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <canvas id="tCICanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="信頼区間の比較" aria-busy="true"></canvas>
+      <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" data-aria-label-en="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="tCICanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="信頼区間の比較" data-aria-label-en="Confidence interval comparison" aria-busy="true"></canvas>
       <div class="info" style="margin-top:6px">
         <div><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> <strong id="tInfoN">5</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="tInfoDf">4</strong></div>
@@ -1376,12 +1376,12 @@
         </div>
         <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 試行</span><span data-lang="en">&#x25B6; Roll</span></button>
       </div>
-      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" aria-busy="true"></canvas>
+      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
       <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
         <input type="range" id="chiDf" min="1" max="30" value="5">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
-      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" data-aria-label-en="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="info" style="margin-top:6px">
         <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
@@ -1441,8 +1441,8 @@
         <input type="range" id="fGroupN" min="5" max="100" value="20">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
-      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" aria-busy="true"></canvas>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" data-aria-label-en="Variance comparison between two groups" aria-busy="true"></canvas>
       <div class="info" style="margin-top:6px">
         <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
         <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
@@ -1534,7 +1534,7 @@
       <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
@@ -1589,7 +1589,7 @@
       <button id="indReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">総数 n</span><span data-lang="en">Total n</span> <strong id="indN">0</strong></div>
@@ -1610,11 +1610,151 @@
     <a data-lang="ja" href="topics/chitest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/chitest.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>2変数の「つながり」を測る <span class="story-arrow">▸</span> <a href="#corr">M0 相関係数</a></div>
-  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="#corr">M0 Correlation</a></div>
+<div class="story-next" data-lang="ja"><span class="lbl">次は —</span>3群以上を一度に比較する <span class="story-arrow">▸</span> <a href="#anova">I.07 分散分析（ANOVA）</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I.07 ANOVA</a></div>
 </section>
 
 
+<!-- ============ ANOVA ============ -->
+
+<section id="anova" class="reveal">
+  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/anova.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/anova.html">▸ Dedicated page for this topic</a></div>
+  <div class="sec-tag">I.07 / ANOVA</div>
+  <h2 class="sec-title" data-lang="ja">分散分析（ANOVA） <span class="sec-sub">— F値の直感を掴む</span></h2>
+  <h2 class="sec-title" data-lang="en">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
+
+  <div class="story-bridge" data-lang="ja">カイ二乗検定は「カテゴリのズレ」を測った。では「3グループ以上の<b>平均値</b>に差があるか？」はどう調べる？ t検定を何度も繰り返すと偽陽性が膨らむ — <span class="next">分散分析（ANOVA）</span>なら、全グループを一度に比較できる。</div>
+  <div class="story-bridge" data-lang="en">The chi-squared test quantified "category deviations." But how do we test whether <b>means</b> differ across three or more groups? Repeating t-tests inflates false positives — <span class="next">ANOVA</span> compares all groups in a single test.</div>
+
+  <p class="sec-desc" data-lang="ja">
+    「グループ間の違い」と「グループ内のバラつき」を比べるのがANOVA。<br>
+    違いがバラつきに比べて大きければ「差がある」と判定。スライダーで動かして体感しよう。
+  </p>
+  <p class="sec-desc" data-lang="en">
+    ANOVA compares "how different the groups are" vs. "how spread out each group is."<br>
+    When the difference outweighs the spread, we conclude the groups really differ. Move the sliders to feel it.
+  </p>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+  <b>実験ガイド — 多重比較の問題</b>
+  <ol>
+  <li><b>Step 1:</b> ▶ 100回 をクリック — 差がない3群でt検定を3回繰り返す試行を100回実施。</li>
+  <li><b>Step 2:</b> 赤い点の割合を確認 — 理論上14.3%のはずが、実測値はどうなる？</li>
+  <li><b>Step 3:</b> ▶ 1000回 で試行を追加 — 試行数が増えると14.3%に収束していく。</li>
+  </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+  <b>Experiment Guide — Multiple Comparisons Problem</b>
+  <ol>
+  <li><b>Step 1:</b> Click ▶ 100 trials — runs 100 experiments where 3 identical groups are compared with 3 pairwise t-tests.</li>
+  <li><b>Step 2:</b> Check the red dot ratio — theory predicts 14.3%. What do you get?</li>
+  <li><b>Step 3:</b> Click ▶ 1000 trials — as trials accumulate, the rate converges toward 14.3%.</li>
+  </ol>
+  </div>
+  <!-- @panel:anova_sim -->
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; なぜt検定を繰り返してはいけないか</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Why You Can't Just Repeat t-Tests</h3>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+      <span data-lang="ja">まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)&#x00D7;20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
+      <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+    </div>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <button id="mcRun" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
+      <button id="mcRun1000" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
+      <button id="mcReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+    </div>
+    <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span> <strong id="mcTotal">0</strong></div>
+      <div><span data-lang="ja">偽陽性</span><span data-lang="en">False positives</span> <strong id="mcFP">0</strong></div>
+      <div><span data-lang="ja">偽陽性率</span><span data-lang="en">FP rate</span> <strong id="mcRate">0.0%</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="mcSimCanvas" data-title="多重比較シミュレーション" data-title-en="Multiple Comparisons Simulation" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+  </div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+  <p style="margin:0 0 6px;font-size:12px;color:var(--dim)">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
+  <b>実験ガイド — F値を体感する</b>
+  <ol>
+  <li><b>Step 1:</b> 群間の差をゼロにする → F値が1付近に。全群が「同じ集団」のように見える。</li>
+  <li><b>Step 2:</b> 群間の差を大きくする → F値が上がり、p値が下がる。棄却域に入る瞬間を確認。</li>
+  <li><b>Step 3:</b> 群内のばらつきを大きくする → 同じ差でもF値が下がる。「差があっても検出できない」体験。</li>
+  <li><b>Step 4:</b> サンプルサイズを増やす → F値が上がる。大きなサンプルほど小さな差を検出できる（検出力）。</li>
+  </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+  <p style="margin:0 0 6px;font-size:12px;color:var(--dim)">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
+  <b>Experiment Guide — Feel the F-Statistic</b>
+  <ol>
+  <li><b>Step 1:</b> Set between-group difference to zero → F ≈ 1. All groups look like one population.</li>
+  <li><b>Step 2:</b> Increase between-group difference → F rises, p drops. Watch it cross the rejection threshold.</li>
+  <li><b>Step 3:</b> Increase within-group spread → same difference but F drops. "Real differences can hide in noise."</li>
+  <li><b>Step 4:</b> Increase sample size → F rises. Larger samples detect smaller effects (statistical power).</li>
+  </ol>
+  </div>
+  <!-- @panel:anova_main -->
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">群間の差</span>
+          <span data-lang="en">Between-group diff</span>
+          = <span class="val" id="anovaEffectVal">1.5</span>
+        </label>
+        <input type="range" id="anovaEffect" min="0" max="5" step="0.1" value="1.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">群内のばらつき (&#x03C3;)</span>
+          <span data-lang="en">Within-group spread (&#x03C3;)</span>
+          = <span class="val" id="anovaWithinVal">1.5</span>
+        </label>
+        <input type="range" id="anovaWithin" min="0.3" max="5" step="0.1" value="1.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">各群のn</span>
+          <span data-lang="en">n per group</span>
+          = <span class="val" id="anovaNkVal">20</span>
+        </label>
+        <input type="range" id="anovaNk" min="5" max="80" step="1" value="20">
+      </div>
+      <button id="anovaGen" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
+    </div>
+    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span>F</span> <strong id="anovaF">&#x2014;</strong></div>
+      <div><span data-lang="ja">群間 df</span><span data-lang="en">Between df</span> <strong id="anovaDfB">&#x2014;</strong></div>
+      <div><span data-lang="ja">群内 df</span><span data-lang="en">Within df</span> <strong id="anovaDfW">&#x2014;</strong></div>
+      <div><span>p</span> <strong id="anovaP">&#x2014;</strong></div>
+      <div><span>SSB</span> <strong id="anovaSSB">&#x2014;</strong></div>
+      <div><span>SSW</span> <strong id="anovaSSW">&#x2014;</strong></div>
+      <div><span>η²</span> <strong id="anovaEta2">&#x2014;</strong></div>
+      <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="anovaResult">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="anovaCanvas" data-title="分散分析（ANOVA）" data-title-en="ANOVA" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+  </div>
+
+  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <a data-lang="ja" href="topics/anova.html">📖 数式・詳細解説を読む → 個別ページへ</a>
+    <a data-lang="en" href="en/topics/anova.html">📖 Formulas & detailed explanation → dedicated page</a>
+  </div>
+  <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>2変数の「つながり」を測る <span class="story-arrow">▸</span> <a href="#corr">M0 相関係数</a></div>
+  <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="#corr">M0 Correlation</a></div>
+</section>
 
 
 <div class="category-preview reveal">
@@ -1709,7 +1849,7 @@
       <button class="btn magenta" id="corrClear">CLEAR</button>
       <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックで点を追加</span><span data-lang="en">&#x2191; Click canvas to add points</span></span>
     </div>
-    <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" height="320" style="cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" data-aria-label-en="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" style="cursor:crosshair" aria-busy="true"></canvas>
     <div class="info">
       <div>n<strong id="corrNval">0</strong></div>
       <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="corrRval">&#x2014;</strong></div>
@@ -1749,7 +1889,7 @@
     <div class="controls" style="gap:6px;margin-bottom:6px">
       <button class="btn" id="anscombeReplay"><span data-lang="ja">&#x25B6; 再生</span><span data-lang="en">&#x25B6; Replay</span></button>
     </div>
-    <canvas id="anscombeCanvas" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="anscombeCanvas" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" data-aria-label-en="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
     <div class="share-row">
       <button class="share-btn dl" data-share="anscombeCanvas" data-title="アンスコムの例" data-title-en="Anscombe's Quartet" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
@@ -1814,7 +1954,7 @@
       <button class="btn magenta" id="regClear">CLEAR</button>
       <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
     </div>
-    <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" data-aria-label-en="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
     <div class="info">
       <div>n<strong id="regN">0</strong></div>
       <div><span data-lang="ja">傾き &#x03B2;&#x2081;</span><span data-lang="en">Slope &#x03B2;&#x2081;</span><strong id="regB1">&#x2014;</strong></div>
@@ -1891,7 +2031,7 @@
       </div>
       <button class="btn" id="mGen"><span data-lang="ja">&#x21BA; 再サンプリング</span><span data-lang="en">&#x21BA; Resample</span></button>
     </div>
-    <canvas id="mregCanvas" aria-label="3D回帰平面の散布図" height="500" aria-busy="true"></canvas>
+    <canvas id="mregCanvas" aria-label="3D回帰平面の散布図" data-aria-label-en="3D scatter plot with regression plane" height="500" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja" id="mPredLabel"></span><span data-lang="en" id="mPredLabelEn"></span><strong id="mPredBig">&#x2014;</strong></div>
       <div><span data-lang="ja">&#x03B2;&#x0302;&#x2081;（勉強1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2081; (per study hour)</span><strong id="mCoefStudy">&#x2014;</strong></div>

@@ -152,7 +152,7 @@
 </select>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="仮説検定の可視化。検定統計量と棄却域の関係をインタラクティブに確認できる" height="260" id="testCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Hypothesis testing visualization. Explore the relationship between test statistic and rejection region" height="260" id="testCanvas"></canvas>
 <div class="info">
 <div><span>Test statistic z</span><strong id="tZstat">—</strong></div>
 <div><span>Critical value</span><strong id="tCrit">—</strong></div>
@@ -196,7 +196,7 @@
 <input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="第一種・第二種の過誤と検出力の関係を可視化" height="260" id="errCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Visualize the relationship between Type I/II errors and statistical power" height="260" id="errCanvas"></canvas>
 <div class="info">
 <div><span>α (Type I error)</span><strong id="eAlpha">—</strong></div>
 <div><span>Critical value</span><strong id="eCrit">—</strong></div>
@@ -214,6 +214,77 @@
 <a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up critical z/t values with live graph sync
 </div>
 
+<!-- @panel:test_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\,,\quad \text{p-value} = P\!\left(|Z| \geq |z_{\text{obs}}|\;\middle|\;H_0\right)"></div>
+<p><b>Left formula in plain English</b><br/>
+・"If this drug truly has no effect (H₀: μ = μ₀), how many standard errors is our sample mean from μ₀?"</p>
+<p><b>Each part</b><br/>
+・X̄ − μ₀: the gap between observed and "no effect" — bigger means more suspicious<br/>
+・÷ σ/√n: converts to "how many SEs?" — 1 SE is normal, 3 SEs is extremely rare</p>
+<p><b>Right formula: p-value (two-sided)</b><br/>
+・"Assuming H₀ is true, the probability of seeing a |z| this extreme or more" — that's what we want to know<br/>
+・p-value ≤ α (significance level) → reject. "A result this extreme is too unlikely to be chance"<br/>
+・p-value &gt; α → fail to reject. "This could easily happen by chance"</p>
+<p><b>⚠️ p-value ≠ "probability that H₀ is true"</b><br/>
+・The p-value is computed assuming H₀ is true. It cannot tell you whether H₀ is actually true or false<br/>
+・This is the single most common misinterpretation in statistics</p>
+</div>
+
+<div class="detail-section">
+<h3>// The 5-step testing recipe — use this order every time</h3>
+<ol>
+<li><b>State hypotheses</b>: H₀: "no difference" vs. H₁: "there is a difference"</li>
+<li><b>Choose α before collecting data</b>: 0.05 is conventional, but varies by field</li>
+<li><b>Compute the test statistic</b>: z, t, χ², etc. — a single number summarizing "how far the data is from H₀"</li>
+<li><b>Find the p-value</b>: look up the probability from the statistic</li>
+<li><b>Decide</b>: p ≤ α → reject; p &gt; α → fail to reject</li>
+</ol>
+<h3>// The courtroom analogy — going deeper</h3>
+<ul>
+<li>H₀ = "defendant is innocent"; H₁ = "defendant is guilty"</li>
+<li>Rejecting H₀ = guilty verdict: "it's implausible that an innocent person would produce this evidence"</li>
+<li>Failing to reject = insufficient evidence: not "proven innocent," just "not enough to convict"</li>
+<li>That's why we say "fail to reject H₀" rather than "accept H₀"</li>
+</ul>
+<h3>// Connection to confidence intervals</h3>
+<p>μ₀ inside the 95% CI ⟺ fail to reject at α = 0.05. Same math, different lens: the CI shows "width," the test gives "yes/no." The conclusions always agree.</p>
+<h3>// The α-β trade-off</h3>
+<ul>
+<li>Lower α (e.g., 0.05 → 0.01) → more cautious, but you miss real effects more often (β increases)</li>
+<li>To reduce β → increase n. That's why large clinical trials are necessary</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Small p-value = large effect"</b>
+<p>The p-value measures how surprising the data is, not how big the effect is. With n = 1,000,000 a tiny difference can yield p &lt; 0.001. Always check effect size separately.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Not significant = no difference"</b>
+<p>With too few samples, a real difference can produce p &gt; 0.05 (low power). "No difference" requires demonstrating that n was large enough to detect one.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Smaller α is always better"</b>
+<p>Set α to 0.001 and you'll call truly effective drugs "ineffective" far too often. α and β sit on a seesaw — pushing one down raises the other.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>p-value and decision</b>: "p = 0.03, α = 0.01?" → 0.03 &gt; 0.01, fail to reject</li>
+<li><b>Two-sided vs. one-sided</b>: "Does the drug have an effect?" = one-sided; "Is there any difference?" = two-sided</li>
+<li><b>Error classification</b>: "Rejecting a true H₀ → Type I error"; "Failing to reject a false H₀ → Type II error"</li>
+<li><b>Power</b>: 1 − β = probability of detecting a real effect</li>
+</ul>
+<p style="margin:10px 0 0">Look up critical values in the <a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="./dists.html">I.05 t, χ², F</a></div>
 </section>
 </main>
@@ -269,6 +340,7 @@
     <li><a href="./test.html" class="current">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

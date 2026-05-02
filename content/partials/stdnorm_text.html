@@ -1,0 +1,50 @@
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「z=1.96 はキリのいい数字だから採用された」</b>
+<p>1.96 は「両側確率がちょうど 5% になる z の値」として計算で出てきた数字。キリが良いわけでもなく、約束事でもない。P(−1.96 ≤ Z ≤ 1.96) = 0.9500 は近似。試験では 1.96 で十分。</p>
+</div>
+<div class="misc-item">
+<b>❌「標準化したらデータの情報が消える」</b>
+<p>z = (x−μ)/σ は可逆。x = μ + zσ で元に戻せる。標準化はスケールを揃えるだけで、情報は一切失われない。</p>
+</div>
+<div class="misc-item">
+<b>❌「標準正規分布は理論だけのもの」</b>
+<p>どんな正規分布も z = (x−μ)/σ で標準正規に変換できるから、この1つの分布を知っていれば全部の確率が計算できる。だからこそ「すべてのはじまり」。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "z = 1.96 is a round number chosen by convention"</b>
+<p>1.96 is the z-value where the two-sided probability equals exactly 5%. It wasn't chosen for convenience — it came straight out of the math. P(−1.96 ≤ Z ≤ 1.96) = 0.9500 is approximate. For exams, 1.96 is precise enough.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Standardizing destroys information"</b>
+<p>z = (x−μ)/σ is reversible: x = μ + zσ recovers the original value. Standardization rescales; it doesn't discard anything.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The standard normal is purely theoretical"</b>
+<p>Any normal distribution transforms to the standard normal via z = (x−μ)/σ. Know this one distribution and you can compute probabilities for all of them. That's why it's "where everything begins."</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>表の読み方</b>：問題の表が「上側確率」か「累積確率」か確認。間違えると答えが全然違う</li>
+<li><b>引き算パターン</b>：P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
+<li><b>標準化してから表を引く</b>：「N(170, 6²) で 180 以上の確率」→ z = (180−170)/6 ≈ 1.67 → 表を引く</li>
+<li><b>逆引き</b>：「上側5%点は？」→ z = 1.645</li>
+</ul>
+<p style="margin:10px 0 0"><a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で累積・上側・両側を切り替えながら値を確認できる</p>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Reading the table</b>: check whether the table gives "upper-tail" or "cumulative" probabilities — mixing them up changes the answer completely</li>
+<li><b>Subtraction pattern</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
+<li><b>Standardize then look up</b>: "P(X ≥ 180) where X ~ N(170, 6²)" → z = (180−170)/6 ≈ 1.67 → look up the table</li>
+<li><b>Reverse lookup</b>: "What is the upper 5% point?" → z = 1.645</li>
+</ul>
+<p style="margin:10px 0 0"><a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up values</p>
+</div>

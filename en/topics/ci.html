@@ -147,7 +147,7 @@
 <button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
 <button class="btn magenta" id="ciReset">CLEAR</button>
 </div>
-<canvas aria-busy="true" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" height="240" id="ciCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval simulation. Repeated sampling shows 95% of intervals contain the population mean" height="240" id="ciCanvas"></canvas>
 <div class="info">
 <div><span>Intervals built</span><strong id="ciMade">0</strong></div>
 <div><span>Coverage</span><strong id="ciCov">—</strong></div>
@@ -160,8 +160,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+<!-- @panel:ci_text -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
 <p><b>Each part</b><br/>
 ・x̄ (sample mean): center of the interval — our best single guess<br/>
 ・z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
@@ -170,13 +173,35 @@
 ・"center ± multiplier × wobble" casts a net around the truth<br/>
 ・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
 ・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
-
-
-
-<div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
-<a href="../../en/tables/index.html?dist=norm&mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> — see where z = 1.96 and 2.576 come from in two-sided mode
 </div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "95% CI = 95% probability the true value is inside" — the most common trap</b>
+<p>The true value μ is a fixed constant — it's either inside the interval or it isn't. "95%" means "if we repeat this procedure 100 times, about 95 intervals will contain the truth." It's a statement about the method's long-run performance, not about one particular interval. In the simulation above, generate 300 intervals and watch the pink ones (misses) hover near 5%.</p>
+</div>
+<div class="misc-item">
+<b>❌ "A narrow interval means a correct answer"</b>
+<p>Narrow means "precise," not "right." Lower the confidence level and the interval shrinks — but the chance of missing the true value grows. Narrowness reflects precision, not accuracy.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Confidence intervals only work for means"</b>
+<p>You can build confidence intervals for variances, proportions, regression coefficients, differences — any estimator. The structure is always the same: "estimate ± multiplier × standard error."</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Calculation</b>: "x̄=50, σ=10, n=25. 95% CI?" → 50 ± 1.96×(10/5) = [46.08, 53.92]</li>
+<li><b>Width and n</b>: "To halve the width, multiply n by?" → 4 (width ∝ 1/√n)</li>
+<li><b>Link to hypothesis testing</b>: "95% CI = [2.1, 4.3], test H₀: μ=2 at α=0.05?" → 2 is outside → reject</li>
+<li><b>Confidence level and width</b>: "Switch to 99%?" → z goes from 1.96 to 2.576, so the interval widens</li>
+</ul>
+<p style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a href="../../en/tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="./test.html">I.04 Hypothesis Testing</a></div>
 </section>
 </main>
@@ -232,6 +257,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

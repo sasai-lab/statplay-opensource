@@ -144,6 +144,19 @@
       "en_teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"]
     },
     {
+      "slug": "anova",
+      "ja_sidebar": "分散分析（ANOVA）",
+      "en_sidebar": "ANOVA",
+      "ja_title": "分散分析（ANOVA）— F値の直感を掴む",
+      "en_title": "ANOVA — Feel What the F-Statistic Really Means",
+      "ja_desc": "3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。",
+      "en_desc": "Why can't you just repeat t-tests for three or more groups? Move the sliders to see how the ratio of between-group to within-group variance becomes the F-statistic — and feel when it crosses the rejection threshold.",
+      "ja_kw": "分散分析, ANOVA, F値, 一元配置分散分析, 群間分散, 群内分散, 多重比較, 統計検定2級",
+      "en_kw": "ANOVA, analysis of variance, F-statistic, one-way ANOVA, between-group variance, within-group variance, multiple comparisons",
+      "teaches": ["分散分析", "F値", "群間分散と群内分散", "多重比較の問題"],
+      "en_teaches": ["Analysis of variance", "F-statistic", "Between- and within-group variance", "Multiple comparisons problem"]
+    },
+    {
       "slug": "corr",
       "ja_sidebar": "相関係数",
       "en_sidebar": "Correlation",
@@ -231,6 +244,11 @@
     "相関係数": "Correlation",
     "単回帰分析": "Simple Regression",
     "カイ二乗検定": "Chi-Squared Test",
+    "分散分析": "ANOVA",
+    "F値": "F-statistic",
+    "群間分散": "Between-group variance",
+    "群内分散": "Within-group variance",
+    "多重比較": "Multiple Comparisons",
     "重回帰分析": "Multiple Regression",
     "ベイズの定理": "Bayes' Theorem",
     "確率の基本法則": "Basic Rules of Probability",

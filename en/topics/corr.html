@@ -113,7 +113,7 @@
   <span class="current-page">Correlation</span>
 </div>
 <nav class="topic-top-nav" aria-label="Previous / Next topic">
-  <a href="./chitest.html" rel="prev">← Prev</a>
+  <a href="./anova.html" rel="prev">← Prev</a>
   <a href="./reg.html" rel="next">Next →</a>
 </nav>
 </div>
@@ -123,7 +123,7 @@
   <p class="topic-lead">Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.</p>
   <section class="reveal in" id="corr">
 
-<div class="sec-tag">M0 / 相関係数</div>
+<div class="sec-tag">M.00 / CORRELATION</div>
 
 <h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
 
@@ -166,7 +166,7 @@
 <button class="btn magenta" id="corrClear">CLEAR</button>
 <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click canvas to add points</span></span>
 </div>
-<canvas aria-busy="true" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
 <div class="info">
 <div>n<strong id="corrNval">0</strong></div>
 <div><span>Correlation r</span><strong id="corrRval">—</strong></div>
@@ -179,6 +179,27 @@
 </div>
 <!-- /@panel -->
 </div>
+
+<!-- @panel:corr_detail_formula -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \cdot \sum(y_i - \bar{y})^2}}"></div>
+<p><b>Numerator — the four-quadrant story</b><br/>
+・(xᵢ − x̄): how far each point's x is from the mean<br/>
+・(yᵢ − ȳ): how far each point's y is from the mean<br/>
+・Multiply: same direction → <b>positive</b> (green quadrants), opposite → <b>negative</b> (red quadrants)<br/>
+・Sum: a tug-of-war between positive and negative contributions. Positive wins → r &gt; 0, negative wins → r &lt; 0</p>
+<p><b>Denominator</b><br/>
+・Divides by each variable's standard deviation to normalize r into −1 ≤ r ≤ 1<br/>
+・Unit-free: centimeters or inches give the same r</p>
+<div class="formula" data-tex="R^2 = r^2"></div>
+<p><b>What R² means</b><br/>
+・"Fraction of y's variation explained by a linear relationship with x"<br/>
+・R² = 0.64 → 64% of y's spread is accounted for by x<br/>
+・The remaining 36% comes from other factors or randomness</p>
+</div>
+<!-- /@panel -->
 <div class="sim-layout">
 
 <div class="guided-steps">
@@ -196,24 +217,59 @@
 <div class="controls" style="gap:6px;margin-bottom:6px">
 <button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
 </div>
-<canvas aria-busy="true" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
 </div>
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<!-- @panel:corr_text -->
 
-<a href="en/topics/corr.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+<div class="detail-section">
+<h3>// Anscombe's Quartet — what it teaches</h3>
+<p>In 1973, statistician Francis Anscombe created this dataset to show that identical summary statistics can hide completely different data patterns.</p>
+<ul>
+<li><b>I</b>: ideal linear relationship. r accurately reflects what's going on</li>
+<li><b>II</b>: a quadratic relationship. r only measures linear correlation, so it misses the curve</li>
+<li><b>III</b>: one outlier drags r down. r is fragile against outliers</li>
+<li><b>IV</b>: a single distant x-value creates the entire correlation. High leverage from one point</li>
+</ul>
+<p><b>Takeaway</b>: always plot your data before computing r or a regression equation. This is a foundational principle of statistical analysis.</p>
 </div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "High correlation = causation"</b>
+<p>Ice cream sales and drowning deaths are strongly correlated. But ice cream doesn't cause drowning — temperature drives both (confounding variable). Correlation says "they move together," not "one causes the other."</p>
+</div>
+<div class="misc-item">
+<b>❌ "r = 0 means no relationship"</b>
+<p>U-shaped data can have r ≈ 0 despite a strong relationship. r measures only linear association. Non-linear patterns go undetected.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Just looking at r is enough"</b>
+<p>As Anscombe's quartet shows, identical r values can arise from wildly different data structures. "Plot first, compute second" is the golden rule.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Computing r by hand</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
+<li><b>r and R² conversion</b>: "R² = 0.49 → r = ±0.7" (sign matches the scatter plot's slope)</li>
+<li><b>Test of zero correlation</b>: t = r√(n−2) / √(1−r²), df = n−2</li>
+<li><b>Covariance and correlation</b>: r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
 </section>
 </main>
 
 <nav class="topic-nav" aria-label="Previous / Next topic">
-  <a href="./chitest.html" rel="prev">← Prev</a>
+  <a href="./anova.html" rel="prev">← Prev</a>
   <a href="./reg.html" rel="next">Next →</a>
 </nav>
 
@@ -268,6 +324,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html" class="current">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

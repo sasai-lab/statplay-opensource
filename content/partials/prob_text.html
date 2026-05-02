@@ -1,0 +1,82 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
+<p><b>左の式：条件付き確率 P(A|B)</b><br/>
+・P(A∩B)：A と B が同時に起きる確率（ベン図の重なり部分）<br/>
+・÷ P(B)：「B が起きた」という条件で世界を絞り込む<br/>
+・意味：B が起きたと分かったあと、その中で A も起きている割合</p>
+<p><b>右の式：加法定理 P(A∪B)</b><br/>
+・P(A) + P(B)：単純に足すと、重なり（A∩B）を二重カウントしてしまう<br/>
+・− P(A∩B)：二重カウント分を引いて正しい値にする<br/>
+・排反（A∩B = 0）なら単純に足すだけでOK</p>
+<p><b>独立との関係</b><br/>
+・A と B が独立 ⇔ P(A|B) = P(A)（B を知っても A の確率が変わらない）<br/>
+・このとき P(A∩B) = P(A)·P(B) が成り立つ（掛け算で求まる）</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
+<p><b>Left: Conditional probability P(A|B)</b><br/>
+・P(A∩B): probability both A and B happen (the overlap in a Venn diagram)<br/>
+・÷ P(B): restrict the universe to "B happened"<br/>
+・Meaning: within the world where B occurred, what fraction also had A?</p>
+<p><b>Right: Addition rule P(A∪B)</b><br/>
+・P(A) + P(B): naively adding double-counts the overlap<br/>
+・− P(A∩B): subtract it once to correct<br/>
+・If mutually exclusive (A∩B = 0): just add — no overlap to worry about</p>
+<p><b>Connection to independence</b><br/>
+・A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
+・Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「排反 = 独立」← 最頻出の混同</b>
+<p>排反：A∩B = ∅（サイコロで1の目と2の目は同時に出ない）<br/>
+独立：P(A∩B) = P(A)P(B)（1回目が1の目でも2回目の確率は変わらない）<br/>
+排反な2事象（P>0）は独立ではない。AとBが同時に起きないなら、Aが起きた時点でBの確率は0に下がるから。</p>
+</div>
+<div class="misc-item">
+<b>❌「条件付き確率の分母は P(A∪B)」</b>
+<p>P(A|B) の分母は P(B)。「Bが起きた世界」に絞り込むから、Bの確率で割る。∪ ではない。</p>
+</div>
+<div class="misc-item">
+<b>❌「P(A∪B) = P(A) + P(B) はいつでも成立」</b>
+<p>排反のときだけ。一般には重なり P(A∩B) を引く必要がある。引き忘れると二重カウントで確率が1を超えることもある。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Mutually exclusive = independent" — the #1 mix-up</b>
+<p>Mutually exclusive: A∩B = ∅ (rolling a 1 and a 2 on the same die).<br/>
+Independent: P(A∩B) = P(A)P(B) (first roll being 1 doesn't affect the second roll).<br/>
+Two mutually exclusive events (with P > 0) are never independent. If A happens, B's probability drops to 0 — that's the opposite of independence.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The denominator of conditional probability is P(A∪B)"</b>
+<p>P(A|B) divides by P(B), not P(A∪B). You're restricting the universe to "B happened," so you divide by B's probability.</p>
+</div>
+<div class="misc-item">
+<b>❌ "P(A∪B) = P(A) + P(B) always holds"</b>
+<p>Only when A and B are mutually exclusive. In general, you must subtract P(A∩B) to avoid double-counting. Forgetting this can push probabilities above 1.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>ベン図の読み取り</b>：3つの領域の数値から P(A|B), P(A∪B) を計算</li>
+<li><b>独立の判定</b>：「P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 → 独立か？」→ 0.3×0.4=0.12 → 独立</li>
+<li><b>余事象</b>：「少なくとも1回当たる確率」= 1 − (全部はずれる確率)</li>
+<li><b>排反と独立の違い</b>を正誤問題で問われる</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Venn diagram reading</b>: given three region values, compute P(A|B) and P(A∪B)</li>
+<li><b>Independence check</b>: "P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 — independent?" → 0.3×0.4 = 0.12 → yes</li>
+<li><b>Complement trick</b>: "probability of at least one hit" = 1 − P(all misses)</li>
+<li><b>Mutually exclusive vs. independent</b>: true/false questions test whether you confuse the two</li>
+</ul>
+</div>

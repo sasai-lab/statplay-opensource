@@ -1,0 +1,24 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
+<p><b>左の式 z = (x − μ) / σ</b><br/>
+・x − μ：データから平均を引く → 「平均からどれだけ離れているか」<br/>
+・÷ σ：それを標準偏差で割る → 単位を「σ何個分」に統一する<br/>
+・結果の z：どんな正規分布でも同じ物差しで比較できる"共通スコア"</p>
+<p><b>右の式 φ(z)</b><br/>
+・e<sup>−z²/2</sup>：z=0（平均）で最大、離れるほど急激に小さくなる → 釣鐘型の正体<br/>
+・1/√(2π)：面積の合計がちょうど1（= 確率の総和）になるための調整係数<br/>
+・φ(z) の値：その z における曲線の「高さ」（確率密度）。面積が確率になる</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
+<p><b>Left: z = (x − μ) / σ</b><br/>
+・x − μ: distance from the mean<br/>
+・÷ σ: convert to "how many σ away" — a universal ruler<br/>
+・z: a standardized score comparable across any normal distribution</p>
+<p><b>Right: φ(z)</b><br/>
+・e<sup>−z²/2</sup>: maximum at z=0, drops rapidly as |z| grows → the bell shape<br/>
+・1/√(2π): normalizing constant ensuring total area = 1 (probabilities sum to 100%)<br/>
+・φ(z) gives the curve's height (density) at that point; area under the curve = probability</p>
+</div>

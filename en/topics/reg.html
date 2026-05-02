@@ -141,7 +141,7 @@
 <button class="btn magenta" id="regClear">CLEAR</button>
 <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click the canvas to add points</span></span>
 </div>
-<canvas aria-busy="true" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" height="280" id="regCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" id="regCanvas" style="cursor:crosshair"></canvas>
 <div class="info">
 <div>n<strong id="regN">0</strong></div>
 <div><span>Slope β₁</span><strong id="regB1">—</strong></div>
@@ -156,8 +156,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
+<!-- @panel:reg_text -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
 <p><b>ŷ = β₀ + β₁x (prediction equation)</b><br/>
 ・β₁ (slope): average change in y per 1-unit increase in x<br/>
 ・β₀ (intercept): predicted y when x = 0 — where the line crosses the y-axis</p>
@@ -166,9 +169,34 @@
 ・Denominator Σ(xᵢ − x̄)²: total variation in x alone<br/>
 ・The ratio: "co-movement per unit of x-spread" = the slope<br/>
 ・More spread in x → more stable slope estimate (larger denominator = less noise)</p>
+</div>
 
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "High correlation = causation"</b>
+<p>Ice cream sales and drowning deaths are strongly correlated, but ice cream doesn't cause drowning. The shared cause is temperature (confounding variable). Correlation says "they co-move"; it doesn't say "one causes the other."</p>
+</div>
+<div class="misc-item">
+<b>❌ "High R² means the model is correct"</b>
+<p>R² always increases when you add more variables — even irrelevant ones. So R² alone can't judge model quality. Use the adjusted R² instead.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Fitting a line means there is a linear relationship"</b>
+<p>Least squares always produces a line — even for data scattered in a circle. In the simulator above, try "random 20 points" and note the low R². The line exists; the relationship doesn't.</p>
+</div>
+</div>
 
-
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Computing β₁ by hand</b>: co-variation / x-variation = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
+<li><b>Interpreting R²</b>: "R² = 0.64 → 64% of y's variance is explained by x"</li>
+<li><b>r and R²</b>: "R² = 0.64 ⇒ r = ±0.8" (sign matches β₁)</li>
+<li><b>Residual assumptions</b>: homoscedasticity, normality, independence — the big three</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="./mreg.html">M.02 Multiple Regression</a></div>
 </section>
 </main>
@@ -224,6 +252,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html" class="current">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

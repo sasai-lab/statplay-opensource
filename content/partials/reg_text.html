@@ -1,0 +1,72 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
+<p><b>ŷ = β₀ + β₁x（予測式）</b><br/>
+・β₁（傾き）：x が1単位増えたとき、y が平均的にいくつ変わるか<br/>
+・β₀（切片）：x = 0 のときの y の予測値。グラフと y 軸の交点</p>
+<p><b>β₁ の計算式を分解</b><br/>
+・分子 Σ(xᵢ − x̄)(yᵢ − ȳ)：x と y が一緒に動く度合い（共変動）。両方平均より大きいとプラス、片方だけ大きいとマイナス<br/>
+・分母 Σ(xᵢ − x̄)²：x 自体のバラつき（変動）<br/>
+・割り算の意味：「x の変動1単位あたり、y がどれだけ共変動しているか」→ これが傾き<br/>
+・x のバラつきが大きいほど傾きの推定が安定する（分母が大きい = ブレにくい）</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
+<p><b>ŷ = β₀ + β₁x (prediction equation)</b><br/>
+・β₁ (slope): average change in y per 1-unit increase in x<br/>
+・β₀ (intercept): predicted y when x = 0 — where the line crosses the y-axis</p>
+<p><b>Breaking down the β₁ formula</b><br/>
+・Numerator Σ(xᵢ − x̄)(yᵢ − ȳ): co-variation — how much x and y move together. Positive when both above/below their means<br/>
+・Denominator Σ(xᵢ − x̄)²: total variation in x alone<br/>
+・The ratio: "co-movement per unit of x-spread" = the slope<br/>
+・More spread in x → more stable slope estimate (larger denominator = less noise)</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「相関が高い = 因果関係がある」</b>
+<p>アイスの売上と溺死者数は強い正の相関。でも「アイスが人を溺れさせている」わけではない。共通の原因「気温」が両方に影響している（交絡因子）。相関は「一緒に動く」を言うだけで「一方が原因」とは言わない。</p>
+</div>
+<div class="misc-item">
+<b>❌「R² が高ければモデルは正しい」</b>
+<p>R² は説明変数を追加すれば必ず上がる（下がることはない）。無関係な変数を入れても上がる。だから R² だけでモデルの良さを判断するのは危険。自由度調整済み R² を使う。</p>
+</div>
+<div class="misc-item">
+<b>❌「回帰直線が引けた = データに直線関係がある」</b>
+<p>どんなデータにも最小二乗法で直線は必ず引ける。円形に散らばったデータにも直線が出る。上のシミュレーションで「ランダム20点」を試して R² が低いことを確認してみよう。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "High correlation = causation"</b>
+<p>Ice cream sales and drowning deaths are strongly correlated, but ice cream doesn't cause drowning. The shared cause is temperature (confounding variable). Correlation says "they co-move"; it doesn't say "one causes the other."</p>
+</div>
+<div class="misc-item">
+<b>❌ "High R² means the model is correct"</b>
+<p>R² always increases when you add more variables — even irrelevant ones. So R² alone can't judge model quality. Use the adjusted R² instead.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Fitting a line means there is a linear relationship"</b>
+<p>Least squares always produces a line — even for data scattered in a circle. In the simulator above, try "random 20 points" and note the low R². The line exists; the relationship doesn't.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>β₁ の手計算</b>：共変動/x の変動 = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
+<li><b>R² の解釈</b>：「R²=0.64 → y の分散の64%がxで説明できる」</li>
+<li><b>r と R²</b>：「R²=0.64 なら r=±0.8」（符号は β₁ と一致）</li>
+<li><b>残差の仮定</b>：等分散性・正規性・独立性の3つ</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Computing β₁ by hand</b>: co-variation / x-variation = Σ(x−x̄)(y−ȳ) / Σ(x−x̄)²</li>
+<li><b>Interpreting R²</b>: "R² = 0.64 → 64% of y's variance is explained by x"</li>
+<li><b>r and R²</b>: "R² = 0.64 ⇒ r = ±0.8" (sign matches β₁)</li>
+<li><b>Residual assumptions</b>: homoscedasticity, normality, independence — the big three</li>
+</ul>
+</div>

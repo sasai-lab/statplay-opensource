@@ -168,6 +168,71 @@
 <!-- /@panel -->
 </div>
 
+<!-- @panel:clt_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
+<p><b>What this says in plain English</b><br/>
+・"Take the average of n test scores, subtract the true mean, divide by the standard error — and no matter what the original scores' distribution looks like, as n grows, this ratio follows a standard normal distribution"</p>
+<p><b>Each part</b><br/>
+・X̄ₙ − μ: the gap between the sample mean and the true mean — raw units make this hard to interpret<br/>
+・÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
+・→d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
+<p><b>Why this unlocks confidence intervals and hypothesis tests</b><br/>
+・Thanks to the CLT, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
+・The confidence interval X̄ ± 1.96·σ/√n works because the CLT guarantees ±1.96σ covers 95%<br/>
+・The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the CLT<br/>
+・In short, the CLT is "the reason normal-distribution tools work on everything"</p>
+</div>
+
+<div class="detail-section">
+<h3>// Why does averaging produce a bell curve?</h3>
+<p>Intuitively — when you average n values, individual outliers cancel out. High values offset low values, making extreme averages rare. The pattern of "how rare" matches the bell curve exactly.</p>
+<p>Try it in the simulator above:<br/>
+・Pick the exponential distribution (heavily right-skewed), set n=5 → the mean distribution is still skewed<br/>
+・Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
+<h3>// Is "n ≥ 30" really enough?</h3>
+<p>Textbooks often say "n ≥ 30 is sufficient for the CLT." This isn't a mathematical threshold — it's a rule of thumb.</p>
+<ul>
+<li>Uniform distribution (symmetric): n = 12 already looks very normal</li>
+<li>Exponential (strong skew): n = 40–50 needed</li>
+<li>Bimodal: n = 30 may still show bumps</li>
+</ul>
+<h3>// σ vs. SE — easy to confuse</h3>
+<ul>
+<li><b>σ (standard deviation)</b>: spread of individual data points. A property of the data itself</li>
+<li><b>SE = σ/√n (standard error)</b>: spread of the sample mean. Depends on sample size</li>
+<li>Quadruple n → SE halves (√4 = 2). Doubling precision requires 4× the data — that's the true "cost of research"</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The CLT says the data itself becomes normal"</b>
+<p>The original data stays exactly the same shape. What becomes normal is the distribution of the sample mean. Data drawn from an exponential distribution is still right-skewed — only the average of many such draws approaches a bell.</p>
+</div>
+<div class="misc-item">
+<b>❌ "n = 30 is a hard rule"</b>
+<p>As noted above, it depends on the parent distribution. The simulator lets you test different distributions and sample sizes to see for yourself.</p>
+</div>
+<div class="misc-item">
+<b>❌ "With the CLT, you don't need to know anything about the population"</b>
+<p>The CLT requires finite variance (σ² &lt; ∞). For the Cauchy distribution (which has infinite variance), the sample mean doesn't converge to normal no matter how large n gets.</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Name the theorem</b>: "Regardless of the population, the sample mean's distribution approaches normal. Which theorem?" → Central Limit Theorem</li>
+<li><b>SE calculation</b>: "σ = 10, n = 25. Standard error?" → 10/√25 = 2</li>
+<li><b>n and precision</b>: "To halve the standard error, multiply n by?" → 4</li>
+<li><b>Expected value of the mean</b>: "E(X̄) = ?" → μ (same as the population mean — unbiasedness)</li>
+</ul>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="./lln.html">I.02 Law of Large Numbers</a></div>
 </section>
 </main>
@@ -223,6 +288,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

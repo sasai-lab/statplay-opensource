@@ -1,0 +1,70 @@
+<div data-lang="ja" class="detail-section">
+<h3>// アンスコムの例が教えていること</h3>
+<p>1973年、統計学者フランシス・アンスコムが「同じ要約統計量でもデータの姿は全く違いうる」ことを示すために作ったデータセット。</p>
+<ul>
+<li><b>I</b>：理想的な直線関係。r がそのまま正しく機能している</li>
+<li><b>II</b>：二次関数的な関係。r は「直線としての相関」しか見ないので、曲線を捉えられない</li>
+<li><b>III</b>：1つの外れ値が r を引き下げている。外れ値に対して脆い</li>
+<li><b>IV</b>：x が1点だけ離れていて、その1点が r を「作っている」。レバレッジが高い</li>
+</ul>
+<p><b>教訓</b>：r や回帰式を計算する<b>前に</b>、必ず散布図を描く。これは統計分析の大原則。</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Anscombe's Quartet — what it teaches</h3>
+<p>In 1973, statistician Francis Anscombe created this dataset to show that identical summary statistics can hide completely different data patterns.</p>
+<ul>
+<li><b>I</b>: ideal linear relationship. r accurately reflects what's going on</li>
+<li><b>II</b>: a quadratic relationship. r only measures linear correlation, so it misses the curve</li>
+<li><b>III</b>: one outlier drags r down. r is fragile against outliers</li>
+<li><b>IV</b>: a single distant x-value creates the entire correlation. High leverage from one point</li>
+</ul>
+<p><b>Takeaway</b>: always plot your data before computing r or a regression equation. This is a foundational principle of statistical analysis.</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「相関が高い ＝ 因果関係がある」</b>
+<p>アイスの売上と水難事故は強い正の相関。でもアイスが人を溺れさせているわけではない。共通の原因「気温」が両方を動かしている（交絡因子）。相関は「一緒に動く」と言うだけで「原因→結果」とは言わない。</p>
+</div>
+<div class="misc-item">
+<b>❌「r = 0 なら関係がない」</b>
+<p>U字型のデータは r ≈ 0 でも強い関係がある。r は「直線関係の強さ」を測るだけ。非線形な関係は見逃す。Step 4 で体験済み。</p>
+</div>
+<div class="misc-item">
+<b>❌「r の値だけ見れば十分」</b>
+<p>アンスコムの例が示す通り、r が同じでもデータの構造は全く違いうる。「まず散布図を描く」が統計分析の大原則。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "High correlation = causation"</b>
+<p>Ice cream sales and drowning deaths are strongly correlated. But ice cream doesn't cause drowning — temperature drives both (confounding variable). Correlation says "they move together," not "one causes the other."</p>
+</div>
+<div class="misc-item">
+<b>❌ "r = 0 means no relationship"</b>
+<p>U-shaped data can have r ≈ 0 despite a strong relationship. r measures only linear association. Non-linear patterns go undetected.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Just looking at r is enough"</b>
+<p>As Anscombe's quartet shows, identical r values can arise from wildly different data structures. "Plot first, compute second" is the golden rule.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>r の手計算</b>：Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
+<li><b>r と R² の換算</b>：「R² = 0.49 → r = ±0.7」（符号は散布図の傾きで判断）</li>
+<li><b>無相関の検定</b>：t = r√(n−2) / √(1−r²), df = n−2</li>
+<li><b>共分散と相関係数</b>：r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Computing r by hand</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}</li>
+<li><b>r and R² conversion</b>: "R² = 0.49 → r = ±0.7" (sign matches the scatter plot's slope)</li>
+<li><b>Test of zero correlation</b>: t = r√(n−2) / √(1−r²), df = n−2</li>
+<li><b>Covariance and correlation</b>: r = Cov(X,Y) / (s<sub>x</sub> · s<sub>y</sub>)</li>
+</ul>
+</div>

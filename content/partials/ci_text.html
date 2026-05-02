@@ -1,0 +1,74 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+<p><b>各パーツの役割</b><br/>
+・x̄（標本平均）：区間の中心。「今回の調査結果で一番もっともらしい値」<br/>
+・z<sub>α/2</sub>：信頼度に応じた"幅の倍率"。95%なら1.96、99%なら2.576<br/>
+・σ/√n（標準誤差）：推定のブレ幅。σ が大きいほど広がり、n が大きいほど縮む</p>
+<p><b>組み立ての直感</b><br/>
+・「中心 ± 倍率 × ブレ幅」で"網"を張る<br/>
+・n を4倍にすると √n が2倍 → 区間の幅が半分に。精度を2倍にするにはデータが4倍要る<br/>
+・信頼度を上げると z<sub>α/2</sub> が大きくなり、網は広がるが「当たる確率」が上がる</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+<p><b>Each part</b><br/>
+・x̄ (sample mean): center of the interval — our best single guess<br/>
+・z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
+・σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
+<p><b>How it fits together</b><br/>
+・"center ± multiplier × wobble" casts a net around the truth<br/>
+・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
+・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「95%信頼区間 = 真値がここに入る確率が95%」← いちばんハマりやすい誤解</b>
+<p>真値 μ は固定された定数。この区間に入っているか入っていないかのどちらか。「確率95%」は「この方法で100回区間を作ったら、約95回は真値を含む」という手続きの性能の話。上のシミュレーションで300本の区間を作って、ピンク（真値を逃した区間）が5%前後であることを確認してみよう。</p>
+</div>
+<div class="misc-item">
+<b>❌「信頼区間が狭い = 正しい」</b>
+<p>狭いのは「精度が高い」ことの現れだが、真値を含んでいるかは別問題。信頼度を下げれば幅は狭くなるけど、外す確率が上がる。</p>
+</div>
+<div class="misc-item">
+<b>❌「信頼区間は平均にだけ使う」</b>
+<p>分散、比率、回帰係数、差の検定など、あらゆる推定量に対して信頼区間が作れる。構造は同じ：「推定値 ± 倍率 × 標準誤差」。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "95% CI = 95% probability the true value is inside" — the most common trap</b>
+<p>The true value μ is a fixed constant — it's either inside the interval or it isn't. "95%" means "if we repeat this procedure 100 times, about 95 intervals will contain the truth." It's a statement about the method's long-run performance, not about one particular interval. In the simulation above, generate 300 intervals and watch the pink ones (misses) hover near 5%.</p>
+</div>
+<div class="misc-item">
+<b>❌ "A narrow interval means a correct answer"</b>
+<p>Narrow means "precise," not "right." Lower the confidence level and the interval shrinks — but the chance of missing the true value grows. Narrowness reflects precision, not accuracy.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Confidence intervals only work for means"</b>
+<p>You can build confidence intervals for variances, proportions, regression coefficients, differences — any estimator. The structure is always the same: "estimate ± multiplier × standard error."</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>計算問題</b>：「x̄=50, σ=10, n=25 の95%信頼区間は？」→ 50 ± 1.96×(10/5) = [46.08, 53.92]</li>
+<li><b>幅と n の関係</b>：「幅を半分にするには n を何倍に？」→ 4倍（幅 ∝ 1/√n）</li>
+<li><b>検定との対応</b>：「95%CI = [2.1, 4.3] で μ₀=2 を両側検定すると？」→ 2 は含まれていない → 棄却</li>
+<li><b>信頼度と幅</b>：「99%にすると？」→ z が 1.96→2.576 になるので幅は広がる</li>
+</ul>
+<p style="margin:10px 0 0">z = 1.96 や 2.576 の根拠は<a href="../tables/index.html?dist=norm&mode=twosided" style="color:var(--cyan)">インタラクティブ確率分布表</a>の両側モードで確認できる</p>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Calculation</b>: "x̄=50, σ=10, n=25. 95% CI?" → 50 ± 1.96×(10/5) = [46.08, 53.92]</li>
+<li><b>Width and n</b>: "To halve the width, multiply n by?" → 4 (width ∝ 1/√n)</li>
+<li><b>Link to hypothesis testing</b>: "95% CI = [2.1, 4.3], test H₀: μ=2 at α=0.05?" → 2 is outside → reject</li>
+<li><b>Confidence level and width</b>: "Switch to 99%?" → z goes from 1.96 to 2.576, so the interval widens</li>
+</ul>
+<p style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a href="../../en/tables/index.html?dist=norm&mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
+</div>

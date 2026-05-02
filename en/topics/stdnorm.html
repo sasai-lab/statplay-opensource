@@ -161,8 +161,11 @@
 <!-- /@panel -->
 </div>
 
-<div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
+<!-- @panel:stdnorm_detail -->
 
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
 <p><b>Left: z = (x − μ) / σ</b><br/>
 ・x − μ: distance from the mean<br/>
 ・÷ σ: convert to "how many σ away" — a universal ruler<br/>
@@ -171,8 +174,8 @@
 ・e<sup>−z²/2</sup>: maximum at z=0, drops rapidly as |z| grows → the bell shape<br/>
 ・1/√(2π): normalizing constant ensuring total area = 1 (probabilities sum to 100%)<br/>
 ・φ(z) gives the curve's height (density) at that point; area under the curve = probability</p>
-
-
+</div>
+<!-- /@panel -->
 <div class="sim-layout">
 <div class="guided-steps">
 <b>Experiment Guide — Standardization Animation</b>
@@ -228,6 +231,36 @@
 <a href="../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up exact values
 </div>
 
+<!-- ═══ Common Misconceptions ═══ -->
+<!-- @panel:stdnorm_text -->
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "z = 1.96 is a round number chosen by convention"</b>
+<p>1.96 is the z-value where the two-sided probability equals exactly 5%. It wasn't chosen for convenience — it came straight out of the math. P(−1.96 ≤ Z ≤ 1.96) = 0.9500 is approximate. For exams, 1.96 is precise enough.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Standardizing destroys information"</b>
+<p>z = (x−μ)/σ is reversible: x = μ + zσ recovers the original value. Standardization rescales; it doesn't discard anything.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The standard normal is purely theoretical"</b>
+<p>Any normal distribution transforms to the standard normal via z = (x−μ)/σ. Know this one distribution and you can compute probabilities for all of them. That's why it's "where everything begins."</p>
+</div>
+</div>
+
+<div class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Reading the table</b>: check whether the table gives "upper-tail" or "cumulative" probabilities — mixing them up changes the answer completely</li>
+<li><b>Subtraction pattern</b>: P(0.5 ≤ Z ≤ 1.5) = Φ(1.5) − Φ(0.5)</li>
+<li><b>Standardize then look up</b>: "P(X ≥ 180) where X ~ N(170, 6²)" → z = (180−170)/6 ≈ 1.67 → look up the table</li>
+<li><b>Reverse lookup</b>: "What is the upper 5% point?" → z = 1.645</li>
+</ul>
+<p style="margin:10px 0 0"><a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up values</p>
+</div>
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="./normal.html">P.02 Normal Distribution</a></div>
 </section>
 </main>
@@ -283,6 +316,7 @@
     <li><a href="./test.html">Hypothesis Testing</a></li>
     <li><a href="./dists.html">Three Test Distributions</a></li>
     <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    <li><a href="./anova.html">ANOVA</a></li>
     <li><a href="./corr.html">Correlation</a></li>
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html">Multiple Regression</a></li>

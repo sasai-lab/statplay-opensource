@@ -1,0 +1,122 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
+<p><b>この式が言っていること（日本語に直す）</b><br/>
+・「n人分のテストの平均点を出して、真の平均との差を標準誤差で割ると、<b>もとの点数がどんな分布でも</b>、n が大きければ標準正規分布に従う」</p>
+<p><b>各パーツの役割</b><br/>
+・X̄ₙ − μ：標本平均と真の平均のズレ ← 生の値だと単位やスケールに引きずられる<br/>
+・÷ σ/√n：ズレを標準誤差（SE）で"標準化"する → 「σ何個分ずれてるか」に変換<br/>
+・→d N(0,1)：n→∞ でこの値の分布が標準正規分布に近づく</p>
+<p><b>なぜこれで信頼区間も検定もぜんぶ作れるのか</b><br/>
+・CLT のおかげで「X̄ はだいたい N(μ, σ²/n) に従う」と言い切れる<br/>
+・信頼区間 X̄ ± 1.96·σ/√n は「X̄ が正規分布するから ±1.96σ で95%カバーできる」が根拠<br/>
+・検定の z = (X̄−μ₀)/(σ/√n) も、CLT があるから N(0,1) の表で判定できる<br/>
+・つまり CLT は「正規分布の道具が何にでも使える理由」</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
+<p><b>What this says in plain English</b><br/>
+・"Take the average of n test scores, subtract the true mean, divide by the standard error — and no matter what the original scores' distribution looks like, as n grows, this ratio follows a standard normal distribution"</p>
+<p><b>Each part</b><br/>
+・X̄ₙ − μ: the gap between the sample mean and the true mean — raw units make this hard to interpret<br/>
+・÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
+・→d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
+<p><b>Why this unlocks confidence intervals and hypothesis tests</b><br/>
+・Thanks to the CLT, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
+・The confidence interval X̄ ± 1.96·σ/√n works because the CLT guarantees ±1.96σ covers 95%<br/>
+・The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the CLT<br/>
+・In short, the CLT is "the reason normal-distribution tools work on everything"</p>
+</div>
+<div data-lang="ja" class="detail-section">
+<h3>// なぜ「平均を取る」と正規分布に化けるのか</h3>
+<p>直感的に言えば——平均を取ると、たまたま大きかった値と小さかった値が打ち消し合う。n 個のプラスのズレとマイナスのズレが相殺されて、極端な平均は出にくくなる。この「出にくさ」の度合いが、ちょうど正規分布のベル型に一致する。</p>
+<p>上のシミュレーションで確かめよう：<br/>
+・指数分布（右に歪んでいる）を選んで n=5 → 平均の分布はまだ歪んでいる<br/>
+・n=30 にする → もうかなりベル型。元の分布がどんなに歪んでいても、平均を取れば正規に近づく</p>
+
+<h3>// 「n ≥ 30 ならOK」は本当？</h3>
+<p>よく参考書に「n ≥ 30 なら CLT が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
+<ul>
+<li>一様分布（左右対称）なら n=12 でもかなり正規に見える</li>
+<li>指数分布（強い歪み）なら n=40〜50 でようやく</li>
+<li>二峰分布なら n=30 でもまだ凸凹が残ることがある</li>
+</ul>
+
+<h3>// σ と SE の違い — ここ、混同しやすい</h3>
+<ul>
+<li><b>σ（標準偏差）</b>：個々のデータのバラつき。データそのものの性質</li>
+<li><b>SE = σ/√n（標準誤差）</b>：標本平均のバラつき。サンプル数で決まる</li>
+<li>n を4倍にすると SE は半分（√4=2で割るから）。精度を2倍にするにはデータが4倍必要。これが「調査のコスト」の正体</li>
+</ul>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Why does averaging produce a bell curve?</h3>
+<p>Intuitively — when you average n values, individual outliers cancel out. High values offset low values, making extreme averages rare. The pattern of "how rare" matches the bell curve exactly.</p>
+<p>Try it in the simulator above:<br/>
+・Pick the exponential distribution (heavily right-skewed), set n=5 → the mean distribution is still skewed<br/>
+・Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
+
+<h3>// Is "n ≥ 30" really enough?</h3>
+<p>Textbooks often say "n ≥ 30 is sufficient for the CLT." This isn't a mathematical threshold — it's a rule of thumb.</p>
+<ul>
+<li>Uniform distribution (symmetric): n = 12 already looks very normal</li>
+<li>Exponential (strong skew): n = 40–50 needed</li>
+<li>Bimodal: n = 30 may still show bumps</li>
+</ul>
+
+<h3>// σ vs. SE — easy to confuse</h3>
+<ul>
+<li><b>σ (standard deviation)</b>: spread of individual data points. A property of the data itself</li>
+<li><b>SE = σ/√n (standard error)</b>: spread of the sample mean. Depends on sample size</li>
+<li>Quadruple n → SE halves (√4 = 2). Doubling precision requires 4× the data — that's the true "cost of research"</li>
+</ul>
+</div>
+<div data-lang="ja" class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「CLT は元のデータが正規分布になると言っている」</b>
+<p>元のデータの形は何も変わらない。正規分布に化けるのは「標本平均の分布」。指数分布から取ったデータは相変わらず右に歪んだまま。</p>
+</div>
+<div class="misc-item">
+<b>❌「n=30 は絶対的な基準」</b>
+<p>上に書いたとおり、元の分布次第。シミュレーションで分布と n を変えて実際に確かめるのが一番。</p>
+</div>
+<div class="misc-item">
+<b>❌「CLT があれば母集団の情報は要らない」</b>
+<p>CLT の成立には「分散 σ² が有限」という条件がある。コーシー分布（分散が無限）では標本平均を取っても正規分布に収束しない。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The CLT says the data itself becomes normal"</b>
+<p>The original data stays exactly the same shape. What becomes normal is the distribution of the sample mean. Data drawn from an exponential distribution is still right-skewed — only the average of many such draws approaches a bell.</p>
+</div>
+<div class="misc-item">
+<b>❌ "n = 30 is a hard rule"</b>
+<p>As noted above, it depends on the parent distribution. The simulator lets you test different distributions and sample sizes to see for yourself.</p>
+</div>
+<div class="misc-item">
+<b>❌ "With the CLT, you don't need to know anything about the population"</b>
+<p>The CLT requires finite variance (σ² < ∞). For the Cauchy distribution (which has infinite variance), the sample mean doesn't converge to normal no matter how large n gets.</p>
+</div>
+</div>
+<div data-lang="ja" class="exam-note">
+<h3>// 試験での出方</h3>
+<ul>
+<li><b>定理名を問う</b>：「母集団の分布に関係なく、標本平均の分布が正規分布に近づく定理は？」→ 中心極限定理</li>
+<li><b>SE の計算</b>：「σ=10, n=25 のとき標準誤差は？」→ 10/√25 = 2</li>
+<li><b>n と精度</b>：「標準誤差を半分にするには n を何倍に？」→ 4倍</li>
+<li><b>平均の期待値</b>：「標本平均の期待値は？」→ μ（元の分布の平均と同じ。不偏性）</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// How it shows up in exams</h3>
+<ul>
+<li><b>Name the theorem</b>: "Regardless of the population, the sample mean's distribution approaches normal. Which theorem?" → Central Limit Theorem</li>
+<li><b>SE calculation</b>: "σ = 10, n = 25. Standard error?" → 10/√25 = 2</li>
+<li><b>n and precision</b>: "To halve the standard error, multiply n by?" → 4</li>
+<li><b>Expected value of the mean</b>: "E(X̄) = ?" → μ (same as the population mean — unbiasedness)</li>
+</ul>
+</div>

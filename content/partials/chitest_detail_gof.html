@@ -1,0 +1,30 @@
+<div data-lang="ja" class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
+<p><b>具体例で読む（サイコロを120回振った）</b><br/>
+・公正なサイコロなら各目が E=20 回ずつ出るはず<br/>
+・実際の結果：[25, 17, 15, 23, 22, 18]<br/>
+・1の目：(25−20)²/20 = 1.25<br/>
+・2の目：(17−20)²/20 = 0.45 ...と全部足す → χ² = 3.70<br/>
+・df=6−1=5 で α=0.05 の臨界値は 11.07。3.70 &lt; 11.07 → 棄却できない。公正と矛盾しない</p>
+<p><b>各パーツの役割</b><br/>
+・O：観測度数（実際に数えた値）<br/>
+・E：期待度数（理論が正しいなら「こうなるはず」の値）<br/>
+・(O−E)²/E：単純に(O−E)²だと、もともと大きいカテゴリほどズレが大きく出て不公平。E で割って「期待に対する相対的なズレ」にする<br/>
+・全カテゴリ分を合計 → 1つの数字で「全体のフィット具合」が分かる</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Formula used here — Goodness of fit</h3>
+<div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
+<p><b>Worked example (120 rolls of a die)</b><br/>
+・A fair die should give E = 20 per face<br/>
+・Actual results: [25, 17, 15, 23, 22, 18]<br/>
+・Face 1: (25−20)²/20 = 1.25<br/>
+・Face 2: (17−20)²/20 = 0.45 … sum all → χ² = 3.70<br/>
+・df = 6−1 = 5, critical value at α = 0.05 is 11.07. Since 3.70 &lt; 11.07 → fail to reject. Consistent with a fair die</p>
+<p><b>Each part</b><br/>
+・O: observed frequency (what you actually counted)<br/>
+・E: expected frequency (what the theory predicts)<br/>
+・(O−E)²/E: using raw (O−E)² would unfairly penalize large categories. Dividing by E gives "relative departure from expectation"<br/>
+・Sum across all categories → a single number measuring overall fit</p>
+</div>

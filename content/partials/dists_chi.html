@@ -23,12 +23,12 @@
         </div>
         <button class="sim-btn" id="diceRandom"><span data-lang="ja">&#x25B6; 試行</span><span data-lang="en">&#x25B6; Roll</span></button>
       </div>
-      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" aria-busy="true"></canvas>
+      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
       <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
         <input type="range" id="chiDf" min="1" max="30" value="5">
       </div>
       <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
-      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" data-aria-label-en="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
       <div class="info" style="margin-top:6px">
         <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
