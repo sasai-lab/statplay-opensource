@@ -435,6 +435,8 @@
   .info{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-family:'Courier New',monospace;font-size:var(--fs-sm)}
   .info div{color:var(--dim);border-left:2px solid var(--cyan);padding-left:10px}
   .info div strong{color:var(--cyan);font-size:18px;display:block;text-shadow:0 0 8px var(--cyan)}
+  .info div strong:only-child:empty::after,
+  .info div strong[data-placeholder]::after{content:attr(data-placeholder);font-size:var(--fs-xs);color:var(--dim);opacity:.6;text-shadow:none;font-weight:400}
   .bayes-story{margin-top:10px;padding:12px 14px;border:1px dashed rgba(0,243,255,.35);
     background:linear-gradient(180deg,rgba(0,243,255,.04),rgba(255,43,214,.04));
     font-family:'Courier New',monospace;font-size:var(--fs-sub);line-height:1.75;color:#d8f7ff;letter-spacing:.3px}
@@ -519,6 +521,18 @@
   body.theme-light .formula-accordion{color:var(--dim)}
   body.theme-light .formula-accordion summary{border-color:rgba(0,0,0,.15)}
   body.theme-light .formula-accordion summary:hover{border-color:rgba(0,0,0,.35)}
+
+  /* Math: fraction display (zero-dependency alternative to KaTeX) */
+  .math-block{display:block;margin:14px 0 18px;padding:10px 16px;font-size:18px;font-family:'Courier New',monospace;
+    background:rgba(0,243,255,.04);border-left:2px solid rgba(0,243,255,.35);color:var(--cyan);
+    text-shadow:0 0 6px rgba(0,243,255,.3);overflow-x:auto;text-align:center;line-height:1.6}
+  .math-block .label{display:block;font-size:var(--fs-xs);color:var(--dim);text-shadow:none;margin-bottom:4px;letter-spacing:1px;text-transform:uppercase}
+  .frac{display:inline-flex;flex-direction:column;text-align:center;vertical-align:middle;margin:0 2px;line-height:1.2}
+  .frac .num{padding:0 6px 2px;border-bottom:1px solid currentColor}
+  .frac .den{padding:2px 6px 0}
+  .math-inline{font-family:'Courier New',monospace;color:var(--cyan);text-shadow:0 0 4px rgba(0,243,255,.2);white-space:nowrap}
+  body.theme-light .math-block{background:rgba(0,0,0,.03);border-left-color:#b0b8c8;color:var(--text);text-shadow:none}
+  body.theme-light .math-inline{color:var(--text);text-shadow:none}
 
   /* Detail content blocks */
   .detail-section{

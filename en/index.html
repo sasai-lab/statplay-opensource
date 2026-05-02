@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  StatPlay  —  https://github.com/  (repo URL)
+  Copyright (c) 2026 Sasai Lab
+  Licensed under Creative Commons Attribution-NonCommercial 4.0 International
+  (CC BY-NC 4.0) — https://creativecommons.org/licenses/by-nc/4.0/
+  商用利用禁止 / NonCommercial use only.
+  Generated with assistance from Anthropic Claude.
+  See LICENSE file for full terms.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KSDDV3KMKL');
+</script>
+<meta content="Can’t picture a 95% confidence interval? Struggling with the Central Limit Theorem? Interactive visualizations let you drag sliders to build statistical intuition — covering normal distributions, CLT, confidence intervals, hypothesis testing, t/χ²/F distributions, regression, and Bayes’ theorem." name="description"/>
+<meta content="statistics, visualization, confidence interval, hypothesis testing, central limit theorem, t-distribution, chi-squared distribution, F-distribution, regression, Bayes theorem, interactive learning" name="keywords"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<title>StatPlay — Visualize Statistics, Build Intuition</title>
+<meta content="website" property="og:type"/>
+<meta content="StatPlay — Visualize Statistics, Build Intuition" property="og:title"/>
+<meta content="The first step to rebuilding your statistical intuition when the textbook stalls. See what a 95% CI really means, why the t-distribution exists — just drag a slider. Once the formulas become pictures, go back to your textbook." property="og:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — Visualize Statistics, Build Intuition" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="StatPlay — Visualize Statistics, Build Intuition" name="twitter:title"/>
+<meta content="The first step to rebuilding your statistical intuition when the textbook stalls. See what a 95% CI really means, why the t-distribution exists — just drag a slider. Once the formulas become pictures, go back to your textbook." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<meta content="StatPlay — Visualize Statistics, Build Intuition" name="twitter:image:alt"/>
+<link href="https://statplay.sasailab.com/en/" rel="canonical"/>
+<meta content="https://statplay.sasailab.com/en/" property="og:url"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="ja_JP" property="og:locale:alternate"/>
+<link href="https://statplay.sasailab.com/" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/" hreflang="x-default" rel="alternate"/>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "StatPlay",
+      "alternateName": "StatPlay — Feel Statistics Through Interaction",
+      "description": "The first step to rebuilding your statistical intuition when the textbook stalls. See what a 95% CI really means, why the t-distribution exists — just drag a slider. Once the formulas become pictures, go back to your textbook.",
+      "url": "https://statplay.sasailab.com/en/",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": [
+        "Standard Normal Distribution",
+        "Central Limit Theorem",
+        "Normal Distribution & Standardization",
+        "Law of Large Numbers",
+        "Confidence Intervals",
+        "Hypothesis Testing",
+        "t-Distribution",
+        "Chi-Squared Distribution",
+        "F-Distribution",
+        "Simple Regression",
+        "Multiple Regression",
+        "Bayes' Theorem"
+      ],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners — self-taught, professionals reskilling, undergraduates, and exam candidates"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        }
+      ]
+    }
+  ]
+}</script>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<link href="../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<meta content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/" http-equiv="Content-Security-Policy"/>
+<link as="style" href="../css/stat_cyber.css" rel="preload"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<!-- KaTeX -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script defer="" src="../js/katex-render.js"></script>
+</head>
+<body>
+
+<a class="skip-to-main" href="#main-content">Skip to main content</a>
+<nav id="mainNav">
+
+<a class="logo" href="#top" title="Back to top">StatPlay</a>
+<button aria-expanded="false" aria-label="menu" class="nav-toggle" id="navToggle">
+<span class="bars"></span>
+</button>
+<div class="nav-links" id="navLinks">
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="probability" href="#cat-probability"><span>PROB</span></a>
+<div class="nav-dropdown-menu">
+<a href="#stdnorm">Standard Normal</a>
+<a href="#normal">Normal &amp; Standardization</a>
+<a href="#prob">Probability Rules</a>
+<a href="#morep">Binomial / Poisson / Exp</a>
+<a href="#bayes">Bayes' Theorem</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="inference" href="#cat-inference"><span>INFER</span></a>
+<div class="nav-dropdown-menu">
+<a href="#clt">Central Limit Theorem</a>
+<a href="#lln">Law of Large Numbers</a>
+<a href="#ci">Confidence Intervals</a>
+<a href="#test">Hypothesis Testing</a>
+<a href="#dists">t / χ² / F Distributions</a>
+<a href="#chitest">Chi-Squared Test</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="modeling" href="#cat-modeling"><span>MODEL</span></a>
+<div class="nav-dropdown-menu">
+<a href="#corr">Correlation</a>
+<a href="#reg">Simple Regression</a>
+<a href="#mreg">Multiple Regression</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="columns" href="#columns"><span>COLUMN</span></a>
+<div class="nav-dropdown-menu">
+<a href="columns/deviation.html">What Is Deviation?</a>
+<a href="columns/birthday.html">Birthday Paradox</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<a class="nav-cat-link" data-cat="tools" href="#dist-tables"><span>TOOLS</span></a>
+<div class="nav-dropdown-menu">
+<a href="tables/index.html">Interactive Distribution Tables</a>
+</div>
+</div>
+
+<a class="nav-about" href="about.html">About</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+<button class="lang-toggle" id="langToggle" title="Switch language" type="button">EN</button>
+</div>
+</nav>
+<!-- ============ HERO ============ -->
+<div class="hero">
+<canvas aria-busy="true" aria-label="Animated particle background" id="heroCanvas"></canvas>
+<h1 class="hero-title glitch" data-text="STATPLAY">STATPLAY</h1>
+<div class="hero-sub" style="margin-bottom:32px">[ <span>PROBABILITY</span> → <span>INFERENCE</span> → <span>MODELING</span> ]</div>
+
+<p style="max-width:680px;margin:0 auto 36px;color:var(--text);line-height:2;font-size:15px">
+    Statistics is way more fun than it looks.<br/>
+    Forget rote formulas — here the graphs move on their own, and you just feel the math click.
+  </p>
+<button class="hero-cta" id="heroStart"><span>▶ START</span></button>
+
+<p style="font-size:13px;color:var(--dim);margin:16px auto 0;max-width:480px;text-align:center;line-height:1.8">
+  Come here when your textbook makes sense — but nothing becomes a picture.
+</p>
+</div>
+<!-- ============ POSITIONING — このサイトの立ち位置 / What this site is for ============ -->
+<section class="reveal" style="padding-top:30px;padding-bottom:20px">
+
+<div class="story-bridge" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<b>▼ What this site is for</b><br/>
+    If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back. (Studying for a stats exam? You're welcome here too.)<br/>
+    This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br/>
+    Once "oh, that's what it means" lands, <b>go back to your textbook</b> with confidence. That's the whole point.
+  </div>
+</section>
+<!-- ============ COLUMN PICKS ============ -->
+<section class="reveal" id="columns" style="padding-top:10px;padding-bottom:20px">
+
+<h2 class="sec-title" style="font-size:16px;margin-bottom:16px">Columns</h2>
+
+<div class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
+
+
+
+
+<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
+<a href="columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+</div>
+<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--magenta)">
+<a href="columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">The Birthday Paradox — 23 People, 50%+ Chance →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
+</div>
+<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--green,#0f6)">
+<a href="columns/standardization.html" style="color:var(--green,#0f6);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is Standardization? — The Universal Translator for "Normal" →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
+</div>
+<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
+<a href="columns/income_prediction.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Income Prediction — How Far Can Statistics Go? →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
+</div>
+</section>
+<!-- ============ TOOL: DISTRIBUTION TABLES ============ -->
+<section class="reveal" id="dist-tables" style="padding-top:10px;padding-bottom:20px">
+
+<h2 class="sec-title" style="font-size:16px;margin-bottom:16px">Tools</h2>
+
+<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
+<a href="tables/index.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Interactive Distribution Tables — Normal · t · χ² · F →</a><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Four distribution tables from the back of your textbook, synced with live graphs. Click any cell and see its position highlighted on the curve in real time.</span>
+</div>
+</section>
+<!-- ============ CATEGORY: PROBABILITY ============ -->
+<div class="category-header reveal" id="cat-probability">
+<div class="cat-tag"><span>PROBABILITY</span></div>
+
+<p class="cat-desc">Probability &amp; Distributions — quantifying uncertainty</p>
+</div>
+<main id="main-content">
+<!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
+<section class="reveal" id="stdnorm">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/stdnorm.html">▻ Dedicated page for this topic</a></div>
+<div class="sec-tag">P1 / Standard Normal</div>
+
+<h2 class="sec-title">Standard Normal <span class="sec-sub">— The Origin of Everything</span></h2>
+
+<div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. The Central Limit Theorem (CLT), hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
+
+<p class="sec-desc">
+    Honestly — <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br/>
+    The <b>standard normal <code>N(0, 1)</code></b> is a bell curve with mean 0 and standard deviation 1.
+    The one-line trick lets <b>every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br/>
+    In other words, it's not the final boss of statistics; it's the <b>origin</b>. Once you own this, the rest reads as "applications of the standard normal".
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers about 70%."</li>
+<li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>
+<li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
+</ol>
+</div>
+<!-- @panel:stdnorm_68 -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
+
+<p class="sec-desc" style="margin-bottom:14px;font-size:13px">
+      Slide the width <code>k</code>; the blue-filled area IS the probability.
+      ± 1σ already covers ~68%, ± 2σ is 95%, ± 3σ is nearly everything.<br/>
+      That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value — hypothesis tests and confidence intervals all start there.
+    </p>
+<div class="controls">
+<div class="ctrl"><label><span>Range ±k σ</span> = <span class="val" id="snKVal">1.0</span></label>
+<input id="snK" max="3.5" min="0.1" step="0.1" type="range" value="1.0"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Standard normal N(0,1) PDF" height="240" id="snCanvas"></canvas>
+<div class="info">
+<div>P( |Z| ≤ k )<strong id="snInside">—</strong></div>
+<div>P( Z ≤ k )<strong id="snLeft">—</strong></div>
+<div><span>Outside prob.</span><strong id="snOutside">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snCanvas" data-title="Standard Normal"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Press ▶ Standardize → the μ=2, σ=1.5 curve morphs smoothly into N(0,1).</li>
+<li><b>Step 2:</b> Change μ to <b>−2</b>, σ to <b>2.5</b>, then ▶ again → a totally different curve snaps onto the same pink one.</li>
+<li><b>Step 3:</b> Pause the progress slider midway → watch μ approach 0 and σ approach 1 in real time.</li>
+<li><b>Step 4:</b> Set σ to <b>0.5</b> → a sharp peak flattens as it merges into the standard normal.</li>
+</ol>
+</div>
+<!-- @panel:stdnorm_morph -->
+<div class="panel" data-autorun="snAnim">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
+
+<p class="sec-desc" style="margin-bottom:14px">
+      Height, IQ, daily stock returns, factory part errors — real-world normal-ish things all have different means and spreads.
+      Yet apply <b>z = (x − μ) / σ</b> and they all snap onto <b>that pink curve</b>.<br/>
+      It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
+    </p>
+<div class="controls">
+<div class="ctrl"><label>μ = <span class="val" id="snMuVal">2.0</span></label>
+<input id="snMu" max="3" min="-3" step="0.1" type="range" value="2.0"/>
+</div>
+<div class="ctrl"><label>σ = <span class="val" id="snSdVal">1.5</span></label>
+<input id="snSd" max="3" min="0.3" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl"><label><span>Progress</span> = <span class="val" id="snTVal">0</span></label>
+<input id="snT" max="100" min="0" type="range" value="0"/>
+</div>
+<button class="btn" id="snAnim"><span>▶ Standardize</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Standardization morphing animation" height="240" id="snMorphCanvas"></canvas>
+<div class="info">
+<div><span>Original</span><strong id="snOrig">N(2.0, 1.5²)</strong></div>
+<div><span>Transformed mean</span><strong id="snNewMu">—</strong></div>
+<div><span>Transformed σ</span><strong id="snNewSd">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="snMorphCanvas" data-title="Standardization Morph"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/stdnorm.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P2 Normal Distribution</a></div>
+</section>
+<!-- ============ NORMAL ============ -->
+<section class="reveal" id="normal">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/normal.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">P2 / Normal &amp; Standardization</div>
+
+<h2 class="sec-title">Normal Distribution <span class="sec-sub">— Shaping Mean &amp; Spread</span></h2>
+
+<div class="story-bridge">The standard normal was fixed at μ=0, σ=1. Real data has <b>any mean and spread</b>. Move <span class="next">μ and σ</span> to wield the normal as a tool. <b>Standardization</b> maps it back to Z, so any normal connects to the standard normal.</div>
+
+<p class="sec-desc">
+    The <b>general version</b> of the standard normal is <code>N(μ, σ²)</code>.
+    <code>μ</code> sets the center, <code>σ</code> sets the spread.
+    Slide the parameters and the curve glides; the probability of falling inside <code>[a, b]</code> (pink area) updates live.<br/>
+<b>That pink area IS the "percentage" you hear in the news.</b>
+    Say adult male heights follow <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
+    Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
+    Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
+    The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
+    <br/><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
+</p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Keep μ=0, σ=1, set a=−1, b=1 → ~68.3%. That's "±1σ covers ~70%."</li>
+<li><b>Step 2:</b> Shrink σ to <b>0.5</b> → the pink area for the same [−1, 1] explodes. Less spread = almost everyone is in range.</li>
+<li><b>Step 3:</b> Slide μ to <b>2</b> → the whole curve shifts. Same a,b, but area changes dramatically.</li>
+<li><b>Step 4:</b> Drag directly on the graph → the nearest a/b boundary follows your finger.</li>
+</ol>
+</div>
+<!-- @panel:normal_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl"><label><span>μ (mean)</span> = <span class="val" id="nMuVal">0</span></label>
+<input id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
+</div>
+<div class="ctrl"><label><span>σ (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
+<input id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
+</div>
+<div class="ctrl"><label><span>Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
+<input id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
+</div>
+<div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
+<input id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Normal distribution N(μ,σ²) PDF" height="260" id="normalCanvas"></canvas>
+<div class="info">
+<div>P(a ≤ X ≤ b)<strong id="nProb">—</strong></div>
+<div>z-score (a)<strong id="nZa">—</strong></div>
+<div>z-score (b)<strong id="nZb">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="normalCanvas" data-title="Normal Distribution"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/normal.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
+</section>
+<!-- ============ MORE DISTRIBUTIONS (binomial / poisson / exponential) ============ -->
+<section class="reveal" id="prob">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/prob.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">P3 / Probability Rules</div>
+
+<h2 class="sec-title">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
+
+<div class="story-bridge">You've got the shape of the normal. Now let's step back to the <b>foundations</b> — the probability rules that make all of it work. <span class="next">Addition, multiplication, and conditional probability</span> visualized as overlapping areas.</div>
+
+<p class="sec-desc">
+    Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br/>
+<span style="color:var(--dim);font-size:var(--fs-xs)">Symbol cheat-sheet: ∪ = "or" (union), ∩ = "and" (intersection), P(A|B) = "probability of A given B happened"</span><br/>
+<b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
+    Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br/>
+    Press the <b>Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
+  </p>
+
+<div class="example-box">
+<b>Concrete example</b><br/>
+    Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br/>
+    A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br/>
+<span style="color:var(--dim)">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → check the <b>P(A∪B)</b> readout below the graph shows <b>0.58</b>. That's 0.4+0.3−0.12 = 0.58, the addition rule.</li>
+<li><b>Step 2:</b> Press "Set Independent" → P(A∩B) auto-adjusts to P(A)·P(B). That's what independence means.</li>
+<li><b>Step 3:</b> Drag P(A∩B) near <b>0</b> → the circles separate. This is "mutually exclusive" (can't happen together).</li>
+<li><b>Step 4:</b> Push P(A∩B) close to P(B) → the <b>P(A|B)</b> readout approaches 1. If B happens, A almost certainly happens too.</li>
+</ol>
+</div>
+<!-- @panel:prob_venn -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Interactive Venn Diagram</h3>
+<div class="controls">
+<div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+<input id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+</div>
+<div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+<input id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+</div>
+<div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
+<input id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+</div>
+<button class="btn yellow" id="probIndep"><span>Set Independent</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Probability rules: Venn diagram visualization" height="320" id="probCanvas"></canvas>
+<div class="info">
+<div>P(A∪B)<strong id="probUnion">—</strong></div>
+<div>P(A|B)<strong id="probCondAB">—</strong></div>
+<div>P(B|A)<strong id="probCondBA">—</strong></div>
+<div><span>Independent?</span><strong id="probIndepCheck">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="Basic Rules of Probability"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/prob.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P4 Bayes' Theorem</a></div>
+</section>
+<!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
+<section class="reveal" id="bayes">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">P4 / Bayes' Theorem</div>
+
+<h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
+
+<div class="story-bridge">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
+
+<p class="sec-desc">
+<b>"The test has 99% sensitivity &amp; 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br/>
+    …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br/>
+    Walk through the numbers. In a <b>town of 1,000</b>, 10 people are sick and 990 are healthy. Test everyone and <b>60 come back positive</b> — 10 truly sick (true positives) + 50 healthy but wrongly flagged (false positives). If you're one of those 60, your chance of actually being sick is <b>10 ÷ 60 = 16.7%</b>. The larger the healthy majority, the more false positives dilute the real cases.
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
+<li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
+<li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+<li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
+</ol>
+</div>
+<!-- @panel:bayes_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl">
+<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>10 / 1,000</span></span></label>
+<input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
+</div>
+<div class="ctrl">
+<label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
+<input id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+</div>
+<div class="ctrl">
+<label><span>Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
+<input id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
+<div class="info">
+<div><span>True positives (sick &amp; tested +)</span><strong id="bTp">—</strong></div>
+<div><span>False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
+<div><span>If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
+<div><span>If you tested NEG, chance you're healthy</span><strong id="bNpv">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="Bayes' Theorem"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/bayes.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="#morep">P5 Discrete &amp; Exponential</a></div>
+</section>
+<!-- ============ BAYES ============ -->
+<section class="reveal" id="morep">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/morep.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">P5 / Binomial / Poisson / Exp</div>
+
+<h2 class="sec-title">Discrete &amp; Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
+
+<div class="story-bridge">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
+
+<div class="sec-desc">Three core distributions every stats learner runs into: <b>binomial</b>, <b>Poisson</b>, and <b>exponential</b>. Slide through success counts, event counts, and waiting times to feel the bridge between discrete and continuous.</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Binomial: set n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
+<li><b>Step 2:</b> Set binomial n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) — nearly identical shapes.</li>
+<li><b>Step 3:</b> Set Poisson λ=3 and check "E[X] = Var[X] = λ = 3.00" in the top-left of the graph. Raise λ to <b>20</b> → it approaches a bell.</li>
+</ol>
+</div>
+<!-- @panel:morep_binom -->
+<div class="panel">
+
+
+<div class="use-case">When? → How many heads in 10 coin flips; how many defects in 100 items</div>
+<div class="panel-title">Binomial B(n, p)</div>
+<canvas aria-busy="true" aria-label="Binomial distribution simulation" height="240" id="binomCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>trials n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+<span class="val" id="binomNVal">20</span></div>
+<div class="ctrl"><label>success p</label><input id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+<span class="val" id="binomPVal">0.35</span></div>
+</div>
+
+<div class="sec-bridge">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Poisson</b>
+<ol>
+<li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6. Check "E[X] = Var[X] = λ = 3.00" at the top-left.</li>
+<li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
+<li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
+<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (CLT at work).</li>
+</ol>
+</div>
+<!-- @panel:morep_poisson -->
+<div class="panel">
+
+
+<div class="use-case">When? → Phone calls per hour at a call center; traffic accidents per day</div>
+<div class="panel-title">Poisson(λ)</div>
+<canvas aria-busy="true" aria-label="Poisson distribution simulation" height="240" id="poissonCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>rate λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+<span class="val" id="poisLVal">3</span></div>
+</div>
+
+<div class="sec-bridge">As λ grows, Poisson approaches the normal distribution.</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Exponential</b>
+<ol>
+<li><b>Step 1:</b> λ=1 → mean wait time = 1. The curve drops sharply.</li>
+<li><b>Step 2:</b> Set λ to <b>0.2</b> → gentle decay. Rare events mean long waits.</li>
+<li><b>Step 3:</b> Set λ to <b>3</b> → steep drop. Frequent events = short waits (mean 1/3).</li>
+<li><b>Step 4:</b> Every λ gives the same "L" shape. That is memorylessness — past waiting does not affect the future.</li>
+</ol>
+</div>
+<!-- @panel:morep_exp -->
+<div class="panel">
+
+
+<div class="use-case">When? → Time until next phone call; how long until a light bulb burns out</div>
+<div class="panel-title">Exponential(λ) — waiting time</div>
+<canvas aria-busy="true" aria-label="Exponential distribution PDF" height="240" id="expCanvas"></canvas>
+<div class="controls">
+<div class="ctrl"><label>rate λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+<span class="val" id="expLVal">1</span></div>
+</div>
+
+<div class="sec-bridge">Memoryless: past waiting time tells you nothing about the future.</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/morep.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="#clt">I1 Central Limit Theorem</a></div>
+</section>
+<div class="category-preview reveal">
+<div class="cat-preview-inner">
+
+<h3 class="cat-preview-title">▼ What comes next — into Inference</h3>
+
+<p class="cat-preview-desc">
+      Probability and distributions are locked in. Next up: <b>inferring population truths from samples</b>.<br/>
+      The <b>CLT</b> guarantees sample means go normal, the <b>LLN</b> says they converge to the truth.
+      Then <b>confidence intervals</b> (how precise?) and <b>hypothesis tests</b> (is there a difference?),
+      capped by the <b>t, χ², F</b> trio for the real world where σ is unknown.
+    </p>
+</div>
+</div>
+<!-- ============ CATEGORY: INFERENCE ============ -->
+<div class="category-header reveal" id="cat-inference">
+<div class="cat-tag"><span>INFERENCE</span></div>
+
+<p class="cat-desc">Statistical Inference — learning about populations from samples</p>
+</div>
+<section class="reveal" id="clt">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/clt.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I1 / Central Limit Theorem</div>
+
+<h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
+
+<div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
+
+<p class="sec-desc">
+<b>Slightly outrageous fact</b> — no matter how skewed the base distribution is,
+    if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
+    converges on its own to <b>a bell (normal)</b>.<br/>
+    The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
+    so you can watch the bell emerge. Crank <code>n</code> up and the bell tightens (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Use the dropdown above to choose "Exponential" and drag the n slider to <b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>
+<li><b>Step 2:</b> Drag the n slider to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>
+<li><b>Step 3:</b> Drag the n slider to <b>30</b> and run → nearly normal. "n≥30" is a practical rule of thumb, not a theorem — heavily skewed distributions may need more.</li>
+<li><b>Step 4:</b> Switch the dropdown to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
+</ol>
+</div>
+<!-- @panel:clt_main -->
+<div class="panel" data-autorun="cltRun">
+<div class="controls">
+<div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
+<select id="cltDist">
+<option selected="" value="exp">Exponential λ=1 (heavy right-skew)</option>
+<option value="uniform">Uniform [0,1] (flat)</option>
+<option value="bimodal">Bimodal (two peaks)</option>
+</select>
+</div>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
+<input id="cltN" max="50" min="1" type="range" value="30"/>
+</div>
+<button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
+<button class="btn magenta" id="cltClear">CLEAR</button>
+</div>
+<canvas aria-busy="true" aria-label="Central Limit Theorem simulation" height="300" id="cltCanvas"></canvas>
+
+<div class="bayes-story" id="cltStoryEn"></div>
+<div class="info">
+<div><span>Trials</span><strong id="cltCount">0</strong></div>
+<div><span>Mean of sample means</span><strong id="cltMean">—</strong></div>
+<div><span>SD of sample means</span><strong id="cltSD">—</strong></div>
+<div><span>Theoretical SE = σ/√n</span><strong id="cltSE">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="cltCanvas" data-title="Central Limit Theorem"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/clt.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="#lln">I2 Law of Large Numbers</a></div>
+</section>
+<!-- ============ LLN ============ -->
+<section class="reveal" id="lln">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/lln.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I2 / Law of Large Numbers</div>
+
+<h2 class="sec-title">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
+
+<div class="story-bridge">CLT showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. CLT describes the <i>shape</i>; LLN says <b>the center won't run away</b>.</div>
+
+<p class="sec-desc">
+    10 heads in a row at the start of a coin-flip? Not that weird.
+    But flip it <b>10,000 times</b> and the head-ratio locks onto <b>almost exactly 0.5</b>.<br/>
+    That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
+    <b>This is why statistics counts as evidence, not a vague hunch.</b>
+</p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Set p=0.5, hit ▶ → the line wobbles wildly at first, then gets pulled toward 0.5.</li>
+<li><b>Step 2:</b> RESET and run again → the early path is different every time, but it always converges.</li>
+<li><b>Step 3:</b> Change p to <b>0.8</b> and simulate → the red line now converges to 0.8.</li>
+<li><b>Step 4:</b> Set p to <b>0.05</b> (rare event) → it hugs zero early on, but still converges to p. The law holds.</li>
+</ol>
+</div>
+<!-- @panel:lln_main -->
+<div class="panel" data-autorun="llnRun">
+<div class="controls">
+<div class="ctrl"><label><span>Probability p</span> = <span class="val" id="llnPVal">0.5</span></label>
+<input id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
+</div>
+<button class="btn" id="llnRun"><span>▶ Simulate</span></button>
+<button class="btn magenta" id="llnReset">RESET</button>
+</div>
+<canvas aria-busy="true" aria-label="Law of Large Numbers simulation" height="240" id="llnCanvas"></canvas>
+<div class="info">
+<div><span>Trials</span><strong id="llnN">0</strong></div>
+<div><span>Current mean</span><strong id="llnCur">—</strong></div>
+<div><span>Theoretical</span><strong id="llnTrue">0.50</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="llnCanvas" data-title="Law of Large Numbers"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/lln.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="#ci">I3 Confidence Interval</a></div>
+</section>
+<!-- ============ CI ============ -->
+<section class="reveal" id="ci">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/ci.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I3 / Confidence Intervals</div>
+
+<h2 class="sec-title">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
+
+<div class="story-bridge">LLN says "at infinity, you're right." But in practice we always have a <b>finite sample</b>. So instead of a single point, <b>drape a net around it</b> — that's a <span class="next">confidence interval</span>. Wider net, easier to catch; narrower, more precise. Watch the trade-off play out.</div>
+
+<p class="sec-desc">
+    The <b>95% confidence interval</b> is <b>famously misunderstood</b>.<br/>
+    It does <b>NOT</b> mean "the true value is inside with 95% probability". The correct reading:
+    "repeat this sampling many times, and ~95% of the resulting intervals will capture the true value".<br/>
+    The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
+    Once the pink share settles around <b>~5%</b>, you've got it.
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> At 95% confidence, n=30, hit ▶ → pink (missed) intervals should be ~5% of the total.</li>
+<li><b>Step 2:</b> Drop confidence to <b>80%</b> and regenerate → more pink. Narrower net = more misses.</li>
+<li><b>Step 3:</b> Back to 95%, set n to <b>200</b> → intervals get much tighter. The power of large samples.</li>
+<li><b>Step 4:</b> Set n to <b>5</b> → intervals are huge. With few samples, you need a wide net to catch the truth.</li>
+</ol>
+</div>
+<!-- @panel:ci_main -->
+<div class="panel" data-autorun="ciRun">
+<div class="controls">
+<div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
+<input id="ciN" max="200" min="5" step="1" type="range" value="30"/>
+</div>
+<div class="ctrl"><label><span>Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
+<input id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
+</div>
+<button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
+<button class="btn magenta" id="ciReset">CLEAR</button>
+</div>
+<canvas aria-busy="true" aria-label="Confidence interval simulation. Repeated sampling shows 95% of intervals contain the population mean" height="240" id="ciCanvas"></canvas>
+<div class="info">
+<div><span>Intervals built</span><strong id="ciMade">0</strong></div>
+<div><span>Coverage</span><strong id="ciCov">—</strong></div>
+<div><span>Expected</span><strong id="ciExp">95%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ciCanvas" data-title="Confidence Interval"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/ci.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="#test">I4 Hypothesis Testing</a></div>
+</section>
+<!-- ============ TEST ============ -->
+<section class="reveal" id="test">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/test.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I4 / Hypothesis Testing</div>
+
+<h2 class="sec-title">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
+
+<div class="story-bridge">If a CI expresses uncertainty as a <i>width</i>, <span class="next">hypothesis testing</span> turns it into a <b>yes/no</b> decision. Under the <b>null world</b>, could this data have happened? If it's too unlikely, reject. Same distribution, same σ/n — just a different question.</div>
+
+<p class="sec-desc">
+    Think of <b>testing as a trial</b>.<br/>
+    You start by assuming <code>H₀</code> ("the drug has no effect" = "innocent"). Then if your computed <b>test statistic z</b> lands in the <b>pre-chosen rejection region</b>, you convict — that is, <b>reject H₀</b>.<br/>
+    Two panels below: <b>① geometry of z and rejection regions (two-sided, right, left)</b>, and <b>② false alarms (α) vs. misses (β)</b>.
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></br></li>
+<li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
+<li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but rejection area is one-sided; p-value halves.</li>
+</ol>
+</div>
+<!-- @panel:test_main -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic &amp; rejection region</h3>
+<div class="controls">
+<div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
+<input id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
+</div>
+<div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
+<input id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>Test type</span></label>
+<select id="tType">
+<option value="two">Two-sided</option>
+<option value="right">Right</option>
+<option value="left">Left</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Hypothesis testing visualization. Explore the relationship between test statistic and rejection region" height="260" id="testCanvas"></canvas>
+<div class="info">
+<div><span>Test statistic z</span><strong id="tZstat">—</strong></div>
+<div><span>Critical value</span><strong id="tCrit">—</strong></div>
+<div><span>p-value</span><strong id="tPval">—</strong></div>
+<div><span>Decision</span><strong id="tDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="testCanvas" data-title="Hypothesis Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> δ=2, α=0.05 → high power (most of the purple curve falls in the rejection region).</li>
+<li><b>Step 2:</b> Lower δ to <b>0.5</b> → purple and blue nearly overlap; power drops sharply. Small effects are hard to detect.</li>
+<li><b>Step 3:</b> Tighten α to <b>0.01</b> → rejection region shrinks, β (misses) increases. The trade-off in action.</li>
+<li><b>Step 4:</b> Drag horizontally on the chart → move the critical boundary and feel the α vs β tug-of-war.</li>
+</ol>
+</div>
+<!-- @panel:test_err -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
+
+<p class="sec-desc" style="margin-bottom:14px">
+      Testing has two kinds of mistakes.<br/>
+<b>Type I error α</b>: rejecting H₀ when it's actually true (false alarm).<br/>
+<b>Type II error β</b>: failing to reject H₀ when H₁ is actually true (a miss).<br/>
+      And <code>1 − β</code> is the <b>power</b>.
+      Change effect size δ or α: the blue (H₀) and purple (H₁) curves fight it out — you can literally see the trade-off "fewer false alarms = more misses".
+      <br/><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
+</p>
+<div class="controls">
+<div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
+<input id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
+</div>
+<div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
+<input id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Visualize the relationship between Type I/II errors and statistical power" height="260" id="errCanvas"></canvas>
+<div class="info">
+<div><span>α (Type I error)</span><strong id="eAlpha">—</strong></div>
+<div><span>Critical value</span><strong id="eCrit">—</strong></div>
+<div><span>β (Type II error)</span><strong id="eBeta">—</strong></div>
+<div><span>Power 1−β</span><strong id="ePower">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="errCanvas" data-title="α · β · Power"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/test.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="#dists">I5 t, χ², F</a></div>
+</section>
+<!-- ============ DISTS ============ -->
+<section class="reveal" id="dists">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/dists.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I5 / t · χ² · F Distributions</div>
+
+<h2 class="sec-title">Three Test Distributions <span class="sec-sub">— Meet t, χ² &amp; F</span></h2>
+
+<div class="story-bridge">Up to now we've tested means assuming σ is known. In practice you must <b>estimate σ</b> too — and the moment you do, Z morphs into <span class="next">t</span>. Test a variance directly: <b>χ²</b>. Compare two variances: <b>F</b>. All descendants of N(0,1); the name changes based on <b>what you don't know</b>.</div>
+
+<p class="sec-desc">
+<b>t, χ², F</b> are all <b>derived from the normal</b>. Think of them as "the standard normal, scaled to reflect that we only ever see a sample".<br/>
+    Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
+    <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
+    <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br/>
+<span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
+</p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> n=<b>3</b> → df=1, extremely heavy tails. Compare with the normal (gray dashed line).</li>
+<li><b>Step 2:</b> n=<b>10</b> → still heavier tails than normal, but getting closer.</li>
+<li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
+</ol>
+</div>
+<!-- @panel:dists_t -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+
+<div class="dist-card">
+<b class="cy">Built from:</b> t = Z / √(χ²ₖ/k), Z~N(0,1).<br/>
+<b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br/>
+<b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
+      </div>
+<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+<input id="tN" max="100" min="3" type="range" value="5"/>
+</div>
+<div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
+<span style="color:var(--dim)"><span>Confidence:</span></span>
+<label><input name="tConf" type="radio" value="0.10"> 90%</input></label>
+<label><input checked="" name="tConf" type="radio" value="0.05"> 95%</input></label>
+<label><input name="tConf" type="radio" value="0.01"> 99%</input></label>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval comparison" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Sample size n</span> <strong id="tInfoN">5</strong></div>
+<div><span>df</span> <strong id="tInfoDf">4</strong></div>
+<div><span>Confidence</span> <strong id="tInfoConf">95%</strong></div>
+<div><span>t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">±2.776</strong></div>
+<div><span>z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">±1.960</strong></div>
+<div><span>t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t-Distribution"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — χ² distribution</b>
+<ol>
+<li><b>Step 1:</b> Keep "Fair die" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>
+<li><b>Step 2:</b> Switch to "Loaded" and roll → face 1 jumps out, χ² enters the rejection region.</li>
+<li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>
+<li><b>Step 4:</b> Move the df slider to explore the shape. df=30 → nearly normal.</li>
+</ol>
+</div>
+<!-- @panel:dists_chi -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+
+<div class="dist-card">
+<b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br/>
+<b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br/>
+<b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
+      </div>
+<div class="controls" style="gap:8px;margin-bottom:12px">
+<div class="ctrl"><label><span>Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
+<input id="chiRolls" max="300" min="12" type="range" value="60"/>
+</div>
+<div class="ctrl" style="min-width:auto">
+<select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<option value="fair">Fair die</option>
+<option value="loaded">Loaded (⚅ heavy)</option>
+</select>
+</div>
+<button class="sim-btn" id="diceRandom"><span>▶ Roll</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Dice roll distribution" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
+<div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+<input id="chiDf" max="30" min="1" type="range" value="5"/>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
+<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Rolls n</span> <strong id="chiInfoN">60</strong></div>
+<div><span>df</span> <strong id="chiInfoDf">5</strong></div>
+<div><span>Test statistic χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
+<div><span>χ² critical</span> <strong id="chiInfoCrit">11.070</strong></div>
+<div><span>p-value</span> <strong id="chiInfoP">—</strong></div>
+<div><span>Verdict</span> <strong id="chiInfoVerdict">—</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ² Distribution"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — F distribution</b>
+<ol>
+<li><b>Step 1:</b> Set A and B to the same SD (e.g. 10 and 10) → F≈1, not rejected.</li>
+<li><b>Step 2:</b> Increase B only (e.g. A=5, B=15) → F grows and enters the rejection region.</li>
+<li><b>Step 3:</b> Increase n → same SD gap but lower p-value (more power).</li>
+<li><b>Step 4:</b> Alternate A and B's SD to feel what "variance ratio" means.</li>
+</ol>
+</div>
+<!-- @panel:dists_f -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+
+<div class="dist-card">
+<b class="ye">Built from:</b> F = (χ²ₘ/m) / (χ²ₙ/n) (ratio of two independent χ² / df).<br/>
+<b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br/>
+<b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
+      </div>
+<div class="ctrl" style="margin-bottom:4px"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+<input id="fSdA" max="20" min="1" type="range" value="8"/>
+</div>
+<div class="ctrl" style="margin-bottom:4px"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+<input id="fSdB" max="20" min="1" type="range" value="15"/>
+</div>
+<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
+<input id="fGroupN" max="100" min="5" type="range" value="20"/>
+</div>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Variance comparison between two groups" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
+<div class="info" style="margin-top:6px">
+<div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
+<div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
+<div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
+<div><span>F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+<div><span>F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
+<div><span>p-value</span> <strong id="fInfoP">0.005</strong></div>
+</div>
+<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F-Distribution"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/dists.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="#chitest">I6 Chi-Squared Test</a></div>
+</section>
+<!-- ============ CHI-SQUARED TEST ============ -->
+<section class="reveal" id="chitest">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I6 / Chi-Squared Test</div>
+
+<h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
+
+<div class="story-bridge">So far we've tested <b>means</b>. But some data is purely <b>categorical</b> — survey choices, dice outcomes, disease × smoking. The <span class="next">chi-squared test</span> quantifies "deviation from expectation" for these counts. The bigger the mismatch, the brighter the χ² statistic glows.</div>
+
+<p class="sec-desc">
+<b>Goodness-of-fit</b> asks: "Does the observed category distribution match a theoretical one?" Classic example: is the die fair?<br/>
+<b>Test of independence</b> asks: "Are two categorical variables independent?" Compute χ² = Σ (O−E)²/E across every cell of the contingency table.<br/>
+<span class="text-sub">Why divide by E? → A deviation of 2 from an expected 10 matters more than 2 from an expected 1,000. Dividing by E turns raw gaps into <b>relative</b> ones.<br/>Both use a χ²-distributed statistic; the p-value is the right-tail area. df = k−1 for goodness-of-fit, (r−1)(c−1) for independence.</span>
+</p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> ① Goodness-of-fit: select "Fair die" and auto-roll → as n grows, χ² stays low, p-value stays high (fail to reject).</li>
+<li><b>Step 2:</b> Switch to "Loaded" and auto-roll → χ² shoots up, p-value drops below α. The cheat is caught.</li>
+<li><b>Step 3:</b> ② Independence: click only the top-left cell to create imbalance → χ² spikes, independence is rejected.</li>
+<li><b>Step 4:</b> Reset and click cells evenly → χ² stays small. No imbalance = independence holds.</li>
+</ol>
+</div>
+<!-- @panel:chitest_gof -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+
+<span>Significance α</span>
+          = <span class="val" id="gofAVal">0.05</span>
+</label>
+<input id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+</div>
+<div class="ctrl" style="min-width:auto">
+<select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<option value="fair">Fair die</option>
+<option value="loaded">Loaded (⚅ heavy)</option>
+</select>
+</div>
+<button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ Auto-roll</span></button>
+<button class="lang-toggle" id="gofReset" style="padding:5px 12px;font-size:11px"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<div class="info">
+<div><span>Rolls n</span> <strong id="gofN">0</strong></div>
+<div><span>Test statistic χ²</span> <strong id="gofStat">—</strong></div>
+<div><span>df</span> <strong id="gofDf">—</strong></div>
+<div><span>p-value</span> <strong id="gofP">—</strong></div>
+<div><span>Decision</span> <strong id="gofResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="chitestCanvas" data-title="Goodness-of-Fit Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Click the top-left and bottom-right cells repeatedly → diagonal bias raises χ², verdict: "not independent."</li>
+<li><b>Step 2:</b> Reset, then click all cells evenly → χ² stays small. No bias = independent.</li>
+<li><b>Step 3:</b> Set α to <b>0.01</b> → higher bar for rejection. Same data might flip the verdict.</li>
+<li><b>Step 4:</b> Flood a single cell → huge gap from expected frequencies, p-value plummets.</li>
+</ol>
+</div>
+<!-- @panel:chitest_ind -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② Test of Independence — Are Two Variables Independent?</h3>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+
+<span>Significance α</span>
+          = <span class="val" id="indAVal">0.05</span>
+</label>
+<input id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+</div>
+<button class="lang-toggle" id="indReset" style="padding:5px 12px;font-size:11px"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<div class="info">
+<div><span>Total n</span> <strong id="indN">0</strong></div>
+<div><span>Test statistic χ²</span> <strong id="indStat">—</strong></div>
+<div><span>df</span> <strong id="indDf">—</strong></div>
+<div><span>p-value</span> <strong id="indP">—</strong></div>
+<div><span>Decision</span> <strong id="indResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="indCanvas" data-title="Test of Independence"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/chitest.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="#anova">I.07 ANOVA</a></div>
+</section>
+<!-- ============ ANOVA ============ -->
+<section class="reveal" id="anova">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/anova.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">I.07 / ANOVA</div>
+
+<h2 class="sec-title">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
+
+<div class="story-bridge">The chi-squared test quantified "category deviations." But how do we test whether <b>means</b> differ across three or more groups? Repeating t-tests inflates false positives — <span class="next">ANOVA</span> compares all groups in a single test.</div>
+
+<p class="sec-desc">
+    ANOVA compares "how different the groups are" vs. "how spread out each group is."<br/>
+    When the difference outweighs the spread, we conclude the groups really differ. Move the sliders to feel it.
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Multiple Comparisons Problem</b>
+<ol>
+<li><b>Step 1:</b> Click ▶ 100 trials — runs 100 experiments where 3 identical groups are compared with 3 pairwise t-tests.</li>
+<li><b>Step 2:</b> Check the red dot ratio — theory predicts 14.3%. What do you get?</li>
+<li><b>Step 3:</b> Click ▶ 1000 trials — as trials accumulate, the rate converges toward 14.3%.</li>
+</ol>
+</div>
+<!-- @panel:anova_sim -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Why You Can't Just Repeat t-Tests</h3>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+
+<span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+</div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<button class="lang-toggle" id="mcRun" style="padding:5px 12px;font-size:11px"><span>▶ 100 trials</span></button>
+<button class="lang-toggle" id="mcRun1000" style="padding:5px 12px;font-size:11px"><span>▶ 1000 trials</span></button>
+<button class="lang-toggle" id="mcReset" style="padding:5px 12px;font-size:11px"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Multiple comparisons simulation" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>Trials</span> <strong id="mcTotal">0</strong></div>
+<div><span>False positives</span> <strong id="mcFP">0</strong></div>
+<div><span>FP rate</span> <strong id="mcRate">0.0%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mcSimCanvas" data-title="Multiple Comparisons Simulation"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<p style="margin:0 0 6px;font-size:12px;color:var(--dim)">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
+<b>Experiment Guide — Feel the F-Statistic</b>
+<ol>
+<li><b>Step 1:</b> Set between-group difference to zero → F ≈ 1. All groups look like one population.</li>
+<li><b>Step 2:</b> Increase between-group difference → F rises, p drops. Watch it cross the rejection threshold.</li>
+<li><b>Step 3:</b> Increase within-group spread → same difference but F drops. "Real differences can hide in noise."</li>
+<li><b>Step 4:</b> Increase sample size → F rises. Larger samples detect smaller effects (statistical power).</li>
+</ol>
+</div>
+<!-- @panel:anova_main -->
+<div class="panel">
+
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Between vs. Within — Feel the F-Statistic</h3>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+
+<span>Between-group diff</span>
+          = <span class="val" id="anovaEffectVal">1.5</span>
+</label>
+<input id="anovaEffect" max="5" min="0" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+
+<span>Within-group spread (σ)</span>
+          = <span class="val" id="anovaWithinVal">1.5</span>
+</label>
+<input id="anovaWithin" max="5" min="0.3" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+
+<span>n per group</span>
+          = <span class="val" id="anovaNkVal">20</span>
+</label>
+<input id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
+</div>
+<button class="lang-toggle" id="anovaGen" style="padding:5px 12px;font-size:11px"><span>↻ Regenerate</span></button>
+</div>
+<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>F</span> <strong id="anovaF">—</strong></div>
+<div><span>Between df</span> <strong id="anovaDfB">—</strong></div>
+<div><span>Within df</span> <strong id="anovaDfW">—</strong></div>
+<div><span>p</span> <strong id="anovaP">—</strong></div>
+<div><span>SSB</span> <strong id="anovaSSB">—</strong></div>
+<div><span>SSW</span> <strong id="anovaSSW">—</strong></div>
+<div><span>η²</span> <strong id="anovaEta2">—</strong></div>
+<div><span>Decision</span> <strong id="anovaResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anovaCanvas" data-title="ANOVA"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/anova.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="#corr">M0 Correlation</a></div>
+</section>
+<div class="category-preview reveal">
+<div class="cat-preview-inner">
+
+<h3 class="cat-preview-title">▼ What comes next — into Modeling</h3>
+
+<p class="cat-preview-desc">
+      You can now test for differences and independence. Next: <b>finding relationships and predicting</b>.<br/>
+<b>Correlation</b> measures the "link" between two variables, then <b>simple regression</b> turns it into prediction.
+      Then <b>multiple regression</b> controls for confounders to measure true effects —
+      tests, CIs, and the F-distribution all converge here. The full statistical toolkit comes together.
+    </p>
+</div>
+</div>
+<!-- ============ CATEGORY: MODELING ============ -->
+<div class="category-header reveal" id="cat-modeling">
+<div class="cat-tag"><span>MODELING</span></div>
+
+<p class="cat-desc">Modeling — finding relationships and making predictions</p>
+</div>
+<!-- ============ CORRELATION ============ -->
+<section class="reveal" id="corr">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/corr.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">M0 / Correlation</div>
+
+<h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
+
+<div class="story-bridge">The chi-squared test quantified associations between <b>categories</b>. But how do we measure the relationship between <b>continuous numbers</b> — height vs. weight, study time vs. test scores? → The <span class="next">correlation coefficient r</span> compresses "how much they move together" into a single number from <b>−1 to +1</b>.</div>
+
+<p class="sec-desc">
+    The <b>correlation coefficient r</b> measures whether two variables move together.
+    +1 means a perfect positive linear relationship, −1 a perfect negative one, 0 means no linear relationship.
+    <b>Click</b> the canvas to add points and watch r update in real time.
+    The yellow dashed lines mark the means, splitting the space into four quadrants — more points in <b>green quadrants</b> means positive correlation, more in <b>red</b> means negative.
+    This coloring is the "tug-of-war of signs" in the formula Σ(x−x̄)(y−ȳ).
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Feel the Correlation</b>
+<ol>
+<li><b>Step 1:</b> Set r = 0.80, click Generate → an upward-sloping band. Points cluster in the <b>green quadrants</b>.</li>
+<li><b>Step 2:</b> Change to r = −0.60, Generate → downward slope. More points in the <b>red quadrants</b>.</li>
+<li><b>Step 3:</b> Set r = 0.00, Generate → points spread evenly across all four quadrants. A "cloud," not a band.</li>
+<li><b>Step 4:</b> CLEAR, then manually place a <b>U-shape</b> → r ≈ 0 yet there's an obvious pattern! r only captures <b>linear</b> relationships.</li>
+</ol>
+</div>
+<!-- @panel:corr_main -->
+<div class="panel" data-autorun="corrGen">
+<div class="controls">
+<div class="ctrl">
+<label><span>Target r</span>
+          = <span class="val" id="corrTargetR">0.80</span>
+</label>
+<input id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
+</div>
+<div class="ctrl">
+<label><span>Points n</span>
+          = <span class="val" id="corrTargetN">50</span>
+</label>
+<input id="corrN" max="200" min="10" step="1" type="range" value="50"/>
+</div>
+<button class="btn" id="corrGen"><span>▶ Generate</span></button>
+<button class="btn magenta" id="corrClear">CLEAR</button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click canvas to add points</span></span>
+</div>
+<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<div class="info">
+<div>n<strong id="corrNval">0</strong></div>
+<div><span>Correlation r</span><strong id="corrRval">—</strong></div>
+<div>R²<strong id="corrR2val">—</strong></div>
+<div><span>Covariance</span><strong id="corrCov">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="corrCanvas" data-title="Correlation"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Peek Behind the Numbers</b>
+<ol>
+<li><b>Step 1:</b> Watch the animation. Points appear one by one, patterns look totally different…</li>
+<li><b>Step 2:</b> Check each plot's r ≈ 0.816. They're all nearly identical!</li>
+<li><b>Step 3:</b> Regression lines appear → lines are nearly identical too. Yet II is curved, III has an outlier, IV is dominated by one point.</li>
+<li><b>Step 4:</b> Click "Replay" to watch again. Numbers alone don't tell the whole story.</li>
+</ol>
+</div>
+<!-- @panel:corr_anscombe -->
+<div class="panel" data-autorun="anscombeReplay">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/corr.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
+</section>
+<section class="reveal" id="reg">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/reg.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">M1 / Simple Regression</div>
+
+<h2 class="sec-title">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
+
+<div class="story-bridge">Correlation measured "how strong the link is." Next: "if x goes up by 1, how much does y move?" — <span class="next">simple regression</span> turns the relationship into <b>prediction</b>. One line through two variables — and the <b>t-tests and CIs</b> you just learned power the inference on its slope β̂.</div>
+
+<p class="sec-desc">
+    Regression with just one explanatory variable is <b>simple regression</b>. It assumes a linear relationship: when x increases by 1, y moves by β₁.
+    <b>Ordinary least squares (OLS)</b> picks the line that minimizes the sum of squared vertical residuals.
+    <b>Click</b> the canvas to add points and watch the line snap into place.
+    Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
+  </p>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Hit "Random 20 pts" → a regression line and R² appear. Check the green bars (residuals).</li>
+<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Feel the leverage of outliers.</li>
+<li><b>Step 3:</b> CLEAR and place <b>5 points</b> nearly in a line → R² ≈ 1.0. A perfect linear relationship.</li>
+<li><b>Step 4:</b> CLEAR and arrange points in a circle → R² ≈ 0. A line can't capture this pattern.</li>
+</ol>
+</div>
+<!-- @panel:reg_main -->
+<div class="panel" data-autorun="regRandom">
+<div class="controls">
+<button class="btn" id="regRandom"><span>▶ Random 20 pts</span></button>
+<button class="btn magenta" id="regClear">CLEAR</button>
+<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click the canvas to add points</span></span>
+</div>
+<canvas aria-busy="true" aria-label="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" id="regCanvas" style="cursor:crosshair"></canvas>
+<div class="info">
+<div>n<strong id="regN">0</strong></div>
+<div><span>Slope β₁</span><strong id="regB1">—</strong></div>
+<div><span>Intercept β₀</span><strong id="regB0">—</strong></div>
+<div>R²<strong id="regR2">—</strong></div>
+<div><span>Correlation r</span><strong id="regR">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="regCanvas" data-title="Simple Regression"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/reg.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="#mreg">M2 Multiple Regression</a></div>
+</section>
+<!-- ============ MULTIPLE REGRESSION ============ -->
+<section class="reveal" id="mreg">
+<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/mreg.html">▸ Dedicated page for this topic</a></div>
+<div class="sec-tag">M2 / Multiple Regression</div>
+
+<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
+
+<div class="story-bridge">The "line" of simple regression becomes a <b>plane in 3D space</b> when you add variables. Drag to rotate — see how data points align along the surface.</div>
+
+<p class="sec-desc">
+    Simple regression used one variable and fit a line.
+    Multiple regression combines <b>two or more variables</b> — the fit becomes a <b>plane</b>.
+    Rotate the 3D plot and see how the plane captures the data.
+  </p>
+<div class="mreg-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — try these in order</b>
+<ol>
+<li><b>Step 1:</b> Drag the 3D plot to rotate it. The translucent surface is the regression plane — data points align along it.</li>
+<li><b>Step 2:</b> Dashed lines from points to the plane are residuals (prediction errors). Shorter = better fit.</li>
+<li><b>Step 3:</b> Move the study slider → the large dot moves along the plane. That's the predicted score.</li>
+<li><b>Step 4:</b> Move sleep too → it moves in a different direction on the plane. Two variables combine for prediction.</li>
+</ol>
+</div>
+<!-- @panel:mreg_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl"><label><span>Study hours x₁</span> = <span class="val" id="mStudyVal">5.0</span><span>h</span></label>
+<input id="mStudy" max="9" min="1" step="0.1" type="range" value="5"/>
+</div>
+<div class="ctrl"><label><span>Sleep hours x₂</span> = <span class="val" id="mSleepVal">7.0</span><span>h</span></label>
+<input id="mSleep" max="10" min="4" step="0.1" type="range" value="7"/>
+</div>
+<button class="btn" id="mGen"><span>↺ Resample</span></button>
+</div>
+<canvas aria-busy="true" aria-label="3D scatter plot with regression plane" height="500" id="mregCanvas"></canvas>
+<div class="info">
+<div><span id="mPredLabelEn"></span><strong id="mPredBig">—</strong></div>
+<div><span>β̂₁ (per study hour)</span><strong id="mCoefStudy">—</strong></div>
+<div><span>β̂₂ (per sleep hour)</span><strong id="mCoefSleep">—</strong></div>
+<div>R²<strong id="mR2">—</strong></div>
+</div>
+<div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="Multiple Regression"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="learn-more-link" style="margin:16px 0;text-align:center">
+
+<a href="topics/mreg.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
+</div>
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+
+<a href="columns/income_prediction.html" style="color:var(--yellow)">📊 Column: Feel multiple regression through income prediction →</a>
+</div>
+</section>
+<div class="category-preview reveal">
+<div class="cat-preview-inner">
+
+<h3 class="cat-preview-title">▼ The Big Picture</h3>
+
+<p class="cat-preview-desc">
+      From the standard normal through probability, distributions, inference, and regression — the core scope of introductory statistics, end to end.<br/>
+      Every page is a descendant of <b>N(0,1)</b>:
+      t = "normal with unknown σ," χ² = "sum of squared normals," F = "ratio of χ²'s," regression tests use t and F.
+      Dive deeper into <b>each topic's dedicated page</b> for formulas and detailed explanations.
+    </p>
+</div>
+</div>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span style="opacity:.7">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span style="opacity:.75">
+
+<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span></div>
+</div>
+</footer>
+<script src="../js/main.js" type="module"></script>
+</body>
+</html>

@@ -98,9 +98,9 @@
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
 <nav id="mainNav">
-  <a class="logo" href="../../index.html" title="Back to hub">StatPlay</a>
+  <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
   <div class="nav-links" id="navLinks">
-    <a href="../../index.html">← StatPlay</a>
+    <a href="../../en/index.html">← StatPlay</a>
     <a href="../../topics/bayes.html" hreflang="ja" rel="alternate">日本語</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>
@@ -108,11 +108,11 @@
 
 
 <main id="main-content">
-  <h1 class="topic-h1"><a href="../../index.html" style="color:inherit;text-decoration:none">Bayes' Theorem — Positive Predictive Value</a></h1>
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Bayes' Theorem — Positive Predictive Value</a></h1>
   <p class="topic-lead">Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.</p>
   <section class="reveal in" id="bayes">
 
-<div class="sec-tag">P.05 / BAYES THEOREM</div>
+<div class="sec-tag">P.04 / BAYES THEOREM</div>
 
 <h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
 
@@ -138,7 +138,7 @@
 <div class="panel">
 <div class="controls">
 <div class="ctrl">
-<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal">10人 / 1000</span></label>
+<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>10 / 1,000</span></span></label>
 <input id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.01"/>
 </div>
 <div class="ctrl">
@@ -169,7 +169,8 @@
 <div class="detail-section">
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
-<p>P(A|B) = probability of being sick given a positive test, P(B|A) = sensitivity, P(A) = prevalence, P(B) = overall probability of testing positive.<br/>
+<p><span style="color:var(--dim);font-size:var(--fs-xs)">Here A = "truly sick" and B = "tested positive"</span><br/>
+P(A|B) = probability of being sick given a positive test (PPV), P(B|A) = sensitivity, P(A) = prevalence, P(B) = overall probability of testing positive.<br/>
 When prevalence is tiny the numerator shrinks while the denominator, swollen with false positives, stays large — that's exactly the "10 out of 60" above.</p>
 </div>
 
@@ -193,12 +194,12 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 <h3>// How it shows up in exams</h3>
 <ul>
 <li><b>Standard calculation</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?"</li>
-<li><b>Law of total probability</b>: use P(B) = P(B|A)P(A) + P(B|Ā)P(Ā) as the denominator</li>
+<li><b>Law of total probability</b>: use <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> as the denominator</li>
 <li><b>Natural frequency approach</b>: draw a table of 1,000 people and count directly — often faster than memorizing the formula</li>
 </ul>
 </div>
 <!-- /@panel -->
-<div class="story-next"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="./clt.html">I.01 Central Limit Theorem</a></div>
+<div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="./morep.html">P5 Discrete &amp; Exponential</a></div>
 </section>
 </main>
 

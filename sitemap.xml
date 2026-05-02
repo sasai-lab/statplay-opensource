@@ -4,7 +4,16 @@
   <url>
     <loc>https://statplay.sasailab.com/</loc>
     <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://statplay.sasailab.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
