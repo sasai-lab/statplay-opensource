@@ -113,7 +113,7 @@
   <section class="reveal in" id="morep">
 
 <div class="sec-tag">P.05 / DISCRETE + EXPONENTIAL</div>
-<h2 class="sec-title">離散分布と指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
+<h2 class="sec-title">二項分布・ポアソン分布・指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
 
 <div class="story-bridge">正規分布は連続で対称。でも現実のデータはそうとは限らない。コイン投げは離散、来客数はポアソン、待ち時間は指数分布。<span class="next">残りの分布</span>で道具箱を完成させよう。</div>
 
@@ -134,7 +134,7 @@
 <div class="use-case">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
 
 
-<canvas aria-busy="true" aria-label="Binomial distribution simulation" height="240" id="binomCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Binomial distribution simulation" height="180" id="binomCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>試行回数 n</label><input id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
@@ -179,7 +179,7 @@
 <div class="use-case">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
 
 
-<canvas aria-busy="true" aria-label="Poisson distribution simulation" height="240" id="poissonCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Poisson distribution simulation" height="180" id="poissonCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
@@ -222,7 +222,7 @@
 <div class="use-case">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
 
 
-<canvas aria-busy="true" aria-label="Exponential distribution PDF" height="240" id="expCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Exponential distribution PDF" height="180" id="expCanvas"></canvas>
 <div class="controls">
 <div class="ctrl"><label>発生率 λ</label><input id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
@@ -294,6 +294,71 @@
 </div>
 
 <!-- /@panel -->
+
+<!-- @panel:morep_memoryless -->
+<div class="panel">
+<div class="panel-title">無記憶性デモ — 「もう10分待った」は無意味？</div>
+
+<div class="sec-bridge">左は正規分布的な待ち時間。待てば待つほど「そろそろ来る」確率が上がる。右は指数分布。t をどれだけ動かしても曲線が変わらない——これが無記憶性。</div>
+
+<div class="memoryless-pair">
+<div class="memoryless-col">
+<div class="memoryless-label">正規分布（普通の感覚）</div>
+
+<canvas aria-busy="true" aria-label="Normal remaining time distribution" height="200" id="memNormCanvas"></canvas>
+<div class="memoryless-note">← t が増えると左にシフト（「そろそろ来る」）</div>
+
+</div>
+<div class="memoryless-col">
+<div class="memoryless-label">指数分布（無記憶）</div>
+
+<canvas aria-busy="true" aria-label="Exponential remaining time distribution" height="200" id="memExpCanvas"></canvas>
+<div class="memoryless-note">← t をいくら動かしても同じ形</div>
+
+</div>
+</div>
+<div class="controls">
+<div class="ctrl"><label>すでに待った時間 t</label><input id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
+<div class="ctrl"><label>発生率 λ</label><input id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
+</div>
+</div>
+<!-- /@panel -->
+
+<!-- @panel:morep_callcenter -->
+<div class="panel">
+<div class="panel-title">同じ現象、3つの視点 — コールセンターの1時間</div>
+
+<div class="sec-bridge">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
+
+<div class="controls" style="margin-bottom:12px">
+<div class="ctrl"><label>1時間あたりの件数 λ</label><input id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
+</div>
+<div class="cc-trio">
+<div class="cc-col">
+<div class="cc-dist-label">二項分布 B(60, λ/60)</div>
+
+<canvas aria-busy="true" aria-label="Call center binomial view" height="160" id="ccBinomCanvas"></canvas>
+<div class="cc-caption">60分を1分刻み。<br/>各分に電話が来るか来ないか。</div>
+
+</div>
+<div class="cc-col">
+<div class="cc-dist-label">ポアソン分布 Poi(λ)</div>
+
+<canvas aria-busy="true" aria-label="Call center Poisson view" height="160" id="ccPoissonCanvas"></canvas>
+<div class="cc-caption">1時間に合計何件来る？</div>
+
+</div>
+<div class="cc-col">
+<div class="cc-dist-label">指数分布 Exp(λ)</div>
+
+<canvas aria-busy="true" aria-label="Call center exponential view" height="160" id="ccExpCanvas"></canvas>
+<div class="cc-caption">次の電話まで何分待つ？<br/>（平均 60/λ 分）</div>
+
+</div>
+</div>
+</div>
+<!-- /@panel -->
+
 <div class="story-next"><span class="lbl">次は —</span>平均を取ると正規分布になる？ <span class="story-arrow">▸</span> <a href="./clt.html">I1 中心極限定理</a></div>
 
 </section>
@@ -343,7 +408,7 @@
     <li><a href="./normal.html">正規分布と標準化</a></li>
     <li><a href="./prob.html">確率の基本法則</a></li>
     <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html" class="current">離散分布と指数分布</a></li>
+    <li><a href="./morep.html" class="current">二項・ポアソン・指数分布</a></li>
     <li><a href="./clt.html">中心極限定理</a></li>
     <li><a href="./lln.html">大数の法則</a></li>
     <li><a href="./ci.html">信頼区間</a></li>

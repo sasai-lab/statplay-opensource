@@ -6,11 +6,11 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta name="description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
-<meta name="keywords" content="multiple regression, partial coefficients, 3D visualization, high dimensional">
+<meta name="description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.">
+<meta name="keywords" content="multiple regression, partial coefficients, confounding, 3D visualization, controlling for variables">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<title>Multiple Regression — Beyond Two Variables — StatPlay</title>
+<title>Multiple Regression — Control Confounders to Find True Effects — StatPlay</title>
 
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/mreg.html">
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
@@ -19,26 +19,26 @@
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="StatPlay">
-<meta property="og:title" content="Multiple Regression — Beyond Two Variables">
-<meta property="og:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
+<meta property="og:title" content="Multiple Regression — Control Confounders to Find True Effects">
+<meta property="og:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.">
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/mreg.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — Multiple Regression">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Multiple Regression — Beyond Two Variables">
-<meta name="twitter:description" content="Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.">
+<meta name="twitter:title" content="Multiple Regression — Control Confounders to Find True Effects">
+<meta name="twitter:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
 <link rel="manifest" href="../../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
-<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../../css/stat_cyber.css">
+
 
 <script type="application/ld+json">
 {
@@ -46,12 +46,12 @@
   "@graph": [
     {
       "@type": "LearningResource",
-      "name": "Multiple Regression — Beyond Two Variables",
-      "description": "Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.",
+      "name": "Multiple Regression — Control Confounders to Find True Effects",
+      "description": "Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.",
       "inLanguage": "en",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
-      "teaches": ["Multiple regression", "Partial regression coefficients", "Multivariate lines and planes"],
+      "teaches": ["Multiple regression", "Partial regression coefficients", "Controlling for confounders", "Simple vs. multiple regression comparison"],
       "isPartOf": {
         "@type": "WebSite",
         "name": "StatPlay",
@@ -90,9 +90,6 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
@@ -106,34 +103,97 @@
   </div>
 </nav>
 
+<div class="topic-header-row">
+<div class="topic-breadcrumb" aria-label="Breadcrumb">
+  <a href="../../en/index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../../en/index.html#mreg">Topics</a><span class="sep">›</span>
+  <span class="current-page">Multiple Regression</span>
+</div>
+<nav class="topic-top-nav" aria-label="Previous / Next topic">
+  <a href="./reg.html" rel="prev">← Prev</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
+</div>
 
 <main id="main-content">
-  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Beyond Two Variables</a></h1>
-  <p class="topic-lead">Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.</p>
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Control Confounders to Find True Effects</a></h1>
+  <p class="topic-lead">Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.</p>
   <section class="reveal in" id="mreg">
 
-<div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
+<div class="sec-tag">M2 / 重回帰分析</div>
 
 <h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
 
-<div class="story-bridge">The "line" of simple regression becomes a <b>plane in 3D space</b> when you add variables. Drag to rotate — see how data points align along the surface.</div>
+<div class="story-bridge">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
 
 <p class="sec-desc">
-    Simple regression used one variable and fit a line.
-    Multiple regression combines <b>two or more variables</b> — the fit becomes a <b>plane</b>.
-    Rotate the 3D plot and see how the plane captures the data.
+    One variable gives a line; two give a <b>plane in 3D</b>.
+    But the point isn't geometry — it's <b>removing confounding to isolate each variable's true effect</b>.
+    Start with the side-by-side comparison to see the moment β₁ shifts.
   </p>
-<div class="mreg-layout">
+<div class="sim-layout">
+
 <div class="guided-steps">
-<b>Experiment Guide — try these in order</b>
+<b>Experiment Guide — Feel Confounding</b>
 <ol>
-<li><b>Step 1:</b> Drag the 3D plot to rotate it. The translucent surface is the regression plane — data points align along it.</li>
-<li><b>Step 2:</b> Dashed lines from points to the plane are residuals (prediction errors). Shorter = better fit.</li>
-<li><b>Step 3:</b> Move the study slider → the large dot moves along the plane. That's the predicted score.</li>
-<li><b>Step 4:</b> Move sleep too → it moves in a different direction on the plane. Two variables combine for prediction.</li>
+<li><b>Step 1:</b> At default (corr = −0.5), compare β₁ left vs. right. Simple regression is <b>smaller</b> — the study effect is underestimated.</li>
+<li><b>Step 2:</b> Set correlation to <b>0</b> → both β₁ values nearly match. "No confounding, no bias."</li>
+<li><b>Step 3:</b> Set correlation to <b>+0.5</b> → now simple regression β₁ is <b>too large</b>. Confounding can bias in either direction.</li>
+<li><b>Step 4:</b> Check R² too. Multiple regression is always ≥ simple — adding a variable improved explanatory power.</li>
 </ol>
 </div>
+<!-- @panel:mreg_vs -->
+<div class="panel">
 
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Simple vs. Multiple Regression — Watch β₁ Shift</h3>
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+
+<span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
+</div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+
+<span>Study↔Sleep correlation</span>
+          = <span class="val" id="mvCorrVal">−0.50</span>
+</label>
+<input id="mvCorr" max="0.8" min="-0.8" step="0.05" type="range" value="-0.5"/>
+</div>
+<div class="ctrl">
+<label>
+
+<span>Sample size n</span>
+          = <span class="val" id="mvNVal">50</span>
+</label>
+<input id="mvN" max="100" min="20" step="5" type="range" value="50"/>
+</div>
+<button class="btn" id="mvGen"><span>↻ Regenerate</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Simple vs. multiple regression β₁ comparison" height="320" id="mvCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>Simple β₁</span> <strong id="mvSimpleB1">—</strong></div>
+<div><span>Multiple β₁</span> <strong id="mvMultiB1">—</strong></div>
+<div><span>Gap (confounding bias)</span> <strong id="mvGap">—</strong></div>
+<div><span>Simple R²</span> <strong id="mvSimpleR2">—</strong></div>
+<div><span>Multiple R²</span> <strong id="mvMultiR2">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mvCanvas" data-title="Simple vs. Multiple Regression"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<div class="guided-steps">
+<b>Experiment Guide — Feel the Regression Plane in 3D</b>
+<ol>
+<li><b>Step 1:</b> Drag the 3D plot to rotate. The translucent surface is the regression plane — data points align along it.</li>
+<li><b>Step 2:</b> Move the study slider → the prediction dot slides along the x₁ direction. The tilt = β₁.</li>
+<li><b>Step 3:</b> Move sleep too → it moves along x₂. The tilt = β₂. Each variable's contribution is visible.</li>
+<li><b>Step 4:</b> Hit Resample a few times → β₁, β₂, R² shift slightly each time. Estimates have variability too.</li>
+</ol>
+</div>
 <!-- @panel:mreg_main -->
 <div class="panel">
 <div class="controls">
@@ -160,7 +220,25 @@
 <!-- /@panel -->
 </div>
 
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+
+<a href="../../en/columns/income_prediction.html" style="color:var(--yellow)">📊 Column: Feel multiple regression through income prediction →</a>
+</div>
 <!-- @panel:mreg_text -->
+
+<div class="detail-section">
+<h3>// What's happening with confounding?</h3>
+<p>In the comparison panel above, simple and multiple regression gave different β₁ values for the same data.<br/>
+Why does adding one variable change the slope?</p>
+<p>Here's what's happening behind the scenes:</p>
+<p style="margin:8px 0;padding:8px 12px;border-left:3px solid var(--cyan);font-size:13px">
+<b>More study → less sleep → lower scores</b> (indirect negative effect)
+</p>
+<p>Simple regression β₁ mixes "direct effect + indirect effect."<br/>
+The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple regression underestimates at ~+2.2.</p>
+<p>Multiple regression β₁ holds sleep constant and extracts only studying's direct effect — that's what <b>partial regression coefficient</b> means.</p>
+<p>Set correlation to 0 in the panel above and the indirect path vanishes — β₁ values converge. That's the "no confounding" state.</p>
+</div>
 
 <div class="detail-section">
 <h3>// Formula used here</h3>
@@ -170,11 +248,32 @@
 ・β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
 ・β₂x₂: same idea — the isolated contribution of x₂</p>
 <p><b>How it differs from simple regression</b><br/>
-・Simple regression slope ignores other variables (crude effect)<br/>
-・Multiple regression β isolates each variable's "pure effect" with others held constant (partial regression coefficient)<br/>
-・Even if study hours and sleep correlate, multiple regression separates their independent contributions</p>
+・Simple regression β₁ = direct effect of x₁ + indirect effect via x₂ (mixed together)<br/>
+・Multiple regression β₁ = direct effect of x₁ only (x₂ is statistically "held constant")<br/>
+・Set correlation to 0 in the panel above and the indirect path vanishes — that's why both β₁ values converge</p>
 <p><b>Geometric picture</b><br/>
 ・With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+</div>
+
+<div class="detail-section">
+<h3>// Worked example — try it by hand</h3>
+<p>Predicting test scores for 30 students using study hours and sleep hours.</p>
+<p>① Check the averages<br/>
+　Mean study = 5.0h, mean sleep = 7.0h, mean score = 65 pts<br/>
+　Correlation between study and sleep: r = −0.45 (heavy studiers sleep less)</p>
+<p>② Simple regression y ~ x₁ (study hours only)<br/>
+　β₁ = +2.4 pts/h, R² = 0.32<br/>
+　→ Each study hour adds 2.4 pts... but this <b>underestimates</b> the true effect</p>
+<p>③ Multiple regression y ~ x₁ + x₂ (add sleep hours)<br/>
+　β₁ = +3.1 pts/h, β₂ = +2.0 pts/h, R² = 0.57<br/>
+　→ Controlling for sleep, study effect rises to <b>+3.1 pts/h</b></p>
+<p>④ Why the change?<br/>
+　In this data, study↑ → sleep↓ (r = −0.45).<br/>
+　Simple regression blamed studying for the negative impact of lost sleep.<br/>
+　Multiple regression separated sleep out, revealing <b>studying's true effect</b>.</p>
+<p>⑤ Make a prediction<br/>
+　Student with 6h study, 7h sleep → ŷ = 23.4 + 3.1×6 + 2.0×7 = 23.4 + 18.6 + 14.0 = <b>56.0 pts</b><br/>
+　β₀ is the "score at 0h study, 0h sleep" — a hypothetical baseline with no intuitive meaning (don't extrapolate).</p>
 </div>
 
 <div class="misconception-box">
@@ -197,6 +296,7 @@
 <h3>// How it shows up in exams</h3>
 <ul>
 <li><b>Interpreting partial coefficients</b>: "β₁ = 3 → holding x₂ constant, a 1-unit increase in x₁ raises y by 3 on average"</li>
+<li><b>Why β₁ changes between simple and multiple regression</b>: confounding (correlation between variables) causes simple regression to mix direct and indirect effects</li>
 <li><b>R² vs. adjusted R²</b>: if adjusted R² drops when you add a variable, that variable hurts the model</li>
 <li><b>F-test</b>: tests "all partial coefficients = 0" simultaneously (overall model significance)</li>
 <li><b>t-test</b>: tests each coefficient individually for zero</li>
@@ -204,15 +304,13 @@
 </ul>
 </div>
 <!-- /@panel -->
-<!-- ═══ Related Column ═══ -->
-<div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">
-<h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin:0 0 8px;letter-spacing:1px">// RELATED COLUMN</h3>
-<p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">See multiple regression in action — predict income from real data and feel confidence vs. prediction intervals.</p>
-<a href="../../en/columns/income_prediction.html" style="color:var(--cyan);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 Income Prediction — How Far Can Statistics Go? →</a>
-</div>
-
 </section>
 </main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./reg.html" rel="prev">← Prev</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
 
 <footer>
 <div class="foot-grid">
@@ -271,10 +369,6 @@
     <li><a href="./reg.html">Simple Regression</a></li>
     <li><a href="./mreg.html" class="current">Multiple Regression</a></li>
   </ol>
-</nav>
-<nav class="topic-nav" aria-label="Previous / Next topic">
-  <a href="./reg.html" rel="prev">← Prev</a>
-  <a class="empty" aria-hidden="true">—</a>
 </nav>
 </body>
 </html>

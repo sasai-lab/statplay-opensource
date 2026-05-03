@@ -1,5 +1,5 @@
 // StatPlay - module: MORE DISTRIBUTIONS (binomial, Poisson, exponential)
-import { $, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, normCDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
 
 export function initMorep(){
   if(!document.getElementById('binomCanvas')) return;
@@ -177,5 +177,218 @@ export function initMorep(){
     slL.addEventListener('input', schedExp);
     window.addEventListener('resize', debouncedResize(draw));
     draw();
+  }
+
+  // -------------------- Memoryless Demo ------------------------------------
+  const memNormCv = $('memNormCanvas');
+  const memExpCv = $('memExpCanvas');
+  if(memNormCv && memExpCv){
+    const slT = $('memT'), slL2 = $('memL');
+    const vT = $('memTVal'), vL2 = $('memLVal');
+
+    function drawMemoryless(){
+      const t = parseFloat(slT.value);
+      const lam = parseFloat(slL2.value);
+      vT.textContent = t.toFixed(1);
+      vL2.textContent = lam.toFixed(2);
+      const mu = 1/lam;
+      const sigma = mu * 0.4;
+      const sMax = 5/lam;
+
+      // Left canvas: Normal remaining time (truncated normal conditional)
+      {
+        const {ctx, w, h} = resizeCanvas(memNormCv);
+        ctx.clearRect(0,0,w,h);
+        drawGrid(ctx, w, h);
+        const tc = themeColors();
+        const pad = 24;
+        const gw = w - pad*2, gh = h - pad*2;
+        // Conditional: given X > t, density of (X-t) for remaining time
+        const pSurv = 1 - normCDF(t, mu, sigma);
+        const pts = [];
+        let yMax = 0;
+        for(let i=0; i<=150; i++){
+          const s = (i/150)*sMax;
+          let y = 0;
+          if(pSurv > 0.001){
+            y = normPDF(t+s, mu, sigma) / pSurv;
+          }
+          if(y > yMax) yMax = y;
+          pts.push([pad + (s/sMax)*gw, 0]);
+        }
+        if(yMax <= 0) yMax = 1;
+        for(let i=0; i<=150; i++){
+          const s = (i/150)*sMax;
+          let y = 0;
+          if(pSurv > 0.001){
+            y = normPDF(t+s, mu, sigma) / pSurv;
+          }
+          pts[i][1] = pad + gh - (y/yMax)*gh;
+        }
+        const fillPts = [[pad, pad+gh], ...pts, [pad+gw, pad+gh]];
+        neonFill(ctx, fillPts, tc.yellow, 0.22);
+        neonLine(ctx, pts, tc.yellow, 10, 2);
+        ctx.fillStyle = tc.dim;
+        ctx.font = '10px "Courier New", monospace';
+        const lbl = window.__LANG==='en'?'remaining time':'残り時間';
+        ctx.fillText(lbl, pad+4, pad+gh-4);
+        if(t > mu*0.8){
+          ctx.fillStyle = tc.magenta;
+          ctx.font = '11px "Courier New", monospace';
+          const warn = window.__LANG==='en'?'"should come soon!"':'「そろそろ来る！」';
+          ctx.fillText(warn, pad+gw/2-40, pad+20);
+        }
+      }
+
+      // Right canvas: Exponential remaining time (always same)
+      {
+        const {ctx, w, h} = resizeCanvas(memExpCv);
+        ctx.clearRect(0,0,w,h);
+        drawGrid(ctx, w, h);
+        const tc = themeColors();
+        const pad = 24;
+        const gw = w - pad*2, gh = h - pad*2;
+        const pts = [];
+        const yMax = lam;
+        for(let i=0; i<=150; i++){
+          const s = (i/150)*sMax;
+          const y = expPDF(s, lam);
+          pts.push([pad + (s/sMax)*gw, pad + gh - (y/yMax)*gh]);
+        }
+        const fillPts = [[pad, pad+gh], ...pts, [pad+gw, pad+gh]];
+        neonFill(ctx, fillPts, tc.cyan, 0.22);
+        neonLine(ctx, pts, tc.cyan, 10, 2);
+        ctx.fillStyle = tc.dim;
+        ctx.font = '10px "Courier New", monospace';
+        const lbl = window.__LANG==='en'?'remaining time':'残り時間';
+        ctx.fillText(lbl, pad+4, pad+gh-4);
+        ctx.fillStyle = tc.cyan;
+        ctx.font = '11px "Courier New", monospace';
+        const same = window.__LANG==='en'?'always the same shape':'常に同じ形';
+        ctx.fillText(same, pad+gw/2-40, pad+20);
+      }
+    }
+
+    const schedMem = throttledDraw(drawMemoryless);
+    slT.addEventListener('input', schedMem);
+    slL2.addEventListener('input', schedMem);
+    window.addEventListener('resize', debouncedResize(drawMemoryless));
+    drawMemoryless();
+  }
+
+  // -------------------- Call Center Unified ---------------------------------
+  const ccBinCv = $('ccBinomCanvas');
+  const ccPoiCv = $('ccPoissonCanvas');
+  const ccExpCv2 = $('ccExpCanvas');
+  if(ccBinCv && ccPoiCv && ccExpCv2){
+    const slCC = $('ccLambda'), vCC = $('ccLambdaVal');
+
+    function drawCallCenter(){
+      const lam = parseFloat(slCC.value);
+      vCC.textContent = lam.toFixed(1);
+      const tc = themeColors();
+      const n = 60;
+      const p = lam / n;
+
+      // Canvas 1: Binomial B(60, lam/60)
+      {
+        const {ctx, w, h} = resizeCanvas(ccBinCv);
+        ctx.clearRect(0,0,w,h);
+        drawGrid(ctx, w, h);
+        const pad = 20;
+        const gw = w-pad*2, gh = h-pad*2;
+        const kMax = Math.min(n, Math.ceil(lam*3+5));
+        const ys = [];
+        let maxY = 0;
+        for(let k=0; k<=kMax; k++){
+          const v = binomPMF(n, k, p);
+          ys.push(v); if(v>maxY) maxY=v;
+        }
+        if(maxY<=0) maxY=1;
+        const barW = gw/(kMax+1);
+        ctx.fillStyle = withAlpha(tc.cyan,.3);
+        ctx.strokeStyle = tc.cyan;
+        ctx.lineWidth = 1;
+        for(let k=0; k<=kMax; k++){
+          const bh = (ys[k]/maxY)*gh;
+          const x = pad + k*barW+1;
+          const y = pad+gh-bh;
+          ctx.fillRect(x,y,Math.max(1,barW-2),bh);
+          ctx.strokeRect(x,y,Math.max(1,barW-2),bh);
+        }
+        ctx.fillStyle = tc.cyan;
+        ctx.font = '10px "Courier New", monospace';
+        ctx.fillText('n=60, p='+p.toFixed(3), pad+2, pad+12);
+      }
+
+      // Canvas 2: Poisson(lam)
+      {
+        const {ctx, w, h} = resizeCanvas(ccPoiCv);
+        ctx.clearRect(0,0,w,h);
+        drawGrid(ctx, w, h);
+        const pad = 20;
+        const gw = w-pad*2, gh = h-pad*2;
+        const kMax = Math.max(10, Math.ceil(lam*3));
+        const ys = [];
+        let maxY = 0;
+        for(let k=0; k<=kMax; k++){
+          const v = poissonPMF(lam, k);
+          ys.push(v); if(v>maxY) maxY=v;
+        }
+        if(maxY<=0) maxY=1;
+        const barW = gw/(kMax+1);
+        ctx.fillStyle = withAlpha(tc.yellow,.3);
+        ctx.strokeStyle = tc.yellow;
+        ctx.lineWidth = 1;
+        for(let k=0; k<=kMax; k++){
+          const bh = (ys[k]/maxY)*gh;
+          const x = pad + k*barW+1;
+          const y = pad+gh-bh;
+          ctx.fillRect(x,y,Math.max(1,barW-2),bh);
+          ctx.strokeRect(x,y,Math.max(1,barW-2),bh);
+        }
+        ctx.fillStyle = tc.yellow;
+        ctx.font = '10px "Courier New", monospace';
+        ctx.fillText('λ='+lam.toFixed(1), pad+2, pad+12);
+      }
+
+      // Canvas 3: Exponential(lam) in hours → show in minutes
+      {
+        const {ctx, w, h} = resizeCanvas(ccExpCv2);
+        ctx.clearRect(0,0,w,h);
+        drawGrid(ctx, w, h);
+        const pad = 20;
+        const gw = w-pad*2, gh = h-pad*2;
+        const lamMin = lam/60;
+        const xMax = Math.min(120, 5/lamMin);
+        const pts = [];
+        const yMax = lamMin;
+        for(let i=0; i<=150; i++){
+          const x = (i/150)*xMax;
+          const y = expPDF(x, lamMin);
+          pts.push([pad+(x/xMax)*gw, pad+gh-(y/yMax)*gh]);
+        }
+        const fillPts = [[pad,pad+gh], ...pts, [pad+gw,pad+gh]];
+        neonFill(ctx, fillPts, tc.magenta, 0.22);
+        neonLine(ctx, pts, tc.magenta, 8, 1.5);
+        const meanMin = 60/lam;
+        ctx.strokeStyle = tc.cyan;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3,3]);
+        ctx.beginPath();
+        const xm = pad+(meanMin/xMax)*gw;
+        ctx.moveTo(xm, pad); ctx.lineTo(xm, pad+gh);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = tc.magenta;
+        ctx.font = '10px "Courier New", monospace';
+        ctx.fillText((window.__LANG==='en'?'mean ':'平均 ')+meanMin.toFixed(1)+(window.__LANG==='en'?' min':'分'), pad+2, pad+12);
+      }
+    }
+
+    const schedCC = throttledDraw(drawCallCenter);
+    slCC.addEventListener('input', schedCC);
+    window.addEventListener('resize', debouncedResize(drawCallCenter));
+    drawCallCenter();
   }
 }

@@ -17,9 +17,9 @@
       </select>
     </div>
   </div>
-  <div style="display:flex;gap:10px;margin:8px 0">
-    <button id="ptCiSimRun" style="background:var(--cyan);color:#000;border:none;padding:6px 20px;font-family:'Courier New',monospace;font-weight:bold;cursor:pointer;font-size:13px"><span data-lang="ja">&#x25B6; Run</span><span data-lang="en">&#x25B6; Run</span></button>
-    <button id="ptCiSimReset" style="background:transparent;color:var(--dim);border:1px solid var(--dim);padding:6px 20px;font-family:'Courier New',monospace;cursor:pointer;font-size:13px"><span data-lang="ja">&#x21BA; Reset</span><span data-lang="en">&#x21BA; Reset</span></button>
+  <div class="controls" style="margin:8px 0">
+    <button class="btn" id="ptCiSimRun"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Run</span></button>
+    <button class="btn magenta" id="ptCiSimReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
   </div>
   <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
   <div class="info">

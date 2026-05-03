@@ -6,9 +6,9 @@
       <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
     </div>
     <div class="controls" style="gap:6px;margin-bottom:6px">
-      <button id="mcRun" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
-      <button id="mcRun1000" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
-      <button id="mcReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+      <button class="btn" id="mcRun"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
+      <button class="btn" id="mcRun1000"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
+      <button class="btn magenta" id="mcReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
     <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" style="width:100%;display:block" aria-busy="true"></canvas>
     <div class="info">

@@ -6,11 +6,11 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta name="description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
-<meta name="keywords" content="重回帰分析, 多重回帰, 偏回帰係数, 3D 可視化, 高次元, 統計検定2級, 回帰分析">
+<meta name="description" content="勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。">
+<meta name="keywords" content="重回帰分析, 偏回帰係数, 交絡, 多重回帰, 3D 可視化, 統計検定2級, 回帰分析">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<title>重回帰分析 — 2+変数の世界 — StatPlay</title>
+<title>重回帰分析 — 交絡を制御して本当の効果を見る — StatPlay</title>
 
 <link rel="canonical" href="https://statplay.sasailab.com/topics/mreg.html">
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
@@ -19,26 +19,26 @@
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="StatPlay">
-<meta property="og:title" content="重回帰分析 — 2+変数の世界">
-<meta property="og:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
+<meta property="og:title" content="重回帰分析 — 交絡を制御して本当の効果を見る">
+<meta property="og:description" content="勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/mreg.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — 重回帰分析">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="重回帰分析 — 2+変数の世界">
-<meta name="twitter:description" content="2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。">
+<meta name="twitter:title" content="重回帰分析 — 交絡を制御して本当の効果を見る">
+<meta name="twitter:description" content="勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
-<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
+
 
 <script type="application/ld+json">
 {
@@ -46,12 +46,12 @@
   "@graph": [
     {
       "@type": "LearningResource",
-      "name": "重回帰分析 — 2+変数の世界",
-      "description": "2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。",
+      "name": "重回帰分析 — 交絡を制御して本当の効果を見る",
+      "description": "勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。",
       "inLanguage": "ja",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
-      "teaches": ["重回帰分析", "偏回帰係数", "多変量の直線・平面"],
+      "teaches": ["重回帰分析", "偏回帰係数", "交絡の制御", "単回帰との比較"],
       "isPartOf": {
         "@type": "WebSite",
         "name": "StatPlay",
@@ -90,9 +90,6 @@
   ]
 }
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -106,31 +103,94 @@
   </div>
 </nav>
 
+<div class="topic-header-row">
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#mreg">トピック</a><span class="sep">›</span>
+  <span class="current-page">重回帰分析</span>
+</div>
+<nav class="topic-top-nav" aria-label="前後のトピック">
+  <a href="./reg.html" rel="prev">← 前へ</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
+</div>
 
 <main id="main-content">
-  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">重回帰分析 — 2+変数の世界</a></h1>
-  <p class="topic-lead">2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。</p>
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">重回帰分析 — 交絡を制御して本当の効果を見る</a></h1>
+  <p class="topic-lead">勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。</p>
   <section class="reveal in" id="mreg">
 
-<div class="sec-tag">M.02 / MULTIPLE REGRESSION</div>
+<div class="sec-tag">M2 / 重回帰分析</div>
 <h2 class="sec-title">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
 
-<div class="story-bridge">単回帰の「直線」が、変数を増やすと<b>3D空間の平面</b>になる。ドラッグして回転させてみよう——データ点が平面に沿って並ぶ様子が見える。</div>
+<div class="story-bridge">単回帰では「勉強時間だけ」で成績を予測した。でも待って——たくさん勉強する人ほど<b>睡眠を削っている</b>としたら？ 睡眠不足が成績を下げる分、<b>勉強の本当の効果が隠れてしまう</b>。<span class="next">重回帰</span>は「他の要因をコントロールして、各変数の本当の効果を取り出す」道具だ。</div>
 
 <p class="sec-desc">
-    単回帰では変数が1つで、フィットは直線だった。
-    重回帰は<b>2つ以上の変数</b>を組み合わせて予測する——フィットは<b>平面</b>になる。
-    3Dグラフをぐるぐる回して、平面がデータを捉える様子を体感しよう。
+    変数が1つなら直線、2つなら<b>3D空間の平面</b>。
+    でも大事なのは幾何ではなく「なぜ変数を加えるのか」——<b>交絡（隠れた変数の影響）を取り除いて、各変数の純粋な効果を見るため</b>だ。
+    まず左右の比較パネルで「β₁が変わる瞬間」を体感しよう。
   </p>
 
-<div class="mreg-layout">
+<div class="sim-layout">
 <div class="guided-steps">
-<b>実験ガイド — 順番に試してみよう</b>
+<b>実験ガイド — 交絡を体感する</b>
 <ol>
-<li><b>Step 1:</b> 3Dグラフをドラッグして回転させてみよう。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
-<li><b>Step 2:</b> 各点から平面への破線が残差（予測のズレ）。短いほど予測が当たっている。</li>
-<li><b>Step 3:</b> 勉強時間のスライダーを動かす → 大きな●が平面上を移動する。これが「予測値」。</li>
-<li><b>Step 4:</b> 睡眠時間も動かしてみよう → 平面上の別の方向に動く。2つの変数を組み合わせて予測できる。</li>
+<li><b>Step 1:</b> デフォルト（相関 = −0.5）で左右のβ₁を見比べる。単回帰のほうが<b>小さい</b>——勉強の効果が過小評価されている。</li>
+<li><b>Step 2:</b> 相関スライダーを<b>0</b>にする → 左右のβ₁がほぼ同じに。「交絡がなければ差は出ない」。</li>
+<li><b>Step 3:</b> 相関を<b>+0.5</b>にする → 今度は単回帰のβ₁が<b>大きすぎる</b>。交絡の方向で過小にも過大にもなる。</li>
+<li><b>Step 4:</b> R²の変化も確認。重回帰は常に単回帰以上——変数を加えて説明力が上がった。</li>
+</ol>
+</div>
+
+<!-- @panel:mreg_vs -->
+<div class="panel">
+<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ 単回帰 vs 重回帰 — β₁が変わる瞬間</h3>
+
+<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<span>同じデータで「勉強時間だけ」と「勉強＋睡眠」で回帰する。相関スライダーで交絡の強さを変えてみよう。</span>
+
+</div>
+<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="ctrl">
+<label>
+<span>勉強↔睡眠の相関</span>
+
+          = <span class="val" id="mvCorrVal">−0.50</span>
+</label>
+<input id="mvCorr" max="0.8" min="-0.8" step="0.05" type="range" value="-0.5"/>
+</div>
+<div class="ctrl">
+<label>
+<span>サンプルサイズ n</span>
+
+          = <span class="val" id="mvNVal">50</span>
+</label>
+<input id="mvN" max="100" min="20" step="5" type="range" value="50"/>
+</div>
+<button class="btn" id="mvGen"><span>↻ 再生成</span></button>
+</div>
+<canvas aria-busy="true" aria-label="単回帰と重回帰のβ₁比較" height="320" id="mvCanvas" style="width:100%;display:block"></canvas>
+<div class="info">
+<div><span>単回帰 β₁</span> <strong id="mvSimpleB1">—</strong></div>
+<div><span>重回帰 β₁</span> <strong id="mvMultiB1">—</strong></div>
+<div><span>差（交絡による歪み）</span> <strong id="mvGap">—</strong></div>
+<div><span>単回帰 R²</span> <strong id="mvSimpleR2">—</strong></div>
+<div><span>重回帰 R²</span> <strong id="mvMultiR2">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mvCanvas" data-title="単回帰 vs 重回帰"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+<div class="guided-steps">
+<b>実験ガイド — 3Dで回帰平面を体感する</b>
+<ol>
+<li><b>Step 1:</b> 3Dグラフをドラッグして回転。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
+<li><b>Step 2:</b> 勉強時間のスライダーを動かす → 予測点が平面の「x₁方向」に移動。傾き = β₁。</li>
+<li><b>Step 3:</b> 睡眠時間も動かす → 「x₂方向」に移動。傾き = β₂。2つの変数それぞれの貢献が見える。</li>
+<li><b>Step 4:</b> 再サンプリングを数回押す → β₁, β₂, R²が毎回少し変わる。推定値にも「ばらつき」がある。</li>
 </ol>
 </div>
 
@@ -160,20 +220,61 @@
 <!-- /@panel -->
 </div>
 
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<a href="../columns/income_prediction.html" style="color:var(--yellow)">📊 コラム：年収予測で重回帰を体感する →</a>
+
+</div>
 <!-- @panel:mreg_text -->
+<div class="detail-section">
+<h3>// 交絡って何が起きている？</h3>
+<p>上の比較パネルで「単回帰のβ₁」と「重回帰のβ₁」が違う値になったのを見た。<br/>
+なぜ同じデータなのに、変数を1つ加えただけで傾きが変わるのか？</p>
+<p>データの裏ではこういうことが起きている：</p>
+<p style="margin:8px 0;padding:8px 12px;border-left:3px solid var(--cyan);font-size:13px">
+<b>勉強時間↑ → 睡眠↓ → 成績↓</b>（間接的なマイナス効果）
+</p>
+<p>単回帰のβ₁は「直接効果＋間接効果」のごちゃ混ぜ。<br/>
+勉強の直接効果は+3点/hなのに、睡眠を削ることで間接的に点数が下がるから、単回帰では+2.2のように過小評価される。</p>
+<p>重回帰のβ₁は「睡眠を統計的に固定した上での、勉強だけの効果」。<br/>
+間接経路を遮断して、直接効果だけを取り出している——これが<b>偏回帰係数</b>の意味。</p>
+<p>上のパネルで相関を0にすると、間接経路が消えて単回帰と重回帰のβ₁が一致する——これが「交絡がない状態」。</p>
+</div>
+
 <div class="detail-section">
 <h3>// ここで使われる公式</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
-<p><b>各パーツの役割</b><br/>
-・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br/>
-・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
-・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</p>
-<p><b>単回帰との違い</b><br/>
-・単回帰の傾きは他の変数を考慮しない「粗い効果」<br/>
-・重回帰の β₁ は x₂ の影響を差し引いた「純粋な x₁ の効果」（偏回帰係数）<br/>
-・例：勉強時間と睡眠時間が相関していても、重回帰ならそれぞれの「独立した貢献」を分離できる</p>
+<p><b>各パーツの役割</b><br>
+・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br>
+・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br>
+・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</br></br></br></p>
+<p><b>単回帰との違い</b><br>
+・単回帰のβ₁ = x₁の直接効果 ＋ x₂を経由した間接効果（ごちゃ混ぜ）<br>
+・重回帰のβ₁ = x₁の直接効果だけ（x₂の影響を「統計的に固定」して取り出す）<br/>
+・上のパネルで相関=0にすると間接経路が消え、両者が一致するのはこのため</br></br></p>
 <p><b>幾何的イメージ</b><br/>
 ・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
+</div>
+
+<div class="detail-section">
+<h3>// 手を動かしてみよう — 具体例</h3>
+<p>30人の学生のテスト成績を、勉強時間と睡眠時間で予測する。</p>
+<p>① まず平均を確認<br/>
+　勉強時間の平均 = 5.0h、睡眠時間の平均 = 7.0h、点数の平均 = 65点<br/>
+　勉強と睡眠の相関 r = −0.45（たくさん勉強するほど睡眠が短い）</p>
+<p>② 単回帰 y ~ x₁（勉強時間だけ）<br/>
+　β₁ = +2.4 点/h、R² = 0.32<br/>
+　→ 勉強1時間あたり2.4点UP...でもこれは<b>過小評価</b></p>
+<p>③ 重回帰 y ~ x₁ + x₂（睡眠時間を追加）<br/>
+　β₁ = +3.1 点/h、β₂ = +2.0 点/h、R² = 0.57<br/>
+　→ 睡眠をコントロールしたら、勉強の効果は<b>3.1点に上がった</b></p>
+<p>④ なぜ変わった？<br/>
+　このデータでは 勉強↑ → 睡眠↓ (r = −0.45)。<br/>
+　単回帰は「勉強が増えると同時に睡眠が減ることのマイナス」まで勉強のせいにしていた。<br/>
+　重回帰が睡眠を分離したことで、<b>勉強の本当の効果</b>が見えた。</p>
+<p>⑤ 予測してみる<br/>
+　勉強6h・睡眠7hの学生 → ŷ = β₀ + 3.1×6 + 2.0×7 = 26.4 + 18.6 + 14.0 = <b>59.0点</b>... ではなく<br/>
+　正しくは β₀（切片）を含めて ŷ = 23.4 + 3.1×6 + 2.0×7 = 23.4 + 18.6 + 14.0 = <b>56.0点</b><br/>
+　β₀ は「勉強0h・睡眠0hの仮想スコア」で、ここでは直感的な意味を持たない（外挿に注意）。</p>
 </div>
 
 <div class="misconception-box">
@@ -196,6 +297,7 @@
 <h3>// 試験での出方</h3>
 <ul>
 <li><b>偏回帰係数の解釈</b>：「β₁=3 → x₂を固定したとき、x₁が1増えるとyは平均3増える」</li>
+<li><b>単回帰と重回帰でβ₁が変わる理由</b>：交絡（変数間の相関）により、単回帰は直接効果と間接効果を混同する</li>
 <li><b>R² と自由度調整済み R²</b>：変数を追加して調整済みが下がったら、その変数は不要</li>
 <li><b>F検定</b>：「すべての偏回帰係数が0」を一括で検定（モデル全体の有意性）</li>
 <li><b>t検定</b>：「各係数が個別に0かどうか」の検定</li>
@@ -204,15 +306,13 @@
 </div>
 
 <!-- /@panel -->
-<!-- ═══ 関連コラム ═══ -->
-<div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">
-<h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin:0 0 8px;letter-spacing:1px">// 関連コラム</h3>
-<p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">重回帰分析が実際のデータでどう使われるか、年収予測のシミュレーターで体感できます。</p>
-<a href="../columns/income_prediction.html" style="color:var(--cyan);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 年収予測 — 統計でどこまで当てられるか →</a>
-</div>
-
 </section>
 </main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./reg.html" rel="prev">← 前へ</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
 
 <footer>
 <div class="foot-grid">
@@ -258,7 +358,7 @@
     <li><a href="./normal.html">正規分布と標準化</a></li>
     <li><a href="./prob.html">確率の基本法則</a></li>
     <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">離散分布と指数分布</a></li>
+    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
     <li><a href="./clt.html">中心極限定理</a></li>
     <li><a href="./lln.html">大数の法則</a></li>
     <li><a href="./ci.html">信頼区間</a></li>
@@ -271,10 +371,6 @@
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html" class="current">重回帰分析</a></li>
   </ol>
-</nav>
-<nav class="topic-nav" aria-label="前後のトピック">
-  <a href="./reg.html" rel="prev">← 前へ</a>
-  <a class="empty" aria-hidden="true">—</a>
 </nav>
 </body>
 </html>

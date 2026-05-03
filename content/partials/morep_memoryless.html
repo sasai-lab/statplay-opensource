@@ -1,0 +1,26 @@
+<div class="panel">
+  <div class="panel-title" data-lang="ja">無記憶性デモ — 「もう10分待った」は無意味？</div>
+  <div class="panel-title" data-lang="en">Memoryless Demo — Does "already waited 10 min" matter?</div>
+  <div class="sec-bridge" data-lang="ja">左は正規分布的な待ち時間。待てば待つほど「そろそろ来る」確率が上がる。右は指数分布。t をどれだけ動かしても曲線が変わらない——これが無記憶性。</div>
+  <div class="sec-bridge" data-lang="en">Left: normal-like waiting. The longer you wait, the more likely arrival becomes. Right: exponential. Move t all you want — the curve never changes. That's memorylessness.</div>
+  <div class="memoryless-pair">
+    <div class="memoryless-col">
+      <div class="memoryless-label" data-lang="ja">正規分布（普通の感覚）</div>
+      <div class="memoryless-label" data-lang="en">Normal (everyday intuition)</div>
+      <canvas id="memNormCanvas" aria-label="Normal remaining time distribution" height="200" aria-busy="true"></canvas>
+      <div class="memoryless-note" data-lang="ja">← t が増えると左にシフト（「そろそろ来る」）</div>
+      <div class="memoryless-note" data-lang="en">← as t grows, shifts left ("should come soon")</div>
+    </div>
+    <div class="memoryless-col">
+      <div class="memoryless-label" data-lang="ja">指数分布（無記憶）</div>
+      <div class="memoryless-label" data-lang="en">Exponential (memoryless)</div>
+      <canvas id="memExpCanvas" aria-label="Exponential remaining time distribution" height="200" aria-busy="true"></canvas>
+      <div class="memoryless-note" data-lang="ja">← t をいくら動かしても同じ形</div>
+      <div class="memoryless-note" data-lang="en">← no matter how much t changes, same shape</div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0"><span class="val" id="memTVal">0</span></div>
+    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2"><span class="val" id="memLVal">0.20</span></div>
+  </div>
+</div>

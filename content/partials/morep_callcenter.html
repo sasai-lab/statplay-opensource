@@ -1,0 +1,32 @@
+<div class="panel">
+  <div class="panel-title" data-lang="ja">同じ現象、3つの視点 — コールセンターの1時間</div>
+  <div class="panel-title" data-lang="en">One Phenomenon, Three Views — A Call Center Hour</div>
+  <div class="sec-bridge" data-lang="ja">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
+  <div class="sec-bridge" data-lang="en">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
+  <div class="controls" style="margin-bottom:12px">
+    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3"><span class="val" id="ccLambdaVal">3.0</span></div>
+  </div>
+  <div class="cc-trio">
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">二項分布 B(60, λ/60)</div>
+      <div class="cc-dist-label" data-lang="en">Binomial B(60, λ/60)</div>
+      <canvas id="ccBinomCanvas" aria-label="Call center binomial view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">60分を1分刻み。<br>各分に電話が来るか来ないか。</div>
+      <div class="cc-caption" data-lang="en">60 one-minute slots.<br>Each minute: call or no call.</div>
+    </div>
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">ポアソン分布 Poi(λ)</div>
+      <div class="cc-dist-label" data-lang="en">Poisson Poi(λ)</div>
+      <canvas id="ccPoissonCanvas" aria-label="Call center Poisson view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">1時間に合計何件来る？</div>
+      <div class="cc-caption" data-lang="en">How many calls total in one hour?</div>
+    </div>
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">指数分布 Exp(λ)</div>
+      <div class="cc-dist-label" data-lang="en">Exponential Exp(λ)</div>
+      <canvas id="ccExpCanvas" aria-label="Call center exponential view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">次の電話まで何分待つ？<br>（平均 60/λ 分）</div>
+      <div class="cc-caption" data-lang="en">How long until next call?<br>(mean 60/λ min)</div>
+    </div>
+  </div>
+</div>

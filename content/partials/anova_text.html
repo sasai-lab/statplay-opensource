@@ -12,3 +12,137 @@
 </tbody>
 </table>
 </div>
+
+<div data-lang="ja" class="detail-section">
+<h3>// F値って結局なにをしている？</h3>
+<p>3つのクラスのテスト結果を比べたいとします。<br>
+「クラスごとの平均が離れている」＝ 教え方に差がありそう。<br>
+「でもクラス内の個人差も大きい」＝ たまたまかもしれない。</p>
+<p>F値は、この2つを比べた数字です。<br>
+<b>「クラス間のばらつき」÷「クラス内のばらつき」</b> —— それだけ。<br>
+分子が大きいほど「グループ間に差がありそうだ」と判断できます。</p>
+<p>公式にすると↓こうなりますが、いきなり暗記しなくて大丈夫です。<br>
+上のグラフをドラッグして、スライダーを動かしながら眺めるほうが先。</p>
+<div class="formula" data-tex="F = \frac{\text{MSB}}{\text{MSW}} = \frac{SS_B / (k-1)}{SS_W / (N-k)}"></div>
+<p>・SS<sub>B</sub>（群間変動）= グループ平均が全体平均からどれだけズレているか<br>
+・SS<sub>W</sub>（群内変動）= 各グループの中でデータがどれだけ散らばっているか<br>
+・df で割って「1自由度あたり」に揃えたのが MS<br>
+・<b>F ≈ 1</b> なら「差があるとは言えない」、<b>F が大きい</b>ほど「差がありそう」</p>
+<p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br>
+<a href="../tables/index.html?dist=f" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// What the F-statistic actually does</h3>
+<p>Suppose you want to compare test scores across three classes.<br>
+"The class averages are far apart" → maybe the teaching method matters.<br>
+"But the scores within each class also vary a lot" → could just be noise.</p>
+<p>The F-statistic puts a number on that comparison:<br>
+<b>between-group spread ÷ within-group spread</b> — that's really all it is.<br>
+The bigger the numerator relative to the denominator, the more evidence that the groups genuinely differ.</p>
+<p>Here's the formula. Don't worry about memorizing it right away — try dragging the graph above and watching how F reacts first.</p>
+<div class="formula" data-tex="F = \frac{\text{MSB}}{\text{MSW}} = \frac{SS_B / (k-1)}{SS_W / (N-k)}"></div>
+<p>· SS<sub>B</sub> (between-group) = how far each group mean is from the overall mean<br>
+· SS<sub>W</sub> (within-group) = how much data scatter inside each group<br>
+· Dividing by df gives MS — "variation per degree of freedom"<br>
+· <b>F ≈ 1</b> → "no evidence of differences"; <b>F large</b> → "groups likely differ"</p>
+<p>How large is "large enough"? That depends on degrees of freedom and significance level α.<br>
+Check critical values in the <a href="../../en/tables/index.html?dist=f" style="color:var(--cyan)">Interactive Distribution Tables</a>.</p>
+</div>
+
+<div data-lang="ja" class="detail-section">
+<h3>// 手を動かしてみよう — テスト成績の例</h3>
+<p>3つの教授法 A・B・C を各15人で比較したとします。</p>
+<p>① まず平均を見る<br>
+　群A = 65点、群B = 72点、群C = 73点、全体平均 = 70点</p>
+<p>② 群間変動 SS<sub>B</sub> を計算<br>
+　各群の人数 × (群平均 − 全体平均)² を足す<br>
+　= 15×(65−70)² + 15×(72−70)² + 15×(73−70)² = 15×(25+4+9) = <b>570</b></p>
+<p>③ 群内変動 SS<sub>W</sub><br>
+　各群内でデータが平均からどれだけ散らばっているかの合計 = 仮に <b>2520</b></p>
+<p>④ 自由度を出す<br>
+　df<sub>B</sub> = 群の数−1 = 3−1 = 2<br>
+　df<sub>W</sub> = 全人数−群の数 = 45−3 = 42</p>
+<p>⑤ MSを出してF値へ<br>
+　MSB = 570÷2 = 285、MSW = 2520÷42 = 60<br>
+　<b>F = 285÷60 = 4.75</b></p>
+<p>⑥ 判定<br>
+　F(2, 42) の臨界値（α=0.05）は約 3.22。<br>
+　4.75 > 3.22 → <b>棄却</b>（少なくとも1つの群に差がある）。<br>
+　——ただし「どの群とどの群か」は、まだわかりません（→ 多重比較が必要）。</p>
+</div>
+<div data-lang="en" class="detail-section">
+<h3>// Walk through it — test-score example</h3>
+<p>Three teaching methods A, B, C with 15 students each.</p>
+<p>① Look at the means<br>
+　Group A = 65, Group B = 72, Group C = 73, Grand mean = 70</p>
+<p>② Between-group SS<sub>B</sub><br>
+　n × (group mean − grand mean)² summed up<br>
+　= 15×(65−70)² + 15×(72−70)² + 15×(73−70)² = 15×(25+4+9) = <b>570</b></p>
+<p>③ Within-group SS<sub>W</sub><br>
+　Total scatter of data around their own group means = say <b>2520</b></p>
+<p>④ Degrees of freedom<br>
+　df<sub>B</sub> = k−1 = 3−1 = 2<br>
+　df<sub>W</sub> = N−k = 45−3 = 42</p>
+<p>⑤ Compute MS and F<br>
+　MSB = 570÷2 = 285, MSW = 2520÷42 = 60<br>
+　<b>F = 285÷60 = 4.75</b></p>
+<p>⑥ Verdict<br>
+　The critical value of F(2, 42) at α = 0.05 is about 3.22.<br>
+　4.75 > 3.22 → <b>Reject H₀</b> (at least one group differs).<br>
+　— But we still don't know <em>which</em> groups differ (→ post-hoc tests needed).</p>
+</div>
+
+<div data-lang="ja" class="misconception-box">
+<h3>// ここで引っかかりやすいポイント</h3>
+<div class="misc-item">
+<b>「ANOVAで有意 ＝ どの群に差があるか分かる」？</b>
+<p>実はこれ、わかりません。ANOVAが教えてくれるのは「どこかに差がある」だけ。<br>
+どの群同士かを突き止めるには、Tukey法やBonferroni法などの多重比較が必要です。</p>
+</div>
+<div class="misc-item">
+<b>「t検定を何回もやればいいのでは？」</b>
+<p>ページ上部のシミュレーションを見てください。3群の比較で t 検定を繰り返すと、本当は差がなくても約14.3%の確率で「有意」が出てしまいます。<br>
+ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保てる方法です。</p>
+</div>
+<div class="misc-item">
+<b>「F値が大きい ＝ 効果も大きい」？</b>
+<p>サンプルサイズが大きいと、ほんの少しの差でもF値は大きくなります。<br>
+「実際にどれくらい差があるか」は効果量（η²）で見るのがおすすめです。</p>
+</div>
+</div>
+<div data-lang="en" class="misconception-box">
+<h3>// Easy-to-trip-on points</h3>
+<div class="misc-item">
+<b>"ANOVA tells you which groups differ" — not quite</b>
+<p>ANOVA only tells you "there's a difference somewhere." To pin down which pairs, you need post-hoc tests like Tukey's HSD or Bonferroni correction.</p>
+</div>
+<div class="misc-item">
+<b>"Why not just run multiple t-tests?"</b>
+<p>Check the simulation at the top of this page. With 3 groups and repeated t-tests, the false-positive rate jumps to about 14.3% even when no real difference exists. ANOVA keeps the overall α at 5%.</p>
+</div>
+<div class="misc-item">
+<b>"Bigger F = bigger effect" — careful</b>
+<p>A large sample size can inflate F even for a tiny real difference. To measure how large the effect actually is, use effect size (η²).</p>
+</div>
+</div>
+
+<div data-lang="ja" class="exam-note">
+<h3>// 試験で聞かれやすいところ</h3>
+<p>統計検定や大学の期末試験では、以下のパターンがよく出ます。</p>
+<ul>
+<li><b>分散分析表の穴埋め</b> — SS と df が与えられて「MSとF値を求めよ」。上の具体例をなぞれば解ける計算問題です</li>
+<li><b>自由度の公式</b> — 群間 = k−1、群内 = N−k、全体 = N−1</li>
+<li><b>「t検定を繰り返すと何が問題か」</b> — 多重比較の問題を論述させる問題。シミュレーションの14.3%の話がそのまま使えます</li>
+<li><b>前提条件</b> — 正規性・等分散性・独立性の3つ</li>
+</ul>
+</div>
+<div data-lang="en" class="exam-note">
+<h3>// Exam patterns</h3>
+<p>These come up frequently on stats exams and certification tests.</p>
+<ul>
+<li><b>Fill in an ANOVA table</b> — given SS and df, compute MS → F → compare with critical value. The worked example above is the exact template</li>
+<li><b>Degrees of freedom</b> — between = k−1, within = N−k, total = N−1</li>
+<li><b>"Why not repeat t-tests?"</b> — explain the multiple-comparisons problem. The 14.3% from the simulation is a concrete talking point</li>
+<li><b>Assumptions</b> — normality, homogeneity of variance, independence</li>
+</ul>
+</div>

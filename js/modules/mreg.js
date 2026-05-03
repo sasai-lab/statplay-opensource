@@ -1,5 +1,265 @@
-// StatPlay — module: MULTIPLE REGRESSION — 3D regression plane
+// StatPlay — module: MULTIPLE REGRESSION — 3D regression plane + comparison panel
 import { $, TAU, rng_normal, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
+
+/* ═══════════════════════════════════════════════════
+   PANEL: Simple vs Multiple Regression comparison
+   ═══════════════════════════════════════════════════ */
+export function initMregVs(){
+  const canvas=$('mvCanvas');
+  if(!canvas) return;
+  const corrS=$('mvCorr'),nS=$('mvN'),gen=$('mvGen');
+  if(!corrS||!nS) return;
+
+  const TRUE_B0=40,TRUE_B1=3,TRUE_B2=2,NOISE=5;
+  const X1MIN=1,X1MAX=9,X2MIN=4,X2MAX=10;
+  let pool=[];
+
+  function generatePool(){
+    const n=parseInt(nS.value);
+    const rho=parseFloat(corrS.value);
+    pool=[];
+    for(let i=0;i<n;i++){
+      const z1=rng_normal(),z2=rng_normal();
+      const u1=z1, u2=rho*z1+Math.sqrt(1-rho*rho)*z2;
+      const x1=X1MIN+(X1MAX-X1MIN)*(normCDF01(u1));
+      const x2=X2MIN+(X2MAX-X2MIN)*(normCDF01(u2));
+      const y=TRUE_B0+TRUE_B1*x1+TRUE_B2*x2+rng_normal(0,NOISE);
+      pool.push({x1,x2,y});
+    }
+  }
+  function normCDF01(z){return 0.5*(1+erf_approx(z/Math.SQRT2));}
+  function erf_approx(x){
+    const a=0.147,s=Math.sign(x);x=Math.abs(x);
+    const x2=x*x,t=1-Math.exp(-x2*(4/Math.PI+a*x2)/(1+a*x2));
+    return s*Math.sqrt(t);
+  }
+
+  function fitSimple(pts){
+    const n=pts.length;if(n<2) return {b0:0,b1:0,r2:0};
+    let sx=0,sy=0,sxy=0,sx2=0,sy2=0;
+    pts.forEach(p=>{sx+=p.x1;sy+=p.y;sxy+=p.x1*p.y;sx2+=p.x1*p.x1;sy2+=p.y*p.y;});
+    const mx=sx/n,my=sy/n;
+    const b1=(sxy-n*mx*my)/(sx2-n*mx*mx||1);
+    const b0=my-b1*mx;
+    let ssTot=0,ssRes=0;
+    pts.forEach(p=>{ssTot+=(p.y-my)**2;ssRes+=(p.y-b0-b1*p.x1)**2;});
+    return {b0,b1,r2:1-ssRes/(ssTot||1)};
+  }
+
+  function fitMultiple(pts){
+    const n=pts.length;if(n<3) return {b0:0,b1:0,b2:0,r2:0};
+    let M=[[0,0,0],[0,0,0],[0,0,0]],v=[0,0,0];
+    pts.forEach(p=>{
+      const X=[1,p.x1,p.x2];
+      for(let i=0;i<3;i++){for(let j=0;j<3;j++) M[i][j]+=X[i]*X[j]; v[i]+=X[i]*p.y;}
+    });
+    const det=M[0][0]*(M[1][1]*M[2][2]-M[1][2]*M[2][1])
+             -M[0][1]*(M[1][0]*M[2][2]-M[1][2]*M[2][0])
+             +M[0][2]*(M[1][0]*M[2][1]-M[1][1]*M[2][0]);
+    if(Math.abs(det)<1e-9) return {b0:0,b1:0,b2:0,r2:0};
+    const inv=[[0,0,0],[0,0,0],[0,0,0]];
+    inv[0][0]=(M[1][1]*M[2][2]-M[1][2]*M[2][1])/det;
+    inv[0][1]=-(M[0][1]*M[2][2]-M[0][2]*M[2][1])/det;
+    inv[0][2]=(M[0][1]*M[1][2]-M[0][2]*M[1][1])/det;
+    inv[1][0]=-(M[1][0]*M[2][2]-M[1][2]*M[2][0])/det;
+    inv[1][1]=(M[0][0]*M[2][2]-M[0][2]*M[2][0])/det;
+    inv[1][2]=-(M[0][0]*M[1][2]-M[0][2]*M[1][0])/det;
+    inv[2][0]=(M[1][0]*M[2][1]-M[1][1]*M[2][0])/det;
+    inv[2][1]=-(M[0][0]*M[2][1]-M[0][1]*M[2][0])/det;
+    inv[2][2]=(M[0][0]*M[1][1]-M[0][1]*M[1][0])/det;
+    const b=[0,0,0];
+    for(let i=0;i<3;i++)for(let j=0;j<3;j++) b[i]+=inv[i][j]*v[j];
+    const ym=v[0]/n;
+    let ssTot=0,ssRes=0;
+    pts.forEach(p=>{const yh=b[0]+b[1]*p.x1+b[2]*p.x2;ssTot+=(p.y-ym)**2;ssRes+=(p.y-yh)**2;});
+    return {b0:b[0],b1:b[1],b2:b[2],r2:1-ssRes/(ssTot||1)};
+  }
+
+  function partialResiduals(pts,multi){
+    const n=pts.length;if(n<3) return pts.map(p=>({rx:p.x1,ry:p.y}));
+    let sx2=0,sy=0,sn=0;
+    pts.forEach(p=>{sx2+=p.x2;sy+=p.y;sn++;});
+    const mx2=sx2/sn,my=sy/sn;
+    let sx1x2=0,sx22=0,sx1=0,syx2=0;
+    pts.forEach(p=>{
+      sx1+=p.x1;sx1x2+=p.x1*p.x2;sx22+=p.x2*p.x2;syx2+=p.y*p.x2;
+    });
+    const mx1=sx1/sn;
+    const bx=(sx1x2-sn*mx1*mx2)/(sx22-sn*mx2*mx2||1);
+    const by=(syx2-sn*my*mx2)/(sx22-sn*mx2*mx2||1);
+    return pts.map(p=>({
+      rx:p.x1-(mx1+bx*(p.x2-mx2)),
+      ry:p.y-(my+by*(p.x2-mx2))
+    }));
+  }
+
+  let simpleRes={b0:0,b1:0,r2:0};
+  let multiRes={b0:0,b1:0,b2:0,r2:0};
+  let residuals=[];
+
+  function compute(){
+    simpleRes=fitSimple(pool);
+    multiRes=fitMultiple(pool);
+    residuals=partialResiduals(pool,multiRes);
+  }
+
+  function draw(){
+    const {ctx,w,h}=resizeCanvas(canvas);
+    if(!ctx) return;
+    drawGrid(ctx,w,h);
+    const tc=themeColors();
+    const ja=window.__LANG!=='en';
+    const mid=Math.floor(w/2);
+    const pad={l:48,r:16,t:36,b:36};
+
+    ctx.save();
+    ctx.strokeStyle=withAlpha(tc.dim,0.2);ctx.lineWidth=1;
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();ctx.moveTo(mid,0);ctx.lineTo(mid,h);ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // --- Left panel: simple regression y ~ x1 ---
+    const lW=mid-pad.l-pad.r, lH=h-pad.t-pad.b;
+    const yMin=20,yMax=110;
+
+    ctx.font='bold 12px "Courier New"';ctx.textAlign='center';
+    ctx.fillStyle=tc.dim;
+    ctx.fillText(ja?'単回帰  y ~ x₁':'Simple  y ~ x₁',pad.l+lW/2,16);
+
+    // axes
+    ctx.strokeStyle=withAlpha(tc.dim,0.3);ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,pad.t+lH);ctx.lineTo(pad.l+lW,pad.t+lH);
+    ctx.stroke();
+
+    // ticks
+    ctx.font='9px "Courier New"';ctx.fillStyle=withAlpha(tc.dim,0.5);ctx.textAlign='center';
+    for(let v=2;v<=8;v+=2){
+      const x=pad.l+(v-X1MIN)/(X1MAX-X1MIN)*lW;
+      ctx.fillText(v,x,pad.t+lH+12);
+    }
+    ctx.textAlign='right';
+    for(let v=40;v<=100;v+=20){
+      const y=pad.t+lH-(v-yMin)/(yMax-yMin)*lH;
+      ctx.fillText(v,pad.l-4,y+3);
+    }
+
+    // data points
+    pool.forEach(p=>{
+      const x=pad.l+(p.x1-X1MIN)/(X1MAX-X1MIN)*lW;
+      const y=pad.t+lH-(p.y-yMin)/(yMax-yMin)*lH;
+      ctx.fillStyle=withAlpha(tc.cyan,0.5);
+      ctx.beginPath();ctx.arc(x,y,3,0,TAU);ctx.fill();
+    });
+
+    // simple regression line
+    const sy1=simpleRes.b0+simpleRes.b1*X1MIN;
+    const sy2=simpleRes.b0+simpleRes.b1*X1MAX;
+    ctx.strokeStyle=tc.yellow;ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(pad.l,pad.t+lH-(sy1-yMin)/(yMax-yMin)*lH);
+    ctx.lineTo(pad.l+lW,pad.t+lH-(sy2-yMin)/(yMax-yMin)*lH);
+    ctx.stroke();
+
+    // label
+    ctx.font='bold 13px "Courier New"';ctx.textAlign='center';
+    ctx.fillStyle=tc.yellow;
+    ctx.fillText('β₁ = '+simpleRes.b1.toFixed(2),pad.l+lW/2,pad.t+lH-8);
+
+    // axis label
+    ctx.font='10px "Courier New"';ctx.fillStyle=tc.dim;ctx.textAlign='center';
+    ctx.fillText(ja?'勉強時間 (h)':'Study hours (h)',pad.l+lW/2,pad.t+lH+26);
+
+    // --- Right panel: adjusted scatter (x₂ effect removed), same axes ---
+    const rL=mid+pad.l, rW=lW;
+
+    ctx.font='bold 12px "Courier New"';ctx.textAlign='center';
+    ctx.fillStyle=tc.dim;
+    ctx.fillText(ja?'重回帰  y ~ x₁ + x₂':'Multiple  y ~ x₁ + x₂',rL+rW/2,16);
+
+    ctx.strokeStyle=withAlpha(tc.dim,0.3);ctx.lineWidth=1;
+    ctx.beginPath();
+    ctx.moveTo(rL,pad.t);ctx.lineTo(rL,pad.t+lH);ctx.lineTo(rL+rW,pad.t+lH);
+    ctx.stroke();
+
+    // same axis ticks as left panel
+    ctx.font='9px "Courier New"';ctx.fillStyle=withAlpha(tc.dim,0.5);ctx.textAlign='center';
+    for(let v=2;v<=8;v+=2){
+      const x=rL+(v-X1MIN)/(X1MAX-X1MIN)*rW;
+      ctx.fillText(v,x,pad.t+lH+12);
+    }
+    ctx.textAlign='right';
+    for(let v=40;v<=100;v+=20){
+      const y=pad.t+lH-(v-yMin)/(yMax-yMin)*lH;
+      ctx.fillText(v,rL-4,y+3);
+    }
+
+    // axis label
+    ctx.font='10px "Courier New"';ctx.fillStyle=tc.dim;ctx.textAlign='center';
+    ctx.fillText(ja?'勉強時間 (h)・睡眠を調整済み':'Study hours (h) · sleep adjusted',rL+rW/2,pad.t+lH+26);
+
+    // adjusted y: remove x₂'s effect → y_adj = y - β₂(x₂ - mean_x₂)
+    const meanX2=pool.reduce((s,p)=>s+p.x2,0)/pool.length;
+    pool.forEach(p=>{
+      const yAdj=p.y-multiRes.b2*(p.x2-meanX2);
+      const x=rL+(p.x1-X1MIN)/(X1MAX-X1MIN)*rW;
+      const y=pad.t+lH-(yAdj-yMin)/(yMax-yMin)*lH;
+      ctx.fillStyle=withAlpha(tc.magenta,0.5);
+      ctx.beginPath();ctx.arc(x,y,3,0,TAU);ctx.fill();
+    });
+
+    // multiple regression line evaluated at mean x₂
+    const my1=multiRes.b0+multiRes.b1*X1MIN+multiRes.b2*meanX2;
+    const my2=multiRes.b0+multiRes.b1*X1MAX+multiRes.b2*meanX2;
+    ctx.strokeStyle=tc.magenta;ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(rL,pad.t+lH-(my1-yMin)/(yMax-yMin)*lH);
+    ctx.lineTo(rL+rW,pad.t+lH-(my2-yMin)/(yMax-yMin)*lH);
+    ctx.stroke();
+
+    // label
+    ctx.font='bold 13px "Courier New"';ctx.textAlign='center';
+    ctx.fillStyle=tc.magenta;
+    ctx.fillText('β₁ = '+multiRes.b1.toFixed(2),rL+rW/2,pad.t+lH-8);
+
+    canvas.setAttribute('aria-busy','false');
+  }
+
+  function updateUI(){
+    const ja=window.__LANG!=='en';
+    const sb=$('mvSimpleB1'),mb=$('mvMultiB1'),gap=$('mvGap');
+    const sr=$('mvSimpleR2'),mr=$('mvMultiR2');
+    const unit=ja?' 点/h':' pts/h';
+    if(sb) sb.textContent='+'+simpleRes.b1.toFixed(2)+unit;
+    if(mb) mb.textContent='+'+multiRes.b1.toFixed(2)+unit;
+    if(gap){
+      const d=simpleRes.b1-multiRes.b1;
+      const sign=d>=0?'+':'';
+      gap.textContent=sign+d.toFixed(2)+unit;
+      gap.style.color=Math.abs(d)>0.3?'var(--magenta)':'var(--green)';
+    }
+    if(sr) sr.textContent=simpleRes.r2.toFixed(3);
+    if(mr) mr.textContent=multiRes.r2.toFixed(3);
+  }
+
+  function fullDraw(){generatePool();compute();draw();updateUI();}
+  const schedDraw=throttledDraw(()=>{generatePool();compute();draw();updateUI();});
+
+  corrS.oninput=function(){
+    const v=parseFloat(this.value);
+    $('mvCorrVal').textContent=(v<0?'−':v>0?'+':'')+Math.abs(v).toFixed(2);
+    schedDraw();
+  };
+  nS.oninput=function(){$('mvNVal').textContent=this.value;schedDraw();};
+  gen.addEventListener('click',fullDraw);
+
+  fullDraw();
+}
+
+/* ═══════════════════════════════════════════════════
+   PANEL: 3D regression plane (existing)
+   ═══════════════════════════════════════════════════ */
 
 export function initMreg(){
   const canvas=$('mregCanvas');

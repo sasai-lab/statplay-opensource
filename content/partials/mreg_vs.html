@@ -1,0 +1,38 @@
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30; &#x2014; &#x03B2;&#x2081;&#x304C;&#x5909;&#x308F;&#x308B;&#x77AC;&#x9593;</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Simple vs. Multiple Regression &#x2014; Watch &#x03B2;&#x2081; Shift</h3>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+      <span data-lang="ja">&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x300C;&#x52C9;&#x5F37;&#x6642;&#x9593;&#x3060;&#x3051;&#x300D;&#x3068;&#x300C;&#x52C9;&#x5F37;&#xFF0B;&#x7761;&#x7720;&#x300D;&#x3067;&#x56DE;&#x5E30;&#x3059;&#x308B;&#x3002;&#x76F8;&#x95A2;&#x30B9;&#x30E9;&#x30A4;&#x30C0;&#x30FC;&#x3067;&#x4EA4;&#x7D61;&#x306E;&#x5F37;&#x3055;&#x3092;&#x5909;&#x3048;&#x3066;&#x307F;&#x3088;&#x3046;&#x3002;</span>
+      <span data-lang="en">Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
+    </div>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">&#x52C9;&#x5F37;&#x2194;&#x7761;&#x7720;&#x306E;&#x76F8;&#x95A2;</span>
+          <span data-lang="en">Study&#x2194;Sleep correlation</span>
+          = <span class="val" id="mvCorrVal">&#x2212;0.50</span>
+        </label>
+        <input type="range" id="mvCorr" min="-0.8" max="0.8" step="0.05" value="-0.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">&#x30B5;&#x30F3;&#x30D7;&#x30EB;&#x30B5;&#x30A4;&#x30BA; n</span>
+          <span data-lang="en">Sample size n</span>
+          = <span class="val" id="mvNVal">50</span>
+        </label>
+        <input type="range" id="mvN" min="20" max="100" step="5" value="50">
+      </div>
+      <button class="btn" id="mvGen"><span data-lang="ja">&#x21BB; &#x518D;&#x751F;&#x6210;</span><span data-lang="en">&#x21BB; Regenerate</span></button>
+    </div>
+    <canvas id="mvCanvas" aria-label="&#x5358;&#x56DE;&#x5E30;&#x3068;&#x91CD;&#x56DE;&#x5E30;&#x306E;&#x03B2;&#x2081;&#x6BD4;&#x8F03;" data-aria-label-en="Simple vs. multiple regression &#x03B2;&#x2081; comparison" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">&#x5358;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Simple &#x03B2;&#x2081;</span> <strong id="mvSimpleB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x91CD;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Multiple &#x03B2;&#x2081;</span> <strong id="mvMultiB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x5DEE;&#xFF08;&#x4EA4;&#x7D61;&#x306B;&#x3088;&#x308B;&#x6B6A;&#x307F;&#xFF09;</span><span data-lang="en">Gap (confounding bias)</span> <strong id="mvGap">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x5358;&#x56DE;&#x5E30; R&#x00B2;</span><span data-lang="en">Simple R&#x00B2;</span> <strong id="mvSimpleR2">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x91CD;&#x56DE;&#x5E30; R&#x00B2;</span><span data-lang="en">Multiple R&#x00B2;</span> <strong id="mvMultiR2">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="mvCanvas" data-title="&#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30;" data-title-en="Simple vs. Multiple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; &#x753B;&#x50CF;&#x4FDD;&#x5B58;</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>

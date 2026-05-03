@@ -90,7 +90,7 @@
     },
     {
       "slug": "morep",
-      "ja_sidebar": "離散分布と指数分布",
+      "ja_sidebar": "二項・ポアソン・指数分布",
       "en_sidebar": "Discrete & Exponential",
       "ja_title": "二項分布・ポアソン分布・指数分布",
       "en_title": "Binomial, Poisson, and Exponential Distributions",
@@ -346,21 +346,23 @@
       "slug": "mreg",
       "ja_sidebar": "重回帰分析",
       "en_sidebar": "Multiple Regression",
-      "ja_title": "重回帰分析 — 2+変数の世界",
-      "en_title": "Multiple Regression — Beyond Two Variables",
-      "ja_desc": "2変数の重回帰を3D空間で可視化し、さらに3変数以上への拡張を含意。偏回帰係数の意味と、高次元空間で起きていることをインタラクティブに学ぶ。",
-      "en_desc": "Visualize a 3D regression plane for two predictors and see how it scales to three, four, or more variables. Learn what partial slope coefficients actually mean.",
-      "ja_kw": "重回帰分析, 多重回帰, 偏回帰係数, 3D 可視化, 高次元, 統計検定2級, 回帰分析",
-      "en_kw": "multiple regression, partial coefficients, 3D visualization, high dimensional",
+      "ja_title": "重回帰分析 — 交絡を制御して本当の効果を見る",
+      "en_title": "Multiple Regression — Control Confounders to Find True Effects",
+      "ja_desc": "勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。",
+      "en_desc": "Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.",
+      "ja_kw": "重回帰分析, 偏回帰係数, 交絡, 多重回帰, 3D 可視化, 統計検定2級, 回帰分析",
+      "en_kw": "multiple regression, partial coefficients, confounding, 3D visualization, controlling for variables",
       "teaches": [
         "重回帰分析",
         "偏回帰係数",
-        "多変量の直線・平面"
+        "交絡の制御",
+        "単回帰との比較"
       ],
       "en_teaches": [
         "Multiple regression",
         "Partial regression coefficients",
-        "Multivariate lines and planes"
+        "Controlling for confounders",
+        "Simple vs. multiple regression comparison"
       ],
       "category": "modeling"
     }
@@ -427,6 +429,9 @@
     "群内分散": "Within-group variance",
     "多重比較": "Multiple Comparisons",
     "重回帰分析": "Multiple Regression",
+    "偏回帰係数": "Partial Regression Coefficients",
+    "交絡の制御": "Controlling for Confounders",
+    "単回帰との比較": "Simple vs. Multiple Regression",
     "ベイズの定理": "Bayes' Theorem",
     "確率の基本法則": "Basic Rules of Probability",
     "適合度検定": "Goodness-of-Fit Test",

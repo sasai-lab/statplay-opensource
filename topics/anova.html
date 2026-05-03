@@ -23,7 +23,7 @@
 <meta property="og:description" content="3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/anova.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
-<meta property="og:image:alt" content="StatPlay — 分散分析（ANOVA）">
+<meta property="og:image:alt" content="StatPlay — 分散分析（ANOVA）— F値の直感を掴む">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
@@ -34,11 +34,11 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#00f3ff">
 <link rel="apple-touch-icon" href="../icons/icon-192.png">
-<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
 <link rel="icon" href="../icons/icon-192.png" type="image/png">
 
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com">
 <link rel="stylesheet" href="../css/stat_cyber.css">
+
 
 <script type="application/ld+json">
 {
@@ -83,16 +83,13 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "分散分析（ANOVA）"
+          "name": "分散分析（ANOVA）— F値の直感を掴む"
         }
       ]
     }
   ]
 }
 </script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
-<script defer src="../js/katex-render.js"></script>
 </head>
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
@@ -106,6 +103,17 @@
   </div>
 </nav>
 
+<div class="topic-header-row">
+<div class="topic-breadcrumb" aria-label="パンくず">
+  <a href="../index.html">StatPlay</a><span class="sep">›</span>
+  <a href="../index.html#anova">トピック</a><span class="sep">›</span>
+  <span class="current-page">分散分析（ANOVA）— F値の直感を掴む</span>
+</div>
+<nav class="topic-top-nav" aria-label="前後のトピック">
+  <a href="./chitest.html" rel="prev">← 前へ</a>
+  <a href="./corr.html" rel="next">次へ →</a>
+</nav>
+</div>
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">分散分析（ANOVA）— F値の直感を掴む</a></h1>
@@ -118,9 +126,9 @@
 <div class="story-bridge">カイ二乗検定は「カテゴリのズレ」を測った。では「3グループ以上の<b>平均値</b>に差があるか？」はどう調べる？ t検定を何度も繰り返すと偽陽性が膨らむ — <span class="next">分散分析（ANOVA）</span>なら、全グループを一度に比較できる。</div>
 
 <p class="sec-desc">
-「群間分散（グループ平均のばらつき）÷ 群内分散（グループ内のばらつき）」がF値。<br>
-群間が大きく群内が小さいほど「グループ間に差がある」と判定される。スライダーで動かして体感しよう。
-</p>
+    「グループ間の違い」と「グループ内のバラつき」を比べるのがANOVA。<br/>
+    違いがバラつきに比べて大きければ「差がある」と判定。スライダーで動かして体感しよう。
+  </p>
 
 <div class="sim-layout">
 <div class="guided-steps">
@@ -131,6 +139,7 @@
 <li><b>Step 3:</b> ▶ 1000回 で試行を追加 — 試行数が増えると14.3%に収束していく。</li>
 </ol>
 </div>
+
 <!-- @panel:anova_sim -->
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ なぜt検定を繰り返してはいけないか</h3>
@@ -140,9 +149,9 @@
 
 </div>
 <div class="controls" style="gap:6px;margin-bottom:6px">
-<button class="lang-toggle" id="mcRun" style="padding:5px 12px;font-size:11px"><span>▶ 100回</span></button>
-<button class="lang-toggle" id="mcRun1000" style="padding:5px 12px;font-size:11px"><span>▶ 1000回</span></button>
-<button class="lang-toggle" id="mcReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+<button class="btn" id="mcRun"><span>▶ 100回</span></button>
+<button class="btn" id="mcRun1000"><span>▶ 1000回</span></button>
+<button class="btn magenta" id="mcReset"><span>↺ リセット</span></button>
 </div>
 <canvas aria-busy="true" aria-label="多重比較シミュレーション" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
 <div class="info">
@@ -156,21 +165,6 @@
 </div>
 <!-- /@panel -->
 </div>
-
-<div class="detail-section">
-<h3>// 「5%なら安心」が通用しないワケ</h3>
-<div class="formula" data-tex="P(\text{少なくとも1回偽陽性}) = 1 - (1 - \alpha)^m = 1 - 0.95^3 \approx 0.143"></div>
-<p>t検定を1回やるとき、「本当は差がないのに"差がある"と言ってしまう」確率は5%。ここまでは大丈夫。<br>
-でも同じ検定を3回繰り返すと、話がだいぶ変わります。</p>
-<p><b>コイン投げで考えてみると</b><br>
-「20面サイコロを振って1が出る確率」は5%。でも3回振って「1回も1が出ない」確率は 0.95³ ≈ 85.7%。<br>
-つまり「少なくとも1回は1が出る」確率は <b>14.3%</b>。検定もまったく同じ構造です。</p>
-<p>3群のペアワイズ比較（A-B、A-C、B-C）は3回のt検定。<br>
-「3回とも間違えない」のが85.7%、「少なくとも1回間違える」のが<b>14.3%</b>。<br>
-5%のつもりが約3倍に膨らんでいます。グループが増えるともっと深刻：5群なら<b>40%</b>、10群なら<b>90%以上</b>。</p>
-<p>ANOVAはこの問題を避けるために「全グループをまとめて1回で検定する」方法です。</p>
-</div>
-
 <div class="sim-layout">
 <div class="guided-steps">
 <p style="margin:0 0 6px;font-size:12px;color:var(--dim)">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
@@ -182,6 +176,7 @@
 <li><b>Step 4:</b> サンプルサイズを増やす → F値が上がる。大きなサンプルほど小さな差を検出できる（検出力）。</li>
 </ol>
 </div>
+
 <!-- @panel:anova_main -->
 <div class="panel">
 <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ 群間分散 vs 群内分散 — F値をスライダーで体感</h3>
@@ -211,7 +206,7 @@
 </label>
 <input id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
 </div>
-<button class="lang-toggle" id="anovaGen" style="padding:5px 12px;font-size:11px"><span>↻ 再生成</span></button>
+<button class="btn" id="anovaGen"><span>↻ 再生成</span></button>
 </div>
 <canvas aria-busy="true" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
 <div class="info">
@@ -246,46 +241,44 @@
 </tbody>
 </table>
 </div>
-<!-- /@panel -->
-
 <div class="detail-section">
 <h3>// F値って結局なにをしている？</h3>
-<p>3つのクラスのテスト結果を比べたいとします。<br>
-「クラスごとの平均が離れている」＝ 教え方に差がありそう。<br>
+<p>3つのクラスのテスト結果を比べたいとします。<br/>
+「クラスごとの平均が離れている」＝ 教え方に差がありそう。<br/>
 「でもクラス内の個人差も大きい」＝ たまたまかもしれない。</p>
-<p>F値は、この2つを比べた数字です。<br>
-<b>「クラス間のばらつき」÷「クラス内のばらつき」</b> —— それだけ。<br>
+<p>F値は、この2つを比べた数字です。<br/>
+<b>「クラス間のばらつき」÷「クラス内のばらつき」</b> —— それだけ。<br/>
 分子が大きいほど「グループ間に差がありそうだ」と判断できます。</p>
-<p>公式にすると↓こうなりますが、いきなり暗記しなくて大丈夫です。<br>
+<p>公式にすると↓こうなりますが、いきなり暗記しなくて大丈夫です。<br/>
 上のグラフをドラッグして、スライダーを動かしながら眺めるほうが先。</p>
 <div class="formula" data-tex="F = \frac{\text{MSB}}{\text{MSW}} = \frac{SS_B / (k-1)}{SS_W / (N-k)}"></div>
-<p>・SS<sub>B</sub>（群間変動）= グループ平均が全体平均からどれだけズレているか<br>
-・SS<sub>W</sub>（群内変動）= 各グループの中でデータがどれだけ散らばっているか<br>
-・df で割って「1自由度あたり」に揃えたのが MS<br>
+<p>・SS<sub>B</sub>（群間変動）= グループ平均が全体平均からどれだけズレているか<br/>
+・SS<sub>W</sub>（群内変動）= 各グループの中でデータがどれだけ散らばっているか<br/>
+・df で割って「1自由度あたり」に揃えたのが MS<br/>
 ・<b>F ≈ 1</b> なら「差があるとは言えない」、<b>F が大きい</b>ほど「差がありそう」</p>
-<p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br>
+<p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br/>
 <a href="../tables/index.html?dist=f" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
 </div>
 
 <div class="detail-section">
 <h3>// 手を動かしてみよう — テスト成績の例</h3>
 <p>3つの教授法 A・B・C を各15人で比較したとします。</p>
-<p>① まず平均を見る<br>
+<p>① まず平均を見る<br/>
 　群A = 65点、群B = 72点、群C = 73点、全体平均 = 70点</p>
-<p>② 群間変動 SS<sub>B</sub> を計算<br>
-　各群の人数 × (群平均 − 全体平均)² を足す<br>
+<p>② 群間変動 SS<sub>B</sub> を計算<br/>
+　各群の人数 × (群平均 − 全体平均)² を足す<br/>
 　= 15×(65−70)² + 15×(72−70)² + 15×(73−70)² = 15×(25+4+9) = <b>570</b></p>
-<p>③ 群内変動 SS<sub>W</sub><br>
+<p>③ 群内変動 SS<sub>W</sub><br/>
 　各群内でデータが平均からどれだけ散らばっているかの合計 = 仮に <b>2520</b></p>
-<p>④ 自由度を出す<br>
-　df<sub>B</sub> = 群の数−1 = 3−1 = 2<br>
+<p>④ 自由度を出す<br/>
+　df<sub>B</sub> = 群の数−1 = 3−1 = 2<br/>
 　df<sub>W</sub> = 全人数−群の数 = 45−3 = 42</p>
-<p>⑤ MSを出してF値へ<br>
-　MSB = 570÷2 = 285、MSW = 2520÷42 = 60<br>
+<p>⑤ MSを出してF値へ<br/>
+　MSB = 570÷2 = 285、MSW = 2520÷42 = 60<br/>
 　<b>F = 285÷60 = 4.75</b></p>
-<p>⑥ 判定<br>
-　F(2, 42) の臨界値（α=0.05）は約 3.22。<br>
-　4.75 > 3.22 → <b>棄却</b>（少なくとも1つの群に差がある）。<br>
+<p>⑥ 判定<br/>
+　F(2, 42) の臨界値（α=0.05）は約 3.22。<br/>
+　4.75 &gt; 3.22 → <b>棄却</b>（少なくとも1つの群に差がある）。<br/>
 　——ただし「どの群とどの群か」は、まだわかりません（→ 多重比較が必要）。</p>
 </div>
 
@@ -293,17 +286,17 @@
 <h3>// ここで引っかかりやすいポイント</h3>
 <div class="misc-item">
 <b>「ANOVAで有意 ＝ どの群に差があるか分かる」？</b>
-<p>実はこれ、わかりません。ANOVAが教えてくれるのは「どこかに差がある」だけ。<br>
+<p>実はこれ、わかりません。ANOVAが教えてくれるのは「どこかに差がある」だけ。<br/>
 どの群同士かを突き止めるには、Tukey法やBonferroni法などの多重比較が必要です。</p>
 </div>
 <div class="misc-item">
 <b>「t検定を何回もやればいいのでは？」</b>
-<p>ページ上部のシミュレーションを見てください。3群の比較で t 検定を繰り返すと、本当は差がなくても約14.3%の確率で「有意」が出てしまいます。<br>
+<p>ページ上部のシミュレーションを見てください。3群の比較で t 検定を繰り返すと、本当は差がなくても約14.3%の確率で「有意」が出てしまいます。<br/>
 ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保てる方法です。</p>
 </div>
 <div class="misc-item">
 <b>「F値が大きい ＝ 効果も大きい」？</b>
-<p>サンプルサイズが大きいと、ほんの少しの差でもF値は大きくなります。<br>
+<p>サンプルサイズが大きいと、ほんの少しの差でもF値は大きくなります。<br/>
 「実際にどれくらい差があるか」は効果量（η²）で見るのがおすすめです。</p>
 </div>
 </div>
@@ -319,10 +312,16 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
 </ul>
 </div>
 
+<!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>2変数の「つながり」を測る <span class="story-arrow">▸</span> <a href="./corr.html">M0 相関係数</a></div>
 
 </section>
 </main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./chitest.html" rel="prev">← 前へ</a>
+  <a href="./corr.html" rel="next">次へ →</a>
+</nav>
 
 <footer>
 <div class="foot-grid">
@@ -368,7 +367,7 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
     <li><a href="./normal.html">正規分布と標準化</a></li>
     <li><a href="./prob.html">確率の基本法則</a></li>
     <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">離散分布と指数分布</a></li>
+    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
     <li><a href="./clt.html">中心極限定理</a></li>
     <li><a href="./lln.html">大数の法則</a></li>
     <li><a href="./ci.html">信頼区間</a></li>
@@ -381,10 +380,6 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
     <li><a href="./reg.html">単回帰分析</a></li>
     <li><a href="./mreg.html">重回帰分析</a></li>
   </ol>
-</nav>
-<nav class="topic-nav" aria-label="前後のトピック">
-  <a href="./chitest.html" rel="prev">← 前へ</a>
-  <a href="./corr.html" rel="next">次へ →</a>
 </nav>
 </body>
 </html>

@@ -489,6 +489,25 @@
     .sim-layout{grid-template-columns:280px 1fr}
   }
 
+  /* Morep: compact top-3 canvases */
+  #morep #binomCanvas,#morep #poissonCanvas,#morep #expCanvas{max-height:180px}
+
+  /* Memoryless demo: side-by-side canvases */
+  .memoryless-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0}
+  .memoryless-col{display:flex;flex-direction:column;gap:4px}
+  .memoryless-label{font-family:'Courier New',monospace;font-size:var(--fs-xs);color:var(--cyan);letter-spacing:1px;text-align:center}
+  .memoryless-note{font-family:'Courier New',monospace;font-size:11px;color:var(--dim);text-align:center;min-height:2em}
+  .memoryless-col canvas{width:100%;display:block}
+  @media(max-width:600px){.memoryless-pair{grid-template-columns:1fr}}
+
+  /* Call center unified trio */
+  .cc-trio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:8px 0}
+  .cc-col{display:flex;flex-direction:column;gap:4px}
+  .cc-dist-label{font-family:'Courier New',monospace;font-size:var(--fs-xs);color:var(--yellow);letter-spacing:1px;text-align:center}
+  .cc-caption{font-family:'Courier New',monospace;font-size:11px;color:var(--dim);text-align:center;line-height:1.5}
+  .cc-col canvas{width:100%;display:block}
+  @media(max-width:700px){.cc-trio{grid-template-columns:1fr}.cc-col canvas{height:140px}}
+
   .learn-more-link a{display:none;font-family:'Courier New',monospace;font-size:13px;color:var(--cyan);text-decoration:none;border:1px solid rgba(0,243,255,.3);padding:8px 20px;transition:border-color .2s}
   body:not(.lang-en) .learn-more-link a[data-lang="ja"]{display:inline-block}
   body.lang-en .learn-more-link a[data-lang="en"]{display:inline-block}

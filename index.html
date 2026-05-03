@@ -145,7 +145,7 @@
         <a href="#normal" data-lang="ja">正規分布と標準化</a><a href="#normal" data-lang="en">Normal Distribution</a>
         <a href="#prob" data-lang="ja">確率の基本法則</a><a href="#prob" data-lang="en">Probability Rules</a>
         <a href="#bayes" data-lang="ja">ベイズの定理</a><a href="#bayes" data-lang="en">Bayes' Theorem</a>
-        <a href="#morep" data-lang="ja">離散分布と指数分布</a><a href="#morep" data-lang="en">Discrete & Exponential</a>
+        <a href="#morep" data-lang="ja">二項・ポアソン・指数分布</a><a href="#morep" data-lang="en">Discrete & Exponential</a>
       </div>
     </div>
     <div class="nav-dropdown">
@@ -746,7 +746,7 @@
       <div class="use-case" data-lang="ja">いつ使う？ → コイン10回で表が何回出るか、不良品検査で100個中何個不良か</div>
       <div class="use-case" data-lang="en">When? &#x2192; How many heads in 10 coin flips; how many defects in 100 items</div>
       <div class="panel-title" data-lang="en">Binomial B(n, p)</div>
-      <canvas id="binomCanvas" aria-label="Binomial distribution simulation" height="240" aria-busy="true"></canvas>
+      <canvas id="binomCanvas" aria-label="Binomial distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
         <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20">
 <span class="val" id="binomNVal">20</span></div>
@@ -784,7 +784,7 @@
       <div class="use-case" data-lang="ja">いつ使う？ → 1時間にコールセンターに来る電話の本数、1日の交通事故件数</div>
       <div class="use-case" data-lang="en">When? &#x2192; Phone calls per hour at a call center; traffic accidents per day</div>
       <div class="panel-title" data-lang="en">Poisson(&#x03BB;)</div>
-      <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="240" aria-busy="true"></canvas>
+      <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
         <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3">
 <span class="val" id="poisLVal">3</span></div>
@@ -820,7 +820,7 @@
       <div class="use-case" data-lang="ja">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
       <div class="use-case" data-lang="en">When? &#x2192; Time until next phone call; how long until a light bulb burns out</div>
       <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; waiting time</div>
-      <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="240" aria-busy="true"></canvas>
+      <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="180" aria-busy="true"></canvas>
       <div class="controls">
         <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1">
 <span class="val" id="expLVal">1</span></div>
@@ -829,8 +829,71 @@
       <div class="sec-bridge" data-lang="en">Memoryless: past waiting time tells you nothing about the future.</div>
     </div>
 <!-- /@panel -->
+
+<!-- @panel:morep_memoryless -->
+<div class="panel">
+  <div class="panel-title" data-lang="ja">無記憶性デモ — 「もう10分待った」は無意味？</div>
+  <div class="panel-title" data-lang="en">Memoryless Demo — Does "already waited 10 min" matter?</div>
+  <div class="sec-bridge" data-lang="ja">左は正規分布的な待ち時間。待てば待つほど「そろそろ来る」確率が上がる。右は指数分布。t をどれだけ動かしても曲線が変わらない——これが無記憶性。</div>
+  <div class="sec-bridge" data-lang="en">Left: normal-like waiting. The longer you wait, the more likely arrival becomes. Right: exponential. Move t all you want — the curve never changes. That's memorylessness.</div>
+  <div class="memoryless-pair">
+    <div class="memoryless-col">
+      <div class="memoryless-label" data-lang="ja">正規分布（普通の感覚）</div>
+      <div class="memoryless-label" data-lang="en">Normal (everyday intuition)</div>
+      <canvas id="memNormCanvas" aria-label="Normal remaining time distribution" height="200" aria-busy="true"></canvas>
+      <div class="memoryless-note" data-lang="ja">← t が増えると左にシフト（「そろそろ来る」）</div>
+      <div class="memoryless-note" data-lang="en">← as t grows, shifts left ("should come soon")</div>
+    </div>
+    <div class="memoryless-col">
+      <div class="memoryless-label" data-lang="ja">指数分布（無記憶）</div>
+      <div class="memoryless-label" data-lang="en">Exponential (memoryless)</div>
+      <canvas id="memExpCanvas" aria-label="Exponential remaining time distribution" height="200" aria-busy="true"></canvas>
+      <div class="memoryless-note" data-lang="ja">← t をいくら動かしても同じ形</div>
+      <div class="memoryless-note" data-lang="en">← no matter how much t changes, same shape</div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0"><span class="val" id="memTVal">0</span></div>
+    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2"><span class="val" id="memLVal">0.20</span></div>
+  </div>
 </div>
-  
+<!-- /@panel -->
+
+<!-- @panel:morep_callcenter -->
+<div class="panel">
+  <div class="panel-title" data-lang="ja">同じ現象、3つの視点 — コールセンターの1時間</div>
+  <div class="panel-title" data-lang="en">One Phenomenon, Three Views — A Call Center Hour</div>
+  <div class="sec-bridge" data-lang="ja">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
+  <div class="sec-bridge" data-lang="en">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
+  <div class="controls" style="margin-bottom:12px">
+    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3"><span class="val" id="ccLambdaVal">3.0</span></div>
+  </div>
+  <div class="cc-trio">
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">二項分布 B(60, λ/60)</div>
+      <div class="cc-dist-label" data-lang="en">Binomial B(60, λ/60)</div>
+      <canvas id="ccBinomCanvas" aria-label="Call center binomial view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">60分を1分刻み。<br>各分に電話が来るか来ないか。</div>
+      <div class="cc-caption" data-lang="en">60 one-minute slots.<br>Each minute: call or no call.</div>
+    </div>
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">ポアソン分布 Poi(λ)</div>
+      <div class="cc-dist-label" data-lang="en">Poisson Poi(λ)</div>
+      <canvas id="ccPoissonCanvas" aria-label="Call center Poisson view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">1時間に合計何件来る？</div>
+      <div class="cc-caption" data-lang="en">How many calls total in one hour?</div>
+    </div>
+    <div class="cc-col">
+      <div class="cc-dist-label" data-lang="ja">指数分布 Exp(λ)</div>
+      <div class="cc-dist-label" data-lang="en">Exponential Exp(λ)</div>
+      <canvas id="ccExpCanvas" aria-label="Call center exponential view" height="160" aria-busy="true"></canvas>
+      <div class="cc-caption" data-lang="ja">次の電話まで何分待つ？<br>（平均 60/λ 分）</div>
+      <div class="cc-caption" data-lang="en">How long until next call?<br>(mean 60/λ min)</div>
+    </div>
+  </div>
+</div>
+<!-- /@panel -->
+</div>
 
 
     <div class="learn-more-link" style="margin:16px 0;text-align:center">
@@ -930,7 +993,7 @@
         <input type="range" id="cltN" min="1" max="50" value="30">
       </div>
       <button class="btn" id="cltRun"><span data-lang="ja">&#x25B6; 3000回 試行</span><span data-lang="en">&#x25B6; Run 3000 trials</span></button>
-      <button class="btn magenta" id="cltClear">CLEAR</button>
+      <button class="btn magenta" id="cltClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
     <canvas id="cltCanvas" aria-label="Central Limit Theorem simulation" height="300" aria-busy="true"></canvas>
     <div id="cltStory" class="bayes-story" data-lang="ja"></div>
@@ -1008,7 +1071,7 @@
         <input type="range" id="llnP" min="0.05" max="0.95" step="0.01" value="0.5">
       </div>
       <button class="btn" id="llnRun"><span data-lang="ja">&#x25B6; シミュレート</span><span data-lang="en">&#x25B6; Simulate</span></button>
-      <button class="btn magenta" id="llnReset">RESET</button>
+      <button class="btn magenta" id="llnReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
     <canvas id="llnCanvas" aria-label="Law of Large Numbers simulation" height="240" aria-busy="true"></canvas>
     <div class="info">
@@ -1090,7 +1153,7 @@
         <input type="range" id="ciLvl" min="80" max="99" step="1" value="95">
       </div>
       <button class="btn" id="ciRun"><span data-lang="ja">&#x25B6; 300回 生成</span><span data-lang="en">&#x25B6; Generate 300</span></button>
-      <button class="btn magenta" id="ciReset">CLEAR</button>
+      <button class="btn magenta" id="ciReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
     <canvas id="ciCanvas" aria-label="信頼区間のシミュレーション。繰り返し標本を取ると95%の区間が母平均を含む" data-aria-label-en="Confidence interval simulation. Repeated sampling shows 95% of intervals contain the population mean" height="240" aria-busy="true"></canvas>
     <div class="info">
@@ -1365,9 +1428,9 @@
       </select>
     </div>
   </div>
-  <div style="display:flex;gap:10px;margin:8px 0">
-    <button id="ptCiSimRun" style="background:var(--cyan);color:#000;border:none;padding:6px 20px;font-family:'Courier New',monospace;font-weight:bold;cursor:pointer;font-size:13px"><span data-lang="ja">&#x25B6; Run</span><span data-lang="en">&#x25B6; Run</span></button>
-    <button id="ptCiSimReset" style="background:transparent;color:var(--dim);border:1px solid var(--dim);padding:6px 20px;font-family:'Courier New',monospace;cursor:pointer;font-size:13px"><span data-lang="ja">&#x21BA; Reset</span><span data-lang="en">&#x21BA; Reset</span></button>
+  <div class="controls" style="margin:8px 0">
+    <button class="btn" id="ptCiSimRun"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Run</span></button>
+    <button class="btn magenta" id="ptCiSimReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
   </div>
   <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
   <div class="info">
@@ -1815,8 +1878,8 @@
           <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
       </div>
-      <button id="gofAutoRoll" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 自動試行</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
-      <button id="gofReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+      <button class="btn" id="gofAutoRoll"><span data-lang="ja">&#x25B6; 自動試行</span><span data-lang="en">&#x25B6; Auto-roll</span></button>
+      <button class="btn magenta" id="gofReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
     <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
@@ -1871,7 +1934,7 @@
         </label>
         <input type="range" id="indA" min="0.01" max="0.10" step="0.01" value="0.05">
       </div>
-      <button id="indReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+      <button class="btn magenta" id="indReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
     <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
@@ -1946,9 +2009,9 @@
       <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
     </div>
     <div class="controls" style="gap:6px;margin-bottom:6px">
-      <button id="mcRun" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
-      <button id="mcRun1000" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
-      <button id="mcReset" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
+      <button class="btn" id="mcRun"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
+      <button class="btn" id="mcRun1000"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
+      <button class="btn magenta" id="mcReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
     <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" style="width:100%;display:block" aria-busy="true"></canvas>
     <div class="info">
@@ -2013,7 +2076,7 @@
         </label>
         <input type="range" id="anovaNk" min="5" max="80" step="1" value="20">
       </div>
-      <button id="anovaGen" class="lang-toggle" style="padding:5px 12px;font-size:11px"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
+      <button class="btn" id="anovaGen"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
     <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
     <div class="info">
@@ -2131,7 +2194,7 @@
         <input type="range" id="corrN" min="10" max="200" step="1" value="50">
       </div>
       <button class="btn" id="corrGen"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Generate</span></button>
-      <button class="btn magenta" id="corrClear">CLEAR</button>
+      <button class="btn magenta" id="corrClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
       <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックで点を追加</span><span data-lang="en">&#x2191; Click canvas to add points</span></span>
     </div>
     <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" data-aria-label-en="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" style="cursor:crosshair" aria-busy="true"></canvas>
@@ -2236,7 +2299,7 @@
 <div class="panel" data-autorun="regRandom">
     <div class="controls">
       <button class="btn" id="regRandom"><span data-lang="ja">&#x25B6; ランダム 20点</span><span data-lang="en">&#x25B6; Random 20 pts</span></button>
-      <button class="btn magenta" id="regClear">CLEAR</button>
+      <button class="btn magenta" id="regClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
       <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
     </div>
     <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" data-aria-label-en="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
@@ -2273,36 +2336,98 @@
   <h2 class="sec-title" data-lang="ja">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
   <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
 
-  <div class="story-bridge" data-lang="ja">単回帰の「直線」が、変数を増やすと<b>3D空間の平面</b>になる。ドラッグして回転させてみよう——データ点が平面に沿って並ぶ様子が見える。</div>
-  <div class="story-bridge" data-lang="en">The "line" of simple regression becomes a <b>plane in 3D space</b> when you add variables. Drag to rotate — see how data points align along the surface.</div>
+  <div class="story-bridge" data-lang="ja">単回帰では「勉強時間だけ」で成績を予測した。でも待って——たくさん勉強する人ほど<b>睡眠を削っている</b>としたら？ 睡眠不足が成績を下げる分、<b>勉強の本当の効果が隠れてしまう</b>。<span class="next">重回帰</span>は「他の要因をコントロールして、各変数の本当の効果を取り出す」道具だ。</div>
+  <div class="story-bridge" data-lang="en">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
   <p class="sec-desc" data-lang="ja">
-    単回帰では変数が1つで、フィットは直線だった。
-    重回帰は<b>2つ以上の変数</b>を組み合わせて予測する——フィットは<b>平面</b>になる。
-    3Dグラフをぐるぐる回して、平面がデータを捉える様子を体感しよう。
+    変数が1つなら直線、2つなら<b>3D空間の平面</b>。
+    でも大事なのは幾何ではなく「なぜ変数を加えるのか」——<b>交絡（隠れた変数の影響）を取り除いて、各変数の純粋な効果を見るため</b>だ。
+    まず左右の比較パネルで「β₁が変わる瞬間」を体感しよう。
   </p>
   <p class="sec-desc" data-lang="en">
-    Simple regression used one variable and fit a line.
-    Multiple regression combines <b>two or more variables</b> — the fit becomes a <b>plane</b>.
-    Rotate the 3D plot and see how the plane captures the data.
+    One variable gives a line; two give a <b>plane in 3D</b>.
+    But the point isn't geometry — it's <b>removing confounding to isolate each variable's true effect</b>.
+    Start with the side-by-side comparison to see the moment β₁ shifts.
   </p>
-  <div class="mreg-layout">
+
+  <div class="sim-layout">
   <div class="guided-steps" data-lang="ja">
-    <b>実験ガイド — 順番に試してみよう</b>
-    <ol>
-      <li><b>Step 1:</b> 3Dグラフをドラッグして回転させてみよう。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
-      <li><b>Step 2:</b> 各点から平面への破線が残差（予測のズレ）。短いほど予測が当たっている。</li>
-      <li><b>Step 3:</b> 勉強時間のスライダーを動かす → 大きな●が平面上を移動する。これが「予測値」。</li>
-      <li><b>Step 4:</b> 睡眠時間も動かしてみよう → 平面上の別の方向に動く。2つの変数を組み合わせて予測できる。</li>
-    </ol>
+  <b>実験ガイド — 交絡を体感する</b>
+  <ol>
+  <li><b>Step 1:</b> デフォルト（相関 = −0.5）で左右のβ₁を見比べる。単回帰のほうが<b>小さい</b>——勉強の効果が過小評価されている。</li>
+  <li><b>Step 2:</b> 相関スライダーを<b>0</b>にする → 左右のβ₁がほぼ同じに。「交絡がなければ差は出ない」。</li>
+  <li><b>Step 3:</b> 相関を<b>+0.5</b>にする → 今度は単回帰のβ₁が<b>大きすぎる</b>。交絡の方向で過小にも過大にもなる。</li>
+  <li><b>Step 4:</b> R²の変化も確認。重回帰は常に単回帰以上——変数を加えて説明力が上がった。</li>
+  </ol>
   </div>
   <div class="guided-steps" data-lang="en">
-    <b>Experiment Guide — try these in order</b>
-    <ol>
-      <li><b>Step 1:</b> Drag the 3D plot to rotate it. The translucent surface is the regression plane — data points align along it.</li>
-      <li><b>Step 2:</b> Dashed lines from points to the plane are residuals (prediction errors). Shorter = better fit.</li>
-      <li><b>Step 3:</b> Move the study slider → the large dot moves along the plane. That's the predicted score.</li>
-      <li><b>Step 4:</b> Move sleep too → it moves in a different direction on the plane. Two variables combine for prediction.</li>
-    </ol>
+  <b>Experiment Guide — Feel Confounding</b>
+  <ol>
+  <li><b>Step 1:</b> At default (corr = −0.5), compare β₁ left vs. right. Simple regression is <b>smaller</b> — the study effect is underestimated.</li>
+  <li><b>Step 2:</b> Set correlation to <b>0</b> → both β₁ values nearly match. "No confounding, no bias."</li>
+  <li><b>Step 3:</b> Set correlation to <b>+0.5</b> → now simple regression β₁ is <b>too large</b>. Confounding can bias in either direction.</li>
+  <li><b>Step 4:</b> Check R² too. Multiple regression is always ≥ simple — adding a variable improved explanatory power.</li>
+  </ol>
+  </div>
+  <!-- @panel:mreg_vs -->
+<div class="panel">
+    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30; &#x2014; &#x03B2;&#x2081;&#x304C;&#x5909;&#x308F;&#x308B;&#x77AC;&#x9593;</h3>
+    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Simple vs. Multiple Regression &#x2014; Watch &#x03B2;&#x2081; Shift</h3>
+    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+      <span data-lang="ja">&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x300C;&#x52C9;&#x5F37;&#x6642;&#x9593;&#x3060;&#x3051;&#x300D;&#x3068;&#x300C;&#x52C9;&#x5F37;&#xFF0B;&#x7761;&#x7720;&#x300D;&#x3067;&#x56DE;&#x5E30;&#x3059;&#x308B;&#x3002;&#x76F8;&#x95A2;&#x30B9;&#x30E9;&#x30A4;&#x30C0;&#x30FC;&#x3067;&#x4EA4;&#x7D61;&#x306E;&#x5F37;&#x3055;&#x3092;&#x5909;&#x3048;&#x3066;&#x307F;&#x3088;&#x3046;&#x3002;</span>
+      <span data-lang="en">Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
+    </div>
+    <div class="controls" style="gap:6px;margin-bottom:6px">
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">&#x52C9;&#x5F37;&#x2194;&#x7761;&#x7720;&#x306E;&#x76F8;&#x95A2;</span>
+          <span data-lang="en">Study&#x2194;Sleep correlation</span>
+          = <span class="val" id="mvCorrVal">&#x2212;0.50</span>
+        </label>
+        <input type="range" id="mvCorr" min="-0.8" max="0.8" step="0.05" value="-0.5">
+      </div>
+      <div class="ctrl">
+        <label>
+          <span data-lang="ja">&#x30B5;&#x30F3;&#x30D7;&#x30EB;&#x30B5;&#x30A4;&#x30BA; n</span>
+          <span data-lang="en">Sample size n</span>
+          = <span class="val" id="mvNVal">50</span>
+        </label>
+        <input type="range" id="mvN" min="20" max="100" step="5" value="50">
+      </div>
+      <button class="btn" id="mvGen"><span data-lang="ja">&#x21BB; &#x518D;&#x751F;&#x6210;</span><span data-lang="en">&#x21BB; Regenerate</span></button>
+    </div>
+    <canvas id="mvCanvas" aria-label="&#x5358;&#x56DE;&#x5E30;&#x3068;&#x91CD;&#x56DE;&#x5E30;&#x306E;&#x03B2;&#x2081;&#x6BD4;&#x8F03;" data-aria-label-en="Simple vs. multiple regression &#x03B2;&#x2081; comparison" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <div class="info">
+      <div><span data-lang="ja">&#x5358;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Simple &#x03B2;&#x2081;</span> <strong id="mvSimpleB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x91CD;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Multiple &#x03B2;&#x2081;</span> <strong id="mvMultiB1">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x5DEE;&#xFF08;&#x4EA4;&#x7D61;&#x306B;&#x3088;&#x308B;&#x6B6A;&#x307F;&#xFF09;</span><span data-lang="en">Gap (confounding bias)</span> <strong id="mvGap">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x5358;&#x56DE;&#x5E30; R&#x00B2;</span><span data-lang="en">Simple R&#x00B2;</span> <strong id="mvSimpleR2">&#x2014;</strong></div>
+      <div><span data-lang="ja">&#x91CD;&#x56DE;&#x5E30; R&#x00B2;</span><span data-lang="en">Multiple R&#x00B2;</span> <strong id="mvMultiR2">&#x2014;</strong></div>
+    </div>
+    <div class="share-row">
+      <button class="share-btn dl" data-share="mvCanvas" data-title="&#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30;" data-title-en="Simple vs. Multiple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; &#x753B;&#x50CF;&#x4FDD;&#x5B58;</span><span data-lang="en">&#x1F4BE; Save image</span></button>
+    </div>
+  </div>
+<!-- /@panel -->
+  </div>
+
+  <div class="sim-layout">
+  <div class="guided-steps" data-lang="ja">
+  <b>実験ガイド — 3Dで回帰平面を体感する</b>
+  <ol>
+  <li><b>Step 1:</b> 3Dグラフをドラッグして回転。半透明の面が回帰平面——データ点がこの面に沿って並んでいる。</li>
+  <li><b>Step 2:</b> 勉強時間のスライダーを動かす → 予測点が平面の「x₁方向」に移動。傾き = β₁。</li>
+  <li><b>Step 3:</b> 睡眠時間も動かす → 「x₂方向」に移動。傾き = β₂。2つの変数それぞれの貢献が見える。</li>
+  <li><b>Step 4:</b> 再サンプリングを数回押す → β₁, β₂, R²が毎回少し変わる。推定値にも「ばらつき」がある。</li>
+  </ol>
+  </div>
+  <div class="guided-steps" data-lang="en">
+  <b>Experiment Guide — Feel the Regression Plane in 3D</b>
+  <ol>
+  <li><b>Step 1:</b> Drag the 3D plot to rotate. The translucent surface is the regression plane — data points align along it.</li>
+  <li><b>Step 2:</b> Move the study slider → the prediction dot slides along the x₁ direction. The tilt = β₁.</li>
+  <li><b>Step 3:</b> Move sleep too → it moves along x₂. The tilt = β₂. Each variable's contribution is visible.</li>
+  <li><b>Step 4:</b> Hit Resample a few times → β₁, β₂, R² shift slightly each time. Estimates have variability too.</li>
+  </ol>
   </div>
 
 <!-- @panel:mreg_main -->

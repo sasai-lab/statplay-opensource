@@ -152,8 +152,8 @@
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
 </select>
 </div>
-<button class="lang-toggle" id="gofAutoRoll" style="padding:5px 12px;font-size:11px"><span>▶ 自動試行</span></button>
-<button class="lang-toggle" id="gofReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+<button class="btn" id="gofAutoRoll"><span>▶ 自動試行</span></button>
+<button class="btn magenta" id="gofReset"><span>↺ リセット</span></button>
 </div>
 <canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
 <div class="info">
@@ -211,7 +211,7 @@
 </label>
 <input id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
-<button class="lang-toggle" id="indReset" style="padding:5px 12px;font-size:11px"><span>↺ リセット</span></button>
+<button class="btn magenta" id="indReset"><span>↺ リセット</span></button>
 </div>
 <canvas aria-busy="true" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
 <div class="info">
@@ -341,7 +341,7 @@
     <li><a href="./normal.html">正規分布と標準化</a></li>
     <li><a href="./prob.html">確率の基本法則</a></li>
     <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">離散分布と指数分布</a></li>
+    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
     <li><a href="./clt.html">中心極限定理</a></li>
     <li><a href="./lln.html">大数の法則</a></li>
     <li><a href="./ci.html">信頼区間</a></li>
