@@ -427,7 +427,7 @@ export function initMreg(){
     projected.forEach(p=>{
       // Residual line
       ctx.setLineDash([2,3]);
-      ctx.strokeStyle=withAlpha(p.residual>0?'#50fa7b':'#ff5555',0.35);
+      ctx.strokeStyle=withAlpha(p.residual>0?tc.green:tc.magenta,0.35);
       ctx.lineWidth=1;
       ctx.beginPath();ctx.moveTo(p.sx,p.sy);ctx.lineTo(p.hx,p.hy);ctx.stroke();
       ctx.setLineDash([]);

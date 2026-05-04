@@ -112,6 +112,7 @@
     backdrop-filter:blur(10px);z-index:-1;
   }
   .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu,
   .nav-dropdown.open .nav-dropdown-menu{display:block}
   .nav-dropdown-menu a{
     display:block;padding:8px 16px;color:var(--dim);font-family:'Courier New',monospace;
@@ -761,7 +762,7 @@
     --bg:#ffffff;
     --bg2:#f4f5f7;
     --text:#1a1a2e;
-    --dim:#5a6275;
+    --dim:#4a5568;
     --grid:rgba(26,26,46,.08);
     --bg-grid:none;
     --cyan:#1a6b7a;
@@ -895,7 +896,7 @@
   body.theme-light [class="hint"]{color:var(--dim) !important}
 
   /* Formulas & examples ------------------------------------------ */
-  body.theme-light .formula{text-shadow:none;border-left-color:#b0b8c8;color:var(--text);background:none}
+  body.theme-light .formula{text-shadow:none;border-left-color:#b0b8c8;color:var(--text);background:rgba(0,100,150,.04)}
   body.theme-light .example-box{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .guided-steps{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .tab-btn{border-color:#d8dce6;color:var(--dim)}
@@ -1291,4 +1292,45 @@ body.topic-page .topic-hub-link {
 body.topic-page .topic-hub-link a {
   color: var(--magenta); text-decoration: none;
   font-family: 'Courier New', monospace;
+}
+
+/* ===== TOPIC DROPDOWN (mobile topic navigation) ===== */
+/* Hidden on wide screens where side-toc is visible */
+.topic-dropdown{ display: none }
+@media (max-width: 1199px){
+  .topic-dropdown{ display: block }
+}
+/* Category headings inside the dropdown */
+.topic-dd-cat{
+  display: block; padding: 8px 16px 4px; color: var(--magenta);
+  font-family: 'Courier New', monospace; font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
+  pointer-events: none; user-select: none;
+}
+/* Current-topic highlight in dropdown */
+.topic-dropdown .nav-dropdown-menu a.current{
+  color: var(--cyan); border-left: 3px solid var(--cyan);
+  background: rgba(0,243,255,.08); font-weight: 700;
+}
+/* Ensure the dropdown toggle button matches nav-cat-link style */
+button.topic-dd-toggle{
+  background: none; border: 1px solid transparent; cursor: pointer;
+}
+.topic-dd-toggle::after{
+  content: " ▾"; font-size: 10px; opacity: .6;
+}
+/* Light-theme adjustments */
+body.theme-light .topic-dd-cat{ color: #7c3aed }
+body.theme-light .topic-dropdown .nav-dropdown-menu a.current{
+  color: var(--cyan); background: rgba(26,107,122,.06);
+}
+/* On tablet (760-1199px): scrollable dropdown, right-aligned */
+@media (min-width: 761px) and (max-width: 1199px){
+  .topic-dropdown .nav-dropdown-menu{ max-height: 70vh; overflow-y: auto }
+}
+/* Mobile drawer: make dropdown full-width */
+@media (max-width: 760px){
+  .topic-dropdown{ width: 100% }
+  .topic-dd-cat{ padding: 8px 16px 4px 16px }
+  .topic-dropdown .nav-dropdown-menu a{ padding-left: 32px }
 }

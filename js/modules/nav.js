@@ -25,29 +25,39 @@ export function initNav(){
   document.querySelectorAll('.nav-dropdown').forEach(dd=>{
     const catLink=dd.querySelector('.nav-cat-link');
     if(!catLink) return;
+    const isTopicDD=dd.classList.contains('topic-dropdown');
     catLink.addEventListener('click',e=>{
-      if(!isMobile()) return;
+      // Topic-dropdown toggle works at all widths; hub dropdowns only on mobile
+      if(!isTopicDD && !isMobile()) return;
       e.preventDefault();
       const wasOpen=dd.classList.contains('open');
       // Close all others
       document.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
-      if(!wasOpen) dd.classList.add('open');
+      if(!wasOpen){ dd.classList.add('open'); catLink.setAttribute('aria-expanded','true'); }
+      else{ catLink.setAttribute('aria-expanded','false'); }
     });
   });
 
   // Dropdown menu item click: scroll to section + close everything
   document.querySelectorAll('.nav-dropdown-menu a').forEach(a=>{
     a.addEventListener('click',()=>{
-      document.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
+      document.querySelectorAll('.nav-dropdown.open').forEach(d=>{
+        d.classList.remove('open');
+        const btn=d.querySelector('[aria-expanded]');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      });
       close();
     });
   });
 
   // Close dropdown on outside click (desktop)
   document.addEventListener('click',e=>{
-    if(isMobile()) return;
     if(!e.target.closest('.nav-dropdown')){
-      document.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
+      document.querySelectorAll('.nav-dropdown.open').forEach(d=>{
+        d.classList.remove('open');
+        const btn=d.querySelector('[aria-expanded]');
+        if(btn) btn.setAttribute('aria-expanded','false');
+      });
     }
   });
 

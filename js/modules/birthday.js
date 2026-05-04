@@ -1,4 +1,5 @@
 // StatPlay — module: Birthday Paradox interactive column
+import { themeColors } from '../utils.js';
 const TAU = Math.PI * 2;
 function _throttle(fn){let id=0;return function(){id||(id=requestAnimationFrame(()=>{id=0;fn();}));};}
 function _debResize(fn,ms=120){let t=0;return function(){clearTimeout(t);t=setTimeout(fn,ms);};}
@@ -8,14 +9,6 @@ const lt = () => document.body.classList.contains('theme-light');
 const _raw = window.devicePixelRatio || 1;
 const dpr = (Number.isFinite(_raw) && _raw > 0) ? Math.min(_raw, 8) : 1;
 
-// Theme colors aligned with utils.js themeColors()
-function tc() {
-  return lt()
-    ? { cyan: '#1a6b7a', magenta: '#7a2060', yellow: '#6b5a00',
-        dim: '#5a6275', text: '#1a1a2e', grid: 'rgba(26,26,46,.08)' }
-    : { cyan: '#00f3ff', magenta: '#ff2bd6', yellow: '#ffe600',
-        dim: '#7a8aa6', text: '#c8d6e5', grid: 'rgba(0,243,255,.06)' };
-}
 
 function setupCanvas(canvas, h) {
   const r = canvas.parentElement.getBoundingClientRect();
@@ -137,7 +130,7 @@ export function initBirthday() {
 
       function drawCal() {
         const { ctx, w, h } = resize();
-        const c = tc();
+        const c = themeColors();
         ctx.clearRect(0, 0, w, h);
         const cols = 19, rows = Math.ceil(365 / cols);
         const cellW = Math.min(30, (w - 20) / cols);
@@ -227,7 +220,7 @@ export function initBirthday() {
 
       function draw() {
         const { ctx, w, h } = setupCanvas(canvas, CANVAS_H);
-        const c = tc();
+        const c = themeColors();
         const n = parseInt(slider.value);
         valEl.textContent = n;
         const numPairs = n * (n - 1) / 2;
@@ -318,7 +311,7 @@ export function initBirthday() {
 
       function draw() {
         const { ctx, w, h } = setupCanvas(canvas, CANVAS_H);
-        const c = tc();
+        const c = themeColors();
         const n = parseInt(slider.value);
         valEl.textContent = n;
         if (nDispEl) nDispEl.textContent = n;
@@ -471,7 +464,7 @@ export function initBirthday() {
 
       function drawHist(counts) {
         const { ctx, w, h } = setupCanvas(canvas, CANVAS_H);
-        const c = tc();
+        const c = themeColors();
         ctx.clearRect(0, 0, w, h);
         const hp = { l: 40, r: 10, t: 15, b: 30 };
         const gw = w - hp.l - hp.r, gh = h - hp.t - hp.b;

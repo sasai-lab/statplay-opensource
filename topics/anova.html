@@ -54,12 +54,7 @@
       "inLanguage": "ja",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
-      "teaches": [
-        "分散分析",
-        "F値",
-        "群間分散と群内分散",
-        "多重比較の問題"
-      ],
+      "teaches": ["分散分析", "F値", "群間分散と群内分散", "多重比較の問題"],
       "isPartOf": {
         "@type": "WebSite",
         "name": "StatPlay",
@@ -104,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">全トピック</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">確率分布</span>
+        <a href="./stdnorm.html">標準正規分布</a>
+        <a href="./normal.html">正規分布と標準化</a>
+        <a href="./prob.html">確率の基本法則</a>
+        <a href="./bayes.html">ベイズの定理</a>
+        <a href="./morep.html">二項・ポアソン・指数分布</a>
+        <span class="topic-dd-cat">推測統計</span>
+        <a href="./clt.html">中心極限定理</a>
+        <a href="./lln.html">大数の法則</a>
+        <a href="./ci.html">信頼区間</a>
+        <a href="./test.html">仮説検定</a>
+        <a href="./proptest.html">母比率の検定と推定</a>
+        <a href="./dists.html">三大検定分布</a>
+        <a href="./chitest.html">カイ二乗検定</a>
+        <a href="./anova.html" class="current">分散分析（ANOVA）</a>
+        <span class="topic-dd-cat">モデリング</span>
+        <a href="./corr.html">相関係数</a>
+        <a href="./reg.html">単回帰分析</a>
+        <a href="./mreg.html">重回帰分析</a>
+      </div>
+    </div>
     <a href="../en/topics/anova.html" hreflang="en" rel="alternate">EN</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>

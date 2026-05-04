@@ -48,10 +48,6 @@ export function initGraphDrag(){
     const end=e=>{dragging=false;try{cv.releasePointerCapture(e.pointerId);}catch(_){}};
     cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
   }
-  // snCanvas: horizontal drag → ±k σ (always non-negative k)
-  bindHorizontal('snCanvas','snK',(px,py,w)=>{
-    const lo=-4,hi=4;return Math.abs(lo+px/w*(hi-lo));
-  });
   // snMorphCanvas: horizontal drag → progress (0..100) of the "standardize" morph.
   // Cancel any in-flight auto-animation first so the user's value isn't overwritten.
   (function(){
@@ -65,30 +61,6 @@ export function initGraphDrag(){
     // that pulling the curve inward = collapse toward the spike).
     return Math.max(0, Math.min(100, (1 - px/w)*100));
   });
-  // normalCanvas: two-handle drag for [a,b] — canvas draws x∈[-6,6]
-  bindTwoHandles('normalCanvas','nA','nB',(px,py,w)=>{
-    const lo=-6,hi=6;return lo+px/w*(hi-lo);
-  });
-  // testCanvas: horizontal drag → α (via critical boundary).
-  // We interpret the drag position as where the rejection boundary lies,
-  // and invert to an α value based on the currently-selected test type.
-  bindHorizontal('testCanvas','tA',(px,py,w)=>{
-    const lo = -4.5, hi = 4.5;
-    const x = lo + px / w * (hi - lo);
-    const tt = (document.getElementById('tType') || {}).value || 'two';
-    let alpha;
-    if(tt==='two'){ alpha = 2*(1-normCDF(Math.abs(x))); }
-    else if(tt==='right'){ alpha = 1-normCDF(x); }
-    else { alpha = normCDF(x); }
-    return Math.max(0.001, Math.min(0.2, alpha));
-  });
-  // errCanvas: horizontal drag on critical-z boundary → α
-  bindHorizontal('errCanvas','eA',(px,py,w)=>{
-    const lo = -4, hi = 8;
-    const xCrit = lo + px / w * (hi - lo);
-    return 1 - normCDF(xCrit);
-  });
-
   // snCanvas — drag X to set k
   bindHorizontal('snCanvas','snK',(px,py,w)=>{
     const xMin = -4, xMax = 4;

@@ -216,6 +216,43 @@
 </section>
 
 
+<!-- ============ QUICK START — どこから始める？ / Where do I start? ============ -->
+<section id="quick-start" class="reveal" style="padding-top:10px;padding-bottom:20px">
+  <div class="story-bridge" data-lang="ja" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+    <b>▼ 参考書のどこで止まった？</b><br>
+    順番に全部やる必要はないです。自分が「ここで手が止まった」ところから触ってみてください。同じところで止まった人、たくさんいます。<br>
+    <span style="margin-top:8px;display:inline-block">
+      <a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">正規分布って結局何？</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">標準化って何をしているの？</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">検定って結局どうやるの？</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">ベイズの定理が意味不明</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">中心極限定理がピンとこない</a>
+    </span><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">触ってみて「あ、そういうことか」が来たら、参考書に戻るとスッと読めるようになるはずです。</span>
+  </div>
+  <div class="story-bridge" data-lang="en" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+    <b>▼ Where did your textbook lose you?</b><br>
+    You don't have to go through everything in order. Jump straight to the concept that made you stop. You're not the only one who got stuck there.<br>
+    <span style="margin-top:8px;display:inline-block">
+      <a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What even is a normal distribution?</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What is standardization actually doing?</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">How do I actually run a test?</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">Bayes' theorem makes no sense</a>
+      <span style="color:var(--dim);margin:0 8px">|</span>
+      <a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">The Central Limit Theorem doesn't click</a>
+    </span><br>
+    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
+  </div>
+</section>
+
+
 <!-- ============ COLUMN PICKS ============ -->
 <section id="columns" class="reveal" style="padding-top:10px;padding-bottom:20px">
   <h2 class="sec-title" data-lang="ja" style="font-size:16px;margin-bottom:16px">コラム</h2>
@@ -287,8 +324,8 @@
   <div class="sec-tag">P1 / 標準正規分布</div>
   <h2 class="sec-title" data-lang="ja">標準正規分布 <span class="sec-sub">&#x2014; すべてのはじまり</span></h2>
   <h2 class="sec-title" data-lang="en">Standard Normal <span class="sec-sub">&#x2014; The Origin of Everything</span></h2>
-  <div class="story-bridge" data-lang="ja">統計のすべてを支配する<b>あの曲線</b>から始めよう&#x2014;&#x2014;<span class="next">標準正規分布</span>。中心極限定理（CLT）も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
-  <div class="story-bridge" data-lang="en">Let's start with the <b>curve</b> that dominates all of statistics &#x2014; the <span class="next">standard normal</span>. The Central Limit Theorem (CLT), hypothesis testing, confidence intervals &#x2014; everything circles back here. <b>Touch</b> the bell curve first.</div>
+  <div class="story-bridge" data-lang="ja">統計のすべてを支配する<b>あの曲線</b>から始めよう&#x2014;&#x2014;<span class="next">標準正規分布</span>。中心極限定理も仮説検定も信頼区間も、すべてここに帰ってくる。まずはベルカーブを<b>触って</b>みよう。</div>
+  <div class="story-bridge" data-lang="en">Let's start with the <b>curve</b> that dominates all of statistics &#x2014; the <span class="next">standard normal</span>. The Central Limit Theorem, hypothesis testing, confidence intervals &#x2014; everything circles back here. <b>Touch</b> the bell curve first.</div>
   <p class="sec-desc" data-lang="ja">
     ぶっちゃけ <b>この曲線ひとつ</b>がなければ、
     この先に出てくる検定も、信頼区間も、t分布も、回帰分析も、<b>ぜんぶ成立しない</b>。<br>
@@ -766,7 +803,7 @@
 <li><b>Step 1:</b> λ=3 → 平均3回の事象。0〜6回あたりに集中している。グラフ左上の「E[X] = Var[X] = λ = 3.00」で平均=分散を確認。</li>
 <li><b>Step 2:</b> λ を <b>1</b> に → ピークが左端に寄り、0回が最頻値。めったに起きない事象。</li>
 <li><b>Step 3:</b> λ を <b>10</b> に → ベル型に近づく。正規分布の面影が見えてくる。</li>
-<li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ正規分布の形。λ が大きくなると正規分布で近似できる（CLTの効果）。</li>
+<li><b>Step 4:</b> λ を <b>20</b> まで上げる → ほぼ正規分布の形。λ が大きくなると正規分布で近似できる（中心極限定理の効果）。</li>
 </ol>
 </div>
 <div class="guided-steps" data-lang="en">
@@ -775,7 +812,7 @@
 <li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6. Check "E[X] = Var[X] = λ = 3.00" at the top-left.</li>
 <li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
 <li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
-<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (CLT at work).</li>
+<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (Central Limit Theorem at work).</li>
 </ol>
 </div>
 <!-- @panel:morep_poisson -->
@@ -921,7 +958,7 @@
     </p>
     <p data-lang="en" class="cat-preview-desc">
       Probability and distributions are locked in. Next up: <b>inferring population truths from samples</b>.<br>
-      The <b>CLT</b> guarantees sample means go normal, the <b>LLN</b> says they converge to the truth.
+      The <b>Central Limit Theorem</b> guarantees sample means go normal, the <b>Law of Large Numbers</b> says they converge to the truth.
       Then <b>confidence intervals</b> (how precise?) and <b>hypothesis tests</b> (is there a difference?),
       capped by the <b>t, χ², F</b> trio for the real world where σ is unknown.
     </p>
@@ -1031,8 +1068,8 @@
   <h2 class="sec-title" data-lang="ja">大数の法則 <span class="sec-sub">— 試行を重ねれば真値に近づく</span></h2>
   <h2 class="sec-title" data-lang="en">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
 
-  <div class="story-bridge" data-lang="ja">CLT で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。CLT が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
-  <div class="story-bridge" data-lang="en">CLT showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. CLT describes the <i>shape</i>; LLN says <b>the center won't run away</b>.</div>
+  <div class="story-bridge" data-lang="ja">中心極限定理で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。中心極限定理が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
+  <div class="story-bridge" data-lang="en">The Central Limit Theorem showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. The Central Limit Theorem describes the <i>shape</i>; the Law of Large Numbers says <b>the center won't run away</b>.</div>
   <p class="sec-desc" data-lang="ja">
     コイン投げで最初の10回連続で表が出た — これ、別に珍しいことじゃない。
     でも <b>1万回</b>投げたら、表の割合はほぼ <b>ぴったり 0.5</b> に収まる。<br>
@@ -1340,7 +1377,7 @@
     ここでは <b>① 区間推定</b> → <b>② 1標本検定</b> → <b>③ 2標本検定</b> の順に触っていく。平均のときと何が同じで何が違うのか、比べながら進めると整理しやすい。
   </p>
   <p class="sec-desc" data-lang="en">
-    A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the CLT).<br>
+    A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the Central Limit Theorem).<br>
     We'll work through <b>① interval estimation</b> → <b>② one-sample test</b> → <b>③ two-sample test</b>. Compare each step with what you learned for means — spotting the similarities makes the differences easy to absorb.
   </p>
 
@@ -1616,7 +1653,7 @@
     Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
     <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br>
-    <span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
+    <span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The Central Limit Theorem is quietly doing the work under the hood.</span>
   </p>
   <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">

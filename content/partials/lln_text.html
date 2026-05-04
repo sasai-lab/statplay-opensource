@@ -43,14 +43,14 @@
 <h3>// 「ギャンブラーの誤謬」に注意</h3>
 <p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
 
-<h3>// LLN と CLT の違い — ここ、試験に出る</h3>
+<h3>// LLN と 中心極限定理の違い — ここ、試験に出る</h3>
 <table>
-<tr><th></th><th>LLN（大数の法則）</th><th>CLT（中心極限定理）</th></tr>
+<tr><th></th><th>LLN（大数の法則）</th><th>中心極限定理</th></tr>
 <tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
 <tr><td>一言で</td><td>「どこに向かうか」</td><td>「途中でどう散らばるか」</td></tr>
 <tr><td>必要な条件</td><td>平均が存在すること</td><td>平均と分散が存在すること</td></tr>
 </table>
-<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、CLT が「ゴールまでの道の形」を教えてくれる。</p>
+<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、中心極限定理が「ゴールまでの道の形」を教えてくれる。</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Why this theorem is statistics' "license to operate"</h3>
@@ -65,14 +65,14 @@
 <h3>// Watch out for the gambler's fallacy</h3>
 <p>Five heads in a row doesn't make tails more likely on the sixth flip — it's still 0.5. The LLN doesn't say "the next one will balance things out." It says "over thousands of flips, the proportion converges to 0.5." Individual trials remain random.</p>
 
-<h3>// LLN vs. CLT — this comes up in exams</h3>
+<h3>// LLN vs. Central Limit Theorem — this comes up in exams</h3>
 <table>
-<tr><th></th><th>LLN (Law of Large Numbers)</th><th>CLT (Central Limit Theorem)</th></tr>
+<tr><th></th><th>LLN (Law of Large Numbers)</th><th>Central Limit Theorem</th></tr>
 <tr><td>About what?</td><td>The mean's <b>value</b> approaches the truth</td><td>The mean's <b>distribution shape</b> approaches normal</td></tr>
 <tr><td>One-liner</td><td>"Where it's heading"</td><td>"How it spreads along the way"</td></tr>
 <tr><td>Requirement</td><td>The mean must exist</td><td>Both mean and variance must exist</td></tr>
 </table>
-<p>In short: the LLN tells you the destination; the CLT tells you the shape of the road.</p>
+<p>In short: the LLN tells you the destination; the Central Limit Theorem tells you the shape of the road.</p>
 </div>
 <div data-lang="ja" class="misconception-box">
 <h3>// よくある誤解</h3>
@@ -81,8 +81,8 @@
 <p>LLN が言っているのは"割合"が 0.5 に近づくこと。回数の<b>差</b>（|表の回数 − 50|）はむしろ広がることがある。100回で48回（割合48%、差2）、10000回で4950回（割合49.5%、差50）。割合は近づいたけど差は広がっている。</p>
 </div>
 <div class="misc-item">
-<b>❌「LLN があれば CLT は要らない」</b>
-<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが CLT。両方必要。</p>
+<b>❌「大数の法則があれば中心極限定理は要らない」</b>
+<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが中心極限定理。両方必要。</p>
 </div>
 <div class="misc-item">
 <b>❌「どんな分布でも LLN は成り立つ」</b>
@@ -96,8 +96,8 @@
 <p>The LLN says the proportion approaches 0.5, not the count. The absolute gap |heads − 50| can actually grow. 100 flips: 48 heads (48%, gap 2). 10,000 flips: 4,950 heads (49.5%, gap 50). The proportion got closer, but the gap widened.</p>
 </div>
 <div class="misc-item">
-<b>❌ "If you have the LLN, you don't need the CLT"</b>
-<p>The LLN only says "the mean approaches the truth." It can't answer "how precise is it?" or "what's the shape of the error?" — that's the CLT's job. You need both.</p>
+<b>❌ "If you have the LLN, you don't need the Central Limit Theorem"</b>
+<p>The LLN only says "the mean approaches the truth." It can't answer "how precise is it?" or "what's the shape of the error?" — that's the Central Limit Theorem's job. You need both.</p>
 </div>
 <div class="misc-item">
 <b>❌ "The LLN works for any distribution"</b>
@@ -109,14 +109,14 @@
 <ul>
 <li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
 <li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
-<li><b>LLN vs CLT の区別</b>：「分布の形について述べている定理は？」→ CLT</li>
+<li><b>LLN vs 中心極限定理の区別</b>：「分布の形について述べている定理は？」→ 中心極限定理</li>
 </ul>
 </div>
 <div data-lang="en" class="exam-note">
 <h3>// How it shows up in exams</h3>
 <ul>
 <li><b>Chebyshev's inequality calculation</b>: "σ²=4, n=100. Upper bound for P(|X̄−μ| ≥ 1)?" → 4/(100×1) = 0.04</li>
-<li><b>True/false</b>: "The theorem guaranteeing sample mean convergence is (a) LLN (b) CLT" → (a)</li>
-<li><b>LLN vs. CLT distinction</b>: "Which theorem describes the distribution's shape?" → CLT</li>
+<li><b>True/false</b>: "The theorem guaranteeing sample mean convergence is (a) LLN (b) Central Limit Theorem" → (a)</li>
+<li><b>LLN vs. Central Limit Theorem distinction</b>: "Which theorem describes the distribution's shape?" → 中心極限定理</li>
 </ul>
 </div>

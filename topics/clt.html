@@ -6,7 +6,7 @@
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta name="description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。">
+<meta name="description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。">
 <meta name="keywords" content="中心極限定理, CLT, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ">
 <meta name="author" content="Sasai Lab">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="StatPlay">
 <meta property="og:title" content="中心極限定理を目で見てイメージを掴む">
-<meta property="og:description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。">
+<meta property="og:description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。">
 <meta property="og:url" content="https://statplay.sasailab.com/topics/clt.html">
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 <meta property="og:image:alt" content="StatPlay — 中心極限定理を目で見てイメージを掴む">
@@ -28,7 +28,7 @@
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="中心極限定理を目で見てイメージを掴む">
-<meta name="twitter:description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。">
+<meta name="twitter:description" content="歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。">
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
 <link rel="manifest" href="../manifest.webmanifest">
@@ -47,7 +47,7 @@
     {
       "@type": "LearningResource",
       "name": "中心極限定理を目で見てイメージを掴む",
-      "description": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。",
+      "description": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。",
       "inLanguage": "ja",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
@@ -99,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">全トピック</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">確率分布</span>
+        <a href="./stdnorm.html">標準正規分布</a>
+        <a href="./normal.html">正規分布と標準化</a>
+        <a href="./prob.html">確率の基本法則</a>
+        <a href="./bayes.html">ベイズの定理</a>
+        <a href="./morep.html">二項・ポアソン・指数分布</a>
+        <span class="topic-dd-cat">推測統計</span>
+        <a href="./clt.html" class="current">中心極限定理</a>
+        <a href="./lln.html">大数の法則</a>
+        <a href="./ci.html">信頼区間</a>
+        <a href="./test.html">仮説検定</a>
+        <a href="./proptest.html">母比率の検定と推定</a>
+        <a href="./dists.html">三大検定分布</a>
+        <a href="./chitest.html">カイ二乗検定</a>
+        <a href="./anova.html">分散分析（ANOVA）</a>
+        <span class="topic-dd-cat">モデリング</span>
+        <a href="./corr.html">相関係数</a>
+        <a href="./reg.html">単回帰分析</a>
+        <a href="./mreg.html">重回帰分析</a>
+      </div>
+    </div>
     <a href="../en/topics/clt.html" hreflang="en" rel="alternate">EN</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>
@@ -109,7 +136,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">中心極限定理を目で見てイメージを掴む</a></h1>
-  <p class="topic-lead">歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。</p>
+  <p class="topic-lead">歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。</p>
   <section class="reveal in" id="clt">
 
 <div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
@@ -179,10 +206,10 @@
 ・÷ σ/√n：ズレを標準誤差（SE）で"標準化"する → 「σ何個分ずれてるか」に変換<br/>
 ・→d N(0,1)：n→∞ でこの値の分布が標準正規分布に近づく</p>
 <p><b>なぜこれで信頼区間も検定もぜんぶ作れるのか</b><br/>
-・CLT のおかげで「X̄ はだいたい N(μ, σ²/n) に従う」と言い切れる<br/>
+・中心極限定理のおかげで「X̄ はだいたい N(μ, σ²/n) に従う」と言い切れる<br/>
 ・信頼区間 X̄ ± 1.96·σ/√n は「X̄ が正規分布するから ±1.96σ で95%カバーできる」が根拠<br/>
-・検定の z = (X̄−μ₀)/(σ/√n) も、CLT があるから N(0,1) の表で判定できる<br/>
-・つまり CLT は「正規分布の道具が何にでも使える理由」</p>
+・検定の z = (X̄−μ₀)/(σ/√n) も、中心極限定理があるから N(0,1) の表で判定できる<br/>
+・つまり 中心極限定理は「正規分布の道具が何にでも使える理由」</p>
 </div>
 
 <div class="detail-section">
@@ -192,7 +219,7 @@
 ・指数分布（右に歪んでいる）を選んで n=5 → 平均の分布はまだ歪んでいる<br/>
 ・n=30 にする → もうかなりベル型。元の分布がどんなに歪んでいても、平均を取れば正規に近づく</p>
 <h3>// 「n ≥ 30 ならOK」は本当？</h3>
-<p>よく参考書に「n ≥ 30 なら CLT が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
+<p>よく参考書に「n ≥ 30 なら 中心極限定理が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
 <ul>
 <li>一様分布（左右対称）なら n=12 でもかなり正規に見える</li>
 <li>指数分布（強い歪み）なら n=40〜50 でようやく</li>
@@ -209,7 +236,7 @@
 <div class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
-<b>❌「CLT は元のデータが正規分布になると言っている」</b>
+<b>❌「中心極限定理は元のデータが正規分布になると言っている」</b>
 <p>元のデータの形は何も変わらない。正規分布に化けるのは「標本平均の分布」。指数分布から取ったデータは相変わらず右に歪んだまま。</p>
 </div>
 <div class="misc-item">
@@ -217,8 +244,8 @@
 <p>上に書いたとおり、元の分布次第。シミュレーションで分布と n を変えて実際に確かめるのが一番。</p>
 </div>
 <div class="misc-item">
-<b>❌「CLT があれば母集団の情報は要らない」</b>
-<p>CLT の成立には「分散 σ² が有限」という条件がある。コーシー分布（分散が無限）では標本平均を取っても正規分布に収束しない。</p>
+<b>❌「中心極限定理があれば母集団の情報は要らない」</b>
+<p>中心極限定理の成立には「分散 σ² が有限」という条件がある。コーシー分布（分散が無限）では標本平均を取っても正規分布に収束しない。</p>
 </div>
 </div>
 

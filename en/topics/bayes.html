@@ -99,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../../en/index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">All Topics</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">PROB</span>
+        <a href="./stdnorm.html">Standard Normal</a>
+        <a href="./normal.html">Normal Distribution</a>
+        <a href="./prob.html">Probability Rules</a>
+        <a href="./bayes.html" class="current">Bayes' Theorem</a>
+        <a href="./morep.html">Discrete & Exponential</a>
+        <span class="topic-dd-cat">INFER</span>
+        <a href="./clt.html">Central Limit Theorem</a>
+        <a href="./lln.html">Law of Large Numbers</a>
+        <a href="./ci.html">Confidence Interval</a>
+        <a href="./test.html">Hypothesis Testing</a>
+        <a href="./proptest.html">Proportion Test</a>
+        <a href="./dists.html">Three Test Distributions</a>
+        <a href="./chitest.html">Chi-Squared Test</a>
+        <a href="./anova.html">ANOVA</a>
+        <span class="topic-dd-cat">MODEL</span>
+        <a href="./corr.html">Correlation</a>
+        <a href="./reg.html">Simple Regression</a>
+        <a href="./mreg.html">Multiple Regression</a>
+      </div>
+    </div>
     <a href="../../topics/bayes.html" hreflang="ja" rel="alternate">日本語</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>

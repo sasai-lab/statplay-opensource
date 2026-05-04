@@ -99,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../../en/index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">All Topics</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">PROB</span>
+        <a href="./stdnorm.html">Standard Normal</a>
+        <a href="./normal.html">Normal Distribution</a>
+        <a href="./prob.html">Probability Rules</a>
+        <a href="./bayes.html">Bayes' Theorem</a>
+        <a href="./morep.html">Discrete & Exponential</a>
+        <span class="topic-dd-cat">INFER</span>
+        <a href="./clt.html">Central Limit Theorem</a>
+        <a href="./lln.html">Law of Large Numbers</a>
+        <a href="./ci.html">Confidence Interval</a>
+        <a href="./test.html">Hypothesis Testing</a>
+        <a href="./proptest.html">Proportion Test</a>
+        <a href="./dists.html" class="current">Three Test Distributions</a>
+        <a href="./chitest.html">Chi-Squared Test</a>
+        <a href="./anova.html">ANOVA</a>
+        <span class="topic-dd-cat">MODEL</span>
+        <a href="./corr.html">Correlation</a>
+        <a href="./reg.html">Simple Regression</a>
+        <a href="./mreg.html">Multiple Regression</a>
+      </div>
+    </div>
     <a href="../../topics/dists.html" hreflang="ja" rel="alternate">日本語</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>
@@ -123,7 +150,7 @@
     Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
     <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br/>
-<span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
+<span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The Central Limit Theorem is quietly doing the work under the hood.</span>
 </p>
 
 <div class="sim-layout">
@@ -304,7 +331,7 @@
 ・Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
 <p><b>χ² distribution: square Z's and add them up → "total spread"</b><br/>
 ・Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
-・As k grows the shape becomes more symmetric (a consequence of the CLT!)</p>
+・As k grows the shape becomes more symmetric (a consequence of the Central Limit Theorem!)</p>
 <p><b>t distribution: Z divided by an estimated σ → "normal when σ is unknown"</b><br/>
 ・t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
 ・Small k (little data) → unstable σ estimate → fatter tails<br/>

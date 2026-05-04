@@ -380,14 +380,14 @@ function chi(){
           }
           if (rejPts.length > 1) {
             const baseY = h - 22;
-            ctx.save(); ctx.globalAlpha = 0.35; ctx.fillStyle = '#ff4444';
+            ctx.save(); ctx.globalAlpha = 0.35; ctx.fillStyle = tc.magenta;
             ctx.beginPath();
             ctx.moveTo(rejPts[0][0], baseY);
             rejPts.forEach(p => ctx.lineTo(p[0], p[1]));
             ctx.lineTo(w, baseY);
             ctx.closePath(); ctx.fill(); ctx.restore();
           }
-          ctx.fillStyle = withAlpha('#ff4444', 0.8); ctx.font = '9px "Courier New"';
+          ctx.fillStyle = withAlpha(tc.magenta, 0.8); ctx.font = '9px "Courier New"';
           ctx.fillText('α=0.05', Math.min(xToPx(critX) + 2, w - 50), h - 26);
         }
         if (chi2Stat <= xmax) {
@@ -400,7 +400,7 @@ function chi(){
         const verdict = pVal < 0.05
           ? (isEn ? 'Biased (p<0.05)' : '偏りあり (p<0.05)')
           : (isEn ? 'Fair (within error)' : '偏りなし (誤差の範囲)');
-        ctx.fillStyle = pVal < 0.05 ? '#ff6666' : (tc.green || tc.cyan);
+        ctx.fillStyle = pVal < 0.05 ? tc.magenta : (tc.green || tc.cyan);
         ctx.font = 'bold 11px "Courier New"';
         ctx.fillText('χ²=' + chi2Stat.toFixed(2) + '  p=' + (pVal < 0.001 ? '<0.001' : pVal.toFixed(3)) + '  ' + verdict, 8, h - 32);
       }
@@ -536,14 +536,14 @@ function fdist(){
       }
       if (rejPts.length > 1) {
         const baseY = h - 22;
-        ctx.save(); ctx.globalAlpha = 0.35; ctx.fillStyle = '#ff4444';
+        ctx.save(); ctx.globalAlpha = 0.35; ctx.fillStyle = tc.magenta;
         ctx.beginPath();
         ctx.moveTo(rejPts[0][0], baseY);
         rejPts.forEach(p => ctx.lineTo(p[0], p[1]));
         ctx.lineTo(w, baseY);
         ctx.closePath(); ctx.fill(); ctx.restore();
       }
-      ctx.fillStyle = withAlpha('#ff4444', 0.8); ctx.font = '9px "Courier New"';
+      ctx.fillStyle = withAlpha(tc.magenta, 0.8); ctx.font = '9px "Courier New"';
       ctx.fillText('α/2=0.025', Math.min(xToPx(critF) + 2, w - 60), h - 26);
     }
     if (fStat <= xmax) {
@@ -556,7 +556,7 @@ function fdist(){
     const verdict = pVal < 0.05
       ? (isEn ? 'Significantly different' : 'ばらつきに有意差あり')
       : (isEn ? 'Similar spread' : 'ばらつきは同程度');
-    ctx.fillStyle = pVal < 0.05 ? '#ff6666' : (tc.green || tc.cyan);
+    ctx.fillStyle = pVal < 0.05 ? tc.magenta : (tc.green || tc.cyan);
     ctx.font = 'bold 11px "Courier New"';
     ctx.fillText('F=' + fStat.toFixed(2) + '  p=' + (pVal < 0.001 ? '<0.001' : pVal.toFixed(3)) + '  ' + verdict, 8, h - 32);
   }

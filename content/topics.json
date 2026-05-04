@@ -116,10 +116,10 @@
       "en_sidebar": "Central Limit Theorem",
       "ja_title": "中心極限定理を目で見てイメージを掴む",
       "en_title": "See the Central Limit Theorem in Action",
-      "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 (CLT) の威力をアニメーションで可視化する。",
+      "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。",
       "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
-      "ja_kw": "中心極限定理, CLT, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ",
-      "en_kw": "central limit theorem, CLT, sample mean, convergence to normal, inferential statistics, sample size",
+      "ja_kw": "中心極限定理, 中心極限定理, 標本平均, 正規分布への収束, 統計検定2級, 推測統計, 標本サイズ",
+      "en_kw": "central limit theorem, 中心極限定理, sample mean, convergence to normal, inferential statistics, sample size",
       "teaches": [
         "中心極限定理",
         "標本平均の分布",

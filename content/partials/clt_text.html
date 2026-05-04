@@ -8,10 +8,10 @@
 ・÷ σ/√n：ズレを標準誤差（SE）で"標準化"する → 「σ何個分ずれてるか」に変換<br/>
 ・→d N(0,1)：n→∞ でこの値の分布が標準正規分布に近づく</p>
 <p><b>なぜこれで信頼区間も検定もぜんぶ作れるのか</b><br/>
-・CLT のおかげで「X̄ はだいたい N(μ, σ²/n) に従う」と言い切れる<br/>
+・中心極限定理のおかげで「X̄ はだいたい N(μ, σ²/n) に従う」と言い切れる<br/>
 ・信頼区間 X̄ ± 1.96·σ/√n は「X̄ が正規分布するから ±1.96σ で95%カバーできる」が根拠<br/>
-・検定の z = (X̄−μ₀)/(σ/√n) も、CLT があるから N(0,1) の表で判定できる<br/>
-・つまり CLT は「正規分布の道具が何にでも使える理由」</p>
+・検定の z = (X̄−μ₀)/(σ/√n) も、中心極限定理があるから N(0,1) の表で判定できる<br/>
+・つまり 中心極限定理は「正規分布の道具が何にでも使える理由」</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Formula used here</h3>
@@ -23,10 +23,10 @@
 ・÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
 ・→d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
 <p><b>Why this unlocks confidence intervals and hypothesis tests</b><br/>
-・Thanks to the CLT, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
-・The confidence interval X̄ ± 1.96·σ/√n works because the CLT guarantees ±1.96σ covers 95%<br/>
-・The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the CLT<br/>
-・In short, the CLT is "the reason normal-distribution tools work on everything"</p>
+・Thanks to the Central Limit Theorem, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
+・The confidence interval X̄ ± 1.96·σ/√n works because the Central Limit Theorem guarantees ±1.96σ covers 95%<br/>
+・The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the Central Limit Theorem<br/>
+・In short, the Central Limit Theorem is "the reason normal-distribution tools work on everything"</p>
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// なぜ「平均を取る」と正規分布に化けるのか</h3>
@@ -36,7 +36,7 @@
 ・n=30 にする → もうかなりベル型。元の分布がどんなに歪んでいても、平均を取れば正規に近づく</p>
 
 <h3>// 「n ≥ 30 ならOK」は本当？</h3>
-<p>よく参考書に「n ≥ 30 なら CLT が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
+<p>よく参考書に「n ≥ 30 なら 中心極限定理が使える」と書いてあるけど、実はこれ、数学的な閾値じゃなくてただの経験則。</p>
 <ul>
 <li>一様分布（左右対称）なら n=12 でもかなり正規に見える</li>
 <li>指数分布（強い歪み）なら n=40〜50 でようやく</li>
@@ -58,7 +58,7 @@
 ・Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
 
 <h3>// Is "n ≥ 30" really enough?</h3>
-<p>Textbooks often say "n ≥ 30 is sufficient for the CLT." This isn't a mathematical threshold — it's a rule of thumb.</p>
+<p>Textbooks often say "n ≥ 30 is sufficient for the Central Limit Theorem." This isn't a mathematical threshold — it's a rule of thumb.</p>
 <ul>
 <li>Uniform distribution (symmetric): n = 12 already looks very normal</li>
 <li>Exponential (strong skew): n = 40–50 needed</li>
@@ -75,7 +75,7 @@
 <div data-lang="ja" class="misconception-box">
 <h3>// よくある誤解</h3>
 <div class="misc-item">
-<b>❌「CLT は元のデータが正規分布になると言っている」</b>
+<b>❌「中心極限定理は元のデータが正規分布になると言っている」</b>
 <p>元のデータの形は何も変わらない。正規分布に化けるのは「標本平均の分布」。指数分布から取ったデータは相変わらず右に歪んだまま。</p>
 </div>
 <div class="misc-item">
@@ -83,14 +83,14 @@
 <p>上に書いたとおり、元の分布次第。シミュレーションで分布と n を変えて実際に確かめるのが一番。</p>
 </div>
 <div class="misc-item">
-<b>❌「CLT があれば母集団の情報は要らない」</b>
-<p>CLT の成立には「分散 σ² が有限」という条件がある。コーシー分布（分散が無限）では標本平均を取っても正規分布に収束しない。</p>
+<b>❌「中心極限定理があれば母集団の情報は要らない」</b>
+<p>中心極限定理の成立には「分散 σ² が有限」という条件がある。コーシー分布（分散が無限）では標本平均を取っても正規分布に収束しない。</p>
 </div>
 </div>
 <div data-lang="en" class="misconception-box">
 <h3>// Common misconceptions</h3>
 <div class="misc-item">
-<b>❌ "The CLT says the data itself becomes normal"</b>
+<b>❌ "The Central Limit Theorem says the data itself becomes normal"</b>
 <p>The original data stays exactly the same shape. What becomes normal is the distribution of the sample mean. Data drawn from an exponential distribution is still right-skewed — only the average of many such draws approaches a bell.</p>
 </div>
 <div class="misc-item">
@@ -98,8 +98,8 @@
 <p>As noted above, it depends on the parent distribution. The simulator lets you test different distributions and sample sizes to see for yourself.</p>
 </div>
 <div class="misc-item">
-<b>❌ "With the CLT, you don't need to know anything about the population"</b>
-<p>The CLT requires finite variance (σ² < ∞). For the Cauchy distribution (which has infinite variance), the sample mean doesn't converge to normal no matter how large n gets.</p>
+<b>❌ "With the Central Limit Theorem, you don't need to know anything about the population"</b>
+<p>The Central Limit Theorem requires finite variance (σ² < ∞). For the Cauchy distribution (which has infinite variance), the sample mean doesn't converge to normal no matter how large n gets.</p>
 </div>
 </div>
 <div data-lang="ja" class="exam-note">

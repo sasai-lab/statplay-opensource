@@ -24,7 +24,7 @@
 
   gtag('config', 'G-KSDDV3KMKL');
 </script>
-<meta content="Can’t picture a 95% confidence interval? Struggling with the Central Limit Theorem? Interactive visualizations let you drag sliders to build statistical intuition — covering normal distributions, CLT, confidence intervals, hypothesis testing, t/χ²/F distributions, regression, and Bayes’ theorem." name="description"/>
+<meta content="Can’t picture a 95% confidence interval? Struggling with the Central Limit Theorem? Interactive visualizations let you drag sliders to build statistical intuition — covering normal distributions, the Central Limit Theorem, confidence intervals, hypothesis testing, t/χ²/F distributions, regression, and Bayes’ theorem." name="description"/>
 <meta content="statistics, visualization, confidence interval, hypothesis testing, central limit theorem, t-distribution, chi-squared distribution, F-distribution, regression, Bayes theorem, interactive learning" name="keywords"/>
 <meta content="Sasai Lab" name="author"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
@@ -198,6 +198,26 @@
     Once "oh, that's what it means" lands, <b>go back to your textbook</b> with confidence. That's the whole point.
   </div>
 </section>
+<!-- ============ QUICK START — どこから始める？ / Where do I start? ============ -->
+<section class="reveal" id="quick-start" style="padding-top:10px;padding-bottom:20px">
+
+<div class="story-bridge" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<b>▼ Where did your textbook lose you?</b><br/>
+    You don't have to go through everything in order. Jump straight to the concept that made you stop. You're not the only one who got stuck there.<br/>
+<span style="margin-top:8px;display:inline-block">
+<a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What even is a normal distribution?</a>
+<span style="color:var(--dim);margin:0 8px">|</span>
+<a href="#ci" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What does "95% confidence" mean?</a>
+<span style="color:var(--dim);margin:0 8px">|</span>
+<a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">I don't get p-values</a>
+<span style="color:var(--dim);margin:0 8px">|</span>
+<a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">Bayes' theorem makes no sense</a>
+<span style="color:var(--dim);margin:0 8px">|</span>
+<a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">The Central Limit Theorem doesn't click</a>
+</span><br/>
+<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
+</div>
+</section>
 <!-- ============ COLUMN PICKS ============ -->
 <section class="reveal" id="columns" style="padding-top:10px;padding-bottom:20px">
 
@@ -249,7 +269,7 @@
 
 <h2 class="sec-title">Standard Normal <span class="sec-sub">— The Origin of Everything</span></h2>
 
-<div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. The Central Limit Theorem (CLT), hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
+<div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. The Central Limit Theorem, hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
 
 <p class="sec-desc">
     Honestly — <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br/>
@@ -601,7 +621,7 @@
 <li><b>Step 1:</b> λ=3 → average of 3 events. Most mass sits between 0 and 6. Check "E[X] = Var[X] = λ = 3.00" at the top-left.</li>
 <li><b>Step 2:</b> Lower λ to <b>1</b> → peak shifts to 0. Rare events dominate.</li>
 <li><b>Step 3:</b> Raise λ to <b>10</b> → starts looking bell-shaped. The normal is emerging.</li>
-<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (CLT at work).</li>
+<li><b>Step 4:</b> Push λ to <b>20</b> → nearly normal in shape. As λ grows, Poisson can be approximated by a normal distribution (Central Limit Theorem at work).</li>
 </ol>
 </div>
 <!-- @panel:morep_poisson -->
@@ -723,7 +743,7 @@
 
 <p class="cat-preview-desc">
       Probability and distributions are locked in. Next up: <b>inferring population truths from samples</b>.<br/>
-      The <b>CLT</b> guarantees sample means go normal, the <b>LLN</b> says they converge to the truth.
+      The <b>Central Limit Theorem</b> guarantees sample means go normal, the <b>Law of Large Numbers</b> says they converge to the truth.
       Then <b>confidence intervals</b> (how precise?) and <b>hypothesis tests</b> (is there a difference?),
       capped by the <b>t, χ², F</b> trio for the real world where σ is unknown.
     </p>
@@ -806,7 +826,7 @@
 
 <h2 class="sec-title">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
 
-<div class="story-bridge">CLT showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. CLT describes the <i>shape</i>; LLN says <b>the center won't run away</b>.</div>
+<div class="story-bridge">The Central Limit Theorem showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. The Central Limit Theorem describes the <i>shape</i>; the Law of Large Numbers says <b>the center won't run away</b>.</div>
 
 <p class="sec-desc">
     10 heads in a row at the start of a coin-flip? Not that weird.
@@ -1029,7 +1049,7 @@
 <div class="story-bridge">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas will click.</div>
 
 <p class="sec-desc">
-    A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the CLT).<br/>
+    A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the Central Limit Theorem).<br/>
     We'll work through <b>① interval estimation</b> → <b>② one-sample test</b> → <b>③ two-sample test</b>. Compare each step with what you learned for means — spotting the similarities makes the differences easy to absorb.
   </p>
 <div class="sim-layout">
@@ -1245,7 +1265,7 @@
     Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
     <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br/>
-<span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The CLT is quietly doing the work under the hood.</span>
+<span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The Central Limit Theorem is quietly doing the work under the hood.</span>
 </p>
 <div class="sim-layout">
 

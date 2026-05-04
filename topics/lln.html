@@ -99,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">全トピック</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">確率分布</span>
+        <a href="./stdnorm.html">標準正規分布</a>
+        <a href="./normal.html">正規分布と標準化</a>
+        <a href="./prob.html">確率の基本法則</a>
+        <a href="./bayes.html">ベイズの定理</a>
+        <a href="./morep.html">二項・ポアソン・指数分布</a>
+        <span class="topic-dd-cat">推測統計</span>
+        <a href="./clt.html">中心極限定理</a>
+        <a href="./lln.html" class="current">大数の法則</a>
+        <a href="./ci.html">信頼区間</a>
+        <a href="./test.html">仮説検定</a>
+        <a href="./proptest.html">母比率の検定と推定</a>
+        <a href="./dists.html">三大検定分布</a>
+        <a href="./chitest.html">カイ二乗検定</a>
+        <a href="./anova.html">分散分析（ANOVA）</a>
+        <span class="topic-dd-cat">モデリング</span>
+        <a href="./corr.html">相関係数</a>
+        <a href="./reg.html">単回帰分析</a>
+        <a href="./mreg.html">重回帰分析</a>
+      </div>
+    </div>
     <a href="../en/topics/lln.html" hreflang="en" rel="alternate">EN</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>
@@ -115,7 +142,7 @@
 <div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
 <h2 class="sec-title">大数の法則 <span class="sec-sub">— 試行を重ねれば真値に近づく</span></h2>
 
-<div class="story-bridge">CLT で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。CLT が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
+<div class="story-bridge">中心極限定理で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。中心極限定理が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
 
 <p class="sec-desc">
     コイン投げで最初の10回連続で表が出た — これ、別に珍しいことじゃない。
@@ -186,14 +213,14 @@
 <p>LLN が「n を大きくすれば標本平均は母平均に近づく」と保証してくれてるから、上のぜんぶが正当化される。地味だけど、ないと困る定理。</p>
 <h3>// 「ギャンブラーの誤謬」に注意</h3>
 <p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
-<h3>// LLN と CLT の違い — ここ、試験に出る</h3>
+<h3>// LLN と 中心極限定理の違い — ここ、試験に出る</h3>
 <table>
-<tr><th></th><th>LLN（大数の法則）</th><th>CLT（中心極限定理）</th></tr>
+<tr><th></th><th>LLN（大数の法則）</th><th>中心極限定理</th></tr>
 <tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
 <tr><td>一言で</td><td>「どこに向かうか」</td><td>「途中でどう散らばるか」</td></tr>
 <tr><td>必要な条件</td><td>平均が存在すること</td><td>平均と分散が存在すること</td></tr>
 </table>
-<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、CLT が「ゴールまでの道の形」を教えてくれる。</p>
+<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、中心極限定理が「ゴールまでの道の形」を教えてくれる。</p>
 </div>
 
 <div class="misconception-box">
@@ -203,8 +230,8 @@
 <p>LLN が言っているのは"割合"が 0.5 に近づくこと。回数の<b>差</b>（|表の回数 − 50|）はむしろ広がることがある。100回で48回（割合48%、差2）、10000回で4950回（割合49.5%、差50）。割合は近づいたけど差は広がっている。</p>
 </div>
 <div class="misc-item">
-<b>❌「LLN があれば CLT は要らない」</b>
-<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが CLT。両方必要。</p>
+<b>❌「大数の法則があれば中心極限定理は要らない」</b>
+<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが中心極限定理。両方必要。</p>
 </div>
 <div class="misc-item">
 <b>❌「どんな分布でも LLN は成り立つ」</b>
@@ -217,7 +244,7 @@
 <ul>
 <li><b>チェビシェフの不等式の計算</b>：「σ²=4, n=100 のとき P(|X̄−μ|≥1) の上限は？」→ 4/(100×1) = 0.04</li>
 <li><b>正誤判定</b>：「標本平均が母平均に収束することを保証する定理は（ア）大数の法則（イ）中心極限定理」→ ア</li>
-<li><b>LLN vs CLT の区別</b>：「分布の形について述べている定理は？」→ CLT</li>
+<li><b>LLN vs 中心極限定理の区別</b>：「分布の形について述べている定理は？」→ 中心極限定理</li>
 </ul>
 </div>
 

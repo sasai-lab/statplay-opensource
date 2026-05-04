@@ -99,8 +99,35 @@
 
 <nav id="mainNav">
   <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
+    <span class="bars"></span>
+  </button>
   <div class="nav-links" id="navLinks">
     <a href="../index.html">← StatPlay</a>
+    <div class="nav-dropdown topic-dropdown">
+      <button class="nav-cat-link topic-dd-toggle" type="button" aria-expanded="false">全トピック</button>
+      <div class="nav-dropdown-menu">
+        <span class="topic-dd-cat">確率分布</span>
+        <a href="./stdnorm.html">標準正規分布</a>
+        <a href="./normal.html">正規分布と標準化</a>
+        <a href="./prob.html">確率の基本法則</a>
+        <a href="./bayes.html">ベイズの定理</a>
+        <a href="./morep.html" class="current">二項・ポアソン・指数分布</a>
+        <span class="topic-dd-cat">推測統計</span>
+        <a href="./clt.html">中心極限定理</a>
+        <a href="./lln.html">大数の法則</a>
+        <a href="./ci.html">信頼区間</a>
+        <a href="./test.html">仮説検定</a>
+        <a href="./proptest.html">母比率の検定と推定</a>
+        <a href="./dists.html">三大検定分布</a>
+        <a href="./chitest.html">カイ二乗検定</a>
+        <a href="./anova.html">分散分析（ANOVA）</a>
+        <span class="topic-dd-cat">モデリング</span>
+        <a href="./corr.html">相関係数</a>
+        <a href="./reg.html">単回帰分析</a>
+        <a href="./mreg.html">重回帰分析</a>
+      </div>
+    </div>
     <a href="../en/topics/morep.html" hreflang="en" rel="alternate">EN</a>
     <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
   </div>
@@ -169,7 +196,7 @@
 <b>実験ガイド — ポアソン分布</b>
 <ol>
 <li><b>Step 1:</b> λ=1 → 0付近に集中した急降下の形。λ=5 → ベル型に近づく。</li>
-<li><b>Step 2:</b> λ を <b>20</b> まで上げる → 正規分布のベル型にそっくり（CLTの予告）。</li>
+<li><b>Step 2:</b> λ を <b>20</b> まで上げる → 正規分布のベル型にそっくり（中心極限定理の予告）。</li>
 <li><b>Step 3:</b> λ が平均でもあり分散でもある。λ=3 にしてグラフ左上の「E[X] = Var[X] = λ = 3.00」で確認。</li>
 </ol>
 </div>
@@ -263,7 +290,7 @@
 <ul>
 <li><b>二項 → ポアソン</b>：不良品率0.5%の工場で200個検査（n=200, p=0.005）→ λ=1 のポアソンで近似</li>
 <li><b>ポアソン ↔ 指数</b>：「1時間にλ回来る」のがポアソン、「次が来るまでの時間」が指数。同じ現象の表と裏</li>
-<li><b>二項 → 正規</b>：np ≥ 5 かつ n(1−p) ≥ 5 なら正規分布 N(np, np(1−p)) で近似できる（CLTの帰結）</li>
+<li><b>二項 → 正規</b>：np ≥ 5 かつ n(1−p) ≥ 5 なら正規分布 N(np, np(1−p)) で近似できる（中心極限定理の帰結）</li>
 </ul>
 </div>
 
