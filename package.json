@@ -1,6 +1,6 @@
 {
   "name": "statplay",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "description": "Interactive cyberpunk visualizer for introductory statistics — covers standard normal, 中心極限定理, confidence intervals, hypothesis testing, regression, and Bayes (includes the Japanese 統計検定2級 syllabus).",
   "private": true,
   "type": "module",
