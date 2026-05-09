@@ -1,7 +1,7 @@
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">群間の差</span>
@@ -28,7 +28,7 @@
       </div>
       <button class="btn" id="anovaGen"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
-    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" class="canvas-block" aria-busy="true"></canvas>
     <div class="info">
       <div><span>F</span> <strong id="anovaF">&#x2014;</strong></div>
       <div><span data-lang="ja">群間 df</span><span data-lang="en">Between df</span> <strong id="anovaDfB">&#x2014;</strong></div>

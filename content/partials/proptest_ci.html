@@ -1,6 +1,6 @@
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 母比率の区間推定</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2460; 母比率の区間推定</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
@@ -17,7 +17,7 @@
       </select>
     </div>
   </div>
-  <canvas id="ptCiCanvas" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" data-aria-label-en="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <canvas id="ptCiCanvas" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" data-aria-label-en="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" class="canvas-aspect-16-9" aria-busy="true"></canvas>
   <div class="info">
     <div><span data-lang="ja">標準誤差 SE</span><span data-lang="en">Standard error SE</span><strong id="ptCiSE">&#x2014;</strong></div>
     <div><span data-lang="ja">信頼区間 下限</span><span data-lang="en">CI lower bound</span><strong id="ptCiLo">&#x2014;</strong></div>

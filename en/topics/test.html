@@ -162,7 +162,7 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
 <li><b>Step 2:</b> Push z to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
 <li><b>Step 3:</b> Switch to "Right" test → same z=1.96 but rejection area is one-sided; p-value halves.</li>
 </ol>
@@ -170,7 +170,7 @@
 <!-- @panel:test_main -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic &amp; rejection region</h3>
+<h3 class="cy-head">▶ ① Basics: z-statistic &amp; rejection region</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
 <input aria-label="Observed z" id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
@@ -212,12 +212,12 @@
 <!-- @panel:test_err -->
 <div class="panel" id="test_err">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
+<h3 class="cy-head">▶ ② Two kinds of errors: α, β, power</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
       This panel is a <b>hands-on playground</b> for the α (Type I) / β (Type II) / power trade-off.<br/>
-      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a href="../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.
-      <br/><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
+      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a class="ln-cyan" href="../../en/columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.
+      <br/><i class="tip-line">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
 </p>
 <div class="controls">
 <div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
@@ -242,7 +242,7 @@
 </div>
 
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
-<a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up critical z/t values with live graph sync
+<a href="../../en/tables/index.html?dist=norm" class="ln-cyan">Interactive Distribution Tables</a> — look up critical z/t values with live graph sync
 </div>
 
 <!-- @panel:test_text -->
@@ -283,7 +283,7 @@
 <h3>// Connection to confidence intervals</h3>
 <p>μ₀ inside the 95% CI ⟺ fail to reject at α = 0.05. Same math, different lens: the CI shows "width," the test gives "yes/no." The conclusions always agree.</p>
 <h3>// The α-β trade-off</h3>
-<p>For a full breakdown of α, β, and power, see the <a href="../columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.</p>
+<p>For a full breakdown of α, β, and power, see the <a class="ln-cyan" href="../columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.</p>
 </div>
 
 <div class="misconception-box">
@@ -292,7 +292,7 @@
 <b>❌ "Small p-value = large effect"</b>
 <p>The p-value measures how surprising the data is, not how big the effect is. With n = 1,000,000 a tiny difference can yield p &lt; 0.001. Always check effect size separately.</p>
 </div>
-<p style="margin:10px 0 0">Misconceptions about errors and power ("not significant = no difference," "smaller α is always better," etc.) are collected in the FAQ of the <a href="../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.</p>
+<p class="mt-10">Misconceptions about errors and power ("not significant = no difference," "smaller α is always better," etc.) are collected in the FAQ of the <a class="ln-cyan" href="../../en/columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.</p>
 </div>
 
 <div class="pattern-note">
@@ -304,7 +304,7 @@
 <li><b>The 2×2 of errors</b>: rejecting a true H₀ is Type I, failing to reject a false H₀ is Type II. Wherever a test lives, this 2×2 table tags along</li>
 <li><b>Where power sits</b>: 1 − β = "the probability of detecting a real difference when one exists." It appears in this same shape, as the flip side of Type II error</li>
 </ul>
-<p class="pattern-companion" style="margin:10px 0 0">Look up critical values in the <a class="pattern-companion-link" href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
+<p class="pattern-companion pattern-companion--mt">Look up critical values in the <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=norm">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
 </div>
 
 <div class="related-topics">
@@ -344,28 +344,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -377,24 +377,43 @@
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html" class="current">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./test.html">Hypothesis Testing</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html" class="current">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./ci.html" rel="prev">← Prev</a>

@@ -179,18 +179,18 @@
 
 <!-- @panel:anova_sim -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ なぜt検定を繰り返してはいけないか</h3>
+<h3 class="cy-head cy-head--compact">▶ なぜt検定を繰り返してはいけないか</h3>
 
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<div class="drag-hint drag-hint--tight">
 <span>まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)×20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
 
 </div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="controls controls--tight">
 <button class="btn" id="mcRun"><span>▶ 100回</span></button>
 <button class="btn" id="mcRun1000"><span>▶ 1000回</span></button>
 <button class="btn magenta" id="mcReset"><span>↺ リセット</span></button>
 </div>
-<canvas aria-busy="true" aria-label="多重比較シミュレーション" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="多重比較シミュレーション" class="canvas-block" height="260" id="mcSimCanvas"></canvas>
 <div class="info">
 <div><span>試行回数</span> <strong id="mcTotal">0</strong></div>
 <div><span>偽陽性</span> <strong id="mcFP">0</strong></div>
@@ -204,7 +204,7 @@
 </div>
 <div class="sim-layout">
 <div class="guided-steps">
-<p style="margin:0 0 6px;font-size:12px;color:var(--dim)">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
+<p class="sim-warning">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
 <b>実験ガイド — F値を体感する</b>
 <ol>
 <li><b>Step 1:</b> 群間の差をゼロにする → F値が1付近に。全群が「同じ集団」のように見える。</li>
@@ -216,9 +216,9 @@
 
 <!-- @panel:anova_main -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ 群間分散 vs 群内分散 — F値をスライダーで体感</h3>
+<h3 class="cy-head cy-head--compact">▶ 群間分散 vs 群内分散 — F値をスライダーで体感</h3>
 
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 <span>群間の差</span>
@@ -245,7 +245,7 @@
 </div>
 <button class="btn" id="anovaGen"><span>↻ 再生成</span></button>
 </div>
-<canvas aria-busy="true" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" class="canvas-block" height="320" id="anovaCanvas"></canvas>
 <div class="info">
 <div><span>F</span> <strong id="anovaF">—</strong></div>
 <div><span>群間 df</span> <strong id="anovaDfB">—</strong></div>
@@ -267,14 +267,14 @@
 <div class="detail-section">
 <h3>// 分散分析表</h3>
 
-<table class="anova-tbl" id="anovaTable" style="width:100%;border-collapse:collapse;font-family:'Courier New',monospace;font-size:13px;margin:8px 0">
-<thead><tr style="color:var(--cyan);border-bottom:1px solid var(--cyan)">
-<th style="text-align:left;padding:4px 8px"><span>要因</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
+<table class="anova-tbl" id="anovaTable">
+<thead><tr>
+<th><span>要因</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
 </tr></thead>
 <tbody>
-<tr><td style="padding:4px 8px"><span>群間（B）</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
-<tr><td style="padding:4px 8px"><span>群内（W）</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
-<tr style="border-top:1px solid var(--dim)"><td style="padding:4px 8px"><span>全体</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
+<tr><td><span>群間（B）</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
+<tr><td><span>群内（W）</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
+<tr class="total"><td><span>全体</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 </div>
@@ -294,7 +294,7 @@
 ・df で割って「1自由度あたり」に揃えたのが MS<br/>
 ・<b>F ≈ 1</b> なら「差があるとは言えない」、<b>F が大きい</b>ほど「差がありそう」</p>
 <p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br/>
-<a href="../tables/index.html?dist=f" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
+<a class="ln-cyan" href="../tables/index.html?dist=f">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
 </div>
 
 <div class="detail-section">
@@ -389,28 +389,28 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 
 </span>
@@ -422,24 +422,43 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
 
 <script type="module" src="../js/main.js"></script>
 <nav class="side-toc" aria-label="トピック一覧">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">標準正規分布</a></li>
-    <li><a href="./normal.html">正規分布と標準化</a></li>
-    <li><a href="./prob.html">確率の基本法則</a></li>
-    <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
-    <li><a href="./clt.html">中心極限定理</a></li>
-    <li><a href="./lln.html">大数の法則</a></li>
-    <li><a href="./ci.html">信頼区間</a></li>
-    <li><a href="./test.html">仮説検定</a></li>
-    <li><a href="./proptest.html">母比率の検定と推定</a></li>
-    <li><a href="./dists.html">三大検定分布</a></li>
-    <li><a href="./chitest.html">カイ二乗検定</a></li>
-    <li><a href="./anova.html" class="current">分散分析（ANOVA）</a></li>
-    <li><a href="./corr.html">相関係数</a></li>
-    <li><a href="./reg.html">単回帰分析</a></li>
-    <li><a href="./mreg.html">重回帰分析</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./anova.html">分散分析（ANOVA）</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html" class="current">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
 </nav>
 </body>
 </html>

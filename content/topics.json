@@ -209,8 +209,8 @@
       "en_title": "Bayes' Theorem — Positive Predictive Value",
       "ja_desc": "有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。",
       "en_desc": "Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.",
-      "ja_lead": "答え：わずか 16.7%。「感度99%・特異度95%で陽性」が病気の確率は、医師の半数も外す。有病率を動かすだけで、その理由が見える。",
-      "en_lead": "Answer: just 16.7%. Even doctors get this question wrong half the time — and one slider, prevalence, explains why.",
+      "ja_lead": "答え：わずか 16.7%。医師の半数も外すこのクイズ、決め手は感度や特異度ではなく **有病率** にある。下で「1000人の町」の数字を追えば、その理由が目に見える。",
+      "en_lead": "Answer: just 16.7%. Even doctors get this question wrong half the time — and the deciding factor isn't sensitivity or specificity, but **prevalence**. Trace the numbers in the \"town of 1,000\" diagram below.",
       "ja_kw": "ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 条件付き確率",
       "en_kw": "Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives",
       "teaches": [
@@ -1069,7 +1069,14 @@
           "ja_why": "同じ z スコアを「単位の違うものを比べる翻訳機」として動かす姉妹コラム、偏差値を一段抽象化した姿で扱う",
           "en_why": "puts the same z-score to work as a universal translator across units — the sister column that lifts Hensachi one level up"
         }
-      ]
+      ],
+      "featured_topic": {
+        "slug": "stdnorm",
+        "ja_title": "「触って動かす」標準正規分布へ",
+        "en_title": "Drag the standard normal yourself",
+        "ja_why": "偏差値の元になる N(0,1) をスライダーで動かすと、z × 10 + 50 の翻訳が成り立つ瞬間が画面で追える",
+        "en_why": "Drag N(0,1) — the curve behind every Hensachi — and watch the moment z × 10 + 50 lines up on screen"
+      }
     },
     {
       "slug": "birthday",
@@ -1105,7 +1112,14 @@
           "ja_why": "「直感を裏切る確率」シリーズの別の代表例として動き、第 1 種・第 2 種の混乱と同じ系譜に並ぶ",
           "en_why": "another classic in the intuition-vs-probability series — moves along the same lineage as Type I/II confusion"
         }
-      ]
+      ],
+      "featured_topic": {
+        "slug": "prob",
+        "ja_title": "「触って動かす」確率の基本法則へ",
+        "en_title": "Drag the probability rules yourself",
+        "ja_why": "余事象 1 − P(全員違う) の組み立てをベン図と独立試行の上で動かすと、23 人で 50% を超える瞬間が面積として読める",
+        "en_why": "Stack 1 − P(all different) onto Venn diagrams and independent trials — and the 50% threshold at 23 people becomes a visible area"
+      }
     },
     {
       "slug": "standardization",
@@ -1156,7 +1170,14 @@
           "ja_why": "z スコアが日本独自の「偏差値」として日常に降りていく姿を追う姉妹コラム",
           "en_why": "follows the z-score as it descends into Japan's everyday Hensachi — the sister column"
         }
-      ]
+      ],
+      "featured_topic": {
+        "slug": "stdnorm",
+        "ja_title": "「触って動かす」標準正規分布へ",
+        "en_title": "Drag the standard normal yourself",
+        "ja_why": "z = (X − μ)/σ で単位を超えて重なる場面を、N(0,1) の上でスライダーを動かしながら確かめられる",
+        "en_why": "Slide N(0,1) yourself and watch z = (X − μ)/σ collapse different units onto a single scale"
+      }
     },
     {
       "slug": "income_prediction",
@@ -1197,7 +1218,14 @@
           "ja_why": "回帰係数の有意性を判断する場面で第 1 種・第 2 種の枠組みが必ず動き出す、判定のロジックを共有する姉妹コラム",
           "en_why": "the Type I/II framework kicks into motion every time regression coefficient significance is judged — the sister column that shares the decision logic"
         }
-      ]
+      ],
+      "featured_topic": {
+        "slug": "mreg",
+        "ja_title": "「触って動かす」重回帰分析へ",
+        "en_title": "Drag the multiple-regression engine yourself",
+        "ja_why": "年齢・性別・都道府県の 3 変数を同時に動かして偏回帰係数と交絡の制御を観察すると、コラムの議論が予測区間として目に見える",
+        "en_why": "Move age, gender, and prefecture together — partial coefficients and confounder control turn the column's argument into a visible prediction interval"
+      }
     },
     {
       "slug": "error_types",
@@ -1248,7 +1276,15 @@
           "ja_why": "確率の直感を裏切る古典コラムが動き、第 1 種・第 2 種の混乱と同じ系譜に並ぶ",
           "en_why": "the gateway intuition-vs-probability column in motion — moving along the same lineage as Type I/II confusion"
         }
-      ]
+      ],
+      "featured_topic": {
+        "slug": "test",
+        "anchor": "test_err",
+        "ja_title": "「触って動かす」α・β・検出力へ",
+        "en_title": "Drag the live α / β / power explorer",
+        "ja_why": "効果量 δ・α・n を同時に動かすと、整理した 2×2 が α と β の面積として画面で動き続ける",
+        "en_why": "Move effect size δ, α, and n together — the 2×2 you just sorted out now lives as α and β shifting in real time"
+      }
     }
   ],
   "title_translations": {

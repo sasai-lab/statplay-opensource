@@ -391,7 +391,7 @@ Normal approximation           Exponential</div>
 <div class="panel-title">One Phenomenon, Three Views — A Call Center Hour</div>
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
-<div class="controls" style="margin-bottom:12px">
+<div class="controls controls--mb-12">
 <div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
@@ -430,28 +430,28 @@ Normal approximation           Exponential</div>
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -463,24 +463,43 @@ Normal approximation           Exponential</div>
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html" class="current">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./morep.html">Discrete & Exponential</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html" class="current">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./bayes.html" rel="prev">← Prev</a>

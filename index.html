@@ -185,34 +185,34 @@
 <div class="hero">
   <canvas id="heroCanvas" aria-label="Animated particle background" aria-busy="true"></canvas>
   <h1 class="hero-title glitch" data-text="STATPLAY">STATPLAY</h1>
-  <div class="hero-sub" style="margin-bottom:32px">[ <span>PROBABILITY</span> → <span>INFERENCE</span> → <span>MODELING</span> ]</div>
-  <p data-lang="ja" style="max-width:680px;margin:0 auto 36px;color:var(--text);line-height:2;font-size:15px;word-break:keep-all;overflow-wrap:break-word">
+  <div class="hero-sub hero-sub--gap">[ <span>PROBABILITY</span> → <span>INFERENCE</span> → <span>MODELING</span> ]</div>
+  <p data-lang="ja" class="hero-lead hero-lead--ja">
     統計って、じつはめっちゃ面白い。<br>
     公式を暗記するやつじゃなくて、グラフで感じて「あ、そうだったのか！」と気づく学問だ。
   </p>
-  <p data-lang="en" style="max-width:680px;margin:0 auto 36px;color:var(--text);line-height:2;font-size:15px">
+  <p data-lang="en" class="hero-lead">
     Statistics is way more fun than it looks.<br>
     Forget rote formulas — here the graphs move on their own, and you just feel the math click.
   </p>
   <button class="hero-cta" id="heroStart"><span>▶ START</span></button>
-<p data-lang="ja" style="font-size:13px;color:var(--dim);margin:16px auto 0;max-width:480px;text-align:center;line-height:1.8">
+<p data-lang="ja" class="hero-tagline">
   式は追える。でも絵が浮かばない——そう感じたタイミングで来てください。
 </p>
-<p data-lang="en" style="font-size:13px;color:var(--dim);margin:16px auto 0;max-width:480px;text-align:center;line-height:1.8">
+<p data-lang="en" class="hero-tagline">
   Come here when your textbook makes sense — but nothing becomes a picture.
 </p>
 </div>
 
 
 <!-- ============ POSITIONING — このサイトの立ち位置 / What this site is for ============ -->
-<section class="reveal" style="padding-top:30px;padding-bottom:20px">
-  <div class="story-bridge" data-lang="ja" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<section class="reveal section-tight--lead">
+  <div class="story-bridge story-bridge--lead" data-lang="ja">
     <b>▼ このサイトの立ち位置</b><br>
     統計学を独習していて、参考書の数式を前に<b>「式は読める。でも何を見ているのかわからない」</b>で手が止まった人のための、最初の一歩。<br>
     ここは<b>直感を掴む場所</b>で、体系的な学習や計算演習は良質な参考書・問題集に任せる。95%信頼区間の"よくある誤解"も、t分布が正規分布から生える理由も、<b>スライダーを動かせば一発で見える</b>。<br>
     そこで「あ、こういうことか」が起きたら、自信を持って<b>参考書に戻ってください</b>。それがここの目的です。
   </div>
-  <div class="story-bridge" data-lang="en" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+  <div class="story-bridge story-bridge--lead" data-lang="en">
     <b>▼ What this site is for</b><br>
     If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back.<br>
     This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br>
@@ -222,111 +222,111 @@
 
 
 <!-- ============ QUICK START — どこから始める？ / Where do I start? ============ -->
-<section id="quick-start" class="reveal" style="padding-top:10px;padding-bottom:20px">
-  <div class="story-bridge" data-lang="ja" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<section id="quick-start" class="reveal section-tight">
+  <div class="story-bridge story-bridge--lead" data-lang="ja">
     <b>▼ 参考書のどこで止まった？</b><br>
     順番に全部やる必要はないです。「ここで手が止まった」ところから触ってみてください。同じところで止まった人、たくさんいます。<br>
-    <span style="margin-top:8px;display:inline-block">
-      <a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">正規分布って結局何？</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">標準化って何をしているの？</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">検定って結局どうやるの？</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">ベイズの定理が意味不明</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">中心極限定理がピンとこない</a>
+    <span class="hub-link-list">
+      <a href="#stdnorm">正規分布って結局何？</a>
+      <span class="sep">|</span>
+      <a href="#normal">標準化って何をしているの？</a>
+      <span class="sep">|</span>
+      <a href="#test">検定って結局どうやるの？</a>
+      <span class="sep">|</span>
+      <a href="#bayes">ベイズの定理が意味不明</a>
+      <span class="sep">|</span>
+      <a href="#clt">中心極限定理がピンとこない</a>
     </span><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">触ってみて「あ、そういうことか」が来たら、参考書に戻るとスッと読めるようになるはずです。</span>
+    <span class="hub-link-list-note">触ってみて「あ、そういうことか」が来たら、参考書に戻るとスッと読めるようになるはずです。</span>
   </div>
-  <div class="story-bridge" data-lang="en" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+  <div class="story-bridge story-bridge--lead" data-lang="en">
     <b>▼ Where did your textbook lose you?</b><br>
     You don't have to go through everything in order. Jump straight to the concept that made you stop. You're not the only one who got stuck there.<br>
-    <span style="margin-top:8px;display:inline-block">
-      <a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What even is a normal distribution?</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What is standardization actually doing?</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">How do I actually run a test?</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">Bayes' theorem makes no sense</a>
-      <span style="color:var(--dim);margin:0 8px">|</span>
-      <a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">The Central Limit Theorem doesn't click</a>
+    <span class="hub-link-list">
+      <a href="#stdnorm">What even is a normal distribution?</a>
+      <span class="sep">|</span>
+      <a href="#normal">What is standardization actually doing?</a>
+      <span class="sep">|</span>
+      <a href="#test">How do I actually run a test?</a>
+      <span class="sep">|</span>
+      <a href="#bayes">Bayes' theorem makes no sense</a>
+      <span class="sep">|</span>
+      <a href="#clt">The Central Limit Theorem doesn't click</a>
     </span><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
+    <span class="hub-link-list-note">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
   </div>
 </section>
 
 
 <!-- ============ COLUMN PICKS ============ -->
-<section id="columns" class="reveal" style="padding-top:10px;padding-bottom:20px">
-  <h2 class="sec-title" data-lang="ja" style="font-size:16px;margin-bottom:16px">コラム</h2>
-  <h2 class="sec-title" data-lang="en" style="font-size:16px;margin-bottom:16px">Columns</h2>
+<section id="columns" class="reveal section-tight">
+  <h2 class="sec-title sec-title--small" data-lang="ja">コラム</h2>
+  <h2 class="sec-title sec-title--small" data-lang="en">Columns</h2>
   <div data-lang="ja" class="col-intro">統計は数式だけ眺めていても絵が浮かばない。身近な「あるある」から入ると、公式の意味がすっと見えてくる。</div>
   <div data-lang="en" class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
-    <a href="columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">偏差値って何？ &mdash; 「上位○%」が3秒で見える &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">偏差値60と70の差はたった10。でもレア度は5倍。その正体をインタラクティブに掴む。</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">関連: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> &middot; <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> &middot; <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a></span>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--yellow)">
+    <a href="columns/deviation.html" class="col-card__title">偏差値って何？ &mdash; 「上位○%」が3秒で見える &rarr;</a><br>
+    <span class="col-card__desc">偏差値60と70の差はたった10。でもレア度は5倍。その正体をインタラクティブに掴む。</span>
+    <span class="col-card__related">関連: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a></span>
   </div>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--magenta)">
-    <a href="columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">誕生日のパラドックス &mdash; 23人で50%超え？ &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">23人集まれば誕生日が被る確率は50%超。直感を裏切る確率の世界をシミュレーションで体感。</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">関連: <a href="#prob" style="color:var(--cyan);text-decoration:none">prob</a> &middot; <a href="#morep" style="color:var(--cyan);text-decoration:none">morep</a> &middot; <a href="#chitest" style="color:var(--cyan);text-decoration:none">chitest</a></span>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--magenta)">
+    <a href="columns/birthday.html" class="col-card__title">誕生日のパラドックス &mdash; 23人で50%超え？ &rarr;</a><br>
+    <span class="col-card__desc">23人集まれば誕生日が被る確率は50%超。直感を裏切る確率の世界をシミュレーションで体感。</span>
+    <span class="col-card__related">関連: <a href="#prob">prob</a> &middot; <a href="#morep">morep</a> &middot; <a href="#chitest">chitest</a></span>
   </div>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--green,#0f6)">
-    <a href="columns/standardization.html" style="color:var(--green,#0f6);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">標準化って何？ &mdash; 世界中の「ふつう」を比べる翻訳機 &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">身長182cmとTOEIC 860点、どっちが「ふつう」から遠い？ Z=(X−μ)/σ で単位を超えて比較する方法を3分で掴む。</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">関連: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> &middot; <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> &middot; <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a> &middot; <a href="#lln" style="color:var(--cyan);text-decoration:none">lln</a> &middot; <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--green)">
+    <a href="columns/standardization.html" class="col-card__title">標準化って何？ &mdash; 世界中の「ふつう」を比べる翻訳機 &rarr;</a><br>
+    <span class="col-card__desc">身長182cmとTOEIC 860点、どっちが「ふつう」から遠い？ Z=(X−μ)/σ で単位を超えて比較する方法を3分で掴む。</span>
+    <span class="col-card__related">関連: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a> &middot; <a href="#lln">lln</a> &middot; <a href="#test">test</a> &middot; <a href="#ci">ci</a></span>
   </div>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--cyan)">
-    <a href="columns/income_prediction.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">年収予測 &mdash; 統計でどこまで当てられるか &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">年齢・性別・都道府県の3つだけで年収の「幅」が見える。重回帰分析の実践コラム。</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">関連: <a href="#reg" style="color:var(--cyan);text-decoration:none">reg</a> &middot; <a href="#mreg" style="color:var(--cyan);text-decoration:none">mreg</a> &middot; <a href="#corr" style="color:var(--cyan);text-decoration:none">corr</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--cyan)">
+    <a href="columns/income_prediction.html" class="col-card__title">年収予測 &mdash; 統計でどこまで当てられるか &rarr;</a><br>
+    <span class="col-card__desc">年齢・性別・都道府県の3つだけで年収の「幅」が見える。重回帰分析の実践コラム。</span>
+    <span class="col-card__related">関連: <a href="#reg">reg</a> &middot; <a href="#mreg">mreg</a> &middot; <a href="#corr">corr</a> &middot; <a href="#ci">ci</a></span>
   </div>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--yellow)">
-    <a href="columns/error_types.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">第一種・第二種の過誤って何が違うの？ &mdash; 2&times;2の表で全部見える &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">α・β・検出力・効果量・サンプルサイズ。2&times;2に置き直すと、過誤の混乱が一枚絵に収まる。</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">関連: <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a> &middot; <a href="#bayes" style="color:var(--cyan);text-decoration:none">bayes</a> &middot; <a href="#anova" style="color:var(--cyan);text-decoration:none">anova</a> &middot; <a href="#proptest" style="color:var(--cyan);text-decoration:none">proptest</a> &middot; <a href="#dists" style="color:var(--cyan);text-decoration:none">dists</a></span>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--yellow)">
+    <a href="columns/error_types.html" class="col-card__title">第一種・第二種の過誤って何が違うの？ &mdash; 2&times;2の表で全部見える &rarr;</a><br>
+    <span class="col-card__desc">α・β・検出力・効果量・サンプルサイズ。2&times;2に置き直すと、過誤の混乱が一枚絵に収まる。</span>
+    <span class="col-card__related">関連: <a href="#test">test</a> &middot; <a href="#ci">ci</a> &middot; <a href="#bayes">bayes</a> &middot; <a href="#anova">anova</a> &middot; <a href="#proptest">proptest</a> &middot; <a href="#dists">dists</a></span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
-    <a href="en/columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is a Deviation Value? &mdash; See "Top X%" in 3 Seconds &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> &middot; <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> &middot; <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a></span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
+    <a href="en/columns/deviation.html" class="col-card__title">What Is a Deviation Value? &mdash; See "Top X%" in 3 Seconds &rarr;</a><br>
+    <span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+    <span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a></span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--magenta)">
-    <a href="en/columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">The Birthday Paradox &mdash; 23 People, 50%+ Chance &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#prob" style="color:var(--cyan);text-decoration:none">prob</a> &middot; <a href="#morep" style="color:var(--cyan);text-decoration:none">morep</a> &middot; <a href="#chitest" style="color:var(--cyan);text-decoration:none">chitest</a></span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--magenta)">
+    <a href="en/columns/birthday.html" class="col-card__title">The Birthday Paradox &mdash; 23 People, 50%+ Chance &rarr;</a><br>
+    <span class="col-card__desc">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
+    <span class="col-card__related">Related: <a href="#prob">prob</a> &middot; <a href="#morep">morep</a> &middot; <a href="#chitest">chitest</a></span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--green,#0f6)">
-    <a href="en/columns/standardization.html" style="color:var(--green,#0f6);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is Standardization? &mdash; The Universal Translator for "Normal" &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> &middot; <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> &middot; <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a> &middot; <a href="#lln" style="color:var(--cyan);text-decoration:none">lln</a> &middot; <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--green)">
+    <a href="en/columns/standardization.html" class="col-card__title">What Is Standardization? &mdash; The Universal Translator for "Normal" &rarr;</a><br>
+    <span class="col-card__desc">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
+    <span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> &middot; <a href="#normal">normal</a> &middot; <a href="#clt">clt</a> &middot; <a href="#lln">lln</a> &middot; <a href="#test">test</a> &middot; <a href="#ci">ci</a></span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--cyan)">
-    <a href="en/columns/income_prediction.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Income Prediction &mdash; How Far Can Statistics Go? &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#reg" style="color:var(--cyan);text-decoration:none">reg</a> &middot; <a href="#mreg" style="color:var(--cyan);text-decoration:none">mreg</a> &middot; <a href="#corr" style="color:var(--cyan);text-decoration:none">corr</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--cyan)">
+    <a href="en/columns/income_prediction.html" class="col-card__title">Income Prediction &mdash; How Far Can Statistics Go? &rarr;</a><br>
+    <span class="col-card__desc">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
+    <span class="col-card__related">Related: <a href="#reg">reg</a> &middot; <a href="#mreg">mreg</a> &middot; <a href="#corr">corr</a> &middot; <a href="#ci">ci</a></span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--yellow)">
-    <a href="en/columns/error_types.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Type I vs Type II Errors &mdash; One 2&times;2 Table Makes It Click &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">α, β, power, and effect size all live on a single 2&times;2 table. Once you see it, the confusion disappears.</span>
-    <span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> &middot; <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a> &middot; <a href="#bayes" style="color:var(--cyan);text-decoration:none">bayes</a> &middot; <a href="#anova" style="color:var(--cyan);text-decoration:none">anova</a> &middot; <a href="#proptest" style="color:var(--cyan);text-decoration:none">proptest</a> &middot; <a href="#dists" style="color:var(--cyan);text-decoration:none">dists</a></span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
+    <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Makes It Click &rarr;</a><br>
+    <span class="col-card__desc">α, β, power, and effect size all live on a single 2&times;2 table. Once you see it, the confusion disappears.</span>
+    <span class="col-card__related">Related: <a href="#test">test</a> &middot; <a href="#ci">ci</a> &middot; <a href="#bayes">bayes</a> &middot; <a href="#anova">anova</a> &middot; <a href="#proptest">proptest</a> &middot; <a href="#dists">dists</a></span>
   </div>
 </section>
 
 <!-- ============ TOOL: DISTRIBUTION TABLES ============ -->
-<section id="dist-tables" class="reveal" style="padding-top:10px;padding-bottom:20px">
-  <h2 class="sec-title" data-lang="ja" style="font-size:16px;margin-bottom:16px">ツール</h2>
-  <h2 class="sec-title" data-lang="en" style="font-size:16px;margin-bottom:16px">Tools</h2>
-  <div data-lang="ja" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
-    <a href="tables/index.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">インタラクティブ確率分布表 &mdash; 正規・t・χ²・F &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">参考書の巻末にある4つの分布表を、グラフと同期させながら触れるツール。セルをクリックすると曲線上の位置がリアルタイムにハイライト。</span>
+<section id="dist-tables" class="reveal section-tight">
+  <h2 class="sec-title sec-title--small" data-lang="ja">ツール</h2>
+  <h2 class="sec-title sec-title--small" data-lang="en">Tools</h2>
+  <div data-lang="ja" class="col-card" style="--col-accent:var(--cyan)">
+    <a href="tables/index.html" class="col-card__title">インタラクティブ確率分布表 &mdash; 正規・t・χ²・F &rarr;</a><br>
+    <span class="col-card__desc">参考書の巻末にある4つの分布表を、グラフと同期させながら触れるツール。セルをクリックすると曲線上の位置がリアルタイムにハイライト。</span>
   </div>
-  <div data-lang="en" class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
-    <a href="en/tables/index.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Interactive Distribution Tables &mdash; Normal · t · χ² · F &rarr;</a><br>
-    <span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Four distribution tables from the back of your textbook, synced with live graphs. Click any cell and see its position highlighted on the curve in real time.</span>
+  <div data-lang="en" class="col-card" style="--col-accent:var(--cyan)">
+    <a href="en/tables/index.html" class="col-card__title">Interactive Distribution Tables &mdash; Normal · t · χ² · F &rarr;</a><br>
+    <span class="col-card__desc">Four distribution tables from the back of your textbook, synced with live graphs. Click any cell and see its position highlighted on the curve in real time.</span>
   </div>
 </section>
 
@@ -343,7 +343,7 @@
 
 
 <section id="stdnorm" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/stdnorm.html">&#9659; このトピックのページへ</a><a data-lang="en" href="en/topics/stdnorm.html">&#9659; Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/stdnorm.html">&#9659; このトピックのページへ</a><a data-lang="en" href="en/topics/stdnorm.html">&#9659; Dedicated page for this topic</a></div>
   <div class="sec-tag">P1 / 標準正規分布</div>
   <h2 class="sec-title" data-lang="ja">標準正規分布 <span class="sec-sub">&#x2014; すべてのはじまり</span></h2>
   <h2 class="sec-title" data-lang="en">Standard Normal <span class="sec-sub">&#x2014; The Origin of Everything</span></h2>
@@ -384,15 +384,15 @@
   </div>
   <!-- @panel:stdnorm_68 -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
-    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px;font-size:13px">
+    <h3 data-lang="ja" class="cy-head">&#x25B6; 「68 - 95 - 99.7」は暗記じゃなくて見て分かる</h3>
+    <h3 data-lang="en" class="cy-head">&#x25B6; "68 - 95 - 99.7" &#x2014; no memorization, just see it</h3>
+    <p data-lang="ja" class="sec-desc sec-desc--tight-sm">
       スライダーで幅 <code>k</code> を伸び縮みさせると、青く塗られた面積がそのまま"確率"。
       &#xB1; 1&#x03C3; ですでに約7割、&#xB1; 2&#x03C3; で約95%、&#xB1; 3&#x03C3; でほぼ全部。<br>
       <b>z = 1.96</b> という数字に見覚えがあれば、それは"両側5%"の臨界値。
       検定も信頼区間もこの 1.96 から出発する &#x2014; それくらい、この曲線が主役なのだ。
     </p>
-    <p class="sec-desc" data-lang="en" style="margin-bottom:14px;font-size:13px">
+    <p data-lang="en" class="sec-desc sec-desc--tight-sm">
       Slide the width <code>k</code>; the blue-filled area IS the probability.
       &#xB1; 1&#x03C3; already covers ~68%, &#xB1; 2&#x03C3; is ~95%, &#xB1; 3&#x03C3; is nearly everything.<br>
       That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value &#x2014; hypothesis tests and confidence intervals all start there.
@@ -436,14 +436,14 @@
   </div>
   <!-- @panel:stdnorm_morph -->
 <div class="panel" data-autorun="snAnim">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
-    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+    <h3 data-lang="ja" class="cy-head">&#x25B6; 正規分布、ぜんぶ"あの一本"に化ける瞬間</h3>
+    <h3 data-lang="en" class="cy-head">&#x25B6; Watch every normal collapse onto "that one curve"</h3>
+    <p data-lang="ja" class="sec-desc sec-desc--tight">
       身長、IQ、血圧の測定値、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
       でも <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
       スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
     </p>
-    <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+    <p data-lang="en" class="sec-desc sec-desc--tight">
       Height, IQ, blood pressure readings, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
       Yet apply <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> and they all snap onto <b>that pink curve</b>.<br>
       It auto-plays on scroll (&#x25B6; to replay). That's why every statistical formula needs only one standard-normal table.
@@ -473,13 +473,13 @@
 <!-- /@panel -->
   </div>
 
-  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+  <div class="learn-more-link">
     <a data-lang="ja" href="topics/stdnorm.html">&#x1F4D6; 数式・詳細解説を読む &#x2192; 個別ページへ</a>
     <a data-lang="en" href="en/topics/stdnorm.html">&#x1F4D6; Formulas &amp; detailed explanation &#x2192; dedicated page</a>
   </div>
-  <div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
-    <a data-lang="ja" href="columns/standardization.html" style="color:var(--green,#0f6)">📊 コラム：標準化って何？ — 「ふつう」を比べる翻訳機 →</a>
-    <a data-lang="en" href="en/columns/standardization.html" style="color:var(--green,#0f6)">📊 Column: What Is Standardization? — The universal translator for "normal" →</a>
+  <div class="learn-more-link learn-more-link--col">
+    <a data-lang="ja" href="columns/standardization.html" class="ln-green">📊 コラム：標準化って何？ — 「ふつう」を比べる翻訳機 →</a>
+    <a data-lang="en" href="en/columns/standardization.html" class="ln-green">📊 Column: What Is Standardization? — The universal translator for "normal" →</a>
   </div>
   <div class="story-next" data-lang="ja"><span class="lbl">次は &#x2014;</span>正規分布そのものを扱う <span class="story-arrow">&#x25B8;</span> <a href="#normal">P2 正規分布</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT &#x2014;</span>the normal as a tool <span class="story-arrow">&#x25B8;</span> <a href="#normal">P2 Normal Distribution</a></div>
@@ -492,7 +492,7 @@
 
 
 <section id="normal" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/normal.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/normal.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/normal.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/normal.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P2 / 正規分布と標準化</div>
   <h2 class="sec-title" data-lang="ja">正規分布と標準化 <span class="sec-sub">— 平均と散らばりを操る</span></h2>
   <h2 class="sec-title" data-lang="en">Normal Distribution <span class="sec-sub">— Shaping Mean & Spread</span></h2>
@@ -509,7 +509,7 @@
     <b>165〜175cm の人は全体の何%？</b> → 標準化して z を計算すれば <b>約 59.6%</b> と分かる。
     偏差値、テストの点、測定誤差——だいたい正規で近似できるものは、<b>ぜんぶこの面積計算</b>で「〜%の人がこの範囲」が求まる。
     下のスライダーでは標準化済みのスケール（μ=0, σ=1 付近）で同じ原理を体感できる。
-    <br><i style="color:var(--dim)">Tip: グラフ上を直接ドラッグすると、近い方の <code>a</code>/<code>b</code> の境界を動かせる。</i>
+    <br><i class="tip-line">Tip: グラフ上を直接ドラッグすると、近い方の <code>a</code>/<code>b</code> の境界を動かせる。</i>
   </p>
   <p class="sec-desc" data-lang="en">
     The <b>general version</b> of the standard normal is <code>N(μ, σ²)</code>.
@@ -520,7 +520,7 @@
     Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
     The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
-    <br><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
+    <br><i class="tip-line">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
   </p>
   <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">
@@ -571,13 +571,13 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/normal.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/normal.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-  <div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
-    <a data-lang="ja" href="columns/deviation.html" style="color:var(--yellow)">📊 コラム：偏差値って何？ — 正規分布で「上位○%」が一瞬でわかる →</a>
-    <a data-lang="en" href="en/columns/deviation.html" style="color:var(--yellow)">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
+  <div class="learn-more-link learn-more-link--col">
+    <a data-lang="ja" href="columns/deviation.html" class="ln-yellow">📊 コラム：偏差値って何？ — 正規分布で「上位○%」が一瞬でわかる →</a>
+    <a data-lang="en" href="en/columns/deviation.html" class="ln-yellow">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
   </div>
 <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="#prob">P3 確率の基本法則</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
@@ -590,7 +590,7 @@
 
 
 <section id="prob" class="reveal">
-    <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/prob.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/prob.html">▸ Dedicated page for this topic</a></div>
+    <div class="topic-deep-link"><a data-lang="ja" href="topics/prob.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/prob.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P3 / 確率の基本法則</div>
   <h2 class="sec-title" data-lang="ja">確率の基本法則 <span class="sec-sub">— ベン図で直感をつかむ</span></h2>
   <h2 class="sec-title" data-lang="en">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
@@ -598,14 +598,14 @@
   <div class="story-bridge" data-lang="en">You've got the shape of the normal. Now let's step back to the <b>foundations</b> — the probability rules that make all of it work. <span class="next">Addition, multiplication, and conditional probability</span> visualized as overlapping areas.</div>
   <p class="sec-desc" data-lang="ja">
     加法定理、乗法定理、条件付き確率 — 公式を暗記する前に、面積で「見て」しまおう。<br>
-    <span style="color:var(--dim);font-size:var(--fs-xs)">記号メモ: ∪ は「または（和集合）」、∩ は「かつ（共通部分）」、P(A|B) は「B が起きた条件でのAの確率」</span><br>
+    <span class="symbol-note">記号メモ: ∪ は「または（和集合）」、∩ は「かつ（共通部分）」、P(A|B) は「B が起きた条件でのAの確率」</span><br>
     <b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> は「2つの円を重ねた面積から、重なりを引く」だけ。
     条件付き確率 P(A|B) は「B の円の中で A が占める割合」。<br>
     <b>独立ボタン</b>を押すと P(A∩B) = P(A)·P(B) に自動調整 — 独立ってこういうこと。
   </p>
   <p class="sec-desc" data-lang="en">
     Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br>
-    <span style="color:var(--dim);font-size:var(--fs-xs)">Symbol cheat-sheet: ∪ = "or" (union), ∩ = "and" (intersection), P(A|B) = "probability of A given B happened"</span><br>
+    <span class="symbol-note">Symbol cheat-sheet: ∪ = "or" (union), ∩ = "and" (intersection), P(A|B) = "probability of A given B happened"</span><br>
     <b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
     Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br>
     Press the <b>Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
@@ -614,13 +614,13 @@
     <b>具体例で考えてみよう</b><br>
     52枚のトランプから1枚引く。A = ハートが出る（13/52 = 0.25）、B = 絵札が出る（12/52 ≈ 0.23）。<br>
     A∩B = ハートの絵札（3/52 ≈ 0.06）。→ P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>。<br>
-    <span style="color:var(--dim)">独立の例：サイコロ2個。A = 1個目が偶数、B = 2個目が3以上。1個目の結果は2個目に影響しないので独立。P(A∩B) = 1/2 × 2/3 = 1/3。</span>
+    <span class="inline-dim">独立の例：サイコロ2個。A = 1個目が偶数、B = 2個目が3以上。1個目の結果は2個目に影響しないので独立。P(A∩B) = 1/2 × 2/3 = 1/3。</span>
   </div>
   <div class="example-box" data-lang="en">
     <b>Concrete example</b><br>
     Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br>
     A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br>
-    <span style="color:var(--dim)">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+    <span class="inline-dim">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
   </div>
   <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">
@@ -645,8 +645,8 @@
 
   <!-- @panel:prob_venn -->
 <div class="panel">
-    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="ja">&#x25B6; インタラクティブ・ベン図</h3>
-    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px" data-lang="en">&#x25B6; Interactive Venn Diagram</h3>
+    <h3 data-lang="ja" class="cy-head">&#x25B6; インタラクティブ・ベン図</h3>
+    <h3 data-lang="en" class="cy-head">&#x25B6; Interactive Venn Diagram</h3>
     <div class="controls">
       <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
         <input id="probPA" min="0.05" max="0.95" step="0.01" type="range" value="0.4" aria-label="P(A)">
@@ -672,13 +672,13 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/prob.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/prob.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-  <div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
-    <a data-lang="ja" href="columns/birthday.html" style="color:var(--magenta)">📊 コラム：誕生日のパラドックス — 確率の直感がどれだけ外れるか →</a>
-    <a data-lang="en" href="en/columns/birthday.html" style="color:var(--magenta)">📊 Column: The Birthday Paradox — How far off our probability intuition can be →</a>
+  <div class="learn-more-link learn-more-link--col">
+    <a data-lang="ja" href="columns/birthday.html" class="ln-magenta">📊 コラム：誕生日のパラドックス — 確率の直感がどれだけ外れるか →</a>
+    <a data-lang="en" href="en/columns/birthday.html" class="ln-magenta">📊 Column: The Birthday Paradox — How far off our probability intuition can be →</a>
   </div>
 <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="#bayes">P4 ベイズの定理</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P4 Bayes' Theorem</a></div>
@@ -691,7 +691,7 @@
 
 
 <section id="bayes" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/bayes.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/bayes.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/bayes.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/bayes.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P4 / ベイズの定理</div>
   <h2 class="sec-title" data-lang="ja">ベイズの定理 <span class="sec-sub">— 事後確率の逆転劇</span></h2>
   <h2 class="sec-title" data-lang="en">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
@@ -745,7 +745,7 @@
         <input type="range" id="bSpec" min="0.5" max="0.999" step="0.001" value="0.95" aria-label="Specificity">
       </div>
     </div>
-    <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" style="width:100%;display:block;height:380px" aria-busy="true"></canvas>
+    <canvas id="bayesCanvas" aria-label="Bayes theorem visualization" class="canvas-bayes" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">真陽性 TP（病気 &amp; 陽性）</span><span data-lang="en">True positives (sick &amp; tested +)</span><strong id="bTp">&#x2014;</strong></div>
       <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">&#x2014;</strong></div>
@@ -758,7 +758,7 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/bayes.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/bayes.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -773,7 +773,7 @@
 
 
 <section id="morep" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/morep.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/morep.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/morep.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/morep.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">P5 / 二項・ポアソン・指数分布</div>
   <h2 class="sec-title" data-lang="ja">二項分布・ポアソン分布・指数分布 <span class="sec-sub">— 数える世界の確率モデル</span></h2>
   <h2 class="sec-title" data-lang="en">Discrete & Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
@@ -925,7 +925,7 @@
   <div class="panel-title" data-lang="en">One Phenomenon, Three Views — A Call Center Hour</div>
   <div class="sec-bridge" data-lang="ja">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
   <div class="sec-bridge" data-lang="en">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
-  <div class="controls" style="margin-bottom:12px">
+  <div class="controls controls--mb-12">
     <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3" aria-label="Calls per hour lambda"><span class="val" id="ccLambdaVal">3.0</span></div>
   </div>
   <div class="cc-trio">
@@ -956,7 +956,7 @@
 </div>
 
 
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/morep.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/morep.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -999,7 +999,7 @@
 
 
 <section id="clt" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/clt.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/clt.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/clt.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/clt.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I1 / 中心極限定理</div>
   <h2 class="sec-title" data-lang="ja">中心極限定理 <span class="sec-sub">— なぜ正規分布は最強なのか</span></h2>
   <h2 class="sec-title" data-lang="en">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
@@ -1071,7 +1071,7 @@
 <!-- /@panel -->
 </div>
 
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/clt.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/clt.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1086,7 +1086,7 @@
 
 
 <section id="lln" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/lln.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/lln.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/lln.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/lln.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I2 / 大数の法則</div>
   <h2 class="sec-title" data-lang="ja">大数の法則 <span class="sec-sub">— 試行を重ねれば真値に近づく</span></h2>
   <h2 class="sec-title" data-lang="en">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
@@ -1146,7 +1146,7 @@
 <!-- /@panel -->
 </div>
 
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/lln.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/lln.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1161,7 +1161,7 @@
 
 
 <section id="ci" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/ci.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/ci.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/ci.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/ci.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I3 / 信頼区間</div>
   <h2 class="sec-title" data-lang="ja">信頼区間 <span class="sec-sub">— 95%の本当の意味</span></h2>
   <h2 class="sec-title" data-lang="en">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
@@ -1227,7 +1227,7 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/ci.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/ci.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1242,7 +1242,7 @@
 
 
 <section id="test" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/test.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/test.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/test.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/test.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I4 / 仮説検定</div>
   <h2 class="sec-title" data-lang="ja">仮説検定 <span class="sec-sub">— 棄却か、棄却できないか</span></h2>
   <h2 class="sec-title" data-lang="en">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
@@ -1265,7 +1265,7 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span style="color:var(--dim)">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
+      <li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span class="inline-dim">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
       <li><b>Step 2:</b> 「観測 z」スライダーを <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>
       <li><b>Step 3:</b> 検定タイプのドロップダウンを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>
     </ol>
@@ -1273,15 +1273,15 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
+      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
       <li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
       <li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but rejection area is one-sided; p-value halves.</li>
     </ol>
   </div>
 <!-- @panel:test_main -->
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 基本：z値と棄却域</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2460; 基本：z値と棄却域</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2460; Basics: z-statistic &amp; rejection region</h3>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">観測 z</span><span data-lang="en">Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
         <input type="range" id="tZ" min="-4" max="4" step="0.01" value="1.96" aria-label="Observed z">
@@ -1333,17 +1333,17 @@
 </div>
 <!-- @panel:test_err -->
 <div class="panel" id="test_err">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 2つの誤り：&#x03B1;・&#x03B2;・検出力</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; Two kinds of errors: &#x03B1;, &#x03B2;, power</h3>
-    <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+    <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2461; 2つの誤り：&#x03B1;・&#x03B2;・検出力</h3>
+    <h3 data-lang="en" class="cy-head">&#x25B6; &#x2461; Two kinds of errors: &#x03B1;, &#x03B2;, power</h3>
+    <p data-lang="ja" class="sec-desc sec-desc--tight">
       ここは &#x03B1;（第1種の誤り）/ &#x03B2;（第2種の誤り）/ 検出力 のトレードオフを<b>触って体感する場</b>。<br>
-      気になったら戻ってきてOK。深い概念整理（2&#x00D7;2マトリクス・&#x03B1; と &#x03B2; が「別の世界」の確率である理由など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2&#x00D7;2』コラム</a>でまとめています。
-      <br><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（&#x03B1; の境界）を直接動かせる。</i>
+      気になったら戻ってきてOK。深い概念整理（2&#x00D7;2マトリクス・&#x03B1; と &#x03B2; が「別の世界」の確率である理由など）は <a href="../columns/error_types.html" class="ln-cyan">『過誤の2&#x00D7;2』コラム</a>でまとめています。
+      <br><i class="tip-line">Tip: グラフ上を左右にドラッグすると、臨界値（&#x03B1; の境界）を直接動かせる。</i>
     </p>
-    <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+    <p data-lang="en" class="sec-desc sec-desc--tight">
       This panel is a <b>hands-on playground</b> for the &#x03B1; (Type I) / &#x03B2; (Type II) / power trade-off.<br>
-      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2&#x00D7;2 matrix, why &#x03B1; and &#x03B2; live in different worlds), see the <a href="../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2&#x00D7;2 table" column</a>.
-      <br><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (&#x03B1;).</i>
+      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2&#x00D7;2 matrix, why &#x03B1; and &#x03B2; live in different worlds), see the <a href="../../en/columns/error_types.html" class="ln-cyan">"Type I &amp; II in a 2&#x00D7;2 table" column</a>.
+      <br><i class="tip-line">Tip: drag horizontally on the chart to slide the critical boundary (&#x03B1;).</i>
     </p>
     <div class="controls">
       <div class="ctrl"><label><span data-lang="ja">効果量 &#x03B4;</span><span data-lang="en">Effect size &#x03B4;</span> = <span class="val" id="eDVal">2.0</span></label>
@@ -1366,7 +1366,7 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/test.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/test.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1381,7 +1381,7 @@
 
 
 <section id="proptest" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/proptest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/proptest.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/proptest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/proptest.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I5 / 母比率の検定と推定</div>
   <h2 class="sec-title" data-lang="ja">母比率の検定と推定 <span class="sec-sub">— 標本比率から母比率を探る</span></h2>
   <h2 class="sec-title" data-lang="en">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
@@ -1418,8 +1418,8 @@
   </div>
 <!-- @panel:proptest_ci -->
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; 母比率の区間推定</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2460; 母比率の区間推定</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2460; Confidence interval for a proportion</h3>
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">標本サイズ n</span><span data-lang="en">Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
@@ -1436,7 +1436,7 @@
       </select>
     </div>
   </div>
-  <canvas id="ptCiCanvas" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" data-aria-label-en="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <canvas id="ptCiCanvas" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" data-aria-label-en="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" class="canvas-aspect-16-9" aria-busy="true"></canvas>
   <div class="info">
     <div><span data-lang="ja">標準誤差 SE</span><span data-lang="en">Standard error SE</span><strong id="ptCiSE">&#x2014;</strong></div>
     <div><span data-lang="ja">信頼区間 下限</span><span data-lang="en">CI lower bound</span><strong id="ptCiLo">&#x2014;</strong></div>
@@ -1463,8 +1463,8 @@
   </div>
 <!-- @panel:proptest_sim -->
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b CI simulation</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2460;-b CI simulation</h3>
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">母比率 p（真の値）</span><span data-lang="en">True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
@@ -1481,11 +1481,11 @@
       </select>
     </div>
   </div>
-  <div class="controls" style="margin:8px 0">
+  <div class="controls controls--my-8">
     <button class="btn" id="ptCiSimRun"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Run</span></button>
     <button class="btn magenta" id="ptCiSimReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
   </div>
-  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" class="canvas-aspect-16-9" aria-busy="true"></canvas>
   <div class="info">
     <div><span data-lang="ja">生成数</span><span data-lang="en">Generated</span><strong id="ptCiSimMade">0</strong></div>
     <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage rate</span><strong id="ptCiSimCov">&#x2014;</strong></div>
@@ -1515,14 +1515,14 @@
   </div>
 <!-- @panel:proptest_test -->
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; 母比率の検定（1標本z検定）</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2461; One-sample z-test for a proportion</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2461; 母比率の検定（1標本z検定）</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2461; One-sample z-test for a proportion</h3>
 
-  <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+  <p data-lang="ja" class="sec-desc sec-desc--tight">
     母平均の検定でやったことと同じ流れ。帰無仮説 H&#x2080;: p = p&#x2080; を立てて、標本から計算した z が棄却域に入るかどうかを見るだけ。<br/>
     標準誤差の式が &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n) に変わるところだけ押さえれば、もう迷わないはず。
   </p>
-  <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+  <p data-lang="en" class="sec-desc sec-desc--tight">
     Same flow as testing a population mean. Set up H&#x2080;: p = p&#x2080;, compute z from the sample, and check whether it lands in the rejection region.<br/>
     The only twist is that the standard error becomes &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n). Nail that, and the rest is familiar.
   </p>
@@ -1583,14 +1583,14 @@
   </div>
 <!-- @panel:proptest_two -->
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2462; 2つの母比率の差の検定</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2462; Two-proportion z-test</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2462; 2つの母比率の差の検定</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2462; Two-proportion z-test</h3>
 
-  <p class="sec-desc" data-lang="ja" style="margin-bottom:14px">
+  <p data-lang="ja" class="sec-desc sec-desc--tight">
     「薬Aと薬B、どっちが効く？」「広告A vs B、クリック率に差はある？」&#x2500;&#x2500; そういう2群比較のための検定。<br/>
     H&#x2080;: p&#x2081; = p&#x2082; を仮定して<b>プール比率</b>で共通のSEを作るところがポイント。ここだけ押さえれば1標本と同じ。
   </p>
-  <p class="sec-desc" data-lang="en" style="margin-bottom:14px">
+  <p data-lang="en" class="sec-desc sec-desc--tight">
     "Drug A vs. Drug B &#x2014; which works better?" "Ad A vs. Ad B &#x2014; is the click-through rate really different?" This test is for comparing two groups.<br/>
     The key idea: under H&#x2080;: p&#x2081; = p&#x2082;, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
   </p>
@@ -1633,7 +1633,7 @@
 <!-- /@panel -->
 </div>
 
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/proptest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/proptest.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1648,7 +1648,7 @@
 
 
 <section id="dists" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/dists.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/dists.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/dists.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/dists.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I6 / t · χ² · F 分布</div>
   <h2 class="sec-title" data-lang="ja">三大検定分布 <span class="sec-sub">— t・χ²・F の素顔</span></h2>
   <h2 class="sec-title" data-lang="en">Three Test Distributions <span class="sec-sub">— Meet t, χ² & F</span></h2>
@@ -1691,11 +1691,11 @@
   
 <!-- @panel:dists_t -->
 <div class="panel" id="dists-t">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; t distribution</h3>
+      <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; t 分布</h3>
+      <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; t distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="cy">作り方:</b> t = Z / &#x221A;(&#x03C7;&#x00B2;&#x2096;/k) &#xFF0C; Z~N(0,1)&#x3002; <br>
-        <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br><span style="color:var(--dim);font-size:11px">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br>
+        <b class="cy">使いどころ:</b> 母分散未知の平均検定、回帰係数の t 値。<br><span class="ctrl-note">例：クラス30人の平均点が全国平均と違うか調べるとき。</span><br>
         <b class="cy">クセ:</b> 正規より裾が重い（外れ値に優しい）。df&#x2192;&#x221E; で N(0,1)。
       </div>
       <div class="dist-card" data-lang="en">
@@ -1703,27 +1703,27 @@
         <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br>
         <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df&#x2192;&#x221E;.
       </div>
-      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">サンプルサイズ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+      <div class="ctrl ctrl--mb-12"><label><span data-lang="ja">サンプルサイズ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="tNVal">5</span> <span class="ctrl-note">(df = <span id="tdVal">4</span>)</span></label>
         <input type="range" id="tN" min="3" max="100" value="5" aria-label="Sample size n">
       </div>
-      <div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
-        <span style="color:var(--dim)"><span data-lang="ja">信頼水準:</span><span data-lang="en">Confidence:</span></span>
+      <div class="conf-bar">
+        <span class="inline-dim"><span data-lang="ja">信頼水準:</span><span data-lang="en">Confidence:</span></span>
         <label><input type="radio" name="tConf" value="0.10"/> 90%</label>
         <label><input type="radio" name="tConf" value="0.05" checked/> 95%</label>
         <label><input type="radio" name="tConf" value="0.01"/> 99%</label>
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
-      <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" data-aria-label-en="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <canvas id="tCICanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="信頼区間の比較" data-aria-label-en="Confidence interval comparison" aria-busy="true"></canvas>
-      <div class="info" style="margin-top:6px">
+      <div class="drag-hint"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
+      <canvas id="tDistCanvas" aria-label="t分布の確率密度関数。自由度を変えると正規分布に近づく様子を確認できる" data-aria-label-en="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" class="canvas-block" aria-busy="true"></canvas>
+      <canvas id="tCICanvas" height="56" class="canvas-strip" aria-label="信頼区間の比較" data-aria-label-en="Confidence interval comparison" aria-busy="true"></canvas>
+      <div class="info info--mt-6">
         <div><span data-lang="ja">サンプルサイズ n</span><span data-lang="en">Sample size n</span> <strong id="tInfoN">5</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="tInfoDf">4</strong></div>
         <div><span data-lang="ja">信頼水準</span><span data-lang="en">Confidence</span> <strong id="tInfoConf">95%</strong></div>
-        <div><span data-lang="ja">t 臨界値</span><span data-lang="en">t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">&#x00B1;2.776</strong></div>
-        <div><span data-lang="ja">z 臨界値</span><span data-lang="en">z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">&#x00B1;1.960</strong></div>
+        <div><span data-lang="ja">t 臨界値</span><span data-lang="en">t critical</span> <strong id="tInfoTCrit" class="ln-cyan">&#x00B1;2.776</strong></div>
+        <div><span data-lang="ja">z 臨界値</span><span data-lang="en">z critical</span> <strong id="tInfoZCrit" class="ln-magenta">&#x00B1;1.960</strong></div>
         <div><span data-lang="ja">t / z 比</span><span data-lang="en">t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
       </div>
-      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+      <p class="dist-caption"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1753,11 +1753,11 @@
 </div>
 <!-- @panel:dists_chi -->
 <div class="panel" id="dists-chi">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
+      <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
+      <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規を k 個足して二乗和）。<br>
-        <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span style="color:var(--dim);font-size:11px">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
+        <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span class="ctrl-note">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
         <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
       </div>
       <div class="dist-card" data-lang="en">
@@ -1765,33 +1765,33 @@
         <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-      <div class="controls" style="gap:8px;margin-bottom:12px">
+      <div class="controls controls--gap-8">
         <div class="ctrl"><label><span data-lang="ja">試行回数 n = </span><span data-lang="en">Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
           <input type="range" id="chiRolls" min="12" max="300" value="60" aria-label="Rolls n">
         </div>
-        <div class="ctrl" style="min-width:auto">
-          <select id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px" aria-label="Die type">
+        <div class="ctrl ctrl--narrow">
+          <select id="chiDieType" class="select-magenta" aria-label="Die type">
             <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
             <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
           </select>
         </div>
         <button class="btn" id="diceRandom"><span data-lang="ja">&#x25B6; 振る</span><span data-lang="en">&#x25B6; Roll</span></button>
       </div>
-      <canvas id="diceBarCanvas" height="140" style="width:100%;height:140px;display:block" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
-      <div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+      <canvas id="diceBarCanvas" height="140" class="canvas-dice" aria-label="サイコロの出目分布" data-aria-label-en="Dice roll distribution" aria-busy="true"></canvas>
+      <div class="ctrl ctrl--my-12"><label>df (k) = <span class="val" id="chiVal">5</span></label>
         <input type="range" id="chiDf" min="1" max="30" value="5" aria-label="Degrees of freedom df">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
-      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" data-aria-label-en="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <div class="info" style="margin-top:6px">
+      <div class="drag-hint"><span data-lang="ja">&#x2194; グラフを左右にドラッグで df 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change df</span></div>
+      <canvas id="chiCanvas" aria-label="カイ二乗分布の確率密度関数。自由度による形状変化を確認できる" data-aria-label-en="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" class="canvas-block" aria-busy="true"></canvas>
+      <div class="info info--mt-6">
         <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="chiInfoN">60</strong></div>
         <div><span data-lang="ja">自由度 df</span><span data-lang="en">df</span> <strong id="chiInfoDf">5</strong></div>
-        <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" style="color:var(--magenta)">&#x2014;</strong></div>
+        <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" class="ln-magenta">&#x2014;</strong></div>
         <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="chiInfoP">&#x2014;</strong></div>
         <div><span data-lang="ja">判定</span><span data-lang="en">Verdict</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
       </div>
-      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
+      <p class="dist-caption"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="chiCanvas" data-title="&#x03C7;&#x00B2;分布" data-title-en="&#x03C7;&#x00B2; Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1820,11 +1820,11 @@
 </div>
 <!-- @panel:dists_f -->
 <div class="panel" id="dists-f">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F distribution</h3>
+      <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; F 分布</h3>
+      <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; F distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="ye">作り方:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) （2つの独立な &#x03C7;&#x00B2; の比）。<br>
-        <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
+        <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span class="ctrl-note">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
         <b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
       </div>
       <div class="dist-card" data-lang="en">
@@ -1832,27 +1832,27 @@
         <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+      <div class="ctrl ctrl--mb-4"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
         <input type="range" id="fSdA" min="1" max="20" value="8" aria-label="Group A standard deviation">
       </div>
-      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+      <div class="ctrl ctrl--mb-4"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
         <input type="range" id="fSdB" min="1" max="20" value="15" aria-label="Group B standard deviation">
       </div>
-      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
+      <div class="ctrl ctrl--mb-12"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span class="ctrl-note">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
         <input type="range" id="fGroupN" min="5" max="100" value="20" aria-label="Sample size n per group">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
-      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" data-aria-label-en="Variance comparison between two groups" aria-busy="true"></canvas>
-      <div class="info" style="margin-top:6px">
+      <div class="drag-hint"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" class="canvas-block" aria-busy="true"></canvas>
+      <canvas id="fGroupCanvas" height="56" class="canvas-strip" aria-label="2グループのばらつき比較" data-aria-label-en="Variance comparison between two groups" aria-busy="true"></canvas>
+      <div class="info info--mt-6">
         <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
         <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
         <div>df&#x2081;, df&#x2082; <strong id="fInfoDf">19, 19</strong></div>
-        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" class="ln-yellow">3.516</strong></div>
         <div><span data-lang="ja">F 臨界値</span><span data-lang="en">F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="fInfoP">0.005</strong></div>
       </div>
-      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+      <p class="dist-caption"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1860,7 +1860,7 @@
 <!-- /@panel -->
 </div>
   
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/dists.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/dists.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -1872,7 +1872,7 @@
 <!-- ============ CHI-SQUARED TEST ============ -->
 
 <section id="chitest" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/chitest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/chitest.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/chitest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/chitest.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I7 / カイ二乗検定</div>
   <h2 class="sec-title" data-lang="ja">カイ二乗検定 <span class="sec-sub">— ズレを数値化する</span></h2>
   <h2 class="sec-title" data-lang="en">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
@@ -1912,11 +1912,11 @@
 
 <!-- @panel:chitest_gof -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="drag-hint drag-hint--tight"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">有意水準 &#x03B1;</span>
@@ -1925,8 +1925,8 @@
         </label>
         <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05" aria-label="Significance alpha">
       </div>
-      <div class="ctrl" style="min-width:auto">
-        <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px" aria-label="Die type">
+      <div class="ctrl ctrl--narrow">
+        <select id="gofDie" class="select-cyan" aria-label="Die type">
           <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
           <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
@@ -1935,7 +1935,7 @@
       <button class="btn magenta" id="gofReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" class="canvas-crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>
@@ -1974,11 +1974,11 @@
 </div>
 <!-- @panel:chitest_ind -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; 独立性検定 &#x2014; 2変数は独立か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; Test of Independence &#x2014; Are Two Variables Independent?</h3>
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x2461; 独立性検定 &#x2014; 2変数は独立か？</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x2461; Test of Independence &#x2014; Are Two Variables Independent?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで&#x2212;1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for &#x2212;1)</span></div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="drag-hint drag-hint--tight"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで&#x2212;1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for &#x2212;1)</span></div>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">有意水準 &#x03B1;</span>
@@ -1990,7 +1990,7 @@
       <button class="btn magenta" id="indReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" class="canvas-crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">総数 n</span><span data-lang="en">Total n</span> <strong id="indN">0</strong></div>
@@ -2007,7 +2007,7 @@
 <!-- /@panel -->
 </div>
 
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/chitest.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/chitest.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -2019,7 +2019,7 @@
 <!-- ============ ANOVA ============ -->
 
 <section id="anova" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/anova.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/anova.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/anova.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/anova.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I8 / ANOVA</div>
   <h2 class="sec-title" data-lang="ja">分散分析（ANOVA） <span class="sec-sub">— F値の直感を掴む</span></h2>
   <h2 class="sec-title" data-lang="en">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
@@ -2055,18 +2055,18 @@
   </div>
   <!-- @panel:anova_sim -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; なぜt検定を繰り返してはいけないか</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Why You Can't Just Repeat t-Tests</h3>
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; なぜt検定を繰り返してはいけないか</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; Why You Can't Just Repeat t-Tests</h3>
+    <div class="drag-hint drag-hint--tight">
       <span data-lang="ja">まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)&#x00D7;20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
       <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
     </div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="controls controls--tight">
       <button class="btn" id="mcRun"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
       <button class="btn" id="mcRun1000"><span data-lang="ja">&#x25B6; 1000回</span><span data-lang="en">&#x25B6; 1000 trials</span></button>
       <button class="btn magenta" id="mcReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
-    <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="mcSimCanvas" aria-label="多重比較シミュレーション" data-aria-label-en="Multiple comparisons simulation" height="260" class="canvas-block" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">試行回数</span><span data-lang="en">Trials</span> <strong id="mcTotal">0</strong></div>
       <div><span data-lang="ja">偽陽性</span><span data-lang="en">False positives</span> <strong id="mcFP">0</strong></div>
@@ -2081,7 +2081,7 @@
 
   <div class="sim-layout">
   <div class="guided-steps" data-lang="ja">
-  <p style="margin:0 0 6px;font-size:12px;color:var(--dim)">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
+  <p class="sim-warning">上のシミュレーションで見た「偽陽性の膨張」を、一度の検定で回避するのがこのF検定（ANOVA）です。</p>
   <b>実験ガイド — F値を体感する</b>
   <ol>
   <li><b>Step 1:</b> 群間の差をゼロにする → F値が1付近に。全群が「同じ集団」のように見える。</li>
@@ -2091,7 +2091,7 @@
   </ol>
   </div>
   <div class="guided-steps" data-lang="en">
-  <p style="margin:0 0 6px;font-size:12px;color:var(--dim)">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
+  <p class="sim-warning">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
   <b>Experiment Guide — Feel the F-Statistic</b>
   <ol>
   <li><b>Step 1:</b> Set between-group difference to zero → F ≈ 1. All groups look like one population.</li>
@@ -2102,9 +2102,9 @@
   </div>
   <!-- @panel:anova_main -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; 群間分散 vs 群内分散 &#x2014; F値をスライダーで体感</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; Between vs. Within &#x2014; Feel the F-Statistic</h3>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">群間の差</span>
@@ -2131,7 +2131,7 @@
       </div>
       <button class="btn" id="anovaGen"><span data-lang="ja">&#x21BB; 再生成</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
-    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="anovaCanvas" aria-label="分散分析の可視化。スライダーで群間の差と群内ばらつきを操作しF値の変化を観察" data-aria-label-en="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" class="canvas-block" aria-busy="true"></canvas>
     <div class="info">
       <div><span>F</span> <strong id="anovaF">&#x2014;</strong></div>
       <div><span data-lang="ja">群間 df</span><span data-lang="en">Between df</span> <strong id="anovaDfB">&#x2014;</strong></div>
@@ -2149,7 +2149,7 @@
 <!-- /@panel -->
   </div>
 
-  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+  <div class="learn-more-link">
     <a data-lang="ja" href="topics/anova.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/anova.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -2188,7 +2188,7 @@
 <!-- ============ CORRELATION ============ -->
 
 <section id="corr" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/corr.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/corr.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/corr.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/corr.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M0 / 相関係数</div>
   <h2 class="sec-title" data-lang="ja">相関係数 <span class="sec-sub">— 2変数の「つながり」を測る</span></h2>
   <h2 class="sec-title" data-lang="en">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
@@ -2248,9 +2248,9 @@
       </div>
       <button class="btn" id="corrGen"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Generate</span></button>
       <button class="btn magenta" id="corrClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
-      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックで点を追加</span><span data-lang="en">&#x2191; Click canvas to add points</span></span>
+      <span class="click-hint"><span data-lang="ja">&#x2191; キャンバスをクリックで点を追加</span><span data-lang="en">&#x2191; Click canvas to add points</span></span>
     </div>
-    <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" data-aria-label-en="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" style="cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="corrCanvas" aria-label="散布図と相関係数。クリックで点を追加し、相関係数rの変化を観察する" data-aria-label-en="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" class="canvas-crosshair" aria-busy="true"></canvas>
     <div class="info">
       <div>n<strong id="corrNval">0</strong></div>
       <div><span data-lang="ja">相関係数 r</span><span data-lang="en">Correlation r</span><strong id="corrRval">&#x2014;</strong></div>
@@ -2286,11 +2286,11 @@
 
 <!-- @panel:corr_anscombe -->
 <div class="panel" data-autorun="anscombeReplay">
-    <h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span data-lang="ja">&#x25B6; r の落とし穴 &#x2014; アンスコムの例</span><span data-lang="en">&#x25B6; The pitfall of r &#x2014; Anscombe&#x27;s Quartet</span></h3>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <h3 class="cy-head cy-head--compact"><span data-lang="ja">&#x25B6; r の落とし穴 &#x2014; アンスコムの例</span><span data-lang="en">&#x25B6; The pitfall of r &#x2014; Anscombe&#x27;s Quartet</span></h3>
+    <div class="controls controls--tight">
       <button class="btn" id="anscombeReplay"><span data-lang="ja">&#x25B6; 再生</span><span data-lang="en">&#x25B6; Replay</span></button>
     </div>
-    <canvas id="anscombeCanvas" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" data-aria-label-en="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="anscombeCanvas" aria-label="アンスコムの4つの例。同じ相関係数でもパターンが全く異なることを示す" data-aria-label-en="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" class="canvas-block" aria-busy="true"></canvas>
     <div class="share-row">
       <button class="share-btn dl" data-share="anscombeCanvas" data-title="アンスコムの例" data-title-en="Anscombe's Quartet" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
@@ -2298,7 +2298,7 @@
 <!-- /@panel -->
 </div>
 
-  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+  <div class="learn-more-link">
     <a data-lang="ja" href="topics/corr.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/corr.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -2308,7 +2308,7 @@
 
 
 <section id="reg" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/reg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/reg.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/reg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/reg.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M1 / 単回帰分析</div>
   <h2 class="sec-title" data-lang="ja">単回帰分析 <span class="sec-sub">— 最小二乗法で線を引く</span></h2>
   <h2 class="sec-title" data-lang="en">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
@@ -2353,9 +2353,9 @@
     <div class="controls">
       <button class="btn" id="regRandom"><span data-lang="ja">&#x25B6; ランダム 20点</span><span data-lang="en">&#x25B6; Random 20 pts</span></button>
       <button class="btn magenta" id="regClear"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
-      <span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
+      <span class="click-hint"><span data-lang="ja">&#x2191; キャンバスをクリックして点追加</span><span data-lang="en">&#x2191; Click the canvas to add points</span></span>
     </div>
-    <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" data-aria-label-en="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" style="cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="regCanvas" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" data-aria-label-en="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" class="canvas-crosshair" aria-busy="true"></canvas>
     <div class="info">
       <div>n<strong id="regN">0</strong></div>
       <div><span data-lang="ja">傾き &#x03B2;&#x2081;</span><span data-lang="en">Slope &#x03B2;&#x2081;</span><strong id="regB1">&#x2014;</strong></div>
@@ -2369,7 +2369,7 @@
   </div>
 <!-- /@panel -->
 </div>
-    <div class="learn-more-link" style="margin:16px 0;text-align:center">
+    <div class="learn-more-link">
     <a data-lang="ja" href="topics/reg.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/reg.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
@@ -2384,7 +2384,7 @@
 
 
 <section id="mreg" class="reveal">
-  <div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a data-lang="ja" href="topics/mreg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/mreg.html">▸ Dedicated page for this topic</a></div>
+  <div class="topic-deep-link"><a data-lang="ja" href="topics/mreg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/mreg.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M2 / 重回帰分析</div>
   <h2 class="sec-title" data-lang="ja">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
   <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
@@ -2423,13 +2423,13 @@
   </div>
   <!-- @panel:mreg_vs -->
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30; &#x2014; &#x03B2;&#x2081;&#x304C;&#x5909;&#x308F;&#x308B;&#x77AC;&#x9593;</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; Simple vs. Multiple Regression &#x2014; Watch &#x03B2;&#x2081; Shift</h3>
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x5358;&#x56DE;&#x5E30; vs &#x91CD;&#x56DE;&#x5E30; &#x2014; &#x03B2;&#x2081;&#x304C;&#x5909;&#x308F;&#x308B;&#x77AC;&#x9593;</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; Simple vs. Multiple Regression &#x2014; Watch &#x03B2;&#x2081; Shift</h3>
+    <div class="drag-hint drag-hint--tight">
       <span data-lang="ja">&#x540C;&#x3058;&#x30C7;&#x30FC;&#x30BF;&#x3067;&#x300C;&#x52C9;&#x5F37;&#x6642;&#x9593;&#x3060;&#x3051;&#x300D;&#x3068;&#x300C;&#x52C9;&#x5F37;&#xFF0B;&#x7761;&#x7720;&#x300D;&#x3067;&#x56DE;&#x5E30;&#x3059;&#x308B;&#x3002;&#x76F8;&#x95A2;&#x30B9;&#x30E9;&#x30A4;&#x30C0;&#x30FC;&#x3067;&#x4EA4;&#x7D61;&#x306E;&#x5F37;&#x3055;&#x3092;&#x5909;&#x3048;&#x3066;&#x307F;&#x3088;&#x3046;&#x3002;</span>
       <span data-lang="en">Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
     </div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">&#x52C9;&#x5F37;&#x2194;&#x7761;&#x7720;&#x306E;&#x76F8;&#x95A2;</span>
@@ -2448,7 +2448,7 @@
       </div>
       <button class="btn" id="mvGen"><span data-lang="ja">&#x21BB; &#x518D;&#x751F;&#x6210;</span><span data-lang="en">&#x21BB; Regenerate</span></button>
     </div>
-    <canvas id="mvCanvas" aria-label="&#x5358;&#x56DE;&#x5E30;&#x3068;&#x91CD;&#x56DE;&#x5E30;&#x306E;&#x03B2;&#x2081;&#x6BD4;&#x8F03;" data-aria-label-en="Simple vs. multiple regression &#x03B2;&#x2081; comparison" height="320" style="width:100%;display:block" aria-busy="true"></canvas>
+    <canvas id="mvCanvas" aria-label="&#x5358;&#x56DE;&#x5E30;&#x3068;&#x91CD;&#x56DE;&#x5E30;&#x306E;&#x03B2;&#x2081;&#x6BD4;&#x8F03;" data-aria-label-en="Simple vs. multiple regression &#x03B2;&#x2081; comparison" height="320" class="canvas-block" aria-busy="true"></canvas>
     <div class="info">
       <div><span data-lang="ja">&#x5358;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Simple &#x03B2;&#x2081;</span> <strong id="mvSimpleB1">&#x2014;</strong></div>
       <div><span data-lang="ja">&#x91CD;&#x56DE;&#x5E30; &#x03B2;&#x2081;</span><span data-lang="en">Multiple &#x03B2;&#x2081;</span> <strong id="mvMultiB1">&#x2014;</strong></div>
@@ -2501,20 +2501,20 @@
       <div><span data-lang="ja">&#x03B2;&#x0302;&#x2082;（睡眠1hあたり）</span><span data-lang="en">&#x03B2;&#x0302;&#x2082; (per sleep hour)</span><strong id="mCoefSleep">&#x2014;</strong></div>
       <div>R&#x00B2;<strong id="mR2">&#x2014;</strong></div>
     </div>
-    <div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
+    <div id="mPredSub" class="mpred-sub"></div>
     <div class="share-row">
       <button class="share-btn dl" data-share="mregCanvas" data-title="重回帰分析" data-title-en="Multiple Regression" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
     </div>
   </div>
 <!-- /@panel -->
   </div>
-  <div class="learn-more-link" style="margin:16px 0;text-align:center">
+  <div class="learn-more-link">
     <a data-lang="ja" href="topics/mreg.html">📖 数式・詳細解説を読む → 個別ページへ</a>
     <a data-lang="en" href="en/topics/mreg.html">📖 Formulas & detailed explanation → dedicated page</a>
   </div>
-  <div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
-    <a data-lang="ja" href="columns/income_prediction.html" style="color:var(--yellow)">📊 コラム：年収予測で重回帰を体感する →</a>
-    <a data-lang="en" href="en/columns/income_prediction.html" style="color:var(--yellow)">📊 Column: Feel multiple regression through income prediction →</a>
+  <div class="learn-more-link learn-more-link--col">
+    <a data-lang="ja" href="columns/income_prediction.html" class="ln-yellow">📊 コラム：年収予測で重回帰を体感する →</a>
+    <a data-lang="en" href="en/columns/income_prediction.html" class="ln-yellow">📊 Column: Feel multiple regression through income prediction →</a>
   </div>
 </section>
 
@@ -2546,21 +2546,21 @@
       <div class="foot-head">// TECH STACK</div>
       <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br>
-        <span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+        <span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
       </div>
     </div>
     <div class="foot-col">
       <div class="foot-head">// BUILT WITH</div>
       <div class="built">
         Crafted with Claude<br>
-        <span style="opacity:.7">Anthropic · 2026</span>
+        <span class="foot-dim">Anthropic · 2026</span>
       </div>
     </div>
     <div class="foot-col">
       <div class="foot-head">// LICENSE</div>
       <div class="built">
-        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener" style="color:var(--cyan)">CC BY-NC 4.0 ↗</a><br>
-        <a href="https://github.com/sasai-lab/statplay-opensource" target="_blank" rel="noopener" style="color:var(--cyan);font-size:11px">GitHub ↗</a>
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener" class="ln-cyan">CC BY-NC 4.0 ↗</a><br>
+        <a href="https://github.com/sasai-lab/statplay-opensource" target="_blank" rel="noopener" class="ln-cyan-sm">GitHub ↗</a>
       </div>
     </div>
   </div>
@@ -2568,7 +2568,7 @@
   <div class="foot-bottom">
     <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br>
-      <span style="opacity:.75">
+      <span class="foot-dim-strong">
         <span data-lang="ja">本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
         <span data-lang="en">All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
       </span>

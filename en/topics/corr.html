@@ -198,9 +198,9 @@
 </div>
 <button class="btn" id="corrGen"><span>▶ Generate</span></button>
 <button class="btn magenta" id="corrClear"><span>↺ Reset</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click canvas to add points</span></span>
+<span class="click-hint"><span>↑ Click canvas to add points</span></span>
 </div>
-<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" class="canvas-crosshair" height="320" id="corrCanvas"></canvas>
 <div class="info">
 <div>n<strong id="corrNval">0</strong></div>
 <div><span>Correlation r</span><strong id="corrRval">—</strong></div>
@@ -247,11 +247,11 @@
 </div>
 <!-- @panel:corr_anscombe -->
 <div class="panel" data-autorun="anscombeReplay">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
+<div class="controls controls--tight">
 <button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" class="canvas-block" height="360" id="anscombeCanvas"></canvas>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
 </div>
@@ -338,28 +338,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -371,24 +371,43 @@
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html" class="current">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./corr.html">Correlation</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html" class="current">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 </body>
 </html>

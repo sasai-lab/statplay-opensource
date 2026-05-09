@@ -1,5 +1,5 @@
 // StatPlay — module: ANOVA (one-way analysis of variance)
-import { $, TAU, rng_normal, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, fPval, fCritVal, tCDF, isEn } from '../utils.js';
+import { $, TAU, rng_normal, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, fPval, fCritVal, tCDF, isEn, makeAxisMap } from '../utils.js';
 
 const fCritical = fCritVal;
 
@@ -119,7 +119,15 @@ function initAnovaMain(){
     // ===== LEFT: layout params (fixed Y-axis from slider params) =====
     const halfRange=Math.max(1,parseFloat(slEff.value)+3.5*parseFloat(slW.value));
     const dMin=-halfRange, dMax=halfRange;
-    const yToPx=v=>pad+(1-(v-dMin)/(dMax-dMin))*(h-2*pad);
+    // Strip chart Y-axis maps the data range [dMin, dMax] (not [0, peak])
+    // onto the panel: dMax at top, dMin at bottom. yLo/yHi route this
+    // through the canonical makeAxisMap. lo/hi/peak are placeholders since
+    // the strip chart only uses yToPx; xToPx isn't drawn here.
+    const { yToPx } = makeAxisMap({
+      w, h, lo: 0, hi: 1, peak: 1,
+      marginTop: pad, marginBottom: pad,
+      yLo: dMin, yHi: dMax
+    });
     const colW=(splitX-pad*2)/k;
     const dotR=Math.min(4,colW/6);
 
@@ -160,11 +168,18 @@ function initAnovaMain(){
     const rw=w-splitX-pad*2;
     const rh=h-2*pad;
     const fMax=Math.max(Fcrit*1.8, Fval*1.3, 6);
-    const fXToPx=f=>rx+f/fMax*rw;
     let peak=0;
     for(let f=0.01;f<=fMax;f+=0.05){const v=fPDF(f,dfB,dfW);if(v>peak)peak=v;}
     if(peak===0) peak=1;
-    const fYToPx=v=>h-pad-v/peak*rh*0.9;
+    // F-panel axes: x spans [0, fMax] across the right gutter [rx, rx+rw];
+    // y compresses to 90% of inner height so the curve peak doesn't graze
+    // the title bar. Original `h - pad - v/peak * rh * 0.9` is reproduced
+    // by adding a 10%-of-rh top inset on top of the standard pad gutters.
+    const { xToPx: fXToPx, yToPx: fYToPx } = makeAxisMap({
+      w, h, lo: 0, hi: fMax, peak,
+      marginLeft: rx, marginRight: pad,
+      marginTop: pad + rh * 0.1, marginBottom: pad
+    });
 
     // rejection region fill
     const rejPts=[[fXToPx(Fcrit),h-pad]];

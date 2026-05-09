@@ -178,34 +178,34 @@
 <!-- @panel:dists_t -->
 <div class="panel" id="dists-t">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ t distribution</h3>
 
 <div class="dist-card">
 <b class="cy">Built from:</b> t = Z / √(χ²ₖ/k), Z~N(0,1).<br/>
 <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br/>
 <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
       </div>
-<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+<div class="ctrl ctrl--mb-12"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span class="ctrl-note">(df = <span id="tdVal">4</span>)</span></label>
 <input aria-label="Sample size n" id="tN" max="100" min="3" type="range" value="5"/>
 </div>
-<div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
-<span style="color:var(--dim)"><span>Confidence:</span></span>
+<div class="conf-bar">
+<span class="inline-dim"><span>Confidence:</span></span>
 <label><input name="tConf" type="radio" value="0.10"> 90%</input></label>
 <label><input checked="" name="tConf" type="radio" value="0.05"/> 95%</label>
 <label><input name="tConf" type="radio" value="0.01"/> 99%</label>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="Confidence interval comparison" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" class="canvas-block" height="360" id="tDistCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval comparison" class="canvas-strip" height="56" id="tCICanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Sample size n</span> <strong id="tInfoN">5</strong></div>
 <div><span>df</span> <strong id="tInfoDf">4</strong></div>
 <div><span>Confidence</span> <strong id="tInfoConf">95%</strong></div>
-<div><span>t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">±2.776</strong></div>
-<div><span>z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">±1.960</strong></div>
+<div><span>t critical</span> <strong class="ln-cyan" id="tInfoTCrit">±2.776</strong></div>
+<div><span>z critical</span> <strong class="ln-magenta" id="tInfoZCrit">±1.960</strong></div>
 <div><span>t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+<p class="dist-caption"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -231,40 +231,40 @@
 <!-- @panel:dists_chi -->
 <div class="panel" id="dists-chi">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ χ² distribution</h3>
 
 <div class="dist-card">
 <b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br/>
 <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br/>
 <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-<div class="controls" style="gap:8px;margin-bottom:12px">
+<div class="controls controls--gap-8">
 <div class="ctrl"><label><span>Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
 <input aria-label="Rolls n" id="chiRolls" max="300" min="12" type="range" value="60"/>
 </div>
-<div class="ctrl" style="min-width:auto">
-<select aria-label="Die type" id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-magenta" id="chiDieType">
 <option data-en="Fair die" data-ja="公正なサイコロ" value="fair">Fair die</option>
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">Loaded (⚅ heavy)</option>
 </select>
 </div>
 <button class="btn" id="diceRandom"><span>▶ Roll</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Dice roll distribution" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
-<div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+<canvas aria-busy="true" aria-label="Dice roll distribution" class="canvas-dice" height="140" id="diceBarCanvas"></canvas>
+<div class="ctrl ctrl--my-12"><label>df (k) = <span class="val" id="chiVal">5</span></label>
 <input aria-label="Degrees of freedom df" id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
-<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change df</span></div>
+<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" class="canvas-block" height="360" id="chiCanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Rolls n</span> <strong id="chiInfoN">60</strong></div>
 <div><span>df</span> <strong id="chiInfoDf">5</strong></div>
-<div><span>Test statistic χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
+<div><span>Test statistic χ²</span> <strong class="ln-magenta" id="chiInfoStat">—</strong></div>
 <div><span>χ² critical</span> <strong id="chiInfoCrit">11.070</strong></div>
 <div><span>p-value</span> <strong id="chiInfoP">—</strong></div>
 <div><span>Verdict</span> <strong id="chiInfoVerdict">—</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
+<p class="dist-caption"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ² Distribution"><span>💾 Save image</span></button>
 </div>
@@ -290,34 +290,34 @@
 <!-- @panel:dists_f -->
 <div class="panel" id="dists-f">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ F distribution</h3>
 
 <div class="dist-card">
 <b class="ye">Built from:</b> F = (χ²ₘ/m) / (χ²ₙ/n) (ratio of two independent χ² / df).<br/>
 <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br/>
 <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-<div class="ctrl" style="margin-bottom:4px"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+<div class="ctrl ctrl--mb-4"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
 <input aria-label="Group A standard deviation" id="fSdA" max="20" min="1" type="range" value="8"/>
 </div>
-<div class="ctrl" style="margin-bottom:4px"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+<div class="ctrl ctrl--mb-4"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
 <input aria-label="Group B standard deviation" id="fSdB" max="20" min="1" type="range" value="15"/>
 </div>
-<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
+<div class="ctrl ctrl--mb-12"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span class="ctrl-note">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
 <input aria-label="Sample size n per group" id="fGroupN" max="100" min="5" type="range" value="20"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="Variance comparison between two groups" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" class="canvas-block" height="360" id="fCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Variance comparison between two groups" class="canvas-strip" height="56" id="fGroupCanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
 <div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
 <div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
-<div><span>F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+<div><span>F statistic</span> <strong class="ln-yellow" id="fInfoF">3.516</strong></div>
 <div><span>F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
 <div><span>p-value</span> <strong id="fInfoP">0.005</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+<p class="dist-caption"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -326,7 +326,7 @@
 </div>
 
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
-<a href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up t, χ², and F critical values with live graph sync
+<a href="../../en/tables/index.html" class="ln-cyan">Interactive Distribution Tables</a> — look up t, χ², and F critical values with live graph sync
 </div>
 
 <!-- @panel:dists_text -->
@@ -371,7 +371,7 @@
 <tr><td>Test overall regression model</td><td>—</td><td>F distribution</td></tr>
 <tr><td>Goodness of fit / independence</td><td>—</td><td>χ² distribution</td></tr>
 </table>
-<p class="pattern-companion" style="margin:10px 0 0">Once you know which distribution to use, look up critical values in the <a class="pattern-companion-link" href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+<p class="pattern-companion pattern-companion--mt">Once you know which distribution to use, look up critical values in the <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html">Interactive Distribution Tables</a></p>
 </div>
 
 <div class="misconception-box">
@@ -439,28 +439,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -472,24 +472,43 @@
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html" class="current">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./dists.html">Three Test Distributions</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html" class="current">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./proptest.html" rel="prev">← Prev</a>

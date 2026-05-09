@@ -168,10 +168,10 @@
 </div>
 <!-- @panel:chitest_gof -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① 適合度検定 — サイコロは公正か？</h3>
+<h3 class="cy-head cy-head--compact">▶ ① 適合度検定 — サイコロは公正か？</h3>
 
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>🎲 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで−1）</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="drag-hint drag-hint--tight"><span>🎲 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで−1）</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 <span>有意水準 α</span>
@@ -180,8 +180,8 @@
 </label>
 <input aria-label="Significance alpha" id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
-<div class="ctrl" style="min-width:auto">
-<select aria-label="Die type" id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-cyan" id="gofDie">
 <option data-en="Fair die" data-ja="公正なサイコロ" value="fair">公正なサイコロ</option>
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">イカサマ（⚅ 重め）</option>
 </select>
@@ -189,7 +189,7 @@
 <button class="btn" id="gofAutoRoll"><span>▶ 自動試行</span></button>
 <button class="btn magenta" id="gofReset"><span>↺ リセット</span></button>
 </div>
-<canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" class="canvas-crosshair" height="300" id="chitestCanvas"></canvas>
 <div class="info">
 <div><span>試行回数 n</span> <strong id="gofN">0</strong></div>
 <div><span>検定統計量 χ²</span> <strong id="gofStat">—</strong></div>
@@ -233,10 +233,10 @@
 </div>
 <!-- @panel:chitest_ind -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② 独立性検定 — 2変数は独立か？</h3>
+<h3 class="cy-head cy-head--compact">▶ ② 独立性検定 — 2変数は独立か？</h3>
 
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>左側のセルをクリックして観測値を+1（Shift+クリックで−1）</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="drag-hint drag-hint--tight"><span>左側のセルをクリックして観測値を+1（Shift+クリックで−1）</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 <span>有意水準 α</span>
@@ -247,7 +247,7 @@
 </div>
 <button class="btn magenta" id="indReset"><span>↺ リセット</span></button>
 </div>
-<canvas aria-busy="true" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" class="canvas-crosshair" height="300" id="indCanvas"></canvas>
 <div class="info">
 <div><span>総数 n</span> <strong id="indN">0</strong></div>
 <div><span>検定統計量 χ²</span> <strong id="indStat">—</strong></div>
@@ -323,7 +323,7 @@
 <li><b>χ² の組み立て方</b>：各カテゴリの (O−E)²/E を足し上げる形。「ズレの二乗を期待値で割って合計」という同じ手順が、適合度でも独立性でも繰り返し顔を出す</li>
 <li><b>期待度数5未満の場面</b>：小頻度向けの正確検定（exact test）に切り替えるか、カテゴリを統合する形に持ち込む、という分岐がついて回る</li>
 </ul>
-<p class="pattern-companion" style="margin:10px 0 0">χ²臨界値は<a class="pattern-companion-link" href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
+<p class="pattern-companion pattern-companion--mt">χ²臨界値は<a class="pattern-companion-link ln-cyan" href="../tables/index.html?dist=chi2">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>
 
 <div class="related-topics">
@@ -361,28 +361,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 
 </span>
@@ -394,24 +394,43 @@
 
 <script type="module" src="../js/main.js"></script>
 <nav class="side-toc" aria-label="トピック一覧">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">標準正規分布</a></li>
-    <li><a href="./normal.html">正規分布と標準化</a></li>
-    <li><a href="./prob.html">確率の基本法則</a></li>
-    <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
-    <li><a href="./clt.html">中心極限定理</a></li>
-    <li><a href="./lln.html">大数の法則</a></li>
-    <li><a href="./ci.html">信頼区間</a></li>
-    <li><a href="./test.html">仮説検定</a></li>
-    <li><a href="./proptest.html">母比率の検定と推定</a></li>
-    <li><a href="./dists.html">三大検定分布</a></li>
-    <li><a href="./chitest.html" class="current">カイ二乗検定</a></li>
-    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
-    <li><a href="./corr.html">相関係数</a></li>
-    <li><a href="./reg.html">単回帰分析</a></li>
-    <li><a href="./mreg.html">重回帰分析</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./chitest.html">カイ二乗検定</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html" class="current">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="前後のトピック">
   <a href="./dists.html" rel="prev">← 前へ</a>

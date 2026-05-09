@@ -1,14 +1,14 @@
 <div class="detail-section">
 <h3 data-lang="ja">// 分散分析表</h3>
 <h3 data-lang="en">// ANOVA Table</h3>
-<table class="anova-tbl" id="anovaTable" style="width:100%;border-collapse:collapse;font-family:'Courier New',monospace;font-size:13px;margin:8px 0">
-<thead><tr style="color:var(--cyan);border-bottom:1px solid var(--cyan)">
-<th style="text-align:left;padding:4px 8px"><span data-lang="ja">要因</span><span data-lang="en">Source</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
+<table class="anova-tbl" id="anovaTable">
+<thead><tr>
+<th><span data-lang="ja">要因</span><span data-lang="en">Source</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
 </tr></thead>
 <tbody>
-<tr><td style="padding:4px 8px"><span data-lang="ja">群間（B）</span><span data-lang="en">Between (B)</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
-<tr><td style="padding:4px 8px"><span data-lang="ja">群内（W）</span><span data-lang="en">Within (W)</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
-<tr style="border-top:1px solid var(--dim)"><td style="padding:4px 8px"><span data-lang="ja">全体</span><span data-lang="en">Total</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
+<tr><td><span data-lang="ja">群間（B）</span><span data-lang="en">Between (B)</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
+<tr><td><span data-lang="ja">群内（W）</span><span data-lang="en">Within (W)</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
+<tr class="total"><td><span data-lang="ja">全体</span><span data-lang="en">Total</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 </div>
@@ -29,7 +29,7 @@
 ・df で割って「1自由度あたり」に揃えたのが MS<br>
 ・<b>F ≈ 1</b> なら「差があるとは言えない」、<b>F が大きい</b>ほど「差がありそう」</p>
 <p>どのくらい大きければ有意かは、自由度と有意水準 α で決まります。<br>
-<a href="../tables/index.html?dist=f" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
+<a href="../tables/index.html?dist=f" class="ln-cyan">インタラクティブ確率分布表</a>で臨界値を確認できます。</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// What the F-statistic actually does</h3>
@@ -46,7 +46,7 @@ The bigger the numerator relative to the denominator, the more evidence that the
 · Dividing by df gives MS — "variation per degree of freedom"<br>
 · <b>F ≈ 1</b> → "no evidence of differences"; <b>F large</b> → "groups likely differ"</p>
 <p>How large is "large enough"? That depends on degrees of freedom and significance level α.<br>
-Check critical values in the <a href="../../en/tables/index.html?dist=f" style="color:var(--cyan)">Interactive Distribution Tables</a>.</p>
+Check critical values in the <a href="../../en/tables/index.html?dist=f" class="ln-cyan">Interactive Distribution Tables</a>.</p>
 </div>
 
 <div data-lang="ja" class="detail-section">

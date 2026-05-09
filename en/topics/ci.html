@@ -208,7 +208,7 @@
 ・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
 ・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
 <p><b>What if σ is unknown?</b><br/>
-The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a href="dists.html#dists-t" style="color:var(--cyan)">t-distribution section</a>.</p>
+The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a class="ln-cyan" href="dists.html#dists-t">t-distribution section</a>.</p>
 </div>
 
 <div class="misconception-box">
@@ -236,7 +236,7 @@ The formula above assumes the population standard deviation σ is known. In prac
 <li><b>The CI–test twin relationship</b>: when 95% CI = [2.1, 4.3], μ₀ = 2 sits outside, and the two-sided test at α=0.05 lands on "reject." The two views are flip sides of the same decision</li>
 <li><b>Confidence level mirrors the multiplier</b>: switching 95% → 99% shifts the multiplier 1.96 → 2.576, and the wider interval follows directly</li>
 </ul>
-<p class="pattern-companion" style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a class="pattern-companion-link" href="../../en/tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
+<p class="pattern-companion pattern-companion--mt">See where z = 1.96 and 2.576 come from in <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=norm&amp;mode=twosided">Interactive Distribution Tables</a> (two-sided mode)</p>
 </div>
 
 <div class="related-topics">
@@ -277,28 +277,28 @@ The formula above assumes the population standard deviation σ is known. In prac
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -310,24 +310,43 @@ The formula above assumes the population standard deviation σ is known. In prac
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html" class="current">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./ci.html">Confidence Interval</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html" class="current">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./lln.html" rel="prev">← Prev</a>

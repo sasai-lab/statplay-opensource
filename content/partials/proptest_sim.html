@@ -1,6 +1,6 @@
 <div class="panel">
-  <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
-  <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">&#x25B6; &#x2460;-b CI simulation</h3>
+  <h3 data-lang="ja" class="cy-head">&#x25B6; &#x2460;-b 信頼区間シミュレーション</h3>
+  <h3 data-lang="en" class="cy-head">&#x25B6; &#x2460;-b CI simulation</h3>
 
   <div class="controls">
     <div class="ctrl"><label><span data-lang="ja">母比率 p（真の値）</span><span data-lang="en">True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
@@ -17,11 +17,11 @@
       </select>
     </div>
   </div>
-  <div class="controls" style="margin:8px 0">
+  <div class="controls controls--my-8">
     <button class="btn" id="ptCiSimRun"><span data-lang="ja">&#x25B6; 生成</span><span data-lang="en">&#x25B6; Run</span></button>
     <button class="btn magenta" id="ptCiSimReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
   </div>
-  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" style="aspect-ratio:16/9" aria-busy="true"></canvas>
+  <canvas id="ptCiSimCanvas" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" data-aria-label-en="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" class="canvas-aspect-16-9" aria-busy="true"></canvas>
   <div class="info">
     <div><span data-lang="ja">生成数</span><span data-lang="en">Generated</span><strong id="ptCiSimMade">0</strong></div>
     <div><span data-lang="ja">捕捉率</span><span data-lang="en">Coverage rate</span><strong id="ptCiSimCov">&#x2014;</strong></div>

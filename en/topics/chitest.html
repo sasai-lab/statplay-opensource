@@ -170,9 +170,9 @@
 <!-- @panel:chitest_gof -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
+<div class="drag-hint drag-hint--tight"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -181,8 +181,8 @@
 </label>
 <input aria-label="Significance alpha" id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
-<div class="ctrl" style="min-width:auto">
-<select aria-label="Die type" id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-cyan" id="gofDie">
 <option data-en="Fair die" data-ja="公正なサイコロ" value="fair">Fair die</option>
 <option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">Loaded (⚅ heavy)</option>
 </select>
@@ -190,7 +190,7 @@
 <button class="btn" id="gofAutoRoll"><span>▶ Auto-roll</span></button>
 <button class="btn magenta" id="gofReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="chitestCanvas"></canvas>
 <div class="info">
 <div><span>Rolls n</span> <strong id="gofN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="gofStat">—</strong></div>
@@ -217,9 +217,9 @@
 <!-- @panel:chitest_ind -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② Test of Independence — Are Two Variables Independent?</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ ② Test of Independence — Are Two Variables Independent?</h3>
+<div class="drag-hint drag-hint--tight"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -230,7 +230,7 @@
 </div>
 <button class="btn magenta" id="indReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="indCanvas"></canvas>
 <div class="info">
 <div><span>Total n</span> <strong id="indN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="indStat">—</strong></div>
@@ -246,7 +246,7 @@
 </div>
 
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
-<a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a> — look up χ² critical values for any df
+<a href="../../en/tables/index.html?dist=chi2" class="ln-cyan">Interactive Distribution Tables</a> — look up χ² critical values for any df
 </div>
 
 <!-- @panel:chitest_detail_gof -->
@@ -330,7 +330,7 @@
 <li><b>How χ² is built</b>: each category's (O−E)²/E gets added up. "Square the gap, divide by what was expected, sum" is the same shape across goodness-of-fit and independence</li>
 <li><b>The "E &lt; 5" branch</b>: the path forks toward an exact test for small frequencies or toward merging categories — this fork tags along whenever χ² is in play</li>
 </ul>
-<p class="pattern-companion" style="margin:10px 0 0">Look up χ² critical values by df in the <a class="pattern-companion-link" href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+<p class="pattern-companion pattern-companion--mt">Look up χ² critical values by df in the <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=chi2">Interactive Distribution Tables</a></p>
 </div>
 
 <div class="related-topics">
@@ -367,28 +367,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -400,24 +400,43 @@
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html" class="current">Chi-Squared Test</a></li>
-    <li><a href="./anova.html">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./chitest.html">Chi-Squared Test</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html" class="current">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./dists.html" rel="prev">← Prev</a>

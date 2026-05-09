@@ -9,6 +9,7 @@ export default [
       'stat_cyber_og.png',
       '**/*.min.js',
       'scripts/test_layout.mjs',
+      'scripts/test_e2e.mjs',
       'scripts/capture_ogp.mjs',
       'scripts/legacy/**',
       'scripts/_split_tests.py',
@@ -63,9 +64,22 @@ export default [
       // rule targets MemberExpression reads, which both writes pass through
       // when used as the LHS of assignment — but ESLint only flags reads
       // semantically. We add per-file overrides below for the two writers.)
+      //
+      // Also forbid local re-implementation of axis-mapping. After Phase 4-γ
+      // (v3.12.3) every chart goes through `makeAxisMap` from utils.js, with
+      // yLo/yHi/clampY options for the previously non-conforming cases
+      // (anova strip chart, anova F-panel, ci, chitest_common χ² panel).
+      // The `(x|y|px)To(Px|X)` arrow-assignment pattern is exactly the
+      // shape of those former inline definitions; new axis types belong as
+      // options of makeAxisMap, not as ad-hoc arrows in module bodies.
+      // Renamed destructures (`const { xToPx: fXToPx } = makeAxisMap(...)`)
+      // are not flagged because their init is a CallExpression.
       'no-restricted-syntax': ['error', {
         selector: "MemberExpression[object.name='window'][property.name='__LANG']",
         message: 'Use getLang() / isEn() from utils.js instead of window.__LANG'
+      }, {
+        selector: "VariableDeclarator[id.name=/^(xToPx|yToPx|pxToX)$/][init.type='ArrowFunctionExpression']",
+        message: 'Use makeAxisMap() from utils.js (extending it with new options if needed) instead of re-implementing xToPx/yToPx/pxToX as a local arrow function.'
       }]
     }
   },

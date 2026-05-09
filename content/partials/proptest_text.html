@@ -1,12 +1,12 @@
 <div data-lang="ja" class="detail-section">
 <h3>// ここで使われる公式</h3>
 
-<p style="margin:8px 0 16px;padding:12px 16px;background:rgba(255,230,0,.08);border-left:3px solid var(--yellow);line-height:1.75">
-<b style="color:var(--yellow);font-family:'Courier New',monospace">&#x2605; 推定と検定で SE の中身が違う</b><br/>
+<p class="star-note">
+<b class="star-note__title">&#x2605; 推定と検定で SE の中身が違う</b><br/>
 <b>推定では SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n)、検定では SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n)。</b> 同じ「比率の SE」という名前でも、<b>推定は標本の世界</b>（手元のデータが基準）、<b>検定は H&#x2080; の世界</b>（仮定した母比率が基準）を基準にする。下の最初の2式の分母を見比べると、ここだけが違う。
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">母比率の区間推定（Wald型信頼区間）</h4>
+<h4 class="h4-cyan">母比率の区間推定（Wald型信頼区間）</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
 <p>
 ・p&#x0302; = x/n：標本比率（n人中x人が「成功」）<br/>
@@ -14,7 +14,7 @@
 ・&#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n)：<b>標本比率の標準誤差</b>。平均の SE = &#x03C3;/&#x221A;n と似ているが、分散が p(1&#x2212;p) で決まるのが比率ならではの特徴
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">母比率の検定（1標本z検定）</h4>
+<h4 class="h4-cyan">母比率の検定（1標本z検定）</h4>
 <div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
 <p>
 ・p&#x2080;：帰無仮説で想定する母比率（「50%である」なら p&#x2080; = 0.5）<br/>
@@ -22,7 +22,7 @@
 ・この z が標準正規分布に従うことを使って p値を計算する
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">2つの母比率の差の検定</h4>
+<h4 class="h4-cyan">2つの母比率の差の検定</h4>
 <div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
 <p>
 ・p&#x0302;：<b>プール比率</b>（2群を合算した全体の比率）。H&#x2080;: p&#x2081; = p&#x2082; の下では2群の母比率は同じはずなので、合算して推定する<br/>
@@ -33,12 +33,12 @@
 <div data-lang="en" class="detail-section">
 <h3>// Formulas used here</h3>
 
-<p style="margin:8px 0 16px;padding:12px 16px;background:rgba(255,230,0,.08);border-left:3px solid var(--yellow);line-height:1.75">
-<b style="color:var(--yellow);font-family:'Courier New',monospace">&#x2605; Estimation and testing put different content inside SE</b><br/>
+<p class="star-note">
+<b class="star-note__title">&#x2605; Estimation and testing put different content inside SE</b><br/>
 <b>Estimation uses SE = &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n); testing uses SE = &#x221A;(p&#x2080;(1&#x2212;p&#x2080;)/n).</b> The label "SE of a proportion" is shared, but <b>estimation grounds the SE in the sample world</b> (your data is the reference) while <b>testing grounds it in the H&#x2080; world</b> (the hypothesized proportion is the reference). Compare the denominators of the first two formulas below &#x2014; that's the only line that changes.
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">Confidence interval for a proportion (Wald interval)</h4>
+<h4 class="h4-cyan">Confidence interval for a proportion (Wald interval)</h4>
 <div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
 <p>
 &#x00B7; p&#x0302; = x/n: sample proportion (x successes out of n trials)<br/>
@@ -46,7 +46,7 @@
 &#x00B7; &#x221A;(p&#x0302;(1&#x2212;p&#x0302;)/n): <b>standard error of the sample proportion</b>. Similar to SE = &#x03C3;/&#x221A;n for means, but the variance is p(1&#x2212;p) &#x2014; that's what makes proportions special
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">One-sample z-test for a proportion</h4>
+<h4 class="h4-cyan">One-sample z-test for a proportion</h4>
 <div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
 <p>
 &#x00B7; p&#x2080;: the proportion assumed under the null hypothesis (e.g., p&#x2080; = 0.5 for "50%")<br/>
@@ -54,7 +54,7 @@
 &#x00B7; Under H&#x2080; this z follows a standard normal, which lets us compute the p-value
 </p>
 
-<h4 style="color:var(--cyan);margin:16px 0 8px">Two-proportion z-test</h4>
+<h4 class="h4-cyan">Two-proportion z-test</h4>
 <div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
 <p>
 &#x00B7; p&#x0302;: the <b>pooled proportion</b> &#x2014; both groups combined. Under H&#x2080;: p&#x2081; = p&#x2082; the true rates are the same, so pooling gives a better estimate<br/>

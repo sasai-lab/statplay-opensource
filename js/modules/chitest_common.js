@@ -1,5 +1,5 @@
 // StatPlay — module: chitest shared helpers (split from chitest.js)
-import { $, chi2PDF, neonLine, neonFill, withAlpha } from '../utils.js';
+import { $, chi2PDF, neonLine, neonFill, withAlpha, makeAxisMap } from '../utils.js';
 
 // No-op marker so test_site.mjs bundle() can include this file via main.js
 // import. The real entry is via initChitest() in chitest.js.
@@ -50,14 +50,24 @@ export function drawChi2Curve(ctx, w, h, tc, alpha, chiSq, df, critVal, pval, re
   ctx.fillText('χ² ' + (isEn() ? '(df=' + df + ')' : '分布 (df=' + df + ')'), rp.x, 14);
 
   const xMax = Math.max(df * 3 + 2, critVal * 1.8, chiSq * 1.5, 8);
-  const xToPx = x => rp.x + x / xMax * rp.w;
 
   let peakY = 0;
   for(let x = 0.05; x <= xMax; x += xMax / 300){
     const v = chi2PDF(x, df); if(v > peakY) peakY = v;
   }
   if(peakY === 0) peakY = 1;
-  const yToPx = y => rp.y + rp.h - Math.min(y, peakY) / peakY * (rp.h - 10);
+  // rp = {x: midX+10, y: 20, w: w-midX-20, h: h-50}, with a 10px top gutter
+  // inside the panel so the curve never grazes the top edge. Translate that
+  // to makeAxisMap margins: marginLeft = midX+10, marginRight = 10,
+  // marginTop = rp.y + 10 = 30, marginBottom = h - (rp.y + rp.h) = 30.
+  // clampY mirrors the original `Math.min(y, peakY)` guard for χ² values
+  // that overshoot the coarsely-sampled peak.
+  const { xToPx, yToPx } = makeAxisMap({
+    w, h, lo: 0, hi: xMax, peak: peakY,
+    marginLeft: midX + 10, marginRight: 10,
+    marginTop: 30, marginBottom: 30,
+    clampY: true
+  });
 
   ctx.strokeStyle = withAlpha(tc.cyan, .25); ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(rp.x, rp.y + rp.h); ctx.lineTo(rp.x + rp.w, rp.y + rp.h); ctx.stroke();

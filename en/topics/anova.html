@@ -180,17 +180,17 @@
 <!-- @panel:anova_sim -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Why You Can't Just Repeat t-Tests</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ Why You Can't Just Repeat t-Tests</h3>
+<div class="drag-hint drag-hint--tight">
 
 <span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
 </div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="controls controls--tight">
 <button class="btn" id="mcRun"><span>▶ 100 trials</span></button>
 <button class="btn" id="mcRun1000"><span>▶ 1000 trials</span></button>
 <button class="btn magenta" id="mcReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Multiple comparisons simulation" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Multiple comparisons simulation" class="canvas-block" height="260" id="mcSimCanvas"></canvas>
 <div class="info">
 <div><span>Trials</span> <strong id="mcTotal">0</strong></div>
 <div><span>False positives</span> <strong id="mcFP">0</strong></div>
@@ -205,7 +205,7 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-<p style="margin:0 0 6px;font-size:12px;color:var(--dim)">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
+<p class="sim-warning">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
 <b>Experiment Guide — Feel the F-Statistic</b>
 <ol>
 <li><b>Step 1:</b> Set between-group difference to zero → F ≈ 1. All groups look like one population.</li>
@@ -217,8 +217,8 @@
 <!-- @panel:anova_main -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Between vs. Within — Feel the F-Statistic</h3>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ Between vs. Within — Feel the F-Statistic</h3>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -245,7 +245,7 @@
 </div>
 <button class="btn" id="anovaGen"><span>↻ Regenerate</span></button>
 </div>
-<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" class="canvas-block" height="320" id="anovaCanvas"></canvas>
 <div class="info">
 <div><span>F</span> <strong id="anovaF">—</strong></div>
 <div><span>Between df</span> <strong id="anovaDfB">—</strong></div>
@@ -268,14 +268,14 @@
 <div class="detail-section">
 
 <h3>// ANOVA Table</h3>
-<table class="anova-tbl" id="anovaTable" style="width:100%;border-collapse:collapse;font-family:'Courier New',monospace;font-size:13px;margin:8px 0">
-<thead><tr style="color:var(--cyan);border-bottom:1px solid var(--cyan)">
-<th style="text-align:left;padding:4px 8px"><span>Source</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
+<table class="anova-tbl" id="anovaTable">
+<thead><tr>
+<th><span>Source</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
 </tr></thead>
 <tbody>
-<tr><td style="padding:4px 8px"><span>Between (B)</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
-<tr><td style="padding:4px 8px"><span>Within (W)</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
-<tr style="border-top:1px solid var(--dim)"><td style="padding:4px 8px"><span>Total</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
+<tr><td><span>Between (B)</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
+<tr><td><span>Within (W)</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
+<tr class="total"><td><span>Total</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 </div>
@@ -295,7 +295,7 @@ The bigger the numerator relative to the denominator, the more evidence that the
 · Dividing by df gives MS — "variation per degree of freedom"<br/>
 · <b>F ≈ 1</b> → "no evidence of differences"; <b>F large</b> → "groups likely differ"</p>
 <p>How large is "large enough"? That depends on degrees of freedom and significance level α.<br/>
-Check critical values in the <a href="../../en/tables/index.html?dist=f" style="color:var(--cyan)">Interactive Distribution Tables</a>.</p>
+Check critical values in the <a class="ln-cyan" href="../../en/tables/index.html?dist=f">Interactive Distribution Tables</a>.</p>
 </div>
 
 <div class="detail-section">
@@ -386,28 +386,28 @@ Check critical values in the <a href="../../en/tables/index.html?dist=f" style="
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
@@ -419,24 +419,43 @@ Check critical values in the <a href="../../en/tables/index.html?dist=f" style="
 
 <script type="module" src="../../js/main.js"></script>
 <nav class="side-toc" aria-label="All Topics">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">Standard Normal</a></li>
-    <li><a href="./normal.html">Normal Distribution</a></li>
-    <li><a href="./prob.html">Probability Rules</a></li>
-    <li><a href="./bayes.html">Bayes' Theorem</a></li>
-    <li><a href="./morep.html">Discrete & Exponential</a></li>
-    <li><a href="./clt.html">Central Limit Theorem</a></li>
-    <li><a href="./lln.html">Law of Large Numbers</a></li>
-    <li><a href="./ci.html">Confidence Interval</a></li>
-    <li><a href="./test.html">Hypothesis Testing</a></li>
-    <li><a href="./proptest.html">Proportion Test</a></li>
-    <li><a href="./dists.html">Three Test Distributions</a></li>
-    <li><a href="./chitest.html">Chi-Squared Test</a></li>
-    <li><a href="./anova.html" class="current">ANOVA</a></li>
-    <li><a href="./corr.html">Correlation</a></li>
-    <li><a href="./reg.html">Simple Regression</a></li>
-    <li><a href="./mreg.html">Multiple Regression</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./anova.html">ANOVA</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html" class="current">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
 </nav>
 </body>
 </html>

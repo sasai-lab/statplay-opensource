@@ -1,9 +1,9 @@
 <div class="panel" id="dists-f">
-      <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F 分布</h3>
-      <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; F distribution</h3>
+      <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; F 分布</h3>
+      <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; F distribution</h3>
       <div class="dist-card" data-lang="ja">
         <b class="ye">作り方:</b> F = (&#x03C7;&#x00B2;&#x2098;/m) / (&#x03C7;&#x00B2;&#x2099;/n) （2つの独立な &#x03C7;&#x00B2; の比）。<br>
-        <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span style="color:var(--dim);font-size:11px">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
+        <b class="ye">使いどころ:</b> 分散分析（ANOVA）、回帰モデルの全体 F 検定。<br><span class="ctrl-note">例：3クラスの平均点に差があるか調べるとき（一元配置分散分析）。</span><br>
         <b class="ye">クセ:</b> 非負・右歪み。分子/分母の df で形が変わる。
       </div>
       <div class="dist-card" data-lang="en">
@@ -11,27 +11,27 @@
         <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br>
         <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+      <div class="ctrl ctrl--mb-4"><label><span data-lang="ja">グループA SD = </span><span data-lang="en">Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
         <input type="range" id="fSdA" min="1" max="20" value="8" aria-label="Group A standard deviation">
       </div>
-      <div class="ctrl" style="margin-bottom:4px"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+      <div class="ctrl ctrl--mb-4"><label><span data-lang="ja">グループB SD = </span><span data-lang="en">Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
         <input type="range" id="fSdB" min="1" max="20" value="15" aria-label="Group B standard deviation">
       </div>
-      <div class="ctrl" style="margin-bottom:12px"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
+      <div class="ctrl ctrl--mb-12"><label><span data-lang="ja">各グループ n = </span><span data-lang="en">Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span class="ctrl-note">(df&#x2081; = df&#x2082; = <span id="fDfLabel">19</span>)</span></label>
         <input type="range" id="fGroupN" min="5" max="100" value="20" aria-label="Sample size n per group">
       </div>
-      <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
-      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" style="width:100%;display:block" aria-busy="true"></canvas>
-      <canvas id="fGroupCanvas" height="56" style="width:100%;height:56px;display:block;margin-top:4px" aria-label="2グループのばらつき比較" data-aria-label-en="Variance comparison between two groups" aria-busy="true"></canvas>
-      <div class="info" style="margin-top:6px">
+      <div class="drag-hint"><span data-lang="ja">&#x2194; グラフを左右にドラッグで n 変更</span><span data-lang="en">&#x2194; Drag the graph horizontally to change n</span></div>
+      <canvas id="fCanvas" aria-label="F分布の確率密度関数。2グループのばらつきの比を可視化する" data-aria-label-en="F distribution PDF. Visualize the variance ratio between two groups" height="360" class="canvas-block" aria-busy="true"></canvas>
+      <canvas id="fGroupCanvas" height="56" class="canvas-strip" aria-label="2グループのばらつき比較" data-aria-label-en="Variance comparison between two groups" aria-busy="true"></canvas>
+      <div class="info info--mt-6">
         <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
         <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
         <div>df&#x2081;, df&#x2082; <strong id="fInfoDf">19, 19</strong></div>
-        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" class="ln-yellow">3.516</strong></div>
         <div><span data-lang="ja">F 臨界値</span><span data-lang="en">F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="fInfoP">0.005</strong></div>
       </div>
-      <p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+      <p class="dist-caption"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>

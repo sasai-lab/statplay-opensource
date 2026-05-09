@@ -157,6 +157,12 @@ export function debouncedResize(fn,ms=120){
 // `window.__LANG === 'en'` directly (228+ inline checks were drifting in
 // shape and were impossible to grep+swap reliably). The ESLint rule
 // `no-restricted-syntax` blocks new direct `window.__LANG` reads in js/**.
+//
+// Idiomatic usage: at the top of a function that branches multiple times
+// on language, capture the value once with `const en = isEn();` and reuse
+// it. Calling isEn() per branch works but adds repeated `window` lookups
+// for no benefit; capturing also makes the language-dependence visible at
+// a glance when the function is reviewed.
 export function getLang(){
   return (typeof window !== 'undefined' && window.__LANG === 'en') ? 'en' : 'ja';
 }
@@ -169,14 +175,32 @@ export function isEn(){ return getLang() === 'en'; }
 // peak is the largest y-value the plot needs to fit (0 maps to the baseline
 // at h - marginBottom; peak maps to marginTop). marginLeft/Right let
 // modules with side gutters (e.g. proptest) reuse the same builder.
+//
+// Phase 4-γ extensions (v3.12.3) absorb the last 5 inline axis definitions
+// in anova/ci/chitest_common so that "no inline xToPx/yToPx anywhere in
+// js/modules" is structurally enforceable via ESLint:
+//   - yLo / yHi  : custom y-domain (default 0 → peak, but anova.js's strip
+//                  chart needs the y-axis to span [dMin, dMax]).
+//   - clampY     : clamp y into [yLo, yHi] before mapping. The χ² panel
+//                  in chitest_common samples peak on a coarse grid so the
+//                  observed χ² statistic can land just above peakY; without
+//                  the clamp the marker line would overshoot the panel top.
+// All new options default to the prior behavior, so existing callers are
+// unaffected.
 export function makeAxisMap({ w, h, lo, hi, peak,
-  marginTop = 0, marginBottom = 0, marginLeft = 0, marginRight = 0 } = {}){
+  marginTop = 0, marginBottom = 0, marginLeft = 0, marginRight = 0,
+  yLo = 0, yHi = null, clampY = false } = {}){
   const innerW = w - marginLeft - marginRight;
   const innerH = h - marginTop - marginBottom;
+  const yHiResolved = (yHi == null) ? peak : yHi;
+  const ySpan = yHiResolved - yLo;
+  const baseY = h - marginBottom;
   const xToPx = x => marginLeft + (x - lo) / (hi - lo) * innerW;
-  const yToPx = y => h - marginBottom - (y / peak) * innerH;
+  const yToPx = clampY
+    ? y => baseY - (Math.min(Math.max(y, yLo), yHiResolved) - yLo) / ySpan * innerH
+    : y => baseY - (y - yLo) / ySpan * innerH;
   const pxToX = px => lo + (px - marginLeft) / innerW * (hi - lo);
-  const axisY = h - marginBottom;
+  const axisY = baseY;
   return { xToPx, yToPx, pxToX, innerW, innerH, axisY };
 }
 

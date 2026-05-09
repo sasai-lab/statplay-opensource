@@ -163,7 +163,7 @@
 <div class="guided-steps">
 <b>実験ガイド — 順番に試してみよう</b>
 <ol>
-<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span style="color:var(--dim)">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
+<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span class="inline-dim">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>
 <li><b>Step 2:</b> z を <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>
 <li><b>Step 3:</b> 検定タイプを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>
 </ol>
@@ -171,7 +171,7 @@
 
 <!-- @panel:test_main -->
 <div class="panel">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① 基本：z値と棄却域</h3>
+<h3 class="cy-head">▶ ① 基本：z値と棄却域</h3>
 
 <div class="controls">
 <div class="ctrl"><label><span>観測 z</span> = <span class="val" id="tZVal">1.96</span></label>
@@ -213,12 +213,12 @@
 </div>
 <!-- @panel:test_err -->
 <div class="panel" id="test_err">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② 2つの誤り：α・β・検出力</h3>
+<h3 class="cy-head">▶ ② 2つの誤り：α・β・検出力</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
       ここは α（第1種の誤り）/ β（第2種の誤り）/ 検出力 のトレードオフを<b>触って体感する場</b>。<br/>
-      気になったら戻ってきてOK。深い概念整理（2×2マトリクス・α と β が「別の世界」の確率である理由など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>でまとめています。
-      <br/><i style="color:var(--dim)">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
+      気になったら戻ってきてOK。深い概念整理（2×2マトリクス・α と β が「別の世界」の確率である理由など）は <a class="ln-cyan" href="../columns/error_types.html">『過誤の2×2』コラム</a>でまとめています。
+      <br/><i class="tip-line">Tip: グラフ上を左右にドラッグすると、臨界値（α の境界）を直接動かせる。</i>
 </p>
 
 <div class="controls">
@@ -279,7 +279,7 @@
 <h3>// 信頼区間との対応</h3>
 <p>95%信頼区間に μ₀ が入っている ⟺ α=0.05 で H₀ を棄却できない。同じ計算を「幅」で見るか「YES/NO」で見るかの違い。結論は必ず一致する。</p>
 <h3>// α と β のトレードオフ</h3>
-<p>α・β・検出力の整理は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>で詳しく扱っています。</p>
+<p>α・β・検出力の整理は <a class="ln-cyan" href="../columns/error_types.html">『過誤の2×2』コラム</a>で詳しく扱っています。</p>
 </div>
 
 <div class="misconception-box">
@@ -288,7 +288,7 @@
 <b>❌「p値が小さい = 効果が大きい」</b>
 <p>p値は「データが珍しいかどうか」であって「効果の大きさ」ではない。n=100万なら、ほんの少しの差でもp&lt;0.001 になる。効果の大きさは別途確認が必要。</p>
 </div>
-<p style="margin:10px 0 0">過誤・検出力にまつわる誤解（「有意でない＝差がない」「α を小さくすればするほど良い」など）は <a href="../columns/error_types.html" style="color:var(--cyan)">『過誤の2×2』コラム</a>のFAQでまとめて整理しています。</p>
+<p class="mt-10">過誤・検出力にまつわる誤解（「有意でない＝差がない」「α を小さくすればするほど良い」など）は <a class="ln-cyan" href="../columns/error_types.html">『過誤の2×2』コラム</a>のFAQでまとめて整理しています。</p>
 </div>
 
 <div class="pattern-note">
@@ -300,7 +300,7 @@
 <li><b>誤りの2×2の形</b>：H₀ が正しいのに棄却したら第1種、H₀ が間違っているのに棄却できなかったら第2種。検定のあるところには必ずこの2×2の表がついて回る</li>
 <li><b>検出力の位置づけ</b>：1 − β =「本当に差があるときに、ちゃんと検出できる確率」。第2種の裏側として、いつもこの形で顔を出す</li>
 </ul>
-<p class="pattern-companion" style="margin:10px 0 0">臨界値の確認は<a class="pattern-companion-link" href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
+<p class="pattern-companion pattern-companion--mt">臨界値の確認は<a class="pattern-companion-link ln-cyan" href="../tables/index.html?dist=norm">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
 </div>
 
 <div class="related-topics">
@@ -341,28 +341,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 
 </span>
@@ -374,24 +374,43 @@
 
 <script type="module" src="../js/main.js"></script>
 <nav class="side-toc" aria-label="トピック一覧">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">標準正規分布</a></li>
-    <li><a href="./normal.html">正規分布と標準化</a></li>
-    <li><a href="./prob.html">確率の基本法則</a></li>
-    <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
-    <li><a href="./clt.html">中心極限定理</a></li>
-    <li><a href="./lln.html">大数の法則</a></li>
-    <li><a href="./ci.html">信頼区間</a></li>
-    <li><a href="./test.html" class="current">仮説検定</a></li>
-    <li><a href="./proptest.html">母比率の検定と推定</a></li>
-    <li><a href="./dists.html">三大検定分布</a></li>
-    <li><a href="./chitest.html">カイ二乗検定</a></li>
-    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
-    <li><a href="./corr.html">相関係数</a></li>
-    <li><a href="./reg.html">単回帰分析</a></li>
-    <li><a href="./mreg.html">重回帰分析</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./test.html">仮説検定</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html" class="current">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="前後のトピック">
   <a href="./ci.html" rel="prev">← 前へ</a>

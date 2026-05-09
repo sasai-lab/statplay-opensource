@@ -1,5 +1,5 @@
 // StatPlay — module: 4) CI
-import { $, rng_normal, zCritical, resizeCanvas, drawGrid, themeColors, withAlpha, isEn } from '../utils.js';
+import { $, rng_normal, zCritical, resizeCanvas, drawGrid, themeColors, withAlpha, isEn, makeAxisMap } from '../utils.js';
 
 export function initCi(){
   if(!document.getElementById('ciCanvas')) return;
@@ -56,7 +56,13 @@ export function initCi(){
     ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText('μ = 0',xMid+4,14);
 
     const range = 1.5;
-    const xToPx = x => xMid + x / range * (w / 2 - 20);
+    // xMid = w/2 with 20px gutters on both sides → makeAxisMap with a
+    // symmetric x-domain [-range, range] reproduces `xMid + x/range * (w/2 - 20)`
+    // exactly: marginLeft=marginRight=20, lo=-range, hi=range.
+    const { xToPx } = makeAxisMap({
+      w, h, lo: -range, hi: range, peak: 1,
+      marginLeft: 20, marginRight: 20
+    });
     const rowH=Math.max(1,(h-20)/Math.max(300,intervals.length));
     intervals.forEach((iv,i)=>{
       const y = 10 + i * rowH;

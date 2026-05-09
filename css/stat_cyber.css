@@ -312,7 +312,33 @@
   @media(max-width:900px){
     .nav-cat-link{font-size:10px;padding:4px 8px;letter-spacing:1.5px}
   }
-  /* Mobile: hamburger + drawer */
+  /* Tablet (760-1024px): collapse nav into the same hamburger drawer used on
+     mobile so "コラム ツール 確率分布 推測統計 モデリング About DARK EN" never
+     gets squeezed into a single right-shifted line. AD audit W4''. */
+  @media(max-width:1024px){
+    nav#mainNav{flex-wrap:wrap}
+    .nav-toggle{display:inline-flex}
+    .nav-links{
+      display:none;order:3;flex-basis:100%;flex-direction:column;flex-wrap:nowrap;
+      gap:6px;margin-top:10px;padding-top:10px;
+      border-top:1px dashed rgba(0,243,255,.25);
+    }
+    nav.open .nav-links{display:flex}
+    .nav-cat-link{
+      display:block;font-size:13px;padding:10px 16px;letter-spacing:3px;
+      border:1px solid rgba(255,43,214,.15);background:rgba(255,43,214,.04);
+      text-align:left;
+    }
+    .nav-dropdown-menu{
+      position:static;display:none;min-width:0;margin-top:0;padding:0;
+      background:transparent;border:none;box-shadow:none;backdrop-filter:none;
+    }
+    .nav-dropdown.open .nav-dropdown-menu{display:block}
+    .nav-dropdown:hover .nav-dropdown-menu{display:none}
+    .nav-dropdown.open:hover .nav-dropdown-menu{display:block}
+    .nav-dropdown-menu a{padding:8px 16px 8px 32px;font-size:12px;border-bottom:1px solid rgba(0,243,255,.08)}
+  }
+  /* Mobile: hamburger + drawer (additional refinements over the tablet rules) */
   @media(max-width:760px){
     nav#mainNav{padding:10px 14px;flex-wrap:wrap}
     .nav-toggle{display:inline-flex}
@@ -454,6 +480,245 @@
 
 
   .col-intro{color:var(--dim);font-size:var(--fs-sub);line-height:1.75;margin-bottom:28px !important}
+
+  /* ==========================================================================
+     HUB COLUMN/TOOL CARDS — replaces 100+ inline style copies on hub.
+     One card = one <div class="col-card" style="--col-accent:var(--yellow)">.
+     `--col-accent` is the only inline allowed (per-card color via local custom
+     property). Light theme rules below remap surfaces without `!important`.
+     ========================================================================== */
+  .col-card{
+    --col-accent:var(--cyan);
+    /* NOTE: do NOT set `display:block` here — the [data-lang] hide/show
+       cascade is single-class specificity, and an explicit display value
+       would override `[data-lang="en"]{display:none}` in JA mode. The
+       div's default is already block. */
+    padding:18px 22px;margin:0 0 10px;
+    background:linear-gradient(135deg,rgba(10,15,44,.8),rgba(5,6,15,.9));
+    border:1px solid rgba(0,243,255,.25);
+    border-left:3px solid var(--col-accent);
+    box-shadow:inset 0 0 60px rgba(0,243,255,.04),0 0 30px rgba(0,243,255,.1);
+    position:relative;
+  }
+  .col-card:last-child{margin-bottom:0}
+  .col-card__title{
+    color:var(--col-accent);text-decoration:none;font-weight:bold;
+    font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px;
+  }
+  .col-card__desc{
+    color:var(--dim);font-size:12px;line-height:1.7;
+    display:inline-block;margin-top:6px;
+  }
+  .col-card__related{
+    color:var(--dim);font-size:11px;display:block;margin-top:6px;
+    font-family:'Courier New',monospace;
+  }
+  .col-card__related a{color:var(--cyan);text-decoration:none}
+
+  /* ==========================================================================
+     HERO / SECTION-LEVEL TYPOGRAPHY HELPERS — extracted from inline style
+     repetitions on the hub.
+     ========================================================================== */
+  .hero-lead{
+    max-width:680px;margin:0 auto 36px;color:var(--text);line-height:2;
+    font-size:15px;
+  }
+  .hero-lead--ja{word-break:keep-all;overflow-wrap:break-word}
+  .hero-tagline{
+    font-size:13px;color:var(--dim);margin:16px auto 0;max-width:480px;
+    text-align:center;line-height:1.8;
+  }
+  .hero-sub--gap{margin-bottom:32px}
+
+  /* Tighter section padding for narrative-only sections (positioning,
+     quick-start, columns hub, dist-tables) where we don't need 80px above. */
+  .section-tight{padding-top:10px;padding-bottom:20px}
+  .section-tight--lead{padding-top:30px;padding-bottom:20px}
+
+  /* Section heading tuned down to label-size for hub-side panels */
+  .sec-title--small{font-size:16px;margin-bottom:16px}
+
+  /* Story-bridge variant used on the hub for positioning + quick-start.
+     Mirrors the inline style 'font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px'. */
+  .story-bridge--lead{
+    font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px;
+  }
+
+  /* Hub link list ("どこから始める？") — pipe-separated dashed-underline links. */
+  .hub-link-list{
+    margin-top:8px;display:inline-block;
+  }
+  .hub-link-list a{
+    color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan);
+  }
+  .hub-link-list .sep{color:var(--dim);margin:0 8px}
+  .hub-link-list-note{
+    color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;
+  }
+
+  /* Topic deep-link breadcrumb (above each section) */
+  .topic-deep-link{
+    margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px;
+  }
+
+  /* "Learn more / column CTA" centered link block */
+  .learn-more-link{margin:16px 0;text-align:center}
+  .learn-more-link--col{margin:8px 0 16px}
+
+  /* Cyan H3 inline section header (▶ inline title) */
+  .cy-head{
+    color:var(--cyan);font-family:'Courier New',monospace;
+    margin-bottom:10px;font-size:13px;letter-spacing:2px;
+  }
+  .cy-head--compact{margin-bottom:6px;font-size:13px;letter-spacing:0}
+
+  /* ==========================================================================
+     SECTION-SCOPED LAYOUT UTILITIES — small targeted classes that replace
+     repeated inline `style=` patterns appearing many times across hub +
+     topic pages.
+     ========================================================================== */
+  /* sec-desc + tighter bottom margin */
+  .sec-desc--tight{margin-bottom:14px}
+  .sec-desc--tight-sm{margin-bottom:14px;font-size:13px}
+
+  /* "Tip" italic dim line under panels */
+  .tip-line{color:var(--dim)}
+
+  /* Inline color link variants used inside panels. Extracted from inline so
+     light theme can re-color via CSS without `!important`. */
+  .ln-cyan{color:var(--cyan)}
+  .ln-yellow{color:var(--yellow)}
+  .ln-magenta{color:var(--magenta)}
+  .ln-green{color:var(--green)}
+
+  /* Symbol cheat-sheet line (small dim helper text under sec-desc) */
+  .symbol-note{color:var(--dim);font-size:var(--fs-xs)}
+
+  /* Independence/example helper line (dim) */
+  .inline-dim{color:var(--dim)}
+
+  /* Canvas size helpers — repeated inline patterns. */
+  .canvas-block{width:100%;display:block}
+  .canvas-aspect-16-9{aspect-ratio:16/9}
+  .canvas-crosshair{cursor:crosshair;width:100%;display:block}
+
+  /* Controls-row spacing variants used inside topic panels */
+  .controls--tight{gap:6px;margin-bottom:6px}
+  .controls--gap-8{gap:8px;margin-bottom:12px}
+  .controls--mb-12{margin-bottom:12px}
+  .controls--my-8{margin:8px 0}
+
+  /* Common ctrl spacing helpers */
+  .ctrl--mb-4{margin-bottom:4px}
+  .ctrl--mb-12{margin-bottom:12px}
+  .ctrl--my-12{margin-top:12px;margin-bottom:12px}
+  .ctrl--narrow{min-width:auto}
+
+  /* Drag-hint line shown above interactive canvases */
+  .drag-hint{
+    color:var(--dim);font-family:'Courier New',monospace;
+    font-size:11px;margin-bottom:4px;
+  }
+  .drag-hint--tight{margin-bottom:6px}
+
+  /* Click-to-add hint shown inline above scatter canvases */
+  .click-hint{
+    color:var(--dim);font-family:'Courier New',monospace;font-size:12px;
+  }
+
+  /* Inline mono note (dim, monospace, 11px) used after sliders */
+  .ctrl-note{color:var(--dim);font-size:11px}
+
+  /* Distribution caption (12px dim under canvases) */
+  .dist-caption{
+    font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5;
+  }
+
+  /* Pre-ANOVA sim-warning line */
+  .sim-warning{margin:0 0 6px;font-size:12px;color:var(--dim)}
+
+  /* Confidence-level toggle bar inside dists topic */
+  .conf-bar{
+    display:flex;gap:16px;align-items:center;white-space:nowrap;
+    font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px;
+  }
+
+  /* Bayes canvas (fixed-height tall PMF bar chart) */
+  .canvas-bayes{width:100%;display:block;height:380px}
+
+  /* Strong colored statistic readouts inside .info rows */
+  .stat-cyan{color:var(--cyan)}
+  .stat-magenta{color:var(--magenta)}
+  .stat-yellow{color:var(--yellow)}
+
+  /* mPredSub small-meta line under multi-regression prediction */
+  .mpred-sub{
+    font-family:'Courier New',monospace;font-size:11px;
+    color:var(--dim);margin-top:4px;
+  }
+
+  /* Stacked-strap canvas (CI bar / variance comparison strip) */
+  .canvas-strip{
+    width:100%;height:56px;display:block;margin-top:4px;
+  }
+
+  /* Footer dim helpers */
+  .foot-dim{opacity:.7}
+  .foot-dim-strong{opacity:.75}
+
+  /* Select with magenta or cyan ring used in dists/chitest controls */
+  .select-cyan{
+    background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);
+    font-family:'Courier New',monospace;padding:4px 8px;font-size:12px;
+  }
+  .select-magenta{
+    background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);
+    font-family:'Courier New',monospace;padding:4px 8px;font-size:12px;
+  }
+
+  /* Info row: small top margin pushed against canvas */
+  .info--mt-6{margin-top:6px}
+
+  /* Dice-bar canvas (fixed-height 140px bar chart) */
+  .canvas-dice{width:100%;height:140px;display:block}
+
+  /* Footer GitHub link variant */
+  .ln-cyan-sm{color:var(--cyan);font-size:11px}
+
+  /* "Star" highlight box used in proptest text panel ("two SE meanings") */
+  .star-note{
+    margin:8px 0 16px;padding:12px 16px;
+    background:rgba(255,230,0,.08);
+    border-left:3px solid var(--yellow);line-height:1.75;
+  }
+  .star-note__title{
+    color:var(--yellow);font-family:'Courier New',monospace;
+  }
+
+  /* H4 sub-section heading inside text panels (cyan, mono-ish) */
+  .h4-cyan{color:var(--cyan);margin:16px 0 8px}
+
+  /* ANOVA results table */
+  .anova-tbl{
+    width:100%;border-collapse:collapse;
+    font-family:'Courier New',monospace;font-size:13px;margin:8px 0;
+  }
+  .anova-tbl thead tr{color:var(--cyan);border-bottom:1px solid var(--cyan)}
+  .anova-tbl th,
+  .anova-tbl td{text-align:left;padding:4px 8px}
+  .anova-tbl tr.total{border-top:1px solid var(--dim)}
+
+  /* Pattern-companion: small footnote with extra top margin */
+  .pattern-companion--mt{margin:10px 0 0}
+  /* Generic margin-top:10px helper used by misc text-panel <p> tags */
+  .mt-10{margin:10px 0 0}
+
+  /* Quote-box: cyan bordered helper used in mreg text panel */
+  .quote-box{
+    margin:8px 0;padding:8px 12px;
+    border-left:3px solid var(--cyan);font-size:13px;
+  }
+
   .panel{
     background:linear-gradient(135deg,rgba(10,15,44,.8),rgba(5,6,15,.9));
     border:1px solid rgba(0,243,255,.25);
@@ -683,7 +948,7 @@
     border:1px dashed rgba(0,243,255,.2);font-size:var(--fs-sm);
     white-space:pre-line;line-height:1.6;
   }
-  body.theme-light .detail-section{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3)}
+  body.theme-light .detail-section{background:color-mix(in srgb, var(--accent-primary) 6%, transparent);border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
   /* .detail-section b / color:var(--dim) inherit from base rule via semantic layer; no override needed */
   body.theme-light .detail-section .connection-diagram{background:rgba(0,0,0,.03)}
 
@@ -702,7 +967,7 @@
   .misconception-box .misc-item{margin:16px 0}
   .misconception-box .misc-item b{color:var(--magenta)}
   .misconception-box .misc-item p{margin:4px 0 0;padding-left:12px}
-  body.theme-light .misconception-box{background:rgba(200,0,150,.03);border-color:rgba(200,0,150,.3)}
+  body.theme-light .misconception-box{background:color-mix(in srgb, var(--accent-danger) 6%, transparent);border-color:color-mix(in srgb, var(--accent-danger) 30%, transparent)}
   /* .misconception-box b inherits var(--text) via semantic layer; no override needed */
 
   .pattern-note{
@@ -719,7 +984,7 @@
   .pattern-note b{color:var(--text);font-weight:600}
   .pattern-note ul{margin:8px 0;padding-left:1.2em}
   .pattern-note li{margin:6px 0;line-height:1.75}
-  body.theme-light .pattern-note{background:rgba(180,140,0,.03);border-color:rgba(180,140,0,.3)}
+  body.theme-light .pattern-note{background:color-mix(in srgb, var(--accent-development-note) 6%, transparent);border-color:color-mix(in srgb, var(--accent-development-note) 30%, transparent)}
   /* .pattern-note b inherits var(--text) via semantic layer; no override needed */
 
   .related-topics{
@@ -739,7 +1004,7 @@
   .related-topics li::before{content:'→';color:var(--cyan);font-family:'Courier New',monospace;position:absolute;left:0;top:0}
   .related-topics a{color:var(--cyan);font-weight:600;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
   .related-topics a:hover,.related-topics a:focus{border-bottom-color:var(--cyan)}
-  body.theme-light .related-topics{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3)}
+  body.theme-light .related-topics{background:color-mix(in srgb, var(--accent-primary) 6%, transparent);border-color:color-mix(in srgb, var(--accent-primary) 30%, transparent)}
   /* .related-topics b inherits var(--text) via semantic layer; no override needed */
 
   .further-reading{margin:32px 0 8px}
@@ -775,8 +1040,55 @@
     border-bottom:1px dotted var(--dim);padding:2px 0;
   }
   .fr-more a:hover,.fr-more a:focus{color:var(--magenta);border-bottom-color:var(--magenta)}
-  body.theme-light .fr-card{background:rgba(180,0,140,.04);border-color:rgba(180,0,140,.25);border-left-color:var(--magenta)}
-  body.theme-light .fr-card:hover,body.theme-light .fr-card:focus{background:rgba(180,0,140,.08)}
+  body.theme-light .fr-card{background:color-mix(in srgb, var(--accent-narrative) 8%, transparent);border-color:color-mix(in srgb, var(--accent-narrative) 25%, transparent);border-left-color:var(--magenta)}
+  body.theme-light .fr-card:hover,body.theme-light .fr-card:focus{background:color-mix(in srgb, var(--accent-narrative) 16%, transparent)}
+
+  /* === Column → Topic large-card CTA (v3.12.3+) === */
+  /* Symmetrical to .fr-card (topic → column, magenta). Cyan large card so a
+     reader finishing a column has an obvious "now go touch the live
+     visualization" next-step. Sits at the top of #col-relations. */
+  .col-topic-cta{margin:32px 0 8px}
+  .col-topic-cta > h3{
+    color:var(--cyan);font-size:var(--fs-body);font-family:'Courier New',monospace;
+    margin-bottom:14px;letter-spacing:1px;
+  }
+  .col-card-topic-cta{
+    display:flex;align-items:flex-start;gap:16px;
+    margin:10px 0;padding:18px 22px;
+    background:rgba(0,243,255,.05);
+    border:1px solid rgba(0,243,255,.25);
+    border-left:4px solid var(--cyan);
+    text-decoration:none;
+    transition:background .2s, border-left-width .2s, box-shadow .2s;
+  }
+  .col-card-topic-cta:hover,.col-card-topic-cta:focus{
+    background:rgba(0,243,255,.10);border-left-width:6px;
+    box-shadow:0 0 12px rgba(0,243,255,.18);outline:none;
+  }
+  .col-card-topic-cta__icon{
+    font-size:22px;line-height:1.2;flex-shrink:0;margin-top:2px;
+    color:var(--cyan);font-family:'Courier New',monospace;
+  }
+  .col-card-topic-cta__body{flex:1;min-width:0}
+  .col-card-topic-cta__title{
+    display:block;color:var(--cyan);font-weight:bold;
+    font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px;
+    line-height:1.4;margin-bottom:6px;
+  }
+  .col-card-topic-cta__desc{display:block;color:var(--dim);font-size:13px;line-height:1.65}
+  .col-card-topic-cta__arrow{
+    flex-shrink:0;color:var(--cyan);font-family:'Courier New',monospace;
+    font-size:18px;align-self:center;margin-left:8px;
+  }
+  body.theme-light .col-card-topic-cta{
+    background:color-mix(in srgb, var(--accent-primary) 6%, transparent);
+    border-color:color-mix(in srgb, var(--accent-primary) 25%, transparent);
+    border-left-color:var(--accent-primary);
+  }
+  body.theme-light .col-card-topic-cta:hover,body.theme-light .col-card-topic-cta:focus{
+    background:color-mix(in srgb, var(--accent-primary) 14%, transparent);
+    box-shadow:none;
+  }
 
   /* === Inline cross-references in column body (v3.13.x) === */
   /* Weak tier: dotted underline, body-color text, ignite on hover */
@@ -850,8 +1162,8 @@
     .col-precede{flex-direction:column;gap:6px;padding:10px 14px}
   }
   body.theme-light .col-precede{
-    background:linear-gradient(90deg,rgba(0,100,150,.05),transparent);
-    border-color:rgba(0,100,150,.5);
+    background:linear-gradient(90deg,color-mix(in srgb, var(--accent-primary) 10%, transparent),transparent);
+    border-color:color-mix(in srgb, var(--accent-primary) 50%, transparent);
   }
 
   /* === Companion line (topic side, v3.13.x) ===
@@ -872,7 +1184,7 @@
   .pattern-companion-link:focus-visible{
     background:rgba(0,243,255,.06);border-bottom-color:var(--cyan);outline:none;
   }
-  body.theme-light .pattern-companion{border-top-color:rgba(180,150,0,.3)}
+  body.theme-light .pattern-companion{border-top-color:color-mix(in srgb, var(--accent-development-note) 30%, transparent)}
 
   /* === // CONTINUE label above col-relations ===
      CTA (.col-cta) は既に padding-bottom:16px を持つので、aside の margin-top は控えめに。
@@ -1170,6 +1482,16 @@
     border-color:#d8dce6;
     box-shadow:0 1px 4px rgba(0,0,0,.06);
   }
+  /* col-card light theme — surfaces remap, --col-accent left untouched so
+     each card keeps its semantic color across themes. */
+  body.theme-light .col-card{
+    background:#ffffff;
+    border-color:#d8dce6;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+    /* keep border-left color = --col-accent */
+  }
+  body.theme-light .col-card__desc{color:#3a4050}
+  body.theme-light .col-card__related{color:var(--dim)}
   body.theme-light .panel-title{color:var(--text)}
   body.theme-light .panel-caption{color:#3a4050}
   body.theme-light .story-bridge{
@@ -1201,7 +1523,7 @@
   body.theme-light [class="hint"]{color:var(--dim) !important}
 
   /* Formulas & examples ------------------------------------------ */
-  body.theme-light .formula{text-shadow:none;border-left-color:#b0b8c8;color:var(--text);background:rgba(0,100,150,.04)}
+  body.theme-light .formula{text-shadow:none;border-left-color:#b0b8c8;color:var(--text);background:color-mix(in srgb, var(--accent-primary) 8%, transparent)}
   body.theme-light .example-box{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .guided-steps{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .tab-btn{border-color:#d8dce6;color:var(--dim)}
@@ -1426,6 +1748,123 @@
   @media (prefers-reduced-motion: reduce){
     .scroll-progress-fill{ transition: none }
   }
+
+  /* --- Side-TOC v3.13: 3-layer structure (current / related / all) -------- */
+  /* (1) section labels — small dim heading above each block */
+  .side-toc-section-label{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--dim);
+    opacity:.7;
+    margin:0 0 4px 8px;
+  }
+  /* (2) current-topic block — highlighted, mimics .side-toc-list a.current */
+  .side-toc-current{ margin-bottom:14px }
+  .side-toc-current a{
+    display:block;
+    color:var(--cyan-light);
+    text-decoration:none;
+    padding:6px 8px;
+    border-left:3px solid rgba(0,220,240,.6);
+    background:rgba(0,220,240,.08);
+    border-radius:0 4px 4px 0;
+    font-weight:700;
+    letter-spacing:.5px;
+    line-height:1.35;
+  }
+  /* (3) related-topics block — soft list, max 4 entries */
+  .side-toc-related{ margin-bottom:14px }
+  .side-toc-related-list{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex; flex-direction:column; gap:2px;
+  }
+  .side-toc-related-list a{
+    color:var(--dim);
+    text-decoration:none;
+    display:block;
+    padding:4px 8px 4px 14px;
+    border-left:2px solid transparent;
+    letter-spacing:.5px;
+    line-height:1.35;
+    border-radius:0 4px 4px 0;
+    transition:color .15s ease, border-color .15s ease, background .15s ease;
+    position:relative;
+  }
+  .side-toc-related-list a::before{
+    content:"→";
+    position:absolute;
+    left:4px;
+    opacity:.55;
+    color:var(--cyan);
+    font-weight:400;
+  }
+  .side-toc-related-list a:hover{
+    color:var(--cyan);
+    border-left-color:rgba(0,243,255,.45);
+    background:rgba(0,243,255,.04);
+  }
+  /* (4) collapsible "All 16 topics" — <details> wrapper */
+  .side-toc-all{ margin-top:4px }
+  .side-toc-all > summary{
+    list-style:none;
+    cursor:pointer;
+    font-size:10px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--dim);
+    opacity:.75;
+    padding:6px 8px;
+    border-top:1px dashed rgba(0,243,255,.18);
+    user-select:none;
+    transition:color .15s ease, opacity .15s ease;
+  }
+  .side-toc-all > summary::-webkit-details-marker{ display:none }
+  .side-toc-all > summary::before{
+    content:"+ ";
+    color:var(--cyan);
+    font-weight:700;
+    margin-right:2px;
+  }
+  .side-toc-all[open] > summary::before{ content:"− " }
+  .side-toc-all > summary:hover{ color:var(--cyan); opacity:1 }
+  .side-toc-all .side-toc-list{ margin-top:6px }
+  /* category headers inside the expanded full list */
+  .side-toc-cat-header{
+    pointer-events:none;
+    margin-top:8px;
+  }
+  .side-toc-cat-header:first-child{ margin-top:2px }
+  .side-toc-cat-header > span{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    color:var(--dim);
+    opacity:.55;
+    padding:0 8px;
+  }
+  /* Light theme overrides for the new layers */
+  body.theme-light .side-toc-section-label{ color:#5b6776 }
+  body.theme-light .side-toc-current a{
+    color:var(--cyan);
+    border-left-color:var(--cyan);
+    background:rgba(26,107,122,.06);
+  }
+  body.theme-light .side-toc-related-list a{ color:#5b6776 }
+  body.theme-light .side-toc-related-list a:hover{
+    color:var(--cyan);
+    border-left-color:var(--cyan);
+    background:rgba(26,107,122,.04);
+  }
+  body.theme-light .side-toc-all > summary{
+    color:#5b6776;
+    border-top-color:#d8dce6;
+  }
+  body.theme-light .side-toc-all > summary:hover{ color:var(--cyan) }
+  body.theme-light .side-toc-cat-header > span{ color:#8895a5 }
 
 /* ===== Scroll-to-top button ===== */
   .scroll-top-btn{

@@ -1,9 +1,9 @@
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x2460; 適合度検定 &#x2014; サイコロは公正か？</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x2460; Goodness-of-Fit &#x2014; Is the Die Fair?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="drag-hint drag-hint--tight"><span data-lang="ja">&#x1F3B2; 左側のバーをクリックして出目を1つずつ追加（Shift+クリックで&#x2212;1）</span><span data-lang="en">&#x1F3B2; Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">有意水準 &#x03B1;</span>
@@ -12,8 +12,8 @@
         </label>
         <input type="range" id="gofA" min="0.01" max="0.10" step="0.01" value="0.05" aria-label="Significance alpha">
       </div>
-      <div class="ctrl" style="min-width:auto">
-        <select id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px" aria-label="Die type">
+      <div class="ctrl ctrl--narrow">
+        <select id="gofDie" class="select-cyan" aria-label="Die type">
           <option value="fair" data-ja="公正なサイコロ" data-en="Fair die">公正なサイコロ</option>
           <option value="loaded" data-ja="イカサマ（&#x2685; 重め）" data-en="Loaded (&#x2685; heavy)">イカサマ（&#x2685; 重め）</option>
         </select>
@@ -22,7 +22,7 @@
       <button class="btn magenta" id="gofReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="chitestCanvas" aria-label="適合度検定の可視化。クリックでサイコロの出目を追加しχ²統計量の変化を観察" data-aria-label-en="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" class="canvas-crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">試行回数 n</span><span data-lang="en">Rolls n</span> <strong id="gofN">0</strong></div>

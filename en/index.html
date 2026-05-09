@@ -177,22 +177,22 @@
 <div class="hero">
 <canvas aria-busy="true" aria-label="Animated particle background" id="heroCanvas"></canvas>
 <h1 class="hero-title glitch" data-text="STATPLAY">STATPLAY</h1>
-<div class="hero-sub" style="margin-bottom:32px">[ <span>PROBABILITY</span> → <span>INFERENCE</span> → <span>MODELING</span> ]</div>
+<div class="hero-sub hero-sub--gap">[ <span>PROBABILITY</span> → <span>INFERENCE</span> → <span>MODELING</span> ]</div>
 
-<p style="max-width:680px;margin:0 auto 36px;color:var(--text);line-height:2;font-size:15px">
+<p class="hero-lead">
     Statistics is way more fun than it looks.<br/>
     Forget rote formulas — here the graphs move on their own, and you just feel the math click.
   </p>
 <button class="hero-cta" id="heroStart"><span>▶ START</span></button>
 
-<p style="font-size:13px;color:var(--dim);margin:16px auto 0;max-width:480px;text-align:center;line-height:1.8">
+<p class="hero-tagline">
   Come here when your textbook makes sense — but nothing becomes a picture.
 </p>
 </div>
 <!-- ============ POSITIONING — このサイトの立ち位置 / What this site is for ============ -->
-<section class="reveal" style="padding-top:30px;padding-bottom:20px">
+<section class="reveal section-tight--lead">
 
-<div class="story-bridge" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<div class="story-bridge story-bridge--lead">
 <b>▼ What this site is for</b><br/>
     If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back.<br/>
     This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br/>
@@ -200,29 +200,29 @@
   </div>
 </section>
 <!-- ============ QUICK START — どこから始める？ / Where do I start? ============ -->
-<section class="reveal" id="quick-start" style="padding-top:10px;padding-bottom:20px">
+<section class="reveal section-tight" id="quick-start">
 
-<div class="story-bridge" style="font-size:13.5px;line-height:1.85;padding:18px 22px 18px 42px">
+<div class="story-bridge story-bridge--lead">
 <b>▼ Where did your textbook lose you?</b><br/>
     You don't have to go through everything in order. Jump straight to the concept that made you stop. You're not the only one who got stuck there.<br/>
-<span style="margin-top:8px;display:inline-block">
-<a href="#stdnorm" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What even is a normal distribution?</a>
-<span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#normal" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">What is standardization actually doing?</a>
-<span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#test" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">How do I actually run a test?</a>
-<span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#bayes" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">Bayes' theorem makes no sense</a>
-<span style="color:var(--dim);margin:0 8px">|</span>
-<a href="#clt" style="color:var(--cyan);text-decoration:none;border-bottom:1px dashed var(--cyan)">The Central Limit Theorem doesn't click</a>
+<span class="hub-link-list">
+<a href="#stdnorm">What even is a normal distribution?</a>
+<span class="sep">|</span>
+<a href="#normal">What is standardization actually doing?</a>
+<span class="sep">|</span>
+<a href="#test">How do I actually run a test?</a>
+<span class="sep">|</span>
+<a href="#bayes">Bayes' theorem makes no sense</a>
+<span class="sep">|</span>
+<a href="#clt">The Central Limit Theorem doesn't click</a>
 </span><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
+<span class="hub-link-list-note">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
 </div>
 </section>
 <!-- ============ COLUMN PICKS ============ -->
-<section class="reveal" id="columns" style="padding-top:10px;padding-bottom:20px">
+<section class="reveal section-tight" id="columns">
 
-<h2 class="sec-title" style="font-size:16px;margin-bottom:16px">Columns</h2>
+<h2 class="sec-title sec-title--small">Columns</h2>
 
 <div class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
 
@@ -230,40 +230,40 @@
 
 
 
-<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--yellow)">
-<a href="columns/deviation.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
-<span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> · <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> · <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a></span>
+<div class="col-card" style="--col-accent:var(--yellow)">
+<a class="col-card__title" href="columns/deviation.html">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
+<span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+<span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> · <a href="#normal">normal</a> · <a href="#clt">clt</a></span>
 </div>
-<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--magenta)">
-<a href="columns/birthday.html" style="color:var(--magenta);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">The Birthday Paradox — 23 People, 50%+ Chance →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
-<span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#prob" style="color:var(--cyan);text-decoration:none">prob</a> · <a href="#morep" style="color:var(--cyan);text-decoration:none">morep</a> · <a href="#chitest" style="color:var(--cyan);text-decoration:none">chitest</a></span>
+<div class="col-card" style="--col-accent:var(--magenta)">
+<a class="col-card__title" href="columns/birthday.html">The Birthday Paradox — 23 People, 50%+ Chance →</a><br/>
+<span class="col-card__desc">With just 23 people, a shared birthday is more likely than not. Experience the paradox interactively.</span>
+<span class="col-card__related">Related: <a href="#prob">prob</a> · <a href="#morep">morep</a> · <a href="#chitest">chitest</a></span>
 </div>
-<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--green,#0f6)">
-<a href="columns/standardization.html" style="color:var(--green,#0f6);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">What Is Standardization? — The Universal Translator for "Normal" →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
-<span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#stdnorm" style="color:var(--cyan);text-decoration:none">stdnorm</a> · <a href="#normal" style="color:var(--cyan);text-decoration:none">normal</a> · <a href="#clt" style="color:var(--cyan);text-decoration:none">clt</a> · <a href="#lln" style="color:var(--cyan);text-decoration:none">lln</a> · <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> · <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+<div class="col-card" style="--col-accent:var(--green)">
+<a class="col-card__title" href="columns/standardization.html">What Is Standardization? — The Universal Translator for "Normal" →</a><br/>
+<span class="col-card__desc">182 cm tall vs. TOEIC 860 — which is further from "average"? Learn how Z=(X−μ)/σ lets you compare across units in 3 minutes.</span>
+<span class="col-card__related">Related: <a href="#stdnorm">stdnorm</a> · <a href="#normal">normal</a> · <a href="#clt">clt</a> · <a href="#lln">lln</a> · <a href="#test">test</a> · <a href="#ci">ci</a></span>
 </div>
-<div class="panel" style="padding:18px 22px;margin:0 0 10px;border-left:3px solid var(--cyan)">
-<a href="columns/income_prediction.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Income Prediction — How Far Can Statistics Go? →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
-<span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#reg" style="color:var(--cyan);text-decoration:none">reg</a> · <a href="#mreg" style="color:var(--cyan);text-decoration:none">mreg</a> · <a href="#corr" style="color:var(--cyan);text-decoration:none">corr</a> · <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a></span>
+<div class="col-card" style="--col-accent:var(--cyan)">
+<a class="col-card__title" href="columns/income_prediction.html">Income Prediction — How Far Can Statistics Go? →</a><br/>
+<span class="col-card__desc">Age, gender, prefecture — just three inputs reveal a range of income. A hands-on column on multiple regression.</span>
+<span class="col-card__related">Related: <a href="#reg">reg</a> · <a href="#mreg">mreg</a> · <a href="#corr">corr</a> · <a href="#ci">ci</a></span>
 </div>
-<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--yellow)">
-<a href="columns/error_types.html" style="color:var(--yellow);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Type I vs Type II Errors — One 2×2 Table Makes It Click →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
-<span style="color:var(--dim);font-size:11px;display:block;margin-top:6px;font-family:'Courier New',monospace">Related: <a href="#test" style="color:var(--cyan);text-decoration:none">test</a> · <a href="#ci" style="color:var(--cyan);text-decoration:none">ci</a> · <a href="#bayes" style="color:var(--cyan);text-decoration:none">bayes</a> · <a href="#anova" style="color:var(--cyan);text-decoration:none">anova</a> · <a href="#proptest" style="color:var(--cyan);text-decoration:none">proptest</a> · <a href="#dists" style="color:var(--cyan);text-decoration:none">dists</a></span>
+<div class="col-card" style="--col-accent:var(--yellow)">
+<a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Makes It Click →</a><br/>
+<span class="col-card__desc">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
+<span class="col-card__related">Related: <a href="#test">test</a> · <a href="#ci">ci</a> · <a href="#bayes">bayes</a> · <a href="#anova">anova</a> · <a href="#proptest">proptest</a> · <a href="#dists">dists</a></span>
 </div>
 </section>
 <!-- ============ TOOL: DISTRIBUTION TABLES ============ -->
-<section class="reveal" id="dist-tables" style="padding-top:10px;padding-bottom:20px">
+<section class="reveal section-tight" id="dist-tables">
 
-<h2 class="sec-title" style="font-size:16px;margin-bottom:16px">Tools</h2>
+<h2 class="sec-title sec-title--small">Tools</h2>
 
-<div class="panel" style="padding:18px 22px;margin:0;border-left:3px solid var(--cyan)">
-<a href="tables/index.html" style="color:var(--cyan);text-decoration:none;font-weight:bold;font-family:'Courier New',monospace;font-size:15px;letter-spacing:.5px">Interactive Distribution Tables — Normal · t · χ² · F →</a><br/>
-<span style="color:var(--dim);font-size:12px;margin-top:6px;display:inline-block;line-height:1.7">Four distribution tables from the back of your textbook, synced with live graphs. Click any cell and see its position highlighted on the curve in real time.</span>
+<div class="col-card" style="--col-accent:var(--cyan)">
+<a class="col-card__title" href="tables/index.html">Interactive Distribution Tables — Normal · t · χ² · F →</a><br/>
+<span class="col-card__desc">Four distribution tables from the back of your textbook, synced with live graphs. Click any cell and see its position highlighted on the curve in real time.</span>
 </div>
 </section>
 <!-- ============ CATEGORY: PROBABILITY ============ -->
@@ -275,7 +275,7 @@
 <main id="main-content">
 <!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
 <section class="reveal" id="stdnorm">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/stdnorm.html">▻ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/stdnorm.html">▻ Dedicated page for this topic</a></div>
 <div class="sec-tag">P1 / Standard Normal</div>
 
 <h2 class="sec-title">Standard Normal <span class="sec-sub">— The Origin of Everything</span></h2>
@@ -301,9 +301,9 @@
 <!-- @panel:stdnorm_68 -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
+<h3 class="cy-head">▶ "68 - 95 - 99.7" — no memorization, just see it</h3>
 
-<p class="sec-desc" style="margin-bottom:14px;font-size:13px">
+<p class="sec-desc sec-desc--tight-sm">
       Slide the width <code>k</code>; the blue-filled area IS the probability.
       ± 1σ already covers ~68%, ± 2σ is ~95%, ± 3σ is nearly everything.<br/>
       That famous number <b>z = 1.96</b>? It's the two-tail 5% critical value — hypothesis tests and confidence intervals all start there.
@@ -339,9 +339,9 @@
 <!-- @panel:stdnorm_morph -->
 <div class="panel" data-autorun="snAnim">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Watch every normal collapse onto "that one curve"</h3>
+<h3 class="cy-head">▶ Watch every normal collapse onto "that one curve"</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
       Height, IQ, blood pressure readings, factory part errors — real-world normal-ish things all have different means and spreads.
       Yet apply <b>z = (x − μ) / σ</b> and they all snap onto <b>that pink curve</b>.<br/>
       It auto-plays on scroll (▶ to replay). That's why every statistical formula needs only one standard-normal table.
@@ -370,20 +370,20 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/stdnorm.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
-<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<div class="learn-more-link learn-more-link--col">
 
-<a href="columns/standardization.html" style="color:var(--green,#0f6)">📊 Column: What Is Standardization? — The universal translator for "normal" →</a>
+<a class="ln-green" href="columns/standardization.html">📊 Column: What Is Standardization? — The universal translator for "normal" →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="#normal">P2 Normal Distribution</a></div>
 </section>
 <!-- ============ NORMAL ============ -->
 <section class="reveal" id="normal">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/normal.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/normal.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">P2 / Normal &amp; Standardization</div>
 
 <h2 class="sec-title">Normal Distribution <span class="sec-sub">— Shaping Mean &amp; Spread</span></h2>
@@ -399,7 +399,7 @@
     Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
     The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
-    <br/><i style="color:var(--dim)">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
+    <br/><i class="tip-line">Tip: drag directly on the graph to move the <code>a</code>/<code>b</code> bounds — whichever handle is closest follows your finger.</i>
 </p>
 <div class="sim-layout">
 
@@ -440,20 +440,20 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/normal.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
-<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<div class="learn-more-link learn-more-link--col">
 
-<a href="columns/deviation.html" style="color:var(--yellow)">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
+<a class="ln-yellow" href="columns/deviation.html">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
 </section>
 <!-- ============ MORE DISTRIBUTIONS (binomial / poisson / exponential) ============ -->
 <section class="reveal" id="prob">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/prob.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/prob.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">P3 / Probability Rules</div>
 
 <h2 class="sec-title">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
@@ -462,7 +462,7 @@
 
 <p class="sec-desc">
     Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br/>
-<span style="color:var(--dim);font-size:var(--fs-xs)">Symbol cheat-sheet: ∪ = "or" (union), ∩ = "and" (intersection), P(A|B) = "probability of A given B happened"</span><br/>
+<span class="symbol-note">Symbol cheat-sheet: ∪ = "or" (union), ∩ = "and" (intersection), P(A|B) = "probability of A given B happened"</span><br/>
 <b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
     Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br/>
     Press the <b>Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
@@ -472,7 +472,7 @@
 <b>Concrete example</b><br/>
     Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br/>
     A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br/>
-<span style="color:var(--dim)">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+<span class="inline-dim">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
 </div>
 <div class="sim-layout">
 
@@ -488,7 +488,7 @@
 <!-- @panel:prob_venn -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ Interactive Venn Diagram</h3>
+<h3 class="cy-head">▶ Interactive Venn Diagram</h3>
 <div class="controls">
 <div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
 <input aria-label="P(A)" id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
@@ -514,20 +514,20 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/prob.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
-<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<div class="learn-more-link learn-more-link--col">
 
-<a href="columns/birthday.html" style="color:var(--magenta)">📊 Column: The Birthday Paradox — How far off our probability intuition can be →</a>
+<a class="ln-magenta" href="columns/birthday.html">📊 Column: The Birthday Paradox — How far off our probability intuition can be →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="#bayes">P4 Bayes' Theorem</a></div>
 </section>
 <!-- ============ STANDARD NORMAL DISTRIBUTION — intro ============ -->
 <section class="reveal" id="bayes">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/bayes.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">P4 / Bayes' Theorem</div>
 
 <h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
@@ -566,7 +566,7 @@
 <input aria-label="Specificity" id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="Bayes theorem visualization" id="bayesCanvas" style="width:100%;display:block;height:380px"></canvas>
+<canvas aria-busy="true" aria-label="Bayes theorem visualization" class="canvas-bayes" id="bayesCanvas"></canvas>
 <div class="info">
 <div><span>True positives (sick &amp; tested +)</span><strong id="bTp">—</strong></div>
 <div><span>False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
@@ -579,7 +579,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/bayes.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -588,7 +588,7 @@
 </section>
 <!-- ============ BAYES ============ -->
 <section class="reveal" id="morep">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/morep.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/morep.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">P5 / Binomial / Poisson / Exp</div>
 
 <h2 class="sec-title">Discrete &amp; Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
@@ -711,7 +711,7 @@
 <div class="panel-title">One Phenomenon, Three Views — A Call Center Hour</div>
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
-<div class="controls" style="margin-bottom:12px">
+<div class="controls controls--mb-12">
 <div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
@@ -740,7 +740,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/morep.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -767,7 +767,7 @@
 <p class="cat-desc">Statistical Inference — learning about populations from samples</p>
 </div>
 <section class="reveal" id="clt">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/clt.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/clt.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I1 / Central Limit Theorem</div>
 
 <h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
@@ -823,7 +823,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/clt.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -832,7 +832,7 @@
 </section>
 <!-- ============ LLN ============ -->
 <section class="reveal" id="lln">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/lln.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/lln.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I2 / Law of Large Numbers</div>
 
 <h2 class="sec-title">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
@@ -877,7 +877,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/lln.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -886,7 +886,7 @@
 </section>
 <!-- ============ CI ============ -->
 <section class="reveal" id="ci">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/ci.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/ci.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I3 / Confidence Intervals</div>
 
 <h2 class="sec-title">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
@@ -935,7 +935,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/ci.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -944,7 +944,7 @@
 </section>
 <!-- ============ TEST ============ -->
 <section class="reveal" id="test">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/test.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/test.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I4 / Hypothesis Testing</div>
 
 <h2 class="sec-title">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
@@ -961,7 +961,7 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br><span style="color:var(--dim)">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></br></li>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></br></li>
 <li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
 <li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but rejection area is one-sided; p-value halves.</li>
 </ol>
@@ -969,7 +969,7 @@
 <!-- @panel:test_main -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Basics: z-statistic &amp; rejection region</h3>
+<h3 class="cy-head">▶ ① Basics: z-statistic &amp; rejection region</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
 <input aria-label="Observed z" id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
@@ -1012,12 +1012,12 @@
 <!-- @panel:test_err -->
 <div class="panel" id="test_err">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② Two kinds of errors: α, β, power</h3>
+<h3 class="cy-head">▶ ② Two kinds of errors: α, β, power</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
       This panel is a <b>hands-on playground</b> for the α (Type I) / β (Type II) / power trade-off.<br/>
-      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a href="../../../en/columns/error_types.html" style="color:var(--cyan)">"Type I &amp; II in a 2×2 table" column</a>.
-      <br/><i style="color:var(--dim)">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
+      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a class="ln-cyan" href="../../../en/columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.
+      <br/><i class="tip-line">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
 </p>
 <div class="controls">
 <div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
@@ -1040,7 +1040,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/test.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1049,7 +1049,7 @@
 </section>
 <!-- ============ PROPTEST ============ -->
 <section class="reveal" id="proptest">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/proptest.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/proptest.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I5 / Proportion Test &amp; Estimation</div>
 
 <h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
@@ -1074,7 +1074,7 @@
 <!-- @panel:proptest_ci -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ① Confidence interval for a proportion</h3>
+<h3 class="cy-head">▶ ① Confidence interval for a proportion</h3>
 <div class="controls">
 <div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
 <input aria-label="Sample size n" id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
@@ -1090,7 +1090,7 @@
 </select>
 </div>
 </div>
-<canvas aria-busy="true" aria-label="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" id="ptCiCanvas" style="aspect-ratio:16/9"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" class="canvas-aspect-16-9" id="ptCiCanvas"></canvas>
 <div class="info">
 <div><span>Standard error SE</span><strong id="ptCiSE">—</strong></div>
 <div><span>CI lower bound</span><strong id="ptCiLo">—</strong></div>
@@ -1113,7 +1113,7 @@
 <!-- @panel:proptest_sim -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ①-b CI simulation</h3>
+<h3 class="cy-head">▶ ①-b CI simulation</h3>
 <div class="controls">
 <div class="ctrl"><label><span>True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
 <input aria-label="True proportion p" id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
@@ -1129,11 +1129,11 @@
 </select>
 </div>
 </div>
-<div class="controls" style="margin:8px 0">
+<div class="controls controls--my-8">
 <button class="btn" id="ptCiSimRun"><span>▶ Run</span></button>
 <button class="btn magenta" id="ptCiSimReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" id="ptCiSimCanvas" style="aspect-ratio:16/9"></canvas>
+<canvas aria-busy="true" aria-label="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" class="canvas-aspect-16-9" id="ptCiSimCanvas"></canvas>
 <div class="info">
 <div><span>Generated</span><strong id="ptCiSimMade">0</strong></div>
 <div><span>Coverage rate</span><strong id="ptCiSimCov">—</strong></div>
@@ -1155,9 +1155,9 @@
 <!-- @panel:proptest_test -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ② One-sample z-test for a proportion</h3>
+<h3 class="cy-head">▶ ② One-sample z-test for a proportion</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
     Same flow as testing a population mean. Set up H₀: p = p₀, compute z from the sample, and check whether it lands in the rejection region.<br>
     The only twist is that the standard error becomes √(p₀(1−p₀)/n). Nail that, and the rest is familiar.
   </br></p>
@@ -1209,9 +1209,9 @@
 <!-- @panel:proptest_two -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:10px;font-size:13px;letter-spacing:2px">▶ ③ Two-proportion z-test</h3>
+<h3 class="cy-head">▶ ③ Two-proportion z-test</h3>
 
-<p class="sec-desc" style="margin-bottom:14px">
+<p class="sec-desc sec-desc--tight">
     "Drug A vs. Drug B — which works better?" "Ad A vs. Ad B — is the click-through rate really different?" This test is for comparing two groups.<br>
     The key idea: under H₀: p₁ = p₂, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
   </br></p>
@@ -1252,7 +1252,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/proptest.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1261,7 +1261,7 @@
 </section>
 <!-- ============ DISTS ============ -->
 <section class="reveal" id="dists">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/dists.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/dists.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I6 / t · χ² · F 分布</div>
 
 <h2 class="sec-title">Three Test Distributions <span class="sec-sub">— Meet t, χ² &amp; F</span></h2>
@@ -1288,34 +1288,34 @@
 <!-- @panel:dists_t -->
 <div class="panel" id="dists-t">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ t distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ t distribution</h3>
 
 <div class="dist-card">
 <b class="cy">Built from:</b> t = Z / √(χ²ₖ/k), Z~N(0,1).<br/>
 <b class="cy">Use for:</b> testing means with unknown variance, regression t-values.<br/>
 <b class="cy">Flavor:</b> heavier tails than N(0,1); matches N(0,1) as df→∞.
       </div>
-<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span style="color:var(--dim);font-size:11px">(df = <span id="tdVal">4</span>)</span></label>
+<div class="ctrl ctrl--mb-12"><label><span>Sample size n = </span><span class="val" id="tNVal">5</span> <span class="ctrl-note">(df = <span id="tdVal">4</span>)</span></label>
 <input aria-label="Sample size n" id="tN" max="100" min="3" type="range" value="5"/>
 </div>
-<div style="display:flex;gap:16px;align-items:center;white-space:nowrap;font-family:'Courier New',monospace;font-size:12px;margin-bottom:12px">
-<span style="color:var(--dim)"><span>Confidence:</span></span>
+<div class="conf-bar">
+<span class="inline-dim"><span>Confidence:</span></span>
 <label><input name="tConf" type="radio" value="0.10"> 90%</input></label>
 <label><input checked="" name="tConf" type="radio" value="0.05"> 95%</input></label>
 <label><input name="tConf" type="radio" value="0.01"> 99%</input></label>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" height="360" id="tDistCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="Confidence interval comparison" height="56" id="tCICanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="t distribution PDF. Change degrees of freedom and watch it approach the normal distribution" class="canvas-block" height="360" id="tDistCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Confidence interval comparison" class="canvas-strip" height="56" id="tCICanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Sample size n</span> <strong id="tInfoN">5</strong></div>
 <div><span>df</span> <strong id="tInfoDf">4</strong></div>
 <div><span>Confidence</span> <strong id="tInfoConf">95%</strong></div>
-<div><span>t critical</span> <strong id="tInfoTCrit" style="color:var(--cyan)">±2.776</strong></div>
-<div><span>z critical</span> <strong id="tInfoZCrit" style="color:var(--magenta)">±1.960</strong></div>
+<div><span>t critical</span> <strong class="ln-cyan" id="tInfoTCrit">±2.776</strong></div>
+<div><span>z critical</span> <strong class="ln-magenta" id="tInfoZCrit">±1.960</strong></div>
 <div><span>t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+<p class="dist-caption"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -1336,40 +1336,40 @@
 <!-- @panel:dists_chi -->
 <div class="panel" id="dists-chi">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ χ² distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ χ² distribution</h3>
 
 <div class="dist-card">
 <b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br/>
 <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br/>
 <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
-<div class="controls" style="gap:8px;margin-bottom:12px">
+<div class="controls controls--gap-8">
 <div class="ctrl"><label><span>Rolls n = </span><span class="val" id="chiRollsVal">60</span></label>
 <input aria-label="Rolls n" id="chiRolls" max="300" min="12" type="range" value="60"/>
 </div>
-<div class="ctrl" style="min-width:auto">
-<select aria-label="Die type" id="chiDieType" style="background:rgba(0,0,0,.3);border:1px solid var(--magenta);color:var(--magenta);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-magenta" id="chiDieType">
 <option value="fair">Fair die</option>
 <option value="loaded">Loaded (⚅ heavy)</option>
 </select>
 </div>
 <button class="btn" id="diceRandom"><span>▶ Roll</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Dice roll distribution" height="140" id="diceBarCanvas" style="width:100%;height:140px;display:block"></canvas>
-<div class="ctrl" style="margin-top:12px;margin-bottom:12px"><label>df (k) = <span class="val" id="chiVal">5</span></label>
+<canvas aria-busy="true" aria-label="Dice roll distribution" class="canvas-dice" height="140" id="diceBarCanvas"></canvas>
+<div class="ctrl ctrl--my-12"><label>df (k) = <span class="val" id="chiVal">5</span></label>
 <input aria-label="Degrees of freedom df" id="chiDf" max="30" min="1" type="range" value="5"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change df</span></div>
-<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" height="360" id="chiCanvas" style="width:100%;display:block"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change df</span></div>
+<canvas aria-busy="true" aria-label="Chi-squared distribution PDF. See how shape changes with degrees of freedom" class="canvas-block" height="360" id="chiCanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Rolls n</span> <strong id="chiInfoN">60</strong></div>
 <div><span>df</span> <strong id="chiInfoDf">5</strong></div>
-<div><span>Test statistic χ²</span> <strong id="chiInfoStat" style="color:var(--magenta)">—</strong></div>
+<div><span>Test statistic χ²</span> <strong class="ln-magenta" id="chiInfoStat">—</strong></div>
 <div><span>χ² critical</span> <strong id="chiInfoCrit">11.070</strong></div>
 <div><span>p-value</span> <strong id="chiInfoP">—</strong></div>
 <div><span>Verdict</span> <strong id="chiInfoVerdict">—</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
+<p class="dist-caption"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="chiCanvas" data-title="χ² Distribution"><span>💾 Save image</span></button>
 </div>
@@ -1390,41 +1390,41 @@
 <!-- @panel:dists_f -->
 <div class="panel" id="dists-f">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ F distribution</h3>
+<h3 class="cy-head cy-head--compact">▶ F distribution</h3>
 
 <div class="dist-card">
 <b class="ye">Built from:</b> F = (χ²ₘ/m) / (χ²ₙ/n) (ratio of two independent χ² / df).<br/>
 <b class="ye">Use for:</b> ANOVA, overall F-test in regression.<br/>
 <b class="ye">Flavor:</b> non-negative, right-skewed. Shape depends on both df.
       </div>
-<div class="ctrl" style="margin-bottom:4px"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
+<div class="ctrl ctrl--mb-4"><label><span>Group A SD = </span><span class="val" id="fSdAVal">8</span></label>
 <input aria-label="Group A standard deviation" id="fSdA" max="20" min="1" type="range" value="8"/>
 </div>
-<div class="ctrl" style="margin-bottom:4px"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
+<div class="ctrl ctrl--mb-4"><label><span>Group B SD = </span><span class="val" id="fSdBVal">15</span></label>
 <input aria-label="Group B standard deviation" id="fSdB" max="20" min="1" type="range" value="15"/>
 </div>
-<div class="ctrl" style="margin-bottom:12px"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span style="color:var(--dim);font-size:11px">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
+<div class="ctrl ctrl--mb-12"><label><span>Sample size n = </span><span class="val" id="fGroupNVal">20</span> <span class="ctrl-note">(df₁ = df₂ = <span id="fDfLabel">19</span>)</span></label>
 <input aria-label="Sample size n per group" id="fGroupN" max="100" min="5" type="range" value="20"/>
 </div>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:4px"><span>↔ Drag the graph horizontally to change n</span></div>
-<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" height="360" id="fCanvas" style="width:100%;display:block"></canvas>
-<canvas aria-busy="true" aria-label="Variance comparison between two groups" height="56" id="fGroupCanvas" style="width:100%;height:56px;display:block;margin-top:4px"></canvas>
-<div class="info" style="margin-top:6px">
+<div class="drag-hint"><span>↔ Drag the graph horizontally to change n</span></div>
+<canvas aria-busy="true" aria-label="F distribution PDF. Visualize the variance ratio between two groups" class="canvas-block" height="360" id="fCanvas"></canvas>
+<canvas aria-busy="true" aria-label="Variance comparison between two groups" class="canvas-strip" height="56" id="fGroupCanvas"></canvas>
+<div class="info info--mt-6">
 <div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
 <div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
 <div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
-<div><span>F statistic</span> <strong id="fInfoF" style="color:var(--yellow)">3.516</strong></div>
+<div><span>F statistic</span> <strong class="ln-yellow" id="fInfoF">3.516</strong></div>
 <div><span>F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
 <div><span>p-value</span> <strong id="fInfoP">0.005</strong></div>
 </div>
-<p style="font-size:12px;color:var(--dim);margin-top:8px;line-height:1.5"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+<p class="dist-caption"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F-Distribution"><span>💾 Save image</span></button>
 </div>
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/dists.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1433,7 +1433,7 @@
 </section>
 <!-- ============ CHI-SQUARED TEST ============ -->
 <section class="reveal" id="chitest">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I7 / カイ二乗検定</div>
 
 <h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
@@ -1459,9 +1459,9 @@
 <!-- @panel:chitest_gof -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
+<div class="drag-hint drag-hint--tight"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -1470,8 +1470,8 @@
 </label>
 <input aria-label="Significance alpha" id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
 </div>
-<div class="ctrl" style="min-width:auto">
-<select aria-label="Die type" id="gofDie" style="background:rgba(0,0,0,.3);border:1px solid var(--cyan);color:var(--cyan);font-family:'Courier New',monospace;padding:4px 8px;font-size:12px">
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-cyan" id="gofDie">
 <option value="fair">Fair die</option>
 <option value="loaded">Loaded (⚅ heavy)</option>
 </select>
@@ -1479,7 +1479,7 @@
 <button class="btn" id="gofAutoRoll"><span>▶ Auto-roll</span></button>
 <button class="btn magenta" id="gofReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" height="300" id="chitestCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="chitestCanvas"></canvas>
 <div class="info">
 <div><span>Rolls n</span> <strong id="gofN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="gofStat">—</strong></div>
@@ -1507,9 +1507,9 @@
 <!-- @panel:chitest_ind -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ ② Test of Independence — Are Two Variables Independent?</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ ② Test of Independence — Are Two Variables Independent?</h3>
+<div class="drag-hint drag-hint--tight"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -1520,7 +1520,7 @@
 </div>
 <button class="btn magenta" id="indReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" id="indCanvas" style="width:100%;display:block;cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="indCanvas"></canvas>
 <div class="info">
 <div><span>Total n</span> <strong id="indN">0</strong></div>
 <div><span>Test statistic χ²</span> <strong id="indStat">—</strong></div>
@@ -1534,7 +1534,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/chitest.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1543,7 +1543,7 @@
 </section>
 <!-- ============ ANOVA ============ -->
 <section class="reveal" id="anova">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/anova.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/anova.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I8 / ANOVA</div>
 
 <h2 class="sec-title">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
@@ -1567,17 +1567,17 @@
 <!-- @panel:anova_sim -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Why You Can't Just Repeat t-Tests</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ Why You Can't Just Repeat t-Tests</h3>
+<div class="drag-hint drag-hint--tight">
 
 <span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
 </div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="controls controls--tight">
 <button class="btn" id="mcRun"><span>▶ 100 trials</span></button>
 <button class="btn" id="mcRun1000"><span>▶ 1000 trials</span></button>
 <button class="btn magenta" id="mcReset"><span>↺ Reset</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Multiple comparisons simulation" height="260" id="mcSimCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Multiple comparisons simulation" class="canvas-block" height="260" id="mcSimCanvas"></canvas>
 <div class="info">
 <div><span>Trials</span> <strong id="mcTotal">0</strong></div>
 <div><span>False positives</span> <strong id="mcFP">0</strong></div>
@@ -1592,7 +1592,7 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-<p style="margin:0 0 6px;font-size:12px;color:var(--dim)">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
+<p class="sim-warning">The F-test (ANOVA) below is how we avoid the false-positive inflation you just saw in the simulation above.</p>
 <b>Experiment Guide — Feel the F-Statistic</b>
 <ol>
 <li><b>Step 1:</b> Set between-group difference to zero → F ≈ 1. All groups look like one population.</li>
@@ -1604,8 +1604,8 @@
 <!-- @panel:anova_main -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Between vs. Within — Feel the F-Statistic</h3>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ Between vs. Within — Feel the F-Statistic</h3>
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -1632,7 +1632,7 @@
 </div>
 <button class="btn" id="anovaGen"><span>↻ Regenerate</span></button>
 </div>
-<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" height="320" id="anovaCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" class="canvas-block" height="320" id="anovaCanvas"></canvas>
 <div class="info">
 <div><span>F</span> <strong id="anovaF">—</strong></div>
 <div><span>Between df</span> <strong id="anovaDfB">—</strong></div>
@@ -1649,7 +1649,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/anova.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1677,7 +1677,7 @@
 </div>
 <!-- ============ CORRELATION ============ -->
 <section class="reveal" id="corr">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/corr.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/corr.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">M0 / Correlation</div>
 
 <h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
@@ -1719,9 +1719,9 @@
 </div>
 <button class="btn" id="corrGen"><span>▶ Generate</span></button>
 <button class="btn magenta" id="corrClear"><span>↺ Reset</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click canvas to add points</span></span>
+<span class="click-hint"><span>↑ Click canvas to add points</span></span>
 </div>
-<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" height="320" id="corrCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" class="canvas-crosshair" height="320" id="corrCanvas"></canvas>
 <div class="info">
 <div>n<strong id="corrNval">0</strong></div>
 <div><span>Correlation r</span><strong id="corrRval">—</strong></div>
@@ -1747,18 +1747,18 @@
 </div>
 <!-- @panel:corr_anscombe -->
 <div class="panel" data-autorun="anscombeReplay">
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
+<div class="controls controls--tight">
 <button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" height="360" id="anscombeCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" class="canvas-block" height="360" id="anscombeCanvas"></canvas>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
 </div>
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/corr.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1766,7 +1766,7 @@
 <div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
 </section>
 <section class="reveal" id="reg">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/reg.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/reg.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">M1 / Simple Regression</div>
 
 <h2 class="sec-title">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
@@ -1795,9 +1795,9 @@
 <div class="controls">
 <button class="btn" id="regRandom"><span>▶ Random 20 pts</span></button>
 <button class="btn magenta" id="regClear"><span>↺ Reset</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ Click the canvas to add points</span></span>
+<span class="click-hint"><span>↑ Click the canvas to add points</span></span>
 </div>
-<canvas aria-busy="true" aria-label="Simple regression scatter plot and regression line. Click to add points, drag to move them" height="280" id="regCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="Simple regression scatter plot and regression line. Click to add points, drag to move them" class="canvas-crosshair" height="280" id="regCanvas"></canvas>
 <div class="info">
 <div>n<strong id="regN">0</strong></div>
 <div><span>Slope β₁</span><strong id="regB1">—</strong></div>
@@ -1811,7 +1811,7 @@
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/reg.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
@@ -1820,7 +1820,7 @@
 </section>
 <!-- ============ MULTIPLE REGRESSION ============ -->
 <section class="reveal" id="mreg">
-<div class="topic-deep-link" style="margin:8px 0 -4px;font-family:'Courier New',monospace;font-size:12px"><a href="topics/mreg.html">▸ Dedicated page for this topic</a></div>
+<div class="topic-deep-link"><a href="topics/mreg.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">M2 / Multiple Regression</div>
 
 <h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
@@ -1846,12 +1846,12 @@
 <!-- @panel:mreg_vs -->
 <div class="panel">
 
-<h3 style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">▶ Simple vs. Multiple Regression — Watch β₁ Shift</h3>
-<div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px">
+<h3 class="cy-head cy-head--compact">▶ Simple vs. Multiple Regression — Watch β₁ Shift</h3>
+<div class="drag-hint drag-hint--tight">
 
 <span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
 </div>
-<div class="controls" style="gap:6px;margin-bottom:6px">
+<div class="controls controls--tight">
 <div class="ctrl">
 <label>
 
@@ -1870,7 +1870,7 @@
 </div>
 <button class="btn" id="mvGen"><span>↻ Regenerate</span></button>
 </div>
-<canvas aria-busy="true" aria-label="Simple vs. multiple regression β₁ comparison" height="320" id="mvCanvas" style="width:100%;display:block"></canvas>
+<canvas aria-busy="true" aria-label="Simple vs. multiple regression β₁ comparison" class="canvas-block" height="320" id="mvCanvas"></canvas>
 <div class="info">
 <div><span>Simple β₁</span> <strong id="mvSimpleB1">—</strong></div>
 <div><span>Multiple β₁</span> <strong id="mvMultiB1">—</strong></div>
@@ -1913,20 +1913,20 @@
 <div><span>β̂₂ (per sleep hour)</span><strong id="mCoefSleep">—</strong></div>
 <div>R²<strong id="mR2">—</strong></div>
 </div>
-<div id="mPredSub" style="font-family:'Courier New',monospace;font-size:11px;color:var(--dim);margin-top:4px"></div>
+<div class="mpred-sub" id="mPredSub"></div>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="Multiple Regression"><span>💾 Save image</span></button>
 </div>
 </div>
 <!-- /@panel -->
 </div>
-<div class="learn-more-link" style="margin:16px 0;text-align:center">
+<div class="learn-more-link">
 
 <a href="topics/mreg.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
-<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<div class="learn-more-link learn-more-link--col">
 
-<a href="columns/income_prediction.html" style="color:var(--yellow)">📊 Column: Feel multiple regression through income prediction →</a>
+<a class="ln-yellow" href="columns/income_prediction.html">📊 Column: Feel multiple regression through income prediction →</a>
 </div>
 </section>
 <div class="category-preview reveal">
@@ -1949,28 +1949,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 
 <span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>

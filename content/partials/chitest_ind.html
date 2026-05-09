@@ -1,9 +1,9 @@
 <div class="panel">
-    <h3 data-lang="ja" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; 独立性検定 &#x2014; 2変数は独立か？</h3>
-    <h3 data-lang="en" style="color:var(--cyan);font-family:'Courier New',monospace;margin-bottom:6px">&#x25B6; &#x2461; Test of Independence &#x2014; Are Two Variables Independent?</h3>
+    <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x2461; 独立性検定 &#x2014; 2変数は独立か？</h3>
+    <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x2461; Test of Independence &#x2014; Are Two Variables Independent?</h3>
 
-    <div style="color:var(--dim);font-family:'Courier New',monospace;font-size:11px;margin-bottom:6px"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで&#x2212;1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for &#x2212;1)</span></div>
-    <div class="controls" style="gap:6px;margin-bottom:6px">
+    <div class="drag-hint drag-hint--tight"><span data-lang="ja">左側のセルをクリックして観測値を+1（Shift+クリックで&#x2212;1）</span><span data-lang="en">Click a cell on the left to add +1 (Shift+click for &#x2212;1)</span></div>
+    <div class="controls controls--tight">
       <div class="ctrl">
         <label>
           <span data-lang="ja">有意水準 &#x03B1;</span>
@@ -15,7 +15,7 @@
       <button class="btn magenta" id="indReset"><span data-lang="ja">&#x21BA; リセット</span><span data-lang="en">&#x21BA; Reset</span></button>
     </div>
 
-    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" style="width:100%;display:block;cursor:crosshair" aria-busy="true"></canvas>
+    <canvas id="indCanvas" aria-label="独立性検定の可視化。セルをクリックして観測値を追加しχ²統計量の変化を観察" data-aria-label-en="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" height="300" class="canvas-crosshair" aria-busy="true"></canvas>
 
     <div class="info">
       <div><span data-lang="ja">総数 n</span><span data-lang="en">Total n</span> <strong id="indN">0</strong></div>

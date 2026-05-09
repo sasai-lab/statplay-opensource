@@ -174,9 +174,9 @@
 <div class="controls">
 <button class="btn" id="regRandom"><span>▶ ランダム 20点</span></button>
 <button class="btn magenta" id="regClear"><span>↺ リセット</span></button>
-<span style="color:var(--dim);font-family:'Courier New',monospace;font-size:12px"><span>↑ キャンバスをクリックして点追加</span></span>
+<span class="click-hint"><span>↑ キャンバスをクリックして点追加</span></span>
 </div>
-<canvas aria-busy="true" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" height="280" id="regCanvas" style="cursor:crosshair"></canvas>
+<canvas aria-busy="true" aria-label="単回帰分析の散布図と回帰直線。点をクリックして追加、ドラッグで移動できる" class="canvas-crosshair" height="280" id="regCanvas"></canvas>
 <div class="info">
 <div>n<strong id="regN">0</strong></div>
 <div><span>傾き β₁</span><strong id="regB1">—</strong></div>
@@ -267,28 +267,28 @@
 <div class="foot-head">// TECH STACK</div>
 <div class="built">
         Vanilla JS · Canvas 2D · ES Modules<br/>
-<span style="opacity:.7">Zero dependencies · PWA · Static hosting</span>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// BUILT WITH</div>
 <div class="built">
         Crafted with Claude<br/>
-<span style="opacity:.7">Anthropic · 2026</span>
+<span class="foot-dim">Anthropic · 2026</span>
 </div>
 </div>
 <div class="foot-col">
 <div class="foot-head">// LICENSE</div>
 <div class="built">
-<a href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" style="color:var(--cyan)" target="_blank">CC BY-NC 4.0 ↗</a><br/>
-<a href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" style="color:var(--cyan);font-size:11px" target="_blank">GitHub ↗</a>
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </div>
 <div class="foot-bottom">
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
-<span style="opacity:.75">
+<span class="foot-dim-strong">
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 
 </span>
@@ -300,24 +300,43 @@
 
 <script type="module" src="../js/main.js"></script>
 <nav class="side-toc" aria-label="トピック一覧">
-  <ol class="side-toc-list">
-    <li><a href="./stdnorm.html">標準正規分布</a></li>
-    <li><a href="./normal.html">正規分布と標準化</a></li>
-    <li><a href="./prob.html">確率の基本法則</a></li>
-    <li><a href="./bayes.html">ベイズの定理</a></li>
-    <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
-    <li><a href="./clt.html">中心極限定理</a></li>
-    <li><a href="./lln.html">大数の法則</a></li>
-    <li><a href="./ci.html">信頼区間</a></li>
-    <li><a href="./test.html">仮説検定</a></li>
-    <li><a href="./proptest.html">母比率の検定と推定</a></li>
-    <li><a href="./dists.html">三大検定分布</a></li>
-    <li><a href="./chitest.html">カイ二乗検定</a></li>
-    <li><a href="./anova.html">分散分析（ANOVA）</a></li>
-    <li><a href="./corr.html">相関係数</a></li>
-    <li><a href="./reg.html" class="current">単回帰分析</a></li>
-    <li><a href="./mreg.html">重回帰分析</a></li>
-  </ol>
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./reg.html">単回帰分析</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html" class="current">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
 </nav>
 <nav class="topic-nav" aria-label="前後のトピック">
   <a href="./corr.html" rel="prev">← 前へ</a>
