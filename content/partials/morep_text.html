@@ -70,7 +70,7 @@ Normal approximation           Exponential</div>
 </div>
 <div class="misc-item">
 <b>❌「もう10分待ったんだから、そろそろバスが来るはず」</b>
-<p>指数分布（無記憶性）を前提にすると間違い。ただし現実のバスには時刻表があるので、現実のほうが「そろそろ来る」は正しいことが多い。指数分布が当てはまるのは「完全にランダムに起きる事象」だけ。</p>
+<p>指数分布（無記憶性）が前提なら間違い。一方で時刻表があるバスは、待ち時間が長くなるほど次の到着までのハザード（「次1分以内に来る確率」）が上がっていく──これが「無記憶でない」状態の数学的な姿で、ワイブル分布や決定論的到着が扱う領域。指数分布が当てはまるのは「完全にランダムに起きる事象」だけ。</p>
 </div>
 <div class="misc-item">
 <b>❌「二項分布の分散は np」</b>
@@ -85,7 +85,7 @@ Normal approximation           Exponential</div>
 </div>
 <div class="misc-item">
 <b>❌ "I've waited 10 minutes, so the bus must come soon"</b>
-<p>Under exponential (memoryless) assumptions, this is wrong. In reality, buses have schedules, so "it should come soon" is often correct in practice. The exponential model applies only to purely random events.</p>
+<p>Wrong under exponential (memoryless) assumptions. With a real bus schedule, the hazard ("probability of arrival in the next minute") rises the longer you've waited — that's what being non-memoryless looks like mathematically (territory handled by Weibull or deterministic arrival models). The exponential applies only to purely random events.</p>
 </div>
 <div class="misc-item">
 <b>❌ "Binomial variance is np"</b>

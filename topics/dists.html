@@ -405,6 +405,8 @@
 <li><a href="./chitest.html">カイ二乗検定</a> &mdash; χ² 分布がカイ二乗検定を支えて、自由度を変えるたびに分布の形と検定の選び方が動く</li>
 <li><a href="./corr.html">相関係数</a> &mdash; 無相関の検定が t = r√(n−2)/√(1−r²) で t 分布に乗って、相関の検定もこの家族の枝に並ぶ</li>
 <li><a href="./stdnorm.html">標準正規分布</a> &mdash; 自由度を ∞ に飛ばすと t 分布が標準正規に重なっていく、家族の極限がここに着地する</li>
+<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 比率の検定が CLT で正規近似に乗ったあと、サンプルが小さくなると t 分布の裾の太さに乗り換える受け皿として家族が控えている</li>
+<li><a href="./reg.html">単回帰分析</a> &mdash; 回帰係数の検定が t = β̂/SE(β̂) で t 分布の上を走る。家族が回帰の現場にも顔を出す入口</li>
 <li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; t / χ² / F の検定統計量を棄却域に並べる場面で、第 1 種・第 2 種の枠組みが必ず動き出す</li>
 </ul>
 </div>
@@ -420,15 +422,6 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
-</div>
-
-<div class="qiita-notes">
-<h3>// 開発ノート（Qiita）</h3>
-<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
-<ul>
-<li><a href="https://qiita.com/sasailab/items/783a1cdd2f26dea137b0" target="_blank" rel="noopener"><span class="qiita-date">2026-04-30</span><span class="qiita-title">インタラクティブ確率分布表を作った話——表に書かれた数字をどこまで信じられるか</span></a><span class="qiita-why">t / χ² / F の分布表をインタラクティブにしたときに直面した精度問題を扱った開発ノート</span></li>
-<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">JavaScriptにガンマ関数がないので、Lanczos近似で実装した話</span></a><span class="qiita-why">t / χ² / F の確率密度を依存ゼロで計算するために必要だったガンマ関数の実装ノート</span></li>
-</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="./chitest.html">I7 カイ二乗検定</a></div>

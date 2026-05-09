@@ -4,8 +4,7 @@ dist/
 *.log
 scripts/cf-*.json
 scripts/publish_opensource.sh
-docs/PROJECT_CHARTER.md
-docs/agents/
+docs/
 screencapture-*.png
 screencapture-*.jpg
 スクリーンショット*
@@ -16,13 +15,12 @@ _w[0-9]*.png
 test-results/
 *_instructions.md
 *_draft.md
-docs/*_draft.md
 qiita-articles/
 
 # Sub-agent scratch directories and files (not for release)
 .tmp_*/
-docs/_shots/
-docs/evidence_v*/
 __usertest*.mjs
+__usertest_screens/
 scripts/_*.mjs
 scripts/_*.py
+qiita_tmp.json

@@ -410,6 +410,8 @@
 <li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the χ² distribution backs the chi-squared test — change df and both the curve and the test choice shift</li>
 <li><a href="./corr.html">Correlation</a> &mdash; the test of zero correlation rides on t = r√(n−2)/√(1−r²) — correlation testing joins another branch of this family</li>
 <li><a href="./stdnorm.html">Standard Normal</a> &mdash; send df to ∞ and the t curve folds back into N(0,1) — the family's limit lands right here</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the proportion test rides the CLT into a normal approximation; when n shrinks, the family's t-tail steps in to take over</li>
+<li><a href="./reg.html">Simple Regression</a> &mdash; regression slopes are tested with t = β̂/SE(β̂), running on this family's t curve — the door from variance to regression</li>
 <li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lining up t / χ² / F test statistics against the rejection region triggers the Type I / Type II framework every time</li>
 </ul>
 </div>
@@ -425,15 +427,6 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
-</div>
-
-<div class="qiita-notes">
-<h3>// Dev notes (Qiita)</h3>
-<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
-<ul>
-<li><a href="https://qiita.com/sasailab/items/783a1cdd2f26dea137b0" target="_blank" rel="noopener"><span class="qiita-date">2026-04-30</span><span class="qiita-title">(Japanese only) Building an interactive probability table — how much can you trust the printed numbers?</span></a><span class="qiita-why">A note on the precision questions that surface when turning t/χ²/F tables into interactive widgets</span></li>
-<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation</span></a><span class="qiita-why">The gamma-function implementation note that backs the dependency-free density calculations for t/χ²/F</span></li>
-</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="./chitest.html">I7 Chi-Squared Test</a></div>

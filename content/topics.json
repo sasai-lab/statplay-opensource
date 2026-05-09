@@ -68,18 +68,7 @@
         "en_text": "See the home of the N(μ,σ²) → z translation at",
         "ja_link_label": "正規分布と標準化",
         "en_link_label": "Normal Distribution"
-      },
-      "qiita_articles": [
-        {
-          "id": "af41ae280c552f1b65d9",
-          "url": "https://qiita.com/sasailab/items/af41ae280c552f1b65d9",
-          "ja_title": "「身長とTOEIC、どっちがふつうから遠い？」標準化",
-          "en_title": "(Japanese only) Height vs TOEIC: which is further from \"average\"?",
-          "ja_why": "身長と TOEIC を z で同じ物差しに乗せた話。標準正規が「翻訳機」として動いている開発ノート",
-          "en_why": "A development note on putting height and TOEIC scores on the same z-scale — the standard normal as a translator",
-          "posted_at": "2026-05-02"
-        }
-      ]
+      }
     },
     {
       "slug": "normal",
@@ -210,17 +199,6 @@
       ],
       "featured_columns": [
         "birthday"
-      ],
-      "qiita_articles": [
-        {
-          "id": "f03c61efe20f14bb7bea",
-          "url": "https://qiita.com/sasailab/items/f03c61efe20f14bb7bea",
-          "ja_title": "「確率変数って何ですか」——勉強中にAIに聞いた話",
-          "en_title": "(Japanese only) \"What is a random variable?\" — a conversation while studying",
-          "ja_why": "確率変数という言葉でつまずいたときの問答ノート。基本法則を触る前後で読むと言葉が定着しやすい",
-          "en_why": "A Q&A note from getting stuck on the term \"random variable\" — pairs with this topic to anchor the vocabulary",
-          "posted_at": "2026-04-26"
-        }
       ]
     },
     {
@@ -350,8 +328,8 @@
       "en_title": "See the Central Limit Theorem in Action",
       "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。",
       "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
-      "ja_lead": "もとの分布がどれだけ歪んでいても、その平均はベル型に化ける。これが統計学の影の主役。",
-      "en_lead": "However twisted the population, its sample mean still bends back into a bell. The hidden engine behind every test you'll meet later.",
+      "ja_lead": "もとの分布がどれだけ歪んでいても、その平均はベル型に化ける。他のトピックの裏で繰り返し顔を出す通底装置。",
+      "en_lead": "However twisted the population, its sample mean still bends back into a bell. A hidden engine that keeps reappearing behind the rest of inferential statistics.",
       "ja_kw": "中心極限定理, 標本平均, 正規分布への収束, 推測統計, 標本サイズ",
       "en_kw": "central limit theorem, sample mean, convergence to normal, inferential statistics, sample size",
       "teaches": [
@@ -413,18 +391,7 @@
         "en_text": "The interval width that sits on the CLT guarantee is at",
         "ja_link_label": "信頼区間",
         "en_link_label": "Confidence Intervals"
-      },
-      "qiita_articles": [
-        {
-          "id": "a5170d59751def6f1306",
-          "url": "https://qiita.com/sasailab/items/a5170d59751def6f1306",
-          "ja_title": "「n ≥ 30 ならOK」って、根拠あるんですか——中心極限定理をシミュレーションで確かめた",
-          "en_title": "(Japanese only) Is \"n ≥ 30\" really enough? Checking the CLT by simulation",
-          "ja_why": "経験則として広まる「n ≥ 30」を、母集団の形を変えながらシミュレーションで検証してみた開発ノート",
-          "en_why": "A simulation-based check of the \"n ≥ 30\" rule of thumb across differently-shaped populations",
-          "posted_at": "2026-05-04"
-        }
-      ]
+      }
     },
     {
       "slug": "lln",
@@ -480,17 +447,6 @@
       ],
       "featured_columns": [
         "standardization"
-      ],
-      "qiita_articles": [
-        {
-          "id": "a5170d59751def6f1306",
-          "url": "https://qiita.com/sasailab/items/a5170d59751def6f1306",
-          "ja_title": "「n ≥ 30 ならOK」って、根拠あるんですか——中心極限定理をシミュレーションで確かめた",
-          "en_title": "(Japanese only) Is \"n ≥ 30\" really enough? Checking the CLT by simulation",
-          "ja_why": "標本平均の収束（LLN）と分布の形（CLT）が同じシミュレーションで両方見える開発ノート",
-          "en_why": "A simulation that lets you watch both LLN-style convergence and CLT-style shape together",
-          "posted_at": "2026-05-04"
-        }
       ]
     },
     {
@@ -578,8 +534,8 @@
       "en_title": "Hypothesis Testing — Reject Regions & p-values",
       "ja_desc": "両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。",
       "en_desc": "Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.",
-      "ja_lead": "検定は裁判だ。H₀ は「無罪推定」、棄却域は「有罪宣告ライン」。z 値がどちら側に立つかを見るだけのゲーム。",
-      "en_lead": "Hypothesis testing is courtroom geometry. H₀ is presumed innocent; the rejection region is where conviction begins — z just shows which side it falls on.",
+      "ja_lead": "検定は裁判の構造をしている。H₀ は「無罪推定」、棄却域は「有罪宣告ライン」。z 値がどちら側に立つかで判決が決まる。",
+      "en_lead": "Hypothesis testing has the structure of a courtroom. H₀ is presumed innocent; the rejection region is where conviction begins — z just shows which side it falls on.",
       "ja_kw": "仮説検定, p値, 有意水準, 棄却域, 両側検定, 片側検定, z検定",
       "en_kw": "hypothesis testing, p-value, significance level, rejection region, z-test, one-sided, two-sided",
       "teaches": [
@@ -639,17 +595,6 @@
       ],
       "featured_columns": [
         "error_types"
-      ],
-      "qiita_articles": [
-        {
-          "id": "d43754a16c8a2f87e5b2",
-          "url": "https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2",
-          "ja_title": "グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた",
-          "en_title": "(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs",
-          "ja_why": "棄却域の絵を辞めて 2×2 の面積で α・β を並べ直した開発ノート。検定の判定図を別角度から眺める",
-          "en_why": "A development note that swaps rejection-region graphs for an area-based 2×2 — a fresh angle on testing decisions",
-          "posted_at": "2026-05-09"
-        }
       ]
     },
     {
@@ -713,17 +658,6 @@
       ],
       "featured_columns": [
         "error_types"
-      ],
-      "qiita_articles": [
-        {
-          "id": "d43754a16c8a2f87e5b2",
-          "url": "https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2",
-          "ja_title": "グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた",
-          "en_title": "(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs",
-          "ja_why": "比率検定でも α・β の構造は同じ。2×2 の面積で過誤を眺めた開発ノートが、比率の判定図を読むときの裏取りになる",
-          "en_why": "Proportion tests reuse the same α/β scaffolding — this 2×2-area note doubles as a backstop when reading proportion-test diagrams",
-          "posted_at": "2026-05-09"
-        }
       ]
     },
     {
@@ -781,6 +715,16 @@
           "slug": "stdnorm",
           "ja_why": "自由度を ∞ に飛ばすと t 分布が標準正規に重なっていく、家族の極限がここに着地する",
           "en_why": "send df to ∞ and the t curve folds back into N(0,1) — the family's limit lands right here"
+        },
+        {
+          "slug": "proptest",
+          "ja_why": "比率の検定が CLT で正規近似に乗ったあと、サンプルが小さくなると t 分布の裾の太さに乗り換える受け皿として家族が控えている",
+          "en_why": "the proportion test rides the CLT into a normal approximation; when n shrinks, the family's t-tail steps in to take over"
+        },
+        {
+          "slug": "reg",
+          "ja_why": "回帰係数の検定が t = β̂/SE(β̂) で t 分布の上を走る。家族が回帰の現場にも顔を出す入口",
+          "en_why": "regression slopes are tested with t = β̂/SE(β̂), running on this family's t curve — the door from variance to regression"
         }
       ],
       "related_columns": [
@@ -792,26 +736,6 @@
       ],
       "featured_columns": [
         "error_types"
-      ],
-      "qiita_articles": [
-        {
-          "id": "783a1cdd2f26dea137b0",
-          "url": "https://qiita.com/sasailab/items/783a1cdd2f26dea137b0",
-          "ja_title": "インタラクティブ確率分布表を作った話——表に書かれた数字をどこまで信じられるか",
-          "en_title": "(Japanese only) Building an interactive probability table — how much can you trust the printed numbers?",
-          "ja_why": "t / χ² / F の分布表をインタラクティブにしたときに直面した精度問題を扱った開発ノート",
-          "en_why": "A note on the precision questions that surface when turning t/χ²/F tables into interactive widgets",
-          "posted_at": "2026-04-30"
-        },
-        {
-          "id": "a5fa0cd986942d71404a",
-          "url": "https://qiita.com/sasailab/items/a5fa0cd986942d71404a",
-          "ja_title": "JavaScriptにガンマ関数がないので、Lanczos近似で実装した話",
-          "en_title": "(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation",
-          "ja_why": "t / χ² / F の確率密度を依存ゼロで計算するために必要だったガンマ関数の実装ノート",
-          "en_why": "The gamma-function implementation note that backs the dependency-free density calculations for t/χ²/F",
-          "posted_at": "2026-04-25"
-        }
       ]
     },
     {
@@ -871,17 +795,6 @@
       ],
       "featured_columns": [
         "birthday"
-      ],
-      "qiita_articles": [
-        {
-          "id": "a5fa0cd986942d71404a",
-          "url": "https://qiita.com/sasailab/items/a5fa0cd986942d71404a",
-          "ja_title": "JavaScriptにガンマ関数がないので、Lanczos近似で実装した話",
-          "en_title": "(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation",
-          "ja_why": "χ² 分布の確率密度を計算するために裏で動いているガンマ関数の実装ノート。期待度数の計算と表裏一体",
-          "en_why": "The gamma-function implementation that quietly powers χ² density evaluation — paired with expected-frequency computation",
-          "posted_at": "2026-04-25"
-        }
       ]
     },
     {
@@ -1059,17 +972,6 @@
       ],
       "featured_columns": [
         "income_prediction"
-      ],
-      "qiita_articles": [
-        {
-          "id": "787bd06e05528aa336e4",
-          "url": "https://qiita.com/sasailab/items/787bd06e05528aa336e4",
-          "ja_title": "年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験",
-          "en_title": "(Japanese only) Building an income-prediction regression from public statistics",
-          "ja_why": "年齢↔年収の単回帰では説明しきれない部分が、開発ノートに残した観察ログから見える",
-          "en_why": "The development note where the gaps in age-only simple regression become visible — the staging ground for multiple regression",
-          "posted_at": "2026-05-01"
-        }
       ]
     },
     {
@@ -1129,17 +1031,6 @@
       ],
       "featured_columns": [
         "income_prediction"
-      ],
-      "qiita_articles": [
-        {
-          "id": "787bd06e05528aa336e4",
-          "url": "https://qiita.com/sasailab/items/787bd06e05528aa336e4",
-          "ja_title": "年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験",
-          "en_title": "(Japanese only) Building an income-prediction regression from public statistics",
-          "ja_why": "年齢・性別・都道府県の3変数を実際の公開統計から組み上げた開発ノート。重回帰の現場版",
-          "en_why": "A field-work note that wires age, gender, and prefecture into a real regression from public-statistics data",
-          "posted_at": "2026-05-01"
-        }
       ]
     }
   ],
@@ -1265,17 +1156,6 @@
           "ja_why": "z スコアが日本独自の「偏差値」として日常に降りていく姿を追う姉妹コラム",
           "en_why": "follows the z-score as it descends into Japan's everyday Hensachi — the sister column"
         }
-      ],
-      "qiita_articles": [
-        {
-          "id": "af41ae280c552f1b65d9",
-          "url": "https://qiita.com/sasailab/items/af41ae280c552f1b65d9",
-          "ja_title": "「身長とTOEIC、どっちがふつうから遠い？」標準化",
-          "en_title": "(Japanese only) Height vs TOEIC: which is further from \"average\"?",
-          "ja_why": "身長と TOEIC を z で同じ物差しに並べた開発ノート。コラム本文の「翻訳機」の比喩を別角度で補強",
-          "en_why": "A development note stacking height and TOEIC on a single z-axis — reinforces the column's \"translator\" framing from another angle",
-          "posted_at": "2026-05-02"
-        }
       ]
     },
     {
@@ -1316,17 +1196,6 @@
           "slug": "error_types",
           "ja_why": "回帰係数の有意性を判断する場面で第 1 種・第 2 種の枠組みが必ず動き出す、判定のロジックを共有する姉妹コラム",
           "en_why": "the Type I/II framework kicks into motion every time regression coefficient significance is judged — the sister column that shares the decision logic"
-        }
-      ],
-      "qiita_articles": [
-        {
-          "id": "787bd06e05528aa336e4",
-          "url": "https://qiita.com/sasailab/items/787bd06e05528aa336e4",
-          "ja_title": "年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験",
-          "en_title": "(Japanese only) Building an income-prediction regression from public statistics",
-          "ja_why": "コラム本文のシミュレーター裏側で動いているデータと回帰モデルの組み立て手順をまとめた開発ノート",
-          "en_why": "A development note covering the data sourcing and model assembly that sits behind this column's simulator",
-          "posted_at": "2026-05-01"
         }
       ]
     },
@@ -1379,130 +1248,7 @@
           "ja_why": "確率の直感を裏切る古典コラムが動き、第 1 種・第 2 種の混乱と同じ系譜に並ぶ",
           "en_why": "the gateway intuition-vs-probability column in motion — moving along the same lineage as Type I/II confusion"
         }
-      ],
-      "qiita_articles": [
-        {
-          "id": "d43754a16c8a2f87e5b2",
-          "url": "https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2",
-          "ja_title": "グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた",
-          "en_title": "(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs",
-          "ja_why": "コラムを書き直すまでの過程と、棄却域の絵を辞めて 2×2 の面積に切り替えた経緯をまとめた開発ノート",
-          "en_why": "A development note tracing how this column was rewritten and why the rejection-region graph was traded for an area-based 2×2",
-          "posted_at": "2026-05-09"
-        }
       ]
-    }
-  ],
-  "qiita_articles_index": [
-    {
-      "id": "d43754a16c8a2f87e5b2",
-      "url": "https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2",
-      "ja_title": "グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた",
-      "en_title": "(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs",
-      "ja_summary": "α と β を独立した二次元の領域として描き直す試み（コラム「2種類の過誤」と対応）。",
-      "en_summary": "Redrawing α and β as an independent two-dimensional area (matches the \"Type I/II\" column).",
-      "posted_at": "2026-05-09",
-      "related_topics": ["test", "proptest"],
-      "related_columns": ["error_types"]
-    },
-    {
-      "id": "a5170d59751def6f1306",
-      "url": "https://qiita.com/sasailab/items/a5170d59751def6f1306",
-      "ja_title": "「n ≥ 30 ならOK」って、根拠あるんですか——中心極限定理をシミュレーションで確かめた",
-      "en_title": "(Japanese only) Is \"n ≥ 30\" really enough? Checking the CLT by simulation",
-      "ja_summary": "経験則の数字を、母集団の形を変えながら検証してみる（トピック「中心極限定理」と対応）。",
-      "en_summary": "Stress-testing the n ≥ 30 rule of thumb across differently-shaped populations (matches the CLT topic).",
-      "posted_at": "2026-05-04",
-      "related_topics": ["clt", "lln"],
-      "related_columns": []
-    },
-    {
-      "id": "896bf8f90bb84cdb5c18",
-      "url": "https://qiita.com/sasailab/items/896bf8f90bb84cdb5c18",
-      "ja_title": "AI駆動開発で多パターンサイトを回すために決めたこと——テスト・ルール・構造",
-      "en_title": "(Japanese only) Running an AI-assisted multi-pattern site — tests, rules, structure",
-      "ja_summary": "16トピック × 日英 × コラムを破綻させずに保つための制作プロセス。",
-      "en_summary": "A process note for keeping 16 topics × bilingual × columns from drifting apart.",
-      "posted_at": "2026-05-02",
-      "related_topics": [],
-      "related_columns": []
-    },
-    {
-      "id": "af41ae280c552f1b65d9",
-      "url": "https://qiita.com/sasailab/items/af41ae280c552f1b65d9",
-      "ja_title": "「身長とTOEIC、どっちがふつうから遠い？」標準化",
-      "en_title": "(Japanese only) Height vs TOEIC: which is further from \"average\"?",
-      "ja_summary": "z で単位の違う指標を比較した実例（コラム「標準化」、トピック「標準正規分布」と対応）。",
-      "en_summary": "Comparing different-unit metrics on a z-axis (matches the standardization column and standard-normal topic).",
-      "posted_at": "2026-05-02",
-      "related_topics": ["stdnorm"],
-      "related_columns": ["standardization"]
-    },
-    {
-      "id": "787bd06e05528aa336e4",
-      "url": "https://qiita.com/sasailab/items/787bd06e05528aa336e4",
-      "ja_title": "年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験",
-      "en_title": "(Japanese only) Building an income-prediction regression from public statistics",
-      "ja_summary": "公開統計データから重回帰モデルを実際に組んでみる（コラム「年収予測」、トピック「重回帰分析」と対応）。",
-      "en_summary": "Wiring up a multiple regression from public statistics (matches the income column and the multiple-regression topic).",
-      "posted_at": "2026-05-01",
-      "related_topics": ["reg", "mreg"],
-      "related_columns": ["income_prediction"]
-    },
-    {
-      "id": "783a1cdd2f26dea137b0",
-      "url": "https://qiita.com/sasailab/items/783a1cdd2f26dea137b0",
-      "ja_title": "インタラクティブ確率分布表を作った話——表に書かれた数字をどこまで信じられるか",
-      "en_title": "(Japanese only) Building an interactive probability table — how much can you trust the printed numbers?",
-      "ja_summary": "確率分布表をインタラクティブにするときに直面した精度の問題（tables / dists ページと対応）。",
-      "en_summary": "Precision issues that surface when probability tables become interactive (matches the dists topic and tables page).",
-      "posted_at": "2026-04-30",
-      "related_topics": ["dists"],
-      "related_columns": []
-    },
-    {
-      "id": "42aec2784edc2536ab86",
-      "url": "https://qiita.com/sasailab/items/42aec2784edc2536ab86",
-      "ja_title": "StatPlayをオープンソースにした理由——コードを開示することで生まれる価値",
-      "en_title": "(Japanese only) Why StatPlay was open-sourced — the value of disclosing code",
-      "ja_summary": "CC BY-NC 4.0 で公開した判断と、その背景。",
-      "en_summary": "The reasoning behind releasing under CC BY-NC 4.0.",
-      "posted_at": "2026-04-27",
-      "related_topics": [],
-      "related_columns": []
-    },
-    {
-      "id": "f03c61efe20f14bb7bea",
-      "url": "https://qiita.com/sasailab/items/f03c61efe20f14bb7bea",
-      "ja_title": "「確率変数って何ですか」——勉強中にAIに聞いた話",
-      "en_title": "(Japanese only) \"What is a random variable?\" — a conversation while studying",
-      "ja_summary": "確率変数という言葉に引っかかったときの問答（トピック「確率」と対応）。",
-      "en_summary": "A Q&A from getting stuck on the term \"random variable\" (matches the probability-rules topic).",
-      "posted_at": "2026-04-26",
-      "related_topics": ["prob"],
-      "related_columns": []
-    },
-    {
-      "id": "a5fa0cd986942d71404a",
-      "url": "https://qiita.com/sasailab/items/a5fa0cd986942d71404a",
-      "ja_title": "JavaScriptにガンマ関数がないので、Lanczos近似で実装した話",
-      "en_title": "(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation",
-      "ja_summary": "t / カイ二乗 / F 分布の確率密度関数を依存ゼロで実装するための試行錯誤。",
-      "en_summary": "Trial-and-error notes on implementing t/χ²/F density functions without external dependencies.",
-      "posted_at": "2026-04-25",
-      "related_topics": ["dists", "chitest"],
-      "related_columns": []
-    },
-    {
-      "id": "5de10f0466896d4280c7",
-      "url": "https://qiita.com/sasailab/items/5de10f0466896d4280c7",
-      "ja_title": "「動いたら一発でわかるのに」— 勉強中にAIと統計学習ツールを作った話",
-      "en_title": "(Japanese only) \"It would click instantly if it just moved\" — building a stats tool with AI while studying",
-      "ja_summary": "StatPlay 開発の出発点になった気づき。",
-      "en_summary": "The realization that became StatPlay's starting point.",
-      "posted_at": "2026-04-24",
-      "related_topics": [],
-      "related_columns": []
     }
   ],
   "title_translations": {
