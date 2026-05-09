@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">仮説検定 — p値・α・棄却域を可視化</a></h1>
-  <p class="topic-lead">両側/片側検定、有意水準α、棄却域、p値のイメージをスライダー操作で直感化。z検定の基本構造を、グラフで一気にイメージする。</p>
+  <p class="topic-lead">検定は裁判だ。H₀ は「無罪推定」、棄却域は「有罪宣告ライン」。z 値がどちら側に立つかを見るだけのゲーム。</p>
   <section class="reveal in" id="test">
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
@@ -300,18 +300,20 @@
 <li><b>誤りの2×2の形</b>：H₀ が正しいのに棄却したら第1種、H₀ が間違っているのに棄却できなかったら第2種。検定のあるところには必ずこの2×2の表がついて回る</li>
 <li><b>検出力の位置づけ</b>：1 − β =「本当に差があるときに、ちゃんと検出できる確率」。第2種の裏側として、いつもこの形で顔を出す</li>
 </ul>
-<p style="margin:10px 0 0">臨界値の確認は<a href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
+<p class="pattern-companion" style="margin:10px 0 0">臨界値の確認は<a class="pattern-companion-link" href="../tables/index.html?dist=norm" style="color:var(--cyan)">インタラクティブ確率分布表</a>で — z値・t値をグラフと同期しながら調べられる</p>
 </div>
 
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./ci.html">信頼区間</a> &mdash; 検定と CI は同じ判定を別の絵で見る双子。判定の結論は必ず一致する</li>
-<li><a href="./dists.html">三大検定分布</a> &mdash; t / χ² / F の臨界値は検定統計量の世界で読まれる。検定の家族の道具箱</li>
-<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 母比率の検定では SE の中身が p̂ から p₀ に入れ替わる、検定固有の構造が見える</li>
-<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; 3群以上の平均比較を t の繰り返しではなく F の一発で扱う、検定の拡張</li>
-<li><a href="./chitest.html">カイ二乗検定</a> &mdash; カテゴリデータの検定では検定統計量がカイ二乗に切り替わる、家族の別の枝</li>
-<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 過誤の2×2、検出力、α と β のトレードオフをまとめたコラム</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; 検定と CI が同じ判定を別の絵で映し合う双子、結論は必ず一致して動く</li>
+<li><a href="./dists.html">三大検定分布</a> &mdash; t / χ² / F の臨界値を検定統計量の世界で読み出して、判定の境目を引く</li>
+<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 母比率の検定では SE の中身が p̂ から p₀ に入れ替わって、検定固有の構造が立ち上がる</li>
+<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; 3群以上の平均比較で t を繰り返さず F に一本化する、検定が自然に拡張する場面</li>
+<li><a href="./chitest.html">カイ二乗検定</a> &mdash; カテゴリデータでは検定統計量がカイ二乗に切り替わって、家族の別の枝へ進む</li>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; z 検定の臨界値・棄却域がすべて標準正規の上に並ぶ、検定の本籍地</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 過誤の 2×2、検出力、α と β のトレードオフを一枚に並べて読み解くコラム</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; z 検定の臨界値を生む標準正規を「単位を揃える翻訳機」として扱うコラム、検定の倍率の出所</li>
 </ul>
 </div>
 
@@ -326,6 +328,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" target="_blank" rel="noopener"><span class="qiita-date">2026-05-09</span><span class="qiita-title">グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた</span></a><span class="qiita-why">棄却域の絵を辞めて 2×2 の面積で α・β を並べ直した開発ノート。検定の判定図を別角度から眺める</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>平均から比率へ <span class="story-arrow">▸</span> <a href="./proptest.html">I5 母比率の検定と推定</a></div>

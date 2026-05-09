@@ -1,5 +1,5 @@
 // StatPlay — module: 0) STANDARD NORMAL — intro
-import { $, normCDF, normPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, normCDF, normPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, makeAxisMap, isEn } from '../utils.js';
 
 export function initStdnorm(){
   if(!document.getElementById('snCanvas')) return;
@@ -13,9 +13,8 @@ export function initStdnorm(){
     const tc = themeColors();
     const k=parseFloat(kS.value);
     const lo = -4, hi = 4;
-    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak = normPDF(0);
-    const yToPx = y => h - 22 - y / peak * (h - 60);
+    const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 38, marginBottom: 22 });
     // fill inside ±k — snap boundary pixels to eliminate seams
     const axisY=h-22;
     const kPxL=Math.round(xToPx(-k)),kPxR=Math.round(xToPx(k));
@@ -50,7 +49,7 @@ export function initStdnorm(){
     ctx.fillText(`−${k.toFixed(1)}σ`,xToPx(-k)-40,26);
     // title
     ctx.fillStyle=tc.cyan;ctx.font='bold 13px "Courier New"';
-    ctx.fillText(window.__LANG==='en'?'N(0,1)  Standard Normal':'N(0,1)  標準正規分布',10,18);
+    ctx.fillText(isEn()?'N(0,1)  Standard Normal':'N(0,1)  標準正規分布',10,18);
     // compute
     const inside=normCDF(k)-normCDF(-k);
     // annotation: probability percentage on shaded region
@@ -113,9 +112,8 @@ export function initStdnorm(){
     const bMu = mu * (1 - tt);
     const bSd = sd * (1 - tt) + 1 * tt;
     const lo = -5, hi = 5;
-    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak=Math.max(normPDF(bMu,bMu,bSd),normPDF(0));
-    const yToPx=y=>h-22-y/peak*(h-60);
+    const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 38, marginBottom: 22 });
     // ghost: target N(0,1)
     const ghost=[];for(let px=0;px<=w;px++){ghost.push([px,yToPx(normPDF(lo+px/w*(hi-lo)))]);}
     ctx.globalAlpha=.4;neonLine(ctx,ghost,tc.magenta,10,1.5);ctx.globalAlpha=1;
@@ -135,7 +133,7 @@ export function initStdnorm(){
     // title
     ctx.fillStyle=color;ctx.font='bold 13px "Courier New"';
     const t100=Math.round(tt*100);
-    ctx.fillText((window.__LANG==='en'?`Standardization: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`:`標準化進度: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`),10,18);
+    ctx.fillText((isEn()?`Standardization: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`:`標準化進度: ${t100}%  →  N(${bMu.toFixed(2)}, ${bSd.toFixed(2)}²)`),10,18);
     $('snNewMu').textContent=bMu.toFixed(3);
     $('snNewSd').textContent=bSd.toFixed(3);
   }

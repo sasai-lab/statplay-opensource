@@ -18,3 +18,11 @@ test-results/
 *_draft.md
 docs/*_draft.md
 qiita-articles/
+
+# Sub-agent scratch directories and files (not for release)
+.tmp_*/
+docs/_shots/
+docs/evidence_v*/
+__usertest*.mjs
+scripts/_*.mjs
+scripts/_*.py

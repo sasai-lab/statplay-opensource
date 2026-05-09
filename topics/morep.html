@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">二項分布・ポアソン分布・指数分布</a></h1>
-  <p class="topic-lead">成功回数の二項分布、稀な事象の発生回数のポアソン分布、無記憶の待ち時間を表す指数分布。離散と連続の橋渡しをスライダーで体感する。</p>
+  <p class="topic-lead">成功回数・事象回数・待ち時間。一見バラバラな三つの分布が、n と p を動かすうちに一本の道で繋がっていく。</p>
   <section class="reveal in" id="morep">
 
 <div class="sec-tag">P.05 / DISCRETE + EXPONENTIAL</div>
@@ -283,7 +283,8 @@
 ・すでに10分待ったとしても、「あと5分以内に来る確率」は最初から数えた場合と同じ<br/>
 ・「もう長く待ったからそろそろ来るはず」は通用しない<br/>
 ・現実にこれが成り立つのは「発生率が時刻によらず一定」な場合だけ（例：放射性崩壊）<br/>
-・バスや電車は時刻表があるので、実際には無記憶ではない</p>
+・バスや電車は時刻表があるので、実際には無記憶ではない<br/>
+・むしろ逆方向：時刻表があるバスは「待つほど次の便に近づく」＝待ち時間が長いほど次の到着確率が上がる。これが「無記憶でない」状態の中身</p>
 </div>
 
 <div class="detail-section">
@@ -331,10 +332,11 @@
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./normal.html">正規分布と標準化</a> &mdash; n が大きい場面では二項を正規で近似する。CLT の最初の応用例の一つ</li>
-<li><a href="./prob.html">確率の基本法則</a> &mdash; 独立試行と「成功 or 失敗」の構造が、二項・ポアソン分布の出発点</li>
-<li><a href="./clt.html">中心極限定理</a> &mdash; 二項の正規近似は CLT そのもの。離散分布が連続に乗り換える橋</li>
-<li><a href="../columns/birthday.html">『誕生日のパラドックス』コラム</a> &mdash; 「少なくとも1人」の余事象計算が活躍する古典例。離散確率の直感破壊版</li>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; n を大きくしていくと二項が正規に重なっていく、CLT の最初の応用が顔を出す</li>
+<li><a href="./prob.html">確率の基本法則</a> &mdash; 独立試行と「成功 or 失敗」の組み立てから、二項とポアソンが立ち上がる</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; 二項を正規に乗せ換えるのは CLT そのもの、離散から連続へ歩いて渡る場面</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; 指数の無記憶性やコーシー分布の収束問題を考えるとき、LLN の前提（有限期待値）が効いてくる</li>
+<li><a href="../columns/birthday.html">『誕生日のパラドックス』コラム</a> &mdash; 「少なくとも 1 人」の余事象計算が動き出して、離散確率が直感を裏切る場面を組み立てる</li>
 </ul>
 </div>
 

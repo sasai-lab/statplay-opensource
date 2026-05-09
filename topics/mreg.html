@@ -154,7 +154,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">重回帰分析 — 交絡を制御して本当の効果を見る</a></h1>
-  <p class="topic-lead">勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。</p>
+  <p class="topic-lead">「勉強時間が長いほど成績が悪い」── 変数を1つ加えるだけで、結論がひっくり返る瞬間がある。これが交絡の正体。</p>
   <section class="reveal in" id="mreg">
 
 <div class="sec-tag">M2 / 重回帰分析</div>
@@ -349,7 +349,7 @@
 <li><a href="./corr.html">相関係数</a> &mdash; 説明変数同士の相関（多重共線性、交絡）が β₁ を不安定にする原因</li>
 <li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; 重回帰の F 検定はモデル全体の有意性を ANOVA と同じ枠組みで判定する</li>
 <li><a href="./dists.html#dists-f">三大検定分布</a> &mdash; F 分布が「すべての偏回帰係数 = 0」の検定の臨界値を提供する</li>
-<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 年齢・性別・都道府県の3変数で年収の幅を読む、重回帰の実践コラム</li>
+<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 年齢・性別・都道府県の 3 変数を組み合わせて年収の幅を実データで読み解く、重回帰の現場</li>
 </ul>
 </div>
 
@@ -364,6 +364,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" target="_blank" rel="noopener"><span class="qiita-date">2026-05-01</span><span class="qiita-title">年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験</span></a><span class="qiita-why">年齢・性別・都道府県の3変数を実際の公開統計から組み上げた開発ノート。重回帰の現場版</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 </section>

@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Confidence Intervals — What 95% Really Means</a></h1>
-  <p class="topic-lead">Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.</p>
+  <p class="topic-lead">"There's a 95% chance the true value is inside" — actually wrong. Stack a hundred intervals side by side and the real definition becomes visible.</p>
   <section class="reveal in" id="ci">
 
 <div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
@@ -236,17 +236,21 @@ The formula above assumes the population standard deviation σ is known. In prac
 <li><b>The CI–test twin relationship</b>: when 95% CI = [2.1, 4.3], μ₀ = 2 sits outside, and the two-sided test at α=0.05 lands on "reject." The two views are flip sides of the same decision</li>
 <li><b>Confidence level mirrors the multiplier</b>: switching 95% → 99% shifts the multiplier 1.96 → 2.576, and the wider interval follows directly</li>
 </ul>
-<p style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a href="../../en/tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
+<p class="pattern-companion" style="margin:10px 0 0">See where z = 1.96 and 2.576 come from in <a class="pattern-companion-link" href="../../en/tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">Interactive Distribution Tables</a> (two-sided mode)</p>
 </div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; CIs and tests are two views of one decision — μ₀ outside the 95% CI matches rejection at α = 0.05</li>
-<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; with σ unknown, z gives way to t — the smaller n is, the more visible the t distribution becomes</li>
-<li><a href="./clt.html">Central Limit Theorem</a> &mdash; the "sample mean approaches normal" foundation that CIs rest on — CLT guarantees the SE = σ/√n picture</li>
-<li><a href="./proptest.html">Proportion Test</a> &mdash; the proportion version of CIs and tests — the same "center ± multiplier × SE" structure carries over</li>
-<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; 95% confidence means a 5% miss rate — it lives in the same probability space as α</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; CIs and tests project the same decision through different pictures — μ₀ leaving the 95% CI and rejection at α = 0.05 fire together</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; with σ unknown, the multiplier shifts from z to t — and the smaller n is, the wider the t-tails stretch the CI</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; CLT sets up the "sample mean approaches normal" scene that CIs rest on, guaranteeing the SE = σ/√n width</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the three-layer "center ± multiplier × SE" assembly carries straight over to proportion CIs and tests</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; pulls the 1.96 multiplier off the standard normal table to lock down the CI width</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; LLN supplies the right to infer a population from a sample, and the CI structure rises on top</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; 95% confidence and a 5% miss rate share one probability space — the column that reads α and CI together</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; treats the z-scale that produces the 1.96 multiplier as a universal translator across units</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; where CIs split into prediction and confidence intervals — the two-tier structure shows up in real income data</li>
 </ul>
 </div>
 

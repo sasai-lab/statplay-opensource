@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Binomial, Poisson, and Exponential Distributions</a></h1>
-  <p class="topic-lead">Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.</p>
+  <p class="topic-lead">Success counts, event counts, waiting times — three distributions that look unrelated until you slide n and p and watch them merge into one road.</p>
   <section class="reveal in" id="morep">
 
 <div class="sec-tag">P.05 / DISCRETE + EXPONENTIAL</div>
@@ -285,7 +285,8 @@
 ・Even after waiting 10 minutes, the probability of "arriving within the next 5 min" is the same as for someone who just showed up<br/>
 ・"I've waited a long time so it must come soon" doesn't apply<br/>
 ・This only holds when the event rate is constant over time (e.g., radioactive decay)<br/>
-・Real buses have schedules, so real waiting is not memoryless</p>
+・Real buses have schedules, so real waiting is not memoryless<br/>
+・The opposite, in fact: with a schedule, the longer you've waited the closer the next bus is — so arrival probability rises with waiting time. That's what being non-memoryless actually looks like</p>
 </div>
 
 <div class="detail-section">
@@ -333,10 +334,11 @@ Normal approximation           Exponential</div>
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./normal.html">Normal Distribution</a> &mdash; the binomial-to-normal approximation is one of CLT's earliest applications</li>
-<li><a href="./prob.html">Probability Rules</a> &mdash; independent trials with success/failure outcomes form the launching pad for binomial and Poisson</li>
-<li><a href="./clt.html">Central Limit Theorem</a> &mdash; the binomial→normal approximation is CLT in action — a discrete distribution stepping onto a continuous bridge</li>
-<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; a classic showcase for the "at least one" complement rewrite — discrete probability vs. intuition</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; as n grows, the binomial slides onto the normal — CLT's earliest application surfacing here</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; stacking independent trials with success/failure outcomes raises the binomial and Poisson</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; swapping the binomial for the normal is CLT in motion — walking from discrete onto continuous</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; when you confront the exponential's memorylessness or the Cauchy's failure to converge, the LLN's finite-mean prerequisite starts to bite</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; the "at least one" complement rewrite kicks into motion — assembling a scene where discrete probability defies intuition</li>
 </ul>
 </div>
 

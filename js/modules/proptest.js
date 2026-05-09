@@ -1,5 +1,5 @@
 // StatPlay — module: PROPORTION TEST & ESTIMATION
-import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, makeAxisMap } from '../utils.js';
 
 // ── shared drag helper ──
 function bindDrag(canvasId, pxToSlider){
@@ -69,7 +69,7 @@ export function initProptest(){
 
       const margin=40;
       const plotW=w-margin*2;
-      const xToPx=x=>margin+x*plotW;
+      const { xToPx } = makeAxisMap({ w, h, lo: 0, hi: 1, peak: 1, marginLeft: margin, marginRight: margin });
 
       // layout: curve fills upper area, bar near bottom, text flush
       const topPad=14;
@@ -224,8 +224,7 @@ export function initProptest(){
       const tc=themeColors();
       const pTrue=parseFloat(pTrueS.value);
       const margin=30;
-      const plotW=w-margin*2;
-      const xToPx=v=>margin+v*plotW;
+      const { xToPx } = makeAxisMap({ w, h, lo: 0, hi: 1, peak: 1, marginLeft: margin, marginRight: margin });
 
       ctx.strokeStyle=withAlpha(tc.yellow,.8);ctx.setLineDash([4,4]);
       const pLine=xToPx(pTrue);
@@ -298,10 +297,8 @@ export function initProptest(){
       const lo=-4.5,hi=4.5;
       const margin=20;
       const axisY=h-40;
-      const xToPx=x=>margin+(x-lo)/(hi-lo)*(w-margin*2);
       const peak=normPDF(0);
-      const curveH=axisY-30;
-      const yToPx=y=>axisY-y/peak*curveH;
+      const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginLeft: margin, marginRight: margin, marginTop: 30, marginBottom: 40 });
 
       // axis line
       ctx.strokeStyle=withAlpha(tc.dim,.5);ctx.lineWidth=1;
@@ -463,10 +460,8 @@ export function initProptest(){
       const barH=12,barGap=4,barCount=2,barBlock=barCount*(barH+barGap)+20;
       const axisY=h-barBlock-26;
       const curveTop=14;
-      const xToPx=x=>margin+(x-lo)/(hi-lo)*(w-margin*2);
       const peak=normPDF(0);
-      const curveH=axisY-curveTop;
-      const yToPx=y=>axisY-y/peak*curveH;
+      const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginLeft: margin, marginRight: margin, marginTop: curveTop, marginBottom: barBlock + 26 });
 
       // axis line
       ctx.strokeStyle=withAlpha(tc.dim,.5);ctx.lineWidth=1;

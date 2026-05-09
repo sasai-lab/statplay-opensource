@@ -276,7 +276,7 @@ body.theme-light .hero-impact {
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -286,7 +286,7 @@ body.theme-light .hero-impact {
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* ── Progress bar ── */
@@ -496,7 +496,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </p>
 <p>
     この2ステップで、どんなデータも<b style="color:var(--yellow)">「平均0・標準偏差1」の共通言語</b>に翻訳される。<br/>
-    翻訳後の値を <b style="color:var(--cyan)">Z スコア</b>と呼ぶ。
+    翻訳後の値を <b style="color:var(--cyan)">Z スコア</b>と呼ぶ（<a href="../topics/stdnorm.html">N(0,1) のグラフを動かして確かめる</a>）。
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
@@ -614,7 +614,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </ul>
 <p>
     つまり偏差値は、標準化の<b style="color:var(--cyan)">ユーザーフレンドリー版</b>。<br/>
-    本質は同じ。「平均からσ何個分か」を測っているだけだ。
+    本質は同じ。「平均からσ何個分か」を測っているだけだ（<a href="./deviation.html">偏差値の正体に降りる</a>）。
   </p>
 <table class="compare-table">
 <thead>
@@ -715,12 +715,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     この共通言語を使って、正規分布の確率計算や仮説検定がどう動くのかを体感しよう。<br/>
     StatPlay のインタラクティブ教材で、数式の向こう側を触れる。
   </p>
-<div class="cta-links">
-<a href="../topics/stdnorm.html">標準正規分布 — 標準化モーフを体感する →</a>
-<a href="../topics/normal.html">正規分布と標準化を深掘り →</a>
-<a href="../columns/deviation.html">偏差値って何？ →</a>
-<a href="../index.html">全トピック一覧 →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="heroCanvas" data-title="標準化って何？ — StatPlay">💾 画像保存</button>
 <button class="share-btn" data-kind="url" data-share="page" data-title="標準化って何？ — StatPlay">🔗 URLコピー</button>
@@ -728,6 +722,42 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="page" data-title="標準化って何？ — StatPlay">📤 シェア</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/stdnorm.html">標準正規分布</a> &mdash; z = (X−μ)/σ が「ふつうの基準」へ着地する場面を、N(0,1) を触りながら動かす</li>
+<li><a href="../topics/normal.html">正規分布と標準化</a> &mdash; 一般正規分布 N(μ, σ²) と z スケールを行き来する流れが、ここで動き出す</li>
+<li><a href="../topics/clt.html">中心極限定理</a> &mdash; CLT が「平均は正規」を保証し続けることで、標準化が広い場面で機能し続ける</li>
+<li><a href="../topics/lln.html">大数の法則</a> &mdash; LLN が「標本平均が真値に近づく」を保証して、標準化の前提を支え続ける</li>
+<li><a href="../topics/test.html">仮説検定</a> &mdash; z 検定の臨界値が標準正規の上で測られる場面を、標準化の最も身近な応用として動かす</li>
+<li><a href="../topics/ci.html">信頼区間</a> &mdash; 「中心 ± 1.96 × SE」の倍率を標準正規から取り出して、CI の幅を確定させる同じ翻訳機を動かす</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">偏差値って何？ — 3秒で「上位何%」が見える</span>
+    <span class="fr-desc">z スコアが日本独自の「偏差値」として日常に降りていく姿を追う姉妹コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/af41ae280c552f1b65d9" target="_blank" rel="noopener"><span class="qiita-date">2026-05-02</span><span class="qiita-title">「身長とTOEIC、どっちがふつうから遠い？」標準化</span></a><span class="qiita-why">身長と TOEIC を z で同じ物差しに並べた開発ノート。コラム本文の「翻訳機」の比喩を別角度で補強</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

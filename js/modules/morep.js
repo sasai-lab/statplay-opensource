@@ -1,5 +1,5 @@
 // StatPlay - module: MORE DISTRIBUTIONS (binomial, Poisson, exponential)
-import { $, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, normCDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, neonFill, normPDF, normCDF, binomPMF, poissonPMF, expPDF, themeColors, withAlpha, throttledDraw, debouncedResize, isEn } from '../utils.js';
 
 export function initMorep(){
   if(!document.getElementById('binomCanvas')) return;
@@ -59,7 +59,7 @@ export function initMorep(){
       ctx.fillText('σ² = np(1−p) = ' + variance.toFixed(2), xMu + 6, pad + 28);
       ctx.fillStyle = tc.dim;
       ctx.font = '10px "Courier New", monospace';
-      const hintBin = window.__LANG==='en'?'Drag: n / Shift+Drag: p':'ドラッグ: n / Shift+ドラッグ: p';
+      const hintBin = isEn()?'Drag: n / Shift+Drag: p':'ドラッグ: n / Shift+ドラッグ: p';
       ctx.fillText(hintBin, pad + 4, pad + gh - 4);
     }
     const schedBin=throttledDraw(draw);
@@ -115,14 +115,14 @@ export function initMorep(){
         // annotation: normal approximation label
         ctx.fillStyle = tc.cyan;
         ctx.font = '10px "Courier New", monospace';
-        ctx.fillText(window.__LANG==='en'?'≈ Normal approx':'≈ 正規近似', pad + gw - 120, pad + 28);
+        ctx.fillText(isEn()?'≈ Normal approx':'≈ 正規近似', pad + gw - 120, pad + 28);
       }
       ctx.fillStyle = tc.yellow;
       ctx.font = '12px "Courier New", monospace';
       ctx.fillText('E[X] = Var[X] = λ = ' + lam.toFixed(2), pad + 4, pad + 14);
       ctx.fillStyle = tc.dim;
       ctx.font = '10px "Courier New", monospace';
-      ctx.fillText(window.__LANG==='en'?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
+      ctx.fillText(isEn()?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
     }
     const schedPois=throttledDraw(draw);
     slL.addEventListener('input', schedPois);
@@ -171,7 +171,7 @@ export function initMorep(){
       ctx.fillText('E[X] = 1/λ = ' + mean.toFixed(2), xm + 6, pad + 14);
       ctx.fillStyle = tc.dim;
       ctx.font = '10px "Courier New", monospace';
-      ctx.fillText(window.__LANG==='en'?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
+      ctx.fillText(isEn()?'Drag to adjust λ':'ドラッグで λ を調整', pad + 4, pad + gh - 4);
     }
     const schedExp=throttledDraw(draw);
     slL.addEventListener('input', schedExp);
@@ -230,12 +230,12 @@ export function initMorep(){
         neonLine(ctx, pts, tc.yellow, 10, 2);
         ctx.fillStyle = tc.dim;
         ctx.font = '10px "Courier New", monospace';
-        const lbl = window.__LANG==='en'?'remaining time':'残り時間';
+        const lbl = isEn()?'remaining time':'残り時間';
         ctx.fillText(lbl, pad+4, pad+gh-4);
         if(t > mu*0.8){
           ctx.fillStyle = tc.magenta;
           ctx.font = '11px "Courier New", monospace';
-          const warn = window.__LANG==='en'?'"should come soon!"':'「そろそろ来る！」';
+          const warn = isEn()?'"should come soon!"':'「そろそろ来る！」';
           ctx.fillText(warn, pad+gw/2-40, pad+20);
         }
       }
@@ -260,11 +260,11 @@ export function initMorep(){
         neonLine(ctx, pts, tc.cyan, 10, 2);
         ctx.fillStyle = tc.dim;
         ctx.font = '10px "Courier New", monospace';
-        const lbl = window.__LANG==='en'?'remaining time':'残り時間';
+        const lbl = isEn()?'remaining time':'残り時間';
         ctx.fillText(lbl, pad+4, pad+gh-4);
         ctx.fillStyle = tc.cyan;
         ctx.font = '11px "Courier New", monospace';
-        const same = window.__LANG==='en'?'always the same shape':'常に同じ形';
+        const same = isEn()?'always the same shape':'常に同じ形';
         ctx.fillText(same, pad+gw/2-40, pad+20);
       }
     }
@@ -382,7 +382,7 @@ export function initMorep(){
         ctx.setLineDash([]);
         ctx.fillStyle = tc.magenta;
         ctx.font = '10px "Courier New", monospace';
-        ctx.fillText((window.__LANG==='en'?'mean ':'平均 ')+meanMin.toFixed(1)+(window.__LANG==='en'?' min':'分'), pad+2, pad+12);
+        ctx.fillText((isEn()?'mean ':'平均 ')+meanMin.toFixed(1)+(isEn()?' min':'分'), pad+2, pad+12);
       }
     }
 

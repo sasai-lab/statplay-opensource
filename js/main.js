@@ -15,7 +15,17 @@ import { initLln } from './modules/lln.js';
 import { initCi } from './modules/ci.js';
 import { initHtest } from './modules/htest.js';
 import { initDist } from './modules/dist.js';
+// Sub-modules of dist.js — imported here so the test harness's bundle()
+// (which only walks main.js's named imports) picks them up. The marker
+// functions are no-ops; initDist() drives the real init sequence.
+import { __distTLoaded } from './modules/dist_t.js';
+import { __distChi2Loaded } from './modules/dist_chi2.js';
+import { __distFLoaded } from './modules/dist_f.js';
 import { initChitest } from './modules/chitest.js';
+// Sub-modules of chitest.js — same rationale as dist sub-modules above.
+import { __chitestCommonLoaded } from './modules/chitest_common.js';
+import { __chitestGofLoaded } from './modules/chitest_gof.js';
+import { __chitestIndLoaded } from './modules/chitest_independence.js';
 import { initAnova } from './modules/anova.js';
 import { initCorr, initCorrAnscombe } from './modules/corr.js';
 import { initReg } from './modules/reg.js';

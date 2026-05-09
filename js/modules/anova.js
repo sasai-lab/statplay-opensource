@@ -1,5 +1,5 @@
 // StatPlay — module: ANOVA (one-way analysis of variance)
-import { $, TAU, rng_normal, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, fPval, fCritVal, tCDF } from '../utils.js';
+import { $, TAU, rng_normal, fPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, fPval, fCritVal, tCDF, isEn } from '../utils.js';
 
 const fCritical = fCritVal;
 
@@ -83,7 +83,7 @@ function initAnovaMain(){
     $('anovaSSW').textContent=SSW.toFixed(2);
     if($('anovaEta2')) $('anovaEta2').textContent=eta2.toFixed(3);
     const reject=pval<0.05;
-    const en=window.__LANG==='en';
+    const en = isEn();
     $('anovaResult').textContent=en?(reject?'Reject H₀':'Fail to reject H₀'):(reject?'H₀ 棄却':'H₀ 採択');
     $('anovaResult').style.color=reject?'var(--magenta)':'var(--green)';
 
@@ -125,13 +125,13 @@ function initAnovaMain(){
 
     // panel titles
     ctx.fillStyle=withAlpha(tc.text,.7);ctx.font='11px "Courier New"';
-    ctx.fillText(window.__LANG==='en'?'Strip Chart':'ストリップチャート',pad,14);
+    ctx.fillText(isEn()?'Strip Chart':'ストリップチャート',pad,14);
 
     // group labels (always visible)
     for(let i=0;i<k;i++){
       const cx=pad+colW*(i+0.5);
       ctx.fillStyle=colors[i%colors.length];ctx.font='bold 11px "Courier New"';
-      const label=(window.__LANG==='en'?'G':'群')+String(i+1);
+      const label=(isEn()?'G':'群')+String(i+1);
       ctx.fillText(label,cx-ctx.measureText(label).width/2,h-4);
     }
     // y-axis ticks
@@ -201,7 +201,7 @@ function initAnovaMain(){
 
     // F panel title
     ctx.fillStyle=withAlpha(tc.text,.7);ctx.font='11px "Courier New"';
-    ctx.fillText(window.__LANG==='en'?'F Distribution':'F 分布',rx,14);
+    ctx.fillText(isEn()?'F Distribution':'F 分布',rx,14);
 
     // ===== Overlays — appear only after all dots are placed =====
     if(complete){
@@ -237,7 +237,7 @@ function initAnovaMain(){
       ctx.beginPath();ctx.moveTo(pad,gmY);ctx.lineTo(splitX-pad/2,gmY);ctx.stroke();
       ctx.shadowBlur=0;ctx.setLineDash([]);
       ctx.fillStyle=tc.yellow;ctx.font='10px "Courier New"';
-      const gmLabel=(window.__LANG==='en'?'Grand ':'')+'M̄='+grandMean.toFixed(2);
+      const gmLabel=(isEn()?'Grand ':'')+'M̄='+grandMean.toFixed(2);
       ctx.fillText(gmLabel,pad+2,gmY-5);
 
       // observed F line (the "punchline")
@@ -250,7 +250,7 @@ function initAnovaMain(){
       ctx.fillText('F='+Fval.toFixed(2),fPx+4,pad+26);
 
       // strip chart legend
-      const en=window.__LANG==='en';
+      const en = isEn();
       const lx=pad+2, ly=pad+2;
       ctx.font='9px "Courier New"';
       ctx.strokeStyle=tc.cyan;ctx.lineWidth=2;
@@ -415,7 +415,7 @@ function initAnovaSim(){
 
     // legend
     ctx.font='11px "Courier New"';
-    const en=window.__LANG==='en';
+    const en = isEn();
     ctx.fillStyle=tc.cyan;
     ctx.fillText(en?'● No false positive':'● 偽陽性なし',pad,14);
     ctx.fillStyle=tc.magenta;

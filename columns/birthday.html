@@ -331,7 +331,7 @@ body.theme-light .divider-num { background: #f0f3fa; }
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -460,6 +460,11 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <span>誕生日のパラドックス</span>
 </div>
 <main>
+<aside class="col-precede">
+<span class="precede-label">// 触ってから読む？</span>
+<a class="col-link-strong" data-target="topic" href="../topics/prob.html">確率の基本法則を動かしてみる</a>
+<span class="precede-note">— このコラムで使う『余事象』と『ペアの掛け算』が、トピックの操作で先に見えます</span>
+</aside>
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
 <p>
@@ -509,7 +514,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <h2>// なぜ？ — ペアの爆発</h2>
 <p>
     直感が外れる原因はシンプル。<br/>
-    人は「<b>自分と誰か</b>」が被る確率を考えるが、実際は「<b style="color:var(--cyan)">誰かと誰か</b>」の全ペアが対象。<br/>
+    人は「<b>自分と誰か</b>」が被る確率を考えるが、実際は「<b style="color:var(--cyan)">誰かと誰か</b>」の全ペアが対象（<a href="../topics/prob.html">独立試行とベン図で確かめる</a>）。<br/>
 <b style="color:var(--yellow)">人数を増やして</b>、線（＝ペア）がどれだけ爆発するか見てみよう。
   </p>
 <div class="sim-ctrl">
@@ -633,11 +638,6 @@ body.theme-light .hero-scroll { color: #4a5568; }
     このページで使った確率の考え方を、もっと深く掴んでみよう。<br/>
     StatPlay のインタラクティブ教材で、統計を「触って」理解できる。
   </p>
-<div class="cta-links">
-<a href="../topics/prob.html">確率の基本法則 →</a>
-<a href="../topics/stdnorm.html">標準正規分布を掴む →</a>
-<a href="../index.html">全トピック一覧 →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">💾 画像保存</button>
 <button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">🔗 URLコピー</button>
@@ -645,6 +645,31 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="誕生日のパラドックス — StatPlay">📤 シェア</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/prob.html">確率の基本法則</a> &mdash; ベン図と独立試行を組み立てて「少なくとも一致する確率」を一発で計算する道具立てを動かす</li>
+<li><a href="../topics/morep.html">二項・ポアソン・指数分布</a> &mdash; 二項分布とポアソン近似が、誕生日の衝突確率の数式上の親戚として裏で動く</li>
+<li><a href="../topics/chitest.html">カイ二乗検定</a> &mdash; 「観測された衝突は本当に偶然か」を期待度数とのズレで判定する、適合度検定の発想に繋がる</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">「直感を裏切る確率」シリーズの別の代表例として動き、第 1 種・第 2 種の混乱と同じ系譜に並ぶ</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

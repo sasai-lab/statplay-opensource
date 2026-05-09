@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">単回帰分析 — 最小二乗法をビジュアルで</a></h1>
-  <p class="topic-lead">キャンバスに点を配置して、最小二乗法による回帰直線が動くのを体感。残差、傾きβ₁、切片β₀、決定係数R²の関係を直感的に理解する。</p>
+  <p class="topic-lead">点を1つ足すだけで直線がぴろんと動く。最小二乗法が幾何として見えてくると、β₁ も R² も暗号ではなくなる。</p>
   <section class="reveal in" id="reg">
 
 <div class="sec-tag">M.01 / SIMPLE REGRESSION</div>
@@ -235,10 +235,11 @@
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./corr.html">相関係数</a> &mdash; r と β₁ は r = β₁(s_x/s_y)、R² = r² で繋がる。傾きの符号と相関の符号が揃う</li>
-<li><a href="./mreg.html">重回帰分析</a> &mdash; 説明変数を増やすと β₁ がずれる。交絡を統計的に切り分けるための拡張</li>
-<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; 回帰係数の検定は t 分布に乗る。t 値・p 値・信頼区間の基盤</li>
-<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 単回帰の限界（年齢だけで年収は説明できるか）が、重回帰の必要性を浮かび上がらせる物語</li>
+<li><a href="./corr.html">相関係数</a> &mdash; r = β₁(s_x/s_y)、R² = r² で r と β₁ を結びつけて、傾きと相関の符号を揃える</li>
+<li><a href="./mreg.html">重回帰分析</a> &mdash; 説明変数を増やすと β₁ がずれていく、交絡を統計的に切り分けるために回帰を拡張する</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; 回帰係数の検定が t 分布に乗って、t 値・p 値・信頼区間を組み立てる</li>
+<li><a href="./test.html">仮説検定</a> &mdash; 「β₁ = 0 か」を H₀ に置き、棄却域で判定する仮説検定の枠組みが回帰係数の有意性を決める</li>
+<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 「年齢だけで年収を説明できるか」を実データで動かして、単回帰の限界が重回帰への必要性を浮かび上がらせる</li>
 </ul>
 </div>
 
@@ -253,6 +254,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" target="_blank" rel="noopener"><span class="qiita-date">2026-05-01</span><span class="qiita-title">年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験</span></a><span class="qiita-why">年齢↔年収の単回帰では説明しきれない部分が、開発ノートに残した観察ログから見える</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>他の影響を取り除く <span class="story-arrow">▸</span> <a href="./mreg.html">M2 重回帰分析</a></div>

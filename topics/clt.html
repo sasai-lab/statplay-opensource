@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">中心極限定理を目で見てイメージを掴む</a></h1>
-  <p class="topic-lead">歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。</p>
+  <p class="topic-lead">もとの分布がどれだけ歪んでいても、その平均はベル型に化ける。これが統計学の影の主役。</p>
   <section class="reveal in" id="clt">
 
 <div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
@@ -258,24 +258,25 @@
 
 <div class="pattern-note">
 <h3>// よく出会う形</h3>
-<p>中心極限定理がからむ場面では、同じ三つ組がいつもセットで顔を出します。</p>
+<p>中心極限定理は、ここだけで完結する話ではなく、他のトピックの裏で繰り返し顔を出す通底装置です。同じ √n の構造が、別の道具に姿を変えて再登場します。</p>
 <ul>
-<li><b>定理が描く絵</b>：「元の分布が何でも、平均を取ると分布の形が正規分布に近づく」 — この一行が中心極限定理の輪郭で、上のシミュレーションがその絵そのもの</li>
-<li><b>SE = σ/√n の形</b>：σ=10, n=25 なら SE = 10/√25 = 2 と並ぶ。√n が分母にいる構造が、推測統計のあちこちでこの形のまま顔を出す</li>
-<li><b>n と精度の比例</b>：SE を半分にするには n が4倍。√ がいるせいで「精度を上げるコストは二乗で効く」という形が現れる</li>
-<li><b>標本平均の期待値</b>：E(X̄) = μ。元の分布の平均と一致するという形が、不偏性として顔を出す</li>
+<li><b>信頼区間の幅に再登場</b>：母平均の CI は X̄ ± 1.96·σ/√n。幅が σ/√n で決まるのは、中心極限定理が「X̄ は N(μ, σ²/n) に近い」と保証してくれるから</li>
+<li><b>母比率の検定で再登場</b>：1標本z検定の SE = √(p₀(1−p₀)/n) も、形を読み替えると σ/√n と同じ「ばらつき / √n」の構造。proptest の正規近似条件 np ≥ 5 は、中心極限定理が成り立つラインを比率の世界に翻訳したもの</li>
+<li><b>回帰の傾きの SE で再登場</b>：β₁ の標準誤差 SE(β̂₁) も、誤差項の標準偏差を「説明変数のばらつき × √n」で割る形。n が増えると傾きの推定が締まっていくのは、ここでも √n が効いているから</li>
+<li><b>「n を 4 倍にして精度が 2 倍」</b>：√n が分母にいる以上、精度はサンプル数の平方根でしか伸びない。これが推定全般に共通する「調査コストの形」</li>
 </ul>
-</div>
+<p class="pattern-companion">CLT が保証する「平均は正規」の上に建つ区間の幅は <a class="pattern-companion-link" href="./ci.html">信頼区間</a>。</p></div>
 
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./normal.html">正規分布と標準化</a> &mdash; 元の分布が何でも、平均は正規に近づく。正規分布が CLT の「ゴール」</li>
-<li><a href="./lln.html">大数の法則</a> &mdash; LLN は「平均の値」、CLT は「平均の分布の形」を扱う。双子の定理</li>
-<li><a href="./ci.html">信頼区間</a> &mdash; SE = σ/√n は CLT が保証する分布の幅。CI の倍率もここから組み立てられる</li>
-<li><a href="./dists.html">三大検定分布</a> &mdash; CLT で正規に乗った後、σ を s に置き換える段で t / χ² / F の家族が顔を出す</li>
-<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; z スコアと CLT の関係を「平均と SD で世界を揃える」視点で扱うコラム</li>
-<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; CLT が保証する「平均は正規」を前提に、偏差値が成立している</li>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; 元の分布が何でも標本平均が正規に向かって動いていく、CLT のゴールに正規分布が立つ</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; LLN が示す収束の上に CLT が分布の形を載せる、双子の定理</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; SE = σ/√n の幅を CLT が保証して、CI の倍率がその上に積まれる</li>
+<li><a href="./dists.html">三大検定分布</a> &mdash; CLT で正規に乗った後、σ を s に置き換える段で t / χ² / F の家族が前に出てくる</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 二項を正規で近似する場面が、CLT が一番早く効く具体例として動き出す</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; CLT が保証する正規性の上で、z スコアが単位の違うものを同じ物差しに乗せて比較する</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 「平均は正規」を CLT が支えて、その上に偏差値という日常版の道具が立つ</li>
 </ul>
 </div>
 
@@ -290,6 +291,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/a5170d59751def6f1306" target="_blank" rel="noopener"><span class="qiita-date">2026-05-04</span><span class="qiita-title">「n ≥ 30 ならOK」って、根拠あるんですか——中心極限定理をシミュレーションで確かめた</span></a><span class="qiita-why">経験則として広まる「n ≥ 30」を、母集団の形を変えながらシミュレーションで検証してみた開発ノート</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>平均は本当に真値に近づく？ <span class="story-arrow">▸</span> <a href="./lln.html">I2 大数の法則</a></div>

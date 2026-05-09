@@ -1,5 +1,5 @@
 // StatPlay — module: 5) HYPOTHESIS TEST
-import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, isEn, makeAxisMap } from '../utils.js';
 
 export function initHtest(){
   if(!document.getElementById('testCanvas')) return;
@@ -16,9 +16,8 @@ export function initHtest(){
     const alpha = parseFloat(a.value);
     const t = type.value;
     const lo = -4.5, hi = 4.5;
-    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak = normPDF(0);
-    const yToPx = y => h - 20 - y / peak * (h - 60);
+    const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 40, marginBottom: 20 });
     // critical
     let crit;let rejection;
     if(t==='two'){crit=zCritical(alpha);rejection=[[-hi,-crit],[crit,hi]];}
@@ -36,7 +35,7 @@ export function initHtest(){
     // annotation: rejection region labels
     const greekFont10='bold 10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
     ctx.fillStyle=withAlpha(tc.magenta,.85);ctx.font=greekFont10;
-    const rejLabel=window.__LANG==='en'?'Reject H₀':'棄却域';
+    const rejLabel=isEn()?'Reject H₀':'棄却域';
     if(t==='two'){
       ctx.fillText(rejLabel,xToPx(-4.3),h-28);
       ctx.fillText(rejLabel,xToPx(2.6),h-28);
@@ -115,7 +114,7 @@ export function initHtest(){
     $('tCrit').textContent=(t==='two'?'±':'')+Math.abs(crit).toFixed(3);
     $('tPval').textContent=pval.toFixed(4);
     $('tPval').style.color=pval<parseFloat(a.value)?'var(--magenta)':'var(--green)';
-    $('tDecision').textContent=(window.__LANG==='en')?(reject?'Reject H₀':'Fail to reject H₀'):(reject?'H₀ 棄却':'H₀ 棄却できず');
+    $('tDecision').textContent=(isEn())?(reject?'Reject H₀':'Fail to reject H₀'):(reject?'H₀ 棄却':'H₀ 棄却できず');
     $('tDecision').style.color=reject?'var(--magenta)':'var(--green)';
 
     // axis

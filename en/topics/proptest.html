@@ -139,7 +139,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Proportion Testing & Estimation — Visualize the z-test for Proportions</a></h1>
-  <p class="topic-lead">"60 out of 100 agree" — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.</p>
+  <p class="topic-lead">Estimation uses p̂; testing uses p₀. A single character swaps the standard-error formula — and the whole proportion test pivots on that one letter.</p>
 
   <section class="reveal in" id="proptest">
 
@@ -443,10 +443,12 @@ Flip between panels ① and ② with the same n and p̂ to see this relationship
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; the "center ± multiplier × SE" three-layer structure carries straight over to proportions</li>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; testing's skeleton — using the H₀-world SE, judging via the rejection region — transplants directly into the proportion case</li>
-<li><a href="./dists.html">Three Test Distributions</a> &mdash; when the normal approximation breaks, the exact binomial test takes over — a position within the distribution family</li>
-<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; the α / β / power framework applies to proportion tests too — the error 2×2 carries over directly</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; the "center ± multiplier × SE" three-layer assembly slides into motion for proportions too</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; carries testing's skeleton — H₀-world SE plus rejection region — straight into the proportion setting</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; step beyond the normal-approximation range and the exact binomial test moves forward — repositioning within the distribution family</li>
+<li><a href="./bayes.html">Bayes' Theorem</a> &mdash; sensitivity, specificity, and prevalence are estimated as proportions — the same proportion-test machinery powers the PPV assembly</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the z² of a two-proportion test equals the χ² of a 2×2 independence test — proportion testing and chi-squared sit on the same coin</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; the α / β / power framework keeps moving when applied to proportion tests — the error 2×2 fits without modification</li>
 </ul>
 </div>
 
@@ -461,6 +463,14 @@ Flip between panels ① and ② with the same n and p̂ to see this relationship
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" target="_blank" rel="noopener"><span class="qiita-date">2026-05-09</span><span class="qiita-title">(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs</span></a><span class="qiita-why">Proportion tests reuse the same α/β scaffolding — this 2×2-area note doubles as a backstop when reading proportion-test diagrams</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="./dists.html">I6 t, χ², F</a></div>

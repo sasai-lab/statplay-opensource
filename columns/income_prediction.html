@@ -322,7 +322,7 @@ body.theme-light .gender-btn.active {
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -332,7 +332,7 @@ body.theme-light .gender-btn.active {
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* Progress bar */
@@ -461,6 +461,11 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <span>年収予測</span>
 </div>
 <main>
+<aside class="col-precede">
+<span class="precede-label">// 仕組みを見てから読む？</span>
+<a class="col-link-strong" data-target="topic" href="../topics/mreg.html">重回帰分析を3変数で動かしてみる</a>
+<span class="precede-note">— 先にトピックで予測の骨組みに触れておくと、本文の信頼区間と予測区間の違いが立体的に見えてきます</span>
+</aside>
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
 <p>
@@ -583,7 +588,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="interval-note" style="margin:10px 0 14px;padding:12px 16px;font-size:13px;line-height:1.7;color:var(--dim);border-left:3px solid rgba(0,243,255,.3);background:rgba(0,243,255,.03)">
 <b style="color:var(--cyan)">予測区間</b>（広い帯）：同じ属性の人を1人選んだとき、その人の年収がこの範囲に入る確率が95%。<br/>
 <b style="color:var(--yellow)">信頼区間</b>（狭い帯）：同じ属性の全員の「真の平均年収」がこの範囲にある確率が95%。<br/>
-<span style="font-size:12px">100人の平均点を推定するのは比較的簡単でも、次に来る1人の点数を当てるのは難しい。個人のばらつきがあるぶん、予測区間は常に信頼区間より広くなります。</span>
+<span style="font-size:12px">100人の平均点を推定するのは比較的簡単でも、次に来る1人の点数を当てるのは難しい。個人のばらつきがあるぶん、予測区間は常に信頼区間より広くなります（<a href="../topics/ci.html">信頼区間そのものを動かす</a>）。</span>
 </div>
 <div class="graph-share-bar">
 <button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="年収予測シミュレーター">💾 画像保存</button>
@@ -807,12 +812,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     「ズバリ当たる」より「不確かさを正直に出す」ことのほうが、本当はずっと役に立つ。<br/>
     これがこのコラムで一番伝えたかったことです。
   </p>
-<div class="cta-links">
-<a href="../topics/ci.html">信頼区間を深掘り →</a>
-<a href="../topics/reg.html">回帰分析を体感 →</a>
-<a href="../topics/mreg.html">重回帰分析へ →</a>
-<a href="../index.html">全トピック一覧 →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="年収予測 — StatPlay">💾 画像保存</button>
 <button class="share-btn" data-kind="url" data-share="incomeCanvas" data-title="年収予測 — StatPlay">🔗 URLコピー</button>
@@ -820,6 +819,40 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="incomeCanvas" data-title="年収予測 — StatPlay">📤 シェア</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/reg.html">単回帰分析</a> &mdash; 単回帰 y = β₀ + β₁x の組み立てを年齢↔年収で実際に動かして、傾きと切片を体感する</li>
+<li><a href="../topics/mreg.html">重回帰分析</a> &mdash; 年齢・性別・都道府県の 3 変数を組み合わせて年収を読む、重回帰を本格的に動かす場</li>
+<li><a href="../topics/corr.html">相関係数</a> &mdash; 説明変数同士の相関が β₁ を動かしていく場面を観察して、交絡を理解する足場を組む</li>
+<li><a href="../topics/ci.html">信頼区間</a> &mdash; 「予測区間」と「信頼区間」の二段構えを切り分けて動かす場面、コラム本文の構造がそのまま住む場所</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">回帰係数の有意性を判断する場面で第 1 種・第 2 種の枠組みが必ず動き出す、判定のロジックを共有する姉妹コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" target="_blank" rel="noopener"><span class="qiita-date">2026-05-01</span><span class="qiita-title">年齢・性別・都道府県で年収を予測する回帰式を、公開統計からたてる実験</span></a><span class="qiita-why">コラム本文のシミュレーター裏側で動いているデータと回帰モデルの組み立て手順をまとめた開発ノート</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

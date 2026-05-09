@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">信頼区間 — 95%の意味を誤解なく掴む</a></h1>
-  <p class="topic-lead">「95%信頼区間」がよく誤解される本当の意味を、100本の区間を並べて可視化。信頼水準を動かし、被覆確率がどう変わるかを実験的に理解する。</p>
+  <p class="topic-lead">「95%の確率で真の値が入る」── 実はこれ、誤り。100本の区間を並べたとき、初めて本当の意味が見えてくる。</p>
   <section class="reveal in" id="ci">
 
 <div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
@@ -236,17 +236,21 @@
 <li><b>検定とCIの双子関係</b>：95%CI = [2.1, 4.3] のとき、μ₀=2 は外側にいる → α=0.05 の両側検定では棄却される側。「区間に入っているか／棄却域に入っているか」は表裏で同じ判定になっている</li>
 <li><b>信頼度と倍率の対応</b>：信頼度を 95% → 99% に上げると、倍率も 1.96 → 2.576 に広がり、それが幅にそのまま反映される</li>
 </ul>
-<p style="margin:10px 0 0">z = 1.96 や 2.576 の根拠は<a href="../tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">インタラクティブ確率分布表</a>の両側モードで確認できる</p>
+<p class="pattern-companion" style="margin:10px 0 0">z = 1.96 や 2.576 の根拠は<a class="pattern-companion-link" href="../tables/index.html?dist=norm&amp;mode=twosided" style="color:var(--cyan)">インタラクティブ確率分布表</a>の両側モードで確認できる</p>
 </div>
 
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./test.html">仮説検定</a> &mdash; CI と検定は同じ判定を別の絵で見る双子。CI に μ₀ が入らないことと α=0.05 で棄却することが対応する</li>
-<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からないとき、z の代わりに t の臨界値を使う。n が小さいほど t 分布が顔を出す</li>
-<li><a href="./clt.html">中心極限定理</a> &mdash; CI の根拠になる「平均が正規に近づく」前提。CLT が SE = σ/√n の絵を保証する</li>
-<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 比率版の CI と検定。「中心 ± 倍率 × SE」という同じ三層構造が比率でも顔を出す</li>
-<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; CI の信頼度 95% は「外す確率 5%」。α と同じ確率空間にいる</li>
+<li><a href="./test.html">仮説検定</a> &mdash; CI と検定が同じ判定を別の絵で映し合う双子、μ₀ が CI から外れる瞬間と α=0.05 で棄却する瞬間が一致する</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からない場面で、z から t の臨界値へ乗り換える。n が小さいほど t 分布の裾が CI を広げる</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; CI の根拠になる「平均が正規に近づく」場面を CLT が用意して、SE = σ/√n の幅を保証する</li>
+<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 「中心 ± 倍率 × SE」という三層の組み立てが、比率の CI と検定でもそのまま動く</li>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; 「中心 ± 1.96 × SE」の倍率を標準正規の表から取り出して、CI の幅を確定させる</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; 「サンプルから母数を推定できる」根拠を LLN が立てて、その上に CI の構造が建つ</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 信頼度 95% が「外す確率 5%」と同じ確率空間に並ぶ、α と CI を一枚で読み解くコラム</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; CI の倍率 1.96 を生み出す z スケールを「単位を揃える翻訳機」として扱うコラム</li>
+<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 回帰の予測区間と信頼区間の違いを実データで体感できる、CI の二段構えが生きる現場</li>
 </ul>
 </div>
 

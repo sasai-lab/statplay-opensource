@@ -1,7 +1,7 @@
 // StatPlay — module: Interactive Distribution Tables
 import { $, normCDF, normPDF, tPDF, chi2PDF, fPDF,
          resizeCanvas, drawGrid, neonLine, neonFill, themeColors,
-         withAlpha, throttledDraw, tCDF, chi2CritVal, fCritVal } from '../utils.js';
+         withAlpha, throttledDraw, tCDF, chi2CritVal, fCritVal, isEn } from '../utils.js';
 
 /* ─── CDF / critical-value helpers ─── */
 
@@ -34,7 +34,6 @@ const S = {
   f: { df1: 3, df2: 10, alpha: 0.05 }
 };
 let _initializing = true;
-const isEn = () => window.__LANG === 'en';
 
 /* ─── Toast + Copy ─── */
 let _tEl, _tT;

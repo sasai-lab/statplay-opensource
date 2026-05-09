@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">See the Central Limit Theorem in Action</a></h1>
-  <p class="topic-lead">Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.</p>
+  <p class="topic-lead">However twisted the population, its sample mean still bends back into a bell. The hidden engine behind every test you'll meet later.</p>
   <section class="reveal in" id="clt">
 
 <div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
@@ -259,24 +259,25 @@
 
 <div class="pattern-note">
 <h3>// Shapes you'll meet again</h3>
-<p>The same trio of parts shows up wherever the Central Limit Theorem lives.</p>
+<p>The Central Limit Theorem isn't a topic that ends here — it's the silent machinery underneath several other topics. The same √n structure keeps reappearing, just dressed in different clothes.</p>
 <ul>
-<li><b>The picture the theorem draws</b>: "no matter the original distribution, the average's distribution drifts toward normal" — this one-liner is the outline of the Central Limit Theorem, and the simulator above traces that exact picture</li>
-<li><b>The SE = σ/√n shape</b>: with σ = 10 and n = 25, SE lands at 10/√25 = 2. √n sitting in the denominator is a structure that reappears across inferential statistics</li>
-<li><b>How n trades against precision</b>: halving SE means quadrupling n. The √ makes "the cost of precision grows quadratically" appear as a shape</li>
-<li><b>Expected value of the sample mean</b>: E(X̄) = μ. Matching the population mean is the shape of unbiasedness</li>
+<li><b>Reappears in the width of a confidence interval</b>: the CI for a mean is X̄ ± 1.96·σ/√n. The width scales with σ/√n precisely because the Central Limit Theorem guarantees X̄ is close to N(μ, σ²/n)</li>
+<li><b>Reappears in proportion tests</b>: the SE of the one-sample z-test, √(p₀(1−p₀)/n), is the same "spread divided by √n" pattern in disguise. The proptest condition np ≥ 5 is the Central Limit Theorem's threshold translated into the world of proportions</li>
+<li><b>Reappears in the SE of a regression slope</b>: SE(β̂₁) divides the residual standard deviation by "spread of x times √n." The reason adding observations tightens the slope estimate is, again, the √n in the denominator</li>
+<li><b>"Quadruple n to double the precision"</b>: with √n sitting in every denominator, precision can only grow as the square root of sample size. That's the shared "cost of measurement" across every inference shape</li>
 </ul>
-</div>
+<p class="pattern-companion">The interval width that sits on the CLT guarantee is at <a class="pattern-companion-link" href="./ci.html">Confidence Intervals</a>.</p></div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./normal.html">Normal Distribution</a> &mdash; whatever the original distribution, the sample mean approaches normal — the normal is CLT's destination</li>
-<li><a href="./lln.html">Law of Large Numbers</a> &mdash; LLN says "the mean's value approaches the truth"; CLT says "its distribution shape becomes normal" — twin theorems</li>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; SE = σ/√n is the spread CLT guarantees, and the CI multiplier is assembled from there</li>
-<li><a href="./dists.html">Three Test Distributions</a> &mdash; after CLT lands you on the normal, swapping σ for s pulls the t / χ² / F family into view</li>
-<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; a column on z-scores that views CLT through the "set everything to common mean and SD" lens</li>
-<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) stands on CLT's guarantee that "averages go normal"</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; whatever the original distribution, the sample mean walks toward the normal — that's where CLT lands</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; CLT lays the distribution shape on top of the convergence LLN guarantees — twin theorems working together</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; CLT guarantees the spread SE = σ/√n, and the CI multiplier stacks on top</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; after CLT lands you on the normal, swapping σ for s pulls the t / χ² / F family forward</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; the binomial-to-normal approximation kicks off as CLT's earliest concrete example in motion</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; with CLT's normalization guarantee in place, the z-score lifts different-unit measurements onto a common yardstick</li>
+<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; CLT props up "averages go normal," and Japan's Hensachi (deviation value) stands as the everyday tool on that base</li>
 </ul>
 </div>
 
@@ -291,6 +292,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/a5170d59751def6f1306" target="_blank" rel="noopener"><span class="qiita-date">2026-05-04</span><span class="qiita-title">(Japanese only) Is "n ≥ 30" really enough? Checking the CLT by simulation</span></a><span class="qiita-why">A simulation-based check of the "n ≥ 30" rule of thumb across differently-shaped populations</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="./lln.html">I2 Law of Large Numbers</a></div>

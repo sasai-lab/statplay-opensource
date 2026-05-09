@@ -2,9 +2,8 @@
  * StatPlay — income prediction column module
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-import { $, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, debouncedResize } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, debouncedResize, isEn } from '../utils.js';
 
-const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const L = (ja, en) => isEn() ? en : ja;
 
 const AGE_INCOME_TABLE = {

@@ -9,10 +9,9 @@
 import {
   $, normPDF, zCritical, betaTwoSided,
   resizeCanvas, drawGrid, neonLine, neonFill,
-  themeColors, withAlpha, throttledDraw, debouncedResize
+  themeColors, withAlpha, throttledDraw, debouncedResize, isEn, makeAxisMap
 } from '../utils.js';
 
-const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const reduced = () => !!window.__REDUCED_MOTION ||
   (typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches);
 
@@ -23,10 +22,8 @@ function drawTwoWorldFrame(ctx, w, h, opts){
   drawGrid(ctx, w, h);
 
   const lo = -4.5, hi = Math.max(8, delta + 4.5);
-  const xToPx = x => (x - lo) / (hi - lo) * w;
   const peak = normPDF(0);
-  const yToPx = y => h - 32 - y / peak * (h - 76);
-  const axisY = h - 32;
+  const { xToPx, yToPx, axisY } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 44, marginBottom: 32 });
 
   const crit = zCritical(alpha);
   const critPxR = Math.round(xToPx(crit));
@@ -421,10 +418,8 @@ function initInteractive3() {
     // Add a second layer that paints the β region too — both regions matter here.
     const tc = themeColors();
     const lo = -4.5, hi = Math.max(8, deltaEff + 4.5);
-    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak = normPDF(0);
-    const yToPx = y => h - 32 - y / peak * (h - 76);
-    const axisY = h - 32;
+    const { xToPx, yToPx, axisY } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 44, marginBottom: 32 });
     const pts = [[xToPx(-crit), axisY]];
     for (let x = -crit; x <= crit; x += 0.05) pts.push([xToPx(x), yToPx(normPDF(x, deltaEff, 1))]);
     pts.push([xToPx(crit), axisY]);

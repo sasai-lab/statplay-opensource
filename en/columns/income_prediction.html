@@ -311,7 +311,7 @@ body.theme-light .gender-btn.active { background: rgba(0,100,130,.12); }
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -321,7 +321,7 @@ body.theme-light .gender-btn.active { background: rgba(0,100,130,.12); }
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* Progress bar */
@@ -457,6 +457,11 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <span>Income Prediction</span>
 </div>
 <main>
+<aside class="col-precede">
+<span class="precede-label">// See the gears first?</span>
+<a class="col-link-strong" data-target="topic" href="../../en/topics/mreg.html">Try multiple regression with three variables</a>
+<span class="precede-note">— touching the prediction skeleton up front makes the confidence-vs-prediction interval split easier to picture later.</span>
+</aside>
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
 <p>
@@ -586,7 +591,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="interval-note" style="margin:10px 0 14px;padding:12px 16px;font-size:13px;line-height:1.7;color:var(--dim);border-left:3px solid rgba(0,243,255,.3);background:rgba(0,243,255,.03)">
 <b style="color:var(--cyan)">Prediction interval</b> (wide band): pick one person with your attributes at random — 95% chance their income falls here.<br/>
 <b style="color:var(--yellow)">Confidence interval</b> (narrow band): the true average income for everyone with your attributes is 95% likely to be here.<br/>
-<span style="font-size:12px">Estimating a group average is easier than predicting one individual's outcome. That's why the prediction interval is always wider.</span>
+<span style="font-size:12px">Estimating a group average is easier than predicting one individual's outcome. That's why the prediction interval is always wider (<a href="../../en/topics/ci.html">drag the confidence interval itself</a>).</span>
 </div>
 <div class="graph-share-bar">
 <button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="Income Prediction Simulator">💾 Save image</button>
@@ -808,12 +813,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     pretending to predict pinpoints.<br/>
     That's the main thing this column wants to convey.
   </p>
-<div class="cta-links">
-<a href="../../en/topics/ci.html">Explore Confidence Intervals →</a>
-<a href="../../en/topics/reg.html">Feel Regression Analysis →</a>
-<a href="../../en/topics/mreg.html">Multiple Regression →</a>
-<a href="../../en/index.html">All Topics →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="incomeCanvas" data-title="Income Prediction — StatPlay">💾 Save image</button>
 <button class="share-btn" data-kind="url" data-share="incomeCanvas" data-title="Income Prediction — StatPlay">🔗 Copy URL</button>
@@ -821,6 +820,40 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="incomeCanvas" data-title="Income Prediction — StatPlay">📤 Share</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/reg.html">Simple Regression</a> &mdash; puts the simple-regression mechanics y = β₀ + β₁x in motion against age vs. income — slope and intercept become tangible</li>
+<li><a href="../topics/mreg.html">Multiple Regression</a> &mdash; wires age, gender, and prefecture together to read income — where multiple regression runs in earnest</li>
+<li><a href="../topics/corr.html">Correlation</a> &mdash; watch predictor correlation push β₁ around — the scaffolding for understanding confounding</li>
+<li><a href="../topics/ci.html">Confidence Interval</a> &mdash; separates and runs the two-tier structure of prediction vs. confidence intervals — where the column's main argument lives</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">the Type I/II framework kicks into motion every time regression coefficient significance is judged — the sister column that shares the decision logic</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" target="_blank" rel="noopener"><span class="qiita-date">2026-05-01</span><span class="qiita-title">(Japanese only) Building an income-prediction regression from public statistics</span></a><span class="qiita-why">A development note covering the data sourcing and model assembly that sits behind this column's simulator</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

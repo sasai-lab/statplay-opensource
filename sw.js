@@ -1,11 +1,13 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.12.1.1778317971';
+const CACHE = 'sp-v3.12.2.1778332370';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [
   'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
+  'chitest_common.js','chitest_gof.js','chitest_independence.js',
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
+  'dist_chi2.js','dist_f.js','dist_t.js',
   'error_types.js','errs.js','graphDrag.js','hero.js','htest.js','income_prediction.js','lang.js','lln.js',
   'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js','proptest.js',
   'pwa.js','reg.js','reveal.js','scrolltop.js','share.js','stdnorm.js','tables.js','theme.js',

@@ -1,5 +1,5 @@
 // StatPlay — module: 3) LLN
-import { $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha } from '../utils.js';
+import { $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, isEn } from '../utils.js';
 
 export function initLln(){
   if(!document.getElementById('llnCanvas')) return;
@@ -49,7 +49,7 @@ export function initLln(){
     ctx.strokeStyle=withAlpha(tc.yellow,.7);ctx.setLineDash([6,4]);
     const yTrue=h-20-p*(h-40);
     ctx.beginPath();ctx.moveTo(0,yTrue);ctx.lineTo(w,yTrue);ctx.stroke();ctx.setLineDash([]);
-    ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText((window.__LANG==='en'?'μ = ':'μ = ')+p.toFixed(2),w-90,yTrue-6);
+    ctx.fillStyle=tc.yellow;ctx.font='12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';ctx.fillText((isEn()?'μ = ':'μ = ')+p.toFixed(2),w-90,yTrue-6);
     // running average
     if(history.length>1){
       const pts=history.map((v,i)=>[i/history.length*w,h-20-v*(h-40)]);
@@ -58,16 +58,16 @@ export function initLln(){
       const lastY=pts[pts.length-1][1];
       const curVal=(head/n);
       ctx.fillStyle=tc.cyan;ctx.font='bold 12px "Courier New"';
-      ctx.fillText((window.__LANG==='en'?'X̄ₙ = ':'X̄ₙ = ')+curVal.toFixed(4),w-160,lastY-8);
+      ctx.fillText((isEn()?'X̄ₙ = ':'X̄ₙ = ')+curVal.toFixed(4),w-160,lastY-8);
     }
     // axis ticks
     ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
     ctx.fillText('0.0',4,h-6);ctx.fillText('1.0',4,16);
-    ctx.fillText(window.__LANG==='en'?'Trials →':'試行 →',w-70,h-6);
+    ctx.fillText(isEn()?'Trials →':'試行 →',w-70,h-6);
     // annotation: y-axis label
     ctx.save();ctx.translate(12,h/2);ctx.rotate(-Math.PI/2);
     ctx.fillStyle=tc.dim;ctx.font='10px "Courier New"';
-    ctx.fillText(window.__LANG==='en'?'X̄ₙ (proportion)':'X̄ₙ（割合）',0,0);
+    ctx.fillText(isEn()?'X̄ₙ (proportion)':'X̄ₙ（割合）',0,0);
     ctx.restore();
   }
   draw();

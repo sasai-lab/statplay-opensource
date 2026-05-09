@@ -39,8 +39,8 @@ export function initToc(){
   nav.appendChild(list);
 
   function titleFor(sec){
-    const isEn = document.body.classList.contains('lang-en');
-    const lang = isEn ? 'en' : 'ja';
+    const enLang = document.body.classList.contains('lang-en');
+    const lang = enLang ? 'en' : 'ja';
     const h = sec.querySelector('.sec-title[data-lang="'+lang+'"]') || sec.querySelector('.sec-title');
     if(!h) return sec.id;
     const clone = h.cloneNode(true);

@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">t分布・χ²分布・F分布 — 三大検定分布の違い</a></h1>
-  <p class="topic-lead">自由度で形が変わる t分布、分散の検定に使う χ²分布、分散比の F分布を並べて可視化。自由度スライダーで3つの分布の関係と違いを一度に掴む。</p>
+  <p class="topic-lead">t は平均、χ² は分散、F は分散の比。すべて標準正規から派生した家族で、自由度を動かせば似顔絵が見えてくる。</p>
   <section class="reveal in" id="dists">
 
 <div class="sec-tag">I.05 / t · χ² · F DISTRIBUTIONS</div>
@@ -366,7 +366,7 @@
 <tr><td>回帰モデル全体が有意か</td><td>—</td><td>F分布</td></tr>
 <tr><td>カテゴリの適合度・独立性</td><td>—</td><td>χ²分布</td></tr>
 </table>
-<p style="margin:10px 0 0">使う分布が決まったら<a href="../tables/index.html" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値をグラフと一緒に確認</p>
+<p class="pattern-companion" style="margin:10px 0 0">使う分布が決まったら<a class="pattern-companion-link" href="../tables/index.html" style="color:var(--cyan)">インタラクティブ確率分布表</a>で臨界値をグラフと一緒に確認</p>
 </div>
 
 <div class="misconception-box">
@@ -399,11 +399,13 @@
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./test.html">仮説検定</a> &mdash; t / z / F / χ² の検定統計量はすべてこれらの分布の上で測られる</li>
-<li><a href="./ci.html">信頼区間</a> &mdash; σ が分からないときの CI は z の代わりに t を使う。t 分布の中身がそのまま信頼区間の幅を決める</li>
-<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; F 分布が分散分析の主役。F = MSB/MSW の臨界値がここで読まれる</li>
-<li><a href="./chitest.html">カイ二乗検定</a> &mdash; χ² 分布がカイ二乗検定の根拠。自由度ごとに分布が違うことがそのまま検定の選び方に効く</li>
-<li><a href="./corr.html">相関係数</a> &mdash; 無相関の検定は t = r√(n−2)/√(1−r²) で t 分布に乗る。相関の検定もこの家族</li>
+<li><a href="./test.html">仮説検定</a> &mdash; t / z / F / χ² の検定統計量を、ここで並べた分布の上に乗せて判定する</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; σ が分からない場面で CI が z から t に乗り換える、t 分布の裾の太さが信頼区間の幅をそのまま決める</li>
+<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; F 分布を分散分析の主役に立てて、F = MSB/MSW の臨界値をここから取り出す</li>
+<li><a href="./chitest.html">カイ二乗検定</a> &mdash; χ² 分布がカイ二乗検定を支えて、自由度を変えるたびに分布の形と検定の選び方が動く</li>
+<li><a href="./corr.html">相関係数</a> &mdash; 無相関の検定が t = r√(n−2)/√(1−r²) で t 分布に乗って、相関の検定もこの家族の枝に並ぶ</li>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; 自由度を ∞ に飛ばすと t 分布が標準正規に重なっていく、家族の極限がここに着地する</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; t / χ² / F の検定統計量を棄却域に並べる場面で、第 1 種・第 2 種の枠組みが必ず動き出す</li>
 </ul>
 </div>
 
@@ -418,6 +420,15 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/783a1cdd2f26dea137b0" target="_blank" rel="noopener"><span class="qiita-date">2026-04-30</span><span class="qiita-title">インタラクティブ確率分布表を作った話——表に書かれた数字をどこまで信じられるか</span></a><span class="qiita-why">t / χ² / F の分布表をインタラクティブにしたときに直面した精度問題を扱った開発ノート</span></li>
+<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">JavaScriptにガンマ関数がないので、Lanczos近似で実装した話</span></a><span class="qiita-why">t / χ² / F の確率密度を依存ゼロで計算するために必要だったガンマ関数の実装ノート</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>「ズレ」を数値化して検定する <span class="story-arrow">▸</span> <a href="./chitest.html">I7 カイ二乗検定</a></div>

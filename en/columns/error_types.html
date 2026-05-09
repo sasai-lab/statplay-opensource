@@ -428,7 +428,7 @@ body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(
 
 .col-cta { text-align: center; padding: 32px 0 48px; padding-bottom: 16px; }
 .cta-headline { font-family:'Courier New', monospace; font-size: 18px; color: var(--text); margin-bottom: 8px; }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -436,7 +436,7 @@ body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(
   font-family:'Courier New', monospace; font-size: 13px; transition: .2s;
 }
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
-.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.share-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
 
 .progress-bar {
   position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
@@ -784,6 +784,10 @@ At n=30, the same effect size carries a high risk (β) of being judged "no effec
 <li style="margin-left:1em"><a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err" style="color:var(--cyan)">Open with a moderate effect (δ=2.0) →</a></li>
 </ul>
 <p>This column is the "putting it in order" room; the other visualization is the "playing with all knobs at once" room. Order first, play second — that sequence tends to make everything click into place.</p>
+<p>
+    The process of rewriting this column and arriving at "express the 2×2 with area, not graphs" is also written up on Qiita (Japanese only).<br/>
+<a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" rel="noopener" style="color:var(--cyan)" target="_blank">Expressing Type I / Type II Errors as a 2×2 of Areas — Qiita ↗</a>
+</p>
 </div>
 <!-- ═══ KEY TAKEAWAY ═══ -->
 <div class="takeaway">
@@ -825,13 +829,6 @@ At n=30, the same effect size carries a high risk (β) of being judged "no effec
 With α and β sorted as quantities of two different worlds, the next step is watching them move <i>together</i> inside an actual z- or t-test.<br/>
 The link with confidence intervals also looks different once the 2×2 is in place.
 </p>
-<div class="cta-links">
-<a href="../topics/test.html?eD=0.5&amp;eA=0.05#test_err">Open with small effect (δ=0.5) →</a>
-<a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err">Open with moderate effect (δ=2.0) →</a>
-<a href="../topics/ci.html">Confidence intervals →</a>
-<a href="../topics/stdnorm.html">Standard normal →</a>
-<a href="../columns/standardization.html">What is standardization? →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="judgeCanvas" data-title="Type I vs Type II Errors — StatPlay">💾 Save image</button>
 <button class="share-btn" data-kind="url" data-share="page" data-title="Type I vs Type II Errors — StatPlay">🔗 Copy URL</button>
@@ -839,6 +836,42 @@ The link with confidence intervals also looks different once the 2×2 is in plac
 <button class="share-btn" data-kind="native" data-share="page" data-title="Type I vs Type II Errors — StatPlay">📤 Share</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/test.html">Hypothesis Testing</a> &mdash; the 5-step recipe and rejection region in motion — where Type I and Type II errors come to life</li>
+<li><a href="../topics/ci.html">Confidence Interval</a> &mdash; 95% confidence and a 5% miss rate move side by side in the same probability space — α and CI read on a single page</li>
+<li><a href="../topics/bayes.html">Bayes' Theorem</a> &mdash; watches false positives (a Type-I-flavored quantity) push PPV down — observed directly on top of Bayes' denominator</li>
+<li><a href="../topics/anova.html">ANOVA</a> &mdash; picks up the moment α inflates under multiple comparisons — assembling the extended chapter of errors</li>
+<li><a href="../topics/proptest.html">Proportion Test</a> &mdash; the α / β / power framework keeps running on proportion tests — the error 2×2 carries over and fits</li>
+<li><a href="../topics/dists.html">Three Test Distributions</a> &mdash; computing power 1 − β requires running the t / F / χ² family as the H₁ distribution alongside H₀</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">the gateway intuition-vs-probability column in motion — moving along the same lineage as Type I/II confusion</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" target="_blank" rel="noopener"><span class="qiita-date">2026-05-09</span><span class="qiita-title">(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs</span></a><span class="qiita-why">A development note tracing how this column was rewritten and why the rejection-region graph was traded for an area-based 2×2</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

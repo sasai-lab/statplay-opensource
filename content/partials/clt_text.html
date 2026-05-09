@@ -104,21 +104,21 @@
 </div>
 <div data-lang="ja" class="pattern-note">
 <h3>// よく出会う形</h3>
-<p>中心極限定理がからむ場面では、同じ三つ組がいつもセットで顔を出します。</p>
+<p>中心極限定理は、ここだけで完結する話ではなく、他のトピックの裏で繰り返し顔を出す通底装置です。同じ √n の構造が、別の道具に姿を変えて再登場します。</p>
 <ul>
-<li><b>定理が描く絵</b>：「元の分布が何でも、平均を取ると分布の形が正規分布に近づく」 — この一行が中心極限定理の輪郭で、上のシミュレーションがその絵そのもの</li>
-<li><b>SE = σ/√n の形</b>：σ=10, n=25 なら SE = 10/√25 = 2 と並ぶ。√n が分母にいる構造が、推測統計のあちこちでこの形のまま顔を出す</li>
-<li><b>n と精度の比例</b>：SE を半分にするには n が4倍。√ がいるせいで「精度を上げるコストは二乗で効く」という形が現れる</li>
-<li><b>標本平均の期待値</b>：E(X̄) = μ。元の分布の平均と一致するという形が、不偏性として顔を出す</li>
+<li><b>信頼区間の幅に再登場</b>：母平均の CI は X̄ ± 1.96·σ/√n。幅が σ/√n で決まるのは、中心極限定理が「X̄ は N(μ, σ²/n) に近い」と保証してくれるから</li>
+<li><b>母比率の検定で再登場</b>：1標本z検定の SE = √(p₀(1−p₀)/n) も、形を読み替えると σ/√n と同じ「ばらつき / √n」の構造。proptest の正規近似条件 np ≥ 5 は、中心極限定理が成り立つラインを比率の世界に翻訳したもの</li>
+<li><b>回帰の傾きの SE で再登場</b>：β₁ の標準誤差 SE(β̂₁) も、誤差項の標準偏差を「説明変数のばらつき × √n」で割る形。n が増えると傾きの推定が締まっていくのは、ここでも √n が効いているから</li>
+<li><b>「n を 4 倍にして精度が 2 倍」</b>：√n が分母にいる以上、精度はサンプル数の平方根でしか伸びない。これが推定全般に共通する「調査コストの形」</li>
 </ul>
 </div>
 <div data-lang="en" class="pattern-note">
 <h3>// Shapes you'll meet again</h3>
-<p>The same trio of parts shows up wherever the Central Limit Theorem lives.</p>
+<p>The Central Limit Theorem isn't a topic that ends here — it's the silent machinery underneath several other topics. The same √n structure keeps reappearing, just dressed in different clothes.</p>
 <ul>
-<li><b>The picture the theorem draws</b>: "no matter the original distribution, the average's distribution drifts toward normal" — this one-liner is the outline of the Central Limit Theorem, and the simulator above traces that exact picture</li>
-<li><b>The SE = σ/√n shape</b>: with σ = 10 and n = 25, SE lands at 10/√25 = 2. √n sitting in the denominator is a structure that reappears across inferential statistics</li>
-<li><b>How n trades against precision</b>: halving SE means quadrupling n. The √ makes "the cost of precision grows quadratically" appear as a shape</li>
-<li><b>Expected value of the sample mean</b>: E(X̄) = μ. Matching the population mean is the shape of unbiasedness</li>
+<li><b>Reappears in the width of a confidence interval</b>: the CI for a mean is X̄ ± 1.96·σ/√n. The width scales with σ/√n precisely because the Central Limit Theorem guarantees X̄ is close to N(μ, σ²/n)</li>
+<li><b>Reappears in proportion tests</b>: the SE of the one-sample z-test, √(p₀(1−p₀)/n), is the same "spread divided by √n" pattern in disguise. The proptest condition np ≥ 5 is the Central Limit Theorem's threshold translated into the world of proportions</li>
+<li><b>Reappears in the SE of a regression slope</b>: SE(β̂₁) divides the residual standard deviation by "spread of x times √n." The reason adding observations tightens the slope estimate is, again, the √n in the denominator</li>
+<li><b>"Quadruple n to double the precision"</b>: with √n sitting in every denominator, precision can only grow as the square root of sample size. That's the shared "cost of measurement" across every inference shape</li>
 </ul>
 </div>

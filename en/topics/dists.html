@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">The Three Test Distributions — t, χ², and F</a></h1>
-  <p class="topic-lead">Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.</p>
+  <p class="topic-lead">t for means, χ² for variances, F for variance ratios — three siblings born from the standard normal. Slide the degrees of freedom and the family resemblance comes into focus.</p>
   <section class="reveal in" id="dists">
 
 <div class="sec-tag">I.05 / t · χ² · F DISTRIBUTIONS</div>
@@ -371,7 +371,7 @@
 <tr><td>Test overall regression model</td><td>—</td><td>F distribution</td></tr>
 <tr><td>Goodness of fit / independence</td><td>—</td><td>χ² distribution</td></tr>
 </table>
-<p style="margin:10px 0 0">Once you know which distribution to use, look up critical values in the <a href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+<p class="pattern-companion" style="margin:10px 0 0">Once you know which distribution to use, look up critical values in the <a class="pattern-companion-link" href="../../en/tables/index.html" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
 </div>
 
 <div class="misconception-box">
@@ -404,11 +404,13 @@
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; t / z / F / χ² test statistics are all measured against these distributions</li>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; when σ is unknown, CIs use t instead of z — the t distribution's body sets the interval width directly</li>
-<li><a href="./anova.html">ANOVA</a> &mdash; the F-distribution is ANOVA's lead actor — critical values for F = MSB/MSW are read here</li>
-<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the χ² distribution backs the chi-squared test — different df gives different distributions, directly shaping which test to use</li>
-<li><a href="./corr.html">Correlation</a> &mdash; testing zero correlation rides on t = r√(n−2)/√(1−r²), pulling correlation tests into this family too</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; every t / z / F / χ² test statistic gets placed on top of one of these distributions to make a call</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; with σ unknown, CIs switch from z to t — the heavier t-tails directly set the interval width</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; casts the F-distribution as ANOVA's lead actor — F = MSB/MSW critical values come straight from here</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the χ² distribution backs the chi-squared test — change df and both the curve and the test choice shift</li>
+<li><a href="./corr.html">Correlation</a> &mdash; the test of zero correlation rides on t = r√(n−2)/√(1−r²) — correlation testing joins another branch of this family</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; send df to ∞ and the t curve folds back into N(0,1) — the family's limit lands right here</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lining up t / χ² / F test statistics against the rejection region triggers the Type I / Type II framework every time</li>
 </ul>
 </div>
 
@@ -423,6 +425,15 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/783a1cdd2f26dea137b0" target="_blank" rel="noopener"><span class="qiita-date">2026-04-30</span><span class="qiita-title">(Japanese only) Building an interactive probability table — how much can you trust the printed numbers?</span></a><span class="qiita-why">A note on the precision questions that surface when turning t/χ²/F tables into interactive widgets</span></li>
+<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation</span></a><span class="qiita-why">The gamma-function implementation note that backs the dependency-free density calculations for t/χ²/F</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="./chitest.html">I7 Chi-Squared Test</a></div>

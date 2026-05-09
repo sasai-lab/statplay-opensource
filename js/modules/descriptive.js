@@ -1,5 +1,5 @@
 // StatPlay — module: DESCRIPTIVE STATISTICS
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize, isEn } from '../utils.js';
 
 export function initDescriptive(){
   if(!document.getElementById('descCanvas')) return;
@@ -124,7 +124,7 @@ export function initDescriptive(){
     if(data.length === 0){
       ctx.fillStyle = tc.dim;
       ctx.font = '14px "Courier New", monospace';
-      const hint = window.__LANG === 'en'
+      const hint = isEn()
         ? 'Press Generate to create a sample'
         : '「生成」ボタンでサンプルを作成';
       ctx.fillText(hint, 20, h / 2);
@@ -177,7 +177,7 @@ export function initDescriptive(){
     ctx.setLineDash([]);
     ctx.fillStyle = tc.yellow;
     ctx.font = '11px "Courier New", monospace';
-    const meanLabel = window.__LANG === 'en' ? 'Mean' : '平均';
+    const meanLabel = isEn() ? 'Mean' : '平均';
     ctx.fillText(meanLabel, xMean + 4, pad + 12);
 
     // Median line (magenta dashed)
@@ -191,7 +191,7 @@ export function initDescriptive(){
     ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = tc.magenta;
-    const medLabel = window.__LANG === 'en' ? 'Median' : '中央値';
+    const medLabel = isEn() ? 'Median' : '中央値';
     ctx.fillText(medLabel, xMed + 4, pad + 26);
 
     // ----- Box plot -----
@@ -279,7 +279,7 @@ export function initDescriptive(){
     // Drag hint
     ctx.fillStyle = tc.dim;
     ctx.font = '10px "Courier New", monospace';
-    const hintText = window.__LANG === 'en'
+    const hintText = isEn()
       ? 'Drag: N / Shift+Drag: Skew'
       : 'ドラッグ: N / Shift+ドラッグ: 歪度';
     ctx.fillText(hintText, pad + 4, h - 6);

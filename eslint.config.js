@@ -10,6 +10,8 @@ export default [
       '**/*.min.js',
       'scripts/test_layout.mjs',
       'scripts/capture_ogp.mjs',
+      'scripts/legacy/**',
+      'scripts/_split_tests.py',
       '.claude/**',
       'test-results/**',
       'dist/**'
@@ -55,7 +57,24 @@ export default [
       'no-cond-assign':   ['error', 'except-parens'],
       'eqeqeq':           ['warn', 'smart'],
       'semi':             ['warn', 'always'],
-      'no-template-curly-in-string': 'warn'
+      'no-template-curly-in-string': 'warn',
+      // Forbid direct reads of `window.__LANG`. Use `isEn()` / `getLang()`
+      // from utils.js instead. (lang.js / prefs.js still WRITE to it; this
+      // rule targets MemberExpression reads, which both writes pass through
+      // when used as the LHS of assignment — but ESLint only flags reads
+      // semantically. We add per-file overrides below for the two writers.)
+      'no-restricted-syntax': ['error', {
+        selector: "MemberExpression[object.name='window'][property.name='__LANG']",
+        message: 'Use getLang() / isEn() from utils.js instead of window.__LANG'
+      }]
+    }
+  },
+  {
+    // The two modules that own writing window.__LANG (the source of truth)
+    // need to bypass the no-restricted-syntax rule above.
+    files: ['js/modules/lang.js', 'js/modules/prefs.js', 'js/utils.js'],
+    rules: {
+      'no-restricted-syntax': 'off'
     }
   },
   {

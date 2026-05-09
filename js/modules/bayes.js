@@ -1,12 +1,12 @@
 // StatPlay — module: 8) BAYES
-import { $, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize, isEn } from '../utils.js';
 
 export function initBayes(){
   if(!document.getElementById('bayesCanvas')) return;
   const canvas=$('bayesCanvas');
   const ids=['bPd','bSens','bSpec'];
   const fmt={
-    bPd:v=>{const n=Math.round(v*1000);return (window.__LANG==='en'?n+' / 1,000':n+'人 / 1000');},
+    bPd:v=>{const n=Math.round(v*1000);return (isEn()?n+' / 1,000':n+'人 / 1000');},
     bSens:v=>(v*100).toFixed(1)+'%',
     bSpec:v=>(v*100).toFixed(1)+'%'
   };
@@ -96,11 +96,7 @@ export function initBayes(){
     const FP = notD * (1 - spec);
     const TN = notD - FP;
     const ppv = TP / (TP + FP) || 0;
-    const npv = TN / (TN + FN) || 0;
-
-    const isEn=window.__LANG==='en';
-
-    const fs=mobile?10:13;
+    const npv = TN / (TN + FN) || 0;    const fs=mobile?10:13;
     const fsSmall=mobile?9:12;
     const fsTiny=mobile?8:10;
     const padL=mobile?24:34;
@@ -146,20 +142,20 @@ export function initBayes(){
     ctx.fillStyle=withAlpha(tc.dim,.05);ctx.fillRect(rects.TN.x,rects.TN.y,rects.TN.w,rects.TN.h);
 
     ctx.fillStyle=tc.yellow;ctx.font='bold '+fs+'px "Courier New"';
-    ctx.fillText(isEn?'TOWN OF 1,000 ▸ test everyone':'1000人の町 ▸ 全員に検査',padL,titleY);
+    ctx.fillText(isEn()?'TOWN OF 1,000 ▸ test everyone':'1000人の町 ▸ 全員に検査',padL,titleY);
 
     ctx.font='bold '+fsSmall+'px "Courier New"';
     ctx.fillStyle=tc.cyan;
-    const sickLabel=isEn?'SICK·'+Math.round(D):'病気·'+Math.round(D)+(mobile?'':'人');
+    const sickLabel=isEn()?'SICK·'+Math.round(D):'病気·'+Math.round(D)+(mobile?'':'人');
     ctx.fillText(sickLabel,xSick,headerY);
     ctx.fillStyle=tc.dim;
-    const healthLabel=isEn?'HEALTHY·'+Math.round(notD):'健康·'+Math.round(notD)+(mobile?'':'人');
+    const healthLabel=isEn()?'HEALTHY·'+Math.round(notD):'健康·'+Math.round(notD)+(mobile?'':'人');
     ctx.fillText(healthLabel,xHealthy,headerY);
 
     ctx.fillStyle=tc.yellow;ctx.font='bold '+(mobile?9:11)+'px "Courier New"';
-    ctx.fillText(isEn?'+':'陽', mobile?2:4, plotTop+Math.min(14,sickPosH/2+4));
+    ctx.fillText(isEn()?'+':'陽', mobile?2:4, plotTop+Math.min(14,sickPosH/2+4));
     ctx.fillStyle=tc.dim;
-    ctx.fillText(isEn?'−':'陰', mobile?2:4, plotTop+sickPosH+rowGap+Math.min(14,sickNegH/2+4));
+    ctx.fillText(isEn()?'−':'陰', mobile?2:4, plotTop+sickPosH+rowGap+Math.min(14,sickNegH/2+4));
 
     const chipH=mobile?28:36;
     function dotArea(r){return {x:r.x+2,y:r.y+(r.h>chipH+8?chipH+2:4),w:r.w-4,h:r.h-(r.h>chipH+8?chipH+6:8)};}
@@ -170,13 +166,13 @@ export function initBayes(){
 
     const chipFs=mobile?9:11;
     zoneBox(ctx,rects.TP,withAlpha(tc.cyan,.9),
-      'TP',(isEn?Math.round(TP)+' ppl':Math.round(TP)+'人'),tc.cyan,chipFs);
+      'TP',(isEn()?Math.round(TP)+' ppl':Math.round(TP)+'人'),tc.cyan,chipFs);
     zoneBox(ctx,rects.FN,withAlpha(tc.purple,.9),
-      'FN',(isEn?Math.round(FN)+' ppl':Math.round(FN)+'人'),tc.purple,chipFs);
+      'FN',(isEn()?Math.round(FN)+' ppl':Math.round(FN)+'人'),tc.purple,chipFs);
     zoneBox(ctx,rects.FP,withAlpha(tc.magenta,.9),
-      'FP',(isEn?Math.round(FP)+' ppl':Math.round(FP)+'人'),tc.magenta,chipFs);
+      'FP',(isEn()?Math.round(FP)+' ppl':Math.round(FP)+'人'),tc.magenta,chipFs);
     zoneBox(ctx,rects.TN,withAlpha(tc.dim,.9),
-      'TN',(isEn?Math.round(TN)+' ppl':Math.round(TN)+'人'),tc.dim,chipFs);
+      'TN',(isEn()?Math.round(TN)+' ppl':Math.round(TN)+'人'),tc.dim,chipFs);
 
     ctx.strokeStyle=withAlpha(tc.yellow,.5);ctx.setLineDash([5,4]);ctx.lineWidth=1;
     const yPos0=plotTop-3;
@@ -188,13 +184,13 @@ export function initBayes(){
     ctx.setLineDash([]);
 
     ctx.fillStyle=tc.dim;ctx.font=fsTiny+'px "Courier New"';
-    const hintText=isEn
+    const hintText=isEn()
       ? 'Column width ≈ population.  Row height ≈ test accuracy.'
       : '列幅≒人数　行の高さ≒検査の正解率';
     if(mobile){
       wrapText(ctx,hintText,padL,h-8,w-padL-padR,fsTiny+2);
     } else {
-      ctx.fillText(isEn
+      ctx.fillText(isEn()
         ? 'Column width ≈ population size.  Row height ≈ test-correctness ratio.'
         : '列の幅 ≒ 人数（病気の人は少ない）。行の高さ ≒ 検査で正しく判定された割合。',
         padL, h-10);

@@ -154,7 +154,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Control Confounders to Find True Effects</a></h1>
-  <p class="topic-lead">Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.</p>
+  <p class="topic-lead">"More study time means lower scores" — a result that flips the moment you add one more variable. That moment is what confounding looks like.</p>
   <section class="reveal in" id="mreg">
 
 <div class="sec-tag">M2 / Multiple Regression</div>
@@ -349,7 +349,7 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <li><a href="./corr.html">Correlation</a> &mdash; correlation among predictors (multicollinearity, confounding) is what destabilises β₁</li>
 <li><a href="./anova.html">ANOVA</a> &mdash; multiple regression's F-test uses the same framework as ANOVA to judge overall model significance</li>
 <li><a href="./dists.html#dists-f">Three Test Distributions</a> &mdash; the F-distribution supplies the critical values for testing "all partial coefficients = 0"</li>
-<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; a hands-on column reading income ranges from age, gender, and prefecture — multiple regression in practice</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; wires age, gender, and prefecture together to read income ranges from real data — multiple regression in the field</li>
 </ul>
 </div>
 
@@ -364,6 +364,14 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/787bd06e05528aa336e4" target="_blank" rel="noopener"><span class="qiita-date">2026-05-01</span><span class="qiita-title">(Japanese only) Building an income-prediction regression from public statistics</span></a><span class="qiita-why">A field-work note that wires age, gender, and prefecture into a real regression from public-statistics data</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 </section>

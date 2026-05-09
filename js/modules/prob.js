@@ -1,5 +1,5 @@
 // StatPlay — module: Probability Rules (Venn Diagram)
-import { $, TAU, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize } from '../utils.js';
+import { $, TAU, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, debouncedResize, getLang } from '../utils.js';
 
 export function initProb(){
   if(!document.getElementById('probCanvas')) return;
@@ -9,7 +9,7 @@ export function initProb(){
   const slPA=$('probPA'), slPB=$('probPB'), slPAB=$('probPAB');
   const btnIndep=$('probIndep');
 
-  const lang=()=>window.__LANG||'ja';
+  const lang=()=>getLang();
   const lbl=(ja,en)=>lang()==='en'?en:ja;
 
   function getPA(){return parseFloat(slPA.value);}

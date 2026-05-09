@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">カイ二乗検定 — 適合度と独立性</a></h1>
-  <p class="topic-lead">サイコロの公正さを確かめる適合度検定と、クロス集計表で2変数の独立性を調べる独立性検定。観測値と期待値のズレをχ²統計量として数値化し、棄却域との関係をインタラクティブに可視化する。</p>
+  <p class="topic-lead">サイコロの公正さも、出身地と血液型の独立性も、同じ式が答える。観測値と期待値のズレを 1 つの数字に圧縮する道具。</p>
   <section class="reveal in" id="chitest">
 
 <div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
@@ -323,15 +323,17 @@
 <li><b>χ² の組み立て方</b>：各カテゴリの (O−E)²/E を足し上げる形。「ズレの二乗を期待値で割って合計」という同じ手順が、適合度でも独立性でも繰り返し顔を出す</li>
 <li><b>期待度数5未満の場面</b>：小頻度向けの正確検定（exact test）に切り替えるか、カテゴリを統合する形に持ち込む、という分岐がついて回る</li>
 </ul>
-<p style="margin:10px 0 0">χ²臨界値は<a href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
+<p class="pattern-companion" style="margin:10px 0 0">χ²臨界値は<a class="pattern-companion-link" href="../tables/index.html?dist=chi2" style="color:var(--cyan)">インタラクティブ確率分布表</a>で自由度を変えながら確認できる</p>
 </div>
 
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./dists.html#dists-chi">三大検定分布</a> &mdash; χ² 分布の作り方（標準正規の二乗和）と臨界値の読み方</li>
-<li><a href="./test.html">仮説検定</a> &mdash; 仮説検定の5ステップ・棄却域・α の枠組みはカイ二乗検定でも同じ</li>
-<li><a href="./prob.html">確率の基本法則</a> &mdash; 期待度数の組み立てや独立性の検定は、確率の基本法則がそのまま土台になる</li>
+<li><a href="./dists.html#dists-chi">三大検定分布</a> &mdash; 標準正規の二乗を足し上げて χ² 分布を組み立てる手順と、臨界値を読み出す動きを並べる</li>
+<li><a href="./test.html">仮説検定</a> &mdash; 仮説検定の 5 ステップ、棄却域、α の枠組みがカイ二乗検定の上でも同じ手順で動く</li>
+<li><a href="./prob.html">確率の基本法則</a> &mdash; 期待度数を組み立て、独立性を検定する場面で、確率の基本法則がそのまま土台として効いてくる</li>
+<li><a href="./proptest.html">母比率の検定と推定</a> &mdash; 2×2 の独立性検定が 2 標本の比率検定と同じ判定を返す、χ² と z² の橋渡しが見える</li>
+<li><a href="../columns/birthday.html">『誕生日のパラドックス』コラム</a> &mdash; 「観測された衝突は本当に偶然か」という問いが、適合度検定で観測値と期待値のズレを χ² で測る発想に繋がる</li>
 </ul>
 </div>
 
@@ -346,6 +348,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">JavaScriptにガンマ関数がないので、Lanczos近似で実装した話</span></a><span class="qiita-why">χ² 分布の確率密度を計算するために裏で動いているガンマ関数の実装ノート。期待度数の計算と表裏一体</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">次は —</span>3群以上を一度に比較する <span class="story-arrow">▸</span> <a href="./anova.html">I8 分散分析（ANOVA）</a></div>

@@ -5,21 +5,106 @@
 .skip-to-main{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:10000}
 .skip-to-main:focus{position:fixed;top:8px;left:50%;transform:translateX(-50%);width:auto;height:auto;padding:12px 24px;background:var(--bg2);color:var(--cyan);border:2px solid var(--cyan);border-radius:8px;font-size:16px;text-decoration:none;box-shadow:0 0 20px rgba(0,243,255,.4)}
   :root{
-    --bg:#05060f;
-    --bg2:#0a0f2c;
-    --cyan:#00f3ff;
-    --magenta:#ff2bd6;
-    --yellow:#ffe600;
-    --purple:#8b5cff;
-    --green:#00ff9c;
-    --text:#d8f7ff;
-    --dim:#94a3bb;
-    --orange:#ff8c00;
-    --cyan-light:#7fdbea;
-    --magenta-light:#ffb6f3;
-    --grid:rgba(0,243,255,.08);
-    --bg-grid:rgba(0,243,255,0);
-    --canvas-bg:rgba(0,0,0,.4);
+    /* ============================================================
+       PRIMITIVE LAYER — raw color values, never reference these
+       directly from components. They exist solely to be remapped
+       by the semantic layer below.
+       ============================================================ */
+    --neon-cyan:#00f3ff;
+    --neon-magenta:#ff2bd6;
+    --neon-yellow:#ffe600;
+    --neon-purple:#8b5cff;
+    --neon-green:#00ff9c;
+    --neon-orange:#ff8c00;
+    --neon-cyan-light:#7fdbea;
+    --neon-magenta-light:#ffb6f3;
+    --neon-bg:#05060f;
+    --neon-bg2:#0a0f2c;
+    --neon-text:#d8f7ff;
+    --neon-dim:#94a3bb;
+
+    --academic-teal:#1a6b7a;
+    --academic-rose:#7a2060;
+    --academic-amber:#6b5a00;
+    --academic-violet:#4a3090;
+    --academic-forest:#1a6040;
+    --academic-rust:#7a4a00;
+    --academic-bg:#ffffff;
+    --academic-bg2:#f4f5f7;
+    --academic-text:#1a1a2e;
+    --academic-dim:#4a5568;
+
+    /* ============================================================
+       SEMANTIC LAYER — components MUST reference these by role,
+       not by color. Light theme remaps only this layer.
+
+       --accent-primary       : interior navigation, toolbox, related
+                                topics, nav, logo gradient endpoint A
+       --accent-narrative     : story / reading material, fr-card,
+                                further-reading, magenta gradient
+       --accent-development-note: development notes (qiita-notes,
+                                  pattern-note, cat-preview)
+       --accent-success       : positive outcomes (share confirmations,
+                                non-rejection of H0)
+       --accent-danger        : (alias of narrative for hypothesis
+                                rejection / misconception-box; kept
+                                separate so future re-color is cheap)
+       --accent-secondary     : visited links, deemphasized accent
+       --text-emphasis        : primary readable text
+       --text-dim             : secondary captions / labels
+       --surface-bg           : page background
+       --surface-panel        : raised cards / panels (--bg2 alias)
+       --surface-canvas       : canvas drawing background
+       --border-subtle        : default soft border (cyan tint @ 8%)
+       --grid-line            : background grid line color
+       ============================================================ */
+    --accent-primary:var(--neon-cyan);
+    --accent-primary-soft:var(--neon-cyan-light);
+    --accent-narrative:var(--neon-magenta);
+    --accent-narrative-soft:var(--neon-magenta-light);
+    --accent-development-note:var(--neon-yellow);
+    --accent-success:var(--neon-green);
+    --accent-danger:var(--neon-magenta);
+    --accent-secondary:var(--neon-purple);
+    --accent-warm:var(--neon-orange);
+
+    --text-emphasis:var(--neon-text);
+    --text-dim:var(--neon-dim);
+    --surface-bg:var(--neon-bg);
+    --surface-panel:var(--neon-bg2);
+    --surface-canvas:rgba(0,0,0,.4);
+    --border-subtle:rgba(0,243,255,.08);
+    --grid-line:rgba(0,243,255,.08);
+    --bg-grid-line:rgba(0,243,255,0);
+
+    /* ============================================================
+       BACKWARD-COMPAT ALIASES — many JS files (utils.js,
+       chitest/anova/birthday/htest/dist/proptest/mreg) and 100+
+       inline `style="color:var(--cyan)"` references in topics/
+       columns rely on the original short names. Keep them as thin
+       aliases over the semantic layer so the entire site can be
+       migrated incrementally without breakage.
+       ============================================================ */
+    --cyan:var(--accent-primary);
+    --magenta:var(--accent-narrative);
+    --yellow:var(--accent-development-note);
+    --green:var(--accent-success);
+    --purple:var(--accent-secondary);
+    --orange:var(--accent-warm);
+    --cyan-light:var(--accent-primary-soft);
+    --magenta-light:var(--accent-narrative-soft);
+    --text:var(--text-emphasis);
+    --dim:var(--text-dim);
+    --bg:var(--surface-bg);
+    --bg2:var(--surface-panel);
+    --grid:var(--grid-line);
+    --bg-grid:var(--bg-grid-line);
+    --canvas-bg:var(--surface-canvas);
+
+    /* ============================================================
+       TYPOGRAPHY SCALE — type tokens live alongside color tokens
+       so every site-level token is in one block.
+       ============================================================ */
     --fs-body:15px;
     --fs-sub:14px;
     --fs-sm:13px;
@@ -125,12 +210,8 @@
   .nav-dropdown-menu a[data-lang]{display:none}
   body:not(.lang-en) .nav-dropdown-menu a[data-lang="ja"]{display:block}
   body.lang-en .nav-dropdown-menu a[data-lang="en"]{display:block}
-  body.theme-light .nav-dropdown-menu::before{
-    background:rgba(248,250,252,.97);border-color:rgba(0,102,128,.2);
-    box-shadow:0 8px 32px rgba(0,0,0,.12);
-  }
-  body.theme-light .nav-dropdown-menu a{color:#4a5568}
-  body.theme-light .nav-dropdown-menu a:hover{color:#006680;background:rgba(0,102,128,.06)}
+  /* nav-dropdown light theme rules are consolidated below in the
+     LIGHT THEME section to avoid double-definition cascade. */
 
   /* ===== Category section headers ===== */
   .category-header{
@@ -418,6 +499,28 @@
   canvas{display:block;width:100%;background:var(--canvas-bg);border:1px solid rgba(0,243,255,.15);max-height:60vh;aspect-ratio:16/9;height:auto}
   .share-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;padding-top:12px;border-top:1px dashed rgba(0,243,255,.2)}
   .share-row span{color:var(--dim);font-family:'Courier New',monospace;font-size:11px;align-self:center;letter-spacing:2px}
+  /* income_prediction.html の `<style>` には text-align:center が抜けており、
+     他のコラムの中央揃え CTA と非対称になっていた。共通CSSで揃える */
+  .col-cta{text-align:center}
+  /* CTA 内の share-row は graph-share-bar と違い「本文との区切り」が不要なので、
+     padding-top と点線ボーダーをリセットして cta-sub に密着させる */
+  .col-cta .share-row{padding-top:0;border-top:none;margin-top:8px}
+  /* deviation コラム等の `<style>` には `.col-cta p { margin-bottom:16px }` があり、
+     specificity 0,1,1 で `.cta-sub { margin-bottom:0 }` (0,1,0) を打ち消す。
+     共通CSSで 0,2,0 のスコープ付きオーバーライドを置いて確実に効かせる */
+  .col-cta .cta-sub{margin-bottom:0}
+  /* 各コラムの `<style>` で `.share-row .share-btn { border: rgba(0,243,255,.25) }` (薄い)
+     が指定されており、暗背景の CTA 内ではボタンの輪郭が判別できなくなる。
+     specificity 0,3,0 で確実に上書きして視認性を確保する */
+  .col-cta .share-row .share-btn{
+    border-color:rgba(0,243,255,.5);
+    background:rgba(0,243,255,.04);
+  }
+  .col-cta .share-row .share-btn:hover,
+  .col-cta .share-row .share-btn:focus-visible{
+    background:rgba(0,243,255,.12);
+    border-color:rgba(0,243,255,.7);
+  }
   .share-btn{
     background:transparent;border:1px solid var(--green);color:var(--green);padding:6px 12px;
     font-family:'Courier New',monospace;letter-spacing:1px;font-size:11px;cursor:pointer;transition:.2s;
@@ -540,7 +643,7 @@
   .formula-accordion:not([open]) summary::after{transform:rotate(-90deg)}
   .formula-accordion p{margin:8px 0 0;line-height:1.7;padding-left:2px;font-size:var(--fs-sm)}
   .formula-accordion p+p{margin-top:10px;padding-top:8px;border-top:1px solid rgba(0,243,255,.1)}
-  body.theme-light .formula-accordion{color:var(--dim)}
+  /* .formula-accordion color:var(--dim) inherits via semantic layer; no override needed */
   body.theme-light .formula-accordion summary{border-color:rgba(0,0,0,.15)}
   body.theme-light .formula-accordion summary:hover{border-color:rgba(0,0,0,.35)}
 
@@ -580,8 +683,8 @@
     border:1px dashed rgba(0,243,255,.2);font-size:var(--fs-sm);
     white-space:pre-line;line-height:1.6;
   }
-  body.theme-light .detail-section{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3);color:var(--dim)}
-  body.theme-light .detail-section b{color:var(--text)}
+  body.theme-light .detail-section{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3)}
+  /* .detail-section b / color:var(--dim) inherit from base rule via semantic layer; no override needed */
   body.theme-light .detail-section .connection-diagram{background:rgba(0,0,0,.03)}
 
   .misconception-box{
@@ -599,8 +702,8 @@
   .misconception-box .misc-item{margin:16px 0}
   .misconception-box .misc-item b{color:var(--magenta)}
   .misconception-box .misc-item p{margin:4px 0 0;padding-left:12px}
-  body.theme-light .misconception-box{background:rgba(200,0,150,.03);border-color:rgba(200,0,150,.3);color:var(--dim)}
-  body.theme-light .misconception-box b{color:var(--text)}
+  body.theme-light .misconception-box{background:rgba(200,0,150,.03);border-color:rgba(200,0,150,.3)}
+  /* .misconception-box b inherits var(--text) via semantic layer; no override needed */
 
   .pattern-note{
     margin:32px 0;padding:20px 24px;
@@ -616,8 +719,8 @@
   .pattern-note b{color:var(--text);font-weight:600}
   .pattern-note ul{margin:8px 0;padding-left:1.2em}
   .pattern-note li{margin:6px 0;line-height:1.75}
-  body.theme-light .pattern-note{background:rgba(180,140,0,.03);border-color:rgba(180,140,0,.3);color:var(--dim)}
-  body.theme-light .pattern-note b{color:var(--text)}
+  body.theme-light .pattern-note{background:rgba(180,140,0,.03);border-color:rgba(180,140,0,.3)}
+  /* .pattern-note b inherits var(--text) via semantic layer; no override needed */
 
   .related-topics{
     margin:32px 0;padding:20px 24px;
@@ -636,8 +739,8 @@
   .related-topics li::before{content:'→';color:var(--cyan);font-family:'Courier New',monospace;position:absolute;left:0;top:0}
   .related-topics a{color:var(--cyan);font-weight:600;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
   .related-topics a:hover,.related-topics a:focus{border-bottom-color:var(--cyan)}
-  body.theme-light .related-topics{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3);color:var(--dim)}
-  body.theme-light .related-topics b{color:var(--text)}
+  body.theme-light .related-topics{background:rgba(0,100,150,.03);border-color:rgba(0,100,150,.3)}
+  /* .related-topics b inherits var(--text) via semantic layer; no override needed */
 
   .further-reading{margin:32px 0 8px}
   .further-reading > h3{
@@ -674,6 +777,113 @@
   .fr-more a:hover,.fr-more a:focus{color:var(--magenta);border-bottom-color:var(--magenta)}
   body.theme-light .fr-card{background:rgba(180,0,140,.04);border-color:rgba(180,0,140,.25);border-left-color:var(--magenta)}
   body.theme-light .fr-card:hover,body.theme-light .fr-card:focus{background:rgba(180,0,140,.08)}
+
+  /* === Inline cross-references in column body (v3.13.x) === */
+  /* Weak tier: dotted underline, body-color text, ignite on hover */
+  .col-section p a:not(.col-link-strong):not(.fr-card),
+  .col-section li a:not(.col-link-strong):not(.fr-card),
+  .col-section .takeaway a:not(.col-link-strong){
+    color:var(--text);
+    text-decoration:underline dotted rgba(0,243,255,.4);
+    text-underline-offset:3px;
+    text-decoration-thickness:1px;
+    border-bottom:none;
+    transition:color .15s ease, text-decoration-color .15s ease, text-shadow .15s ease;
+  }
+  .col-section p a[href*="../topics/"]:hover,
+  .col-section li a[href*="../topics/"]:hover,
+  .col-section p a[href*="../topics/"]:focus-visible,
+  .col-section li a[href*="../topics/"]:focus-visible,
+  .col-section p a[href*="../../en/topics/"]:hover,
+  .col-section li a[href*="../../en/topics/"]:hover{
+    color:var(--cyan);
+    text-decoration-style:solid;
+    text-decoration-color:var(--cyan);
+    text-shadow:0 0 6px rgba(0,243,255,.35);
+    outline:none;
+  }
+  .col-section p a[href*="/columns/"]:not(.col-link-strong):hover,
+  .col-section li a[href*="/columns/"]:not(.col-link-strong):hover,
+  .col-section p a[href*="/columns/"]:not(.col-link-strong):focus-visible{
+    color:var(--magenta);
+    text-decoration-style:solid;
+    text-decoration-color:var(--magenta);
+    text-shadow:0 0 6px rgba(255,43,214,.35);
+    outline:none;
+  }
+  body.theme-light .col-section p a:not(.col-link-strong):not(.fr-card),
+  body.theme-light .col-section li a:not(.col-link-strong):not(.fr-card){
+    text-decoration-color:rgba(0,120,140,.55);
+  }
+  body.theme-light .col-section p a:hover,body.theme-light .col-section li a:hover{text-shadow:none}
+
+  /* Strong tier: explicit class for "next-step" links at section-end */
+  .col-link-strong{
+    color:var(--cyan);font-weight:600;text-decoration:none;
+    border-bottom:1px solid var(--cyan);padding-bottom:1px;
+    transition:background .2s ease;
+  }
+  .col-link-strong::after{content:' →'}
+  .col-link-strong:hover,.col-link-strong:focus-visible{
+    background:rgba(0,243,255,.08);outline:none;
+  }
+  .col-link-strong[data-target="column"],
+  .col-link-strong[href*="/columns/"]{
+    color:var(--magenta);border-bottom-color:var(--magenta);
+  }
+  .col-link-strong[data-target="column"]:hover,
+  .col-link-strong[href*="/columns/"]:hover{background:rgba(255,43,214,.08)}
+
+  /* === PRECEDE bar at column top === */
+  .col-precede{
+    max-width:800px;margin:8px auto 24px;padding:12px 18px;
+    border-left:2px solid var(--cyan);
+    background:linear-gradient(90deg,rgba(0,243,255,.05) 0%,rgba(0,243,255,0) 60%);
+    font-family:'Courier New',monospace;font-size:13px;
+    color:var(--dim);line-height:1.7;
+    display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;
+  }
+  .col-precede .precede-label{color:var(--cyan);letter-spacing:1.5px;font-size:12px}
+  .col-precede .precede-note{color:var(--dim);font-size:13px}
+  .col-precede a{font-weight:600}
+  @media (max-width:540px){
+    .col-precede{flex-direction:column;gap:6px;padding:10px 14px}
+  }
+  body.theme-light .col-precede{
+    background:linear-gradient(90deg,rgba(0,100,150,.05),transparent);
+    border-color:rgba(0,100,150,.5);
+  }
+
+  /* === Companion line (topic side, v3.13.x) ===
+     Place-agnostic: works whether the line lives inside .pattern-note (most topics)
+     or .detail-section (dists). The class itself carries the dashed-top divider. */
+  .pattern-companion{
+    margin:14px 0 0 !important;
+    padding-top:10px;
+    border-top:1px dashed rgba(255,230,0,.25);
+    font-size:var(--fs-sm);color:var(--dim);
+  }
+  .pattern-companion-link{
+    color:var(--cyan);font-family:'Courier New',monospace;
+    text-decoration:none;border-bottom:1px solid rgba(0,243,255,.4);
+    padding:0 1px;
+  }
+  .pattern-companion-link:hover,
+  .pattern-companion-link:focus-visible{
+    background:rgba(0,243,255,.06);border-bottom-color:var(--cyan);outline:none;
+  }
+  body.theme-light .pattern-companion{border-top-color:rgba(180,150,0,.3)}
+
+  /* === // CONTINUE label above col-relations ===
+     CTA (.col-cta) は既に padding-bottom:16px を持つので、aside の margin-top は控えめに。
+     CONTINUE ラベルは「区切り」としての視覚的役割を担うが、過剰な空白を作らないこと */
+  #col-relations{margin-top:8px;padding-top:0;position:relative}
+  #col-relations::before{
+    content:'// CONTINUE';display:block;
+    font-family:'Courier New',monospace;font-size:11px;
+    color:var(--dim);letter-spacing:2px;
+    margin:0 0 12px;
+  }
 
   .term-gloss{
     border-bottom:1px dotted var(--cyan);cursor:help;position:relative;
@@ -817,21 +1027,56 @@
      lecture slides. Clean, opaque, no glow, high readability.
      ========================================================== */
   body.theme-light{
-    --bg:#ffffff;
-    --bg2:#f4f5f7;
-    --text:#1a1a2e;
-    --dim:#4a5568;
-    --grid:rgba(26,26,46,.08);
-    --bg-grid:none;
-    --cyan:#1a6b7a;
-    --magenta:#7a2060;
-    --yellow:#6b5a00;
-    --purple:#4a3090;
-    --green:#1a6040;
-    --orange:#7a4a00;
-    --cyan-light:#1a6b7a;
-    --magenta-light:#7a2060;
-    --canvas-bg:#ffffff;
+    /* Light academic theme — remap the SEMANTIC layer.
+
+       NOTE on the alias re-declarations below:
+       CSS custom properties resolve lazily *per property*, not per
+       chain: when --cyan is registered on :root as `var(--accent-primary)`,
+       the registered VALUE is the cascaded result at :root scope
+       (#00f3ff). Re-defining --accent-primary lower in the cascade
+       does NOT propagate into the already-resolved --cyan value.
+       Therefore we must explicitly re-bind every alias on the
+       body.theme-light scope, so that inheritance picks up the new
+       semantic values. The aliases stay as `var(...)` references
+       (not literal hex), keeping the semantic layer the single
+       source of truth — only the cascade re-binding is duplicated. */
+    --accent-primary:var(--academic-teal);
+    --accent-primary-soft:var(--academic-teal);
+    --accent-narrative:var(--academic-rose);
+    --accent-narrative-soft:var(--academic-rose);
+    --accent-development-note:var(--academic-amber);
+    --accent-success:var(--academic-forest);
+    --accent-danger:var(--academic-rose);
+    --accent-secondary:var(--academic-violet);
+    --accent-warm:var(--academic-rust);
+
+    --text-emphasis:var(--academic-text);
+    --text-dim:var(--academic-dim);
+    --surface-bg:var(--academic-bg);
+    --surface-panel:var(--academic-bg2);
+    --surface-canvas:#ffffff;
+    --grid-line:rgba(26,26,46,.08);
+    --bg-grid-line:none;
+    --border-subtle:rgba(26,107,122,.18);
+
+    /* Re-bind backward-compat aliases on this scope so the new
+       semantic values flow into legacy --cyan/--magenta/etc. */
+    --cyan:var(--accent-primary);
+    --magenta:var(--accent-narrative);
+    --yellow:var(--accent-development-note);
+    --green:var(--accent-success);
+    --purple:var(--accent-secondary);
+    --orange:var(--accent-warm);
+    --cyan-light:var(--accent-primary-soft);
+    --magenta-light:var(--accent-narrative-soft);
+    --text:var(--text-emphasis);
+    --dim:var(--text-dim);
+    --bg:var(--surface-bg);
+    --bg2:var(--surface-panel);
+    --grid:var(--grid-line);
+    --bg-grid:var(--bg-grid-line);
+    --canvas-bg:var(--surface-canvas);
+
     color-scheme:light;
   }
 
@@ -869,8 +1114,9 @@
     background:#ffffff;border-color:#d8dce6;
     box-shadow:0 4px 16px rgba(0,0,0,.10);backdrop-filter:none;
   }
-  body.theme-light .nav-dropdown-menu a{color:var(--dim)}
-  body.theme-light .nav-dropdown-menu a:hover{color:var(--cyan);background:rgba(26,107,122,.05)}
+  /* .nav-dropdown-menu a inherits color:var(--dim) via semantic layer */
+  body.theme-light .nav-dropdown-menu a:hover{background:rgba(26,107,122,.05)}
+  /* hover color:var(--cyan) inherits from base rule via semantic layer */
 
   /* Lang toggle — light ----------------------------------------- */
   body.theme-light .lang-toggle{
@@ -907,10 +1153,10 @@
     color:var(--dim);border-color:#c0c6d0;
     box-shadow:none;text-shadow:none;
   }
-  body.theme-light .cat-desc{color:var(--dim)}
+  /* .cat-desc inherits color:var(--dim) via semantic layer */
   body.theme-light .cat-preview-inner{background:#fafbfc;border-color:#d8dce6;border-left-color:var(--yellow)}
   body.theme-light .cat-preview-title{color:#7a6200}
-  body.theme-light .cat-preview-desc b{color:var(--text)}
+  /* .cat-preview-desc b inherits color:var(--text) via semantic layer */
 
   /* Sections & panels — opaque white ----------------------------- */
   body.theme-light .sec-title{text-shadow:none;color:var(--text);background:none;-webkit-background-clip:unset;background-clip:unset;-webkit-text-fill-color:var(--text)}
@@ -941,8 +1187,7 @@
   body.theme-light .story-next::before{
     background:#ffffff;border-color:#d8dce6;color:var(--dim);
   }
-  body.theme-light .story-arrow{color:var(--dim)}
-  body.theme-light .text-sub{color:var(--dim)}
+  /* .story-arrow / .text-sub inherit color:var(--dim) via semantic layer */
 
   /* Info boxes --------------------------------------------------- */
   body.theme-light .info-row,
@@ -961,10 +1206,11 @@
   body.theme-light .guided-steps{background:#fafbfc;border-color:#d8dce6}
   body.theme-light .tab-btn{border-color:#d8dce6;color:var(--dim)}
   body.theme-light .tab-btn.active{color:var(--cyan);background:rgba(26,107,122,.05);border-color:var(--cyan)}
-  body.theme-light .term-gloss{border-bottom-color:var(--cyan)}
+  /* .term-gloss border-bottom var(--cyan) inherits via semantic layer */
   body.theme-light .term-gloss:hover::after,body.theme-light .term-gloss:focus::after{background:#fff;border-color:#d8dce6;box-shadow:0 2px 8px rgba(0,0,0,.10)}
   body.theme-light .bayes-story{color:var(--text);background:#f8f9fb;border-color:#d8dce6}
-  body.theme-light .dist-card{color:var(--text);border-left-color:var(--cyan);background:#f8f9fb}
+  body.theme-light .dist-card{border-left-color:var(--cyan);background:#f8f9fb}
+  /* .dist-card color:var(--text) inherits via semantic layer */
   body.theme-light .lineage{color:var(--text);background:#f8f9fb}
 
   /* Canvas — pure white with thin border ------------------------- */
@@ -1168,7 +1414,7 @@
     border-radius:6px;padding:10px 10px 10px 8px;
     box-shadow:0 1px 4px rgba(0,0,0,.08);
   }
-  body.theme-light .side-toc-list a{ color: var(--dim) }
+  /* .side-toc-list a inherits color:var(--dim) via semantic layer */
   body.theme-light .side-toc-list a:hover{ color: var(--cyan); border-left-color: var(--cyan); background: rgba(26,107,122,.04) }
   body.theme-light .side-toc-list a.current{ color: var(--cyan); border-left: 3px solid var(--cyan); background: rgba(26,107,122,.06); font-weight:700 }
   @media (min-width: 1200px){
@@ -1393,4 +1639,95 @@ body.theme-light .topic-dropdown .nav-dropdown-menu a.current{
   .topic-dropdown{ width: 100% }
   .topic-dd-cat{ padding: 8px 16px 4px 16px }
   .topic-dropdown .nav-dropdown-menu a{ padding-left: 32px }
+}
+
+
+/* === Qiita dev-notes block (v3.13.x) =====================================
+ * Third-tier reference layer below related-topics (cyan, internal flow) and
+ * further-reading (magenta, deeper reading). Yellow accent marks 'external
+ * dev notes' — visually distinct but lower-pressure than the magenta CTA
+ * card so the page bottom doesn't read as 3 stacked CTAs.
+ * Re-uses --yellow token; no :root edits here (Phase 4-alpha owns :root).
+ */
+.qiita-notes{
+  margin: 28px 0 8px;
+  padding: 18px 22px;
+  background: rgba(255,230,0,.04);
+  border: 1px solid rgba(255,230,0,.18);
+  border-left: 3px solid var(--yellow);
+}
+.qiita-notes > h3{
+  color: var(--yellow);
+  font-size: var(--fs-body);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  margin: 0 0 6px;
+}
+.qiita-notes .qiita-sub{
+  margin: 0 0 12px;
+  color: var(--dim);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.qiita-notes ul{ list-style: none; margin: 0; padding: 0 }
+.qiita-notes li{
+  margin: 0 0 10px;
+  padding-left: 14px;
+  position: relative;
+}
+.qiita-notes li::before{
+  content: '\2197';
+  position: absolute; left: 0; top: 0;
+  color: var(--yellow);
+  font-family: 'Courier New', monospace;
+}
+.qiita-notes li:last-child{ margin-bottom: 0 }
+.qiita-notes a{
+  color: var(--yellow);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s, text-shadow .2s;
+}
+.qiita-notes a:hover,
+.qiita-notes a:focus{
+  border-bottom-color: var(--yellow);
+  text-shadow: 0 0 6px rgba(255,230,0,.35);
+  outline: none;
+}
+.qiita-notes .qiita-date{
+  display: inline-block;
+  color: var(--dim);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  margin-right: 10px;
+  letter-spacing: .5px;
+}
+.qiita-notes .qiita-title{
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.45;
+}
+.qiita-notes .qiita-why{
+  display: block;
+  color: var(--dim);
+  font-size: 13px;
+  line-height: 1.65;
+  margin-top: 4px;
+}
+body.theme-light .qiita-notes{
+  background: rgba(180,140,0,.04);
+  border-color: rgba(180,140,0,.25);
+  border-left-color: #b88600;
+}
+body.theme-light .qiita-notes > h3,
+body.theme-light .qiita-notes a,
+body.theme-light .qiita-notes li::before{ color: #8c6b00 }
+body.theme-light .qiita-notes a:hover,
+body.theme-light .qiita-notes a:focus{
+  border-bottom-color: #8c6b00;
+  text-shadow: none;
+}
+@media (max-width: 760px){
+  .qiita-notes{ padding: 14px 16px }
+  .qiita-notes .qiita-date{ display: block; margin-bottom: 2px }
 }

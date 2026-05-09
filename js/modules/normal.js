@@ -1,5 +1,5 @@
 // StatPlay — module: 2) NORMAL
-import { $, normCDF, normPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, normCDF, normPDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, makeAxisMap } from '../utils.js';
 
 export function initNormal(){
   if(!document.getElementById('normalCanvas')) return;
@@ -14,10 +14,8 @@ export function initNormal(){
     const mu=parseFloat($('nMu').value),sd=parseFloat($('nSd').value);
     const a=parseFloat($('nA').value),b=parseFloat($('nB').value);
     const lo = -6, hi = 6;
-    const xToPx = x => (x - lo) / (hi - lo) * w;
-    const pxToX = p => lo + p / w * (hi - lo);
     const peak = normPDF(mu, mu, sd);
-    const yToPx = y => h - 20 - y / peak * (h - 60);
+    const { xToPx, yToPx, pxToX } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 40, marginBottom: 20 });
     // axis
     ctx.strokeStyle=withAlpha(tc.cyan,.35);ctx.beginPath();ctx.moveTo(0,h-20);ctx.lineTo(w,h-20);ctx.stroke();
     // labels

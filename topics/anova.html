@@ -154,7 +154,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">分散分析（ANOVA）— F値の直感を掴む</a></h1>
-  <p class="topic-lead">3群以上の平均を比較するとき、なぜt検定を繰り返してはいけないのか。群間分散と群内分散の比がF値になる構造を、スライダーで動かして体感する。</p>
+  <p class="topic-lead">t検定を3回繰り返してはいけない理由が、100回のシミュレーションで目に見える。誤検出率は 5% ではなく、なぜか 14.3% になる。</p>
   <section class="reveal in" id="anova">
 
 <div class="sec-tag">I.07 / ANOVA</div>
@@ -352,10 +352,11 @@ ANOVAは、この「偽陽性の膨張」を防いで全体の α を5%に保て
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./test.html">仮説検定</a> &mdash; ANOVA は検定の自然な拡張。t を繰り返さず F で 1 回に集約する設計の理由</li>
-<li><a href="./dists.html#dists-f">三大検定分布</a> &mdash; F 分布が ANOVA の主役。MSB/MSW の臨界値はここで読む</li>
-<li><a href="./mreg.html">重回帰分析</a> &mdash; 重回帰の F 検定（モデル全体の有意性）も ANOVA と同じ式の構造を共有している</li>
-<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 多重比較で α が膨張する話、効果量と検出力の整理がここに集約されている</li>
+<li><a href="./test.html">仮説検定</a> &mdash; t を 3 回繰り返さず F で 1 回に集約する場面で、ANOVA が検定を自然に拡張していく</li>
+<li><a href="./dists.html#dists-f">三大検定分布</a> &mdash; F 分布を ANOVA の主役に立てて、MSB/MSW の臨界値をここから取り出す</li>
+<li><a href="./mreg.html">重回帰分析</a> &mdash; 重回帰の F 検定（モデル全体の有意性）が ANOVA と同じ式の構造を共有して動く</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; ANOVA で群差を検出した後、各群平均の CI で「どの群がどれくらい違うか」を区間で読み解く</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 多重比較が α を膨張させる場面と、効果量・検出力の整理を一枚にまとめて読み解く</li>
 </ul>
 </div>
 

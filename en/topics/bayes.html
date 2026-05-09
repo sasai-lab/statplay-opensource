@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Bayes' Theorem — Positive Predictive Value</a></h1>
-  <p class="topic-lead">Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.</p>
+  <p class="topic-lead">Answer: just 16.7%. Even doctors get this question wrong half the time — and one slider, prevalence, explains why.</p>
   <section class="reveal in" id="bayes">
 
 <div class="sec-tag">P.04 / BAYES THEOREM</div>
@@ -162,9 +162,9 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> With defaults (prevalence 1%, sensitivity 99%, specificity 95%), check the positive predictive value → only 16.7%. Feel the gap from intuition.</li>
-<li><b>Step 2:</b> Raise prevalence to <b>50%</b> → PPV jumps dramatically. The prior dominates everything.</li>
-<li><b>Step 3:</b> Reset prevalence to 1%, raise specificity to <b>99.9%</b> → false positives plummet, PPV improves.</li>
+<li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.96% to 92.86%</b>. Feel how strongly the prior dominates.</li>
+<li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.96% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
+<li><b>Step 3:</b> Keep prevalence at 0.001 but raise specificity to <b>99.9%</b> → false positives plummet, PPV improves dramatically.</li>
 <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
 </ol>
 </div>
@@ -232,15 +232,16 @@ When prevalence is tiny the numerator shrinks while the denominator, swollen wit
 <li><b>Total probability sitting in the denominator</b>: <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> is the shape Bayes' denominator always takes. The "true positives + false positives" picture above is this same equation</li>
 <li><b>The natural-frequency picture</b>: split 1,000 people into a table and the same problem looks like simple counting instead of fractions</li>
 </ul>
-</div>
+<p class="pattern-companion">The law of total probability that assembles Bayes' denominator P(B) lives at <a class="pattern-companion-link" href="./prob.html">Probability Rules</a>.</p></div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./prob.html">Probability Rules</a> &mdash; conditional probability and the law of total probability assemble Bayes' denominator directly</li>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; "positive yet not diseased" lives in the same space as Type I error α</li>
-<li><a href="./morep.html">Discrete & Exponential</a> &mdash; modelling sensitivity, specificity, and base rates pulls binomial and Poisson into the picture</li>
-<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; a single-page integration of the error 2×2 and PPV</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; conditional probability and the law of total probability assemble Bayes' denominator and bridge it to the posterior</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; false positives like "positive yet not diseased" line up in the same probability space as Type I error α</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; putting sensitivity, specificity, and prevalence onto a probability model pulls binomial and Poisson out from underneath</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; sensitivity, specificity, and prevalence are estimated from samples — CIs hold the uncertainty in interval form</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lays the error 2×2 and PPV onto a single page so that false positives and Type I error overlap in the same probability space</li>
 </ul>
 </div>
 

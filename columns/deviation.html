@@ -275,7 +275,7 @@ body.theme-light .rarity-row:hover { background: rgba(0,100,130,.04); }
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* ── Progress bar ── */
@@ -408,7 +408,7 @@ body.theme-light .progress-bar { box-shadow: none; }
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 
 /* Light theme adjustments */
 body.theme-light .hero-content h1 em { text-shadow: none; }
@@ -642,7 +642,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="col-formula">偏差値 = 50 + 10 × (あなたの点数 − 平均点) ÷ 標準偏差</div>
 <p>
     やっていることはシンプル：平均を50に、標準偏差（ばらつき）を10に<b>スケール変換</b>しているだけ。<br/>
-    つまり「<b style="color:var(--cyan)">どんなテストでも同じ物差しで位置を測れるようにした数値</b>」—— それが偏差値だ。
+    つまり「<b style="color:var(--cyan)">どんなテストでも同じ物差しで位置を測れるようにした数値</b>」—— それが偏差値だ（<a href="../topics/stdnorm.html">ベースの z スコアを動かして確かめる</a>）。
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
@@ -783,12 +783,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     このページで見たベルカーブの正体を、もっと深く掴んでみよう。<br/>
     StatPlay のインタラクティブ教材で、統計を「触って」理解できる。
   </p>
-<div class="cta-links">
-<a href="../topics/stdnorm.html">標準正規分布を掴む →</a>
-<a href="../topics/normal.html">正規分布を深掘り →</a>
-<a href="../tables/index.html?dist=norm">インタラクティブ確率分布表 →</a>
-<a href="../index.html">全トピック一覧 →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="偏差値って何？ — StatPlay">💾 画像保存</button>
 <button class="share-btn" data-kind="url" data-share="devCanvas" data-title="偏差値って何？ — StatPlay">🔗 URLコピー</button>
@@ -796,6 +790,31 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="devCanvas" data-title="偏差値って何？ — StatPlay">📤 シェア</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/stdnorm.html">標準正規分布</a> &mdash; 偏差値 = z × 10 + 50 を作る元の N(0,1) をスライダーで動かして、その変換が成り立つ瞬間を見る</li>
+<li><a href="../topics/normal.html">正規分布と標準化</a> &mdash; 一般正規 N(μ, σ²) から z スケールへ降りる流れがここで始まり、偏差値の前段を組み立てる</li>
+<li><a href="../topics/clt.html">中心極限定理</a> &mdash; 「平均が正規に従う」という CLT の保証が動き続けて、偏差値が安定して機能する土台を支える</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">同じ z スコアを「単位の違うものを比べる翻訳機」として動かす姉妹コラム、偏差値を一段抽象化した姿で扱う</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

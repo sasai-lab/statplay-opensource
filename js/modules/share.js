@@ -1,5 +1,5 @@
 // StatPlay — module: SHARE / SAVE IMAGE
-import {themeColors} from '../utils.js';
+import { themeColors, isEn, getLang } from '../utils.js';
 
 export function initShare(){
   const toastEl=document.createElement('div');
@@ -31,7 +31,7 @@ export function initShare(){
     ctx.drawImage(src,0,0,src.width,src.height,pad,pad,srcLogicalW,srcLogicalH);
     ctx.font='11px "Courier New",monospace';ctx.fillStyle=tc.dim;
     const date=new Date().toISOString().slice(0,10);
-    ctx.fillText((window.__LANG==='en'?'#StatPlay - ':'#StatPlay - ')+date,pad,outH-12);
+    ctx.fillText((isEn()?'#StatPlay - ':'#StatPlay - ')+date,pad,outH-12);
     return out;
   }
   function downloadBlob(blob,filename){
@@ -45,16 +45,14 @@ export function initShare(){
     ja:{tweet:t=>t+' — スライダーで触ると統計の直感がつかめる',hashtags:'StatPlay,統計学,統計学入門'},
     en:{tweet:t=>t+' — slide to build statistical intuition',hashtags:'StatPlay'}
   };
-  function resolveTitle(btn){
-    const isEn=window.__LANG==='en';
-    return (isEn && btn.dataset.titleEn) ? btn.dataset.titleEn : btn.dataset.title;
+  function resolveTitle(btn){    return (isEn() && btn.dataset.titleEn) ? btn.dataset.titleEn : btn.dataset.title;
   }
   function tweetText(title){
-    const c=SHARE_CONFIG[window.__LANG==='en'?'en':'ja'];
+    const c=SHARE_CONFIG[getLang()];
     return c.tweet(title);
   }
   function hashtagsFor(){
-    const c=SHARE_CONFIG[window.__LANG==='en'?'en':'ja'];
+    const c=SHARE_CONFIG[getLang()];
     return c.hashtags;
   }
   function buildTopicURL(srcId){
@@ -63,9 +61,7 @@ export function initShare(){
     const src=document.getElementById(srcId);
     if(!src) return location.href;
     const section=src.closest('section');
-    if(!section||!section.id) return location.href;
-    const isEn=window.__LANG==='en';
-    return location.origin+(isEn?'/en/topics/':'/topics/')+section.id+'.html';
+    if(!section||!section.id) return location.href;    return location.origin+(isEn()?'/en/topics/':'/topics/')+section.id+'.html';
   }
   function openX(text,url,hashtags){
     const intent='https://twitter.com/intent/tweet'
@@ -109,17 +105,15 @@ export function initShare(){
       return ok;
     }catch(_){return false;}
   }
-  async function doShare(kind,srcId,title){
-    const isEn=window.__LANG==='en';
-    const src=document.getElementById(srcId);
-    if(!src){toast(isEn?'Target not found':'対象が見つかりません');return;}
+  async function doShare(kind,srcId,title){    const src=document.getElementById(srcId);
+    if(!src){toast(isEn()?'Target not found':'対象が見つかりません');return;}
     // URL share — copy a deep-link that encodes slider state for this graph.
     if(kind==='url'){
       const url=buildGraphURL(srcId);
       const ok=await copyToClipboard(url);
       toast(ok
-        ? (isEn?'Link copied · '+url.length+' chars':'URL をコピーしました（'+url.length+'文字）')
-        : (isEn?'Copy failed — see console for URL':'コピー失敗（コンソールに URL を出力）'));
+        ? (isEn()?'Link copied · '+url.length+' chars':'URL をコピーしました（'+url.length+'文字）')
+        : (isEn()?'Copy failed — see console for URL':'コピー失敗（コンソールに URL を出力）'));
       if(!ok) console.log('Graph URL:', url);
       return;
     }
@@ -127,7 +121,7 @@ export function initShare(){
     // X will fetch the page's OG image to show a card preview.
     if(kind==='x'){
       openX(tweetText(title), buildTopicURL(srcId), hashtagsFor());
-      toast(isEn?'Opening X…':'Xを開いています…');
+      toast(isEn()?'Opening X…':'Xを開いています…');
       return;
     }
     // Native share: open the system share sheet with title+text+URL (no files).
@@ -136,24 +130,24 @@ export function initShare(){
       try{
         if(navigator.share){
           await navigator.share({title:title,text:tweetText(title)+' #'+hashtagsFor(),url:shareURL});
-          toast(isEn?'Shared':'シェアしました');
+          toast(isEn()?'Shared':'シェアしました');
           return;
         }
       }catch(e){
         if(e && e.name==='AbortError') return;
       }
       openX(tweetText(title),shareURL,hashtagsFor());
-      toast(isEn?'Opening X…':'Xを開いています…');
+      toast(isEn()?'Opening X…':'Xを開いています…');
       return;
     }
     // Download — still builds a per-graph image for personal saving.
     let canvas;
-    try{canvas=buildImage(srcId);}catch(e){console.error('buildImage error',e);toast(isEn?'Failed to build image':'画像の組み立てに失敗');return;}
+    try{canvas=buildImage(srcId);}catch(e){console.error('buildImage error',e);toast(isEn()?'Failed to build image':'画像の組み立てに失敗');return;}
     const filename='statcyber_'+srcId+'.png';
     canvas.toBlob(blob=>{
-      if(!blob){toast(isEn?'Failed to render image':'画像化に失敗しました');return;}
+      if(!blob){toast(isEn()?'Failed to render image':'画像化に失敗しました');return;}
       downloadBlob(blob,filename);
-      toast(isEn?'Saved image':'画像を保存しました');
+      toast(isEn()?'Saved image':'画像を保存しました');
     },'image/png');
   }
   // Inject companion SNS buttons (X + native share) next to each existing download button

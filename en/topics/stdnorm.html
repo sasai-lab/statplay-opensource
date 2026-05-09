@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Feel the Standard Normal Distribution</a></h1>
-  <p class="topic-lead">Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.</p>
+  <p class="topic-lead">If z = 1.96 rings a bell, you've already met statistics' universal language — one curve sits beneath every test, every interval, every t-distribution.</p>
   <section class="reveal in" id="stdnorm">
 
 <div class="sec-tag">P.01 / STANDARD NORMAL</div>
@@ -293,17 +293,17 @@
 <li><b>The standardize-then-look-up flow</b>: for X ~ N(170, 6²) with X ≥ 180, the form lines up as z = (180−170)/6 ≈ 1.67 before reaching the table. General normals always pass through this route</li>
 <li><b>The reverse-lookup shape</b>: "what is the upper 5% point?" returns z = 1.645. The same motion — using the table in reverse — appears as a shape</li>
 </ul>
-<p style="margin:10px 0 0"><a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up values</p>
-</div>
+
+<p class="pattern-companion">See the home of the N(μ,σ²) → z translation at <a class="pattern-companion-link" href="./normal.html">Normal Distribution</a>.</p></div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./normal.html">Normal Distribution</a> &mdash; home of the "translate N(μ, σ²) onto the z scale via z = (x−μ)/σ" flow</li>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; the 1.96 in "center ± 1.96 × SE" is the z value read off the standard normal — the table sets the width</li>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; z-test critical values and rejection regions all sit on the standard normal</li>
-<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; as df → ∞ the t curve melts back into N(0,1) — this family carries that limit</li>
-<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) = z × 10 + 50 — the most familiar everyday use of the standard normal</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; kicks off the flow that translates N(μ, σ²) onto the z scale via z = (x−μ)/σ</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; reads the 1.96 in "center ± 1.96 × SE" off the standard normal table to set the CI width</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; lays z-test critical values and the rejection region onto the standard normal to draw the decision line</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; raise df and the t curve slides back into N(0,1) — the family that carries this limit outward</li>
+<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) translates the standard normal into school-score units via z × 10 + 50</li>
 <li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; the standard normal as a universal translator — comparing scores across different units</li>
 </ul>
 </div>
@@ -327,6 +327,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/af41ae280c552f1b65d9" target="_blank" rel="noopener"><span class="qiita-date">2026-05-02</span><span class="qiita-title">(Japanese only) Height vs TOEIC: which is further from "average"?</span></a><span class="qiita-why">A development note on putting height and TOEIC scores on the same z-scale — the standard normal as a translator</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="./normal.html">P2 Normal Distribution</a></div>

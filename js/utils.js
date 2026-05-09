@@ -152,6 +152,34 @@ export function debouncedResize(fn,ms=120){
   return function(){clearTimeout(t);t=setTimeout(fn,ms);};
 }
 
+// --- Language helpers ----------------------------------------------------
+// Centralised access to the current UI language so modules don't reach for
+// `window.__LANG === 'en'` directly (228+ inline checks were drifting in
+// shape and were impossible to grep+swap reliably). The ESLint rule
+// `no-restricted-syntax` blocks new direct `window.__LANG` reads in js/**.
+export function getLang(){
+  return (typeof window !== 'undefined' && window.__LANG === 'en') ? 'en' : 'ja';
+}
+export function isEn(){ return getLang() === 'en'; }
+
+// --- Canvas axis mapping helper -----------------------------------------
+// Replaces the dominant `xToPx = x => (x - lo)/(hi - lo) * w` and
+// `yToPx = y => h - bot - y/peak * (h - top - bot)` pattern that was
+// re-implemented inline across stdnorm/normal/htest/errs/error_types/dist.
+// peak is the largest y-value the plot needs to fit (0 maps to the baseline
+// at h - marginBottom; peak maps to marginTop). marginLeft/Right let
+// modules with side gutters (e.g. proptest) reuse the same builder.
+export function makeAxisMap({ w, h, lo, hi, peak,
+  marginTop = 0, marginBottom = 0, marginLeft = 0, marginRight = 0 } = {}){
+  const innerW = w - marginLeft - marginRight;
+  const innerH = h - marginTop - marginBottom;
+  const xToPx = x => marginLeft + (x - lo) / (hi - lo) * innerW;
+  const yToPx = y => h - marginBottom - (y / peak) * innerH;
+  const pxToX = px => lo + (px - marginLeft) / innerW * (hi - lo);
+  const axisY = h - marginBottom;
+  return { xToPx, yToPx, pxToX, innerW, innerH, axisY };
+}
+
 // --- Phase 7: discrete distributions + exponential ------------------------
 export function binomPMF(n, k, p){
   if(k < 0 || k > n) return 0;

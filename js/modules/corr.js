@@ -1,5 +1,5 @@
 // StatPlay — module: CORRELATION & SCATTER PLOTS
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize, isEn } from '../utils.js';
 
 /* ============================================================
    Panel 1 — Main scatter plot with 4-quadrant coloring
@@ -97,7 +97,7 @@ export function initCorr(){
     if(!ctx) return;
     drawGrid(ctx,w,h);
     const tc=themeColors();
-    const en=window.__LANG==='en';
+    const en = isEn();
 
     if(pts.length===0){
       ctx.fillStyle=tc.dim;ctx.font='14px "Courier New"';
@@ -333,7 +333,7 @@ export function initCorrAnscombe(){
     if(!ctx) return;
     drawGrid(ctx,w,h);
     const tc=themeColors();
-    const en=window.__LANG==='en';
+    const en = isEn();
 
     const GAP=12;
     const P={t:8,r:8,b:20,l:8};

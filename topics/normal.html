@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">正規分布と標準化 — μ・σの役割を可視化</a></h1>
-  <p class="topic-lead">一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。日常の計算の裏側を体感する。</p>
+  <p class="topic-lead">身長 165〜175cm の男性は何%? 答えは約59.6%。μ と σ を動かすだけで「割合」が面積として目に見える。</p>
   <section class="reveal in" id="normal">
 
 <div class="sec-tag">P.02 / NORMAL DISTRIBUTION</div>
@@ -243,17 +243,18 @@
 <li><b>正規分布の加法性</b>：独立な X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) を足すと X+Y〜N(μ₁+μ₂, σ₁²+σ₂²)。平均は素直に足し算、分散も素直に足し算（標準偏差は足し算でない）という形になっている</li>
 <li><b>標準化の絵</b>：z = (x−μ)/σ。「中心からのズレを、ばらつきの単位で測る」という同じ絵が、t統計量や検定統計量にも引き継がれていく</li>
 </ul>
-</div>
+<p class="pattern-companion">N(0,1) のベースだけを単独で触りたいときは <a class="pattern-companion-link" href="./stdnorm.html">標準正規分布</a>。</p></div>
 
 <div class="related-topics">
 <h3>// 関連トピック</h3>
 <ul>
-<li><a href="./stdnorm.html">標準正規分布</a> &mdash; z = (x−μ)/σ で着地する先。表を引くのはここ</li>
-<li><a href="./clt.html">中心極限定理</a> &mdash; どんな分布の平均でも正規へ近づく、という橋渡しが正規分布の裾野を広げる</li>
-<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からないときに正規の代わりに顔を出す t、χ²、F の家族</li>
-<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 二項や指数を扱うとき、n が大きい場面では正規近似が顔を出す</li>
-<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 正規分布の応用として、身長と TOEIC を同じ物差しで比べる方法</li>
-<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 正規分布の身近な応用例。10 点差の意味を z で読み解く</li>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; z = (x−μ)/σ が一般正規を着地させる先。ここで表を引いて確率を取り出す</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; どんな分布の平均でも正規へ近づいていく流れが、正規分布の使える領域を一気に広げる</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からない場面で正規の代わりに t / χ² / F の家族が前に出てくる</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; n が大きくなると二項や指数の上に正規近似が重なって、離散と連続を繋げる</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; 標本平均が真値に近づいていく LLN の収束先と、正規分布の中心 μ が同じ場所に重なる</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 正規分布の応用として、身長と TOEIC を z で同じ物差しに乗せて比較する</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 10 点差の意味を z で読み解いて、偏差値を正規分布の身近な顔に降ろす</li>
 </ul>
 </div>
 

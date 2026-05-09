@@ -275,7 +275,7 @@ body.theme-light .rarity-row:hover { background: rgba(0,100,130,.04); }
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* ── Progress bar ── */
@@ -406,7 +406,7 @@ body.theme-light .progress-bar { box-shadow: none; }
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 
 /* Light theme adjustments */
 body.theme-light .hero-content h1 em { text-shadow: none; }
@@ -640,7 +640,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="col-formula">Deviation = 50 + 10 × (Your Score − Mean) ÷ Std Dev</div>
 <p>
     It's a straightforward <b>scale transform</b>: re-center the mean to 50 and set the standard deviation (spread) to 10.<br/>
-    In other words, "<b style="color:var(--cyan)">a number that lets you compare your position across any test, using the same ruler</b>" — that's a deviation value.
+    In other words, "<b style="color:var(--cyan)">a number that lets you compare your position across any test, using the same ruler</b>" — that's a deviation value (<a href="../../en/topics/stdnorm.html">drag the underlying z-score</a>).
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
@@ -781,12 +781,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     Want to understand the bell curve you just saw on a deeper level?<br/>
     StatPlay's interactive materials let you learn statistics by touching.
   </p>
-<div class="cta-links">
-<a href="../../en/topics/stdnorm.html">Explore Standard Normal →</a>
-<a href="../../en/topics/normal.html">Dive into Normal Dist. →</a>
-<a href="../../en/tables/index.html?dist=norm">Interactive Distribution Tables →</a>
-<a href="../../en/index.html">All Topics →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">💾 Save image</button>
 <button class="share-btn" data-kind="url" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">🔗 Copy URL</button>
@@ -794,6 +788,31 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="devCanvas" data-title="What Is a Deviation Value? — StatPlay">📤 Share</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/stdnorm.html">Standard Normal</a> &mdash; drag the N(0,1) that produces Hensachi = z × 10 + 50 — watch the transformation hold in real time</li>
+<li><a href="../topics/normal.html">Normal Distribution</a> &mdash; kicks off the descent from N(μ, σ²) to the z-scale — the step that precedes Hensachi</li>
+<li><a href="../topics/clt.html">Central Limit Theorem</a> &mdash; CLT's guarantee that averages go normal keeps running underneath, holding Hensachi stable</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">puts the same z-score to work as a universal translator across units — the sister column that lifts Hensachi one level up</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

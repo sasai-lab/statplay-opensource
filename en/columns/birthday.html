@@ -305,7 +305,7 @@ body.theme-light .divider-num { background: #f0f3fa; }
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -432,6 +432,11 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <span>The Birthday Paradox</span>
 </div>
 <main>
+<aside class="col-precede">
+<span class="precede-label">// Want to touch first?</span>
+<a class="col-link-strong" data-target="topic" href="../../en/topics/prob.html">Play with the basic rules of probability</a>
+<span class="precede-note">— the complement rule and pair-counting trick this column leans on are right there to drag.</span>
+</aside>
 <div class="col-section">
 <p>
     "How many people does it take for two to share a birthday?"<br/>
@@ -477,7 +482,7 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <h2>// Why? — The Pair Explosion</h2>
 <p>
     The reason your intuition fails is simple.<br/>
-    You think about "<b>me vs. someone</b>," but it's actually "<b style="color:var(--cyan)">anyone vs. anyone</b>" — every pair counts.<br/>
+    You think about "<b>me vs. someone</b>," but it's actually "<b style="color:var(--cyan)">anyone vs. anyone</b>" — every pair counts (<a href="../../en/topics/prob.html">confirm with independent trials and Venn diagrams</a>).<br/>
 <b style="color:var(--yellow)">Increase n</b> and watch the lines (pairs) explode.
   </p>
 <div class="sim-ctrl">
@@ -597,11 +602,6 @@ body.theme-light .hero-scroll { color: #4a5568; }
     Dive deeper into the probability concepts from this page.<br/>
     StatPlay's interactive tools let you learn statistics by touching.
   </p>
-<div class="cta-links">
-<a href="../../en/topics/prob.html">Probability Rules →</a>
-<a href="../../en/topics/stdnorm.html">Standard Normal →</a>
-<a href="../../en/index.html">All Topics →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">💾 Save image</button>
 <button class="share-btn" data-kind="url" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">🔗 Copy URL</button>
@@ -609,6 +609,31 @@ body.theme-light .hero-scroll { color: #4a5568; }
 <button class="share-btn" data-kind="native" data-share="bdayCurve" data-title="The Birthday Paradox — StatPlay">📤 Share</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/prob.html">Probability Rules</a> &mdash; puts Venn-diagram and independent-trial machinery into motion to compute "at least one match" in one move</li>
+<li><a href="../topics/morep.html">Discrete & Exponential</a> &mdash; binomial and Poisson run as close mathematical cousins behind the collision probability</li>
+<li><a href="../topics/chitest.html">Chi-Squared Test</a> &mdash; the question "is this collision really random?" connects directly to goodness-of-fit testing via observed-vs-expected gaps</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-desc">another classic in the intuition-vs-probability series — moves along the same lineage as Type I/II confusion</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

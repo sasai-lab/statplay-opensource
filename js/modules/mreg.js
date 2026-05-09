@@ -1,5 +1,5 @@
 // StatPlay — module: MULTIPLE REGRESSION — 3D regression plane + comparison panel
-import { $, TAU, rng_normal, normCDF, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, TAU, rng_normal, normCDF, resizeCanvas, drawGrid, themeColors, withAlpha, throttledDraw, isEn } from '../utils.js';
 
 /* ═══════════════════════════════════════════════════
    PANEL: Simple vs Multiple Regression comparison
@@ -85,7 +85,7 @@ export function initMregVs(){
     if(!ctx) return;
     drawGrid(ctx,w,h);
     const tc=themeColors();
-    const ja=window.__LANG!=='en';
+    const ja = !isEn();
     const mid=Math.floor(w/2);
     const pad={l:48,r:16,t:36,b:36};
 
@@ -204,7 +204,7 @@ export function initMregVs(){
   }
 
   function updateUI(){
-    const ja=window.__LANG!=='en';
+    const ja = !isEn();
     const sb=$('mvSimpleB1'),mb=$('mvMultiB1'),gap=$('mvGap');
     const sr=$('mvSimpleR2'),mr=$('mvMultiR2');
     const unit=ja?' 点/h':' pts/h';
@@ -311,7 +311,7 @@ export function initMreg(){
     if(!ctx) return;
     drawGrid(ctx,w,h);
     const tc=themeColors();
-    const ja=window.__LANG!=='en';
+    const ja = !isEn();
     const b=cachedB;
 
     const cx=w*0.5, cy=h*0.48;
@@ -466,7 +466,7 @@ export function initMreg(){
   }
 
   function updateUI(){
-    const ja=window.__LANG!=='en';
+    const ja = !isEn();
     const b=cachedB;
     const sv=parseFloat(studyS.value),sl=parseFloat(sleepS.value);
     const pred=b[0]+b[1]*sv+b[2]*sl;

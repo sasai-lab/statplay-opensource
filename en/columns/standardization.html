@@ -276,7 +276,7 @@ body.theme-light .hero-impact {
   font-family: 'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -286,7 +286,7 @@ body.theme-light .hero-impact {
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* ── Progress bar ── */
@@ -496,7 +496,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </p>
 <p>
     These two steps translate any data into <b style="color:var(--yellow)">a common language of "mean 0, standard deviation 1."</b><br/>
-    The translated value is called a <b style="color:var(--cyan)">z-score</b>.
+    The translated value is called a <b style="color:var(--cyan)">z-score</b> (<a href="../../en/topics/stdnorm.html">drag the N(0,1) curve to confirm</a>).
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
@@ -708,12 +708,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     Now take this common language and feel how probability calculations and hypothesis tests actually work.<br/>
     StatPlay's interactive tools let you touch what lives beyond the formulas.
   </p>
-<div class="cta-links">
-<a href="../../en/topics/stdnorm.html">Standard Normal — Feel the standardization morph →</a>
-<a href="../../en/topics/normal.html">Normal distribution &amp; standardization →</a>
-<a href="../../en/columns/deviation.html">What is a deviation value? →</a>
-<a href="../../en/index.html">All topics →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="heroCanvas" data-title="What Is Standardization? — StatPlay">💾 Save image</button>
 <button class="share-btn" data-kind="url" data-share="page" data-title="What Is Standardization? — StatPlay">🔗 Copy URL</button>
@@ -721,6 +715,42 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <button class="share-btn" data-kind="native" data-share="page" data-title="What Is Standardization? — StatPlay">📤 Share</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/stdnorm.html">Standard Normal</a> &mdash; drag N(0,1) directly to watch z = (X−μ)/σ land on the "normal" baseline in real time</li>
+<li><a href="../topics/normal.html">Normal Distribution</a> &mdash; the back-and-forth flow between N(μ, σ²) and the z-scale starts moving here</li>
+<li><a href="../topics/clt.html">Central Limit Theorem</a> &mdash; CLT keeps guaranteeing "averages go normal" — that's why standardization keeps working across so many settings</li>
+<li><a href="../topics/lln.html">Law of Large Numbers</a> &mdash; LLN holds the "sample mean approaches truth" guarantee in place — the prerequisite that standardization stands on</li>
+<li><a href="../topics/test.html">Hypothesis Testing</a> &mdash; puts z-test critical values onto the standard normal — standardization in its most immediate application</li>
+<li><a href="../topics/ci.html">Confidence Interval</a> &mdash; pulls the 1.96 multiplier out of the standard normal — the same translator that locks in CI widths</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is a Deviation Value? — See "Top X%" in 3 Seconds</span>
+    <span class="fr-desc">follows the z-score as it descends into Japan's everyday Hensachi — the sister column</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/af41ae280c552f1b65d9" target="_blank" rel="noopener"><span class="qiita-date">2026-05-02</span><span class="qiita-title">(Japanese only) Height vs TOEIC: which is further from "average"?</span></a><span class="qiita-why">A development note stacking height and TOEIC on a single z-axis — reinforces the column's "translator" framing from another angle</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

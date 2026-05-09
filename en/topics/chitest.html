@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Chi-Squared Test — Goodness-of-Fit & Independence</a></h1>
-  <p class="topic-lead">Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.</p>
+  <p class="topic-lead">Whether a die is fair, whether two categorical variables are independent — the same formula answers both. Observed minus expected, compressed into one number.</p>
   <section class="reveal in" id="chitest">
 
 <div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
@@ -330,15 +330,17 @@
 <li><b>How χ² is built</b>: each category's (O−E)²/E gets added up. "Square the gap, divide by what was expected, sum" is the same shape across goodness-of-fit and independence</li>
 <li><b>The "E &lt; 5" branch</b>: the path forks toward an exact test for small frequencies or toward merging categories — this fork tags along whenever χ² is in play</li>
 </ul>
-<p style="margin:10px 0 0">Look up χ² critical values by df in the <a href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
+<p class="pattern-companion" style="margin:10px 0 0">Look up χ² critical values by df in the <a class="pattern-companion-link" href="../../en/tables/index.html?dist=chi2" style="color:var(--cyan)">Interactive Distribution Tables</a></p>
 </div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./dists.html#dists-chi">Three Test Distributions</a> &mdash; how χ² is built (sum of squared standard normals) and how critical values are read</li>
-<li><a href="./test.html">Hypothesis Testing</a> &mdash; the 5-step recipe — α, rejection region, decision — applies to chi-squared tests just the same</li>
-<li><a href="./prob.html">Probability Rules</a> &mdash; expected frequencies and the independence test sit directly on the basic probability rules</li>
+<li><a href="./dists.html#dists-chi">Three Test Distributions</a> &mdash; stacks squared standard normals to build χ² and walks through pulling critical values back out</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; the 5-step recipe, rejection region, and α framework all step through the chi-squared test the same way</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; the basic probability rules quietly carry the load when you build expected frequencies and test independence</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the 2×2 independence test returns the same verdict as a two-proportion test — the χ² ↔ z² bridge becomes visible</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; the question "is this collision really random?" connects to goodness-of-fit testing, where observed-vs-expected gaps get measured as χ²</li>
 </ul>
 </div>
 
@@ -353,6 +355,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/a5fa0cd986942d71404a" target="_blank" rel="noopener"><span class="qiita-date">2026-04-25</span><span class="qiita-title">(Japanese only) JavaScript has no gamma function, so I implemented it via Lanczos approximation</span></a><span class="qiita-why">The gamma-function implementation that quietly powers χ² density evaluation — paired with expected-frequency computation</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="./anova.html">I8 ANOVA</a></div>

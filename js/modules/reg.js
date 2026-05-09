@@ -1,5 +1,5 @@
 // StatPlay — module: 7) REGRESSION
-import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize } from '../utils.js';
+import { $, TAU, rng_normal, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize, isEn } from '../utils.js';
 
 export function initReg(){
   if(!document.getElementById('regCanvas')) return;
@@ -70,7 +70,7 @@ export function initReg(){
     drawGrid(ctx,w,h);
     const tc = themeColors();
     drawAxes(ctx, w, h, tc);
-    if(pts.length===0){ctx.fillStyle=tc.dim;ctx.font='14px "Courier New"';ctx.fillText(window.__LANG==='en'?'Click the canvas to add points':'キャンバスをクリックして点を追加',PAD.left+10,PAD.top+30);return;}
+    if(pts.length===0){ctx.fillStyle=tc.dim;ctx.font='14px "Courier New"';ctx.fillText(isEn()?'Click the canvas to add points':'キャンバスをクリックして点を追加',PAD.left+10,PAD.top+30);return;}
 
     // OLS on pedagogical coordinates (0-10 scale)
     const dataX = pts.map(p => toDataX(p.nx * w, w));

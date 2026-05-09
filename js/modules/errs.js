@@ -1,5 +1,5 @@
 // StatPlay — module: TYPE I / II ERROR VISUALIZATION (two-sided test)
-import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw } from '../utils.js';
+import { $, normCDF, normPDF, zCritical, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, withAlpha, throttledDraw, isEn, makeAxisMap } from '../utils.js';
 
 export function initErrs(){
   if(!document.getElementById('errCanvas')) return;
@@ -11,13 +11,11 @@ export function initErrs(){
     const {ctx,w,h} = resizeCanvas(canvas);
     drawGrid(ctx,w,h);
     const tc = themeColors();
-    const isEn = window.__LANG === 'en';
     const d = parseFloat(dS.value);
     const a = parseFloat(aS.value);
     const lo = -4, hi = 8;
-    const xToPx = x => (x - lo) / (hi - lo) * w;
     const peak = normPDF(0);
-    const yToPx = y => h - 28 - y / peak * (h - 70);
+    const { xToPx, yToPx } = makeAxisMap({ w, h, lo, hi, peak, marginTop: 42, marginBottom: 28 });
     // Two-sided test: zCritical(a) returns z* such that P(|Z|>z*) = a.
     // So critical values are -crit (left) and +crit (right); rejection region = |Z|>crit.
     const crit = zCritical(a);
@@ -89,8 +87,8 @@ export function initErrs(){
     // a viewer needs to see, at a glance, whether a region belongs to the
     // H₀-true world or the H₁-true world.
     const greekFont='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
-    const h0Label = isEn ? 'H₀: TRUE WORLD' : 'H₀: 真の世界';
-    const h1Label = (isEn ? 'H₁: TRUE WORLD (δ=' : 'H₁: 真の世界 (δ=') + d.toFixed(1) + ')';
+    const h0Label = isEn() ? 'H₀: TRUE WORLD' : 'H₀: 真の世界';
+    const h1Label = (isEn() ? 'H₁: TRUE WORLD (δ=' : 'H₁: 真の世界 (δ=') + d.toFixed(1) + ')';
     ctx.fillStyle=tc.cyan;ctx.font=greekFont;
     ctx.fillText(h0Label, xToPx(0)-8, yToPx(peak)-6);
     ctx.fillStyle=tc.purple;

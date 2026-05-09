@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">The Law of Large Numbers</a></h1>
-  <p class="topic-lead">See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.</p>
+  <p class="topic-lead">Ten heads in a row? Not weird. Ten thousand flips? Almost exactly half. The reason data can ever count as evidence sits right here.</p>
   <section class="reveal in" id="lln">
 
 <div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
@@ -260,10 +260,11 @@
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./clt.html">Central Limit Theorem</a> &mdash; LLN provides the destination, CLT the road — together they anchor inferential statistics</li>
-<li><a href="./normal.html">Normal Distribution</a> &mdash; the convergence target is the original distribution's true mean — the same location as the normal's center</li>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; without the LLN, "infer the population from a sample" has no justification — CIs are built on this foundation</li>
-<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; standardization works precisely because LLN guarantees the sample mean converges to the truth</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; LLN points to the destination of convergence, CLT lays the distribution shape along that road — twin theorems</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; the sample mean walks toward the truth and lands where the normal's center μ sits — both meet at the true mean</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; LLN supplies the justification for inferring a population from a sample, and CIs build the interval width on top</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; facing the exponential's memorylessness or Cauchy's failure to converge, LLN's finite-mean prerequisite steps forward</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; on top of LLN's guarantee that sample means converge to truth, z-scores start unifying units across measurements</li>
 </ul>
 </div>
 
@@ -278,6 +279,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/a5170d59751def6f1306" target="_blank" rel="noopener"><span class="qiita-date">2026-05-04</span><span class="qiita-title">(Japanese only) Is "n ≥ 30" really enough? Checking the CLT by simulation</span></a><span class="qiita-why">A simulation that lets you watch both LLN-style convergence and CLT-style shape together</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="./ci.html">I3 Confidence Interval</a></div>

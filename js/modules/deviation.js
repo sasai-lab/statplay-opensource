@@ -2,9 +2,8 @@
  * StatPlay — deviation column module
  * Copyright (c) 2026 Sasai Lab * Licensed under CC BY-NC 4.0.
  */
-import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, throttledDraw, debouncedResize } from '../utils.js';
+import { $, normPDF, normCDF, resizeCanvas, drawGrid, neonLine, neonFill, themeColors, throttledDraw, debouncedResize, isEn } from '../utils.js';
 
-const isEn = () => (window.__LANG || document.documentElement.lang || 'ja') === 'en';
 const L = (ja, en) => isEn() ? en : ja;
 
 /* ── Quiz ── */

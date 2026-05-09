@@ -481,7 +481,7 @@ body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(
   font-family:'Courier New', monospace; font-size: 18px;
   color: var(--text); margin-bottom: 8px;
 }
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 20px; }
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
 .col-cta .cta-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
 .col-cta .cta-links a {
   padding: 10px 20px; border: 1px solid rgba(0,243,255,.3);
@@ -491,7 +491,7 @@ body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(
 .col-cta .cta-links a:hover { background: rgba(0,243,255,.08); }
 .share-row {
   display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 /* ── Progress bar ── */
@@ -872,6 +872,10 @@ n=30 では同じ大きさの効果でも「効果なし」と判定するリス
 <li style="margin-left:1em"><a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err" style="color:var(--cyan)">中ぐらいの効果量（δ=2.0）で開く →</a></li>
 </ul>
 <p>このコラムが「整理の場」、向こうの可視化が「動かして遊ぶ場」、という役割分担です。先に整理 → 後で遊ぶ、の順番で進めてみてください。</p>
+<p>
+    なお、このコラムを書き直すまでの過程と「グラフより面積で『過誤の 2×2』を表現する」ことに至った経緯は、Qiita で記事化しています。<br/>
+<a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" rel="noopener" style="color:var(--cyan)" target="_blank">グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた — Qiita ↗</a>
+</p>
 </div>
 <!-- ═══ KEY TAKEAWAY ═══ -->
 <div class="takeaway">
@@ -913,13 +917,6 @@ n=30 では同じ大きさの効果でも「効果なし」と判定するリス
 α と β が別々の世界の量として整理できたら、実際の検定（z 検定・t 検定）の中でこれらがどう同時に動くかを触ってみるのが次のステップ。<br/>
 信頼区間との対応も、過誤の表で見ると別の風景に見えてきます。
 </p>
-<div class="cta-links">
-<a href="../topics/test.html?eD=0.5&amp;eA=0.05#test_err">弱い効果量で見る (δ=0.5) →</a>
-<a href="../topics/test.html?eD=2.0&amp;eA=0.05#test_err">強い効果量で見る (δ=2.0) →</a>
-<a href="../topics/ci.html">信頼区間 →</a>
-<a href="../topics/stdnorm.html">標準正規分布 →</a>
-<a href="../columns/standardization.html">標準化って何？ →</a>
-</div>
 <div class="share-row">
 <button class="share-btn" data-kind="dl" data-share="judgeCanvas" data-title="第一種・第二種の過誤って何が違うの？ — StatPlay">💾 画像保存</button>
 <button class="share-btn" data-kind="url" data-share="page" data-title="第一種・第二種の過誤って何が違うの？ — StatPlay">🔗 URLコピー</button>
@@ -927,6 +924,42 @@ n=30 では同じ大きさの効果でも「効果なし」と判定するリス
 <button class="share-btn" data-kind="native" data-share="page" data-title="第一種・第二種の過誤って何が違うの？ — StatPlay">📤 シェア</button>
 </div>
 </div>
+
+<aside id="col-relations">
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/test.html">仮説検定</a> &mdash; 仮説検定の 5 ステップと棄却域が動く場面で、第 1 種・第 2 種の誤りが生まれてくる</li>
+<li><a href="../topics/ci.html">信頼区間</a> &mdash; 信頼度 95% と「外す確率 5%」が同じ確率空間に並んで動く、α と CI を一枚に重ねて読む場面</li>
+<li><a href="../topics/bayes.html">ベイズの定理</a> &mdash; 偽陽性（第 1 種に近い量）が PPV を実際に押し下げる場面を、ベイズの分母の上で観察する</li>
+<li><a href="../topics/anova.html">分散分析（ANOVA）</a> &mdash; 多重比較で α が膨張していく場面を取り上げて、誤りの拡張版を組み立てる</li>
+<li><a href="../topics/proptest.html">母比率の検定と推定</a> &mdash; 比率の検定でも α・β・検出力の枠組みがそのまま動いて、誤りの 2×2 が比率の場面に当てはまる</li>
+<li><a href="../topics/dists.html">三大検定分布</a> &mdash; 検出力 1 − β を計算する場面で、t / F / χ² の家族を H₁ の分布として動かす必要が出てくる</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">誕生日のパラドックス — 23人で50%超え</span>
+    <span class="fr-desc">確率の直感を裏切る古典コラムが動き、第 1 種・第 2 種の混乱と同じ系譜に並ぶ</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// 開発ノート（Qiita）</h3>
+<p class="qiita-sub">実装の裏側で書き留めた開発ノート。本文と一段ずらした視点で確かめたい時に。</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" target="_blank" rel="noopener"><span class="qiita-date">2026-05-09</span><span class="qiita-title">グラフより面積で「第一種・第二種の過誤」を 2×2 で表現してみた</span></a><span class="qiita-why">コラムを書き直すまでの過程と、棄却域の絵を辞めて 2×2 の面積に切り替えた経緯をまとめた開発ノート</span></li>
+</ul>
+</div>
+</aside>
 </main>
 <footer>
 <div class="foot-grid">

@@ -143,7 +143,7 @@
 
 <main id="main-content">
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Hypothesis Testing — Reject Regions & p-values</a></h1>
-  <p class="topic-lead">Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.</p>
+  <p class="topic-lead">Hypothesis testing is courtroom geometry. H₀ is presumed innocent; the rejection region is where conviction begins — z just shows which side it falls on.</p>
   <section class="reveal in" id="test">
 
 <div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
@@ -304,18 +304,20 @@
 <li><b>The 2×2 of errors</b>: rejecting a true H₀ is Type I, failing to reject a false H₀ is Type II. Wherever a test lives, this 2×2 table tags along</li>
 <li><b>Where power sits</b>: 1 − β = "the probability of detecting a real difference when one exists." It appears in this same shape, as the flip side of Type II error</li>
 </ul>
-<p style="margin:10px 0 0">Look up critical values in the <a href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
+<p class="pattern-companion" style="margin:10px 0 0">Look up critical values in the <a class="pattern-companion-link" href="../../en/tables/index.html?dist=norm" style="color:var(--cyan)">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
 </div>
 
 <div class="related-topics">
 <h3>// Related topics</h3>
 <ul>
-<li><a href="./ci.html">Confidence Interval</a> &mdash; tests and CIs are two views of one decision — the verdicts always agree</li>
-<li><a href="./dists.html">Three Test Distributions</a> &mdash; t / χ² / F critical values get read in the test statistic's world — the toolbox of the testing family</li>
-<li><a href="./proptest.html">Proportion Test</a> &mdash; for proportion tests, the SE quietly swaps p̂ for p₀ — a structure unique to testing</li>
-<li><a href="./anova.html">ANOVA</a> &mdash; comparing 3+ group means via one F-test instead of repeated t-tests — testing's natural extension</li>
-<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; for categorical data, the test statistic switches to chi-squared — a different branch of the same family</li>
-<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; ties together the error 2×2, power, and the α-β trade-off</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; tests and CIs project the same verdict through different pictures — the conclusions always move together</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; reads t / χ² / F critical values out of the test statistic's world to draw the decision boundary</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the proportion test quietly swaps p̂ for p₀ in the SE — and a testing-specific structure rises</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; folds repeated t-tests for 3+ groups into a single F-test — testing extending itself naturally</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; categorical data shifts the test statistic to chi-squared — branching off into another arm of the family</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; every z-test critical value and rejection region lines up on the standard normal — testing's home address</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lays the error 2×2, power, and the α-β trade-off onto one page to read together</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; treats the standard normal that produces z-test critical values as a universal translator — where the test multipliers come from</li>
 </ul>
 </div>
 
@@ -330,6 +332,14 @@
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+
+<div class="qiita-notes">
+<h3>// Dev notes (Qiita)</h3>
+<p class="qiita-sub">Dev notes written while building this — a side-angle on what the body covers.</p>
+<ul>
+<li><a href="https://qiita.com/sasailab/items/d43754a16c8a2f87e5b2" target="_blank" rel="noopener"><span class="qiita-date">2026-05-09</span><span class="qiita-title">(Japanese only) Expressing Type I/II errors as a 2×2 of areas, not graphs</span></a><span class="qiita-why">A development note that swaps rejection-region graphs for an area-based 2×2 — a fresh angle on testing decisions</span></li>
+</ul>
 </div>
 <!-- /@panel -->
 <div class="story-next"><span class="lbl">UP NEXT —</span>from means to proportions <span class="story-arrow">▸</span> <a href="./proptest.html">I5 Proportion Test</a></div>

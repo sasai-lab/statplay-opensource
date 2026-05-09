@@ -1,5 +1,5 @@
 // StatPlay — module: 4) CI
-import { $, rng_normal, zCritical, resizeCanvas, drawGrid, themeColors, withAlpha } from '../utils.js';
+import { $, rng_normal, zCritical, resizeCanvas, drawGrid, themeColors, withAlpha, isEn } from '../utils.js';
 
 export function initCi(){
   if(!document.getElementById('ciCanvas')) return;
@@ -68,15 +68,15 @@ export function initCi(){
     // annotation: legend + coverage
     if(intervals.length>0){
       ctx.font='bold 12px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
-      ctx.fillStyle=tc.cyan;ctx.fillText(window.__LANG==='en'?'── Hit (contains μ)':'── 捕捉（μを含む）',8,h-26);
-      ctx.fillStyle=tc.magenta;ctx.fillText(window.__LANG==='en'?'── Miss':'── 外れ',8,h-12);
+      ctx.fillStyle=tc.cyan;ctx.fillText(isEn()?'── Hit (contains μ)':'── 捕捉（μを含む）',8,h-26);
+      ctx.fillStyle=tc.magenta;ctx.fillText(isEn()?'── Miss':'── 外れ',8,h-12);
       ctx.fillStyle=tc.text;ctx.font='bold 13px "Courier New"';
       if(intervals.length>=MIN_FOR_COV){
         const hits=intervals.filter(iv=>iv.lo<=0&&iv.hi>=0).length;
         const cov=(hits/intervals.length*100).toFixed(1);
-        ctx.fillText((window.__LANG==='en'?'Coverage: ':'捕捉率: ')+cov+'%',w-160,h-12);
+        ctx.fillText((isEn()?'Coverage: ':'捕捉率: ')+cov+'%',w-160,h-12);
       }else{
-        ctx.fillText((window.__LANG==='en'?'Coverage: building...':'捕捉率: 計測中...'),w-180,h-12);
+        ctx.fillText((isEn()?'Coverage: building...':'捕捉率: 計測中...'),w-180,h-12);
       }
     }
   }

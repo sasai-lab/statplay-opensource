@@ -1,5 +1,5 @@
 // StatPlay — module: 1) CLT
-import { $, rng_exp, rng_uniform, rng_bimodal, normPDF, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha } from '../utils.js';
+import { $, rng_exp, rng_uniform, rng_bimodal, normPDF, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, isEn } from '../utils.js';
 
 export function initClt(){
   if(!document.getElementById('cltCanvas')) return;
@@ -137,14 +137,12 @@ export function initClt(){
     if(elEn) elEn.innerHTML=storyEn;
   }
   function drawHist(ctx, x0, y0, w, h, hist, range, theoryFn, barColor, lineColor, titleJa, titleEn, isMeanPanel){
-    const tc=themeColors();
-    const isEn=window.__LANG==='en';
-    // frame
+    const tc=themeColors();    // frame
     ctx.strokeStyle=withAlpha(tc.cyan,.25);ctx.lineWidth=1;
     ctx.strokeRect(x0+0.5,y0+0.5,w-1,h-1);
     // title
     ctx.fillStyle=tc.text;ctx.font='bold 12px "Courier New"';
-    ctx.fillText(isEn?titleEn:titleJa, x0+8, y0+14);
+    ctx.fillText(isEn()?titleEn:titleJa, x0+8, y0+14);
     // plot area
     const padL=28,padR=12,padT=22,padB=22;
     const pw=w-padL-padR, ph=h-padT-padB;
@@ -189,10 +187,8 @@ export function initClt(){
       });
       neonLine(ctx,pts,lineColor,12,2);
       // annotation: label the theory curve
-      if(isMeanPanel && total>10){
-        const isEn=window.__LANG==='en';
-        ctx.fillStyle=lineColor;ctx.font='bold 10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
-        ctx.fillText(isEn?'Theory N(μ, σ²/n)':'理論 N(μ, σ²/n)',px0+pw-130,py0+padT+6);
+      if(isMeanPanel && total>10){        ctx.fillStyle=lineColor;ctx.font='bold 10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
+        ctx.fillText(isEn()?'Theory N(μ, σ²/n)':'理論 N(μ, σ²/n)',px0+pw-130,py0+padT+6);
       }
     }
     // axis ticks
@@ -203,16 +199,14 @@ export function initClt(){
   function draw(){
     const {ctx,w,h} = resizeCanvas(canvas);
     drawGrid(ctx,w,h);
-    const tc = themeColors();
-    const isEn=window.__LANG==='en';
-    const gap=16;
+    const tc = themeColors();    const gap=16;
     const panelW=(w-gap)/2;
     const th=theory();
 
     // LEFT panel: raw source distribution
     drawHist(ctx, 0, 0, panelW, h, srcHist, th.range,
       srcPDF, withAlpha(tc.magenta,.85), tc.magenta,
-      (isEn?'■ SOURCE: ':'■ 元の分布: ')+(isEn?th.label:th.labelJa)+(isEn?' — '+srcTotal+' raws':' — '+srcTotal+'個'),
+      (isEn()?'■ SOURCE: ':'■ 元の分布: ')+(isEn()?th.label:th.labelJa)+(isEn()?' — '+srcTotal+' raws':' — '+srcTotal+'個'),
       '■ SOURCE: '+th.label+' — '+srcTotal+' raws',
       false);
 
@@ -220,8 +214,8 @@ export function initClt(){
     ctx.fillStyle=tc.yellow;ctx.font='bold 16px "Courier New"';
     ctx.fillText('→', panelW+2, h/2);
     ctx.font='9px "Courier New"';ctx.fillStyle=tc.dim;
-    ctx.fillText(isEn?'n='+nSlider.value:'n='+nSlider.value+'個', panelW+2, h/2+14);
-    ctx.fillText(isEn?'avg':'平均', panelW+2, h/2+26);
+    ctx.fillText(isEn()?'n='+nSlider.value:'n='+nSlider.value+'個', panelW+2, h/2+14);
+    ctx.fillText(isEn()?'avg':'平均', panelW+2, h/2+26);
 
     // RIGHT panel: sample-mean distribution, with N(μ, σ²/n) overlay
     // Use ZOOMED meanRange (centered on μ, ±4.5σ/√n) so the bell fills the panel.
@@ -236,8 +230,8 @@ export function initClt(){
 
     // Global labels
     ctx.fillStyle=tc.dim;ctx.font='10px "Courier New","Segoe UI","Hiragino Sans",sans-serif';
-    ctx.fillText(isEn?'theoretical N(μ, σ²/n)':'理論曲線 N(μ, σ²/n)', panelW+gap+panelW-180, h-4);
-    ctx.fillText(isEn?'theoretical pdf':'理論密度', 4, h-4);
+    ctx.fillText(isEn()?'theoretical N(μ, σ²/n)':'理論曲線 N(μ, σ²/n)', panelW+gap+panelW-180, h-4);
+    ctx.fillText(isEn()?'theoretical pdf':'理論密度', 4, h-4);
     ctx.fillStyle=tc.yellow;ctx.font='bold 11px "Courier New"';
     ctx.fillText(`n = ${nSlider.value}`,w/2-24,h-4);
   }
