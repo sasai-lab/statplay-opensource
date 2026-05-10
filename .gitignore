@@ -24,3 +24,6 @@ __usertest_screens/
 scripts/_*.mjs
 scripts/_*.py
 qiita_tmp.json
+
+# Service account keys and local secrets (never commit)
+.local/

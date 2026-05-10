@@ -13,6 +13,11 @@ export default [
       'scripts/capture_ogp.mjs',
       'scripts/legacy/**',
       'scripts/_split_tests.py',
+      // Local-only diagnostic scratches (Playwright-driven, not in CI path).
+      // Same ignore policy as scripts/legacy/** — scripts that aren't part of
+      // the active CI pipeline shouldn't break `npm run lint`.
+      'scripts/_diag_*.mjs',
+      'scripts/_diag_*.py',
       '.claude/**',
       'test-results/**',
       'dist/**'

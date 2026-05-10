@@ -1,6 +1,6 @@
 {
   "name": "statplay",
-  "version": "3.12.4",
+  "version": "3.13.0",
   "description": "Interactive cyberpunk visualizer for introductory statistics — covers standard normal, 中心極限定理, confidence intervals, hypothesis testing, regression, and Bayes.",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "python scripts/build_topics.py",
     "minify": "node scripts/minify.mjs --clean",
     "build:prod": "npm run build && npm run minify",
-    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs",
+    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs && node scripts/test_cf_function.mjs",
     "test:layout": "node scripts/test_layout.mjs",
     "test:layout:cross": "node scripts/test_layout.mjs --browser=all",
     "test:a11y": "node scripts/test_a11y.mjs",

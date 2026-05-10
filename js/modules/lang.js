@@ -1,5 +1,19 @@
 // StatPlay — module: LANGUAGE TOGGLE (Route A: JA/EN are separate pages)
 
+// Persist the user's explicit language choice in BOTH localStorage (for the
+// UI to read on subsequent loads) and a first-party cookie. The cookie is
+// what the CloudFront viewer-request function reads to skip Accept-Language
+// auto-redirection — without it, a JA-pinned user on an English-OS browser
+// would keep getting bounced to /en/.
+function persistLangChoice(lang){
+  try { localStorage.setItem('sp:lang', lang); } catch(_) {}
+  try {
+    const secure = location.protocol === 'https:' ? '; Secure' : '';
+    // 2 years; SameSite=Lax so the cookie travels on top-level GET nav.
+    document.cookie = `sp_lang=${lang}; Path=/; Max-Age=63072000; SameSite=Lax${secure}`;
+  } catch(_) {}
+}
+
 export function initLang(){
   const htmlLang = document.documentElement.lang || 'ja';
   window.__LANG = htmlLang === 'en' ? 'en' : 'ja';
@@ -19,8 +33,13 @@ export function initLang(){
   // Hub pages: navigate to other language hub
   btn.textContent=htmlLang==='en'?'日本語':'EN';
   btn.addEventListener('click',()=>{
-    if(htmlLang==='en') window.location.href='../index.html';
-    else window.location.href='en/index.html';
+    if(htmlLang==='en'){
+      persistLangChoice('ja');
+      window.location.href='../index.html';
+    } else {
+      persistLangChoice('en');
+      window.location.href='en/index.html';
+    }
   });
 
   // Initial redraw
