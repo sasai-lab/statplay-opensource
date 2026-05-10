@@ -1,6 +1,6 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.13.0.1778375026';
+const CACHE = 'sp-v3.13.0.1778382000';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [
