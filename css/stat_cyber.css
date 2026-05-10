@@ -767,38 +767,76 @@
   /* income_prediction.html の `<style>` には text-align:center が抜けており、
      他のコラムの中央揃え CTA と非対称になっていた。共通CSSで揃える */
   .col-cta{text-align:center}
-  /* CTA 内の share-row は graph-share-bar と違い「本文との区切り」が不要なので、
-     padding-top と点線ボーダーをリセットして cta-sub に密着させる */
-  .col-cta .share-row{padding-top:0;border-top:none;margin-top:8px}
   /* deviation コラム等の `<style>` には `.col-cta p { margin-bottom:16px }` があり、
      specificity 0,1,1 で `.cta-sub { margin-bottom:0 }` (0,1,0) を打ち消す。
      共通CSSで 0,2,0 のスコープ付きオーバーライドを置いて確実に効かせる */
   .col-cta .cta-sub{margin-bottom:0}
-  /* 各コラムの `<style>` で `.share-row .share-btn { border: rgba(0,243,255,.25) }` (薄い)
-     が指定されており、暗背景の CTA 内ではボタンの輪郭が判別できなくなる。
-     specificity 0,3,0 で確実に上書きして視認性を確保する */
-  .col-cta .share-row .share-btn{
-    border-color:rgba(0,243,255,.5);
-    background:rgba(0,243,255,.04);
+  /* ── CTA contrast pass (v3.13.x) ──────────────────────────────────────
+     全コラムの per-column `<style>` で .cta-headline は font-weight 未指定
+     (=400) + 18px、.cta-sub は color:var(--dim) になっており、Courier New
+     のストロークの細さも合わさって CTA 全体が「ある のに読まれない」状態
+     になっていた。本文末尾の最重要コール部分なので、specificity 0,2,0 で
+     確実にコントラスト・ウェイト・サイズを底上げする。 */
+  .col-cta .cta-headline{
+    color:var(--text);
+    /* per-column inline `<style>` で font-family:'Courier New', monospace
+       を当てているが、Courier New は日本語グリフを持たないため
+       本文（日本語コラム）でヘッドラインが描画されない不具合を起こす。
+       本文と同じ system sans-serif スタックに揃える */
+    font-family:-apple-system,'Segoe UI','Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+    font-size:20px;
+    font-weight:700;
+    line-height:1.55;
+    letter-spacing:.3px;
+    margin-bottom:12px;
   }
-  .col-cta .share-row .share-btn:hover,
-  .col-cta .share-row .share-btn:focus-visible{
-    background:rgba(0,243,255,.12);
-    border-color:rgba(0,243,255,.7);
+  .col-cta .cta-sub{
+    color:var(--text);
+    opacity:.82;
+    font-size:14.5px;
+    line-height:1.75;
   }
+  body.theme-light .col-cta .cta-headline{color:var(--text)}
+  body.theme-light .col-cta .cta-sub{color:var(--text);opacity:.72}
+  /* NOTE: かつて .col-cta .share-row .share-btn のスコープ付きスタイルがあったが、
+     UT 報告 (戦略ドキュメント §3.6) と憲章 §0 を踏まえて CTA 末尾の share-row
+     自体を削除した。感情ピーク (Canvas 直下) でのみシェアボタンを置く方針。
+     base の .share-btn ルールは Section 03 等のピーク連動 share-row で使用中。 */
   .share-btn{
-    background:transparent;border:1px solid var(--green);color:var(--green);padding:6px 12px;
-    font-family:'Courier New',monospace;letter-spacing:1px;font-size:11px;cursor:pointer;transition:.2s;
+    /* `<button>` 要素は UA stylesheet で appearance:auto がかかり、
+       OSのシステム描画が背景・境界・色を上書きしてしまう環境がある。
+       Chromium ヘッドレスや一部の Windows 環境ではこれによりカスタム
+       border/background/color が一切描画されず、ボタンが透明に見える事象が
+       再現していた。appearance:none で UA 描画を切ってからカスタムスタイル
+       を当てる */
+    appearance:none;
+    -webkit-appearance:none;
+    /* body::after が position:fixed; z-index:1; mix-blend-mode:overlay の
+       ノイズオーバーレイを敷いており、これが share-btn の border/bg を
+       消してしまう環境があった (Chromium 描画パス上の干渉)。
+       position:relative + z-index で body::after より上に出して回避する */
+    position:relative;z-index:2;
+    background:transparent;border:2px solid var(--green);color:var(--green);padding:9px 16px;
+    /* font-family を Courier New ではなく system sans-serif に。Courier New は日本語
+       グリフを持たず、「📤 シェア」などの和文ラベルが視認困難になっていた。
+       font-size 11→13px、border 1px→2px、weight 500→600 で和文・英字どちらも
+       押下可能なボタンとして輪郭が立つようにする */
+    font-family:-apple-system,'Segoe UI','Hiragino Sans','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
+    letter-spacing:.5px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;
+    border-radius:2px;
   }
   .share-btn:hover{background:var(--green);color:var(--bg);box-shadow:0 0 15px var(--green)}
-  .share-btn.x{border-color:var(--text);color:var(--text)}
-  .share-btn.x:hover{background:var(--text);color:var(--bg);box-shadow:0 0 15px var(--text)}
-  .share-btn.dl{border-color:var(--cyan);color:var(--cyan)}
-  .share-btn.dl:hover{background:var(--yellow);color:var(--bg);box-shadow:0 0 15px var(--yellow)}
-  .share-btn.native{border-color:var(--magenta);color:var(--magenta)}
-  .share-btn.native:hover{background:var(--magenta);color:var(--bg);box-shadow:0 0 15px var(--magenta)}
-  .share-btn.url{border-color:var(--green);color:var(--green)}
-  .share-btn.url:hover{background:var(--green);color:var(--bg);box-shadow:0 0 15px var(--green)}
+  /* share.js は data-kind 属性を読んで `.share-btn.x` 等の class を付与するが、
+     コラムページでは initShare() を呼んでおらず class が付かない。
+     [data-kind="…"] 属性セレクタを追加して JS なしでも色分岐が効くようにする */
+  .share-btn.x,.share-btn[data-kind="x"]{border-color:var(--text);color:var(--text)}
+  .share-btn.x:hover,.share-btn[data-kind="x"]:hover{background:var(--text);color:var(--bg);box-shadow:0 0 15px var(--text)}
+  .share-btn.dl,.share-btn[data-kind="dl"]{border-color:var(--cyan);color:var(--cyan)}
+  .share-btn.dl:hover,.share-btn[data-kind="dl"]:hover{background:var(--yellow);color:var(--bg);box-shadow:0 0 15px var(--yellow)}
+  .share-btn.native,.share-btn[data-kind="native"]{border-color:var(--magenta);color:var(--magenta)}
+  .share-btn.native:hover,.share-btn[data-kind="native"]:hover{background:var(--magenta);color:var(--bg);box-shadow:0 0 15px var(--magenta)}
+  .share-btn.url,.share-btn[data-kind="url"]{border-color:var(--green);color:var(--green)}
+  .share-btn.url:hover,.share-btn[data-kind="url"]:hover{background:var(--green);color:var(--bg);box-shadow:0 0 15px var(--green)}
   .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
     background:var(--cyan);color:var(--bg);padding:10px 20px;font-family:'Courier New',monospace;font-size:13px;
     letter-spacing:2px;z-index:1000;box-shadow:0 0 30px var(--cyan);opacity:0;transition:opacity .3s;pointer-events:none}
@@ -1565,11 +1603,14 @@
     background:#ffffff;color:var(--text);border-color:#c0c6d0;
   }
   body.theme-light .share-btn:hover{background:var(--cyan);color:#fff;border-color:var(--cyan);box-shadow:none}
-  body.theme-light .share-btn.x{border-color:#c0c6d0;color:var(--text)}
-  body.theme-light .share-btn.x:hover{background:var(--cyan);color:#fff;box-shadow:none}
+  body.theme-light .share-btn.x,body.theme-light .share-btn[data-kind="x"]{border-color:#c0c6d0;color:var(--text)}
+  body.theme-light .share-btn.x:hover,body.theme-light .share-btn[data-kind="x"]:hover{background:var(--cyan);color:#fff;box-shadow:none}
   body.theme-light .share-btn.dl:hover,
   body.theme-light .share-btn.url:hover,
-  body.theme-light .share-btn.native:hover{box-shadow:none}
+  body.theme-light .share-btn.native:hover,
+  body.theme-light .share-btn[data-kind="dl"]:hover,
+  body.theme-light .share-btn[data-kind="url"]:hover,
+  body.theme-light .share-btn[data-kind="native"]:hover{box-shadow:none}
 
   /* Footer — clean, opaque -------------------------------------- */
   body.theme-light footer{
