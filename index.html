@@ -1,18 +1,8 @@
 <!DOCTYPE html>
-<!--
-  ═══════════════════════════════════════════════════════════════════════════
-  StatPlay  —  https://github.com/  (repo URL)
-  Copyright (c) 2026 Sasai Lab
-  Licensed under Creative Commons Attribution-NonCommercial 4.0 International
-  (CC BY-NC 4.0) — https://creativecommons.org/licenses/by-nc/4.0/
-  商用利用禁止 / NonCommercial use only.
-  Generated with assistance from Anthropic Claude.
-  See LICENSE file for full terms.
-  ═══════════════════════════════════════════════════════════════════════════
--->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
+<!-- StatPlay (c) 2026 Sasai Lab. Licensed CC BY-NC 4.0 (NonCommercial). See LICENSE. Built with assistance from Anthropic Claude. -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
@@ -109,9 +99,9 @@
 <link rel="apple-touch-icon" href="./icons/icon-192.png">
 <link rel="icon" type="image/svg+xml" href="./icons/favicon.svg">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
-<link rel="preload" href="css/stat_cyber.css" as="style">
 <link rel="stylesheet" href="css/stat_cyber.css">
-<!-- KaTeX -->
+<!-- KaTeX (CDN — preconnect early so the render-blocking CSS resolves faster) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"></script>
 <script defer src="./js/katex-render.js"></script>
@@ -130,7 +120,7 @@
     <div class="nav-dropdown">
       <a href="#columns" class="nav-cat-link" data-cat="columns"><span data-lang="ja">コラム</span><span data-lang="en">COLUMN</span></a>
       <div class="nav-dropdown-menu">
-        <a href="columns/deviation.html" data-lang="ja">偏差値って何？</a><a href="en/columns/deviation.html" data-lang="en">What Is Deviation?</a>
+        <a href="columns/deviation.html" data-lang="ja">偏差値って何？</a><a href="en/columns/deviation.html" data-lang="en">What Is Hensachi?</a>
         <a href="columns/birthday.html" data-lang="ja">誕生日のパラドックス</a><a href="en/columns/birthday.html" data-lang="en">Birthday Paradox</a>
         <a href="columns/standardization.html" data-lang="ja">標準化って何？</a><a href="en/columns/standardization.html" data-lang="en">What Is Standardization?</a>
         <a href="columns/income_prediction.html" data-lang="ja">年収と統計</a><a href="en/columns/income_prediction.html" data-lang="en">Predicting Income</a>
@@ -193,7 +183,7 @@
   </p>
   <p data-lang="en" class="hero-lead">
     Statistics is way more fun than it looks.<br>
-    Forget rote formulas — here the graphs move on their own, and you just feel the math click.
+    Forget rote formulas — here the graphs move on their own, and the idea takes shape as you watch.
   </p>
   <button class="hero-cta" id="heroStart"><span>▶ START</span></button>
 <p data-lang="ja" class="hero-tagline">
@@ -252,7 +242,7 @@
       <span class="sep">|</span>
       <a href="#bayes">Bayes' theorem makes no sense</a>
       <span class="sep">|</span>
-      <a href="#clt">The Central Limit Theorem doesn't click</a>
+      <a href="#clt">The Central Limit Theorem stays fuzzy</a>
     </span><br>
     <span class="hub-link-list-note">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
   </div>
@@ -264,7 +254,7 @@
   <h2 class="sec-title sec-title--small" data-lang="ja">コラム</h2>
   <h2 class="sec-title sec-title--small" data-lang="en">Columns</h2>
   <div data-lang="ja" class="col-intro">統計は数式だけ眺めていても絵が浮かばない。身近な「あるある」から入ると、公式の意味がすっと見えてくる。</div>
-  <div data-lang="en" class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
+  <div data-lang="en" class="col-intro">Formulas alone rarely make the picture vivid. Start from everyday surprises and the math behind them becomes intuitive.</div>
   <div data-lang="ja" class="col-card" style="--col-accent:var(--yellow)">
     <a href="columns/deviation.html" class="col-card__title">偏差値って何？ &mdash; 「上位○%」が3秒で見える &rarr;</a><br>
     <span class="col-card__desc">偏差値60と70の差はたった10。でもレア度は5倍。その正体をインタラクティブに掴む。</span>
@@ -296,8 +286,8 @@
     <span class="col-card__related">関連: <a href="#clt">中心極限定理</a> &middot; <a href="#ci">信頼区間</a> &middot; <a href="#test">仮説検定</a> &middot; <a href="#lln">大数の法則</a> &middot; <a href="#dists">三大検定分布</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
-    <a href="en/columns/deviation.html" class="col-card__title">What Is a Deviation Value? &mdash; See "Top X%" in 3 Seconds &rarr;</a><br>
-    <span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+    <a href="en/columns/deviation.html" class="col-card__title">What Is Hensachi? &mdash; Japan's School Score Is Just a Rescaled z-Score &rarr;</a><br>
+    <span class="col-card__desc">A 10-point gap in hensachi holds 5× the rarity. See what the number really measures, interactively.</span>
     <span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> &middot; <a href="#normal">Normal Distribution</a> &middot; <a href="#clt">Central Limit Theorem</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--magenta)">
@@ -316,7 +306,7 @@
     <span class="col-card__related">Related: <a href="#reg">Simple Regression</a> &middot; <a href="#mreg">Multiple Regression</a> &middot; <a href="#corr">Correlation</a> &middot; <a href="#ci">Confidence Interval</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
-    <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Makes It Click &rarr;</a><br>
+    <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Sorts Them Out &rarr;</a><br>
     <span class="col-card__desc">α, β, power, and effect size all live on a single 2&times;2 table. Once you see it, the confusion disappears.</span>
     <span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> &middot; <a href="#ci">Confidence Interval</a> &middot; <a href="#bayes">Bayes' Theorem</a> &middot; <a href="#anova">ANOVA</a> &middot; <a href="#proptest">Proportion Test</a> &middot; <a href="#dists">Three Test Distributions</a></span>
   </div>
@@ -588,7 +578,7 @@
   </div>
   <div class="learn-more-link learn-more-link--col">
     <a data-lang="ja" href="columns/deviation.html" class="ln-yellow">📊 コラム：偏差値って何？ — 正規分布で「上位○%」が一瞬でわかる →</a>
-    <a data-lang="en" href="en/columns/deviation.html" class="ln-yellow">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
+    <a data-lang="en" href="en/columns/deviation.html" class="ln-yellow">📊 Column: What Is Hensachi? — See "Top X%" through the normal curve →</a>
   </div>
 <div class="story-next" data-lang="ja"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="#prob">P3 確率の基本法則</a></div>
   <div class="story-next" data-lang="en"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
@@ -1025,7 +1015,7 @@
     <code>n</code> を大きくするほど、右のベルがシュッと細くなる（<span class="term-gloss" title="標準誤差（Standard Error）：標本平均のバラつきの大きさ。σ をサンプル数の平方根で割ったもの">SE</span> = σ/√n）。
   </p>
   <p class="sec-desc" data-lang="en">
-    <b>Slightly outrageous fact</b> — no matter how skewed the base distribution is,
+    <b>A fact worth pausing on</b> — no matter how skewed the base distribution is,
     if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
     converges on its own to <b>a bell (normal)</b>.<br>
     The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
@@ -1047,7 +1037,7 @@
       <li><b>Step 1:</b> Use the dropdown above to choose "Exponential" and drag the n slider to <b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>
       <li><b>Step 2:</b> Drag the n slider to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>
       <li><b>Step 3:</b> Drag the n slider to <b>30</b> and run → nearly normal. "n≥30" is a practical rule of thumb, not a theorem — heavily skewed distributions may need more.</li>
-      <li><b>Step 4:</b> Switch the dropdown to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
+      <li><b>Step 4:</b> Switch the dropdown to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Worth watching twice.</li>
     </ol>
   </div>
   <!-- @panel:clt_main -->
@@ -1398,7 +1388,7 @@
   <h2 class="sec-title" data-lang="en">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
 
   <div class="story-bridge" data-lang="ja">母平均で信頼区間や検定をやったときと、考え方はまったく同じ。ただ「連続的なデータの平均」から「成功 or 失敗のカウント」に変わると、<span class="next">標準誤差の形</span>がちょっと違ってくる。ここを触って慣れておくと、参考書の公式がスッと入ってくるはず。</div>
-  <div class="story-bridge" data-lang="en">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas will click.</div>
+  <div class="story-bridge" data-lang="en">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas read more easily afterward.</div>
   <p class="sec-desc" data-lang="ja">
     データが「成功 / 失敗」の二択しかない世界。<b>標本比率 p̂ = x/n</b> がすべての出発点で、n が十分大きければ正規分布で近似できる（中心極限定理のおかげ）。<br>
     ここでは <b>① 区間推定</b> → <b>② 1標本検定</b> → <b>③ 2標本検定</b> の順に触っていく。平均のときと何が同じで何が違うのか、比べながら進めると整理しやすい。
@@ -1660,7 +1650,7 @@
 
 <section id="dists" class="reveal">
   <div class="topic-deep-link"><a data-lang="ja" href="topics/dists.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/dists.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">I6 / t · χ² · F 分布</div>
+  <div class="sec-tag"><span data-lang="ja">I6 / t · χ² · F 分布</span><span data-lang="en">I6 / t · χ² · F Distributions</span></div>
   <h2 class="sec-title" data-lang="ja">三大検定分布 <span class="sec-sub">— t・χ²・F の素顔</span></h2>
   <h2 class="sec-title" data-lang="en">Three Test Distributions <span class="sec-sub">— Meet t, χ² & F</span></h2>
 
@@ -1884,7 +1874,7 @@
 
 <section id="chitest" class="reveal">
   <div class="topic-deep-link"><a data-lang="ja" href="topics/chitest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/chitest.html">▸ Dedicated page for this topic</a></div>
-  <div class="sec-tag">I7 / カイ二乗検定</div>
+  <div class="sec-tag"><span data-lang="ja">I7 / カイ二乗検定</span><span data-lang="en">I7 / Chi-Squared Test</span></div>
   <h2 class="sec-title" data-lang="ja">カイ二乗検定 <span class="sec-sub">— ズレを数値化する</span></h2>
   <h2 class="sec-title" data-lang="en">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
 
@@ -2352,7 +2342,7 @@
     <b>Experiment Guide — try these in order</b>
     <ol>
       <li><b>Step 1:</b> Hit "Random 20 pts" → a regression line and R² appear. Check the green bars (residuals).</li>
-      <li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Feel the leverage of outliers.</li>
+      <li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Watch how far a single point can drag the fit.</li>
       <li><b>Step 3:</b> CLEAR and place <b>5 points</b> nearly in a line → R² ≈ 1.0. A perfect linear relationship.</li>
       <li><b>Step 4:</b> CLEAR and arrange points in a circle → R² ≈ 0. A line can't capture this pattern.</li>
     </ol>

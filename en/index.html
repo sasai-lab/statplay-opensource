@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 
-<!--
-  ═══════════════════════════════════════════════════════════════════════════
-  StatPlay  —  https://github.com/  (repo URL)
-  Copyright (c) 2026 Sasai Lab
-  Licensed under Creative Commons Attribution-NonCommercial 4.0 International
-  (CC BY-NC 4.0) — https://creativecommons.org/licenses/by-nc/4.0/
-  商用利用禁止 / NonCommercial use only.
-  Generated with assistance from Anthropic Claude.
-  See LICENSE file for full terms.
-  ═══════════════════════════════════════════════════════════════════════════
--->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<!-- StatPlay (c) 2026 Sasai Lab. Licensed CC BY-NC 4.0 (NonCommercial). See LICENSE. Built with assistance from Anthropic Claude. -->
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
@@ -103,9 +93,9 @@
 <link href="../icons/icon-192.png" rel="apple-touch-icon"/>
 <link href="../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
 <meta content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/" http-equiv="Content-Security-Policy"/>
-<link as="style" href="../css/stat_cyber.css" rel="preload"/>
 <link href="../css/stat_cyber.css" rel="stylesheet"/>
-<!-- KaTeX -->
+<!-- KaTeX (CDN — preconnect early so the render-blocking CSS resolves faster) -->
+<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
 <script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
 <script defer="" src="../js/katex-render.js"></script>
@@ -123,7 +113,7 @@
 <div class="nav-dropdown">
 <a class="nav-cat-link" data-cat="columns" href="#columns"><span>COLUMN</span></a>
 <div class="nav-dropdown-menu">
-<a href="columns/deviation.html">What Is Deviation?</a>
+<a href="columns/deviation.html">What Is Hensachi?</a>
 <a href="columns/birthday.html">Birthday Paradox</a>
 <a href="columns/standardization.html">What Is Standardization?</a>
 <a href="columns/income_prediction.html">Predicting Income</a>
@@ -182,7 +172,7 @@
 
 <p class="hero-lead">
     Statistics is way more fun than it looks.<br/>
-    Forget rote formulas — here the graphs move on their own, and you just feel the math click.
+    Forget rote formulas — here the graphs move on their own, and the idea takes shape as you watch.
   </p>
 <button class="hero-cta" id="heroStart"><span>▶ START</span></button>
 
@@ -215,7 +205,7 @@
 <span class="sep">|</span>
 <a href="#bayes">Bayes' theorem makes no sense</a>
 <span class="sep">|</span>
-<a href="#clt">The Central Limit Theorem doesn't click</a>
+<a href="#clt">The Central Limit Theorem stays fuzzy</a>
 </span><br/>
 <span class="hub-link-list-note">Once "oh, that's what it means" hits, go back to your textbook — it'll read differently.</span>
 </div>
@@ -225,7 +215,7 @@
 
 <h2 class="sec-title sec-title--small">Columns</h2>
 
-<div class="col-intro">Formulas alone rarely click. Start from everyday surprises and the math behind them becomes intuitive.</div>
+<div class="col-intro">Formulas alone rarely make the picture vivid. Start from everyday surprises and the math behind them becomes intuitive.</div>
 
 
 
@@ -233,8 +223,8 @@
 
 
 <div class="col-card" style="--col-accent:var(--yellow)">
-<a class="col-card__title" href="columns/deviation.html">What Is a Deviation Value? — See "Top X%" in 3 Seconds →</a><br/>
-<span class="col-card__desc">Deviation 60 vs 70 — just 10 points apart, but 5x the rarity. Grasp the truth interactively.</span>
+<a class="col-card__title" href="columns/deviation.html">What Is Hensachi? — Japan's School Score Is Just a Rescaled z-Score →</a><br/>
+<span class="col-card__desc">A 10-point gap in hensachi holds 5× the rarity. See what the number really measures, interactively.</span>
 <span class="col-card__related">Related: <a href="#stdnorm">Standard Normal</a> · <a href="#normal">Normal Distribution</a> · <a href="#clt">Central Limit Theorem</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--magenta)">
@@ -253,7 +243,7 @@
 <span class="col-card__related">Related: <a href="#reg">Simple Regression</a> · <a href="#mreg">Multiple Regression</a> · <a href="#corr">Correlation</a> · <a href="#ci">Confidence Interval</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--yellow)">
-<a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Makes It Click →</a><br/>
+<a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Sorts Them Out →</a><br/>
 <span class="col-card__desc">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
 <span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> · <a href="#ci">Confidence Interval</a> · <a href="#bayes">Bayes' Theorem</a> · <a href="#anova">ANOVA</a> · <a href="#proptest">Proportion Test</a> · <a href="#dists">Three Test Distributions</a></span>
 </div>
@@ -453,7 +443,7 @@
 </div>
 <div class="learn-more-link learn-more-link--col">
 
-<a class="ln-yellow" href="columns/deviation.html">📊 Column: What Is a Deviation Value? — See "Top X%" through the normal curve →</a>
+<a class="ln-yellow" href="columns/deviation.html">📊 Column: What Is Hensachi? — See "Top X%" through the normal curve →</a>
 </div>
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>probability rules with Venn diagrams <span class="story-arrow">▸</span> <a href="#prob">P3 Probability Rules</a></div>
@@ -782,7 +772,7 @@
 <div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
 
 <p class="sec-desc">
-<b>Slightly outrageous fact</b> — no matter how skewed the base distribution is,
+<b>A fact worth pausing on</b> — no matter how skewed the base distribution is,
     if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
     converges on its own to <b>a bell (normal)</b>.<br/>
     The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
@@ -796,7 +786,7 @@
 <li><b>Step 1:</b> Use the dropdown above to choose "Exponential" and drag the n slider to <b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>
 <li><b>Step 2:</b> Drag the n slider to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>
 <li><b>Step 3:</b> Drag the n slider to <b>30</b> and run → nearly normal. "n≥30" is a practical rule of thumb, not a theorem — heavily skewed distributions may need more.</li>
-<li><b>Step 4:</b> Switch the dropdown to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Mind-blowing.</li>
+<li><b>Step 4:</b> Switch the dropdown to "Bimodal" and repeat → even a two-peaked distribution morphs into a bell. Worth watching twice.</li>
 </ol>
 </div>
 <!-- @panel:clt_main -->
@@ -1061,7 +1051,7 @@
 
 <h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
 
-<div class="story-bridge">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas will click.</div>
+<div class="story-bridge">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas read more easily afterward.</div>
 
 <p class="sec-desc">
     A world where every data point is just "success" or "failure." <b>The sample proportion p̂ = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the Central Limit Theorem).<br/>
@@ -1269,7 +1259,7 @@
 <!-- ============ DISTS ============ -->
 <section class="reveal" id="dists">
 <div class="topic-deep-link"><a href="topics/dists.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I6 / t · χ² · F 分布</div>
+<div class="sec-tag"><span>I6 / t · χ² · F Distributions</span></div>
 
 <h2 class="sec-title">Three Test Distributions <span class="sec-sub">— Meet t, χ² &amp; F</span></h2>
 
@@ -1441,7 +1431,7 @@
 <!-- ============ CHI-SQUARED TEST ============ -->
 <section class="reveal" id="chitest">
 <div class="topic-deep-link"><a href="topics/chitest.html">▸ Dedicated page for this topic</a></div>
-<div class="sec-tag">I7 / カイ二乗検定</div>
+<div class="sec-tag"><span>I7 / Chi-Squared Test</span></div>
 
 <h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
 
@@ -1792,7 +1782,7 @@
 <b>Experiment Guide — try these in order</b>
 <ol>
 <li><b>Step 1:</b> Hit "Random 20 pts" → a regression line and R² appear. Check the green bars (residuals).</li>
-<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Feel the leverage of outliers.</li>
+<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Watch how far a single point can drag the fit.</li>
 <li><b>Step 3:</b> CLEAR and place <b>5 points</b> nearly in a line → R² ≈ 1.0. A perfect linear relationship.</li>
 <li><b>Step 4:</b> CLEAR and arrange points in a circle → R² ≈ 0. A line can't capture this pattern.</li>
 </ol>

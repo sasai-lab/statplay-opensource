@@ -514,7 +514,7 @@ Slide n and the two start pulling apart.
 <div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
 <a href="../../index.html">StatPlay</a><span class="sep">›</span>
 <span>Columns</span><span class="sep">›</span>
-<span>What Is Standard Error?</span>
+<span>Standard Deviation vs Standard Error</span>
 </div>
 <main>
 <!-- ═══ 01. INTRO ═══ -->
@@ -522,16 +522,16 @@ Slide n and the two start pulling apart.
 <div class="col-section">
 <h2>Two quantities that share the word "spread"</h2>
 <p>
-Standard deviation (SD) and standard error (SE). The formulas look almost identical, and both fall under the umbrella term "spread." <b style="color:var(--yellow)">Yet, depending on the context, the lead role suddenly switches between them.</b> That kind of moment shows up surprisingly often.
+Standard deviation (SD) and standard error (SE). The formulas look almost identical, and both fall under the umbrella word "spread." <b style="color:var(--yellow)">Yet, depending on the context, the lead role quietly switches between them.</b> That kind of switch shows up surprisingly often, and prose often blends the two without flagging which one is meant.
 </p>
 <p>
-Same-looking formulas, both called "spread," routinely blended in prose without flagging which is which — and then <b style="color:var(--magenta)">raising n leaves the lower picture barely moving while the upper picture keeps thinning by √n</b>. That asymmetry surfaces from the same data without warning. A lower floor for "individual data" and an upper floor for "how the mean would wobble if the experiment were rerun" — looked at as a <b style="color:var(--magenta)">two-tier structure</b>, the two near-identical quantities start to look like residents of different floors.
+There's an easy way to tell them apart: raise n and watch what moves. <b style="color:var(--magenta)">The picture of individual data points barely changes its width, while the picture of the sample mean thins out by √n.</b> Same data underneath, two very different responses. This column tries laying that out as a two-floor picture — a ground floor for "the individual data" and an upper floor for "how the mean would wobble if the experiment were rerun" — and once it's drawn, two near-identical quantities turn out to live on different floors.
 </p>
 <p>
-Throughout this column, <b style="color:var(--magenta)">SD (spread of individuals)</b> and <b style="color:var(--cyan)">SE (precision of the mean)</b> consistently get their own colors. Reading along with that two-tone mapping in mind might make the interactives later a bit easier to follow.
+Throughout this column, <b style="color:var(--magenta)">SD (spread of individuals)</b> and <b style="color:var(--cyan)">SE (precision of the mean)</b> keep their own colors. Reading along with that two-tone mapping in mind makes the interactives later a bit easier to follow.
 </p>
 <p>
-Where this column is hoping to land is <b style="color:var(--text)">a one-sentence description of the SD/SE difference</b>. When two near-identical formulas get placed as two different roles, the same spot in a textbook can read differently next time around.
+The aim of this column is a single sentence you can keep: <b style="color:var(--text)">SD describes the data; SE describes how well the mean is pinned down.</b> Once two near-identical formulas sit in two clearly separate roles, the same paragraph in a textbook reads differently the next time around.
 </p>
 </div>
 <!-- ═══ 02. TWO-TIER STRUCTURE ═══ -->
@@ -578,10 +578,10 @@ The lower tier (Tier 1) holds <b style="color:var(--magenta)">individual data po
 The upper tier (Tier 2) holds <b style="color:var(--cyan)">sample means</b>. Imagine repeating the entire 30-student measurement many times — how would those means scatter? Their typical width is <b style="color:var(--cyan)">SE</b>. <b style="color:var(--text)">Same data underneath, but the floor is different</b> — that view is the one this column keeps following.
 </p>
 <div class="col-formula">
-<span class="sd">SD (individual spread)</span> ≒ σ    /    <span class="se">SE (precision of the mean)</span> = σ / √n
+<span class="sd">SD (individual spread)</span> ≈ σ    /    <span class="se">SE (precision of the mean)</span> = σ / √n
 </div>
 <p style="font-size:13px;color:var(--dim);margin-top:-6px;">
-(Symbol guide: <b style="color:var(--text)">σ</b> — the Greek letter "sigma," the population standard deviation. <b style="color:var(--text)">√n</b> — the square root of n. <b style="color:var(--text)">≒</b> means "approximately equal.")
+(Symbol guide: <b style="color:var(--text)">σ</b> — the Greek letter "sigma," the population standard deviation. <b style="color:var(--text)">√n</b> — the square root of n. <b style="color:var(--text)">≈</b> means "approximately equal.")
 </p>
 <p>
 On paper, one symbol separates them. But seeing that one symbol (√n) as the dividing line between the data world and the mean world tends to make the later sections easier to walk through.
@@ -697,7 +697,7 @@ Left: interval estimate (center ± 1.96·SE). Right: test (<code>z = (x̄ − μ
 The interval estimate on the left is <b style="color:var(--cyan)">"a band of ±1.96·SE around x̄."</b> The test on the right measures <b style="color:var(--magenta)">"how many SEs the gap (x̄ − μ₀) is."</b> Sliding n shows the SE bar in <i>both</i> pictures shrinking by the same amount: <b style="color:var(--yellow)">the interval gets narrower</b> while (for the same gap) <b style="color:var(--yellow)">z grows</b>. The two move together because the same component is sitting underneath.
 </p>
 <p>
-"Interval estimation and tests are different tools" is a common framing, but looked at structurally, the two start to look like <b style="color:var(--text)">twins built on the same SE part</b>.
+"Interval estimation and tests are different tools" is a common framing, but looked at structurally, the two start to look like <b style="color:var(--text)">twins built on the same SE piece</b>.
 </p>
 </div>
 <!-- ═══ ONE-LINER ═══ -->
@@ -784,7 +784,7 @@ In the live confidence-interval interactive, try sliding the confidence level an
 <a href="./error_types.html" class="fr-card">
   <span class="fr-icon" aria-hidden="true">⚠️</span>
   <span class="fr-body">
-    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts Them Out</span>
     <span class="fr-desc">the SE lives inside the test denominator — same "add an axis to see" strategy in another guise</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>

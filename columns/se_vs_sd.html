@@ -36,454 +36,902 @@
 <link href="../icons/icon-192.png" rel="icon" type="image/png"/>
 <link href="../css/stat_cyber.css" rel="stylesheet"/>
 <style>
+
 body.column-page #mainNav .nav-links a,
+
 body.column-page #mainNav .nav-links button { font-size: 12px; }
+
 body.column-page section { padding-top: 0; }
+
 body.column-page .col-breadcrumb {
+
   max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
+
   font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+
 }
+
 body.column-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+
 body.column-page .col-breadcrumb a:hover { text-decoration: underline; }
+
 body.column-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+
 body.column-page main { padding-top: 4px; max-width: 800px; margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 
+
+
 /* ── Cinematic hero (typography + grid) ─────────────────────────────── */
+
 .hero-cinema {
+
   position: relative; width: 100%; min-height: 100vh; min-height: 100dvh;
+
   display: flex; flex-direction: column; align-items: center; justify-content: center;
+
   overflow: hidden; z-index: 2;
+
   background:
+
     radial-gradient(ellipse at center, rgba(0,243,255,.05) 0%, transparent 70%),
+
     repeating-linear-gradient(0deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px),
+
     repeating-linear-gradient(90deg, rgba(0,243,255,.04) 0 1px, transparent 1px 40px);
+
 }
+
 body.theme-light .hero-cinema {
+
   background:
+
     radial-gradient(ellipse at center, rgba(0,140,180,.06) 0%, transparent 70%),
+
     repeating-linear-gradient(0deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px),
+
     repeating-linear-gradient(90deg, rgba(0,140,180,.05) 0 1px, transparent 1px 40px);
+
 }
+
 .hero-content {
+
   position: relative; z-index: 2; text-align: center;
+
   max-width: 760px; padding: 0 24px;
+
   text-shadow: 0 0 30px var(--bg), 0 0 60px var(--bg);
+
 }
+
 body.theme-light .hero-content {
+
   text-shadow: 0 0 30px rgba(240,243,250,.9), 0 0 60px rgba(240,243,250,.8);
+
 }
+
 .hero-eyebrow {
+
   font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+
   letter-spacing: 3px; margin-bottom: 18px; opacity: 0;
+
 }
+
 .hero-eyebrow.hero-in { opacity: 1; transition: opacity .8s ease; }
+
 .hero-impact {
+
   font-family:'Courier New', monospace;
+
   font-size: clamp(48px, 12vw, 96px); font-weight: 900;
+
   letter-spacing: -2px;
+
   opacity: 0; transform: scale(2);
+
   margin-bottom: 12px;
+
   color: var(--text);
+
 }
+
 .hero-impact.hero-in {
+
   opacity: 1; transform: scale(1);
+
   transition: opacity .4s ease, transform .5s cubic-bezier(.17,.67,.3,1.3);
+
 }
+
 .hero-impact .hi-sigma { color: var(--cyan); margin-right: 4px;
+
   text-shadow: 0 0 28px rgba(0,243,255,.45); }
+
 .hero-impact .hi-slash { color: var(--dim); margin: 0 8px; font-weight: 400; }
+
 .hero-impact .hi-rootn { color: var(--magenta);
+
   text-shadow: 0 0 28px rgba(255,43,214,.45); }
+
 body.theme-light .hero-impact .hi-sigma { text-shadow: 0 0 12px rgba(0,140,180,.3); }
+
 body.theme-light .hero-impact .hi-rootn { text-shadow: 0 0 12px rgba(180,30,150,.3); }
 
+
+
 .hero-content h1 {
+
   font-family:'Courier New', monospace; font-size: clamp(22px, 4.5vw, 36px);
+
   line-height: 1.4; color: var(--text); margin-bottom: 16px;
+
   opacity: 0; transform: translateY(20px);
+
 }
+
 .hero-content h1.hero-in {
+
   opacity: 1; transform: translateY(0);
+
   transition: opacity .8s ease, transform .8s ease;
+
 }
+
 .hero-content h1 em {
+
   font-style: normal; color: var(--yellow);
+
   text-shadow: 0 0 24px rgba(255,230,0,.5);
+
 }
+
 body.theme-light .hero-content h1 em { text-shadow: none; }
+
 .hero-content .hook-sub {
+
   color: var(--dim); font-size: 15px; line-height: 1.7; opacity: 0;
+
 }
+
 .hero-content .hook-sub.hero-in {
+
   opacity: 1; transition: opacity .8s ease .3s;
+
 }
+
 .hero-content .hook-sub strong.sd { color: var(--magenta); }
+
 .hero-content .hook-sub strong.se { color: var(--cyan); }
 
+
+
 .hero-scroll {
+
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+
   background: none; border: none; cursor: pointer;
+
   font-family:'Courier New', monospace; font-size: 10px; color: var(--dim);
+
   letter-spacing: 3px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+
   opacity: 0; animation: fadeIn 1s ease 2s forwards;
+
 }
+
 .hero-scroll .chevron {
+
   width: 12px; height: 12px; border-right: 1.5px solid var(--dim);
+
   border-bottom: 1.5px solid var(--dim); transform: rotate(45deg);
+
   animation: bounce 1.5s ease infinite;
+
 }
+
 @keyframes fadeIn { to { opacity: .5; } }
+
 @keyframes bounce { 0%,100% { transform: rotate(45deg) translateY(0); } 50% { transform: rotate(45deg) translateY(4px); } }
+
 body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 
+
+
 .article-meta {
+
   display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
+
   margin-top: 14px;
+
   font-family:'Courier New', monospace; font-size: 12px; color: var(--dim);
+
   opacity: 0;
+
 }
+
 .article-meta.hero-in { opacity: 1; transition: opacity .8s ease .6s; }
+
 .article-meta span::before {
+
   content: ''; display: inline-block;
+
   width: 4px; height: 4px; border-radius: 50%;
+
   background: var(--cyan); margin-right: 6px;
+
   vertical-align: middle;
+
 }
+
+
 
 /* ── Section + scroll reveal ───────────────────────────────────────── */
+
 .col-section { opacity: 0; transform: translateY(24px);
+
   transition: opacity .6s ease, transform .6s ease; }
+
 .col-section.visible { opacity: 1; transform: translateY(0); }
+
 .col-divider {
+
   display: flex; align-items: center; gap: 12px;
+
   margin: 56px 0 32px; position: relative; z-index: 2;
+
 }
+
 .col-divider::before, .col-divider::after {
+
   content: ''; flex: 1; height: 1px;
+
   background: linear-gradient(90deg, transparent, rgba(0,243,255,.2), transparent);
+
 }
+
 .col-divider .divider-num {
+
   font-family:'Courier New', monospace; font-size: 11px; color: var(--cyan);
+
   letter-spacing: 2px; white-space: nowrap; opacity: .6;
+
 }
+
+
 
 .col-formula {
+
   font-family:'Courier New', monospace; font-size: clamp(15px, 3vw, 19px);
+
   text-align: center; padding: 18px 16px; margin: 18px 0;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
   color: var(--cyan); line-height: 1.6;
+
 }
+
 .col-formula .sd { color: var(--magenta); }
+
 .col-formula .se { color: var(--cyan); }
+
 code, .inline-code {
+
   font-family:'Courier New', monospace; font-size: 13px;
+
   padding: 2px 6px; border: 1px solid rgba(0,243,255,.15);
+
   background: rgba(0,243,255,.04); color: var(--cyan); border-radius: 2px;
+
 }
+
 blockquote.col-quote {
+
   margin: 20px 0; padding: 14px 20px;
+
   border-left: 3px solid var(--magenta);
+
   background: rgba(255,43,214,.04);
+
   font-family:'Courier New', monospace; color: var(--text);
+
   font-size: 15px; line-height: 1.7;
+
 }
+
 aside.col-aside {
+
   margin: 18px 0; padding: 10px 14px;
+
   border: 1px dashed rgba(0,243,255,.25);
+
   background: rgba(0,243,255,.02);
+
   font-family:'Courier New', monospace;
+
   font-size: 12px; line-height: 1.7; color: var(--dim);
+
 }
+
 aside.col-aside .col-aside-tag {
+
   display: inline-block; margin-right: 8px;
+
   font-size: 11px; letter-spacing: 1.5px; color: var(--cyan);
+
 }
+
+
 
 /* ── Two-tier (sample / mean) static schematic ─────────────────────── */
+
 .tier-figure {
+
   display: grid; grid-template-columns: 1fr; gap: 12px;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
   padding: 16px; margin: 16px 0;
+
 }
+
 .tier-row {
+
   display: grid; grid-template-columns: 110px 1fr; gap: 12px; align-items: center;
+
   font-family:'Courier New', monospace;
+
 }
+
 .tier-row .tier-label {
+
   font-size: 11px; letter-spacing: 1.2px; padding: 6px 8px;
+
   border-left: 3px solid var(--magenta);
+
 }
+
 .tier-row.tier-mean .tier-label { border-left-color: var(--cyan); }
+
 .tier-row .tier-label .tier-tag { display: block; font-size: 10px; color: var(--dim); margin-bottom: 2px; }
+
 .tier-row .tier-label .tier-name { color: var(--magenta); }
+
 .tier-row.tier-mean .tier-label .tier-name { color: var(--cyan); }
+
 .tier-row .tier-bar {
+
   position: relative; height: 28px; border: 1px dashed rgba(148,163,187,.30);
+
   border-radius: 2px;
+
 }
+
 .tier-row .tier-dot {
+
   position: absolute; width: 6px; height: 6px; border-radius: 50%;
+
   background: var(--magenta); top: 50%; transform: translate(-50%,-50%);
+
   opacity: .65;
+
 }
+
 .tier-row.tier-mean .tier-dot { background: var(--cyan); }
+
 .tier-row .tier-bar .tier-mu {
+
   position: absolute; left: 50%; top: -4px; bottom: -4px; width: 1px;
+
   background: rgba(255,230,0,.6);
+
 }
+
 .tier-row .tier-bar .tier-mu::after {
+
   content: 'μ'; position: absolute; left: 4px; top: -14px;
+
   font-size: 10px; color: var(--yellow);
+
 }
+
 .tier-row .tier-bar .tier-pop {
+
   position: absolute; inset: 0;
+
   background: linear-gradient(90deg, transparent 0%, rgba(255,43,214,.06) 30%,
+
     rgba(255,43,214,.10) 50%, rgba(255,43,214,.06) 70%, transparent 100%);
+
 }
+
 .tier-row .tier-bar .tier-narrow {
+
   position: absolute; inset: 0;
+
   background: linear-gradient(90deg, transparent 35%, rgba(0,243,255,.08) 45%,
+
     rgba(0,243,255,.18) 50%, rgba(0,243,255,.08) 55%, transparent 65%);
+
 }
+
 .tier-caption {
+
   font-family:'Courier New', monospace; font-size: 11px; color: var(--dim);
+
   text-align: center; margin-top: 6px;
+
 }
+
+
 
 /* ── Interactive A : two-tier dot-plot + SD/SE bar ─────────────────── */
+
 .intA-block { margin: 16px 0; }
+
 .intA-stack { display: flex; flex-direction: column; gap: 10px; }
+
 #seCanvasTier1 {
+
   width: 100%; height: 260px; display: block;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
 }
+
 #seCanvasTier2 {
+
   width: 100%; height: 320px; display: block;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
 }
+
 @media (max-width: 720px) {
+
   #seCanvasTier1 { height: 220px; }
+
   #seCanvasTier2 { height: 260px; }
+
 }
+
 .intA-ratio {
+
   font-family:'Courier New', monospace; font-size: 12px; color: var(--yellow);
+
   text-align: center; margin-top: 6px; letter-spacing: .5px;
+
 }
+
 .intA-controls {
+
   display: flex; flex-direction: column; gap: 10px;
+
   margin-top: 12px; padding: 12px 14px;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
   font-family:'Courier New', monospace;
+
 }
+
 .intA-controls .ctrl-row {
+
   display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+
 }
+
 .intA-controls label {
+
   font-size: 13px; color: var(--text); display: flex; align-items: center; gap: 8px;
+
   flex: 1 1 240px;
+
 }
+
 .intA-controls input[type="range"] { flex: 1; min-width: 120px; }
+
 .intA-controls .slider-val { color: var(--yellow); }
+
 .intA-controls .ctrl-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+
 .intA-controls button {
+
   padding: 6px 14px; border: 1px solid rgba(0,243,255,.30); background: transparent;
+
   color: var(--cyan); cursor: pointer;
+
   font-family:'Courier New', monospace; font-size: 12px; transition: .2s;
+
 }
+
 .intA-controls button:hover { background: rgba(0,243,255,.08); }
+
 .intA-readout {
+
   display: flex; gap: 18px; flex-wrap: wrap; padding: 10px 14px; margin-top: 12px;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
   font-family:'Courier New', monospace;
+
 }
+
 .intA-readout .rd { display: flex; flex-direction: column; min-width: 100px; }
+
 .intA-readout .rd-label { font-size: 10px; color: var(--dim); letter-spacing: 1.2px; }
+
 .intA-readout .rd-val { font-size: 18px; font-weight: 700; line-height: 1.1; margin-top: 4px; }
+
 .intA-readout .rd-sd .rd-val { color: var(--magenta); }
+
 .intA-readout .rd-se .rd-val { color: var(--cyan); }
+
 .intA-readout .rd-formula { color: var(--cyan); flex: 1 1 100%; font-size: 12px; opacity: .85; }
 
+
+
 /* ── Interactive B : Interval estimation / Test parallel canvases ──── */
+
 .intB-stack {
+
   display: flex; flex-direction: column; gap: 10px;
+
 }
+
 #seCiCanvas, #seTestCanvas {
+
   width: 100%; height: 380px; display: block;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
 }
+
 @media (max-width: 720px) {
+
   #seCiCanvas, #seTestCanvas { height: 300px; }
+
 }
+
 .intB-readout {
+
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+
   margin-top: 10px;
+
   font-family:'Courier New', monospace; font-size: 13px; color: var(--text);
+
 }
+
 @media (max-width: 720px) { .intB-readout { grid-template-columns: 1fr; } }
+
 .intB-readout .ro {
+
   padding: 8px 12px;
+
   border-left: 3px solid var(--cyan);
+
   background: rgba(0,243,255,.04);
+
 }
+
 .intB-readout .ro.ro-test { border-left-color: var(--magenta); background: rgba(255,43,214,.04); }
+
 .intB-shared {
+
   margin-top: 12px; padding: 10px 14px; text-align: center;
+
   border: 1px dashed rgba(0,243,255,.30); background: rgba(0,243,255,.04);
+
   font-family:'Courier New', monospace; font-size: 14px; color: var(--cyan);
+
 }
+
 .intB-controls {
+
   display: flex; flex-direction: column; gap: 10px;
+
   margin-top: 12px; padding: 12px 14px;
+
   border: 1px solid rgba(0,243,255,.15); background: rgba(0,243,255,.03);
+
   font-family:'Courier New', monospace;
+
 }
+
 .intB-controls label {
+
   display: grid; grid-template-columns: 110px 1fr 80px; align-items: center; gap: 12px;
+
   font-size: 13px; color: var(--text);
+
 }
+
 .intB-controls .slider-val { color: var(--yellow); text-align: right; }
+
 .intB-controls input[type="range"] { width: 100%; }
 
+
+
 /* ── Trap table ───────────────────────────────────────────────────── */
+
 .trap-table {
+
   width: 100%; border-collapse: collapse;
+
   font-family:'Courier New', monospace; font-size: 13px;
+
   margin: 16px 0;
+
 }
+
 .trap-table th, .trap-table td {
+
   border: 1px solid rgba(0,243,255,.18);
+
   padding: 12px 14px; vertical-align: top; text-align: left;
+
 }
+
 .trap-table thead th {
+
   font-size: 11px; color: var(--dim); letter-spacing: 1px;
+
   background: rgba(0,243,255,.04); text-transform: uppercase;
+
 }
+
 .trap-table tbody th { background: rgba(0,243,255,.03); width: 28%; color: var(--text); }
+
 .trap-table .trap-warn { color: var(--yellow); }
+
 @media (max-width: 600px) {
+
   .trap-table, .trap-table thead, .trap-table tbody,
+
   .trap-table tr, .trap-table th, .trap-table td { display: block; width: 100% !important; }
+
   .trap-table thead { display: none; }
+
   .trap-table tbody th { border-bottom: none; padding: 12px 14px 4px;
+
     color: var(--cyan); letter-spacing: 1.5px; font-size: 12px; }
+
   .trap-table tbody th::before { content: '// '; }
+
   .trap-table td { border-top: none; }
+
 }
+
+
 
 /* ── Takeaway / FAQ / CTA / Progress (shared with other columns) ──── */
+
 .takeaway {
+
   position: relative; z-index: 2;
+
   border: 1px solid rgba(255,230,0,.2);
+
   background: rgba(255,230,0,.03);
+
   padding: 24px 28px; margin: 48px 0 32px;
+
 }
+
 .takeaway h3 {
+
   font-family:'Courier New', monospace; font-size: 14px;
+
   color: var(--yellow); margin-bottom: 12px; letter-spacing: 1px;
+
 }
+
 .takeaway ul { list-style: none; padding: 0; }
+
 .takeaway li {
+
   color: var(--text); font-size: 14px; line-height: 1.8;
+
   padding-left: 16px; position: relative; margin-bottom: 6px;
+
 }
+
 .takeaway li::before { content: '▸'; position: absolute; left: 0; color: var(--yellow); }
+
 body.theme-light .takeaway { border-color: rgba(140,100,0,.2); background: rgba(255,230,0,.05); }
 
+
+
 .faq-item { margin-bottom: 12px; }
+
 .faq-q {
+
   display: block; width: 100%; text-align: left; padding: 12px 16px;
+
   background: rgba(0,243,255,.03); border: 1px solid rgba(0,243,255,.1);
+
   color: var(--text); font-size: 14px; cursor: pointer;
+
   font-family:'Courier New', monospace; transition: .2s;
+
 }
+
 .faq-q:hover { background: rgba(0,243,255,.06); }
+
 .faq-q::before { content: '▸ '; color: var(--cyan); }
+
 .faq-q.open::before { content: '▾ '; }
+
 .faq-a {
+
   display: none; padding: 12px 16px; font-size: 14px;
+
   line-height: 1.8; color: var(--text);
+
   border: 1px solid rgba(0,243,255,.06); border-top: none;
+
 }
+
 .faq-a p:last-child { margin-bottom: 0; }
 
+
+
 .col-cta { text-align: center; padding: 32px 0 48px; padding-bottom: 16px; }
+
 .cta-headline {
+
   font-family:'Courier New', monospace; font-size: 18px;
+
   color: var(--text); margin-bottom: 8px;
-}
-.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
-.share-row {
-  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-  margin-top: 12px;
+
 }
 
-.progress-bar {
-  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
-  background: linear-gradient(90deg, var(--cyan), var(--magenta));
-  width: 0%; transition: width .1s linear;
-  box-shadow: 0 0 8px var(--cyan);
+.cta-sub { color: var(--dim); font-size: 14px; margin-bottom: 0; }
+
+.share-row {
+
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+
+  margin-top: 12px;
+
 }
+
+
+
+.progress-bar {
+
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+
+  width: 0%; transition: width .1s linear;
+
+  box-shadow: 0 0 8px var(--cyan);
+
+}
+
 body.theme-light .progress-bar { box-shadow: none; }
+
 </style>
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "Article",
+
       "headline": "標準偏差と標準誤差の違い — SDとSEを1枚の絵で見分ける",
+
       "description": "標準偏差と標準誤差、字も式も似ている。でも片方は『データのばらつき』、もう片方は『推定の不確かさ』。同じデータから別の絵を描ける場面を、n を動かしながら並べて見ます。",
+
       "inLanguage": "ja",
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/columns/se_vs_sd.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": { "@type": "Organization", "name": "Sasai Lab" },
+
       "publisher": { "@type": "Organization", "name": "Sasai Lab" },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/"
+
     },
+
     {
+
       "@type": "FAQPage",
+
       "mainEntity": [
+
         {
+
           "@type": "Question",
+
           "name": "SDとSEはどっちを書けばいいの？",
+
           "acceptedAnswer": {
+
             "@type": "Answer",
+
             "text": "目的次第で答えが分かれます。「データそのものが、どのくらいばらついているか」を伝えたいときは SD。「推定した平均が、もう一度データを取り直したらどれくらいぶれそうか」を伝えたいときは SE。論文のエラーバーで意味が二通りに割れる原因がここで、本文かキャプションに「SD なのか SE なのか」を必ず書いておくと混乱は防げます。"
+
           }
+
         },
+
         {
+
           "@type": "Question",
+
           "name": "n を10倍にしたら SE は10倍小さくなる？",
+
           "acceptedAnswer": {
+
             "@type": "Answer",
+
             "text": "ならない、というのが √n の効きどころです。SE = σ/√n なので、n を10倍にしても SE は √10 ≈ 3.16 倍ぶんしか縮みません。SE を半分にしたいなら n を4倍に、10分の1にしたいなら n を100倍に増やす必要がある。「サンプルを増やせば精度が上がる」という直感は正しいけれど、増えるコストはリニアでも、得られる精度はサブリニアです。"
+
           }
+
         },
+
         {
+
           "@type": "Question",
+
           "name": "母集団の σ が分からないときはどうする？",
+
           "acceptedAnswer": {
+
             "@type": "Answer",
+
             "text": "σ の代わりに標本標準偏差 s を入れて SE = s/√n とします。これだけで終わりではなく、区間推定や検定で使う倍率も z（標準正規）から t（t 分布）に乗り換えます。t は n が小さいほど裾が太く、区間推定の幅が広くなる。SE は同じ「σ/√n の推定値」でも、その上に乗る倍率の出所が標準正規から t 分布に切り替わる、というのがこの段の急所です。"
+
           }
+
         }
+
       ]
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         { "@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/" },
+
         { "@type": "ListItem", "position": 2, "name": "コラム", "item": "https://statplay.sasailab.com/" },
+
         { "@type": "ListItem", "position": 3, "name": "標準偏差と標準誤差の違い" }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
 </head>
 <body class="column-page">
@@ -503,9 +951,13 @@ body.theme-light .progress-bar { box-shadow: none; }
 <div class="hero-impact hero-in-target" id="heroImpact"><span class="hi-sigma">σ</span><span class="hi-slash">/</span><span class="hi-rootn">√n</span></div>
 <h1 class="hero-in-target" id="heroTitle">「ばらつき」と<br/><em>「ばらつきの精度」</em>、似てるけど別物。</h1>
 <p class="hook-sub hero-in-target" id="heroSub">
+
 標準偏差と標準誤差、字も式も似ている。<br/>
+
 でも片方は <strong class="sd">目の前のデータの広がり</strong>、もう片方は <strong class="se">推定のゆらぎ</strong>。<br/>
+
 n を動かすと、2つは別の方向に動き出す。
+
 </p>
 <div class="article-meta hero-in-target" id="heroMeta">
 <span>5分で読める</span>
@@ -529,16 +981,24 @@ n を動かすと、2つは別の方向に動き出す。
 <div class="col-section">
 <h2>同じ「ばらつき」と呼ばれる、別の量</h2>
 <p>
+
 標準偏差（SD）と標準誤差（SE）。字も式もそっくりで、どちらも「ばらつき」と呼ばれる。<b style="color:var(--yellow)">それなのに、文脈によって急に主役が入れ替わる</b>場面に出会うこと、ありませんか。
+
 </p>
 <p>
+
 字も式も似ていて、両方「ばらつき」と呼ばれて、文章の中では区別なしに混ざる。<b style="color:var(--magenta)">n を増やしても下の絵はほとんど動かないのに、上の絵だけが √n で痩せていく</b> ── そんな非対称が、同じデータから不意に現れる場面がある。下の階に「個々のデータ」、上の階に「もし同じ実験をもう一度やったら平均はどれくらい揺れるか」。<b style="color:var(--magenta)">「2階建て」</b> として並べ直してみると、似ていた 2 つは別のフロアに住んでいた、と見え方が変わってくることがあります。
+
 </p>
 <p>
+
 本文では一貫して、<b style="color:var(--magenta)">SD（個々の広がり）</b>と <b style="color:var(--cyan)">SE（平均の精度）</b>を別々の色で塗り分けています。2色の対比として眺めながら読んでもらえると、後半のインタラクティブが触りやすくなるかもしれません。
+
 </p>
 <p>
+
 このコラムが届きたい場所は、<b style="color:var(--text)">SD と SE の違いを 1 文で言えるところ</b>です。「式が似ている」「両方ばらつき」と並んでいた 2 つを別の役割の量として置き直してみると、参考書に戻ったときに同じ場所で詰まりにくくなることがあります。
+
 </p>
 </div>
 <!-- ═══ 02. TWO-TIER STRUCTURE ═══ -->
@@ -546,7 +1006,9 @@ n を動かすと、2つは別の方向に動き出す。
 <div class="col-section">
 <h2>// 二階建てで考える — データの世界と、平均の世界</h2>
 <p>
+
 SD と SE は、住んでいる「世界」が違う量です。
+
 </p>
 <div class="tier-figure">
 <div class="tier-row">
@@ -579,19 +1041,28 @@ SD と SE は、住んでいる「世界」が違う量です。
 <div class="tier-caption">下：個々のデータの広がり（SD ≈ σ）／上：標本平均の精度（SE = σ/√n）</div>
 </div>
 <p>
+
 下の階（1 階）には <b style="color:var(--magenta)">個々のデータ</b>が散らばっている。生徒30人の身長を測れば、ここに30個の点が並ぶ。広がりの目安が <b style="color:var(--magenta)">SD</b>。
+
 </p>
 <p>
+
 上の階（2 階）には <b style="color:var(--cyan)">標本平均</b> が並ぶ。「30人の身長を測って平均を取る」という実験を何回も繰り返したとき、その平均がどう散らばるか。広がりの目安が <b style="color:var(--cyan)">SE</b>。<b style="color:var(--text)">同じデータから派生しているのに、扱っている量のフロアが違う</b> — このコラムは、この見え方をひたすら追いかけてみます。
+
 </p>
 <div class="col-formula">
-<span class="sd">SD（個々の広がり）</span> ≒ σ    /    <span class="se">SE（平均の精度）</span> = σ / √n
+<span class="sd">SD（個々の広がり）</span> ≈ σ    /    <span class="se">SE（平均の精度）</span> = σ / √n
+
 </div>
 <p style="font-size:13px;color:var(--dim);margin-top:-6px;">
-（記号の読み方: <b style="color:var(--text)">σ</b> ＝「シグマ」、母集団の標準偏差を表すギリシャ文字。<b style="color:var(--text)">√n</b> ＝「n の平方根」。<b style="color:var(--text)">≒</b> は「ほぼ等しい」。）
+
+（記号の読み方: <b style="color:var(--text)">σ</b> ＝「シグマ」、母集団の標準偏差を表すギリシャ文字。<b style="color:var(--text)">√n</b> ＝「n の平方根」。<b style="color:var(--text)">≈</b> は「ほぼ等しい」。）
+
 </p>
 <p>
+
 式だけ見ると 1 文字違いに見えます。でも、その 1 文字（√n）のところで「データの世界」と「平均の世界」のフロアが分かれている、という見方をしてみると、後の節が辿りやすくなります。
+
 </p>
 </div>
 <!-- ═══ 03. INTERACTIVE A ═══ -->
@@ -599,10 +1070,14 @@ SD と SE は、住んでいる「世界」が違う量です。
 <div class="col-section">
 <h2>// 触ってみる — n を動かすと、どこが縮む？</h2>
 <p>
+
 題材は <b style="color:var(--text)">生徒30人の身体測定（身長）</b>。母集団は <code>μ=172cm, σ=6cm</code> の正規分布（<b style="color:var(--text)">μ</b>＝「ミュー」、母集団の平均値を表すギリシャ文字）。スライダーで <code>n</code>（1回に集める人数 ＝ サンプル数）を動かしてみてください。
+
 </p>
 <p>
+
 注目してほしいのは <b style="color:var(--magenta)">下の絵（個々のデータ）の散らばりはほぼ変わらない</b>のに、<b style="color:var(--cyan)">上の絵（標本平均）の山だけが √n で痩せていく</b>こと。SD と SE が「別の方向に動く」とはこのことです。
+
 </p>
 <div class="intA-block">
 <div class="intA-controls">
@@ -632,7 +1107,7 @@ SD と SE は、住んでいる「世界」が違う量です。
 </div>
 <p style="margin-top:24px">触ってみると、こんな動きが目に入ってくるはずです。</p>
 <ul style="color:var(--dim); line-height:2; margin:16px 0;">
-<li><b style="color:var(--magenta)">下のドットの広がり（SD）</b>は、n を動かしてもほぼ変わらない（σ ≒ 6cm）。これは「身長そのものの散らばり」の話だから、サンプル数では縮まない。</li>
+<li><b style="color:var(--magenta)">下のドットの広がり（SD）</b>は、n を動かしてもほぼ変わらない（σ ≈ 6cm）。これは「身長そのものの散らばり」の話だから、サンプル数では縮まない。</li>
 <li><b style="color:var(--cyan)">上のヒストグラム（標本平均）の山</b>は、n を増やすと <b>√n で痩せる</b>。中心は μ のままで、幅だけが縮んでいく。</li>
 <li>横並びの SD/SE バーで見ると、SD バーはほぼ固定、SE バーだけが n=30→100→900 と段々短くなる。<b style="color:var(--yellow)">SD/SE = √n</b> がそのまま読み取れる関係です。</li>
 </ul>
@@ -642,21 +1117,32 @@ SD と SE は、住んでいる「世界」が違う量です。
 <div class="col-section">
 <h2>// √n の正体 — 増やしたぶん、まるごと効くわけではない</h2>
 <p>
+
 SE = σ/√n の <b style="color:var(--magenta)">√n</b> は、<b style="color:var(--text)">「サンプルを増やしたとき、平均の精度がどれくらい上がるか」</b>のレートを決める部分。具体的に値を入れてみると、効き方の感覚が掴みやすい。
+
 </p>
 <div class="col-formula">
+
 n=10  →  SE ≈ 6/√10  ≈ <span class="se">1.90</span> cm<br/>
+
 n=100  →  SE ≈ 6/√100 ≈ <span class="se">0.60</span> cm<br/>
+
 n=900  →  SE ≈ 6/√900 ≈ <span class="se">0.20</span> cm
+
 </div>
 <p>
+
 n を 10 → 100（10倍）にすると、SE は 1.90 → 0.60、つまり <b style="color:var(--yellow)">3倍ぶんしか縮まない</b>。10倍縮めたければ n を 100倍（10 → 1000）にする必要がある。<b style="color:var(--cyan)">SE を半分にしたいなら n を4倍</b>、というのが√n の効き方の核です。
+
 </p>
 <p>
-「データを増やせば精度が上がる」という直感は正しい。けれど <b style="color:var(--text)">サンプル数に比例しては縮まない</b>。2倍にしても精度は √2 ≒ 1.4倍ぶんしか上がらない、という性質が背後にあります。アンケートの対象を 30 → 100 → 1000 と増やしてみるとき、ここで一度立ち止まることになる場面です。
+
+「データを増やせば精度が上がる」という直感は正しい。けれど <b style="color:var(--text)">サンプル数に比例しては縮まない</b>。2倍にしても精度は √2 ≈ 1.4倍ぶんしか上がらない、という性質が背後にあります。アンケートの対象を 30 → 100 → 1000 と増やしてみるとき、ここで一度立ち止まることになる場面です。
+
 </p>
 <aside class="col-aside">
 <span class="col-aside-tag">// NOTE</span>母集団の σ が分からない場合は、σ の代わりに標本標準偏差 s を入れて SE = s/√n を使います。このとき信頼区間や検定で使う「倍率」が標準正規（z）から t 分布に乗り換わる、という流れは、関連トピックの「t / χ² / F の家族」セクションで実物を動かせます。
+
 </aside>
 </div>
 <!-- ═══ 05. INTERACTIVE B ═══ -->
@@ -665,21 +1151,28 @@ n を 10 → 100（10倍）にすると、SE は 1.90 → 0.60、つまり <b st
 <h2>// 触ってみる — 同じ「SEバー」が、区間推定にも検定にも住んでいる</h2>
 <aside class="col-aside" style="margin-top:0;">
 <span class="col-aside-tag">// このセクションの前提</span>ここから先、<b style="color:var(--cyan)">区間推定</b>と <b style="color:var(--magenta)">検定</b>が登場します。<b>区間推定</b>＝「真の平均がたぶんこの範囲にいる、というバンド」、<b>検定</b>＝「観測した値が偶然のブレかどうかを判定する道具」とだけ押さえておけば十分です（深掘りは関連トピック「信頼区間」「仮説検定」へ）。このセクションでは、<b style="color:var(--yellow)">「両方の中に同じ SE バーが部品として埋まっている」</b>ことだけが見えれば OK です。
+
 </aside>
 <p>
+
 SE は単独で使うことはほぼなくて、たいてい <b style="color:var(--cyan)">区間推定</b>か <b style="color:var(--magenta)">検定</b>のどちらかの中に部品として入っています。<br/>
+
 左が区間推定（中心 ± 1.96·SE）、右が検定（<code>z = (x̄ − μ₀)/SE</code>。<b style="color:var(--text)">x̄</b>＝「エックスバー」＝標本（手元の n 個）の平均、<b style="color:var(--text)">μ₀</b>＝「ミュー・ゼロ」＝検定で「これだろう」と置いた仮説の値）。<b style="color:var(--yellow)">同じ太さのSEバーが、両方の絵の中に並んで現れています</b>。
+
 </p>
 <div class="intB-controls">
 <label>n
+
 <input aria-label="サンプルサイズ n（B）" id="seBN" max="900" min="10" step="10" type="range" value="30"/>
 <span class="slider-val" id="seBNVal">30</span>
 </label>
 <label>x̄ (cm)
+
 <input aria-label="標本平均 x̄" id="seBXbar" max="178" min="166" step="0.1" type="range" value="173.5"/>
 <span class="slider-val" id="seBXbarVal">173.50</span>
 </label>
 <label>μ₀ (cm)
+
 <input aria-label="帰無仮説の値 μ₀" id="seBMu" max="178" min="166" step="0.1" type="range" value="172.0"/>
 <span class="slider-val" id="seBMuVal">172.00</span>
 </label>
@@ -701,10 +1194,14 @@ SE は単独で使うことはほぼなくて、たいてい <b style="color:var
 <button class="share-btn" data-kind="native" data-share="seCiCanvas" data-title="区間推定と検定に住むSEバー">📤 シェア</button>
 </div>
 <p style="margin-top:24px">
+
 左の区間推定は <b style="color:var(--cyan)">「中心 x̄ から ±1.96·SE 伸ばしたバンド」</b>。右の検定は <b style="color:var(--magenta)">「x̄ と μ₀ のズレを、SE 何個ぶんか」</b>で測る。両者で n を動かしてみると、<b style="color:var(--yellow)">どちらの絵の中の SE バーも同じだけ細くなる</b>動きが現れます。区間推定の幅が狭くなり、同時に検定統計量 z は（同じズレでも）大きくなる。SE が共有部品なので、二つは連動して動いていく。
+
 </p>
 <p>
+
 「区間推定と検定は別の道具」と覚えがちな2つですが、構造を眺めると <b style="color:var(--text)">SE という同じ部品の上に組まれている双子</b>のようにも見えてきます。
+
 </p>
 </div>
 <!-- ═══ ONE-LINER ═══ -->
@@ -748,8 +1245,11 @@ SE は単独で使うことはほぼなくて、たいてい <b style="color:var
 <div class="col-cta">
 <p class="cta-headline">続きは、信頼区間の中で動く SE バーを触ってみるところへ。</p>
 <p class="cta-sub">
+
 SE は単独で使う量というよりは、区間推定の幅や検定の分母として実際に働き出します。<br/>
+
 触って動かす区間推定で、信頼水準を変えると ±k·SE がそのまま伸び縮みする様子を辿ってみてください。
+
 </p>
 </div>
 

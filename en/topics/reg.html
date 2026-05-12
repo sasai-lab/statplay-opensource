@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.">
+
 <meta name="keywords" content="simple linear regression, OLS, ordinary least squares, R squared, residuals, slope, intercept">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Simple Linear Regression — OLS Visualized — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/reg.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/reg.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/reg.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/reg.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Simple Linear Regression — OLS Visualized">
+
 <meta property="og:description" content="Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/reg.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Simple Linear Regression">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Simple Linear Regression — OLS Visualized">
+
 <meta name="twitter:description" content="Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Simple Linear Regression">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Simple Linear Regression — OLS Visualized",
+
       "description": "Click to add points and watch ordinary least squares snap the regression line into place. Residuals, slope β₁, intercept β₀, and R² — all tangible, not algebraic.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Simple linear regression", "Ordinary least squares", "Coefficient of determination R²", "Residuals"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/reg.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Simple Linear Regression"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,33 +248,63 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Simple Linear Regression — OLS Visualized</a></h1>
+
   <p class="topic-lead">Drop one extra point and the line jumps. Once least-squares becomes geometry, β₁ and R² stop reading like cryptography.</p>
+
   <section class="reveal in" id="reg">
+
+
 
 <div class="sec-tag">M.01 / SIMPLE REGRESSION</div>
 
+
+
 <h2 class="sec-title">Simple Regression <span class="sec-sub">— Drawing the OLS Line</span></h2>
+
+
 
 <div class="story-bridge">Up to here, <b>one variable</b> at a time. Real questions involve <b>relationships</b> — height vs. weight, ad spend vs. sales. <span class="next">Simple regression</span> draws one line through two variables — and the <b>t-tests and CIs</b> you just learned power the inference on its slope β̂.</div>
 
+
+
 <p class="sec-desc">
+
     Regression with just one explanatory variable is <b>simple regression</b>. It assumes a linear relationship: when x increases by 1, y moves by β₁.
+
     <b>Ordinary least squares (OLS)</b> picks the line that minimizes the sum of squared vertical residuals.
+
     <b>Click</b> the canvas to add points and watch the line snap into place.
+
     Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
+
   </p>
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — try these in order</b>
+
 <ol>
+
 <li><b>Step 1:</b> Hit "Random 20 pts" → a regression line and R² appear. Check the green bars (residuals).</li>
-<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Feel the leverage of outliers.</li>
+
+<li><b>Step 2:</b> Click far from the line to add <b>one outlier</b> → the line jerks toward it. Watch how far a single point can drag the fit.</li>
+
 <li><b>Step 3:</b> CLEAR and place <b>5 points</b> nearly in a line → R² ≈ 1.0. A perfect linear relationship.</li>
+
 <li><b>Step 4:</b> CLEAR and arrange points in a circle → R² ≈ 0. A line can't capture this pattern.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:reg_main -->
 <div class="panel" data-autorun="regRandom">
 <div class="controls">
@@ -188,7 +325,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:reg_text -->
 
@@ -196,13 +336,13 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x\,,\quad \beta_1 = \frac{\sum(x_i - \bar{x})(y_i - \bar{y})}{\sum(x_i - \bar{x})^2}"></div>
 <p><b>ŷ = β₀ + β₁x (prediction equation)</b><br/>
-・β₁ (slope): average change in y per 1-unit increase in x<br/>
-・β₀ (intercept): predicted y when x = 0 — where the line crosses the y-axis</p>
+• β₁ (slope): average change in y per 1-unit increase in x<br/>
+• β₀ (intercept): predicted y when x = 0 — where the line crosses the y-axis</p>
 <p><b>Breaking down the β₁ formula</b><br/>
-・Numerator Σ(xᵢ − x̄)(yᵢ − ȳ): co-variation — how much x and y move together. Positive when both above/below their means<br/>
-・Denominator Σ(xᵢ − x̄)²: total variation in x alone<br/>
-・The ratio: "co-movement per unit of x-spread" = the slope<br/>
-・More spread in x → more stable slope estimate (larger denominator = less noise)</p>
+• Numerator Σ(xᵢ − x̄)(yᵢ − ȳ): co-variation — how much x and y move together. Positive when both above/below their means<br/>
+• Denominator Σ(xᵢ − x̄)²: total variation in x alone<br/>
+• The ratio: "co-movement per unit of x-spread" = the slope<br/>
+• More spread in x → more stable slope estimate (larger denominator = less noise)</p>
 </div>
 
 <div class="misconception-box">
@@ -256,9 +396,14 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="./mreg.html">M2 Multiple Regression</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -297,7 +442,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -337,9 +485,13 @@
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./corr.html" rel="prev">← Prev</a>
   <a href="./mreg.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

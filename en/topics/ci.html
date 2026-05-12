@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
 <meta name="keywords" content="confidence interval, coverage probability, 95 percent, inferential statistics, common misreading">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Confidence Intervals — What 95% Really Means — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/ci.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Confidence Intervals — What 95% Really Means">
+
 <meta property="og:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/ci.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Confidence Intervals">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Confidence Intervals — What 95% Really Means">
+
 <meta name="twitter:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Confidence Intervals">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Confidence Intervals — What 95% Really Means",
+
       "description": "Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Confidence interval", "Coverage probability", "Correct interpretation of 95%"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/ci.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Confidence Intervals"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,34 +248,65 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Confidence Intervals — What 95% Really Means</a></h1>
+
   <p class="topic-lead">"There's a 95% chance the true value is inside" — actually wrong. Stack a hundred intervals side by side and the real definition becomes visible.</p>
+
   <section class="reveal in" id="ci">
+
+
 
 <div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
 
+
+
 <h2 class="sec-title">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
+
+
 
 <div class="story-bridge">LLN says "at infinity, you're right." But in practice we always have a <b>finite sample</b>. So instead of a single point, <b>drape a net around it</b> — that's a <span class="next">confidence interval</span>. Wider net, easier to catch; narrower, more precise. Watch the trade-off play out.</div>
 
+
+
 <p class="sec-desc">
+
     The <b>95% confidence interval</b> is <b>famously misunderstood</b>.<br/>
+
     It does <b>NOT</b> mean "the true value is inside with 95% probability". The correct reading:
+
     "repeat this sampling many times, and ~95% of the resulting intervals will capture the true value".<br/>
+
     The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
+
     Once the pink share settles around <b>~5%</b>, you've got it.
+
   </p>
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — try these in order</b>
+
 <ol>
+
 <li><b>Step 1:</b> At 95% confidence, n=30, hit ▶ → pink (missed) intervals should be ~5% of the total.</li>
+
 <li><b>Step 2:</b> Drop confidence to <b>80%</b> and regenerate → more pink. Narrower net = more misses.</li>
+
 <li><b>Step 3:</b> Back to 95%, set n to <b>200</b> → intervals get much tighter. The power of large samples.</li>
+
 <li><b>Step 4:</b> Set n to <b>5</b> → intervals are huge. With few samples, you need a wide net to catch the truth.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:ci_main -->
 <div class="panel" data-autorun="ciRun">
 <div class="controls">
@@ -192,7 +330,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:ci_text -->
 
@@ -200,13 +341,13 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
 <p><b>Each part</b><br/>
-・x̄ (sample mean): center of the interval — our best single guess<br/>
-・z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
-・σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
+• x̄ (sample mean): center of the interval — our best single guess<br/>
+• z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
+• σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
 <p><b>How it fits together</b><br/>
-・"center ± multiplier × wobble" casts a net around the truth<br/>
-・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
-・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+• "center ± multiplier × wobble" casts a net around the truth<br/>
+• Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
+• Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
 <p><b>What if σ is unknown?</b><br/>
 The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a class="ln-cyan" href="dists.html#dists-t">t-distribution section</a>.</p>
 </div>
@@ -260,7 +401,7 @@ The formula above assumes the population standard deviation σ is known. In prac
 <a href="../../en/columns/error_types.html" class="fr-card">
   <span class="fr-icon" aria-hidden="true">⚠️</span>
   <span class="fr-body">
-    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts Them Out</span>
     <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
@@ -268,9 +409,14 @@ The formula above assumes the population standard deviation σ is known. In prac
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="./test.html">I4 Hypothesis Testing</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -309,7 +455,10 @@ The formula above assumes the population standard deviation σ is known. In prac
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -349,9 +498,13 @@ The formula above assumes the population standard deviation σ is known. In prac
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./lln.html" rel="prev">← Prev</a>
   <a href="./test.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

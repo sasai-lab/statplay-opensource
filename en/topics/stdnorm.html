@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+
 <meta name="keywords" content="standard normal distribution, N(0,1), z-score, 68-95-99.7 rule, probability density, statistics visualization">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Feel the Standard Normal Distribution — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/stdnorm.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/stdnorm.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/stdnorm.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/stdnorm.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Feel the Standard Normal Distribution">
+
 <meta property="og:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/stdnorm.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Feel the Standard Normal Distribution">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Feel the Standard Normal Distribution">
+
 <meta name="twitter:description" content="Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Feel the Standard Normal Distribution">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Feel the Standard Normal Distribution",
+
       "description": "Drag the slider to see how much of N(0,1) lies within ±k standard deviations. Visualize the 68-95-99.7 rule in motion and build the intuition behind every z-table lookup.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Standard normal distribution", "68-95-99.7 rule", "z-scores and interval probability"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/stdnorm.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Feel the Standard Normal Distribution"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,32 +248,61 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Feel the Standard Normal Distribution</a></h1>
+
   <p class="topic-lead">If z = 1.96 rings a bell, you've already met statistics' universal language — one curve sits beneath every test, every interval, every t-distribution.</p>
+
   <section class="reveal in" id="stdnorm">
+
+
 
 <div class="sec-tag">P.01 / STANDARD NORMAL</div>
 
+
+
 <h2 class="sec-title">Standard Normal <span class="sec-sub">— The Origin of Everything</span></h2>
+
+
 
 <div class="story-bridge">Let's start with the <b>curve</b> that dominates all of statistics — the <span class="next">standard normal</span>. The Central Limit Theorem, hypothesis testing, confidence intervals — everything circles back here. <b>Touch</b> the bell curve first.</div>
 
+
+
 <p class="sec-desc">
+
     Honestly — <b>without this single curve</b>, none of what follows (tests, confidence intervals, the t-distribution, regression) would work.<br/>
+
     The <b>standard normal <code>N(0, 1)</code></b> is a bell curve with mean 0 and standard deviation 1.
+
     The one-line trick "<code>z = (x − μ) / σ</code>" lets <b>every normal distribution</b> collapse onto this same curve — and that's how <b>a single paper table</b> can compute probabilities for the entire world.<br/>
+
     In other words, it's not the final boss of statistics; it's the <b>origin</b>. Once you own this, the rest of the page reads as "applications of the standard normal".
+
   </p>
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — try these in order</b>
+
 <ol>
+
 <li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers about 70%."</li>
+
 <li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>
+
 <li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:stdnorm_68 -->
 <div class="panel">
 
@@ -193,7 +329,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:stdnorm_detail -->
 
@@ -201,24 +340,34 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="z = \frac{x - \mu}{\sigma}\,,\quad \varphi(z) = \frac{1}{\sqrt{2\pi}}\,e^{-z^2/2}"></div>
 <p><b>Left: z = (x − μ) / σ</b><br/>
-・x − μ: distance from the mean<br/>
-・÷ σ: convert to "how many σ away" — a universal ruler<br/>
-・z: a standardized score comparable across any normal distribution</p>
+• x − μ: distance from the mean<br/>
+• ÷ σ: convert to "how many σ away" — a universal ruler<br/>
+• z: a standardized score comparable across any normal distribution</p>
 <p><b>Right: φ(z)</b><br/>
-・e<sup>−z²/2</sup>: maximum at z=0, drops rapidly as |z| grows → the bell shape<br/>
-・1/√(2π): normalizing constant ensuring total area = 1 (probabilities sum to 100%)<br/>
-・φ(z) gives the curve's height (density) at that point; area under the curve = probability</p>
+• e<sup>−z²/2</sup>: maximum at z=0, drops rapidly as |z| grows → the bell shape<br/>
+• 1/√(2π): normalizing constant ensuring total area = 1 (probabilities sum to 100%)<br/>
+• φ(z) gives the curve's height (density) at that point; area under the curve = probability</p>
 </div>
 <!-- /@panel -->
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Standardization Animation</b>
+
 <ol>
+
 <li><b>Step 1:</b> Press ▶ Standardize → the μ=2, σ=1.5 curve morphs smoothly into N(0,1).</li>
+
 <li><b>Step 2:</b> Change μ to <b>−2</b>, σ to <b>2.5</b>, then ▶ again → a totally different curve snaps onto the same pink one.</li>
+
 <li><b>Step 3:</b> Pause the progress slider midway → watch μ approach 0 and σ approach 1 in real time.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:stdnorm_morph -->
 <div class="panel" data-autorun="snAnim">
 
@@ -252,20 +401,35 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- ═══ Related Column ═══ -->
+
 <div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(0,243,255,.2);background:rgba(0,243,255,.03)">
+
 <h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--cyan);margin:0 0 8px;letter-spacing:1px">// RELATED COLUMN</h3>
+
 <p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">Why is Z=(X−μ)/σ called a "universal translator"? This column shows how height, salary, and test scores can all be compared on the same scale — interactively.</p>
+
 <a href="../../en/columns/standardization.html" style="color:var(--cyan);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📐 What Is Standardization? — The Universal Translator for "Normal" →</a>
+
 </div>
+
+
 
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
+
 <a href="../tables/index.html?dist=norm" class="ln-cyan">Interactive Distribution Tables</a> — switch between CDF / upper-tail / two-sided and look up exact values
+
 </div>
 
+
+
 <!-- ═══ Common Misconceptions ═══ -->
+
 <!-- @panel:stdnorm_text -->
 
 <div class="misconception-box">
@@ -303,7 +467,7 @@
 <li><a href="./ci.html">Confidence Interval</a> &mdash; reads the 1.96 in "center ± 1.96 × SE" off the standard normal table to set the CI width</li>
 <li><a href="./test.html">Hypothesis Testing</a> &mdash; lays z-test critical values and the rejection region onto the standard normal to draw the decision line</li>
 <li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; raise df and the t curve slides back into N(0,1) — the family that carries this limit outward</li>
-<li><a href="../../en/columns/deviation.html">"What Is Deviation?" column</a> &mdash; Japan's Hensachi (deviation value) translates the standard normal into school-score units via z × 10 + 50</li>
+<li><a href="../../en/columns/deviation.html">"What Is Hensachi?" column</a> &mdash; Japan's school-ranking score, hensachi, translates the standard normal into score units via z × 10 + 50</li>
 <li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; the standard normal as a universal translator — comparing scores across different units</li>
 </ul>
 </div>
@@ -313,8 +477,8 @@
 <a href="../../en/columns/deviation.html" class="fr-card">
   <span class="fr-icon" aria-hidden="true">📊</span>
   <span class="fr-body">
-    <span class="fr-title">What Is a Deviation Value? — See "Top X%" in 3 Seconds</span>
-    <span class="fr-desc">Japan's Hensachi (deviation value): a 10-point gap holds 5× the rarity. The standard normal in everyday clothes</span>
+    <span class="fr-title">What Is Hensachi? — Japan's School Score Is Just a Rescaled z-Score</span>
+    <span class="fr-desc">Japan's school-ranking score (hensachi) is just a rescaled z-score, 50 + 10·z — a 10-point gap holds about 5× the rarity</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
@@ -329,9 +493,14 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>the normal as a tool <span class="story-arrow">▸</span> <a href="./normal.html">P2 Normal Distribution</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -370,7 +539,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -410,9 +582,13 @@
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a class="empty" aria-hidden="true">—</a>
   <a href="./normal.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

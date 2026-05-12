@@ -18,17 +18,17 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
 <p><b>Left side in plain English</b><br/>
-・"The probability that the average height of n people deviates from the true population mean by ε cm or more"</p>
+• "The probability that the average height of n people deviates from the true population mean by ε cm or more"</p>
 <p><b>What the right side tells us</b><br/>
-・σ²/nε²: an upper bound on that probability. The actual probability may be smaller, but it's at most this value<br/>
-・n is in the denominator → as n grows, the upper bound shrinks toward zero<br/>
-・Translation: "collect more samples and the mean can be made as close to the truth as you like" — that's the Law of Large Numbers</p>
+• σ²/nε²: an upper bound on that probability. The actual probability may be smaller, but it's at most this value<br/>
+• n is in the denominator → as n grows, the upper bound shrinks toward zero<br/>
+• Translation: "collect more samples and the mean can be made as close to the truth as you like" — that's the Law of Large Numbers</p>
 <p><b>Worked example (coin flips)</b><br/>
-・p = 0.5 (probability of heads), σ² = 0.25, ε = 0.01 (within 1%)<br/>
-・n = 100: P ≤ 0.25/(100 × 0.0001) = 25 → the bound exceeds 1, so it says nothing useful<br/>
-・n = 100,000: P ≤ 0.025 → at most 2.5%<br/>
-・n = 1,000,000: P ≤ 0.0025 → at most 0.25%. The mean is virtually pinned to the truth<br/>
-・Chebyshev's inequality gives a loose bound; in practice convergence is much faster</p>
+• p = 0.5 (probability of heads), σ² = 0.25, ε = 0.01 (within 1%)<br/>
+• n = 100: P ≤ 0.25/(100 × 0.0001) = 25 → the bound exceeds 1, so it says nothing useful<br/>
+• n = 100,000: P ≤ 0.025 → at most 2.5%<br/>
+• n = 1,000,000: P ≤ 0.0025 → at most 0.25%. The mean is virtually pinned to the truth<br/>
+• Chebyshev's inequality gives a loose bound; in practice convergence is much faster</p>
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// なぜこの定理が統計学の「免許証」なのか</h3>

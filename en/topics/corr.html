@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
 <meta name="keywords" content="correlation coefficient, Pearson, scatter plot, covariance, Anscombe, R squared, statistics">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Correlation — Feel r Through Scatter Plots — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/corr.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Correlation — Feel r Through Scatter Plots">
+
 <meta property="og:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/corr.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Correlation">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Correlation — Feel r Through Scatter Plots">
+
 <meta name="twitter:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Correlation">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
 
 
+
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Correlation — Feel r Through Scatter Plots",
+
       "description": "Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Correlation coefficient", "Covariance", "R²", "Anscombe's quartet"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/corr.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Correlation"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -140,47 +247,87 @@
   </div>
 </nav>
 
+
+
 <div class="topic-header-row">
+
 <div class="topic-breadcrumb" aria-label="Breadcrumb">
+
   <a href="../../en/index.html">StatPlay</a><span class="sep">›</span>
+
   <a href="../../en/index.html#corr">Topics</a><span class="sep">›</span>
+
   <span class="current-page">Correlation</span>
+
 </div>
+
 <nav class="topic-top-nav" aria-label="Previous / Next topic">
   <a href="./anova.html" rel="prev">← Prev</a>
   <a href="./reg.html" rel="next">Next →</a>
 </nav>
+
 </div>
 
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Correlation — Feel r Through Scatter Plots</a></h1>
+
   <p class="topic-lead">Anscombe's quartet — four scatterplots that look nothing alike yet share the exact same r. A single number can't see what your eyes can.</p>
+
   <section class="reveal in" id="corr">
+
+
 
 <div class="sec-tag">M.00 / CORRELATION</div>
 
+
+
 <h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
+
+
 
 <div class="story-bridge">The chi-squared test quantified associations between <b>categories</b>. But how do we measure the relationship between <b>continuous numbers</b> — height vs. weight, study time vs. test scores? → The <span class="next">correlation coefficient r</span> compresses "how much they move together" into a single number from <b>−1 to +1</b>.</div>
 
+
+
 <p class="sec-desc">
+
     The <b>correlation coefficient r</b> measures whether two variables move together.
+
     +1 means a perfect positive linear relationship, −1 a perfect negative one, 0 means no linear relationship.
+
     <b>Click</b> the canvas to add points and watch r update in real time.
+
     The yellow dashed lines mark the means, splitting the space into four quadrants — more points in <b>green quadrants</b> means positive correlation, more in <b>red</b> means negative.
+
     This coloring is the "tug-of-war of signs" in the formula Σ(x−x̄)(y−ȳ).
+
   </p>
+
 <div class="sim-layout">
 
+
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Feel the Correlation</b>
+
 <ol>
+
 <li><b>Step 1:</b> Set r = 0.80, click Generate → an upward-sloping band. Points cluster in the <b>green quadrants</b>.</li>
+
 <li><b>Step 2:</b> Change to r = −0.60, Generate → downward slope. More points in the <b>red quadrants</b>.</li>
+
 <li><b>Step 3:</b> Set r = 0.00, Generate → points spread evenly across all four quadrants. A "cloud," not a band.</li>
+
 <li><b>Step 4:</b> CLEAR, then manually place a <b>U-shape</b> → r ≈ 0 yet there's an obvious pattern! r only captures <b>linear</b> relationships.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:corr_main -->
 <div class="panel" data-autorun="corrGen">
 <div class="controls">
@@ -212,7 +359,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:corr_detail_formula -->
 
@@ -220,31 +370,43 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \cdot \sum(y_i - \bar{y})^2}}"></div>
 <p><b>Numerator — the four-quadrant story</b><br/>
-・(xᵢ − x̄): how far each point's x is from the mean<br/>
-・(yᵢ − ȳ): how far each point's y is from the mean<br/>
-・Multiply: same direction → <b>positive</b> (green quadrants), opposite → <b>negative</b> (red quadrants)<br/>
-・Sum: a tug-of-war between positive and negative contributions. Positive wins → r &gt; 0, negative wins → r &lt; 0</p>
+• (xᵢ − x̄): how far each point's x is from the mean<br/>
+• (yᵢ − ȳ): how far each point's y is from the mean<br/>
+• Multiply: same direction → <b>positive</b> (green quadrants), opposite → <b>negative</b> (red quadrants)<br/>
+• Sum: a tug-of-war between positive and negative contributions. Positive wins → r &gt; 0, negative wins → r &lt; 0</p>
 <p><b>Denominator</b><br/>
-・Divides by each variable's standard deviation to normalize r into −1 ≤ r ≤ 1<br/>
-・Unit-free: centimeters or inches give the same r</p>
+• Divides by each variable's standard deviation to normalize r into −1 ≤ r ≤ 1<br/>
+• Unit-free: centimeters or inches give the same r</p>
 <div class="formula" data-tex="R^2 = r^2"></div>
 <p><b>What R² means</b><br/>
-・"Fraction of y's variation explained by a linear relationship with x"<br/>
-・R² = 0.64 → 64% of y's spread is accounted for by x<br/>
-・The remaining 36% comes from other factors or randomness</p>
+• "Fraction of y's variation explained by a linear relationship with x"<br/>
+• R² = 0.64 → 64% of y's spread is accounted for by x<br/>
+• The remaining 36% comes from other factors or randomness</p>
 </div>
 <!-- /@panel -->
+
 <div class="sim-layout">
 
+
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Peek Behind the Numbers</b>
+
 <ol>
+
 <li><b>Step 1:</b> Watch the animation. Points appear one by one, patterns look totally different…</li>
+
 <li><b>Step 2:</b> Check each plot's r ≈ 0.816. They're all nearly identical!</li>
+
 <li><b>Step 3:</b> Regression lines appear → lines are nearly identical too. Yet II is curved, III has an outlier, IV is dominated by one point.</li>
+
 <li><b>Step 4:</b> Click "Replay" to watch again. Numbers alone don't tell the whole story.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:corr_anscombe -->
 <div class="panel" data-autorun="anscombeReplay">
 <h3 class="cy-head cy-head--compact"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
@@ -257,7 +419,9 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
 <!-- @panel:corr_text -->
 
 <div class="detail-section">
@@ -323,14 +487,21 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="./reg.html">M1 Simple Regression</a></div>
+
 </section>
+
 </main>
+
+
 
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./anova.html" rel="prev">← Prev</a>
   <a href="./reg.html" rel="next">Next →</a>
 </nav>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -369,7 +540,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -409,5 +583,8 @@
     </ol>
   </details>
 </nav>
+
 </body>
+
 </html>
+

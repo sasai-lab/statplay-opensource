@@ -17,16 +17,16 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
 <p><b>What this says in plain English</b><br/>
-・"Take the average of n test scores, subtract the true mean, divide by the standard error — and no matter what the original scores' distribution looks like, as n grows, this ratio follows a standard normal distribution"</p>
+• "Take the average of n test scores, subtract the true mean, divide by the standard error — and no matter what the original scores' distribution looks like, as n grows, this ratio follows a standard normal distribution"</p>
 <p><b>Each part</b><br/>
-・X̄ₙ − μ: the gap between the sample mean and the true mean — raw units make this hard to interpret<br/>
-・÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
-・→d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
+• X̄ₙ − μ: the gap between the sample mean and the true mean — raw units make this hard to interpret<br/>
+• ÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
+• →d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
 <p><b>Why this unlocks confidence intervals and hypothesis tests</b><br/>
-・Thanks to the Central Limit Theorem, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
-・The confidence interval X̄ ± 1.96·σ/√n works because the Central Limit Theorem guarantees ±1.96σ covers 95%<br/>
-・The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the Central Limit Theorem<br/>
-・In short, the Central Limit Theorem is "the reason normal-distribution tools work on everything"</p>
+• Thanks to the Central Limit Theorem, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
+• The confidence interval X̄ ± 1.96·σ/√n works because the Central Limit Theorem guarantees ±1.96σ covers 95%<br/>
+• The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the Central Limit Theorem<br/>
+• In short, the Central Limit Theorem is "the reason normal-distribution tools work on everything"</p>
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// なぜ「平均を取る」と正規分布に化けるのか</h3>
@@ -54,8 +54,8 @@
 <h3>// Why does averaging produce a bell curve?</h3>
 <p>Intuitively — when you average n values, individual outliers cancel out. High values offset low values, making extreme averages rare. The pattern of "how rare" matches the bell curve exactly.</p>
 <p>Try it in the simulator above:<br/>
-・Pick the exponential distribution (heavily right-skewed), set n=5 → the mean distribution is still skewed<br/>
-・Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
+• Pick the exponential distribution (heavily right-skewed), set n=5 → the mean distribution is still skewed<br/>
+• Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
 
 <h3>// Is "n ≥ 30" really enough?</h3>
 <p>Textbooks often say "n ≥ 30 is sufficient for the Central Limit Theorem." This isn't a mathematical threshold — it's a rule of thumb.</p>

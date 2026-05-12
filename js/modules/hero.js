@@ -10,6 +10,17 @@ export function initHero(){
     });
   }
   if(!document.getElementById('heroCanvas')) return;
+  // Defer the particle-animation setup until after first paint. setup() reads
+  // canvas.clientWidth (and getComputedStyle via themeColors), which would
+  // otherwise force a synchronous layout/style pass over the whole page during
+  // the critical module-init phase — the single most expensive long task at load.
+  const start=()=>{ try{ setupHero(); }catch(e){ console.error(e); } };
+  if(typeof window.requestIdleCallback==='function') window.requestIdleCallback(start,{timeout:400});
+  else requestAnimationFrame(start);
+}
+
+function setupHero(){
+  if(!document.getElementById('heroCanvas')) return;
   /* --------------------------------------------------------------
      CONCEPT: 「公式の暗記」→「あ、そうか！」と気づく瞬間
      "rote formulas" → "aha!" moment

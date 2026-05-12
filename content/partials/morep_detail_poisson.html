@@ -16,13 +16,13 @@
 <h3>// Formula used here — Poisson</h3>
 <div class="formula" data-tex="P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}"></div>
 <p><b>Worked example (average 3 emails per hour — probability of exactly 5?)</b><br/>
-・λ=3, k=5<br/>
-・λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
-・e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
-・5! = 120: we don't care about the order of the 5 arrivals<br/>
-・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
+• λ=3, k=5<br/>
+• λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
+• e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
+• 5! = 120: we don't care about the order of the 5 arrivals<br/>
+• P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
 <p><b>Connection to binomial — worth remembering</b><br/>
-・Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
-・Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
-・The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
+• Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
+• Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
+• The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
 </div>

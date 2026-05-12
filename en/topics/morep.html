@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+
 <meta name="keywords" content="binomial distribution, poisson distribution, exponential distribution, discrete, memoryless">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Binomial, Poisson, and Exponential Distributions — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/morep.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/morep.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/morep.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/morep.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Binomial, Poisson, and Exponential Distributions">
+
 <meta property="og:description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/morep.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Binomial, Poisson, and Exponential Distributions">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Binomial, Poisson, and Exponential Distributions">
+
 <meta name="twitter:description" content="Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Binomial, Poisson, and Exponential Distributions">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Binomial, Poisson, and Exponential Distributions",
+
       "description": "Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Binomial distribution B(n,p)", "Poisson distribution Pois(λ)", "Exponential distribution Exp(λ)"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/morep.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Binomial, Poisson, and Exponential Distributions"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,28 +248,53 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Binomial, Poisson, and Exponential Distributions</a></h1>
+
   <p class="topic-lead">Success counts, event counts, waiting times — three distributions that look unrelated until you slide n and p and watch them merge into one road.</p>
+
   <section class="reveal in" id="morep">
+
+
 
 <div class="sec-tag">P.05 / DISCRETE + EXPONENTIAL</div>
 
+
+
 <h2 class="sec-title">Discrete &amp; Exponential <span class="sec-sub">— Counting Probability Models</span></h2>
+
+
 
 <div class="story-bridge">The normal is continuous and symmetric. But real data isn't always — coin flips are discrete, arrivals follow Poisson, wait times are exponential. Meet the <span class="next">other distributions</span> that round out the toolkit.</div>
 
+
+
 <div class="sec-desc">Three core distributions every stats learner runs into: <b>binomial</b>, <b>Poisson</b>, and <b>exponential</b>. Slide through success counts, event counts, and waiting times to feel the bridge between discrete and continuous.</div>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Binomial</b>
+
 <ol>
+
 <li><b>Step 1:</b> n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
+
 <li><b>Step 2:</b> Set n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) below — nearly identical.</li>
+
 <li><b>Step 3:</b> Keep n large, p small → watch binomial converge toward Poisson.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:morep_binom -->
 <div class="panel">
 
@@ -180,7 +312,10 @@
 <div class="sec-bridge">As n → ∞ with np → λ, the binomial approaches Poisson.</div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:morep_detail_binom -->
 
@@ -188,26 +323,36 @@
 <h3>// Formula used here — Binomial</h3>
 <div class="formula" data-tex="P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}"></div>
 <p><b>Worked example (flip a coin 10 times, probability of exactly 3 heads)</b><br/>
-・p=0.5, n=10, k=3<br/>
-・p³ = 0.5³: probability of "3 heads in a row"<br/>
-・(1−p)⁷ = 0.5⁷: probability of "remaining 7 are all tails"<br/>
-・Multiply: probability of one specific sequence like HHHTTTTTTТ<br/>
-・But there are other arrangements with exactly 3 heads (HTHTTT… etc.). Total: ₁₀C₃ = 120 ways<br/>
-・So P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
+• p=0.5, n=10, k=3<br/>
+• p³ = 0.5³: probability of "3 heads in a row"<br/>
+• (1−p)⁷ = 0.5⁷: probability of "remaining 7 are all tails"<br/>
+• Multiply: probability of one specific sequence like HHHTTTTTTТ<br/>
+• But there are other arrangements with exactly 3 heads (HTHTTT… etc.). Total: ₁₀C₃ = 120 ways<br/>
+• So P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
 <p><b>Key properties</b><br/>
-・Mean = np (10 × 0.5 = 5 — matches intuition)<br/>
-・Variance = np(1−p). Variance is largest when p = 0.5 — outcomes are most uncertain when it's a coin toss</p>
+• Mean = np (10 × 0.5 = 5 — matches intuition)<br/>
+• Variance = np(1−p). Variance is largest when p = 0.5 — outcomes are most uncertain when it's a coin toss</p>
 </div>
 <!-- /@panel -->
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Poisson</b>
+
 <ol>
+
 <li><b>Step 1:</b> λ=1 → concentrated near 0. λ=5 → approaches a bell shape.</li>
+
 <li><b>Step 2:</b> Raise λ to <b>20</b> → looks just like a normal bell (Central Limit Theorem preview).</li>
+
 <li><b>Step 3:</b> λ is both the mean and variance. Set λ=3 and check "E[X] = Var[X] = λ = 3.00" at the top-left of the graph.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:morep_poisson -->
 <div class="panel">
 
@@ -223,7 +368,10 @@
 <div class="sec-bridge">As λ grows, Poisson approaches the normal distribution.</div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:morep_detail_poisson -->
 
@@ -231,26 +379,36 @@
 <h3>// Formula used here — Poisson</h3>
 <div class="formula" data-tex="P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}"></div>
 <p><b>Worked example (average 3 emails per hour — probability of exactly 5?)</b><br/>
-・λ=3, k=5<br/>
-・λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
-・e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
-・5! = 120: we don't care about the order of the 5 arrivals<br/>
-・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
+• λ=3, k=5<br/>
+• λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
+• e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
+• 5! = 120: we don't care about the order of the 5 arrivals<br/>
+• P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
 <p><b>Connection to binomial — worth remembering</b><br/>
-・Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
-・Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
-・The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
+• Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
+• Try n=50, p=0.06 in the simulator above — it matches Poisson(λ=3) almost perfectly<br/>
+• The defining property: <b>mean = variance = λ</b>. If this doesn't hold for your data, Poisson is the wrong model</p>
 </div>
 <!-- /@panel -->
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Exponential</b>
+
 <ol>
+
 <li><b>Step 1:</b> λ=1 → mean wait = 1. λ=2 → mean wait = 0.5. Larger λ = "happens sooner."</li>
+
 <li><b>Step 2:</b> Set λ to 0.1 → long tail. Rare events have long waits.</li>
+
 <li><b>Step 3:</b> Memoryless: having waited 10 min doesn't change how much longer you'll wait.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:morep_exp -->
 <div class="panel">
 
@@ -266,7 +424,10 @@
 <div class="sec-bridge">Memoryless: past waiting time tells you nothing about the future.</div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:morep_text -->
 
@@ -274,19 +435,19 @@
 <h3>// Formula used here — Exponential</h3>
 <div class="formula" data-tex="f(x) = \lambda e^{-\lambda x}\,,\quad P(X &gt; t) = e^{-\lambda t}"></div>
 <p><b>Worked example (buses arrive every 5 min on average. Probability of waiting more than 10 min?)</b><br/>
-・λ = 1/5 (0.2 per minute), t = 10<br/>
-・P(X &gt; 10) = e⁻⁰·²ˣ¹⁰ = e⁻² ≈ 0.135 → about 13.5%<br/>
-・The right formula gives "probability of waiting t or more." It drops rapidly toward zero as t grows</p>
+• λ = 1/5 (0.2 per minute), t = 10<br/>
+• P(X &gt; 10) = e⁻⁰·²ˣ¹⁰ = e⁻² ≈ 0.135 → about 13.5%<br/>
+• The right formula gives "probability of waiting t or more." It drops rapidly toward zero as t grows</p>
 <p><b>Mirror relationship with Poisson</b><br/>
-・Poisson counts "how many events in a fixed time" (count distribution)<br/>
-・Exponential measures "how long until the next event" (time distribution)<br/>
-・Same λ, two perspectives — one for counts, one for waiting times</p>
+• Poisson counts "how many events in a fixed time" (count distribution)<br/>
+• Exponential measures "how long until the next event" (time distribution)<br/>
+• Same λ, two perspectives — one for counts, one for waiting times</p>
 <p><b>Memorylessness — the defining feature of the exponential</b><br/>
-・Even after waiting 10 minutes, the probability of "arriving within the next 5 min" is the same as for someone who just showed up<br/>
-・"I've waited a long time so it must come soon" doesn't apply<br/>
-・This only holds when the event rate is constant over time (e.g., radioactive decay)<br/>
-・Real buses have schedules, so real waiting is not memoryless<br/>
-・The opposite, in fact: with a schedule, the longer you've waited the closer the next bus is — so arrival probability rises with waiting time. That's what being non-memoryless actually looks like</p>
+• Even after waiting 10 minutes, the probability of "arriving within the next 5 min" is the same as for someone who just showed up<br/>
+• "I've waited a long time so it must come soon" doesn't apply<br/>
+• This only holds when the event rate is constant over time (e.g., radioactive decay)<br/>
+• Real buses have schedules, so real waiting is not memoryless<br/>
+• The opposite, in fact: with a schedule, the longer you've waited the closer the next bus is — so arrival probability rises with waiting time. That's what being non-memoryless actually looks like</p>
 </div>
 
 <div class="detail-section">
@@ -357,6 +518,8 @@ Normal approximation           Exponential</div>
 </div>
 <!-- /@panel -->
 
+
+
 <!-- @panel:morep_memoryless -->
 <div class="panel">
 
@@ -385,6 +548,8 @@ Normal approximation           Exponential</div>
 </div>
 </div>
 <!-- /@panel -->
+
+
 
 <!-- @panel:morep_callcenter -->
 <div class="panel">
@@ -421,9 +586,15 @@ Normal approximation           Exponential</div>
 </div>
 <!-- /@panel -->
 
+
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>averages become normal <span class="story-arrow">▸</span> <a href="./clt.html">I1 Central Limit Theorem</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -462,7 +633,10 @@ Normal approximation           Exponential</div>
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -502,9 +676,13 @@ Normal approximation           Exponential</div>
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./bayes.html" rel="prev">← Prev</a>
   <a href="./clt.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

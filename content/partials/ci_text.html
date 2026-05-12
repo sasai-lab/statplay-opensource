@@ -16,13 +16,13 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
 <p><b>Each part</b><br/>
-・x̄ (sample mean): center of the interval — our best single guess<br/>
-・z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
-・σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
+• x̄ (sample mean): center of the interval — our best single guess<br/>
+• z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
+• σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
 <p><b>How it fits together</b><br/>
-・"center ± multiplier × wobble" casts a net around the truth<br/>
-・Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
-・Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+• "center ± multiplier × wobble" casts a net around the truth<br/>
+• Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
+• Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
 <p><b>What if σ is unknown?</b><br/>
 The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a href="dists.html#dists-t" class="ln-cyan">t-distribution section</a>.</p>
 </div>

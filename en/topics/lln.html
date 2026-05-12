@@ -1,54 +1,98 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta name="description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+
+<meta name="description" content="See sample averages march toward the true mean as the trial count grows. A live animation that shows the Law of Large Numbers in action — no formulas required.">
+
 <meta name="keywords" content="law of large numbers, LLN, trial count, sample mean, convergence to expectation">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>The Law of Large Numbers — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/lln.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="The Law of Large Numbers">
-<meta property="og:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+
+<meta property="og:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that shows the Law of Large Numbers in action — no formulas required.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/lln.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — The Law of Large Numbers">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="The Law of Large Numbers">
-<meta name="twitter:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.">
+
+<meta name="twitter:description" content="See sample averages march toward the true mean as the trial count grows. A live animation that shows the Law of Large Numbers in action — no formulas required.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — The Law of Large Numbers">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "LearningResource",
       "name": "The Law of Large Numbers",
-      "description": "See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.",
+      "description": "See sample averages march toward the true mean as the trial count grows. A live animation that shows the Law of Large Numbers in action — no formulas required.",
       "inLanguage": "en",
       "educationalLevel": "intermediate",
       "learningResourceType": "interactive visualization",
@@ -96,13 +140,23 @@
     }
   ]
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,34 +195,65 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">The Law of Large Numbers</a></h1>
+
   <p class="topic-lead">Ten heads in a row? Not weird. Ten thousand flips? Almost exactly half. The reason data can ever count as evidence sits right here.</p>
+
   <section class="reveal in" id="lln">
+
+
 
 <div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
 
+
+
 <h2 class="sec-title">Law of Large Numbers <span class="sec-sub">— Converging to Truth</span></h2>
+
+
 
 <div class="story-bridge">The Central Limit Theorem showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. The Central Limit Theorem describes the <i>shape</i>; LLN says <b>the center won't run away</b>.</div>
 
+
+
 <p class="sec-desc">
+
     10 heads in a row at the start of a coin-flip? Not that weird.
+
     But flip it <b>10,000 times</b> and the head-ratio locks onto <b>almost exactly 0.5</b>.<br/>
+
     That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
+
     <b>This is why statistics counts as evidence, not a vague hunch.</b>
+
 </p>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — try these in order</b>
+
 <ol>
+
 <li><b>Step 1:</b> Set p=0.5, hit ▶ → the line wobbles wildly at first, then gets pulled toward 0.5.</li>
+
 <li><b>Step 2:</b> RESET and run again → the early path is different every time, but it always converges.</li>
+
 <li><b>Step 3:</b> Change p to <b>0.8</b> and simulate → the red line now converges to 0.8.</li>
+
 <li><b>Step 4:</b> Set p to <b>0.05</b> (rare event) → it hugs zero early on, but still converges to p. The law holds.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:lln_main -->
 <div class="panel" data-autorun="llnRun">
 <div class="controls">
@@ -189,7 +274,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:lln_text -->
 
@@ -197,17 +285,17 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
 <p><b>Left side in plain English</b><br/>
-・"The probability that the average height of n people deviates from the true population mean by ε cm or more"</p>
+• "The probability that the average height of n people deviates from the true population mean by ε cm or more"</p>
 <p><b>What the right side tells us</b><br/>
-・σ²/nε²: an upper bound on that probability. The actual probability may be smaller, but it's at most this value<br/>
-・n is in the denominator → as n grows, the upper bound shrinks toward zero<br/>
-・Translation: "collect more samples and the mean can be made as close to the truth as you like" — that's the Law of Large Numbers</p>
+• σ²/nε²: an upper bound on that probability. The actual probability may be smaller, but it's at most this value<br/>
+• n is in the denominator → as n grows, the upper bound shrinks toward zero<br/>
+• Translation: "collect more samples and the mean can be made as close to the truth as you like" — that's the Law of Large Numbers</p>
 <p><b>Worked example (coin flips)</b><br/>
-・p = 0.5 (probability of heads), σ² = 0.25, ε = 0.01 (within 1%)<br/>
-・n = 100: P ≤ 0.25/(100 × 0.0001) = 25 → the bound exceeds 1, so it says nothing useful<br/>
-・n = 100,000: P ≤ 0.025 → at most 2.5%<br/>
-・n = 1,000,000: P ≤ 0.0025 → at most 0.25%. The mean is virtually pinned to the truth<br/>
-・Chebyshev's inequality gives a loose bound; in practice convergence is much faster</p>
+• p = 0.5 (probability of heads), σ² = 0.25, ε = 0.01 (within 1%)<br/>
+• n = 100: P ≤ 0.25/(100 × 0.0001) = 25 → the bound exceeds 1, so it says nothing useful<br/>
+• n = 100,000: P ≤ 0.025 → at most 2.5%<br/>
+• n = 1,000,000: P ≤ 0.0025 → at most 0.25%. The mean is virtually pinned to the truth<br/>
+• Chebyshev's inequality gives a loose bound; in practice convergence is much faster</p>
 </div>
 
 <div class="detail-section">
@@ -282,9 +370,14 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>how to quantify uncertainty with finite n <span class="story-arrow">▸</span> <a href="./ci.html">I3 Confidence Interval</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -323,7 +416,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -363,9 +459,13 @@
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./clt.html" rel="prev">← Prev</a>
   <a href="./ci.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

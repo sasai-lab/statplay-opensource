@@ -18,17 +18,17 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="t_k = \frac{Z}{\sqrt{\chi^2_k / k}}\,,\quad \chi^2_k = \sum_{i=1}^{k} Z_i^2\,,\quad F_{m,n} = \frac{\chi^2_m / m}{\chi^2_n / n}"></div>
 <p><b>All three are children of N(0,1)</b><br/>
-・Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
+• Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
 <p><b>χ² distribution: square Z's and add them up → "total spread"</b><br/>
-・Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
-・As k grows the shape becomes more symmetric (a consequence of the Central Limit Theorem!)</p>
+• Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
+• As k grows the shape becomes more symmetric (a consequence of the Central Limit Theorem!)</p>
 <p><b>t distribution: Z divided by an estimated σ → "normal when σ is unknown"</b><br/>
-・t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
-・Small k (little data) → unstable σ estimate → fatter tails<br/>
-・k → ∞: denominator stabilizes at 1, and t becomes exactly Z (converges to standard normal)</p>
+• t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
+• Small k (little data) → unstable σ estimate → fatter tails<br/>
+• k → ∞: denominator stabilizes at 1, and t becomes exactly Z (converges to standard normal)</p>
 <p><b>F distribution: ratio of two χ²'s → "ratio of two variances"</b><br/>
-・Used to test whether group A and group B have the same variance<br/>
-・Numerator and denominator have different df's — swapping them gives a different distribution (careful!)</p>
+• Used to test whether group A and group B have the same variance<br/>
+• Numerator and denominator have different df's — swapping them gives a different distribution (careful!)</p>
 </div>
 <div data-lang="ja" class="detail-section">
 <h3>// 自由度 (df) って結局なに？</h3>
@@ -60,14 +60,14 @@
 <h3>// What is degrees of freedom (df), really?</h3>
 <p>The name itself rarely conveys the meaning. One way to read it: "the number of data values free to vary."</p>
 <p>Example: three test scores with a known mean of 60.<br/>
-・Student 1: 70 (free)<br/>
-・Student 2: 55 (free)<br/>
-・Student 3: ? → 60×3 − 70 − 55 = 55 (forced)<br/>
+• Student 1: 70 (free)<br/>
+• Student 2: 55 (free)<br/>
+• Student 3: ? → 60×3 − 70 − 55 = 55 (forced)<br/>
 → 3 students but only 2 free → df = n−1 = 2</p>
 <p>What happens when df is small:<br/>
-・Less information → less stable estimates → wider tails (extreme values more likely)<br/>
-・t distribution at df = 1 has very fat tails; at df = 30 it's nearly indistinguishable from normal<br/>
-・Move the df slider in the simulator above to see this in action</p>
+• Less information → less stable estimates → wider tails (extreme values more likely)<br/>
+• t distribution at df = 1 has very fat tails; at df = 30 it's nearly indistinguishable from normal<br/>
+• Move the df slider in the simulator above to see this in action</p>
 
 <h3>// When to use which? Quick reference</h3>
 <table>

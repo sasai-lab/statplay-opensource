@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
 <meta name="keywords" content="probability, conditional probability, addition rule, Venn diagram, independence, multiplication rule">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Probability Rules — Venn Diagrams — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/prob.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Probability Rules — Venn Diagrams">
+
 <meta property="og:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/prob.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Probability Rules">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Probability Rules — Venn Diagrams">
+
 <meta name="twitter:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Probability Rules">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Probability Rules — Venn Diagrams",
+
       "description": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Addition rule", "Conditional probability P(A|B)", "Event independence"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/prob.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Probability Rules"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,40 +248,77 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Probability Rules — Venn Diagrams</a></h1>
+
   <p class="topic-lead">P(A∪B), P(A|B) — none of it needs memorizing once you stop seeing formulas and start seeing two overlapping circles.</p>
+
   <section class="reveal in" id="prob">
+
+
 
 <div class="sec-tag">P.03 / PROBABILITY RULES</div>
 
+
+
 <h2 class="sec-title">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
+
+
 
 <div class="story-bridge">You've got the shape of the normal. Now let's step back to the <b>foundations</b> — the probability rules that make all of it work. <span class="next">Addition, multiplication, and conditional probability</span> visualized as overlapping areas.</div>
 
+
+
 <p class="sec-desc">
+
     Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br/>
+
 <b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
+
     Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br/>
+
     Press the <b>Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
+
   </p>
 
+
+
 <div class="example-box">
+
 <b>Concrete example</b><br/>
+
     Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br/>
+
     A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br/>
+
 <span class="inline-dim">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+
 </div>
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — try these in order</b>
+
 <ol>
+
 <li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → check the <b>P(A∪B)</b> readout below the graph: it shows <b>0.58</b>. That's 0.4+0.3−0.12, the addition rule in action.</li>
+
 <li><b>Step 2:</b> Press "Set Independent" → P(A∩B) auto-adjusts to P(A)·P(B). That's what independence means.</li>
+
 <li><b>Step 3:</b> Drag P(A∩B) near <b>0</b> → the circles separate. This is "mutually exclusive" (can't happen together).</li>
+
 <li><b>Step 4:</b> Push P(A∩B) close to P(B) → the <b>P(A|B)</b> readout approaches 1. If B happens, A almost certainly happens too.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:prob_venn -->
 <div class="panel">
 
@@ -203,7 +347,10 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <!-- @panel:prob_text -->
 
@@ -211,16 +358,16 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
 <p><b>Left: Conditional probability P(A|B)</b><br/>
-・P(A∩B): probability both A and B happen (the overlap in a Venn diagram)<br/>
-・÷ P(B): restrict the universe to "B happened"<br/>
-・Meaning: within the world where B occurred, what fraction also had A?</p>
+• P(A∩B): probability both A and B happen (the overlap in a Venn diagram)<br/>
+• ÷ P(B): restrict the universe to "B happened"<br/>
+• Meaning: within the world where B occurred, what fraction also had A?</p>
 <p><b>Right: Addition rule P(A∪B)</b><br/>
-・P(A) + P(B): naively adding double-counts the overlap<br/>
-・− P(A∩B): subtract it once to correct<br/>
-・If mutually exclusive (A∩B = 0): just add — no overlap to worry about</p>
+• P(A) + P(B): naively adding double-counts the overlap<br/>
+• − P(A∩B): subtract it once to correct<br/>
+• If mutually exclusive (A∩B = 0): just add — no overlap to worry about</p>
 <p><b>Connection to independence</b><br/>
-・A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
-・Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
+• A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
+• Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
 </div>
 
 <div class="misconception-box">
@@ -276,15 +423,26 @@ Two mutually exclusive events (with P &gt; 0) are never independent. If A happen
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <!-- ═══ Related Column ═══ -->
+
 <div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,0,128,.15);background:rgba(255,0,128,.03)">
+
 <h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--magenta);margin:0 0 8px;letter-spacing:1px">// RELATED COLUMN</h3>
+
 <p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">"In a class of 23, the chance of a shared birthday exceeds 50%." See how far off our probability intuition can be — through simulation.</p>
+
 <a href="../../en/columns/birthday.html" style="color:var(--magenta);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 The Birthday Paradox — 50% with just 23 people →</a>
+
 </div>
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="./bayes.html">P4 Bayes' Theorem</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -323,7 +481,10 @@ Two mutually exclusive events (with P &gt; 0) are never independent. If A happen
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -363,9 +524,13 @@ Two mutually exclusive events (with P &gt; 0) are never independent. If A happen
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./normal.html" rel="prev">← Prev</a>
   <a href="./bayes.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

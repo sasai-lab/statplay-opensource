@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
 <meta name="keywords" content="chi-squared test, goodness of fit, test of independence, contingency table, expected frequency">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Chi-Squared Test — Goodness-of-Fit & Independence — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/chitest.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/chitest.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/chitest.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/chitest.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Chi-Squared Test — Goodness-of-Fit & Independence">
+
 <meta property="og:description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/chitest.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Chi-Squared Test">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Chi-Squared Test — Goodness-of-Fit & Independence">
+
 <meta name="twitter:description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Chi-Squared Test">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Chi-Squared Test — Goodness-of-Fit & Independence",
+
       "description": "Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/chitest.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Chi-Squared Test"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,32 +248,61 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Chi-Squared Test — Goodness-of-Fit & Independence</a></h1>
+
   <p class="topic-lead">Whether a die is fair, whether two categorical variables are independent — the same formula answers both. Observed minus expected, compressed into one number.</p>
+
   <section class="reveal in" id="chitest">
+
+
 
 <div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
 
+
+
 <h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
+
+
 
 <div class="story-bridge">So far we've tested <b>means</b>. But some data is purely <b>categorical</b> — survey choices, dice outcomes, disease × smoking. The <span class="next">chi-squared test</span> quantifies "deviation from expectation" for these counts. The bigger the mismatch, the brighter the χ² statistic glows.</div>
 
+
+
 <p class="sec-desc">
+
 <b>Goodness-of-fit</b> asks: "Does the observed category distribution match a theoretical one?" Classic example: is the die fair?<br/>
+
 <b>Test of independence</b> asks: "Are two categorical variables independent?" Compute χ² = Σ (O−E)²/E across every cell of the contingency table.<br/>
+
 <span class="text-sub">Why divide by E? → A deviation of 2 from an expected 10 matters more than 2 from an expected 1,000. Dividing by E turns raw gaps into <b>relative</b> ones.<br/>Both use a χ²-distributed statistic; the p-value is the right-tail area. df = k−1 for goodness-of-fit, (r−1)(c−1) for independence.</span>
+
 </p>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Goodness-of-Fit</b>
+
 <ol>
+
 <li><b>Step 1:</b> Select "Fair die" and ▶ auto-roll → as n grows, χ² stays low, p-value stays high.</li>
+
 <li><b>Step 2:</b> Switch to "Loaded" and auto-roll → χ² shoots up, p-value drops below α. Cheat detected.</li>
+
 <li><b>Step 3:</b> Lower α to 0.01 → stricter threshold. Small deviations won't reject.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:chitest_gof -->
 <div class="panel">
 
@@ -203,17 +339,29 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Independence Test</b>
+
 <ol>
+
 <li><b>Step 1:</b> Click only the top-left cell to create imbalance → χ² spikes, independence is rejected.</li>
+
 <li><b>Step 2:</b> ↺ Reset and click cells evenly → χ² stays small. No imbalance = independence holds.</li>
+
 <li><b>Step 3:</b> Change α to see "how much imbalance is needed to reject independence."</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:chitest_ind -->
 <div class="panel">
 
@@ -243,11 +391,18 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
 
+
+
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
+
 <a href="../../en/tables/index.html?dist=chi2" class="ln-cyan">Interactive Distribution Tables</a> — look up χ² critical values for any df
+
 </div>
+
+
 
 <!-- @panel:chitest_detail_gof -->
 
@@ -255,33 +410,34 @@
 <h3>// Formula used here — Goodness of fit</h3>
 <div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
 <p><b>Worked example (120 rolls of a die)</b><br/>
-・A fair die should give E = 20 per face<br/>
-・Actual results: [25, 17, 15, 23, 22, 18]<br/>
-・Face 1: (25−20)²/20 = 1.25<br/>
-・Face 2: (17−20)²/20 = 0.45 … sum all → χ² = 3.80<br/>
-・df = 6−1 = 5, critical value at α = 0.05 is 11.07. Since 3.80 &lt; 11.07 → fail to reject. Consistent with a fair die</p>
+• A fair die should give E = 20 per face<br/>
+• Actual results: [25, 17, 15, 23, 22, 18]<br/>
+• Face 1: (25−20)²/20 = 1.25<br/>
+• Face 2: (17−20)²/20 = 0.45 … sum all → χ² = 3.80<br/>
+• df = 6−1 = 5, critical value at α = 0.05 is 11.07. Since 3.80 &lt; 11.07 → fail to reject. Consistent with a fair die</p>
 <p><b>Each part</b><br/>
-・O: observed frequency (what you actually counted)<br/>
-・E: expected frequency (what the theory predicts)<br/>
-・(O−E)²/E: using raw (O−E)² would unfairly penalize large categories. Dividing by E gives "relative departure from expectation"<br/>
-・Sum across all categories → a single number measuring overall fit</p>
+• O: observed frequency (what you actually counted)<br/>
+• E: expected frequency (what the theory predicts)<br/>
+• (O−E)²/E: using raw (O−E)² would unfairly penalize large categories. Dividing by E gives "relative departure from expectation"<br/>
+• Sum across all categories → a single number measuring overall fit</p>
 </div>
 <!-- /@panel -->
+
 <!-- @panel:chitest_text -->
 
 <div class="detail-section">
 <h3>// Formula used here — Independence test</h3>
 <div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
 <p><b>Worked example (2×2 table: gender × smoking)</b><br/>
-・200 men (60 smokers), 300 women (60 smokers), 500 total<br/>
-・If gender and smoking are independent, expected male smokers?<br/>
-・E = 200 × 120/500 = 48 ← row total × column total ÷ grand total<br/>
-・"Under independence we'd expect 48, but observed 60" → the larger the gap, the stronger the evidence against independence</p>
+• 200 men (60 smokers), 300 women (60 smokers), 500 total<br/>
+• If gender and smoking are independent, expected male smokers?<br/>
+• E = 200 × 120/500 = 48 ← row total × column total ÷ grand total<br/>
+• "Under independence we'd expect 48, but observed 60" → the larger the gap, the stronger the evidence against independence</p>
 <p><b>Why df = (r−1)(c−1)</b><br/>
-・In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
-・A 3×4 table: df = 2 × 3 = 6</p>
+• In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
+• A 3×4 table: df = 2 × 3 = 6</p>
 <p><b>Caution: expected counts below 5</b><br/>
-・The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use an exact test for small frequencies or merge categories</p>
+• The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use an exact test for small frequencies or merge categories</p>
 </div>
 
 <div class="detail-section">
@@ -357,9 +513,14 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="./anova.html">I8 ANOVA</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -398,7 +559,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -438,9 +602,13 @@
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./dists.html" rel="prev">← Prev</a>
   <a href="./anova.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

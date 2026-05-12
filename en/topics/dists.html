@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.">
+
 <meta name="keywords" content="t distribution, chi-squared, F distribution, degrees of freedom, test statistics">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>The Three Test Distributions — t, χ², and F — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/dists.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/dists.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/dists.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/dists.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="The Three Test Distributions — t, χ², and F">
+
 <meta property="og:description" content="Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/dists.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — The Three Test Distributions">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="The Three Test Distributions — t, χ², and F">
+
 <meta name="twitter:description" content="Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — The Three Test Distributions">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "The Three Test Distributions — t, χ², and F",
+
       "description": "Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["t-distribution", "χ² distribution", "F-distribution", "Degrees of freedom"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/dists.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "The Three Test Distributions"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -141,40 +248,77 @@
 </nav>
 
 
+
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">The Three Test Distributions — t, χ², and F</a></h1>
+
   <p class="topic-lead">t for means, χ² for variances, F for variance ratios — three siblings born from the standard normal. Slide the degrees of freedom and the family resemblance comes into focus.</p>
+
   <section class="reveal in" id="dists">
+
+
 
 <div class="sec-tag">I.05 / t · χ² · F DISTRIBUTIONS</div>
 
+
+
 <h2 class="sec-title">Three Test Distributions <span class="sec-sub">— Meet t, χ² &amp; F</span></h2>
+
+
 
 <div class="story-bridge">Up to now we've tested means assuming σ is known. In practice you must <b>estimate σ</b> too — and the moment you do, Z morphs into <span class="next">t</span>. Test a variance directly: <b>χ²</b>. Compare two variances: <b>F</b>. All descendants of N(0,1); the name changes based on <b>what you don't know</b>.</div>
 
+
+
 <p class="sec-desc">
+
 <b>t, χ², F</b> are all <b>derived from the normal</b>. Think of them as "the standard normal, scaled to reflect that we only ever see a sample".<br/>
+
     Use them for: <b>t</b> — testing a mean when the population variance is unknown (i.e. nearly every real test of a mean);
+
     <b>χ²</b> — testing a variance, independence, goodness-of-fit for categorical data;
+
     <b>F</b> — ratios of variances (ANOVA, the overall F in regression).<br/>
+
 <span class="text-sub">Slide df: t converges to N(0,1) as df→∞, and χ²/F get more symmetric with more df. The Central Limit Theorem is quietly doing the work under the hood.</span>
+
 </p>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — t distribution</b>
+
 <ol>
+
 <li><b>Step 1:</b> n=<b>3</b> → df=2, extremely heavy tails (nearly Cauchy).</li>
+
 <li><b>Step 2:</b> n=<b>10</b> → heavier tails than normal, but getting closer.</li>
+
 <li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
+
 </ol>
+
 <b>Feel it with confidence intervals</b>
+
 <ol start="4">
+
 <li><b>Step A:</b> n=5, 95% confidence → the t bar is much wider (normal is overconfident).</li>
+
 <li><b>Step B:</b> Set n=50 → the bars nearly overlap at every confidence level.</li>
+
 <li><b>Step C:</b> Switch to 99% → the gap widens further (especially for small n).</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:dists_t -->
 <div class="panel" id="dists-t">
 
@@ -211,23 +355,41 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — χ² distribution</b>
+
 <ol>
+
 <li><b>Step 1:</b> Keep "Fair die" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>
+
 <li><b>Step 2:</b> Switch to "Loaded" and roll → face 1 jumps out, χ² enters the rejection region.</li>
+
 <li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>
+
 </ol>
+
 <b>Explore the distribution shape</b>
+
 <ol start="4">
+
 <li><b>Step A:</b> Set df to <b>1</b> → sharply right-skewed.</li>
+
 <li><b>Step B:</b> df=<b>30</b> → approaches a bell shape. Confirm mean = df.</li>
+
 <li><b>Step C:</b> Move df and watch how the normal approximation (purple dashes) lines up.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:dists_chi -->
 <div class="panel" id="dists-chi">
 
@@ -270,23 +432,41 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
 
+
+
 <div class="sim-layout">
+
 <div class="guided-steps">
+
 <b>Experiment Guide — F distribution</b>
+
 <ol>
+
 <li><b>Step 1:</b> Set both SDs equal (e.g. 10 and 10) → F≈1, stays outside rejection zone.</li>
+
 <li><b>Step 2:</b> Increase only B's SD (e.g. A=5, B=15) → F grows and enters the rejection zone.</li>
+
 <li><b>Step 3:</b> Increase n → the same SD gap gives a lower p-value (more power).</li>
+
 </ol>
+
 <b>Explore the distribution shape</b>
+
 <ol start="4">
+
 <li><b>Step A:</b> n=<b>6</b> → heavy tails, unstable shape.</li>
+
 <li><b>Step B:</b> n=<b>50</b> → approaches a bell. Check the F=1 line.</li>
+
 <li><b>Step C:</b> Swap A and B's SD values to feel what "variance ratio" means.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:dists_f -->
 <div class="panel" id="dists-f">
 
@@ -323,11 +503,18 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
 
+
+
 <div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
+
 <a href="../../en/tables/index.html" class="ln-cyan">Interactive Distribution Tables</a> — look up t, χ², and F critical values with live graph sync
+
 </div>
+
+
 
 <!-- @panel:dists_text -->
 
@@ -335,31 +522,31 @@
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="t_k = \frac{Z}{\sqrt{\chi^2_k / k}}\,,\quad \chi^2_k = \sum_{i=1}^{k} Z_i^2\,,\quad F_{m,n} = \frac{\chi^2_m / m}{\chi^2_n / n}"></div>
 <p><b>All three are children of N(0,1)</b><br/>
-・Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
+• Z, Z₁, Z₂, … are all plain standard normal variables. These three distributions are built entirely from them</p>
 <p><b>χ² distribution: square Z's and add them up → "total spread"</b><br/>
-・Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
-・As k grows the shape becomes more symmetric (a consequence of the Central Limit Theorem!)</p>
+• Z₁² + Z₂² + … + Zₖ² follows χ²(k). Since we're squaring, the values are always positive and the shape is right-skewed<br/>
+• As k grows the shape becomes more symmetric (a consequence of the Central Limit Theorem!)</p>
 <p><b>t distribution: Z divided by an estimated σ → "normal when σ is unknown"</b><br/>
-・t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
-・Small k (little data) → unstable σ estimate → fatter tails<br/>
-・k → ∞: denominator stabilizes at 1, and t becomes exactly Z (converges to standard normal)</p>
+• t = Z / √(χ²/k). Think of χ²/k in the denominator as an estimate of σ²<br/>
+• Small k (little data) → unstable σ estimate → fatter tails<br/>
+• k → ∞: denominator stabilizes at 1, and t becomes exactly Z (converges to standard normal)</p>
 <p><b>F distribution: ratio of two χ²'s → "ratio of two variances"</b><br/>
-・Used to test whether group A and group B have the same variance<br/>
-・Numerator and denominator have different df's — swapping them gives a different distribution (careful!)</p>
+• Used to test whether group A and group B have the same variance<br/>
+• Numerator and denominator have different df's — swapping them gives a different distribution (careful!)</p>
 </div>
 
 <div class="detail-section">
 <h3>// What is degrees of freedom (df), really?</h3>
 <p>The name itself rarely conveys the meaning. One way to read it: "the number of data values free to vary."</p>
 <p>Example: three test scores with a known mean of 60.<br/>
-・Student 1: 70 (free)<br/>
-・Student 2: 55 (free)<br/>
-・Student 3: ? → 60×3 − 70 − 55 = 55 (forced)<br/>
+• Student 1: 70 (free)<br/>
+• Student 2: 55 (free)<br/>
+• Student 3: ? → 60×3 − 70 − 55 = 55 (forced)<br/>
 → 3 students but only 2 free → df = n−1 = 2</p>
 <p>What happens when df is small:<br/>
-・Less information → less stable estimates → wider tails (extreme values more likely)<br/>
-・t distribution at df = 1 has very fat tails; at df = 30 it's nearly indistinguishable from normal<br/>
-・Move the df slider in the simulator above to see this in action</p>
+• Less information → less stable estimates → wider tails (extreme values more likely)<br/>
+• t distribution at df = 1 has very fat tails; at df = 30 it's nearly indistinguishable from normal<br/>
+• Move the df slider in the simulator above to see this in action</p>
 <h3>// When to use which? Quick reference</h3>
 <table>
 <tr><th>Goal</th><th>σ known?</th><th>Distribution</th></tr>
@@ -424,7 +611,7 @@
 <a href="../../en/columns/error_types.html" class="fr-card">
   <span class="fr-icon" aria-hidden="true">⚠️</span>
   <span class="fr-body">
-    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Makes It Click</span>
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts Them Out</span>
     <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
@@ -432,9 +619,14 @@
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 <div class="story-next"><span class="lbl">UP NEXT —</span>quantifying "deviation" and testing it <span class="story-arrow">▸</span> <a href="./chitest.html">I7 Chi-Squared Test</a></div>
+
 </section>
+
 </main>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -473,7 +665,10 @@
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -513,9 +708,13 @@
     </ol>
   </details>
 </nav>
+
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./proptest.html" rel="prev">← Prev</a>
   <a href="./chitest.html" rel="next">Next →</a>
 </nav>
+
 </body>
+
 </html>
+

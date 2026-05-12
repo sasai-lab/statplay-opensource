@@ -7,27 +7,27 @@
 <!-- Google Analytics -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
-<meta content="A deviation score of 70 means top 2 out of 100. Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." name="description"/>
-<meta content="deviation value, standard score, percentile, normal distribution, statistics, what is deviation, bell curve" name="keywords"/>
+<meta content="Hensachi is Japan's school-ranking score — and it's just a rescaled z-score: 50 + 10·z. A hensachi of 70 means roughly top 2 in 100. Drag the slider to see where a score sits on the normal curve." name="description"/>
+<meta content="hensachi, what is hensachi, Japanese school score, z-score, standardization, normal distribution, statistics, bell curve, percentile" name="keywords"/>
 <meta content="Sasai Lab" name="author"/>
 <meta content="index, follow, max-image-preview:large" name="robots"/>
-<title>What Is a Deviation Value? — See "Top X%" in 3 Seconds | StatPlay</title>
+<title>What Is Hensachi? — Japan's School Score Is Just a Rescaled z-Score | StatPlay</title>
 <link href="https://statplay.sasailab.com/en/columns/deviation.html" rel="canonical"/>
 <link href="https://statplay.sasailab.com/columns/deviation.html" hreflang="ja" rel="alternate"/>
 <link href="https://statplay.sasailab.com/en/columns/deviation.html" hreflang="en" rel="alternate"/>
 <link href="https://statplay.sasailab.com/columns/deviation.html" hreflang="x-default" rel="alternate"/>
 <meta content="article" property="og:type"/>
 <meta content="StatPlay" property="og:site_name"/>
-<meta content="A score of 70 means only 2 out of 100 — did you know?" property="og:title"/>
-<meta content="Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." property="og:description"/>
+<meta content="Hensachi is just a rescaled z-score — and seeing that shows you what standardization does" property="og:title"/>
+<meta content="Japan's school-ranking score (hensachi) is 50 + 10·z. Drag the slider to see where a score sits on the normal curve, and watch a 10-point gap turn into ~5× the rarity." property="og:description"/>
 <meta content="https://statplay.sasailab.com/en/columns/deviation.html" property="og:url"/>
 <meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
-<meta content="StatPlay — What Is a Deviation Value?" property="og:image:alt"/>
+<meta content="StatPlay — What Is Hensachi?" property="og:image:alt"/>
 <meta content="en_US" property="og:locale"/>
 <meta content="ja_JP" property="og:locale:alternate"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="A score of 70 means only 2 out of 100 — did you know?" name="twitter:title"/>
-<meta content="Grasp the truth behind deviation values in 3 minutes. Just move the slider to see where your score sits on the normal distribution." name="twitter:description"/>
+<meta content="Hensachi is just a rescaled z-score — and seeing that shows you what standardization does" name="twitter:title"/>
+<meta content="Japan's school-ranking score (hensachi) is 50 + 10·z. Drag the slider to see where a score sits on the normal curve, and watch a 10-point gap turn into ~5× the rarity." name="twitter:description"/>
 <meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
 <link href="../../manifest.webmanifest" rel="manifest"/>
 <meta content="#00f3ff" name="theme-color"/>
@@ -420,8 +420,8 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
   "@graph": [
     {
       "@type": "Article",
-      "headline": "What Is a Deviation Value? — See \"Top X%\" in 3 Seconds",
-      "description": "A deviation score of 70 means top 2 out of 100. Grasp the truth behind deviation values in 3 minutes with an interactive simulator.",
+      "headline": "What Is Hensachi? — Japan's School Score Is Just a Rescaled z-Score",
+      "description": "Hensachi is Japan's school-ranking score, and it's just a rescaled z-score: 50 + 10·z. A hensachi of 70 means roughly top 2 in 100. An interactive simulator shows where a score sits on the normal curve.",
       "inLanguage": "en",
       "isPartOf": {
         "@type": "WebSite",
@@ -445,50 +445,58 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How is a deviation value calculated?",
+          "name": "What is hensachi?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Deviation = 50 + 10 x (your score - mean) / standard deviation. First compute the mean and standard deviation from everyone's scores, then convert your score. At the mean you get 50; one standard deviation above gives 60."
+            "text": "Hensachi is the standard score Japanese schools and mock-exam companies use to express how a student's mark compares to the group: hensachi = 50 + 10 x (your score - mean) / standard deviation. The group average becomes 50, and one standard deviation above the mean becomes 60. In statistical terms it is just a z-score rescaled so the numbers sit around 50 instead of 0."
           }
         },
         {
           "@type": "Question",
-          "name": "What does a deviation value of 50 mean?",
+          "name": "How is hensachi calculated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A deviation of 50 means you scored exactly at the group average. Regardless of the raw score, if you match the mean, your deviation is 50."
+            "text": "Hensachi = 50 + 10 x (your score - mean) / standard deviation. First compute the mean and standard deviation from everyone's scores, then convert your score. At the mean you get 50; one standard deviation above gives 60."
           }
         },
         {
           "@type": "Question",
-          "name": "What percentile is a deviation of 60?",
+          "name": "What does a hensachi of 50 mean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A deviation of 60 is roughly the top 15.87% (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point jump dramatically increases rarity."
+            "text": "A hensachi of 50 means a score exactly at the group average. Whatever the raw mark, matching the mean gives a hensachi of 50."
           }
         },
         {
           "@type": "Question",
-          "name": "Is deviation the same as rank?",
+          "name": "What percentile is a hensachi of 60?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Deviation assumes a normal distribution and gives a relative position, while rank is an absolute ordering based on actual data. If the distribution is not normal, the predicted rank from deviation can differ significantly from the real rank."
+            "text": "A hensachi of 60 is roughly the top 15.87% (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point step makes the score markedly rarer."
           }
         },
         {
           "@type": "Question",
-          "name": "Can you compare deviation values from different tests?",
+          "name": "Is hensachi the same as rank?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Generally no. Deviation measures your position within the group that took that specific test. If the test populations differ, the same deviation of 60 can represent very different ability levels."
+            "text": "No. Hensachi assumes a normal distribution and gives a relative position; rank is an absolute ordering taken directly from the data. If the distribution isn't normal, the rank implied by hensachi can differ noticeably from the real rank."
           }
         },
         {
           "@type": "Question",
-          "name": "Can you average deviation values across subjects?",
+          "name": "Can you compare hensachi from different exams?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It works as a rough guide, but it's statistically sloppy. Each subject's deviation comes from a different score distribution with its own standard deviation and shape, so they aren't strictly on the same scale. The practice is widespread in mock exams because the same group takes every subject, keeping the scales roughly aligned — but a 5-subject average deviation is a convenient shorthand, not a rigorous composite statistic."
+            "text": "Generally no. Hensachi measures position within the group that sat that particular exam. If the exam populations differ, the same hensachi of 60 can represent very different ability levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you average hensachi across subjects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It works as a rough guide, but it's statistically loose. Each subject's hensachi comes from a different score distribution with its own standard deviation and shape, so they aren't strictly on the same scale. The practice is common in Japanese mock exams because the same students sit every subject, keeping the scales roughly aligned — but a five-subject average hensachi is a convenient shorthand, not a rigorous composite statistic."
           }
         }
       ]
@@ -511,7 +519,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "What Is a Deviation Value?"
+          "name": "What Is Hensachi?"
         }
       ]
     }
@@ -534,10 +542,10 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <canvas aria-hidden="true" id="heroCanvas"></canvas>
 <div class="hero-content">
 <div class="hero-impact" id="heroImpact">5x</div>
-<h1 id="heroTitle">Deviation 60 vs. 70 —<br/>just 10 points apart.<br/>But the <em>"rarity" differs 5-fold</em>.</h1>
+<h1 id="heroTitle">Hensachi 60 vs. 70 —<br/>just 10 points apart.<br/>But one is <em>about 5× rarer</em>.</h1>
 <p class="hook-sub" id="heroSub">
-      A deviation value isn't a "smartness score."<br/>
-      It's actually <strong>your position on a normal distribution</strong>.
+      Japan's school-ranking score isn't a "smartness number."<br/>
+      It's <strong>a position on a normal curve</strong> — a z-score in different clothes.
     </p>
 <div class="article-meta" id="heroMeta" style="opacity:0">
 <span>3 min read</span>
@@ -553,16 +561,15 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div aria-label="Breadcrumb" class="col-breadcrumb" style="margin-top:16px">
 <a href="../../en/index.html">StatPlay</a><span class="sep">›</span>
 <span>Columns</span><span class="sep">›</span>
-<span>What Is a Deviation Value?</span>
+<span>What Is Hensachi?</span>
 </div>
 <main>
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
 <p>
-    "High deviation = smart" — does that sound about right?<br/>
-    But surprisingly few people can explain what a deviation value actually means.<br/>
-    In this article, you'll grasp the <b style="color:var(--cyan)">truth</b> behind deviation values in 3 minutes.<br/>
-    Start by playing with this graph.
+<b style="color:var(--cyan)">Hensachi</b> is the score Japanese schools and cram schools use to rank students — a "hensachi 65 university," a kid with "hensachi 70 in math." Outside Japan it's an unfamiliar number, and even inside Japan few people can say exactly what it measures.<br/>
+    Here's the short version: hensachi is just a <b>z-score, rescaled</b> so the numbers land around 50 instead of 0. That makes it a clean way to see what standardization actually does to a score.<br/>
+    Start by dragging this graph.
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">01</span></div>
@@ -570,10 +577,10 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="col-section" id="simulator">
 <h2>// Hands-on Simulator</h2>
 <p>Drag the sliders freely, or pick a preset from the table on the right. Everything stays in sync.</p>
-<canvas aria-label="Deviation value simulator: visualize your position on a normal distribution. Operate with sliders or the rarity table" height="280" id="devCanvas"></canvas>
+<canvas aria-label="Hensachi simulator: visualize where a score sits on a normal curve. Operate with sliders or the rarity table" height="280" id="devCanvas"></canvas>
 <div class="sim-result">
 <div class="sim-item">
-<span class="sim-label">Deviation</span>
+<span class="sim-label">Hensachi</span>
 <span class="sim-val dev-val" id="devResult">—</span>
 </div>
 <div class="sim-item">
@@ -610,7 +617,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="sim-panel-label">▶ Rarity presets</div>
 <table class="rarity-table">
 <thead>
-<tr><th>Dev</th><th>Top %</th><th>Rarity</th></tr>
+<tr><th>Hensachi</th><th>Top %</th><th>Rarity</th></tr>
 </thead>
 <tbody>
 <tr class="rarity-row" data-dev="75"><td>75</td><td>0.62%</td><td>1-2 per grade</td></tr>
@@ -626,21 +633,21 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </div>
 </div>
 <div class="graph-share-bar">
-<button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="Deviation Simulator">💾 Save image</button>
-<button class="share-btn" data-kind="url" data-share="devCanvas" data-title="Deviation Simulator">🔗 Copy URL</button>
-<button class="share-btn" data-kind="x" data-share="devCanvas" data-title="Deviation Simulator">Share on 𝕏</button>
-<button class="share-btn" data-kind="native" data-share="devCanvas" data-title="Deviation Simulator">📤 Share</button>
+<button class="share-btn" data-kind="dl" data-share="devCanvas" data-title="Hensachi Simulator">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="devCanvas" data-title="Hensachi Simulator">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="devCanvas" data-title="Hensachi Simulator">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="devCanvas" data-title="Hensachi Simulator">📤 Share</button>
 </div>
 </div>
 <div class="col-divider"><span class="divider-num">02</span></div>
 <!-- ═══ FORMULA ═══ -->
 <div class="col-section">
-<h2>// What a Deviation Value Really Is</h2>
-<p>The "deviation" you just played with — its formula is this simple:</p>
-<div class="col-formula">Deviation = 50 + 10 × (Your Score − Mean) ÷ Std Dev</div>
+<h2>// What Hensachi Really Is</h2>
+<p>The hensachi you just dragged around — its formula is this short:</p>
+<div class="col-formula">Hensachi = 50 + 10 × (Your Score − Mean) ÷ Std Dev</div>
 <p>
-    It's a straightforward <b>scale transform</b>: re-center the mean to 50 and set the standard deviation (spread) to 10.<br/>
-    In other words, "<b style="color:var(--cyan)">a number that lets you compare your position across any test, using the same ruler</b>" — that's a deviation value (<a href="../../en/topics/stdnorm.html">drag the underlying z-score</a>).
+    That fraction in the middle is the <b>z-score</b>: how many standard deviations the score sits above or below the mean. Hensachi just stretches and shifts it — multiply by 10, add 50 — so the average lands on 50 and one standard deviation is worth 10 points.<br/>
+    So hensachi is "<b style="color:var(--cyan)">a position on any test, read off the same ruler</b>" — exactly what standardizing a score gives you (<a href="../../en/topics/stdnorm.html">drag the underlying z-score here</a>).
   </p>
 </div>
 <div class="col-divider"><span class="divider-num">03</span></div>
@@ -648,43 +655,43 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="col-section">
 <h2>// 3-Question Quiz — Check Your Understanding</h2>
 <div class="quiz-item">
-<p class="quiz-q">Q1. Does a deviation of 80 mean you scored 80 on the test?</p>
+<p class="quiz-q">Q1. Does a hensachi of 80 mean a raw score of 80 on the test?</p>
 <div class="quiz-choices">
 <button class="quiz-choice" data-correct="false">YES</button>
 <button class="quiz-choice" data-correct="true">NO</button>
 </div>
-<div class="quiz-explain">A deviation value is not the raw score — it represents your "position within the group." Even a test with a mean of 30 can produce a deviation of 80.</div>
+<div class="quiz-explain">Hensachi isn't the raw mark — it's a position within the group. A test with a mean of 30 can still produce a hensachi of 80 if one score stands far enough above the rest.</div>
 </div>
 <div class="quiz-item">
-<p class="quiz-q">Q2. Does a deviation of 50 equal the average score?</p>
+<p class="quiz-q">Q2. Does a hensachi of 50 mean the average score?</p>
 <div class="quiz-choices">
 <button class="quiz-choice" data-correct="true">YES</button>
 <button class="quiz-choice" data-correct="false">NO</button>
 </div>
-<div class="quiz-explain">By definition, someone who scores exactly the mean gets a deviation of 50. This is baked into the formula.</div>
+<div class="quiz-explain">By construction, a score exactly at the mean maps to a hensachi of 50 — that's the "+ 50" in the formula.</div>
 </div>
 <div class="quiz-item">
-<p class="quiz-q">Q3. You got a deviation of 60 on two different tests. Same ability level?</p>
+<p class="quiz-q">Q3. A hensachi of 60 on two different exams — same ability level?</p>
 <div class="quiz-choices">
 <button class="quiz-choice" data-correct="false">YES</button>
 <button class="quiz-choice" data-correct="true">NO</button>
 </div>
-<div class="quiz-explain">If the test populations (who took the test) differ, a deviation of 60 means completely different things. An elite-school mock exam and a nationwide exam aren't comparable.</div>
+<div class="quiz-explain">If the exam populations differ, a hensachi of 60 means different things on each. A mock exam taken only by students from selective schools isn't comparable to one taken nationwide.</div>
 </div>
 </div>
 <div class="col-divider"><span class="divider-num">04</span></div>
 <!-- ═══ PITFALL ═══ -->
 <div class="col-section" id="pitfall">
-<h2>// The Pitfall: When Deviation Values Lie</h2>
+<h2>// The Pitfall: When Hensachi Misleads</h2>
 <p>
-    Deviation values are calculated under the assumption that scores follow a normal distribution.<br/>
-    But in reality, test results rarely form a perfect bell curve.<br/>
-<b style="color:var(--yellow)">Drag the skewness slider to the right</b> and feel how much the "top %" diverges for the same deviation value.
+    Hensachi is computed as if scores follow a normal distribution.<br/>
+    Real exam results rarely form a clean bell curve, though.<br/>
+<b style="color:var(--yellow)">Drag the skewness slider to the right</b> and watch the "top %" drift away from what the same hensachi claims.
   </p>
 <div class="skew-controls">
 <div class="sim-ctrl">
-<label>Deviation</label>
-<input aria-label="Deviation value" id="skewDev" max="75" min="40" step="1" type="range" value="65"/>
+<label>Hensachi</label>
+<input aria-label="Hensachi" id="skewDev" max="75" min="40" step="1" type="range" value="65"/>
 <span class="val" id="skewDevVal">65</span>
 </div>
 <div class="sim-ctrl">
@@ -693,10 +700,10 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <span class="val" id="skewAmountVal">1.0</span>
 </div>
 </div>
-<canvas aria-label="Compare normal and skewed distributions. Adjust deviation and skewness sliders to feel how the top % diverges" height="280" id="skewCanvas"></canvas>
+<canvas aria-label="Compare a normal and a skewed distribution. Adjust the hensachi and skewness sliders to see the top % drift apart" height="280" id="skewCanvas"></canvas>
 <div class="skew-compare">
 <div class="skew-box">
-<span class="skew-label">Deviation says top %</span>
+<span class="skew-label">Hensachi says top %</span>
 <span class="skew-val" id="skewNormPct">—</span><span class="skew-unit">%</span>
 </div>
 <div class="skew-vs">vs</div>
@@ -709,20 +716,20 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
     Gap: <strong id="skewGap">—</strong><span class="skew-unit"> points</span>
 </div>
 <div class="graph-share-bar">
-<button class="share-btn" data-kind="dl" data-share="skewCanvas" data-title="When Deviation Values Lie">💾 Save image</button>
-<button class="share-btn" data-kind="url" data-share="skewCanvas" data-title="When Deviation Values Lie">🔗 Copy URL</button>
-<button class="share-btn" data-kind="x" data-share="skewCanvas" data-title="When Deviation Values Lie">Share on 𝕏</button>
-<button class="share-btn" data-kind="native" data-share="skewCanvas" data-title="When Deviation Values Lie">📤 Share</button>
+<button class="share-btn" data-kind="dl" data-share="skewCanvas" data-title="When Hensachi Misleads">💾 Save image</button>
+<button class="share-btn" data-kind="url" data-share="skewCanvas" data-title="When Hensachi Misleads">🔗 Copy URL</button>
+<button class="share-btn" data-kind="x" data-share="skewCanvas" data-title="When Hensachi Misleads">Share on 𝕏</button>
+<button class="share-btn" data-kind="native" data-share="skewCanvas" data-title="When Hensachi Misleads">📤 Share</button>
 </div>
 </div>
 <!-- ═══ TAKEAWAY ═══ -->
 <div class="takeaway">
 <h3>// KEY TAKEAWAY</h3>
 <ul>
-<li>Deviation is not a "score" — it's <b style="color:var(--cyan)">your position within a group</b></li>
-<li>The formula simply rescales: mean → 50, standard deviation → 10</li>
-<li>Deviation 60 → top 16%. Deviation 70 → top 2%. <b style="color:var(--yellow)">Just 10 points = 5x rarity</b></li>
-<li>When the distribution is skewed, the "top %" from deviation <b style="color:var(--magenta)">can be misleading</b></li>
+<li>Hensachi is Japan's school-ranking score — not a mark, but <b style="color:var(--cyan)">a position within a group</b></li>
+<li>It's a z-score rescaled: mean → 50, one standard deviation → 10 points</li>
+<li>Hensachi 60 → top 16%. Hensachi 70 → top 2%. <b style="color:var(--yellow)">10 points ≈ 5× the rarity</b></li>
+<li>When the real distribution is skewed, the "top %" hensachi implies <b style="color:var(--magenta)">can be off</b></li>
 </ul>
 </div>
 <div class="col-divider"><span class="divider-num">FAQ</span></div>
@@ -730,56 +737,62 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="col-section">
 <h2>// Frequently Asked Questions</h2>
 <div class="faq-item">
-<button class="faq-q" type="button">How is a deviation value calculated?</button>
+<button class="faq-q" type="button">What is hensachi?</button>
 <div class="faq-a">
-<p><b>Deviation = 50 + 10 × (Your Score − Mean) ÷ Std Dev</b></p>
-<p>First, compute the mean and standard deviation from all scores. Then plug your score in. At the mean you get 50; one standard deviation above the mean gives 60.</p>
+<p>Hensachi is the standard score Japanese schools and mock-exam companies use to express how a mark compares to the group. In statistical terms it's a <b>z-score, rescaled</b>: <b>Hensachi = 50 + 10 × (Your Score − Mean) ÷ Std Dev</b>. The average becomes 50; one standard deviation above the mean becomes 60.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">What does a deviation of 50 mean?</button>
+<button class="faq-q" type="button">How is hensachi calculated?</button>
 <div class="faq-a">
-<p>A deviation of 50 means "exactly the group average." No matter what the raw test score is, if it matches the mean, the deviation is 50.</p>
+<p><b>Hensachi = 50 + 10 × (Your Score − Mean) ÷ Std Dev</b></p>
+<p>First compute the mean and standard deviation from all scores, then plug a score in. At the mean you get 50; one standard deviation above the mean gives 60.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">What percentile is a deviation of 60?</button>
+<button class="faq-q" type="button">What does a hensachi of 50 mean?</button>
 <div class="faq-a">
-<p>A deviation of 60 is roughly the <b style="color:var(--cyan)">top 15.87%</b> (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point increase causes rarity to jump dramatically.</p>
+<p>A hensachi of 50 means a score exactly at the group average. Whatever the raw mark, matching the mean gives a hensachi of 50.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">Is deviation the same as rank?</button>
+<button class="faq-q" type="button">What percentile is a hensachi of 60?</button>
 <div class="faq-a">
-<p>No. Deviation is a relative position assuming a normal distribution; rank is an absolute ordering from actual data. When scores aren't normally distributed, the rank predicted by deviation can differ significantly from the real rank. Try the "Pitfall" section above to see this in action.</p>
+<p>A hensachi of 60 is roughly the <b style="color:var(--cyan)">top 15.87%</b> (about 1 in 6). At 65 it's top 6.68%, at 70 it's top 2.28%. Each 10-point step makes the score markedly rarer.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">Can a deviation exceed 100 or go below 0?</button>
+<button class="faq-q" type="button">Is hensachi the same as rank?</button>
 <div class="faq-a">
-<p>Mathematically, yes. A deviation of 100 means "5 standard deviations above the mean" — extremely rare, but possible with small samples or outliers.</p>
+<p>No. Hensachi is a relative position computed as if scores were normal; rank is an absolute ordering taken straight from the data. When scores aren't normally distributed, the rank hensachi implies can differ noticeably from the real rank. The "Pitfall" section above shows this in action.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">Can you compare deviation values from different tests?</button>
+<button class="faq-q" type="button">Can a hensachi exceed 100 or go below 0?</button>
 <div class="faq-a">
-<p><b style="color:var(--magenta)">Generally, no.</b> Deviation measures your position within the specific group that took that test. If the test populations differ, a deviation of 60 on one test may represent a completely different ability level than 60 on another.</p>
+<p>Mathematically, yes. A hensachi of 100 means "5 standard deviations above the mean" — extremely rare, but it can happen with small samples or outliers.</p>
 </div>
 </div>
 <div class="faq-item">
-<button class="faq-q" type="button">Can you average deviation values across subjects?</button>
+<button class="faq-q" type="button">Can you compare hensachi from different exams?</button>
 <div class="faq-a">
-<p><b style="color:var(--magenta)">It works as a rough guide, but it's statistically sloppy.</b> A deviation of 60 in math and 55 in English come from different score distributions — each with its own standard deviation and shape. Strictly speaking, they aren't on the same scale and shouldn't simply be added and divided.</p>
-<p>The practice is widespread in standardised mock exams because the same group of students takes every subject, so the scales are roughly aligned. Just know that a "5-subject average deviation" is a convenient shorthand for overall standing, not a rigorous composite statistic.</p>
+<p><b style="color:var(--magenta)">Generally, no.</b> Hensachi measures position within the specific group that sat that exam. If the exam populations differ, a hensachi of 60 on one may represent a completely different ability level than 60 on another.</p>
+</div>
+</div>
+<div class="faq-item">
+<button class="faq-q" type="button">Can you average hensachi across subjects?</button>
+<div class="faq-a">
+<p><b style="color:var(--magenta)">It works as a rough guide, but it's statistically loose.</b> A hensachi of 60 in math and 55 in English come from different score distributions — each with its own standard deviation and shape. Strictly speaking they aren't on the same scale, so adding and dividing isn't really valid.</p>
+<p>The practice is common in Japanese mock exams because the same students sit every subject, so the scales line up roughly. Just treat a "five-subject average hensachi" as a convenient shorthand for overall standing, not a rigorous composite statistic.</p>
 </div>
 </div>
 </div>
 <!-- ═══ CTA ═══ -->
 <div class="col-cta">
-<p class="cta-headline">Behind every deviation value is a "normal distribution."</p>
+<p class="cta-headline">Underneath every hensachi is a normal curve.</p>
 <p class="cta-sub">
-    Want to understand the bell curve you just saw on a deeper level?<br/>
-    StatPlay's interactive materials let you learn statistics by touching.
+    Want to go deeper on the bell curve and the z-score it's built on?<br/>
+    StatPlay's interactive materials let you work through statistics by dragging.
   </p>
 </div>
 
@@ -789,8 +802,8 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <a href="../topics/stdnorm.html" class="col-card-topic-cta">
   <span class="col-card-topic-cta__icon" aria-hidden="true">▶</span>
   <span class="col-card-topic-cta__body">
-    <span class="col-card-topic-cta__title">Run the Hensachi translator on top of N(0,1)</span>
-    <span class="col-card-topic-cta__desc">Drag N(0,1) — the curve behind every Hensachi — and watch the moment z × 10 + 50 lines up on screen</span>
+    <span class="col-card-topic-cta__title">Drive the hensachi rescaling on top of N(0,1)</span>
+    <span class="col-card-topic-cta__desc">Drag N(0,1) — the curve hensachi is built on — and watch z become 50 + 10·z right on screen</span>
   </span>
   <span class="col-card-topic-cta__arrow" aria-hidden="true">&rarr;</span>
 </a>
@@ -800,9 +813,9 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <h3>// Related topics</h3>
 <p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
 <ul>
-<li><a href="../topics/stdnorm.html">Standard Normal</a> &mdash; drag the N(0,1) that produces Hensachi = z × 10 + 50 — watch the transformation hold in real time</li>
-<li><a href="../topics/normal.html">Normal Distribution</a> &mdash; kicks off the descent from N(μ, σ²) to the z-scale — the step that precedes Hensachi</li>
-<li><a href="../topics/clt.html">Central Limit Theorem</a> &mdash; CLT's guarantee that averages go normal keeps running underneath, holding Hensachi stable</li>
+<li><a href="../topics/stdnorm.html">Standard Normal</a> &mdash; drag the N(0,1) that hensachi = 50 + 10·z is built on — watch the rescaling line up in real time</li>
+<li><a href="../topics/normal.html">Normal Distribution</a> &mdash; the descent from N(μ, σ²) down to the z-scale — the step that comes before hensachi</li>
+<li><a href="../topics/clt.html">Central Limit Theorem</a> &mdash; CLT's guarantee that averages go normal is the base that keeps the hensachi scale meaningful</li>
 </ul>
 </div>
 
@@ -812,7 +825,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
   <span class="fr-icon" aria-hidden="true">🌍</span>
   <span class="fr-body">
     <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
-    <span class="fr-desc">puts the same z-score to work as a universal translator across units — the sister column that lifts Hensachi one level up</span>
+    <span class="fr-desc">puts the same z-score to work as a translator across units — the sister column to hensachi, one level more general</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>

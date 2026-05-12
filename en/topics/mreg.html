@@ -1,108 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- Google Analytics -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
 <meta name="description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+
 <meta name="keywords" content="multiple regression, partial coefficients, confounding, 3D visualization, controlling for variables">
+
 <meta name="author" content="Sasai Lab">
+
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <title>Multiple Regression — Control Confounders to Find True Effects — StatPlay</title>
 
+
+
 <link rel="canonical" href="https://statplay.sasailab.com/en/topics/mreg.html">
+
 <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
+
 <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html">
+
 <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html">
 
+
+
 <meta property="og:type" content="article">
+
 <meta property="og:site_name" content="StatPlay">
+
 <meta property="og:title" content="Multiple Regression — Control Confounders to Find True Effects">
+
 <meta property="og:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/mreg.html">
+
 <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta property="og:image:alt" content="StatPlay — Multiple Regression">
+
 <meta property="og:locale" content="en_US">
+
 <meta property="og:locale:alternate" content="ja_JP">
+
 <meta name="twitter:card" content="summary_large_image">
+
 <meta name="twitter:title" content="Multiple Regression — Control Confounders to Find True Effects">
+
 <meta name="twitter:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
 <meta name="twitter:image:alt" content="StatPlay — Multiple Regression">
 
+
+
 <link rel="manifest" href="../../manifest.webmanifest">
+
 <meta name="theme-color" content="#00f3ff">
+
 <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
 <link rel="icon" href="../../icons/icon-192.png" type="image/png">
 
+
+
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
 <link rel="stylesheet" href="../../css/stat_cyber.css">
 
+
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
 <script defer src="../../js/katex-render.js"></script>
 
+
+
 <script type="application/ld+json">
+
 {
+
   "@context": "https://schema.org",
+
   "@graph": [
+
     {
+
       "@type": "LearningResource",
+
       "name": "Multiple Regression — Control Confounders to Find True Effects",
+
       "description": "Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.",
+
       "inLanguage": "en",
+
       "educationalLevel": "intermediate",
+
       "learningResourceType": "interactive visualization",
+
       "teaches": ["Multiple regression", "Partial regression coefficients", "Controlling for confounders", "Simple vs. multiple regression comparison"],
+
       "isPartOf": {
+
         "@type": "WebSite",
+
         "name": "StatPlay",
+
         "url": "https://statplay.sasailab.com/"
+
       },
+
       "url": "https://statplay.sasailab.com/en/topics/mreg.html",
+
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+
       "author": {
+
         "@type": "Organization",
+
         "name": "Sasai Lab"
+
       },
+
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+
       "isAccessibleForFree": true,
+
       "audience": {
+
         "@type": "EducationalAudience",
+
         "educationalRole": "student",
+
         "audienceType": "Statistics learners"
+
       }
+
     },
+
     {
+
       "@type": "BreadcrumbList",
+
       "itemListElement": [
+
         {
+
           "@type": "ListItem",
+
           "position": 1,
+
           "name": "StatPlay",
+
           "item": "https://statplay.sasailab.com/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 2,
+
           "name": "Topics",
+
           "item": "https://statplay.sasailab.com/topics/"
+
         },
+
         {
+
           "@type": "ListItem",
+
           "position": 3,
+
           "name": "Multiple Regression"
+
         }
+
       ]
+
     }
+
   ]
+
 }
+
 </script>
+
 </head>
+
 <body class="topic-page">
+
 <a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
 
 <nav id="mainNav">
   <a class="logo" href="../../en/index.html" title="Back to hub">StatPlay</a>
@@ -140,45 +247,83 @@
   </div>
 </nav>
 
+
+
 <div class="topic-header-row">
+
 <div class="topic-breadcrumb" aria-label="Breadcrumb">
+
   <a href="../../en/index.html">StatPlay</a><span class="sep">›</span>
+
   <a href="../../en/index.html#mreg">Topics</a><span class="sep">›</span>
+
   <span class="current-page">Multiple Regression</span>
+
 </div>
+
 <nav class="topic-top-nav" aria-label="Previous / Next topic">
   <a href="./reg.html" rel="prev">← Prev</a>
   <a class="empty" aria-hidden="true">—</a>
 </nav>
+
 </div>
 
+
+
 <main id="main-content">
+
   <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Control Confounders to Find True Effects</a></h1>
+
   <p class="topic-lead">"More study time means lower scores" — a result that flips the moment you add one more variable. That moment is what confounding looks like.</p>
+
   <section class="reveal in" id="mreg">
+
+
 
 <div class="sec-tag">M2 / Multiple Regression</div>
 
+
+
 <h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
+
+
 
 <div class="story-bridge">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
 
+
+
 <p class="sec-desc">
+
     One variable gives a line; two give a <b>plane in 3D</b>.
+
     But the point isn't geometry — it's <b>removing confounding to isolate each variable's true effect</b>.
+
     Start with the side-by-side comparison to see the moment β₁ shifts.
+
   </p>
+
 <div class="sim-layout">
 
+
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Feel Confounding</b>
+
 <ol>
+
 <li><b>Step 1:</b> At default (corr = −0.5), compare β₁ left vs. right. Simple regression is <b>smaller</b> — the study effect is underestimated.</li>
+
 <li><b>Step 2:</b> Set correlation to <b>0</b> → both β₁ values nearly match. "No confounding, no bias."</li>
+
 <li><b>Step 3:</b> Set correlation to <b>+0.5</b> → now simple regression β₁ is <b>too large</b>. Confounding can bias in either direction.</li>
+
 <li><b>Step 4:</b> Check R² too. Multiple regression is always ≥ simple — adding a variable improved explanatory power.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:mreg_vs -->
 <div class="panel">
 
@@ -219,18 +364,31 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
 <div class="sim-layout">
 
+
+
 <div class="guided-steps">
+
 <b>Experiment Guide — Feel the Regression Plane in 3D</b>
+
 <ol>
+
 <li><b>Step 1:</b> Drag the 3D plot to rotate. The translucent surface is the regression plane — data points align along it.</li>
+
 <li><b>Step 2:</b> Move the study slider → the prediction dot slides along the x₁ direction. The tilt = β₁.</li>
+
 <li><b>Step 3:</b> Move sleep too → it moves along x₂. The tilt = β₂. Each variable's contribution is visible.</li>
+
 <li><b>Step 4:</b> Hit Resample a few times → β₁, β₂, R² shift slightly each time. Estimates have variability too.</li>
+
 </ol>
+
 </div>
+
 <!-- @panel:mreg_main -->
 <div class="panel">
 <div class="controls">
@@ -255,12 +413,19 @@
 </div>
 </div>
 <!-- /@panel -->
+
 </div>
+
+
 
 <div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
 
+
+
 <a href="../../en/columns/income_prediction.html" class="ln-yellow">📊 Column: Feel multiple regression through income prediction →</a>
+
 </div>
+
 <!-- @panel:mreg_text -->
 
 <div class="detail-section">
@@ -281,15 +446,15 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <h3>// Formula used here</h3>
 <div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
 <p><b>Each part</b><br/>
-・β₀ (intercept): baseline prediction when all variables = 0<br/>
-・β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
-・β₂x₂: same idea — the isolated contribution of x₂</p>
+• β₀ (intercept): baseline prediction when all variables = 0<br/>
+• β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
+• β₂x₂: same idea — the isolated contribution of x₂</p>
 <p><b>How it differs from simple regression</b><br/>
-・Simple regression β₁ = direct effect of x₁ + indirect effect via x₂ (mixed together)<br/>
-・Multiple regression β₁ = direct effect of x₁ only (x₂ is statistically "held constant")<br/>
-・Set correlation to 0 in the panel above and the indirect path vanishes — that's why both β₁ values converge</p>
+• Simple regression β₁ = direct effect of x₁ + indirect effect via x₂ (mixed together)<br/>
+• Multiple regression β₁ = direct effect of x₁ only (x₂ is statistically "held constant")<br/>
+• Set correlation to 0 in the panel above and the indirect path vanishes — that's why both β₁ values converge</p>
 <p><b>Geometric picture</b><br/>
-・With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+• With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
 </div>
 
 <div class="detail-section">
@@ -366,13 +531,19 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
 </div>
 <!-- /@panel -->
+
 </section>
+
 </main>
+
+
 
 <nav class="topic-nav" aria-label="Previous / Next topic">
   <a href="./reg.html" rel="prev">← Prev</a>
   <a class="empty" aria-hidden="true">—</a>
 </nav>
+
+
 
 <footer>
 <div class="foot-grid">
@@ -411,7 +582,10 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 </div>
 </footer>
 
+
+
 <script type="module" src="../../js/main.js"></script>
+
 <nav class="side-toc" aria-label="All Topics">
   <div class="side-toc-current" aria-label="Current topic">
     <span class="side-toc-section-label">Current topic</span>
@@ -451,5 +625,8 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
     </ol>
   </details>
 </nav>
+
 </body>
+
 </html>
+

@@ -50,7 +50,7 @@
         {
           "slug": "deviation",
           "ja_why": "z × 10 + 50 で標準正規を学校の点数に翻訳する偏差値の現場",
-          "en_why": "Japan's Hensachi (deviation value) translates the standard normal into school-score units via z × 10 + 50"
+          "en_why": "Japan's school-ranking score, hensachi, translates the standard normal into score units via z × 10 + 50"
         },
         {
           "slug": "standardization",
@@ -130,7 +130,7 @@
         {
           "slug": "deviation",
           "ja_why": "10 点差の意味を z で読み解いて、偏差値を正規分布の身近な顔に降ろす",
-          "en_why": "reads a 10-point gap through z and brings the normal down to Japan's everyday Hensachi"
+          "en_why": "reads a 10-point gap through z and brings the normal down to Japan's everyday school score, hensachi"
         }
       ],
       "featured_columns": [
@@ -327,7 +327,7 @@
       "ja_title": "中心極限定理を目で見てイメージを掴む",
       "en_title": "See the Central Limit Theorem in Action",
       "ja_desc": "歪んだ元分布から標本平均を繰り返し取ると、なぜ正規分布に収束するのか。標本サイズnを変えながら、中心極限定理 の威力をアニメーションで可視化する。",
-      "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and feel why the Central Limit Theorem is the backbone of inferential statistics.",
+      "en_desc": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and see why the Central Limit Theorem is the backbone of inferential statistics.",
       "ja_lead": "もとの分布がどれだけ歪んでいても、その平均はベル型に化ける。他のトピックの裏で繰り返し顔を出す通底装置。",
       "en_lead": "However twisted the population, its sample mean still bends back into a bell. A hidden engine that keeps reappearing behind the rest of inferential statistics.",
       "ja_kw": "中心極限定理, 標本平均, 正規分布への収束, 推測統計, 標本サイズ",
@@ -379,7 +379,7 @@
         {
           "slug": "deviation",
           "ja_why": "「平均は正規」を CLT が支えて、その上に偏差値という日常版の道具が立つ",
-          "en_why": "CLT props up \"averages go normal,\" and Japan's Hensachi (deviation value) stands as the everyday tool on that base"
+          "en_why": "CLT props up \"averages go normal,\" and Japan's school score, hensachi, stands as the everyday tool on that base"
         },
         {
           "slug": "se_vs_sd",
@@ -405,7 +405,7 @@
       "ja_title": "大数の法則 — 試行回数と真の平均",
       "en_title": "The Law of Large Numbers",
       "ja_desc": "コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。",
-      "en_desc": "See sample averages march toward the true mean as the trial count grows. A live animation that makes the Law of Large Numbers click — no formulas required.",
+      "en_desc": "See sample averages march toward the true mean as the trial count grows. A live animation that shows the Law of Large Numbers in action — no formulas required.",
       "ja_lead": "コインで10連続の表が出ても珍しくない。1万回投げれば必ず半々に近づく。データが「証拠」になり得る根拠がここにある。",
       "en_lead": "Ten heads in a row? Not weird. Ten thousand flips? Almost exactly half. The reason data can ever count as evidence sits right here.",
       "ja_kw": "大数の法則, LLN, 試行回数, 標本平均, 期待値への収束",
@@ -1074,44 +1074,44 @@
     {
       "slug": "deviation",
       "ja_title": "偏差値って何？ — 3秒で「上位何%」が見える",
-      "en_title": "What Is a Deviation Value? — See \"Top X%\" in 3 Seconds",
+      "en_title": "What Is Hensachi? — Japan's School Score Is Just a Rescaled z-Score",
       "ja_path": "/columns/deviation.html",
       "en_path": "/en/columns/deviation.html",
       "ja_nav": "偏差値って何？",
-      "en_nav": "What Is Deviation?",
+      "en_nav": "What Is Hensachi?",
       "icon": "📊",
       "ja_lead": "偏差値60と70の差はたった10、でもレア度は5倍。z = (X−μ)/σ の最も身近な応用例",
-      "en_lead": "Japan's Hensachi (deviation value): a 10-point gap holds 5× the rarity. The standard normal in everyday clothes",
+      "en_lead": "Japan's school-ranking score (hensachi) is just a rescaled z-score, 50 + 10·z — a 10-point gap holds about 5× the rarity",
       "related_topics": [
         {
           "slug": "stdnorm",
           "ja_why": "偏差値 = z × 10 + 50 を作る元の N(0,1) をスライダーで動かして、その変換が成り立つ瞬間を見る",
-          "en_why": "drag the N(0,1) that produces Hensachi = z × 10 + 50 — watch the transformation hold in real time"
+          "en_why": "drag the N(0,1) that hensachi = 50 + 10·z is built on — watch the rescaling line up in real time"
         },
         {
           "slug": "normal",
           "ja_why": "一般正規 N(μ, σ²) から z スケールへ降りる流れがここで始まり、偏差値の前段を組み立てる",
-          "en_why": "kicks off the descent from N(μ, σ²) to the z-scale — the step that precedes Hensachi"
+          "en_why": "the descent from N(μ, σ²) down to the z-scale — the step that comes before hensachi"
         },
         {
           "slug": "clt",
           "ja_why": "「平均が正規に従う」という CLT の保証が動き続けて、偏差値が安定して機能する土台を支える",
-          "en_why": "CLT's guarantee that averages go normal keeps running underneath, holding Hensachi stable"
+          "en_why": "CLT's guarantee that averages go normal is the base that keeps the hensachi scale meaningful"
         }
       ],
       "related_columns": [
         {
           "slug": "standardization",
           "ja_why": "同じ z スコアを「単位の違うものを比べる翻訳機」として動かす姉妹コラム、偏差値を一段抽象化した姿で扱う",
-          "en_why": "puts the same z-score to work as a universal translator across units — the sister column that lifts Hensachi one level up"
+          "en_why": "puts the same z-score to work as a translator across units — the sister column to hensachi, one level more general"
         }
       ],
       "featured_topic": {
         "slug": "stdnorm",
         "ja_title": "N(0,1) の上で偏差値の翻訳機を動かす",
-        "en_title": "Run the Hensachi translator on top of N(0,1)",
+        "en_title": "Drive the hensachi rescaling on top of N(0,1)",
         "ja_why": "偏差値の元になる N(0,1) をスライダーで動かすと、z × 10 + 50 の翻訳が成り立つ瞬間が画面で追える",
-        "en_why": "Drag N(0,1) — the curve behind every Hensachi — and watch the moment z × 10 + 50 lines up on screen"
+        "en_why": "Drag N(0,1) — the curve hensachi is built on — and watch z become 50 + 10·z right on screen"
       }
     },
     {
@@ -1204,7 +1204,7 @@
         {
           "slug": "deviation",
           "ja_why": "z スコアが日本独自の「偏差値」として日常に降りていく姿を追う姉妹コラム",
-          "en_why": "follows the z-score as it descends into Japan's everyday Hensachi — the sister column"
+          "en_why": "follows the z-score as it descends into Japan's everyday school score, hensachi — the sister column"
         },
         {
           "slug": "se_vs_sd",
@@ -1271,7 +1271,7 @@
     {
       "slug": "error_types",
       "ja_title": "第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える",
-      "en_title": "Type I vs Type II Errors — One 2×2 Table Makes It Click",
+      "en_title": "Type I vs Type II Errors — One 2×2 Table Sorts Them Out",
       "ja_path": "/columns/error_types.html",
       "en_path": "/en/columns/error_types.html",
       "ja_nav": "過誤の2×2",
