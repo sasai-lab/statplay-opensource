@@ -28,8 +28,8 @@ const F_D2 = [1,2,3,4,5,6,7,8,9,10,12,15,20,24,30,40,60,120];
 
 const S = {
   tab: 'norm',
-  norm: { z: 1.96, mode: 'lower' },
-  t: { df: 10, alpha: 0.05, side: 'two' },
+  norm: { z: 1.96, mode: 'upper' },
+  t: { df: 10, alpha: 0.05, side: 'one' },
   chi2: { df: 5, alpha: 0.05 },
   f: { df1: 3, df2: 10, alpha: 0.05 }
 };
