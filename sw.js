@@ -33,6 +33,8 @@ const ASSETS = [
   ...COLUMN_SLUGS.flatMap(s => [`./columns/${s}.html`, `./en/columns/${s}.html`]),
   './about.html',
   './en/about.html',
+  './privacy.html',
+  './en/privacy.html',
   './tables/index.html',
   './en/tables/index.html'
 ];
