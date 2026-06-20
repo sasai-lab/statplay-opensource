@@ -1,0 +1,14 @@
+# Normalize line endings: always store and check out with LF.
+# Prevents accidental CRLF mass-diffs (e.g. from editors / Windows sync).
+* text=auto eol=lf
+
+# Binary assets — never touch line endings.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text eol=lf
+*.woff binary
+*.woff2 binary
+*.ttf binary
