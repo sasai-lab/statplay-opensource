@@ -8,7 +8,7 @@
 <p><b>右の式：加法定理 P(A∪B)</b><br/>
 ・P(A) + P(B)：単純に足すと、重なり（A∩B）を二重カウントしてしまう<br/>
 ・− P(A∩B)：二重カウント分を引いて正しい値にする<br/>
-・排反（A∩B = 0）なら単純に足すだけでOK</p>
+・排反（A∩B = ∅）なら単純に足すだけでOK</p>
 <p><b>独立との関係</b><br/>
 ・A と B が独立 ⇔ P(A|B) = P(A)（B を知っても A の確率が変わらない）<br/>
 ・このとき P(A∩B) = P(A)·P(B) が成り立つ（掛け算で求まる）</p>
@@ -23,7 +23,7 @@
 <p><b>Right: Addition rule P(A∪B)</b><br/>
 • P(A) + P(B): naively adding double-counts the overlap<br/>
 • − P(A∩B): subtract it once to correct<br/>
-• If mutually exclusive (A∩B = 0): just add — no overlap to worry about</p>
+• If mutually exclusive (A∩B = ∅): just add — no overlap to worry about</p>
 <p><b>Connection to independence</b><br/>
 • A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
 • Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
@@ -49,7 +49,7 @@
 <h3>// Common misconceptions</h3>
 <div class="misc-item">
 <b>❌ "Mutually exclusive = independent" — the #1 mix-up</b>
-<p>Mutually exclusive: A∩B = ∅ (rolling a 1 and a 2 on the same die).<br/>
+<p>Mutually exclusive: A∩B = ∅ (rolling a 1 and a 2 on the same roll of a die).<br/>
 Independent: P(A∩B) = P(A)P(B) (first roll being 1 doesn't affect the second roll).<br/>
 Two mutually exclusive events (with P > 0) are never independent. If A happens, B's probability drops to 0 — that's the opposite of independence.</p>
 </div>

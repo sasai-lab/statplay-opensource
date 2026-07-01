@@ -5,6 +5,8 @@ dist/
 scripts/cf-*.json
 scripts/publish_opensource.sh
 docs/
+!bayesplay/docs/
+!bayesplay/docs/*.md
 screencapture-*.png
 screencapture-*.jpg
 スクリーンショット*

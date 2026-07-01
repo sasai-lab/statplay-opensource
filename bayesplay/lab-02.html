@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="次の結果にも不確実性が残る。更新後の平均が分かっても、次の観測がその通りに出るとは限らない。推定の不確実性と、次に起きるばらつきの両方を予測分布として見る。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 02 - 次の結果にも不確実性が残る</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html" class="current">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-02">
+      <div class="sec-tag">LAB 02 / POSTERIOR PREDICTIVE</div>
+      <h1 id="page-title-02" class="sec-title">次の結果にも不確実性が残る</h1>
+      <p>更新後の平均が分かっても、次の観測がその通りに出るとは限らない。推定の不確実性と、次に起きるばらつきの両方を予測分布として見る。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-02">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-02" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>成功率の見当がついた後で、次の 5 回、20 回、50 回では何回くらい成功しそうか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>事後予測分布は、更新後の成功率の不確実性を未来の観測へ渡したもの。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>棒の高さは、未来の成功数それぞれの予測確率。黄色の棒の広がりが、未来の結果の揺れを表す。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-02">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-02" class="sec-title">推定した成功率と、次に出る結果は同じではない</h2>
+      <div class="column-note-prose">
+        <p>Lab 01 で更新後の成功率が読めても、次の20回で成功数がぴったり平均通りになるとは限りません。ここで見ているのは「成功率の推定」ではなく、その推定を使った「未来の成功数の予測」です。</p>
+        <p>予測分布には、2つの揺れが入ります。1つは成功率そのものがまだはっきりしないこと。もう1つは、成功率が決まっていても、次の試行結果には偶然のばらつきがあることです。</p>
+        <p>未来の回数を増やすと、成功数の候補は横に広がります。平均は読みやすくなっても、実際の未来は幅を持って出てくる。その違いをこのページで確認します。</p>
+      </div>
+    </section>
+
+    <section class="predictive-section reveal in" id="posterior-predictive" aria-labelledby="predictive-title">
+      <div class="section-copy">
+        <div class="sec-tag">LAB 02 / POSTERIOR PREDICTIVE</div>
+        <h2 id="predictive-title" class="sec-title">次の結果にも不確実性が残る</h2>
+        <p>
+          更新後（事後分布）を通すと、未来の成功数にもまだ幅が残っている。更新後の平均だけではなく、次の観測がどれくらい揺れそうかも同じ画面に並ぶ。
+        </p>
+      </div>
+      <div class="predictive-panel">
+        <div class="mini-guide predictive-guide" aria-label="予測分布の操作">
+          <span class="mini-guide__label">実験ガイド</span>
+          <p class="mini-guide__prompt">更新後の分布を使って、次に何回試すかだけを変える。</p>
+          <p class="mini-guide__prompt">ここでのグラフの黄色は、更新後の分布そのものではなく、そこから出した未来の成功数の予測を表す。</p>
+          <p id="predictiveGuideText" class="mini-guide__readout" aria-live="polite">未来の回数を増やすと、成功数の候補も横へ広がる。</p>
+        </div>
+        <div class="preset-row preset-row--thirds" aria-label="予測分布 プリセット">
+          <button type="button" class="preset-btn" data-future-preset="short">5回</button>
+          <button type="button" class="preset-btn" data-future-preset="middle">20回</button>
+          <button type="button" class="preset-btn" data-future-preset="long">50回</button>
+        </div>
+        <label class="control predictive-control">
+          <span>未来の試行数 <output id="futureTrialsValue" for="futureTrials">20</output></span>
+          <input id="futureTrials" type="range" min="1" max="60" step="1" value="20">
+        </label>
+        <canvas id="predictiveCanvas" class="predictive-canvas" aria-busy="true" aria-label="事後予測分布の棒グラフ"></canvas>
+        <div class="legend-row">
+          <span><i class="legend-swatch legend-predictive"></i>未来の成功数の予測確率</span>
+          <span><i class="legend-swatch legend-marker"></i>予測平均</span>
+          <span><i class="legend-band"></i>80%予測範囲</span>
+        </div>
+        <div class="metrics-grid metrics-grid--compact predictive-metrics">
+          <div class="metric"><span>最もありそうな成功数</span><strong id="predictiveMode">-</strong></div>
+          <div class="metric"><span>80%予測範囲</span><strong id="predictiveRange">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-02">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-02" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>未来の試行数を 5 回から 50 回へ変える。成功数の候補が横に広がり、平均だけでは読めない幅が見える。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>「次の成功確率」と「次の 20 回で何回成功するか」は別の読みになる。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>予測の幅を見ると、観測がどれくらい強かったのかが気になる。次は、同じ割合でも観測数で重みが変わることを見る。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <a href="lab-01.html">← Lab 01</a>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-03.html">Lab 03 →</a>
+    </nav>
+  </main>
+</body>
+</html>

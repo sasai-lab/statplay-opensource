@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="平均は、観測の強さで動く。テスト点、反応時間、測定値のような連続量では、未知の平均を推定する。事前平均と観測平均が、どちらをどれくらい信じられるかで混ざる。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 04 - 平均は、観測の強さで動く</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html" class="current">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-04">
+      <div class="sec-tag">LAB 04 / NORMAL-NORMAL UPDATE</div>
+      <h1 id="page-title-04" class="sec-title">平均は、観測の強さで動く</h1>
+      <p>テスト点、反応時間、測定値のような連続量では、未知の平均を推定する。事前平均と観測平均が、どちらをどれくらい信じられるかで混ざる。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-04">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-04" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>観測平均が出たとき、それをそのまま平均の答えにしてよいのか。それとも観測のばらつきや件数も見るべきか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>Normal-Normal 更新では、事前平均と観測平均が精度で重み付けされる。観測ノイズが小さく、観測数が多いほど観測側へ寄る。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>シアンが事前分布、マゼンタが観測平均の支持、黄色が更新後。黄色が両者の間で動く。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-04">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-04" class="sec-title">平均を見るときも、観測平均だけでは決まらない</h2>
+      <div class="column-note-prose">
+        <p>連続量では、観測平均が出るとそれをそのまま答えにしたくなります。ただし、平均が同じでも、観測数が少ない、測定のばらつきが大きい、といった条件では読みは弱くなります。</p>
+        <p>Normal-Normal 更新では、出発点の平均と観測平均が「精度」で重みづけされます。精度は、ばらつきの小ささと観測数の多さで決まります。観測数を増やすと、黄色の山がマゼンタ側へ寄る理由はここにあります。</p>
+        <p>ここで見るべきなのは、黄色の中心だけではありません。黄色の幅が狭くなるほど、平均についての不確実性が小さくなります。平均の推定でも、位置と幅をセットで読むのが大事です。</p>
+      </div>
+    </section>
+
+    <section class="mini-lab-section reveal in" id="normal-normal" aria-labelledby="normal-normal-title">
+      <div class="section-copy">
+        <div class="sec-tag">LAB 04 / NORMAL-NORMAL UPDATE</div>
+        <h2 id="normal-normal-title" class="sec-title">平均は、観測の強さで動く</h2>
+        <p>
+          連続量の平均 μ（ミュー）を推定する。観測のばらつきが小さく、観測数が多いほど、更新後（事後分布）は観測平均へ強く寄る。出発点（事前分布）が狭いほど、更新後にもその影響が残る。
+        </p>
+      </div>
+      <div class="mini-lab-card">
+        <div class="mini-guide" aria-label="Lab 04 操作の流れ">
+          <span class="mini-guide__label">実験ガイド</span>
+          <p class="mini-guide__prompt">出発点と観測平均を離したまま、観測の強さだけを切り替える。</p>
+          <p id="nnGuideText" class="mini-guide__readout" aria-live="polite">黄色の山は、シアンの出発点とマゼンタの観測の間に現れる。</p>
+        </div>
+        <div class="preset-row preset-row--thirds control-preset" aria-label="観測の強さ プリセット">
+          <button type="button" class="preset-btn" data-nn-preset="low">弱い</button>
+          <button type="button" class="preset-btn" data-nn-preset="middle">標準</button>
+          <button type="button" class="preset-btn" data-nn-preset="high">強い</button>
+        </div>
+        <div class="mini-controls">
+          <label class="control">
+            <span>事前平均 <output id="nnPriorMeanValue" for="nnPriorMean">0.0</output></span>
+            <input id="nnPriorMean" type="range" min="-5" max="5" step="0.1" value="0">
+          </label>
+          <label class="control">
+            <span>事前の幅（SD） <output id="nnPriorSdValue" for="nnPriorSd">2.0</output></span>
+            <input id="nnPriorSd" type="range" min="0.4" max="5" step="0.1" value="2">
+          </label>
+          <label class="control">
+            <span>観測平均 <output id="nnObservedMeanValue" for="nnObservedMean">1.8</output></span>
+            <input id="nnObservedMean" type="range" min="-5" max="5" step="0.1" value="1.8">
+          </label>
+          <label class="control">
+            <span>観測のばらつき（SD） <output id="nnNoiseSdValue" for="nnNoiseSd">1.5</output></span>
+            <input id="nnNoiseSd" type="range" min="0.3" max="5" step="0.1" value="1.5">
+          </label>
+          <label class="control">
+            <span>観測数 <output id="nnNValue" for="nnN">8</output></span>
+            <input id="nnN" type="range" min="1" max="80" step="1" value="8">
+          </label>
+        </div>
+        <div class="mini-lab-viz">
+          <canvas id="normalCanvas" class="mini-lab-canvas" aria-busy="true" aria-label="Normal-Normal 更新による平均推定"></canvas>
+          <div class="legend-row">
+            <span><i class="legend-swatch legend-prior"></i>出発点（事前分布）</span>
+            <span><i class="legend-swatch legend-likelihood"></i>観測が支持する平均（尤度）</span>
+            <span><i class="legend-swatch legend-posterior"></i>更新後（事後分布）</span>
+          </div>
+        </div>
+        <div class="metrics-grid metrics-grid--compact mini-lab-metrics">
+          <div class="metric"><span>更新後の平均（事後平均）</span><strong id="nnPosteriorMean">-</strong></div>
+          <div class="metric"><span>更新後のSD（事後SD）</span><strong id="nnPosteriorSd">-</strong></div>
+          <div class="metric"><span>観測の重み</span><strong id="nnDataWeight">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-04">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-04" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>観測数を増やす、または観測のばらつきを小さくする。黄色の山がマゼンタ側へ寄り、細くなるところを見る。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>観測平均だけでなく、観測のばらつきと観測数が「どれくらい動くか」を決める。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>平均では観測の精度が大事だった。件数を見るときは、観測時間や人数のような分母が同じ役割を持つ。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <a href="lab-03.html">← Lab 03</a>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-05.html">Lab 05 →</a>
+    </nav>
+  </main>
+</body>
+</html>

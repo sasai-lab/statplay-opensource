@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="同じ割合でも、観測の強さは違う。7/10 と 70/100 はどちらも 70%。しかし、観測数が多いほど「70% 付近を支持する力」は強く、尤度の山は細くなる。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 03 - 同じ割合でも、観測の強さは違う</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html" class="current">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-03">
+      <div class="sec-tag">LAB 03 / LIKELIHOOD WIDTH</div>
+      <h1 id="page-title-03" class="sec-title">同じ割合でも、観測の強さは違う</h1>
+      <p>7/10 と 70/100 はどちらも 70%。しかし、観測数が多いほど「70% 付近を支持する力」は強く、尤度の山は細くなる。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-03">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-03" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>同じ 70% という観測でも、10 回の結果と 100 回の結果を同じ重さで読んでよいのか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>尤度は、観測がどのパラメータ値をどれくらい支持するかの形。観測数が多いほど支持する範囲は狭くなる。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>薄いマゼンタは少ない観測、濃いマゼンタは多い観測。同じ中心でも、山の幅が違う。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-03">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-03" class="sec-title">同じ70%でも、10回と100回では読みの強さが違う</h2>
+      <div class="column-note-prose">
+        <p>7/10 と 70/100 は、どちらも観測割合だけ見れば70%です。しかし、10回の観測では偶然の偏りが大きく出やすく、100回の観測では70%付近をより強く支持します。</p>
+        <p>この違いを表すのが尤度の幅です。中心が同じでも、山が広いなら「このあたりかもしれない」の範囲が広く、山が細いなら「この近くを強く支持している」と読めます。</p>
+        <p>ベイズ更新では、出発点にどの観測を合わせるかだけでなく、その観測がどれくらい強いかが効きます。次の Lab 04 では、同じ考え方を連続量の平均に移します。</p>
+      </div>
+    </section>
+
+    <section class="mini-lab-section reveal in" id="likelihood-strength" aria-labelledby="likelihood-strength-title">
+      <div class="section-copy">
+        <div class="sec-tag">LAB 03 / LIKELIHOOD WIDTH</div>
+        <h2 id="likelihood-strength-title" class="sec-title">同じ割合でも、観測の強さは違う</h2>
+        <p>
+          7/10 と 70/100 は同じ 70%。観測数が多いほど、観測が支持する形（尤度）は細くなる。
+        </p>
+      </div>
+      <div class="mini-lab-card">
+        <div class="mini-guide" aria-label="Lab 03 操作の流れ">
+          <span class="mini-guide__label">実験ガイド</span>
+          <p class="mini-guide__prompt">7/10 と 70/100 のように割合をそろえ、観測数だけを切り替える。多い観測ほど、山は細くなる。</p>
+          <p id="lsGuideText" class="mini-guide__readout" aria-live="polite">同じ割合でも、観測数が多いほど尤度の山が細くなる。</p>
+        </div>
+        <div class="preset-row preset-row--thirds control-preset" aria-label="多い観測数 プリセット">
+          <button type="button" class="preset-btn" data-ls-preset="near">20件</button>
+          <button type="button" class="preset-btn" data-ls-preset="middle">100件</button>
+          <button type="button" class="preset-btn" data-ls-preset="wide">300件</button>
+        </div>
+        <div class="mini-controls">
+          <label class="control">
+            <span>観測割合 <output id="lsRateValue" for="lsRate">70%</output></span>
+            <input id="lsRate" type="range" min="0.05" max="0.95" step="0.01" value="0.70">
+          </label>
+          <label class="control">
+            <span>少ない観測数 <output id="lsSmallNValue" for="lsSmallN">10</output></span>
+            <input id="lsSmallN" type="range" min="4" max="80" step="1" value="10">
+          </label>
+          <label class="control">
+            <span>多い観測数 <output id="lsLargeNValue" for="lsLargeN">100</output></span>
+            <input id="lsLargeN" type="range" min="20" max="400" step="5" value="100">
+          </label>
+        </div>
+        <div class="mini-lab-viz">
+          <canvas id="strengthCanvas" class="mini-lab-canvas" aria-busy="true" aria-label="観測数の違いによる尤度の幅の比較"></canvas>
+          <div class="legend-row">
+            <span><i class="legend-swatch legend-likelihood-soft"></i>観測が支持する形（少ない観測数）</span>
+            <span><i class="legend-swatch legend-likelihood"></i>観測が支持する形（多い観測数）</span>
+            <span><i class="legend-swatch legend-marker"></i>観測割合</span>
+          </div>
+        </div>
+        <div class="metrics-grid metrics-grid--compact mini-lab-metrics">
+          <div class="metric"><span>少ないケース</span><strong id="lsSmallCase">-</strong></div>
+          <div class="metric"><span>多いケース</span><strong id="lsLargeCase">-</strong></div>
+          <div class="metric"><span>幅の比</span><strong id="lsWidthRatio">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-03">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-03" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>観測割合は固定したまま、多い観測数を上げる。濃い山が細くなるところを見る。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>割合が同じでも情報量は同じではない。分母が大きい観測ほど、更新後を強く動かす。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>成功/失敗の話で見た「観測の強さ」は、平均を推定するときにも出てくる。次は連続量の平均へ移る。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <a href="lab-02.html">← Lab 02</a>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-04.html">Lab 04 →</a>
+    </nav>
+  </main>
+</body>
+</html>

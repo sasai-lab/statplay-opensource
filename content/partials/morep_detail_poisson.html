@@ -4,7 +4,7 @@
 <p><b>具体例で読む（1時間に平均3件メールが来る。5件来る確率は？）</b><br/>
 ・λ=3, k=5 のとき——<br/>
 ・λ⁵ = 3⁵ = 243：「5件分のパワー」（λが大きいほど多く来やすい）<br/>
-・e⁻³ ≈ 0.050：「0件も来ない確率」が基準。λが大きいほどここが小さい<br/>
+・e⁻³ ≈ 0.050：「1件も来ない確率」が基準。λが大きいほどここが小さい<br/>
 ・5! = 120：5件の来る順番を区別しない ← メールAが先かBが先かは気にしない<br/>
 ・P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
 <p><b>二項分布との関係 ← ここは押さえておきたい</b><br/>
@@ -19,7 +19,7 @@
 • λ=3, k=5<br/>
 • λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
 • e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
-• 5! = 120: we don't care about the order of the 5 arrivals<br/>
+• 5! = 120: the order of the 5 arrivals doesn't matter<br/>
 • P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
 <p><b>Connection to binomial — worth remembering</b><br/>
 • Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>

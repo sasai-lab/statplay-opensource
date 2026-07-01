@@ -207,7 +207,7 @@
     <b>▼ What this site is for</b><br>
     If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back.<br>
     This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br>
-    Once "oh, that's what it means" lands, <b>go back to your textbook</b> with confidence. That's the whole point.
+    Once "oh, that's what it means" clicks, <b>go back to your textbook</b> with confidence. That's the whole point.
   </div>
 </section>
 
@@ -306,7 +306,7 @@
     <span class="col-card__related">Related: <a href="#reg">Simple Regression</a> &middot; <a href="#mreg">Multiple Regression</a> &middot; <a href="#corr">Correlation</a> &middot; <a href="#ci">Confidence Interval</a></span>
   </div>
   <div data-lang="en" class="col-card" style="--col-accent:var(--yellow)">
-    <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Sorts Them Out &rarr;</a><br>
+    <a href="en/columns/error_types.html" class="col-card__title">Type I vs Type II Errors &mdash; One 2&times;2 Table Sorts It Out &rarr;</a><br>
     <span class="col-card__desc">α, β, power, and effect size all live on a single 2&times;2 table. Once you see it, the confusion disappears.</span>
     <span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> &middot; <a href="#ci">Confidence Interval</a> &middot; <a href="#bayes">Bayes' Theorem</a> &middot; <a href="#anova">ANOVA</a> &middot; <a href="#proptest">Proportion Test</a> &middot; <a href="#dists">Three Test Distributions</a></span>
   </div>
@@ -378,7 +378,7 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide &#x2014; try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Set k to <b>1.0</b> &#x2192; area is ~68%. That's "&#xB1;1&#x03C3; covers about 70%."</li>
+      <li><b>Step 1:</b> Set k to <b>1.0</b> &#x2192; area is ~68%. That's "&#xB1;1&#x03C3; covers ~70%."</li>
       <li><b>Step 2:</b> Set k to <b>1.96</b> &#x2192; area is ~95%. You'll see this number everywhere in testing and CIs.</li>
       <li><b>Step 3:</b> Stretch k to <b>3.0</b> &#x2192; nearly 100%. Almost nothing lies outside.</li>
     </ol>
@@ -442,7 +442,7 @@
     <p data-lang="ja" class="sec-desc sec-desc--tight">
       身長、IQ、血圧の測定値、工場の部品誤差 &#x2014; 世の中にある正規分布っぽいものは平均も広がりもバラバラ。
       でも <b>z = (x &#x2212; &#x03BC;) / &#x03C3;</b> をかませるだけで、全部まとめて<b>ピンクのあの曲線</b>にピタッと重なる。<br>
-      スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規表" 一枚で済む理由。
+      スクロールしたら自動で変身していく（もう一度見たい時は &#x25B6; ボタン）。これが、すべての統計公式が "標準正規分布表" 一枚で済む理由。
     </p>
     <p data-lang="en" class="sec-desc sec-desc--tight">
       Height, IQ, blood pressure readings, factory part errors &#x2014; real-world normal-ish things all have different means and spreads.
@@ -517,7 +517,7 @@
     <code>μ</code> sets the center, <code>σ</code> sets the spread.
     Slide the parameters and the curve glides; the probability of falling inside <code>[a, b]</code> (pink area) updates live.<br>
     <b>That pink area IS the "percentage" you hear in the news.</b>
-    Say adult male heights follow <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
+    Say adult male heights follow <code>N(170, 36)</code> (mean 170 cm, σ=6 cm). <b>What share falls in 165–175 cm?</b>
     Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
     The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
@@ -553,7 +553,7 @@
       <div class="ctrl"><label><span data-lang="ja">&#x03C3; (標準偏差)</span><span data-lang="en">&#x03C3; (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
         <input type="range" id="nSd" min="0.3" max="3" step="0.1" value="1" aria-label="sigma (std dev)">
       </div>
-      <div class="ctrl"><label><span data-lang="ja">区間 [a,b] : a</span><span data-lang="en">Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
+      <div class="ctrl"><label><span data-lang="ja">区間 [a,b] : a</span><span data-lang="en">Interval [a,b]: a</span> = <span class="val" id="nAVal">-1</span></label>
         <input type="range" id="nA" min="-5" max="5" step="0.1" value="-1" aria-label="Interval a">
       </div>
       <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
@@ -713,8 +713,8 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> 有病率を <b>0.001（一般集団）</b> と <b>0.4（高リスク群）</b> で往復してみる → 同じ感度99%・特異度95%なのに、陽性的中率が <b>1.96% から 92.86%</b> へ大きく動く。事前確率の効き方を体感する。</li>
-      <li><b>Step 2:</b> 有病率 0.001 で陽性的中率はたった 1.96%。陽性100人のうち、実際に病気なのは2人だけ。直感とのズレを味わう。</li>
+      <li><b>Step 1:</b> 有病率を <b>0.001（一般集団）</b> と <b>0.4（高リスク群）</b> で往復してみる → 同じ感度99%・特異度95%なのに、陽性的中率が <b>1.94% から 92.96%</b> へ大きく動く。事前確率の効き方を体感する。</li>
+      <li><b>Step 2:</b> 有病率 0.001 で陽性的中率はたった 1.94%。陽性100人のうち、実際に病気なのは2人だけ。直感とのズレを味わう。</li>
       <li><b>Step 3:</b> 有病率を 0.001 のまま、特異度を <b>99.9%</b> にする → 偽陽性が激減し、陽性的中率が劇的に改善。</li>
       <li><b>Step 4:</b> 1000人の町の図を見ながら、TP（真陽性）と FP（偽陽性）の人数比を確認しよう。</li>
     </ol>
@@ -722,8 +722,8 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.96% to 92.86%</b>. Feel how strongly the prior dominates.</li>
-      <li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.96% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
+      <li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.94% to 92.96%</b>. Feel how strongly the prior dominates.</li>
+      <li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.94% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
       <li><b>Step 3:</b> Keep prevalence at 0.001 but raise specificity to <b>99.9%</b> → false positives plummet, PPV improves dramatically.</li>
       <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
     </ol>
@@ -751,7 +751,7 @@
       <div><span data-lang="ja">真陽性 TP（病気 &amp; 陽性）</span><span data-lang="en">True positives (sick &amp; tested +)</span><strong id="bTp">&#x2014;</strong></div>
       <div><span data-lang="ja">偽陽性 FP（健康なのに陽性）</span><span data-lang="en">False positives (healthy but tested +)</span><strong id="bFp">&#x2014;</strong></div>
       <div><span data-lang="ja">陽性だった人が本当に病気の確率</span><span data-lang="en">If you tested +, chance you're sick</span><strong id="bPpv">&#x2014;</strong></div>
-      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested NEG, chance you're healthy</span><strong id="bNpv">&#x2014;</strong></div>
+      <div><span data-lang="ja">陰性だった人が本当に健康な確率</span><span data-lang="en">If you tested &#x2212;, chance you're healthy</span><strong id="bNpv">&#x2014;</strong></div>
     </div>
     <div class="share-row">
       <button class="share-btn dl" data-share="bayesCanvas" data-title="ベイズの定理" data-title-en="Bayes' Theorem" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
@@ -809,9 +809,9 @@
       <div class="panel-title" data-lang="en">Binomial B(n, p)</div>
       <canvas id="binomCanvas" aria-label="Binomial distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20" aria-label="Trials n">
+        <div class="ctrl"><label data-lang="ja">試行回数 n</label><label data-lang="en">Trials n</label><input id="binomN" type="range" min="1" max="50" step="1" value="20" aria-label="Trials n">
 <span class="val" id="binomNVal">20</span></div>
-        <div class="ctrl"><label data-lang="ja">成功確率 p</label><label data-lang="en">success p</label><input id="binomP" type="range" min="0.01" max="0.99" step="0.01" value="0.35" aria-label="Success probability p">
+        <div class="ctrl"><label data-lang="ja">成功確率 p</label><label data-lang="en">Success p</label><input id="binomP" type="range" min="0.01" max="0.99" step="0.01" value="0.35" aria-label="Success probability p">
 <span class="val" id="binomPVal">0.35</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">n &#x2192; &#x221E; かつ np &#x2192; &#x03BB; で、二項はポアソンへ。</div>
@@ -847,7 +847,7 @@
       <div class="panel-title" data-lang="en">Poisson(&#x03BB;)</div>
       <canvas id="poissonCanvas" aria-label="Poisson distribution simulation" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3" aria-label="Rate lambda">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">Rate &#x03BB;</label><input id="poisL" type="range" min="0.5" max="20" step="0.1" value="3" aria-label="Rate lambda">
 <span class="val" id="poisLVal">3</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">&#x03BB; が大きくなるにつれ、ポアソンは正規分布に近づく。</div>
@@ -880,10 +880,10 @@
       <div class="panel-title" data-lang="ja">指数分布 Exp(&#x03BB;) &#x2014; 待ち時間</div>
       <div class="use-case" data-lang="ja">いつ使う？ → 次の電話が来るまでの待ち時間、電球が切れるまでの寿命</div>
       <div class="use-case" data-lang="en">When? &#x2192; Time until next phone call; how long until a light bulb burns out</div>
-      <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; waiting time</div>
+      <div class="panel-title" data-lang="en">Exponential(&#x03BB;) &#x2014; Waiting Time</div>
       <canvas id="expCanvas" aria-label="Exponential distribution PDF" height="180" aria-busy="true"></canvas>
       <div class="controls">
-        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1" aria-label="Rate lambda">
+        <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">Rate &#x03BB;</label><input id="expL" type="range" min="0.1" max="3" step="0.05" value="1" aria-label="Rate lambda">
 <span class="val" id="expLVal">1</span></div>
       </div>
       <div class="sec-bridge" data-lang="ja">無記憶性：バスを10分待っても、あと何分待つかは今来た人と同じ。過去の待ち時間は将来に影響しない。</div>
@@ -914,8 +914,8 @@
     </div>
   </div>
   <div class="controls">
-    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0" aria-label="Already waited time t"><span class="val" id="memTVal">0</span></div>
-    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2" aria-label="Rate lambda"><span class="val" id="memLVal">0.20</span></div>
+    <div class="ctrl"><label data-lang="ja">すでに待った時間 t</label><label data-lang="en">Already waited t</label><input id="memT" type="range" min="0" max="30" step="0.5" value="0" aria-label="Already waited time t"><span class="val" id="memTVal">0</span></div>
+    <div class="ctrl"><label data-lang="ja">発生率 &#x03BB;</label><label data-lang="en">Rate &#x03BB;</label><input id="memL" type="range" min="0.1" max="1" step="0.05" value="0.2" aria-label="Rate lambda"><span class="val" id="memLVal">0.20</span></div>
   </div>
 </div>
 <!-- /@panel -->
@@ -927,7 +927,7 @@
   <div class="sec-bridge" data-lang="ja">「1時間にλ件電話が来る」を3つの分布で同時に見る。λスライダーを動かすと3つとも変わる。同じ現象を「回数で数える」か「時間で測る」かの違い。</div>
   <div class="sec-bridge" data-lang="en">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
   <div class="controls controls--mb-12">
-    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3" aria-label="Calls per hour lambda"><span class="val" id="ccLambdaVal">3.0</span></div>
+    <div class="ctrl"><label data-lang="ja">1時間あたりの件数 &#x03BB;</label><label data-lang="en">Calls per hour &#x03BB;</label><input id="ccLambda" type="range" min="0.5" max="15" step="0.5" value="3" aria-label="Calls per hour lambda"><span class="val" id="ccLambdaVal">3.0</span></div>
   </div>
   <div class="cc-trio">
     <div class="cc-col">
@@ -1012,7 +1012,7 @@
     そこから <code>n</code>個 取って平均する操作を繰り返すと、<b>その平均たちの分布</b>は勝手に
     <b>ベル型（正規分布）</b>に化ける。<br>
     下のラボでは <b>左＝もとの分布（めっちゃ歪んでいる）</b>、<b>右＝標本平均の分布（正規に化けていく）</b>を並べて見せている。
-    <code>n</code> を大きくするほど、右のベルがシュッと細くなる（<span class="term-gloss" title="標準誤差（Standard Error）：標本平均のバラつきの大きさ。σ をサンプル数の平方根で割ったもの">SE</span> = σ/√n）。
+    <code>n</code> を大きくするほど、右のベルがシュッと細くなる（<span class="term-gloss" title="標準誤差（Standard Error）：標本平均のばらつきの大きさ。σ をサンプルサイズの平方根で割ったもの">SE</span> = σ/√n）。
   </p>
   <p class="sec-desc" data-lang="en">
     <b>A fact worth pausing on</b> — no matter how skewed the base distribution is,
@@ -1101,8 +1101,8 @@
     <b>統計が"なんとなく"じゃなく"証拠"になる理由</b>がここにある。
   </p>
   <p class="sec-desc" data-lang="en">
-    10 heads in a row at the start of a coin-flip? Not that weird.
-    But flip it <b>10,000 times</b> and the head-ratio locks onto <b>almost exactly 0.5</b>.<br>
+    10 heads in a row at the start of a coin-flip run? Not that weird.
+    But flip it <b>10,000 times</b> and the heads ratio locks onto <b>almost exactly 0.5</b>.<br>
     That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
     <b>This is why statistics counts as evidence, not a vague hunch.</b>
   </p>
@@ -1189,7 +1189,7 @@
     <ol>
       <li><b>Step 1:</b> 信頼度95%, n=30 で ▶ 300回生成 → ピンク（外した区間）がちょうど5%前後になることを確認。</li>
       <li><b>Step 2:</b> 信頼度を <b>80%</b> に下げて再生成 → ピンクが増える。幅を狭めた分、当たりにくい。</li>
-      <li><b>Step 3:</b> 信頼度95%に戻し、n を <b>200</b> にする → 区間の幅がグッと狭くなる。サンプル数の力。</li>
+      <li><b>Step 3:</b> 信頼度95%に戻し、n を <b>200</b> にする → 区間の幅がグッと狭くなる。サンプルサイズの力。</li>
       <li><b>Step 4:</b> n を <b>5</b> にする → 幅がめちゃ広い。少ないサンプルでは"掴む網"が大きくないと当たらない。</li>
     </ol>
   </div>
@@ -1274,9 +1274,9 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></li>
-      <li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
-      <li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but rejection area is one-sided; p-value halves.</li>
+      <li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection region.</span></li>
+      <li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection region, the p-value shrinks. "Strong evidence."</li>
+      <li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but the rejection region is one-sided; the p-value halves.</li>
     </ol>
   </div>
 <!-- @panel:test_main -->
@@ -1385,7 +1385,7 @@
   <div class="topic-deep-link"><a data-lang="ja" href="topics/proptest.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/proptest.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">I5 / 母比率の検定と推定</div>
   <h2 class="sec-title" data-lang="ja">母比率の検定と推定 <span class="sec-sub">— 標本比率から母比率を探る</span></h2>
-  <h2 class="sec-title" data-lang="en">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
+  <h2 class="sec-title" data-lang="en">Proportion Test &amp; Estimation <span class="sec-sub">— From Sample Proportion to the Truth</span></h2>
 
   <div class="story-bridge" data-lang="ja">母平均で信頼区間や検定をやったときと、考え方はまったく同じ。ただ「連続的なデータの平均」から「成功 or 失敗のカウント」に変わると、<span class="next">標準誤差の形</span>がちょっと違ってくる。ここを触って慣れておくと、参考書の公式がスッと入ってくるはず。</div>
   <div class="story-bridge" data-lang="en">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas read more easily afterward.</div>
@@ -1411,7 +1411,7 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people isn't enough precision.</li>
+      <li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people doesn't give much precision.</li>
       <li><b>Step 2:</b> Push n to 100 → the interval tightens up fast. Feel the power of sample size.</li>
       <li><b>Step 3:</b> Set p̂ to 0.90 → variance p(1-p) shrinks, so the CI narrows. p̂=0.50 gives the widest interval.</li>
       <li><b>Step 4:</b> Keep p̂=0.90, drop n to 10 → if ⚠ appears, the normal approximation conditions aren't met.</li>
@@ -1593,7 +1593,7 @@
   </p>
   <p data-lang="en" class="sec-desc sec-desc--tight">
     "Drug A vs. Drug B &#x2014; which works better?" "Ad A vs. Ad B &#x2014; is the click-through rate really different?" This test is for comparing two groups.<br/>
-    The key idea: under H&#x2080;: p&#x2081; = p&#x2082;, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
+    The key idea: under H&#x2080;: p&#x2081; = p&#x2082;, both samples are pooled into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
   </p>
 
   <div class="controls">
@@ -1663,7 +1663,7 @@
     <b>t</b>：母分散を知らずに平均を検定する時（＝現実の平均検定はほぼ全部これ）。
     <b>χ²</b>：分散そのものの検定、独立性や適合度（カテゴリカル）。
     <b>F</b>：分散比の検定（分散分析 ANOVA、回帰の全体 F 検定）。<br>
-    <span class="text-sub"><span class="term-gloss" title="自由度（df）：自由に値を決められるデータの個数。だいたい「サンプル数−1」。少ないほど不確実性が大きく、分布の裾が広がる">自由度</span> df を動かすと、t は df→∞ で N(0,1) に一致し、χ²／F は df が大きいほど対称なベル形に近づく。これ自体、裏では中心極限定理が効いている。</span>
+    <span class="text-sub"><span class="term-gloss" title="自由度（df）：自由に値を決められるデータの個数。だいたい「サンプルサイズ−1」。少ないほど不確実性が大きく、分布の裾が広がる">自由度</span> df を動かすと、t は df→∞ で N(0,1) に一致し、χ²／F は df が大きいほど対称なベル形に近づく。これ自体、裏では中心極限定理が効いている。</span>
   </p>
   <p class="sec-desc" data-lang="en">
     <b>t, χ², F</b> are all <b>derived from the normal</b>. Think of them as "the standard normal, scaled to reflect that we only ever see a sample".<br>
@@ -1676,7 +1676,7 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> n=<b>3</b> → 自由度1、裾がめちゃくちゃ重い。正規分布（灰色の点線）と比べてみよう。</li>
+      <li><b>Step 1:</b> n=<b>3</b> → 自由度2、裾がめちゃくちゃ重い。正規分布（灰色の点線）と比べてみよう。</li>
       <li><b>Step 2:</b> n=<b>10</b> → まだ正規より裾が厚いが、だいぶ近づいてきた。</li>
       <li><b>Step 3:</b> n=<b>31</b> → ほぼ N(0,1) と区別がつかない。信頼区間の2本のバーもほぼ重なる。</li>
     </ol>
@@ -1684,7 +1684,7 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> n=<b>3</b> → df=1, extremely heavy tails. Compare with the normal (gray dashed line).</li>
+      <li><b>Step 1:</b> n=<b>3</b> → df=2, extremely heavy tails. Compare with the normal (gray dashed line).</li>
       <li><b>Step 2:</b> n=<b>10</b> → still heavier tails than normal, but getting closer.</li>
       <li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
     </ol>
@@ -1724,7 +1724,7 @@
         <div><span data-lang="ja">z 臨界値</span><span data-lang="en">z critical</span> <strong id="tInfoZCrit" class="ln-magenta">&#x00B1;1.960</strong></div>
         <div><span data-lang="ja">t / z 比</span><span data-lang="en">t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
       </div>
-      <p class="dist-caption"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+      <p class="dist-caption"><span data-lang="ja">サンプルが少ないとき、正規分布で計算した信頼区間は狭すぎる。t分布はその不確実性を正直に反映した分布です。nが増えるにつれt分布は正規分布に近づく——それがこの2本のバーで見えます。</span><span data-lang="en">With small samples, a normal-based CI is too narrow — overconfident. The t distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="tDistCanvas" data-title="t分布" data-title-en="t-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -1757,13 +1757,13 @@
       <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
       <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
       <div class="dist-card" data-lang="ja">
-        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規を k 個足して二乗和）。<br>
+        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規 k 個の二乗和）。<br>
         <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span class="ctrl-note">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
         <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
       </div>
       <div class="dist-card" data-lang="en">
         <b class="mg">Built from:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; (sum of k squared standard normals).<br>
-        <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
+        <b class="mg">Use for:</b> variance tests, chi-squared tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
       <div class="controls controls--gap-8">
@@ -1790,7 +1790,7 @@
         <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" class="ln-magenta">&#x2014;</strong></div>
         <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="chiInfoP">&#x2014;</strong></div>
-        <div><span data-lang="ja">判定</span><span data-lang="en">Verdict</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
+        <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
       </div>
       <p class="dist-caption"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
       <div class="share-row">
@@ -1849,11 +1849,11 @@
         <div><span data-lang="ja">グループA SD</span><span data-lang="en">Group A SD</span> <strong id="fInfoSdA">8</strong></div>
         <div><span data-lang="ja">グループB SD</span><span data-lang="en">Group B SD</span> <strong id="fInfoSdB">15</strong></div>
         <div>df&#x2081;, df&#x2082; <strong id="fInfoDf">19, 19</strong></div>
-        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F statistic</span> <strong id="fInfoF" class="ln-yellow">3.516</strong></div>
+        <div><span data-lang="ja">F 統計量</span><span data-lang="en">F-statistic</span> <strong id="fInfoF" class="ln-yellow">3.516</strong></div>
         <div><span data-lang="ja">F 臨界値</span><span data-lang="en">F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="fInfoP">0.005</strong></div>
       </div>
-      <p class="dist-caption"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+      <p class="dist-caption"><span data-lang="ja">F分布は2つのグループの「ばらつきの比」を評価します。分散分析（ANOVA）もこのF統計量を使って、グループ間の差を検定しています。</span><span data-lang="en">The F distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
       <div class="share-row">
         <button class="share-btn dl" data-share="fCanvas" data-title="F分布" data-title-en="F-Distribution" data-kind="dl"><span data-lang="ja">&#x1F4BE; 画像保存</span><span data-lang="en">&#x1F4BE; Save image</span></button>
       </div>
@@ -2029,8 +2029,8 @@
   <div class="story-bridge" data-lang="en">The chi-squared test quantified "category deviations." But how do we test whether <b>means</b> differ across three or more groups? Repeating t-tests inflates false positives — <span class="next">ANOVA</span> compares all groups in a single test.</div>
 
   <p class="sec-desc" data-lang="ja">
-    「グループ間の違い」と「グループ内のバラつき」を比べるのがANOVA。<br>
-    違いがバラつきに比べて大きければ「差がある」と判定。スライダーで動かして体感しよう。
+    「グループ間の違い」と「グループ内のばらつき」を比べるのがANOVA。<br>
+    違いがばらつきに比べて大きければ「差がある」と判定。スライダーで動かして体感しよう。
   </p>
   <p class="sec-desc" data-lang="en">
     ANOVA compares "how different the groups are" vs. "how spread out each group is."<br>
@@ -2060,7 +2060,7 @@
     <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; Why You Can't Just Repeat t-Tests</h3>
     <div class="drag-hint drag-hint--tight">
       <span data-lang="ja">まず「ANOVAがなぜ必要か」を体験。差がない3群（N(0,1)&#x00D7;20人）でt検定を3回繰り返すと、偽陽性はどこまで膨らむ？</span>
-      <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+      <span data-lang="en">First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), run 3 pairwise t-tests — how bad does the false-positive rate get?</span>
     </div>
     <div class="controls controls--tight">
       <button class="btn" id="mcRun"><span data-lang="ja">&#x25B6; 100回</span><span data-lang="en">&#x25B6; 100 trials</span></button>
@@ -2326,7 +2326,7 @@
     Regression with just one explanatory variable is <b>simple regression</b>. It assumes a linear relationship: when x increases by 1, y moves by β₁.
     <b>Ordinary least squares (OLS)</b> picks the line that minimizes the sum of squared vertical residuals.
     <b>Click</b> the canvas to add points and watch the line snap into place.
-    Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
+    Green bars are residuals. R² (from 0 to 1) measures how much of y the line explains.
   </p>
   <div class="sim-layout">
 <div class="guided-steps" data-lang="ja">
@@ -2388,7 +2388,7 @@
   <div class="topic-deep-link"><a data-lang="ja" href="topics/mreg.html">▸ このトピックのページへ</a><a data-lang="en" href="en/topics/mreg.html">▸ Dedicated page for this topic</a></div>
   <div class="sec-tag">M2 / 重回帰分析</div>
   <h2 class="sec-title" data-lang="ja">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
-  <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
+  <h2 class="sec-title" data-lang="en">Multiple Regression <span class="sec-sub">— Predict with Multiple Variables</span></h2>
 
   <div class="story-bridge" data-lang="ja">単回帰では「勉強時間だけ」で成績を予測した。でも待って——たくさん勉強する人ほど<b>睡眠を削っている</b>としたら？ 睡眠不足が成績を下げる分、<b>勉強の本当の効果が隠れてしまう</b>。<span class="next">重回帰</span>は「他の要因をコントロールして、各変数の本当の効果を取り出す」道具だ。</div>
   <div class="story-bridge" data-lang="en">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
@@ -2571,7 +2571,7 @@
       © 2026 <b>Sasai Lab</b><br>
       <span class="foot-dim-strong">
         <span data-lang="ja">本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
-        <span data-lang="en">All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+        <span data-lang="en">All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
       </span>
     </div>
     <div data-lang="ja">StatPlay · <span class="mg" id="app-version"></span> &middot; <a href="/privacy.html">プライバシーポリシー</a></div>

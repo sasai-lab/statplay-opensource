@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="小標本の極端な比率は、少し中央へ戻して読む。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 06 - 小標本の極端な比率は、少し中央へ戻して読む</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html" class="current">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-06">
+      <div class="sec-tag">LAB 06 / SMALL SAMPLE SHRINKAGE</div>
+      <h1 id="page-title-06" class="sec-title">小標本の極端な比率は、少し中央へ戻して読む</h1>
+      <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-06">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-06" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>5 回中 5 回成功のグループを、100 回中 70 回成功のグループより本当に上だと読んでよいのか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>縮約は、小さいサンプルの極端な観測を全体の中心へ少し寄せる読み。観測数が大きいグループはあまり動かない。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>マゼンタの点が観測比率、黄色の点が縮約後。縦線が長いグループほど、観測だけでは読み切りにくい。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-06">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-06" class="sec-title">小さいサンプルの極端さは、そのまま順位にしない</h2>
+      <div class="column-note-prose">
+        <p>5回中5回成功は100%です。ただ、その100%をそのまま「最も高い成功率」と読むと、少ない観測の偶然を大きく見すぎることがあります。小標本ほど極端な比率が出やすいからです。</p>
+        <p>縮約は、極端な観測を無視する処理ではありません。観測数が少ないグループほど全体の中心を多めに借り、観測数が多いグループほど各グループの観測を残します。マゼンタから黄色への線の長さが、その借り方の強さを表します。</p>
+        <p>ランキングや比較でこの発想はよく効きます。上位に小標本が並んだとき、観測比率だけでなく、どれくらい確かな読みなのかを一緒に見るための足場になります。</p>
+      </div>
+    </section>
+
+    <section class="mini-lab-section reveal in" id="small-sample-shrinkage" aria-labelledby="shrinkage-title">
+      <div class="section-copy">
+        <div class="sec-tag">LAB 06 / SMALL SAMPLE SHRINKAGE</div>
+        <h2 id="shrinkage-title" class="sec-title">小標本の極端な比率は、少し中央へ戻して読む</h2>
+        <p>
+          グループごとの成功率を並べると、観測数の少ないグループほど極端な値を取りやすい。全体の中心を出発点として置くと、小さいグループの推定値はその中心へ強く寄る。
+        </p>
+      </div>
+      <div class="mini-lab-card">
+        <div class="mini-guide" aria-label="Lab 06 操作の流れ">
+          <span class="mini-guide__label">実験ガイド</span>
+          <p class="mini-guide__prompt">マゼンタの点が観測比率、黄色の点が縮約後の読み。点を結ぶ線が長いほど、観測だけでは読み切りにくい。</p>
+          <p id="shGuideText" class="mini-guide__readout" aria-live="polite">共有する中心を強くすると、小さいグループほど黄色の点が中央へ寄る。</p>
+        </div>
+        <div class="preset-row preset-row--thirds control-preset" aria-label="縮約の強さ プリセット">
+          <button type="button" class="preset-btn" data-sh-preset="weak">弱い</button>
+          <button type="button" class="preset-btn" data-sh-preset="middle">標準</button>
+          <button type="button" class="preset-btn" data-sh-preset="strong">強い</button>
+        </div>
+        <div class="mini-controls">
+          <label class="control">
+            <span>全体の中心 <output id="shOverallMeanValue" for="shOverallMean">55%</output></span>
+            <input id="shOverallMean" type="range" min="0.25" max="0.85" step="0.01" value="0.55">
+          </label>
+          <label class="control">
+            <span>共有する強さ <output id="shPriorStrengthValue" for="shPriorStrength">24</output></span>
+            <input id="shPriorStrength" type="range" min="2" max="90" step="1" value="24">
+          </label>
+          <label class="control">
+            <span>観測数の倍率 <output id="shSampleScaleValue" for="shSampleScale">1.0</output></span>
+            <input id="shSampleScale" type="range" min="0.5" max="3" step="0.1" value="1">
+          </label>
+        </div>
+        <div class="mini-lab-viz">
+          <canvas id="shrinkageCanvas" class="mini-lab-canvas" aria-busy="true" aria-label="小標本の観測比率と縮約後の推定値"></canvas>
+          <div class="legend-row">
+            <span><i class="legend-swatch legend-likelihood"></i>観測比率</span>
+            <span><i class="legend-swatch legend-posterior"></i>縮約後の読み</span>
+            <span><i class="legend-swatch legend-prior"></i>全体の中心</span>
+          </div>
+        </div>
+        <div class="metrics-grid metrics-grid--compact mini-lab-metrics">
+          <div class="metric"><span>一番動くグループ</span><strong id="shMostPulled">-</strong></div>
+          <div class="metric"><span>平均の移動幅</span><strong id="shAvgPull">-</strong></div>
+          <div class="metric"><span>読みの中心</span><strong id="shCenterReadout">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-06">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-06" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>共有する強さを上げる。小さいグループの黄色い点が全体中心へ寄り、大きいグループは残りやすいことを見る。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>ランキングの上位に小標本が出てきたとき、その極端さは不確実性も含めて読む必要がある。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>ここでは全体の中心を手で置いた。階層ベイズでは、その中心もデータから同時に読む。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <a href="lab-05.html">← Lab 05</a>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-07.html">Lab 07 →</a>
+    </nav>
+  </main>
+</body>
+</html>

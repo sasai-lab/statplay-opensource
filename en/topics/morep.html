@@ -303,9 +303,9 @@
 <div class="panel-title">Binomial B(n, p)</div>
 <canvas aria-busy="true" aria-label="Binomial distribution simulation" height="180" id="binomCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+<div class="ctrl"><label>Trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
-<div class="ctrl"><label>success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+<div class="ctrl"><label>Success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
 
@@ -326,7 +326,7 @@
 • p=0.5, n=10, k=3<br/>
 • p³ = 0.5³: probability of "3 heads in a row"<br/>
 • (1−p)⁷ = 0.5⁷: probability of "remaining 7 are all tails"<br/>
-• Multiply: probability of one specific sequence like HHHTTTTTTТ<br/>
+• Multiply: probability of one specific sequence like HHHTTTTTTT<br/>
 • But there are other arrangements with exactly 3 heads (HTHTTT… etc.). Total: ₁₀C₃ = 120 ways<br/>
 • So P(X=3) = 120 × 0.5³ × 0.5⁷ ≈ 0.117</p>
 <p><b>Key properties</b><br/>
@@ -361,7 +361,7 @@
 <div class="panel-title">Poisson(λ)</div>
 <canvas aria-busy="true" aria-label="Poisson distribution simulation" height="180" id="poissonCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
 
@@ -382,7 +382,7 @@
 • λ=3, k=5<br/>
 • λ⁵ = 3⁵ = 243: "5 events' worth of power" (larger λ = more likely to see many)<br/>
 • e⁻³ ≈ 0.050: the probability of seeing zero events — baseline<br/>
-• 5! = 120: we don't care about the order of the 5 arrivals<br/>
+• 5! = 120: the order of the 5 arrivals doesn't matter<br/>
 • P(X=5) = 243 × 0.050 / 120 ≈ 0.101</p>
 <p><b>Connection to binomial — worth remembering</b><br/>
 • Make n very large and p very small while keeping np = λ → binomial becomes Poisson<br/>
@@ -414,10 +414,10 @@
 
 
 <div class="use-case">When? → Time until next phone call; how long until a light bulb burns out</div>
-<div class="panel-title">Exponential(λ) — waiting time</div>
+<div class="panel-title">Exponential(λ) — Waiting Time</div>
 <canvas aria-busy="true" aria-label="Exponential distribution PDF" height="180" id="expCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
 
@@ -447,7 +447,7 @@
 • "I've waited a long time so it must come soon" doesn't apply<br/>
 • This only holds when the event rate is constant over time (e.g., radioactive decay)<br/>
 • Real buses have schedules, so real waiting is not memoryless<br/>
-• The opposite, in fact: with a schedule, the longer you've waited the closer the next bus is — so arrival probability rises with waiting time. That's what being non-memoryless actually looks like</p>
+• The opposite, in fact: with a schedule, the longer you've waited, the closer the next bus is — so arrival probability rises with waiting time. That's what being non-memoryless actually looks like</p>
 </div>
 
 <div class="detail-section">
@@ -469,7 +469,7 @@ Normal approximation           Exponential</div>
 <h3>// Common misconceptions</h3>
 <div class="misc-item">
 <b>❌ "Poisson can always substitute for binomial"</b>
-<p>Only when p is small and n is large. Try using Poisson to approximate a coin flip (p=0.5, n=20) — it won't even be close. Use the simulator above to see for yourself.</p>
+<p>Only when p is small and n is large. Try using Poisson to approximate coin flips (p=0.5, n=20) — it won't even be close. Use the simulator above to see for yourself.</p>
 </div>
 <div class="misc-item">
 <b>❌ "I've waited 10 minutes, so the bus must come soon"</b>
@@ -543,8 +543,8 @@ Normal approximation           Exponential</div>
 </div>
 </div>
 <div class="controls">
-<div class="ctrl"><label>already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
+<div class="ctrl"><label>Already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
 </div>
 </div>
 <!-- /@panel -->
@@ -558,7 +558,7 @@ Normal approximation           Exponential</div>
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
 <div class="controls controls--mb-12">
-<div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
+<div class="ctrl"><label>Calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
 <div class="cc-col">
@@ -625,11 +625,11 @@ Normal approximation           Exponential</div>
       © 2026 <b>Sasai Lab</b><br/>
 <span class="foot-dim-strong">
 
-<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span> &middot; <a href="/en/privacy.html">Privacy Policy</a></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
 </div>
 </footer>
 

@@ -187,7 +187,7 @@
 <b>▼ What this site is for</b><br/>
     If you're learning statistics on your own and got stuck at <b>"wait, what does this formula even mean?"</b> — this is your first step back.<br/>
     This is a place to <b>rebuild intuition</b>. Systematic study and calculation drills belong to your textbook and problem set. But the "classic misreading" of the 95% confidence interval, or why the t-distribution even exists — <b>drag a slider and you'll see it</b>.<br/>
-    Once "oh, that's what it means" lands, <b>go back to your textbook</b> with confidence. That's the whole point.
+    Once "oh, that's what it means" clicks, <b>go back to your textbook</b> with confidence. That's the whole point.
   </div>
 </section>
 <!-- ============ QUICK START — どこから始める？ / Where do I start? ============ -->
@@ -243,7 +243,7 @@
 <span class="col-card__related">Related: <a href="#reg">Simple Regression</a> · <a href="#mreg">Multiple Regression</a> · <a href="#corr">Correlation</a> · <a href="#ci">Confidence Interval</a></span>
 </div>
 <div class="col-card" style="--col-accent:var(--yellow)">
-<a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Sorts Them Out →</a><br/>
+<a class="col-card__title" href="columns/error_types.html">Type I vs Type II Errors — One 2×2 Table Sorts It Out →</a><br/>
 <span class="col-card__desc">α, β, power, and effect size all live on a single 2×2 table. Once you see it, the confusion disappears.</span>
 <span class="col-card__related">Related: <a href="#test">Hypothesis Testing</a> · <a href="#ci">Confidence Interval</a> · <a href="#bayes">Bayes' Theorem</a> · <a href="#anova">ANOVA</a> · <a href="#proptest">Proportion Test</a> · <a href="#dists">Three Test Distributions</a></span>
 </div>
@@ -290,7 +290,7 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers about 70%."</li>
+<li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's "±1σ covers ~70%."</li>
 <li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>
 <li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>
 </ol>
@@ -392,7 +392,7 @@
     <code>μ</code> sets the center, <code>σ</code> sets the spread.
     Slide the parameters and the curve glides; the probability of falling inside <code>[a, b]</code> (pink area) updates live.<br/>
 <b>That pink area IS the "percentage" you hear in the news.</b>
-    Say adult male heights follow <code>N(170, 36)</code> (mean 170cm, σ=6cm). <b>What share falls in 165–175cm?</b>
+    Say adult male heights follow <code>N(170, 36)</code> (mean 170 cm, σ=6 cm). <b>What share falls in 165–175 cm?</b>
     Standardize and compute z-scores — you get <b>≈ 59.6%</b>.
     Test scores, measurement errors, IQ — anything roughly normal gets its "X% of people in this range" from <b>exactly this area</b>.
     The sliders below use a standardized scale (μ=0, σ=1 range) so you can feel the same principle.
@@ -418,7 +418,7 @@
 <div class="ctrl"><label><span>σ (std dev)</span> = <span class="val" id="nSdVal">1</span></label>
 <input aria-label="sigma (std dev)" id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
 </div>
-<div class="ctrl"><label><span>Interval [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
+<div class="ctrl"><label><span>Interval [a,b]: a</span> = <span class="val" id="nAVal">-1</span></label>
 <input aria-label="Interval a" id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
 </div>
 <div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
@@ -541,8 +541,8 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.96% to 92.86%</b>. Feel how strongly the prior dominates.</li>
-<li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.96% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
+<li><b>Step 1:</b> Sweep prevalence between <b>0.001 (general population)</b> and <b>0.4 (high-risk group)</b> → with the same 99% sensitivity and 95% specificity, PPV swings from <b>1.94% to 92.96%</b>. Feel how strongly the prior dominates.</li>
+<li><b>Step 2:</b> At prevalence 0.001, PPV is just 1.94% — only ~2 of 100 positives are actually sick. Feel the gap from intuition.</li>
 <li><b>Step 3:</b> Keep prevalence at 0.001 but raise specificity to <b>99.9%</b> → false positives plummet, PPV improves dramatically.</li>
 <li><b>Step 4:</b> Watch the "town of 1,000" diagram and compare TP (true positive) vs FP (false positive) counts.</li>
 </ol>
@@ -568,7 +568,7 @@
 <div><span>True positives (sick &amp; tested +)</span><strong id="bTp">—</strong></div>
 <div><span>False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
 <div><span>If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
-<div><span>If you tested NEG, chance you're healthy</span><strong id="bNpv">—</strong></div>
+<div><span>If you tested −, chance you're healthy</span><strong id="bNpv">—</strong></div>
 </div>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="Bayes' Theorem"><span>💾 Save image</span></button>
@@ -611,9 +611,9 @@
 <div class="panel-title">Binomial B(n, p)</div>
 <canvas aria-busy="true" aria-label="Binomial distribution simulation" height="180" id="binomCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
+<div class="ctrl"><label>Trials n</label><input aria-label="Trials n" id="binomN" max="50" min="1" step="1" type="range" value="20"/>
 <span class="val" id="binomNVal">20</span></div>
-<div class="ctrl"><label>success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
+<div class="ctrl"><label>Success p</label><input aria-label="Success probability p" id="binomP" max="0.99" min="0.01" step="0.01" type="range" value="0.35"/>
 <span class="val" id="binomPVal">0.35</span></div>
 </div>
 
@@ -640,7 +640,7 @@
 <div class="panel-title">Poisson(λ)</div>
 <canvas aria-busy="true" aria-label="Poisson distribution simulation" height="180" id="poissonCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="poisL" max="20" min="0.5" step="0.1" type="range" value="3"/>
 <span class="val" id="poisLVal">3</span></div>
 </div>
 
@@ -664,10 +664,10 @@
 
 
 <div class="use-case">When? → Time until next phone call; how long until a light bulb burns out</div>
-<div class="panel-title">Exponential(λ) — waiting time</div>
+<div class="panel-title">Exponential(λ) — Waiting Time</div>
 <canvas aria-busy="true" aria-label="Exponential distribution PDF" height="180" id="expCanvas"></canvas>
 <div class="controls">
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="expL" max="3" min="0.1" step="0.05" type="range" value="1"/>
 <span class="val" id="expLVal">1</span></div>
 </div>
 
@@ -697,8 +697,8 @@
 </div>
 </div>
 <div class="controls">
-<div class="ctrl"><label>already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
-<div class="ctrl"><label>rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
+<div class="ctrl"><label>Already waited t</label><input aria-label="Already waited time t" id="memT" max="30" min="0" step="0.5" type="range" value="0"/><span class="val" id="memTVal">0</span></div>
+<div class="ctrl"><label>Rate λ</label><input aria-label="Rate lambda" id="memL" max="1" min="0.1" step="0.05" type="range" value="0.2"/><span class="val" id="memLVal">0.20</span></div>
 </div>
 </div>
 <!-- /@panel -->
@@ -709,7 +709,7 @@
 
 <div class="sec-bridge">One process — "λ calls per hour" — viewed through three distributions simultaneously. Move λ and all three update. Same phenomenon, different angles.</div>
 <div class="controls controls--mb-12">
-<div class="ctrl"><label>calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
+<div class="ctrl"><label>Calls per hour λ</label><input aria-label="Calls per hour lambda" id="ccLambda" max="15" min="0.5" step="0.5" type="range" value="3"/><span class="val" id="ccLambdaVal">3.0</span></div>
 </div>
 <div class="cc-trio">
 <div class="cc-col">
@@ -837,8 +837,8 @@
 <div class="story-bridge">The Central Limit Theorem showed that averages become normal. But does the <b>sample mean</b> actually <b>converge</b> to the true mean as n grows? That guarantee is <span class="next">the Law of Large Numbers</span>. The Central Limit Theorem describes the <i>shape</i>; the Law of Large Numbers says <b>the center won't run away</b>.</div>
 
 <p class="sec-desc">
-    10 heads in a row at the start of a coin-flip? Not that weird.
-    But flip it <b>10,000 times</b> and the head-ratio locks onto <b>almost exactly 0.5</b>.<br/>
+    10 heads in a row at the start of a coin-flip run? Not that weird.
+    But flip it <b>10,000 times</b> and the heads ratio locks onto <b>almost exactly 0.5</b>.<br/>
     That's the <b>Law of Large Numbers</b> — the more samples you draw, the more observed values get pulled toward the truth.
     <b>This is why statistics counts as evidence, not a vague hunch.</b>
 </p>
@@ -958,9 +958,9 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection zone.</span></br></li>
-<li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection zone, p-value shrinks. "Strong evidence."</li>
-<li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but rejection area is one-sided; p-value halves.</li>
+<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It sets the width of the rejection region.</span></br></li>
+<li><b>Step 2:</b> Drag the "Observed z" slider to <b>2.5</b> → deep in the rejection region, the p-value shrinks. "Strong evidence."</li>
+<li><b>Step 3:</b> Switch the test-type dropdown to "Right" → same z=1.96 but the rejection region is one-sided; the p-value halves.</li>
 </ol>
 </div>
 <!-- @panel:test_main -->
@@ -1049,7 +1049,7 @@
 <div class="topic-deep-link"><a href="topics/proptest.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">I5 / Proportion Test &amp; Estimation</div>
 
-<h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">— from sample proportion to the truth</span></h2>
+<h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">— From Sample Proportion to the Truth</span></h2>
 
 <div class="story-bridge">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas read more easily afterward.</div>
 
@@ -1062,7 +1062,7 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people isn't enough precision.</li>
+<li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people doesn't give much precision.</li>
 <li><b>Step 2:</b> Push n to 100 → the interval tightens up fast. Feel the power of sample size.</li>
 <li><b>Step 3:</b> Set p̂ to 0.90 → variance p(1-p) shrinks, so the CI narrows. p̂=0.50 gives the widest interval.</li>
 <li><b>Step 4:</b> Keep p̂=0.90, drop n to 10 → if ⚠ appears, the normal approximation conditions aren't met.</li>
@@ -1210,7 +1210,7 @@
 
 <p class="sec-desc sec-desc--tight">
     "Drug A vs. Drug B — which works better?" "Ad A vs. Ad B — is the click-through rate really different?" This test is for comparing two groups.<br>
-    The key idea: under H₀: p₁ = p₂, we pool both samples into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
+    The key idea: under H₀: p₁ = p₂, both samples are pooled into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
   </br></p>
 <div class="controls">
 <div class="ctrl"><label>n₁ = <span class="val" id="ptTwoN1Val">100</span></label>
@@ -1277,7 +1277,7 @@
 <div class="guided-steps">
 <b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> n=<b>3</b> → df=1, extremely heavy tails. Compare with the normal (gray dashed line).</li>
+<li><b>Step 1:</b> n=<b>3</b> → df=2, extremely heavy tails. Compare with the normal (gray dashed line).</li>
 <li><b>Step 2:</b> n=<b>10</b> → still heavier tails than normal, but getting closer.</li>
 <li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
 </ol>
@@ -1312,7 +1312,7 @@
 <div><span>z critical</span> <strong class="ln-magenta" id="tInfoZCrit">±1.960</strong></div>
 <div><span>t / z ratio</span> <strong id="tInfoRatio">1.416</strong></div>
 </div>
-<p class="dist-caption"><span>With small samples, a normal-based CI is too narrow — overconfident. The t-distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
+<p class="dist-caption"><span>With small samples, a normal-based CI is too narrow — overconfident. The t distribution honestly reflects that extra uncertainty. As n grows, t converges to normal — that's what the two bars show.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="tDistCanvas" data-title="t-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -1337,7 +1337,7 @@
 
 <div class="dist-card">
 <b class="mg">Built from:</b> χ²ₖ = Z₁² + Z₂² + ... + Zₖ² (sum of k squared standard normals).<br/>
-<b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br/>
+<b class="mg">Use for:</b> variance tests, chi-squared tests of independence / goodness-of-fit.<br/>
 <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
 <div class="controls controls--gap-8">
@@ -1364,7 +1364,7 @@
 <div><span>Test statistic χ²</span> <strong class="ln-magenta" id="chiInfoStat">—</strong></div>
 <div><span>χ² critical</span> <strong id="chiInfoCrit">11.070</strong></div>
 <div><span>p-value</span> <strong id="chiInfoP">—</strong></div>
-<div><span>Verdict</span> <strong id="chiInfoVerdict">—</strong></div>
+<div><span>Decision</span> <strong id="chiInfoVerdict">—</strong></div>
 </div>
 <p class="dist-caption"><span>The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
 <div class="share-row">
@@ -1410,11 +1410,11 @@
 <div><span>Group A SD</span> <strong id="fInfoSdA">8</strong></div>
 <div><span>Group B SD</span> <strong id="fInfoSdB">15</strong></div>
 <div>df₁, df₂ <strong id="fInfoDf">19, 19</strong></div>
-<div><span>F statistic</span> <strong class="ln-yellow" id="fInfoF">3.516</strong></div>
+<div><span>F-statistic</span> <strong class="ln-yellow" id="fInfoF">3.516</strong></div>
 <div><span>F critical</span> <strong id="fInfoFCrit">2.168</strong></div>
 <div><span>p-value</span> <strong id="fInfoP">0.005</strong></div>
 </div>
-<p class="dist-caption"><span>The F-distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
+<p class="dist-caption"><span>The F distribution evaluates the ratio of two groups' spread. ANOVA also uses this F-statistic to test whether group means differ.</span></p>
 <div class="share-row">
 <button class="share-btn dl" data-kind="dl" data-share="fCanvas" data-title="F-Distribution"><span>💾 Save image</span></button>
 </div>
@@ -1567,7 +1567,7 @@
 <h3 class="cy-head cy-head--compact">▶ Why You Can't Just Repeat t-Tests</h3>
 <div class="drag-hint drag-hint--tight">
 
-<span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), repeat 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+<span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), run 3 pairwise t-tests — how bad does the false-positive rate get?</span>
 </div>
 <div class="controls controls--tight">
 <button class="btn" id="mcRun"><span>▶ 100 trials</span></button>
@@ -1774,7 +1774,7 @@
     Regression with just one explanatory variable is <b>simple regression</b>. It assumes a linear relationship: when x increases by 1, y moves by β₁.
     <b>Ordinary least squares (OLS)</b> picks the line that minimizes the sum of squared vertical residuals.
     <b>Click</b> the canvas to add points and watch the line snap into place.
-    Green bars are residuals. R² (in 0–1) measures how much of y the line explains.
+    Green bars are residuals. R² (from 0 to 1) measures how much of y the line explains.
   </p>
 <div class="sim-layout">
 
@@ -1820,7 +1820,7 @@
 <div class="topic-deep-link"><a href="topics/mreg.html">▸ Dedicated page for this topic</a></div>
 <div class="sec-tag">M2 / Multiple Regression</div>
 
-<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with multiple variables</span></h2>
+<h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with Multiple Variables</span></h2>
 
 <div class="story-bridge">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
 
@@ -1969,11 +1969,11 @@
       © 2026 <b>Sasai Lab</b><br/>
 <span class="foot-dim-strong">
 
-<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
 </div>
 
-<div>StatPlay · <span class="mg" id="app-version-en"></span> &middot; <a href="/en/privacy.html">Privacy Policy</a></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="..//en/privacy.html">Privacy Policy</a></div>
 </div>
 </footer>
 <script src="../js/main.js" type="module"></script>

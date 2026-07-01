@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="見えない成功率を、観測で少しずつ読み直す。成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html" class="current">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-01">
+      <div class="sec-tag">LAB 01 / PRIOR + DATA -> POSTERIOR</div>
+      <h1 id="page-title-01" class="sec-title">見えない成功率を、観測で少しずつ読み直す</h1>
+      <p>成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-01">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-01" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>コイン、フリースロー、クリック率のように、まだ本当の成功率が見えていないとき、少ない観測からどこまで言えるのか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>事前分布は観測前の出発点。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。事後分布は両方を合わせた更新後の読み。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>シアンは出発点、マゼンタは観測が支持する形、グラフの黄色は更新後。黄色の位置だけでなく、幅がどれだけ残るかを見る。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-01">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-01" class="sec-title">「成功率はいくつか」を、いきなり1つに決めない</h2>
+      <div class="column-note-prose">
+        <p>成功率を推定するとき、最初に欲しくなるのは「答えは何%か」という1つの数字です。ただ、観測が少ない段階では、1つの数字だけを出すと読みすぎになります。BayesPlay では、答えを点ではなく候補の山として置きます。</p>
+        <p>シアンの山は、観測前の置き方です。ここでの「成功側5・失敗側5」は実際の観測ではなく、出発点に持たせる仮の重みです。観測が少ないうちはこの重みが効き、観測が増えるほど実データの形が前に出ます。</p>
+        <p>黄色の山が出たら、平均だけで止まらず、幅を見ます。幅が広いなら、まだ言い切れない部分が残っています。この幅が、次の Lab 02 の予測分布へそのまま持ち越されます。</p>
+      </div>
+    </section>
+
+    <section class="lab-workspace reveal in" id="beta-binomial" aria-labelledby="lab-title">
+      <div class="section-copy lab-intro-copy">
+        <div class="sec-tag">LAB 01 / PRIOR + DATA -> POSTERIOR</div>
+        <h2 id="lab-title" class="sec-title">見えない成功率を、観測で少しずつ読み直す</h2>
+        <p>
+          最初の題材は、コイン、フリースロー、クリック率のような「成功/失敗」が出る場面。未知の成功率 <span class="math-inline">p</span> を、まだ見えていない値として扱う。
+        </p>
+        <p>
+          ここで大事なのは、観測が入ってもいきなり答えが 1 点に決まるわけではないこと。シアンの出発点にマゼンタの観測が重なると、黄色の更新後の山が現れる。
+        </p>
+      </div>
+
+      <div class="lab-stage">
+        <div class="update-guide" id="updateGuide" aria-label="ベイズ更新の流れ">
+          <div class="process-steps" role="group" aria-label="表示する更新段階">
+            <button type="button" class="process-step is-active" data-update-step="prior" aria-pressed="true">
+              <span>1</span>
+              <strong>出発点</strong>
+            </button>
+            <button type="button" class="process-step" data-update-step="evidence" aria-pressed="false">
+              <span>2</span>
+              <strong>観測を重ねる</strong>
+            </button>
+            <button type="button" class="process-step" data-update-step="posterior" aria-pressed="false">
+              <span>3</span>
+              <strong>更新後</strong>
+            </button>
+          </div>
+
+          <div class="update-equation" aria-label="更新式">
+            <div class="equation-part equation-part--prior">
+              <span class="flow-label">出発点（事前分布）</span>
+              <strong id="flowPrior">仮の成功側 5 / 仮の失敗側 5</strong>
+            </div>
+            <div class="flow-operator flow-operator--plus">×</div>
+            <div class="equation-part equation-part--data">
+              <span class="flow-label">観測が支持する形（尤度）</span>
+              <strong id="flowEvidence" class="is-pending">観測で重みづける</strong>
+            </div>
+            <div class="flow-operator flow-operator--equals">→</div>
+            <div class="equation-part equation-part--posterior">
+              <span class="flow-label">更新後（事後分布）</span>
+              <strong id="flowPosterior" class="is-pending">更新後で現れる</strong>
+            </div>
+          </div>
+
+          <div class="process-narrative" id="processNarrative" aria-live="polite">
+            観測前は、この出発点から始まる。事前平均は中心、事前の強さは仮の重みとして表れる。
+          </div>
+          <p class="process-detail" id="processDetail">成功 5件分・失敗 5件分に近い出発点。これは実際に観測した成功・失敗ではなく、出発点に持たせる仮の重みです。</p>
+        </div>
+
+        <div class="viz-panel" aria-label="Beta-Binomial visualization panel">
+          <canvas id="posteriorCanvas" class="posterior-canvas" aria-busy="true" aria-label="事前分布、尤度、事後分布を重ねたグラフ"></canvas>
+          <div class="legend-row" aria-label="Graph legend">
+            <span><i class="legend-swatch legend-prior"></i>出発点（事前分布）</span>
+            <span><i class="legend-swatch legend-likelihood"></i>観測が支持する形（尤度）</span>
+            <span><i class="legend-swatch legend-posterior"></i>更新後（事後分布）</span>
+            <span><i class="legend-band"></i>95%信用区間</span>
+          </div>
+          <p class="canvas-note">ここでの <span class="math-inline">p</span> は、まだ分からない成功率のことです。</p>
+        </div>
+
+        <div class="result-readout" id="resultReadout" aria-label="Posterior summary">
+          <span>
+            <span>更新後の平均（事後平均）</span>
+            <strong id="posteriorMean">-</strong>
+          </span>
+          <span>
+            <span>95%信用区間</span>
+            <strong id="credibleInterval">-</strong>
+          </span>
+          <span>
+            <span>次の1回の予測</span>
+            <strong id="nextSuccess">-</strong>
+          </span>
+          <span>
+            <span>事前の重み</span>
+            <strong id="priorWeight">-</strong>
+          </span>
+        </div>
+
+        <div class="observation-line" aria-label="Observed data">
+          <span>観測 <strong id="observedRatio">-</strong></span>
+          <span id="trialDots" class="trial-summary" aria-label="成功と失敗の観測要約"></span>
+        </div>
+
+        <div class="story-next lab1-takeaway">
+          出発点（事前分布）に観測が支持する形（尤度）を掛け合わせると、候補の山は観測側へ寄り、同時に幅も変わる。平均だけでなく、山の細さにも更新の様子が残る。
+          ここでの95%信用区間は、信頼区間とは別の読み方で、更新後の山の幅をこのモデルと事前分布のもとで切り出した範囲として読む。
+        </div>
+      </div>
+
+      <aside class="control-panel" aria-label="Controls">
+        <div class="control-panel__intro">
+          <h2>条件を変える</h2>
+          <p>段階ボタンで流れを追ったあと、出発点や観測数を動かすと、山の寄り方と細さの変化が比べやすい。事前分布の強さ 10 は、実観測ではなく、成功5件・失敗5件ぶんに近い仮の重みとして働く。</p>
+        </div>
+        <div class="control-group">
+          <h3>出発点（事前分布）</h3>
+          <label class="control">
+            <span>事前平均 <output id="priorMeanValue" for="priorMean">0.50</output></span>
+            <input id="priorMean" type="range" min="0.05" max="0.95" step="0.01" value="0.50">
+          </label>
+          <label class="control">
+            <span>事前分布の強さ <output id="priorStrengthValue" for="priorStrength">10</output></span>
+            <input id="priorStrength" type="range" min="2" max="120" step="1" value="10">
+          </label>
+        </div>
+
+        <div class="control-group">
+          <h3>観測</h3>
+          <label class="control">
+            <span>成功数 <output id="successesValue" for="successes">7</output></span>
+            <input id="successes" type="range" min="0" max="80" step="1" value="7">
+          </label>
+          <label class="control">
+            <span>失敗数 <output id="failuresValue" for="failures">3</output></span>
+            <input id="failures" type="range" min="0" max="80" step="1" value="3">
+          </label>
+          <div class="button-row">
+            <button type="button" class="command-btn" id="addSuccess">+ 成功</button>
+            <button type="button" class="command-btn" id="addFailure">+ 失敗</button>
+            <button type="button" class="command-btn command-btn--ghost" id="resetData">リセット</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <h3>表示</h3>
+          <label class="toggle-row">
+            <input id="showLikelihood" type="checkbox" checked>
+            <span>尤度を重ねる（Step 2以降）</span>
+          </label>
+          <label class="toggle-row">
+            <input id="showCredible" type="checkbox" checked>
+            <span>信用区間を表示（Step 3）</span>
+          </label>
+        </div>
+      </aside>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-01">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-01" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>まず「観測を重ねる」「更新後」の順に押す。次に成功数と失敗数を動かし、黄色の山が観測側へ寄る様子を見る。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>同じ観測割合のまま観測数が増えるほど、黄色の山は細くなる。ただし、事前分布が強いと、少ない観測では急には動かない。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>このページでは、更新後にも幅が残る。次は、その幅が未来の予測へどう持ち込まれるかを見る。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <span></span>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-02.html">Lab 02 →</a>
+    </nav>
+  </main>
+</body>
+</html>

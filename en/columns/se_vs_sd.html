@@ -520,7 +520,7 @@ Slide n and the two start pulling apart.
 <!-- ═══ 01. INTRO ═══ -->
 <div class="col-divider"></div>
 <div class="col-section">
-<h2>Two quantities that share the word "spread"</h2>
+<h2>// Two quantities that share the word "spread"</h2>
 <p>
 Standard deviation (SD) and standard error (SE). The formulas look almost identical, and both fall under the umbrella word "spread." <b style="color:var(--yellow)">Yet, depending on the context, the lead role quietly switches between them.</b> That kind of switch shows up surprisingly often, and prose often blends the two without flagging which one is meant.
 </p>
@@ -542,6 +542,18 @@ The aim of this column is a single sentence you can keep: <b style="color:var(--
 SD and SE live in different "worlds."
 </p>
 <div class="tier-figure">
+<div class="tier-row tier-mean">
+<div class="tier-label"><span class="tier-tag">// TIER 2</span><span class="tier-name">sample means</span></div>
+<div class="tier-bar">
+<div class="tier-narrow"></div>
+<div class="tier-mu"></div>
+<div class="tier-dot" style="left:48%"></div>
+<div class="tier-dot" style="left:50%"></div>
+<div class="tier-dot" style="left:52%"></div>
+<div class="tier-dot" style="left:51%"></div>
+<div class="tier-dot" style="left:49%"></div>
+</div>
+</div>
 <div class="tier-row">
 <div class="tier-label"><span class="tier-tag">// TIER 1</span><span class="tier-name">individual data</span></div>
 <div class="tier-bar">
@@ -555,18 +567,6 @@ SD and SE live in different "worlds."
 <div class="tier-dot" style="left:62%"></div>
 <div class="tier-dot" style="left:74%"></div>
 <div class="tier-dot" style="left:82%"></div>
-</div>
-</div>
-<div class="tier-row tier-mean">
-<div class="tier-label"><span class="tier-tag">// TIER 2</span><span class="tier-name">sample means</span></div>
-<div class="tier-bar">
-<div class="tier-narrow"></div>
-<div class="tier-mu"></div>
-<div class="tier-dot" style="left:48%"></div>
-<div class="tier-dot" style="left:50%"></div>
-<div class="tier-dot" style="left:52%"></div>
-<div class="tier-dot" style="left:51%"></div>
-<div class="tier-dot" style="left:49%"></div>
 </div>
 </div>
 <div class="tier-caption">Bottom: spread of individuals (SD ≈ σ) / Top: precision of the mean (SE = σ/√n)</div>
@@ -611,8 +611,8 @@ The thing to watch is that <b style="color:var(--magenta)">the lower picture (in
 </div>
 </div>
 <div class="intA-stack">
-<canvas aria-busy="true" aria-label="Individual data scatter and population curve with SD bar below" id="seCanvasTier1" role="img"></canvas>
 <canvas aria-busy="true" aria-label="Sample-mean distribution and bell curve with SE bar below" id="seCanvasTier2" role="img"></canvas>
+<canvas aria-busy="true" aria-label="Individual data scatter and population curve with SD bar below" id="seCanvasTier1" role="img"></canvas>
 <div class="intA-ratio" id="seRatioCaption">SD / SE = √n ≈ 5.48</div>
 </div>
 <div class="share-row" style="margin-top:14px">
@@ -643,7 +643,7 @@ n=100  →  SE ≈ 6/√100 ≈ <span class="se">0.60</span> cm<br/>
 n=900  →  SE ≈ 6/√900 ≈ <span class="se">0.20</span> cm
 </div>
 <p>
-Multiplying n by 10 (10 → 100) shrinks SE only from 1.90 to 0.60 — <b style="color:var(--yellow)">a factor of about 3</b>. Cutting SE by 10 takes 100× the data (10 → 1000). <b style="color:var(--cyan)">Halving SE requires 4× the data</b> — that's the core of the √n behavior.
+Multiplying n by 10 (10 → 100) shrinks SE only from 1.90 to 0.60 — <b style="color:var(--yellow)">a factor of about 3</b>. Cutting SE by a factor of 10 takes 100× the data (10 → 1000). <b style="color:var(--cyan)">Halving SE requires 4× the data</b> — that's the core of the √n behavior.
 </p>
 <p>
 The intuition that "more data improves precision" is correct. But <b style="color:var(--text)">precision doesn't grow proportionally with n</b>. Doubling n only buys √2 ≈ 1.4× more precision — that's the property running underneath. The moment that property gets in the way usually shows up when surveying 30, 100, or 1000 people is on the table.
@@ -661,7 +661,7 @@ The intuition that "more data improves precision" is correct. But <b style="colo
 </aside>
 <p>
 SE rarely appears alone — it's almost always a component of a <b style="color:var(--cyan)">confidence interval</b> or a <b style="color:var(--magenta)">test statistic</b>.<br/>
-Left: interval estimate (center ± 1.96·SE). Right: test (<code>z = (x̄ − μ₀)/SE</code>; <b style="color:var(--text)">x̄</b> — "x-bar," the mean of the n samples in hand. <b style="color:var(--text)">μ₀</b> — "mu-zero," the value the test posits as the null hypothesis). <b style="color:var(--yellow)">The same-thickness SE bar appears in both pictures, side by side</b>.
+Top: interval estimate (center ± 1.96·SE). Bottom: test (<code>z = (x̄ − μ₀)/SE</code>; <b style="color:var(--text)">x̄</b> — "x-bar," the mean of the n samples in hand. <b style="color:var(--text)">μ₀</b> — "mu-zero," the value the test posits as the null hypothesis). <b style="color:var(--yellow)">The same-thickness SE bar appears in both pictures, one above the other</b>.
 </p>
 <div class="intB-controls">
 <label>n
@@ -694,7 +694,7 @@ Left: interval estimate (center ± 1.96·SE). Right: test (<code>z = (x̄ − μ
 <button class="share-btn" data-kind="native" data-share="seCiCanvas" data-title="The SE bar inside interval estimation and tests">📤 Share</button>
 </div>
 <p style="margin-top:24px">
-The interval estimate on the left is <b style="color:var(--cyan)">"a band of ±1.96·SE around x̄."</b> The test on the right measures <b style="color:var(--magenta)">"how many SEs the gap (x̄ − μ₀) is."</b> Sliding n shows the SE bar in <i>both</i> pictures shrinking by the same amount: <b style="color:var(--yellow)">the interval gets narrower</b> while (for the same gap) <b style="color:var(--yellow)">z grows</b>. The two move together because the same component is sitting underneath.
+The interval estimate on top is <b style="color:var(--cyan)">"a band of ±1.96·SE around x̄."</b> The test below measures <b style="color:var(--magenta)">"how many SEs the gap (x̄ − μ₀) is."</b> Sliding n shows the SE bar in <i>both</i> pictures shrinking by the same amount: <b style="color:var(--yellow)">the interval gets narrower</b> while (for the same gap) <b style="color:var(--yellow)">z grows</b>. The two move together because the same component is sitting underneath.
 </p>
 <p>
 "Interval estimation and tests are different tools" is a common framing, but looked at structurally, the two start to look like <b style="color:var(--text)">twins built on the same SE piece</b>.
@@ -784,7 +784,7 @@ In the live confidence-interval interactive, try sliding the confidence level an
 <a href="./error_types.html" class="fr-card">
   <span class="fr-icon" aria-hidden="true">⚠️</span>
   <span class="fr-body">
-    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts Them Out</span>
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
     <span class="fr-desc">the SE lives inside the test denominator — same "add an axis to see" strategy in another guise</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
@@ -821,10 +821,10 @@ In the live confidence-interval interactive, try sliding the confidence level an
 <div class="foot-copy">
       © 2026 <b>Sasai Lab</b><br/>
 <span class="foot-dim-strong">
-<span>All code, design and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version-en"></span> &middot; <a href="/en/privacy.html">Privacy Policy</a></div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
 </div>
 </footer>
 <script>window.__LANG = 'en';</script>

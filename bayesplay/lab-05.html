@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="件数の観測は、観測時間と一緒に扱う。事故、問い合わせ、アクセスのような件数では、発生率を推定する。件数だけでなく、どれくらいの時間や露出で観測したかが意味を変える。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay Lab 05 - 件数の観測は、観測時間と一緒に扱う</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html" class="current">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <main id="main-content" class="bayesplay-main lab-page-main">
+    <section class="lab-page-header reveal in" aria-labelledby="page-title-05">
+      <div class="sec-tag">LAB 05 / GAMMA-POISSON UPDATE</div>
+      <h1 id="page-title-05" class="sec-title">件数の観測は、観測時間と一緒に扱う</h1>
+      <p>事故、問い合わせ、アクセスのような件数では、発生率を推定する。件数だけでなく、どれくらいの時間や露出で観測したかが意味を変える。</p>
+      <div class="lesson-strip" aria-label="このラボの読みどころ">
+        <span>何を推定しているか</span>
+        <span>観測はどこを支持するか</span>
+        <span>更新後にどれくらい幅が残るか</span>
+      </div>
+    </section>
+
+    <section class="learning-section reveal in" aria-labelledby="learn-before-05">
+      <div class="story-kicker">BEFORE GRAPH</div>
+      <h2 id="learn-before-05" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <div class="learning-grid">
+        <article class="learning-card">
+          <span>扱う問い</span>
+          <p>10 件起きたという観測は、多いのか少ないのか。1 時間の 10 件と 10 時間の 10 件は同じ意味なのか。</p>
+        </article>
+        <article class="learning-card">
+          <span>中心の考え方</span>
+          <p>Gamma-Poisson 更新では、観測件数が発生率を動かし、観測時間がその読みの強さを決める。</p>
+        </article>
+        <article class="learning-card">
+          <span>グラフの読み方</span>
+          <p>横軸は発生率。観測時間が長いほど、同じ件数でも黄色の山は細くなり、発生率の読みが絞られる。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="column-note-section reveal in" aria-labelledby="column-note-05">
+      <div class="story-kicker">COLUMN NOTE</div>
+      <h2 id="column-note-05" class="sec-title">件数だけでなく、どれだけ観測したかを見る</h2>
+      <div class="column-note-prose">
+        <p>問い合わせ10件、事故2件、アクセス300件のようなデータは、件数だけでは意味が決まりません。1時間で起きたのか、10時間で起きたのか、100人を見たのか、1万人を見たのかで発生率の読みは変わります。</p>
+        <p>Gamma-Poisson 更新では、観測件数が発生率の中心を動かし、観測時間や露出量がその読みの強さを決めます。同じ10件でも、短い時間なら高いレート、長い時間なら低いレートとして読まれます。</p>
+        <p>0件の観測も、発生率が完全に0だと決める材料ではありません。長く観測して0件なら低い発生率を強く支持し、短い観測で0件ならまだ幅が残る。ここでも中心と幅を一緒に見ます。</p>
+      </div>
+    </section>
+
+    <section class="mini-lab-section reveal in" id="gamma-poisson" aria-labelledby="gamma-poisson-title">
+      <div class="section-copy">
+        <div class="sec-tag">LAB 05 / GAMMA-POISSON UPDATE</div>
+        <h2 id="gamma-poisson-title" class="sec-title">件数の観測は、観測時間と一緒に扱う</h2>
+        <p>
+          発生率 λ（ラムダ）を推定する。10件という観測でも、1時間で10件なのか、10時間で10件なのかで意味が変わる。観測時間（1時間あたり、1人あたりのような分母）が長いほど、同じ件数でも更新後（事後分布）の幅は狭くなる。
+        </p>
+      </div>
+      <div class="mini-lab-card">
+        <div class="mini-guide" aria-label="Lab 05 操作の流れ">
+          <span class="mini-guide__label">実験ガイド</span>
+          <p class="mini-guide__prompt">同じ件数でも、短時間に起きたなら発生率は高く見える。件数を固定して、観測時間だけを切り替える。</p>
+          <p id="gpGuideText" class="mini-guide__readout" aria-live="polite">同じ件数でも、観測時間が変わるとレートの意味が変わる。</p>
+        </div>
+        <div class="preset-row preset-row--thirds control-preset" aria-label="観測時間 プリセット">
+          <button type="button" class="preset-btn" data-gp-preset="short">短い</button>
+          <button type="button" class="preset-btn" data-gp-preset="middle">標準</button>
+          <button type="button" class="preset-btn" data-gp-preset="long">長い</button>
+        </div>
+        <div class="mini-controls">
+          <label class="control">
+            <span>事前平均レート <output id="gpPriorMeanValue" for="gpPriorMean">3.0</output></span>
+            <input id="gpPriorMean" type="range" min="0.2" max="12" step="0.1" value="3">
+          </label>
+          <label class="control">
+            <span>事前の強さ <output id="gpPriorStrengthValue" for="gpPriorStrength">4.0</output></span>
+            <input id="gpPriorStrength" type="range" min="0.5" max="30" step="0.5" value="4">
+          </label>
+          <label class="control">
+            <span>観測件数 <output id="gpEventsValue" for="gpEvents">10</output></span>
+            <input id="gpEvents" type="range" min="0" max="80" step="1" value="10">
+          </label>
+          <label class="control">
+            <span>観測時間 <output id="gpExposureValue" for="gpExposure">3.0</output></span>
+            <input id="gpExposure" type="range" min="0.2" max="30" step="0.1" value="3">
+          </label>
+        </div>
+        <div class="mini-lab-viz">
+          <canvas id="poissonCanvas" class="mini-lab-canvas" aria-busy="true" aria-label="Gamma-Poisson 更新による発生率推定"></canvas>
+          <div class="legend-row">
+            <span><i class="legend-swatch legend-prior"></i>出発点（事前分布）</span>
+            <span><i class="legend-swatch legend-likelihood"></i>観測レート（尤度）</span>
+            <span><i class="legend-swatch legend-posterior"></i>更新後（事後分布）</span>
+          </div>
+        </div>
+        <div class="metrics-grid metrics-grid--compact mini-lab-metrics">
+          <div class="metric"><span>観測レート</span><strong id="gpObservedRate">-</strong></div>
+          <div class="metric"><span>更新後の平均（事後平均）</span><strong id="gpPosteriorMean">-</strong></div>
+          <div class="metric"><span>95%信用区間</span><strong id="gpCredible">-</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-05">
+      <div class="story-kicker">AFTER GRAPH</div>
+      <h2 id="learn-after-05" class="sec-title">操作したあとに確認すること</h2>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>まず試す操作</h3>
+          <p>観測件数を固定して、観測時間だけを変える。観測レートと黄色の山の幅が変わるところを見る。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>見えたらよいこと</h3>
+          <p>0 件でも発生率が完全に 0 とは限らない。長く観測して 0 件なら、低い発生率を強く支持する。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>次へのつながり</h3>
+          <p>ここまでは 1 つの対象を推定してきた。次は、複数グループが並ぶ場面で、小さいサンプルをどう読むかを見る。</p>
+        </article>
+      </div>
+    </section>
+
+    <nav class="lab-page-nav" aria-label="ラボページ移動">
+      <a href="lab-04.html">← Lab 04</a>
+      <a href="index.html">目次へ戻る</a>
+      <a href="lab-06.html">Lab 06 →</a>
+    </nav>
+  </main>
+</body>
+</html>

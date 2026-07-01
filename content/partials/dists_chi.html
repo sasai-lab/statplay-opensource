@@ -2,13 +2,13 @@
       <h3 data-lang="ja" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; 分布</h3>
       <h3 data-lang="en" class="cy-head cy-head--compact">&#x25B6; &#x03C7;&#x00B2; distribution</h3>
       <div class="dist-card" data-lang="ja">
-        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規を k 個足して二乗和）。<br>
+        <b class="mg">作り方:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; （標準正規 k 個の二乗和）。<br>
         <b class="mg">使いどころ:</b> 分散の検定、独立性／適合度のカイ二乗検定。<br><span class="ctrl-note">例：サイコロの出目が均等か、アンケートの「はい/いいえ」に偏りがないか調べるとき。</span><br>
         <b class="mg">クセ:</b> 非負・右に歪む。平均 = k、分散 = 2k。df大で正規ベル化。
       </div>
       <div class="dist-card" data-lang="en">
         <b class="mg">Built from:</b> &#x03C7;&#x00B2;&#x2096; = Z&#x2081;&#x00B2; + Z&#x2082;&#x00B2; + ... + Z&#x2096;&#x00B2; (sum of k squared standard normals).<br>
-        <b class="mg">Use for:</b> variance tests, chi-square tests of independence / goodness-of-fit.<br>
+        <b class="mg">Use for:</b> variance tests, chi-squared tests of independence / goodness-of-fit.<br>
         <b class="mg">Flavor:</b> non-negative, right-skewed. Mean = k, variance = 2k. Goes bell-shaped with large df.
       </div>
       <div class="controls controls--gap-8">
@@ -35,7 +35,7 @@
         <div><span data-lang="ja">検定統計量 &#x03C7;&#x00B2;</span><span data-lang="en">Test statistic &#x03C7;&#x00B2;</span> <strong id="chiInfoStat" class="ln-magenta">&#x2014;</strong></div>
         <div><span data-lang="ja">&#x03C7;&#x00B2; 臨界値</span><span data-lang="en">&#x03C7;&#x00B2; critical</span> <strong id="chiInfoCrit">11.070</strong></div>
         <div><span data-lang="ja">p 値</span><span data-lang="en">p-value</span> <strong id="chiInfoP">&#x2014;</strong></div>
-        <div><span data-lang="ja">判定</span><span data-lang="en">Verdict</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
+        <div><span data-lang="ja">判定</span><span data-lang="en">Decision</span> <strong id="chiInfoVerdict">&#x2014;</strong></div>
       </div>
       <p class="dist-caption"><span data-lang="ja">カイ二乗分布は「観察と期待のズレの大きさ」を測る物差しです。ズレが偶然の範囲か、本物の偏りかを判定するために使います。</span><span data-lang="en">The chi-squared distribution measures "how big is the gap between observed and expected." It tells you whether that gap is just random noise or a real bias.</span></p>
       <div class="share-row">

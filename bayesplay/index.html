@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BayesPlay の目次。ベイズ更新、予測分布、観測の強さ、平均、件数、縮約、階層ベイズ入口を個別ラボで学ぶ。">
+  <meta name="robots" content="noindex, nofollow">
+  <title>BayesPlay - ベイズ更新ラボ目次</title>
+  <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="css/bayesplay.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body class="topic-page bayesplay-page">
+  <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
+    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
+      <span class="bars"></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+
+      <a href="../topics/bayes.html">ベイズ定理</a>
+      <a href="index.html" class="current">目次</a>
+      <a href="lab-01.html">01 更新</a>
+      <a href="lab-02.html">02 予測</a>
+      <a href="lab-03.html">03 観測の強さ</a>
+      <a href="lab-04.html">04 平均</a>
+      <a href="lab-05.html">05 件数</a>
+      <a href="lab-06.html">06 縮約</a>
+      <a href="lab-07.html">07 階層</a>
+      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
+    </div>
+  </nav>
+
+  <div class="bayes-hero bayes-hero--index" id="bayesHero">
+    <canvas id="bayesHeroCanvas" aria-hidden="true"></canvas>
+    <div class="bayes-hero__content">
+      <div class="bayes-hero__impact" id="bayesHeroImpact">BayesPlay</div>
+      <h1 id="bayesHeroTitle">
+        <span class="hero-title-line">ベイズ更新を、</span>
+        <span class="hero-title-line">順番に手で動かして読む。</span>
+      </h1>
+      <p class="bayes-hero__sub" id="bayesHeroSub">
+        事前分布、尤度、事後分布、予測、縮約、階層ベイズの入口までを、短いラボに分けて進む。
+      </p>
+      <div class="bayes-hero__meta" id="bayesHeroMeta" aria-label="BayesPlay metadata">
+        <span>7 labs</span>
+        <span>Bayesian updating</span>
+        <span>StatPlay project</span>
+      </div>
+    </div>
+    <button class="bayes-hero__scroll" id="bayesHeroScroll" type="button" aria-label="目次へスクロール">
+      <span>INDEX</span>
+      <i aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <main id="main-content" class="bayesplay-main">
+    <section class="project-note reveal in" aria-labelledby="project-note-title">
+      <div class="story-kicker">WHAT IS BAYESIAN STATISTICS</div>
+      <h2 id="project-note-title" class="sec-title">ベイズ統計学は、情報を更新しながら候補のありそうさを見直す統計</h2>
+      <p>
+        ベイズ統計学は、まだ本当の値がわからないときに、ありそうな値を幅のある候補として置き、データを見るたびにその候補の山を更新していく見方です。候補を単純に消していくというより、候補ごとの「ありそうさ」を観測に合わせて付け替えていきます。
+      </p>
+      <p>
+        StatPlay で扱ってきた統計可視化の流れを引き継ぎ、ここではベイズ統計学にフォーカスした可視化を扱います。教科書のほうが詳しく正確ですが、式を読む前に流れのイメージが持てるだけでも、学習の入り口は少し軽くなります。BayesPlay では、出発点（事前分布）、データが支持する形（尤度）、更新後の候補（事後分布）を、可視化のラボ（実験場）として順番に確認できます。
+      </p>
+
+      <div class="bayes-update-diagram" aria-label="ベイズ統計学の更新の流れ">
+        <div class="update-node update-node--prior">
+          <span>1</span>
+          <strong>出発点</strong>
+          <p>まだ観測が少ない段階で、ありそうな候補を幅のある分布として置く。</p>
+        </div>
+        <div class="update-arrow" aria-hidden="true">×</div>
+        <div class="update-node update-node--data">
+          <span>2</span>
+          <strong>観測</strong>
+          <p>新しく得たデータが、どの候補を強く支持しているかを見る。</p>
+        </div>
+        <div class="update-arrow" aria-hidden="true">→</div>
+        <div class="update-node update-node--posterior">
+          <span>3</span>
+          <strong>更新後</strong>
+          <p>出発点と観測を合わせて、候補の山を動かし、幅も変える。</p>
+        </div>
+      </div>
+      <p class="diagram-note">
+        正確には、候補ごとに出発点の高さと観測の支持の強さを掛け合わせ、最後に全体が1つの分布として読める高さに整えます。
+      </p>
+
+      <div class="stats-compare" aria-label="通常の統計学とベイズ統計学の違い">
+        <article>
+          <span>初学でよく学ぶ統計学の入口</span>
+          <strong>データの揺れから、固定された未知量を推定する</strong>
+          <p>母平均や成功率はどこかに固定されていると考え、標本がどれくらい揺れるかを使って推定や検定を行う。</p>
+        </article>
+        <article>
+          <span>ベイズ統計学の入口</span>
+          <strong>未知量についての見方を、情報で更新する</strong>
+          <p>未知の値そのものが揺れるというより、未知量についての不確実性を分布で表し、観測でその分布を更新する。</p>
+        </article>
+      </div>
+      <p class="compare-note">
+        どちらもデータから未知量を読む方法です。ベイズ統計学は自動的に正解を出す方法ではなく、事前分布やモデルの仮定を明示したうえで更新する方法として扱います。
+      </p>
+    </section>
+
+    <section class="update-compare-section reveal in" id="update-compare" aria-labelledby="update-compare-title">
+      <div class="section-copy">
+        <div class="sec-tag">STEP PLAY 1 / 2 / 3</div>
+        <h2 id="update-compare-title" class="sec-title">
+          <span class="compare-title-line">1、2、3を押して、</span>
+          <span class="compare-title-line">グラフの変化を</span>
+          <span class="compare-title-line">追ってみる</span>
+        </h2>
+        <p>
+          ベイズ更新は、1つのグラフの中で「何を見ている段階か」を切り替えると流れが追いやすくなります。ここでは成功7回・失敗3回という同じ観測を使い、出発点、観測、更新後へ曲線が移っていく様子を確認します。
+        </p>
+      </div>
+      <div class="update-compare-tool">
+        <div class="compare-step-controls" role="group" aria-label="比較する更新段階">
+          <button type="button" class="compare-step-btn is-active" data-compare-stage="prior" aria-pressed="true">
+            <span>1</span>
+            <strong>出発点</strong>
+          </button>
+          <button type="button" class="compare-step-btn" data-compare-stage="evidence" aria-pressed="false">
+            <span>2</span>
+            <strong>観測</strong>
+          </button>
+          <button type="button" class="compare-step-btn" data-compare-stage="posterior" aria-pressed="false">
+            <span>3</span>
+            <strong>更新後</strong>
+          </button>
+        </div>
+        <canvas id="updateCompareCanvas" class="update-compare-canvas" aria-busy="true" aria-label="出発点、観測、更新後へ変化する更新チャート"></canvas>
+        <div class="compare-readout" aria-live="polite">
+          <span id="compareStageName">1 / 出発点</span>
+          <strong id="compareStagePoint">まだ観測を見ない段階では、成功率の候補を幅のある山として置く。</strong>
+          <p id="compareStageDetail">高さは見やすくそろえています。ここでは山の位置と幅を比べます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-opening reveal in" aria-labelledby="story-opening-title">
+      <div class="story-kicker">READING GUIDE</div>
+      <h2 id="story-opening-title" class="sec-title">グラフを見る前に、読み方をそろえる</h2>
+      <p>
+        BayesPlay では、毎回、何を推定しているのか、観測は何を支持しているのか、更新後にどれだけ不確実性が残るのかを見る。
+      </p>
+      <ol class="story-path" aria-label="BayesPlay の読み進め方">
+        <li><span>1</span><strong>問いを決める</strong><p>成功率、平均、発生率、グループ差のどれを読んでいるかを確認する。</p></li>
+        <li><span>2</span><strong>色を読む</strong><p><i class="legend-swatch legend-prior"></i>シアンは出発点、<i class="legend-swatch legend-likelihood"></i>マゼンタは観測、<i class="legend-swatch legend-posterior"></i>グラフの黄色はそのラボで読みたい最終結果として見る。</p></li>
+        <li><span>3</span><strong>操作する</strong><p>指定されたスライダーを動かし、山の位置と幅の変化を見る。</p></li>
+        <li><span>4</span><strong>言葉に戻す</strong><p>何が分かり、何はまだ言い切れないのかを整理する。</p></li>
+      </ol>
+      <p class="color-note">
+        グラフの黄色は、Lab 01 では更新後の分布、Lab 02 ではその更新後から出した未来の予測を表します。
+      </p>
+    </section>
+
+    <section class="lab-index-section reveal in" id="lab-index" aria-labelledby="lab-index-title">
+      <div class="section-copy">
+        <div class="sec-tag">VISUAL LABS</div>
+        <h2 id="lab-index-title" class="sec-title">ここから試せる可視化ラボ</h2>
+        <p>
+          以下では、情報を更新しながら候補のありそうさを見直すという見方を、さまざまな題材で確認します。まず Lab 01 で基本の更新を見て、そこから予測、観測の強さ、平均、件数、小標本の縮約、階層ベイズの入口へ進みます。
+        </p>
+      </div>
+      <div class="lab-index-grid">
+        <a class="lab-index-card" href="lab-01.html">
+          <span>LAB 01</span>
+          <strong>見えない成功率を、観測で少しずつ読み直す</strong>
+          <p>成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。</p>
+        </a>
+        <a class="lab-index-card" href="lab-02.html">
+          <span>LAB 02</span>
+          <strong>次の結果にも不確実性が残る</strong>
+          <p>更新後の平均が分かっても、次の観測がその通りに出るとは限らない。推定の不確実性と、次に起きるばらつきの両方を予測分布として見る。</p>
+        </a>
+        <a class="lab-index-card" href="lab-03.html">
+          <span>LAB 03</span>
+          <strong>同じ割合でも、観測の強さは違う</strong>
+          <p>7/10 と 70/100 はどちらも 70%。しかし、観測数が多いほど「70% 付近を支持する力」は強く、尤度の山は細くなる。</p>
+        </a>
+        <a class="lab-index-card" href="lab-04.html">
+          <span>LAB 04</span>
+          <strong>平均は、観測の強さで動く</strong>
+          <p>テスト点、反応時間、測定値のような連続量では、未知の平均を推定する。事前平均と観測平均が、どちらをどれくらい信じられるかで混ざる。</p>
+        </a>
+        <a class="lab-index-card" href="lab-05.html">
+          <span>LAB 05</span>
+          <strong>件数の観測は、観測時間と一緒に扱う</strong>
+          <p>事故、問い合わせ、アクセスのような件数では、発生率を推定する。件数だけでなく、どれくらいの時間や露出で観測したかが意味を変える。</p>
+        </a>
+        <a class="lab-index-card" href="lab-06.html">
+          <span>LAB 06</span>
+          <strong>小標本の極端な比率は、少し中央へ戻して読む</strong>
+          <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。</p>
+        </a>
+        <a class="lab-index-card" href="lab-07.html">
+          <span>LAB 07</span>
+          <strong>グループごとの違いを残しながら、全体の情報も借りる</strong>
+          <p>階層ベイズの入口として、全体中心をデータから読み、各グループの推定がそこへ部分的に寄る様子を見る。</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="flow-recap-section reveal in" aria-labelledby="flow-recap-title">
+      <div class="section-copy">
+        <div class="sec-tag">CORE IDEA</div>
+        <h2 id="flow-recap-title" class="sec-title">毎回見るのは、平均だけではなく幅</h2>
+        <p>
+          ベイズ更新では、更新後の平均だけを答えとして読むと大事な部分を落とす。観測がどれくらい強く、更新後にどれくらい幅が残るかを見ることで、次の予測や小標本の扱いまでつながる。
+        </p>
+      </div>
+      <div class="recap-list">
+        <article class="recap-row">
+          <span>1</span>
+          <h3>出発点は、仮の答えではなく不確実性</h3>
+          <p>事前分布は「最初から決めた正解」ではなく、観測前の候補の置き方として読む。</p>
+        </article>
+        <article class="recap-row">
+          <span>2</span>
+          <h3>観測は、中心と強さを持つ</h3>
+          <p>同じ割合や平均でも、観測数やばらつきによって支持する範囲は変わる。</p>
+        </article>
+        <article class="recap-row">
+          <span>3</span>
+          <h3>更新後にも、まだ幅が残る</h3>
+          <p>事後分布の幅は、予測や意思決定へ持ち越される。</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

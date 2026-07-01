@@ -1011,6 +1011,18 @@ SD と SE は、住んでいる「世界」が違う量です。
 
 </p>
 <div class="tier-figure">
+<div class="tier-row tier-mean">
+<div class="tier-label"><span class="tier-tag">// 2階</span><span class="tier-name">標本平均</span></div>
+<div class="tier-bar">
+<div class="tier-narrow"></div>
+<div class="tier-mu"></div>
+<div class="tier-dot" style="left:48%"></div>
+<div class="tier-dot" style="left:50%"></div>
+<div class="tier-dot" style="left:52%"></div>
+<div class="tier-dot" style="left:51%"></div>
+<div class="tier-dot" style="left:49%"></div>
+</div>
+</div>
 <div class="tier-row">
 <div class="tier-label"><span class="tier-tag">// 1階</span><span class="tier-name">個々のデータ</span></div>
 <div class="tier-bar">
@@ -1024,18 +1036,6 @@ SD と SE は、住んでいる「世界」が違う量です。
 <div class="tier-dot" style="left:62%"></div>
 <div class="tier-dot" style="left:74%"></div>
 <div class="tier-dot" style="left:82%"></div>
-</div>
-</div>
-<div class="tier-row tier-mean">
-<div class="tier-label"><span class="tier-tag">// 2階</span><span class="tier-name">標本平均</span></div>
-<div class="tier-bar">
-<div class="tier-narrow"></div>
-<div class="tier-mu"></div>
-<div class="tier-dot" style="left:48%"></div>
-<div class="tier-dot" style="left:50%"></div>
-<div class="tier-dot" style="left:52%"></div>
-<div class="tier-dot" style="left:51%"></div>
-<div class="tier-dot" style="left:49%"></div>
 </div>
 </div>
 <div class="tier-caption">下：個々のデータの広がり（SD ≈ σ）／上：標本平均の精度（SE = σ/√n）</div>
@@ -1071,7 +1071,7 @@ SD と SE は、住んでいる「世界」が違う量です。
 <h2>// 触ってみる — n を動かすと、どこが縮む？</h2>
 <p>
 
-題材は <b style="color:var(--text)">生徒30人の身体測定（身長）</b>。母集団は <code>μ=172cm, σ=6cm</code> の正規分布（<b style="color:var(--text)">μ</b>＝「ミュー」、母集団の平均値を表すギリシャ文字）。スライダーで <code>n</code>（1回に集める人数 ＝ サンプル数）を動かしてみてください。
+題材は <b style="color:var(--text)">生徒30人の身体測定（身長）</b>。母集団は <code>μ=172cm, σ=6cm</code> の正規分布（<b style="color:var(--text)">μ</b>＝「ミュー」、母集団の平均値を表すギリシャ文字）。スライダーで <code>n</code>（1回に集める人数 ＝ サンプルサイズ）を動かしてみてください。
 
 </p>
 <p>
@@ -1093,8 +1093,8 @@ SD と SE は、住んでいる「世界」が違う量です。
 </div>
 </div>
 <div class="intA-stack">
-<canvas aria-busy="true" aria-label="個々のデータの散布と母集団分布、下部にSDバー" id="seCanvasTier1" role="img"></canvas>
 <canvas aria-busy="true" aria-label="標本平均の分布とベルカーブ、下部にSEバー" id="seCanvasTier2" role="img"></canvas>
+<canvas aria-busy="true" aria-label="個々のデータの散布と母集団分布、下部にSDバー" id="seCanvasTier1" role="img"></canvas>
 <div class="intA-ratio" id="seRatioCaption">SD / SE = √n ≈ 5.48</div>
 </div>
 <div class="share-row" style="margin-top:14px">
@@ -1107,7 +1107,7 @@ SD と SE は、住んでいる「世界」が違う量です。
 </div>
 <p style="margin-top:24px">触ってみると、こんな動きが目に入ってくるはずです。</p>
 <ul style="color:var(--dim); line-height:2; margin:16px 0;">
-<li><b style="color:var(--magenta)">下のドットの広がり（SD）</b>は、n を動かしてもほぼ変わらない（σ ≈ 6cm）。これは「身長そのものの散らばり」の話だから、サンプル数では縮まない。</li>
+<li><b style="color:var(--magenta)">下のドットの広がり（SD）</b>は、n を動かしてもほぼ変わらない（σ ≈ 6cm）。これは「身長そのものの散らばり」の話だから、サンプルサイズでは縮まない。</li>
 <li><b style="color:var(--cyan)">上のヒストグラム（標本平均）の山</b>は、n を増やすと <b>√n で痩せる</b>。中心は μ のままで、幅だけが縮んでいく。</li>
 <li>横並びの SD/SE バーで見ると、SD バーはほぼ固定、SE バーだけが n=30→100→900 と段々短くなる。<b style="color:var(--yellow)">SD/SE = √n</b> がそのまま読み取れる関係です。</li>
 </ul>
@@ -1137,7 +1137,7 @@ n を 10 → 100（10倍）にすると、SE は 1.90 → 0.60、つまり <b st
 </p>
 <p>
 
-「データを増やせば精度が上がる」という直感は正しい。けれど <b style="color:var(--text)">サンプル数に比例しては縮まない</b>。2倍にしても精度は √2 ≈ 1.4倍ぶんしか上がらない、という性質が背後にあります。アンケートの対象を 30 → 100 → 1000 と増やしてみるとき、ここで一度立ち止まることになる場面です。
+「データを増やせば精度が上がる」という直感は正しい。けれど <b style="color:var(--text)">サンプルサイズに比例しては縮まない</b>。2倍にしても精度は √2 ≈ 1.4倍ぶんしか上がらない、という性質が背後にあります。アンケートの対象を 30 → 100 → 1000 と増やしてみるとき、ここで一度立ち止まることになる場面です。
 
 </p>
 <aside class="col-aside">
@@ -1157,7 +1157,7 @@ n を 10 → 100（10倍）にすると、SE は 1.90 → 0.60、つまり <b st
 
 SE は単独で使うことはほぼなくて、たいてい <b style="color:var(--cyan)">区間推定</b>か <b style="color:var(--magenta)">検定</b>のどちらかの中に部品として入っています。<br/>
 
-左が区間推定（中心 ± 1.96·SE）、右が検定（<code>z = (x̄ − μ₀)/SE</code>。<b style="color:var(--text)">x̄</b>＝「エックスバー」＝標本（手元の n 個）の平均、<b style="color:var(--text)">μ₀</b>＝「ミュー・ゼロ」＝検定で「これだろう」と置いた仮説の値）。<b style="color:var(--yellow)">同じ太さのSEバーが、両方の絵の中に並んで現れています</b>。
+上が区間推定（中心 ± 1.96·SE）、下が検定（<code>z = (x̄ − μ₀)/SE</code>。<b style="color:var(--text)">x̄</b>＝「エックスバー」＝標本（手元の n 個）の平均、<b style="color:var(--text)">μ₀</b>＝「ミュー・ゼロ」＝検定で「これだろう」と置いた仮説の値）。<b style="color:var(--yellow)">同じ太さのSEバーが、両方の絵の中に上下に並んで現れています</b>。
 
 </p>
 <div class="intB-controls">
@@ -1195,7 +1195,7 @@ SE は単独で使うことはほぼなくて、たいてい <b style="color:var
 </div>
 <p style="margin-top:24px">
 
-左の区間推定は <b style="color:var(--cyan)">「中心 x̄ から ±1.96·SE 伸ばしたバンド」</b>。右の検定は <b style="color:var(--magenta)">「x̄ と μ₀ のズレを、SE 何個ぶんか」</b>で測る。両者で n を動かしてみると、<b style="color:var(--yellow)">どちらの絵の中の SE バーも同じだけ細くなる</b>動きが現れます。区間推定の幅が狭くなり、同時に検定統計量 z は（同じズレでも）大きくなる。SE が共有部品なので、二つは連動して動いていく。
+上の区間推定は <b style="color:var(--cyan)">「中心 x̄ から ±1.96·SE 伸ばしたバンド」</b>。下の検定は <b style="color:var(--magenta)">「x̄ と μ₀ のズレを、SE 何個ぶんか」</b>で測る。両者で n を動かしてみると、<b style="color:var(--yellow)">どちらの絵の中の SE バーも同じだけ細くなる</b>動きが現れます。区間推定の幅が狭くなり、同時に検定統計量 z は（同じズレでも）大きくなる。SE が共有部品なので、二つは連動して動いていく。
 
 </p>
 <p>
@@ -1331,7 +1331,7 @@ SE は単独で使う量というよりは、区間推定の幅や検定の分�
 <span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
 </span>
 </div>
-<div>StatPlay · <span class="mg" id="app-version"></span> &middot; <a href="/privacy.html">プライバシーポリシー</a></div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
 </div>
 </footer>
 <script src="../js/modules/se_vs_sd.js" type="module"></script>
