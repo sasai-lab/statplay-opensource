@@ -213,6 +213,15 @@
       "en_lead": "Answer: just 16.7%. Even doctors get this question wrong half the time — and the deciding factor isn't sensitivity or specificity, but **prevalence**. Trace the numbers in the \"town of 1,000\" diagram below.",
       "ja_kw": "ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 条件付き確率",
       "en_kw": "Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives",
+      "related_experiences": [
+        {
+          "slug": "bayesplay",
+          "ja_label": "BayesPlay：更新・予測をグラフで試す",
+          "en_label": "BayesPlay: explore updating and prediction (Japanese)",
+          "ja_why": "観測を加えると、分布や次の結果の予測はどう変わるか。7つのラボで比べられます",
+          "en_why": "compare how observations change distributions and predictions across seven interactive labs"
+        }
+      ],
       "teaches": [
         "ベイズ定理",
         "条件付き確率",
