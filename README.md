@@ -1,6 +1,6 @@
 # StatPlay
 
-Current version: **v4.0.0** · [Live site / 公開サイト](https://statplay.sasailab.com/)
+Current version: **v4.0.2** · [Live site / 公開サイト](https://statplay.sasailab.com/)
 
 **JA** | 参考書の数式で止まった——そんな統計学習者のための、直感を取り戻す可視化ラボ。スライダーを動かすと、式の意味が絵で見えてくる。式が見えたら、参考書に戻ってください。
 **EN** | A visualization lab for statistics learners who got stuck at the formulas in a textbook. Move a slider and the meaning behind the equation comes into view — then go back to the textbook.
@@ -13,6 +13,14 @@ A cyberpunk-themed interactive visualizer for learning statistics by doing.
 - ダーク（サイバーパンク）& ライトモード対応 / Dark & light theme
 - PWA — オフラインで動作 / Works offline
 - 検索エンジンが各トピックを個別にインデックスできる per-page 構成（sitemap / hreflang / JSON-LD 付き）
+
+## v4.0.2
+
+- BayesPlay全7ラボの重複する説明を短くし、操作とグラフを中心に読める構成へ整理。
+- 指示調の文言を、山・点・区間がどう変わるかを具体的に伝える説明へ修正。数値やモデルの前提は維持。
+- StatPlayのベイズのコーナーとBayesPlayを、既存の関連リンクのスタイルで相互に接続。
+
+Version 4.0.2 streamlines the explanations across all seven BayesPlay labs and describes changes in the graphs in plain language. Related links connect BayesPlay with StatPlay’s Bayes topic.
 
 ## v4.0.0
 

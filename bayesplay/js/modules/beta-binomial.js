@@ -118,7 +118,7 @@ function syncOutputs() {
   }
   if (els.predictiveGuideText) {
     els.predictiveGuideText.textContent =
-      `更新後の平均は ${pct(summary.mean, 1)}。未来 ${state.futureTrials} 回の成功数候補が、予測分布として横に並ぶ。`;
+      `成功率の事後平均は ${pct(summary.mean, 1)}。次の ${state.futureTrials} 回の成功数を予測します。`;
   }
   if (els.predictiveMode && els.predictiveRange) {
     const predictive = predictiveSummary(summary);
@@ -163,17 +163,17 @@ function syncProcessGuide(summary) {
   const observed = state.successes + state.failures;
   const dataRate = observed ? state.successes / observed : 0;
   const text = {
-    prior: `観測前には、候補の山が出発点として置かれる。事前平均 ${pct(state.priorMean, 0)} は中心、事前分布の強さ ${state.priorStrength}件分は、実観測ではない仮の重みとして表れる。`,
-    evidence: observed ? `観測が重なる。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。観測が支持する山は ${pct(dataRate, 1)} 付近に立つ。` : '観測がないため、尤度は一定。どの成功率も同じ重みになり、事後分布は事前分布と一致する。',
-    posterior: `出発点と観測が合わさり、更新後の分布が現れる。成功側は ${countText(summary.alpha)} + ${state.successes}、失敗側は ${countText(summary.beta)} + ${state.failures} として積み上がる。`
+    prior: `強さ ${state.priorStrength} 件分は、成功側 ${countText(summary.alpha)}・失敗側 ${countText(summary.beta)} に相当する仮の重みで、実際の観測ではありません。`,
+    evidence: observed ? `観測は成功 ${state.successes} 回・失敗 ${state.failures} 回。尤度の山は、観測割合の ${pct(dataRate, 1)} で最も高くなります。` : '観測がないため、尤度は一定です。',
+    posterior: `出発点に観測を加えると、成功側は ${countText(summary.alpha)} + ${state.successes}、失敗側は ${countText(summary.beta)} + ${state.failures} になります。`
   };
   els.processNarrative.textContent = text[state.updateStep];
-  const detail = {
-    prior: `成功側 ${countText(summary.alpha)}・失敗側 ${countText(summary.beta)} に近い仮の重みが、出発点の形を作る。強さ ${state.priorStrength} は、観測が少ないときに出発点がどれだけ動きにくいかを表す。`,
-    evidence: observed ? `観測割合は ${pct(dataRate, 1)}。マゼンタの尤度が出発点に重なる。` : '成功率の観測割合は、まだ計算できません。成功または失敗を加えてみてください。',
-    posterior: `更新後の平均は ${pct(summary.mean, 1)}。95%信用区間は ${pct(summary.low, 1)}〜${pct(summary.high, 1)}。このモデルと事前分布のもとで、成功率がこの範囲にある確率は95%です。信頼区間とは定義が異なります。`
-  };
-  if (els.processDetail) els.processDetail.textContent = detail[state.updateStep];
+  if (els.processDetail) {
+    els.processDetail.hidden = !showPosterior;
+    els.processDetail.textContent = showPosterior
+      ? `95%信用区間は ${pct(summary.low, 1)}〜${pct(summary.high, 1)}。このモデルと事前分布のもとで、成功率がこの範囲にある確率は95%です。信頼区間とは定義が異なります。`
+      : '';
+  }
 }
 
 function renderTrialDots() {

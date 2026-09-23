@@ -38,7 +38,7 @@ function syncOutputs() {
   els.lsWidthRatio.textContent = `${(likelihoodHalfWidth(successes(state.smallN), state.smallN - successes(state.smallN)) / likelihoodHalfWidth(successes(state.largeN), state.largeN - successes(state.largeN))).toFixed(1)}倍`;
   if (els.lsGuideText) {
     els.lsGuideText.textContent =
-      `ケースAは ${successes(state.smallN)}/${state.smallN}（${pct(successes(state.smallN) / state.smallN)}）、ケースBは ${successes(state.largeN)}/${state.largeN}（${pct(successes(state.largeN) / state.largeN)}）。観測数を変えて、山の幅を比べる。`;
+      `ケースAは ${successes(state.smallN)}/${state.smallN}（${pct(successes(state.smallN) / state.smallN)}）、ケースBは ${successes(state.largeN)}/${state.largeN}（${pct(successes(state.largeN) / state.largeN)}）。`;
   }
 }
 

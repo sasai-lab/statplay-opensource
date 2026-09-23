@@ -77,7 +77,7 @@ function syncOutputs() {
   els.shCenterReadout.textContent = pct(state.overallMean, 1);
   if (els.shGuideText) {
     els.shGuideText.textContent =
-      `全体の中心は ${pct(state.overallMean)}。共有する強さ ${Math.round(state.priorStrength)} 件分として読むと、小さいグループほど黄色の点が中央へ寄る。`;
+      `全体の中心は ${pct(state.overallMean)}。共有する強さは ${Math.round(state.priorStrength)} 件分です。`;
   }
 }
 

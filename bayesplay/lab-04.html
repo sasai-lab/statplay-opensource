@@ -66,45 +66,19 @@
     <section class="lab-page-header reveal in" aria-labelledby="page-title-04">
       <div class="sec-tag">LAB 04 / NORMAL-NORMAL UPDATE</div>
       <h1 id="page-title-04" class="sec-title">平均は、観測の強さで動く</h1>
-      <p>テスト点、反応時間、測定値のような連続量では、未知の平均を推定する。事前平均と観測平均が、どちらをどれくらい信じられるかで混ざる。</p>
+      <p>測定値の平均を推定するとき、観測数やばらつきが違うと、結果はどう変わるでしょうか。</p>
       <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 04</a>
-      <div class="lesson-strip" aria-label="このラボの読みどころ">
-        <span>何を推定しているか</span>
-        <span>観測はどこを支持するか</span>
-        <span>更新後にどれくらい幅が残るか</span>
-      </div>
     </section>
 
     <details class="bp-reading">
-      <summary>このラボの問いと、グラフの読み方</summary>
-    <section class="learning-section reveal in" aria-labelledby="learn-before-04">
-      <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-04" class="sec-title">グラフで確かめること</h2>
-      <div class="learning-grid">
-        <article class="learning-card">
-          <span>扱う問い</span>
-          <p>同じ観測平均でも、観測数やばらつきが違うと、推定結果はどう変わるでしょうか。</p>
-        </article>
-        <article class="learning-card">
-          <span>中心の考え方</span>
-          <p>Normal-Normal 更新では、事前平均と観測平均が精度で重み付けされる。観測ノイズが小さく、観測数が多いほど観測側へ寄る。</p>
-        </article>
-        <article class="learning-card">
-          <span>グラフの読み方</span>
-          <p>シアンが事前分布、マゼンタが観測平均の支持、黄色が更新後。黄色が両者の間で動く。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="column-note-section reveal in" aria-labelledby="column-note-04">
-      <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-04" class="sec-title">平均を見るときも、観測平均だけでは決まらない</h2>
-      <div class="column-note-prose">
-        <p>平均が同じでも、何件の観測を集めたか、測定値がどれくらいばらついているかは違うことがあります。観測数が少なかったり、測定のばらつきが大きかったりすると、平均の候補が広く残ります。</p>
-        <p>Normal-Normal 更新では、出発点の平均と観測平均が「精度」で重みづけされます。精度は、ばらつきの小ささと観測数の多さで決まります。観測数を増やすと、黄色の山がマゼンタ側へ寄る理由はここにあります。</p>
-        <p>黄色の山は、中心の位置と幅が変わります。幅が狭いほど、このモデルで推定した平均の不確実性は小さくなります。</p>
-      </div>
-    </section>
+      <summary>平均の重みづけについて</summary>
+      <section class="column-note-section reveal in" aria-labelledby="column-note-04">
+        <h2 id="column-note-04" class="sec-title">ばらつきの小さい方に、重みがかかる</h2>
+        <div class="column-note-prose">
+          <p>Normal-Normal更新では、事前平均と観測平均を「精度」で重みづけします。精度は分散の逆数。観測数が多いほど、また測定値のばらつきが小さいほど、観測平均の精度が高くなります。</p>
+          <p>黄色の山の幅は、個々の測定値のばらつきではなく、推定する平均に残る不確実性を表します。</p>
+        </div>
+      </section>
     </details>
 
     <section class="mini-lab-section reveal in" id="normal-normal" aria-labelledby="normal-normal-title">
@@ -128,8 +102,8 @@
 <div class="metric"><span>更新後のSD（事後SD）</span><strong id="nnPosteriorSd">-</strong></div>
 <div class="metric"><span>観測の重み</span><strong id="nnDataWeight">-</strong></div>
 </div></div><aside aria-label="実験の条件" class="bp-lab-controls"><div aria-label="Lab 04 操作の流れ" class="mini-guide">
-<span class="mini-guide__label">実験ガイド</span>
-<p class="mini-guide__prompt">出発点と観測平均を離したまま、観測の強さだけを切り替える。</p>
+<span class="mini-guide__label">比べてみるところ</span>
+<p class="mini-guide__prompt">観測数を増やすと、黄色の山は観測平均へ寄り、幅が狭くなります。</p>
 <p aria-live="polite" class="mini-guide__readout" id="nnGuideText">黄色の山は、シアンの出発点とマゼンタの観測の間に現れる。</p>
 </div><div aria-label="観測の強さ プリセット" class="preset-row preset-row--thirds control-preset">
 <button class="preset-btn" data-nn-preset="low" type="button">弱い</button>
@@ -157,28 +131,6 @@
 <input id="nnN" max="80" min="1" step="1" type="range" value="8"/>
 </label>
 </div></aside></div>
-    </section>
-
-    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-04">
-      <div class="story-kicker">AFTER GRAPH</div>
-      <h2 id="learn-after-04" class="sec-title">操作したあとに確認すること</h2>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>まず試す操作</h3>
-          <p>観測数を増やす、または観測のばらつきを小さくする。黄色の山がマゼンタ側へ寄り、細くなるところを見る。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>比べてみるところ</h3>
-          <p>観測平均だけでなく、観測のばらつきと観測数が「どれくらい動くか」を決める。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>次へのつながり</h3>
-          <p>次は件数の例へ。10件を1時間で観測した場合と、10時間で観測した場合を比べます。</p>
-        </article>
-      </div>
     </section>
 
     <nav class="lab-page-nav" aria-label="ラボページ移動"><a href="lab-02.html">← Lab 02</a><a href="index.html">目次へ戻る</a><a href="lab-05.html">Lab 05 →</a></nav>

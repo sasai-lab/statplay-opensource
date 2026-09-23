@@ -66,45 +66,18 @@
     <section class="lab-page-header reveal in" aria-labelledby="page-title-06">
       <div class="sec-tag">LAB 06 / SMALL SAMPLE SHRINKAGE</div>
       <h1 id="page-title-06" class="sec-title">5回中5回の100%、どう見る？</h1>
-      <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。</p>
+      <p>5回中5回成功と、52回中34回成功。共通の事前分布を使うと、それぞれの推定はどこへ動くでしょうか。</p>
       <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 06</a>
-      <div class="lesson-strip" aria-label="このラボの読みどころ">
-        <span>何を推定しているか</span>
-        <span>観測はどこを支持するか</span>
-        <span>更新後にどれくらい幅が残るか</span>
-      </div>
     </section>
 
     <details class="bp-reading">
-      <summary>このラボの問いと、グラフの読み方</summary>
-    <section class="learning-section reveal in" aria-labelledby="learn-before-06">
-      <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-06" class="sec-title">グラフで確かめること</h2>
-      <div class="learning-grid">
-        <article class="learning-card">
-          <span>扱う問い</span>
-          <p>5 回中 5 回成功のグループを、100 回中 70 回成功のグループより本当に上だと読んでよいのか。</p>
-        </article>
-        <article class="learning-card">
-          <span>中心の考え方</span>
-          <p>縮約は、小さいサンプルの極端な観測を全体の中心へ少し寄せる読み。観測数が大きいグループはあまり動かない。</p>
-        </article>
-        <article class="learning-card">
-          <span>グラフの読み方</span>
-          <p>マゼンタの点が観測比率、黄色の点が縮約後。点を結ぶ線は平均の移動量、下の細い横棒は更新後の95%信用区間です。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="column-note-section reveal in" aria-labelledby="column-note-06">
-      <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-06" class="sec-title">100%という結果と、残っている幅</h2>
-      <div class="column-note-prose">
-        <p>5回中5回成功は100%です。ただ、その100%をそのまま「最も高い成功率」と読むと、偶然による偏りが順位に強く表れることがあります。小標本ほど極端な比率が出やすいからです。</p>
-        <p>縮約は、極端な観測を無視する処理ではありません。観測数が少ないグループほど全体の中心を多めに借り、観測数が多いグループほど各グループの観測を残します。マゼンタから黄色への線の長さが、平均の移動量を表します。移動量は観測と中心の距離にも左右され、不確実性の大きさとは一致しません。</p>
-        <p>グループを比べるときは、観測比率が同じでも、観測数が違うことがあります。点の位置と信用区間を並べると、その違いも見えてきます。</p>
-      </div>
-    </section>
+      <summary>縮約の仕組みについて</summary>
+      <section class="column-note-section reveal in" aria-labelledby="column-note-06">
+        <h2 id="column-note-06" class="sec-title">共通の出発点を使うと、平均はどこへ寄るか</h2>
+        <div class="column-note-prose">
+          <p>各グループに共通の事前分布を置くと、更新後の平均は観測比率と事前分布の中心の間に来ます。この中心へ寄る動きが縮約です。同じ強さの事前分布なら、観測数が少ないグループほど、共通の中心にかかる重みが大きくなります。</p>
+        </div>
+      </section>
     </details>
 
     <section class="mini-lab-section reveal in" id="small-sample-shrinkage" aria-labelledby="shrinkage-title">
@@ -117,7 +90,7 @@
 
 <div class="bp-lab-figure"><div class="mini-lab-viz">
 <canvas aria-busy="true" aria-describedby="shGuideText poolingReadoutNote groupDataTable" aria-label="小標本の観測比率と縮約後の推定値" class="mini-lab-canvas" id="shrinkageCanvas" role="img"></canvas>
-<p class="canvas-note" id="poolingReadoutNote">○は観測比率、◆は更新後の平均、細い横棒は95%信用区間です。事前分布の中心と強さを固定したBeta-Binomialモデルで計算しています。観測数を変える際、成功数は整数に丸めます。</p>
+<p class="canvas-note" id="poolingReadoutNote">○は観測比率、◆は更新後の平均。点を結ぶ線は平均の移動量、下の細い横棒は95%信用区間です。移動量は観測比率と中心の距離にも左右され、不確実性の大きさとは一致しません。事前分布の中心と強さを固定したBeta-Binomialモデルで計算しています。観測数を変える際、成功数は整数に丸めます。</p>
 <details class="bp-table-details"><summary>グラフの数値を見る</summary><table class="bp-data-table" id="groupDataTable"></table></details>
 <div class="legend-row">
 <span><i class="legend-swatch legend-likelihood"></i>観測比率</span>
@@ -129,9 +102,9 @@
 <div class="metric"><span>平均の移動幅</span><strong id="shAvgPull">-</strong></div>
 <div class="metric"><span>事前分布の中心</span><strong id="shCenterReadout">-</strong></div>
 </div></div><aside aria-label="実験の条件" class="bp-lab-controls"><div aria-label="Lab 06 操作の流れ" class="mini-guide">
-<span class="mini-guide__label">実験ガイド</span>
-<p class="mini-guide__prompt">マゼンタの点が観測比率、黄色の点が更新後の平均。点を結ぶ線は平均の移動量です。不確実性は下の細い横棒（95%信用区間）で比べます。</p>
-<p aria-live="polite" class="mini-guide__readout" id="shGuideText">共有する中心を強くすると、小さいグループほど黄色の点が中央へ寄る。</p>
+<span class="mini-guide__label">比べてみるところ</span>
+<p class="mini-guide__prompt">「共有する強さ」を変えて、各グループの点の動きを比べます。</p>
+<p aria-live="polite" class="mini-guide__readout" id="shGuideText">全体の中心は55.0%。共有する強さは24件分です。</p>
 </div><div aria-label="縮約の強さ プリセット" class="preset-row preset-row--thirds control-preset">
 <button class="preset-btn" data-sh-preset="weak" type="button">弱い</button>
 <button class="preset-btn" data-sh-preset="middle" type="button">標準</button>
@@ -153,24 +126,9 @@
     </section>
 
     <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-06">
-      <div class="story-kicker">AFTER GRAPH</div>
-      <h2 id="learn-after-06" class="sec-title">操作したあとに確認すること</h2>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>まず試す操作</h3>
-          <p>共有する強さを上げる。小さいグループの黄色い点が全体中心へ寄り、大きいグループは残りやすいことを見る。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>比べてみるところ</h3>
-          <p>観測数が少ないグループでは、比率が高くても、成功率の候補には広い幅が残ることがあります。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>次へのつながり</h3>
-          <p>ここでは全体の中心を手で置いた。階層ベイズでは、その中心もデータから同時に読む。</p>
-        </article>
+      <h2 id="learn-after-06" class="sec-title">観測が100%でも、幅は残る？</h2>
+      <div class="column-note-prose">
+        <p>5回中5回成功でも、黄色の点（更新後の平均）は100%より内側にあり、95%信用区間にも幅が残ります。</p>
       </div>
     </section>
 

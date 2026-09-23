@@ -66,45 +66,19 @@
     <section class="lab-page-header reveal in" aria-labelledby="page-title-07">
       <div class="sec-tag">LAB 07 / HIERARCHICAL BAYES ENTRY</div>
       <h1 id="page-title-07" class="sec-title">グループごとの違いを残しながら、全体の情報も借りる</h1>
-      <p>階層ベイズの入口として、全体中心をデータから読み、各グループの推定がそこへ部分的に寄る様子を見る。</p>
+      <p>全体の情報を使うと、各グループの推定値はどれくらい中心へ寄るでしょうか。グループ間の違いを変えて比べます。</p>
       <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 07</a>
-      <div class="lesson-strip" aria-label="このラボの読みどころ">
-        <span>何を推定しているか</span>
-        <span>観測はどこを支持するか</span>
-        <span>更新後にどれくらい幅が残るか</span>
-      </div>
     </section>
 
     <details class="bp-reading">
-      <summary>このラボの問いと、グラフの読み方</summary>
-    <section class="learning-section reveal in" aria-labelledby="learn-before-07">
-      <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-07" class="sec-title">グラフで確かめること</h2>
-      <div class="learning-grid">
-        <article class="learning-card">
-          <span>扱う問い</span>
-          <p>グループを別々に見ると、観測数が少ないグループの推定値は大きくばらつくことがあります。グループごとの違いを残しながら、全体の情報も使うと、点の位置はどう変わるでしょうか。</p>
-        </article>
-        <article class="learning-card">
-          <span>中心の考え方</span>
-          <p>部分プーリングは、各グループの観測と全体の傾向を同時に使う。似たグループほど全体から強く借り、違いが大きいほど個別性を残す。</p>
-        </article>
-        <article class="learning-card">
-          <span>グラフの読み方</span>
-          <p>マゼンタは各グループの観測、黄色は部分プーリング後、シアンの線はデータから読んだ全体中心。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="column-note-section reveal in" aria-labelledby="column-note-07">
-      <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-07" class="sec-title">全部別々でも、全部同じでもない中間を作る</h2>
-      <div class="column-note-prose">
-        <p>グループごとのデータを見るとき、完全に別々に推定すると小さいグループが大きく揺れます。一方で、全グループを同じものとして扱うと、実際にある違いまで消えてしまいます。</p>
-        <p>階層ベイズの考え方は、その中間を作ることです。各グループの観測を残しながら、全体の傾向からも情報を借ります。似たグループが多いなら全体へ寄り、違いが大きいなら個別の観測が残りやすくなります。</p>
-        <p>このページは入口なので、厳密な階層モデルの計算までは扱いません。まずは、全体中心、グループごとの観測、部分プーリング後の点が同じ画面でどう並ぶかを見ます。</p>
-      </div>
-    </section>
+      <summary>部分プーリングについて</summary>
+      <section class="column-note-section reveal in" aria-labelledby="column-note-07">
+        <h2 id="column-note-07" class="sec-title">グループの違いを残して、情報を共有する</h2>
+        <div class="column-note-prose">
+          <p>グループを別々に推定すると、観測数が少ないグループの推定値は、大きくばらつくことがあります。全グループをまとめて1つの値を推定すると、グループごとの違いは表せません。</p>
+          <p>部分プーリングでは、各グループの観測と全体の傾向の両方を使います。各グループの推定値が全体の中心へ寄りながらも、それぞれの違いが残ります。</p>
+        </div>
+      </section>
     </details>
 
     <section class="mini-lab-section reveal in" id="hierarchical-bayes" aria-labelledby="hierarchical-title">
@@ -129,9 +103,9 @@
 <div class="metric"><span>共有の強さ</span><strong id="hbPoolingStrength">-</strong></div>
 <div class="metric"><span>小標本の移動</span><strong id="hbSmallGroupPull">-</strong></div>
 </div></div><aside aria-label="実験の条件" class="bp-lab-controls"><div aria-label="Lab 07 操作の流れ" class="mini-guide">
-<span class="mini-guide__label">実験ガイド</span>
-<p class="mini-guide__prompt">グループ間の違いを小さくすると、全体から借りる力が強くなる。違いを大きくすると、各グループの観測が残りやすい。</p>
-<p aria-live="polite" class="mini-guide__readout" id="hbGuideText">全体の中心と各グループの観測を同時に見て、部分プーリング後の点を読む。</p>
+<span class="mini-guide__label">比べてみるところ</span>
+<p class="mini-guide__prompt">「グループ間の違い」を変えて、黄色の点の動きを比べます。</p>
+<p aria-live="polite" class="mini-guide__readout" id="hbGuideText">現在の全体中心と共有の強さを計算しています。</p>
 </div><div aria-label="グループ差 プリセット" class="preset-row preset-row--thirds control-preset">
 <button class="preset-btn" data-hb-preset="tight" type="button">似ている</button>
 <button class="preset-btn" data-hb-preset="middle" type="button">標準</button>
@@ -150,28 +124,6 @@
 <input id="hbGroupCount" max="8" min="4" step="1" type="range" value="6"/>
 </label>
 </div></aside></div>
-    </section>
-
-    <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-07">
-      <div class="story-kicker">AFTER GRAPH</div>
-      <h2 id="learn-after-07" class="sec-title">操作したあとに確認すること</h2>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>まず試す操作</h3>
-          <p>グループ間の違いを小さくする。黄色の点が全体中心へ寄りやすくなる。違いを大きくすると、観測の位置が残りやすい。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>比べてみるところ</h3>
-          <p>階層ベイズは、グループを全部同じにする方法ではない。個別差と全体傾向を同時に読むための枠組み。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>次へのつながり</h3>
-          <p>ここから先は、複雑な階層モデルをどう計算するか、推定結果をどう判断へつなげるかが次のテーマになる。</p>
-        </article>
-      </div>
     </section>
 
     <nav class="lab-page-nav" aria-label="ラボページ移動"><a href="lab-06.html">← Lab 06</a><a href="index.html">目次へ戻る</a><a href="index.html">BayesPlay →</a></nav>

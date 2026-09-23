@@ -66,45 +66,19 @@
     <section class="lab-page-header reveal in" aria-labelledby="page-title-01">
       <div class="sec-tag">LAB 01 / PRIOR + DATA -> POSTERIOR</div>
       <h1 id="page-title-01" class="sec-title">見えない成功率を、観測で少しずつ読み直す</h1>
-      <p>成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。</p>
+      <p>成功と失敗を1件ずつ加えると、未知の成功率を表す山はどちらへ動き、幅はどう変わるでしょうか。</p>
       <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 01</a>
-      <div class="lesson-strip" aria-label="このラボの読みどころ">
-        <span>何を推定しているか</span>
-        <span>観測はどこを支持するか</span>
-        <span>更新後にどれくらい幅が残るか</span>
-      </div>
     </section>
 
     <details class="bp-reading">
-      <summary>このラボの問いと、グラフの読み方</summary>
-    <section class="learning-section reveal in" aria-labelledby="learn-before-01">
-      <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-01" class="sec-title">グラフで確かめること</h2>
-      <div class="learning-grid">
-        <article class="learning-card">
-          <span>扱う問い</span>
-          <p>コイン、フリースロー、クリック率のように、まだ本当の成功率が見えていないとき、少ない観測からどこまで言えるのか。</p>
-        </article>
-        <article class="learning-card">
-          <span>中心の考え方</span>
-          <p>事前分布は観測前の出発点。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。事後分布は両方を合わせた更新後の分布。</p>
-        </article>
-        <article class="learning-card">
-          <span>グラフの読み方</span>
-          <p>シアンは出発点、マゼンタは観測が支持する形、グラフの黄色は更新後。黄色の位置だけでなく、幅がどれだけ残るかを見る。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="column-note-section reveal in" aria-labelledby="column-note-01">
-      <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-01" class="sec-title">「成功率はいくつか」を、いきなり1つに決めない</h2>
-      <div class="column-note-prose">
-        <p>成功率を推定するとき、最初に欲しくなるのは「答えは何%か」という1つの数字です。観測が少ないときは、1つの数字だけでは、ほかの値がどれくらいありそうかまでは分かりません。BayesPlay では、答えを点ではなく候補の山として置きます。</p>
-        <p>シアンの山は、観測前の置き方です。ここでの「成功側5・失敗側5」は実際の観測ではなく、出発点に持たせる仮の重みです。観測が少ないうちはこの重みが効き、観測が増えるほど実データの形が前に出ます。</p>
-        <p>黄色の山には、平均の位置と、候補が広がる幅があります。幅が広いなら、まだ言い切れない部分が残っています。この幅が、次の Lab 02 の予測分布へそのまま持ち越されます。</p>
-      </div>
-    </section>
+      <summary>事前分布・尤度・事後分布について</summary>
+      <section class="column-note-section reveal in" aria-labelledby="column-note-01">
+        <h2 id="column-note-01" class="sec-title">出発点と観測を、分布で合わせる</h2>
+        <div class="column-note-prose">
+          <p>事前分布は、観測前にどの成功率がどれくらいありそうかを置いたものです。尤度は、それぞれの成功率のもとで、今回の観測がどれくらい起こりやすいかを表します。</p>
+          <p>両者を掛け合わせ、面積が1になるように整えたものが事後分布です。平均だけでなく、成功率の候補にどれくらい幅が残るかも読めます。</p>
+        </div>
+      </section>
     </details>
 
     <section class="lab-workspace reveal in" id="beta-binomial" aria-labelledby="lab-title">
@@ -128,13 +102,13 @@
           </div>
 
           <div class="process-narrative" id="processNarrative" aria-live="polite">
-            観測前は、この出発点から始まる。事前平均は中心、事前の強さは仮の重みとして表れる。
+            強さ10件分は、成功側5・失敗側5に相当する仮の重みで、実際の観測ではありません。
           </div>
-          <p class="process-detail" id="processDetail">成功 5件分・失敗 5件分に近い出発点。これは実際に観測した成功・失敗ではなく、出発点に持たせる仮の重みです。</p>
+          <p class="process-detail" id="processDetail" hidden></p>
         </div>
 
         <div class="viz-panel" aria-label="Beta-Binomial visualization panel">
-          <canvas id="posteriorCanvas" class="posterior-canvas" aria-busy="true" aria-label="事前分布、尤度、事後分布を重ねたグラフ" role="img" aria-describedby="processNarrative credibleInterval"></canvas>
+          <canvas id="posteriorCanvas" class="posterior-canvas" aria-busy="true" aria-label="事前分布、尤度、事後分布を重ねたグラフ" role="img" aria-describedby="processNarrative processDetail credibleInterval"></canvas>
           <div class="legend-row" aria-label="Graph legend">
             <span><i class="legend-swatch legend-prior"></i>出発点（事前分布）</span>
             <span><i class="legend-swatch legend-likelihood"></i>観測が支持する形（尤度・相対値）</span>
@@ -189,16 +163,12 @@
           <span id="trialDots" class="trial-summary" aria-label="成功と失敗の観測要約"></span>
         </div>
 
-        <div class="story-next lab1-takeaway">
-          出発点（事前分布）に観測が支持する形（尤度）を掛け合わせると、候補の山は観測側へ寄り、同時に幅も変わる。平均だけでなく、山の細さにも更新の様子が残る。
-          ここでの95%信用区間は、信頼区間とは別の読み方で、更新後の山の幅をこのモデルと事前分布のもとで切り出した範囲として読む。
-        </div>
       </div>
 
       <aside class="control-panel" aria-label="Controls">
         <div class="control-panel__intro">
           <h2>条件を変える</h2>
-          <p>段階ボタンで流れを追ったあと、出発点や観測数を動かすと、山の寄り方と細さの変化が比べやすい。事前分布の強さ 10 は、実観測ではなく、成功5件・失敗5件ぶんに近い仮の重みとして働く。</p>
+          <p>出発点の平均と強さを変え、山の位置と幅を比べます。</p>
         </div>
         <div class="control-group">
           <h3>出発点（事前分布）</h3>
@@ -244,24 +214,9 @@
     </section>
 
     <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-01">
-      <div class="story-kicker">AFTER GRAPH</div>
-      <h2 id="learn-after-01" class="sec-title">操作したあとに確認すること</h2>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>まず試す操作</h3>
-          <p>まず「観測を重ねる」「更新後」の順に押す。次に成功数と失敗数を動かし、黄色の山が観測側へ寄る様子を見る。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>比べてみるところ</h3>
-          <p>観測数を増やしたとき、黄色の山の位置と95%信用区間を比べます。事前分布と観測が大きく違う場合、更新の途中で幅が広がることもあります。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>次へのつながり</h3>
-          <p>更新後にも幅が残ります。次はLab 03で観測数による違いを比較します。今の条件の予測は、グラフ下のリンクから確認できます。</p>
-        </article>
+      <h2 id="learn-after-01" class="sec-title">観測が増えると、幅はいつも狭くなる？</h2>
+      <div class="column-note-prose">
+        <p>事前分布と観測が大きく違うと、成功や失敗を加えた途中で95%信用区間が広がることもあります。2本の横棒で、更新前後の幅を比べられます。</p>
       </div>
     </section>
 

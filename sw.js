@@ -1,8 +1,8 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v4.0.0.1790167493';
+const CACHE = 'sp-v4.0.2.1790202544';
 const EXPERIENCE_ASSETS = ["./bayesplay/", "./bayesplay/css/bayesplay.css", "./bayesplay/css/site-shell.css", "./bayesplay/index.html", "./bayesplay/js/main.js", "./bayesplay/js/math/beta.js", "./bayesplay/js/math/gamma.js", "./bayesplay/js/math/normal.js", "./bayesplay/js/math/pooling.js", "./bayesplay/js/modules/beta-binomial.js", "./bayesplay/js/modules/gamma-poisson.js", "./bayesplay/js/modules/hero.js", "./bayesplay/js/modules/hierarchical-bayes.js", "./bayesplay/js/modules/likelihood-strength.js", "./bayesplay/js/modules/normal-normal.js", "./bayesplay/js/modules/shrinkage.js", "./bayesplay/js/modules/update-comparison.js", "./bayesplay/js/ui/graph-motion.js", "./bayesplay/js/ui/group-plot.js", "./bayesplay/lab-01.html", "./bayesplay/lab-02.html", "./bayesplay/lab-03.html", "./bayesplay/lab-04.html", "./bayesplay/lab-05.html", "./bayesplay/lab-06.html", "./bayesplay/lab-07.html"];
-const ASSET_VERSION = '4.0.0';
+const ASSET_VERSION = '4.0.2';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types", "se_vs_sd", "multivariate_analysis"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [

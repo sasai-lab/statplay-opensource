@@ -66,45 +66,18 @@
     <section class="lab-page-header reveal in" aria-labelledby="page-title-05">
       <div class="sec-tag">LAB 05 / GAMMA-POISSON UPDATE</div>
       <h1 id="page-title-05" class="sec-title">件数の観測は、観測時間と一緒に扱う</h1>
-      <p>事故、問い合わせ、アクセスのような件数では、発生率を推定する。件数だけでなく、どれくらいの時間、観測したかが意味を変える。</p>
+      <p>1時間の10件と、10時間の10件。1時間あたりの発生率は、それぞれどのくらいになりそうでしょうか。</p>
       <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 05</a>
-      <div class="lesson-strip" aria-label="このラボの読みどころ">
-        <span>何を推定しているか</span>
-        <span>観測はどこを支持するか</span>
-        <span>更新後にどれくらい幅が残るか</span>
-      </div>
     </section>
 
     <details class="bp-reading">
-      <summary>このラボの問いと、グラフの読み方</summary>
-    <section class="learning-section reveal in" aria-labelledby="learn-before-05">
-      <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-05" class="sec-title">グラフで確かめること</h2>
-      <div class="learning-grid">
-        <article class="learning-card">
-          <span>扱う問い</span>
-          <p>10 件起きたという観測は、多いのか少ないのか。1 時間の 10 件と 10 時間の 10 件は同じ意味なのか。</p>
-        </article>
-        <article class="learning-card">
-          <span>中心の考え方</span>
-          <p>Gamma-Poisson 更新では、観測件数が発生率を動かし、観測時間も、更新後の分布の位置や幅に関わる。</p>
-        </article>
-        <article class="learning-card">
-          <span>グラフの読み方</span>
-          <p>横軸は発生率。観測時間が長いほど、同じ件数でも黄色の山は細くなり、発生率の候補が絞られる。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="column-note-section reveal in" aria-labelledby="column-note-05">
-      <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-05" class="sec-title">件数だけでなく、どれだけ観測したかを見る</h2>
-      <div class="column-note-prose">
-        <p>問い合わせ10件、事故2件、アクセス300件のようなデータは、件数だけでは意味が決まりません。1時間で起きたのか、10時間で起きたのか、100人を見たのか、1万人を見たのかで推定する発生率は変わります。</p>
-        <p>Gamma-Poisson 更新では、観測件数が発生率の中心を動かし、観測時間と合わせて、発生率を推定します。同じ10件でも、短い時間なら高い発生率、長い時間なら低い発生率として読まれます。</p>
-        <p>0件の観測も、発生率が完全に0だと決める材料ではありません。長く観測して0件なら低い発生率を強く支持し、短い観測で0件ならまだ幅が残る。ここでも中心と幅を一緒に見ます。</p>
-      </div>
-    </section>
+      <summary>発生率の推定について</summary>
+      <section class="column-note-section reveal in" aria-labelledby="column-note-05">
+        <h2 id="column-note-05" class="sec-title">件数と観測時間を組にして読む</h2>
+        <div class="column-note-prose">
+          <p>推定するのは、1時間あたりに平均して何件起きるかという発生率です。Gamma-Poisson更新では、観測件数と観測時間の両方を事前分布に反映し、発生率の分布を更新します。</p>
+        </div>
+      </section>
     </details>
 
     <section class="mini-lab-section reveal in" id="gamma-poisson" aria-labelledby="gamma-poisson-title">
@@ -128,8 +101,8 @@
 <div class="metric"><span>更新後の平均（事後平均）</span><strong id="gpPosteriorMean">-</strong></div>
 <div class="metric"><span>95%信用区間</span><strong id="gpCredible">-</strong></div>
 </div></div><aside aria-label="実験の条件" class="bp-lab-controls"><div aria-label="Lab 05 操作の流れ" class="mini-guide">
-<span class="mini-guide__label">実験ガイド</span>
-<p class="mini-guide__prompt">同じ件数でも、短時間に起きたなら発生率は高く見える。件数を固定して、観測時間だけを切り替える。</p>
+<span class="mini-guide__label">比べてみるところ</span>
+<p class="mini-guide__prompt">件数を固定したまま観測時間を変えると、黄色の山の位置と幅が変わります。</p>
 <p aria-live="polite" class="mini-guide__readout" id="gpGuideText">同じ件数でも、観測時間が変わると推定する発生率が変わる。</p>
 </div><div aria-label="観測時間 プリセット" class="preset-row preset-row--thirds control-preset">
 <button class="preset-btn" data-gp-preset="short" type="button">短い</button>
@@ -156,24 +129,9 @@
     </section>
 
     <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-05">
-      <div class="story-kicker">AFTER GRAPH</div>
-      <h2 id="learn-after-05" class="sec-title">操作したあとに確認すること</h2>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>まず試す操作</h3>
-          <p>観測件数を固定して、観測時間だけを変える。観測された発生率と黄色の山の幅が変わるところを見る。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>比べてみるところ</h3>
-          <p>0 件でも発生率が完全に 0 とは限らない。長く観測して 0 件なら、低い発生率を強く支持する。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>次へのつながり</h3>
-          <p>ここまでは 1 つの対象を推定してきた。次は、複数グループが並ぶ場面で、小さいサンプルをどう読むかを見る。</p>
-        </article>
+      <h2 id="learn-after-05" class="sec-title">0件だったら、発生率も0？</h2>
+      <div class="column-note-prose">
+        <p>観測件数が0なら、観測時間が長いほど低い発生率を強く支持し、黄色の山の幅も狭くなります。0件だったことだけでは、発生率が0とは言い切れません。</p>
       </div>
     </section>
 
