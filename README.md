@@ -1,5 +1,7 @@
 # StatPlay
 
+Current version: **v3.15.1** · [Live site / 公開サイト](https://statplay.sasailab.com/)
+
 **JA** | 参考書の数式で止まった——そんな統計学習者のための、直感を取り戻す可視化ラボ。スライダーを動かすと、式の意味が絵で見えてくる。式が見えたら、参考書に戻ってください。
 **EN** | A visualization lab for statistics learners who got stuck at the formulas in a textbook. Move a slider and the meaning behind the equation comes into view — then go back to the textbook.
 
@@ -12,11 +14,20 @@ A cyberpunk-themed interactive visualizer for learning statistics by doing.
 - PWA — オフラインで動作 / Works offline
 - 検索エンジンが各トピックを個別にインデックスできる per-page 構成（sitemap / hreflang / JSON-LD 付き）
 
+## v3.15.1
+
+- 共通ヘッダーのテンプレート・ナビ生成・テーマと言語の操作を統一。
+- ヘッダー直下の余白を共通化し、縦長の画面でヒーローが広がりすぎる問題を修正。
+- 長いセクションが表示されない問題と、狭い画面で表やリンクがはみ出す問題を修正。
+- 日英の多変量解析コラムを含め、READMEのページ一覧と開発手順を更新。
+
+This patch unifies the shared header and page spacing, keeps hero sections compact on tall screens, fixes hidden long sections and narrow-screen overflow, and updates the documentation for all 16 topics and 7 columns.
+
 ## Demo
 
-ローカル HTTP サーバを立てて `index.html` を開くだけ。ビルド不要・依存なし・ネットワーク通信なし（ES modules を使用するので `file://` 直開きではなく HTTP 配信が必要）。
+生成済みのページは、ローカル HTTP サーバを立てて `index.html` を開くだけで確認できます。起動時のビルドやパッケージのインストールは不要です（ES modules を使用するので `file://` 直開きではなく HTTP 配信が必要）。数式表示のKaTeXなど、一部のリソースは外部から読み込みます。アクセス解析については [プライバシーポリシー](privacy.html) を参照してください。
 
-Just start a local HTTP server and open `index.html`. No build step, no dependencies, no network calls. (ES modules require HTTP — `file://` won't work.)
+To view the generated pages, start a local HTTP server and open `index.html`; no build or package installation is needed. ES modules require HTTP — `file://` won't work. Some resources, including KaTeX for equations, load from external services. See the [privacy policy](en/privacy.html) for analytics details.
 
 ```bash
 python3 -m http.server 8080
@@ -45,7 +56,7 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 | 13 | `anova`    | 分散分析（ANOVA） | One-Way ANOVA |
 | 14 | `corr`     | 相関係数（散布図と r） | Correlation (r Through Scatter Plots) |
 | 15 | `reg`      | 単回帰分析（最小二乗法） | Simple Linear Regression (OLS Visualized) |
-| 16 | `mreg`     | 重回帰分析（交絡の制御・3D） | Multiple Regression (Control Confounders, 3D) |
+| 16 | `mreg`     | 重回帰分析（いくつかの変数から予測する） | Multiple Regression (Predicting with Several Variables) |
 
 ### Columns / コラム
 
@@ -57,6 +68,7 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 | `income_prediction` | あなたの年収は、統計でどこまで当てられるか | How Far Can Statistics Predict Your Income? |
 | `error_types`       | 第一種・第二種の過誤って何が違うの？ | Type I vs Type II Errors — One 2×2 Table Sorts It Out |
 | `se_vs_sd`          | 標準偏差と標準誤差の違い（1 枚の絵で見分ける） | Standard Deviation vs Standard Error — SD and SE in One Picture |
+| `multivariate_analysis` | [多変量解析でできること](columns/multivariate_analysis.html) | [What Can Multivariate Analysis Do?](en/columns/multivariate_analysis.html) |
 
 統計表（標準正規分布表 / t 表 / χ² 表 / F 表）は `tables/index.html`（JA）と `en/tables/index.html`（EN）。
 
@@ -65,14 +77,16 @@ Also works out of the box on GitHub Pages (`Settings → Pages → main / root`)
 ```
 index.html                    Hub page / ハブページ
 about.html  en/about.html      About page (JA / EN)
+privacy.html  en/privacy.html  Privacy policy (JA / EN)
 topics/<slug>.html             Per-topic pages (JA) × 16
 en/topics/<slug>.html          Per-topic pages (EN) × 16
-columns/<slug>.html            Columns (JA) × 6
-en/columns/<slug>.html         Columns (EN) × 6
+columns/<slug>.html            Columns (JA) × 7
+en/columns/<slug>.html         Columns (EN) × 7
 tables/index.html              Statistical tables (JA)
 en/tables/index.html           Statistical tables (EN)
 css/
   stat_cyber.css               Stylesheet (dark + light) / スタイルシート
+  multivariate.css             Multivariate column styles
 js/
   main.js                      Entry point (type="module") / エントリポイント
   utils.js                     Shared utilities ($, TAU, normCDF, drawGrid, …)
@@ -86,15 +100,21 @@ js/
     anova.js  corr.js  reg.js  mreg.js  errs.js  descriptive.js
     ├── Columns ───────────────────────────────────
     deviation.js  birthday.js  income_prediction.js  error_types.js  se_vs_sd.js
+    multivariate.js  multivariate-model.js  multivariate-pca.js
+    multivariate-hero.js  multivariate-motion.js  multivariate-i18n.js
     ├── UI / Infra ────────────────────────────────
     hero.js  theme.js  prefs.js  nav.js  toc.js  anchor.js
     reveal.js  autorun.js  scrolltop.js  tables.js  graphDrag.js
     a11y.js  pwa.js  version.js  lang.js  share.js  urlParams.js
+    site-shell.js  column-shell.js   Shared navigation, preferences, and column controls
 content/
   topics.json                  Master metadata for all topics & columns (single source of truth)
   partials/                     Reusable content blocks injected at build time
+    column_header.html         Shared header template for every page
 scripts/
   build_topics.py              Per-topic build (pages + sitemap.xml + robots.txt + sw.js slugs)
+  build_columns.py             JA / EN multivariate column generation
+  site_header.py               Shared header generation from topics.json + template
   bump_version.py              Version bump (package.json + version.js)
   minify.mjs                   Minify JS/CSS into dist/
   test_routing.mjs             jsdom: routing / SEO / structure
@@ -102,6 +122,9 @@ scripts/
   test_a11y_map.mjs  test_a11y_canvas.mjs  test_a11y_aria.mjs   jsdom a11y checks
   test_content_guards.mjs      jsdom: prose-tone regression guards
   test_cf_function.mjs         CloudFront viewer-request function tests
+  test_site_shell.mjs          Shared navigation, language, theme, and production links
+  test_multivariate_*.mjs      Multivariate math, motion, and controls
+  test_seo.py                  Metadata, sitemap, and internal links
   test_layout.mjs              Playwright: computed-CSS layout tests
   test_a11y.mjs                axe-core accessibility scan
   test_e2e.mjs                 Playwright end-to-end smoke tests
@@ -114,7 +137,16 @@ sitemap.xml  robots.txt        Auto-generated by build_topics.py
 
 ## Development / 開発
 
+ヘッダーは `content/partials/column_header.html` と `content/topics.json` を編集し、`scripts/build_topics.py` で各ページへ生成します。ページごとのHTMLを直接修正せず、共通の生成元を更新してください。ヘッダーの高さと本文までの余白は `css/stat_cyber.css` の共通変数で管理します。
+
+Edit the shared header template and metadata, then rebuild to update every page. Header height and content spacing are defined centrally in `css/stat_cyber.css`.
+
 ```bash
+# Install development dependencies (not required just to view the site)
+npm ci
+python3 -m pip install beautifulsoup4 lxml
+npx playwright install chromium
+
 # Dev server (ES modules require HTTP)
 python3 -m http.server 8080
 
@@ -123,9 +155,10 @@ npm run lint
 
 # Build (per-topic pages + sitemap + robots + sw.js cache bump)
 npm run build
+# If `python` is unavailable: python3 scripts/build_topics.py
 
 # Tests
-npm run test              # jsdom suite (routing, math, a11y maps, content guards, CF function)
+npm run test              # routing, math, a11y maps, content, shared shell, and SEO
 npm run test:layout       # Playwright layout tests
 npm run test:a11y         # axe-core accessibility scan
 npm run test:e2e          # Playwright end-to-end smoke tests
@@ -141,7 +174,7 @@ npm run bump              # auto-detect level from commit messages
 npm run bump -- --level patch   # explicit level
 ```
 
-Requires Node >= 20. Dev dependencies: `eslint`, `jsdom`, `@playwright/test`, `@axe-core/playwright`, `terser`, `clean-css-cli`.
+Requires Node >= 20 and Python 3 for generation and SEO checks. Dev dependencies: `eslint`, `jsdom`, `@playwright/test`, `@axe-core/playwright`, `terser`, `clean-css-cli`, `beautifulsoup4`, and `lxml`.
 
 ---
 

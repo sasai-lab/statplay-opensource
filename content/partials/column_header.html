@@ -1,11 +1,10 @@
-<!-- Shared column header. Edit this template, then run scripts/build_topics.py. -->
-<nav id="mainNav" class="column-nav" aria-label="$navigation_label">
-  <a class="logo" href="../index.html" aria-label="$home_label">StatPlay</a>
+<!-- Shared StatPlay header. Rendered by scripts/site_header.py on every page. -->
+<nav id="mainNav" class="$classes" aria-label="$navigation_label">
+  <a class="logo" href="$home_href" aria-label="$home_label">StatPlay</a>
   <button class="nav-toggle" id="navToggle" aria-label="$menu_label" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
-  <div class="nav-links" id="navLinks">
-    <a href="../index.html#columns">$columns_label</a>
-    <a href="../index.html#cat-probability">$labs_label</a>
-    <a id="columnLangSwitch" href="$other_path" lang="$other_lang" hreflang="$other_lang" aria-label="$language_label">$language_text</a>
+  <div class="nav-links" id="navLinks">$links</div>
+  <div class="site-utilities">
     <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="$theme_label" aria-pressed="false">LIGHT</button>
+    $language
   </div>
 </nav>

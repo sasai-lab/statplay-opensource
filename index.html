@@ -110,68 +110,25 @@
 <a href="#main-content" class="skip-to-main" data-lang="ja">メインコンテンツへスキップ</a>
 <a href="#main-content" class="skip-to-main" data-lang="en">Skip to main content</a>
 
-<nav id="mainNav">
-  <a class="logo" data-lang="ja" href="#top" title="ページ先頭へ戻る">StatPlay</a>
-  <a class="logo" data-lang="en" href="#top" title="Back to top">StatPlay</a>
-  <button class="nav-toggle" id="navToggle" aria-label="menu" aria-expanded="false">
-    <span class="bars"></span>
-  </button>
-        <div class="nav-links" id="navLinks">
-    <div class="nav-dropdown">
-      <a href="#columns" class="nav-cat-link" data-cat="columns"><span data-lang="ja">コラム</span><span data-lang="en">COLUMN</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="columns/deviation.html" data-lang="ja">偏差値って何？</a><a href="en/columns/deviation.html" data-lang="en">What Is Hensachi?</a>
-        <a href="columns/birthday.html" data-lang="ja">誕生日のパラドックス</a><a href="en/columns/birthday.html" data-lang="en">Birthday Paradox</a>
-        <a href="columns/standardization.html" data-lang="ja">標準化って何？</a><a href="en/columns/standardization.html" data-lang="en">What Is Standardization?</a>
-        <a href="columns/income_prediction.html" data-lang="ja">年収と統計</a><a href="en/columns/income_prediction.html" data-lang="en">Predicting Income</a>
-        <a href="columns/error_types.html" data-lang="ja">過誤の2×2</a><a href="en/columns/error_types.html" data-lang="en">Type I vs Type II</a>
-        <a href="columns/se_vs_sd.html" data-lang="ja">標準偏差と標準誤差</a><a href="en/columns/se_vs_sd.html" data-lang="en">SD vs SE</a>
-        <a href="columns/multivariate_analysis.html" data-lang="ja">多変量解析でできること</a><a href="en/columns/multivariate_analysis.html" data-lang="en">Uses of Multivariate Analysis</a>
-      </div>
-    </div>
-    <div class="nav-dropdown">
-      <a href="#dist-tables" class="nav-cat-link" data-cat="tools"><span data-lang="ja">ツール</span><span data-lang="en">TOOLS</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="tables/index.html" data-lang="ja">インタラクティブ確率分布表</a><a href="en/tables/index.html" data-lang="en">Interactive Distribution Tables</a>
-      </div>
-    </div>
-    <div class="nav-dropdown">
-      <a href="#cat-probability" class="nav-cat-link" data-cat="probability"><span data-lang="ja">確率分布</span><span data-lang="en">PROB</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="#stdnorm" data-lang="ja">標準正規分布</a><a href="#stdnorm" data-lang="en">Standard Normal</a>
-        <a href="#normal" data-lang="ja">正規分布と標準化</a><a href="#normal" data-lang="en">Normal Distribution</a>
-        <a href="#prob" data-lang="ja">確率の基本法則</a><a href="#prob" data-lang="en">Probability Rules</a>
-        <a href="#bayes" data-lang="ja">ベイズの定理</a><a href="#bayes" data-lang="en">Bayes' Theorem</a>
-        <a href="#morep" data-lang="ja">二項・ポアソン・指数分布</a><a href="#morep" data-lang="en">Discrete & Exponential</a>
-      </div>
-    </div>
-    <div class="nav-dropdown">
-      <a href="#cat-inference" class="nav-cat-link" data-cat="inference"><span data-lang="ja">推測統計</span><span data-lang="en">INFER</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="#clt" data-lang="ja">中心極限定理</a><a href="#clt" data-lang="en">Central Limit Theorem</a>
-        <a href="#lln" data-lang="ja">大数の法則</a><a href="#lln" data-lang="en">Law of Large Numbers</a>
-        <a href="#ci" data-lang="ja">信頼区間</a><a href="#ci" data-lang="en">Confidence Interval</a>
-        <a href="#test" data-lang="ja">仮説検定</a><a href="#test" data-lang="en">Hypothesis Testing</a>
-        <a href="#proptest" data-lang="ja">母比率の検定と推定</a><a href="#proptest" data-lang="en">Proportion Test</a>
-        <a href="#dists" data-lang="ja">三大検定分布</a><a href="#dists" data-lang="en">Three Test Distributions</a>
-        <a href="#chitest" data-lang="ja">カイ二乗検定</a><a href="#chitest" data-lang="en">Chi-Squared Test</a>
-        <a href="#anova" data-lang="ja">分散分析（ANOVA）</a><a href="#anova" data-lang="en">ANOVA</a>
-      </div>
-    </div>
-    <div class="nav-dropdown">
-      <a href="#cat-modeling" class="nav-cat-link" data-cat="modeling"><span data-lang="ja">モデリング</span><span data-lang="en">MODEL</span></a>
-      <div class="nav-dropdown-menu">
-        <a href="#corr" data-lang="ja">相関係数</a><a href="#corr" data-lang="en">Correlation</a>
-        <a href="#reg" data-lang="ja">単回帰分析</a><a href="#reg" data-lang="en">Simple Regression</a>
-        <a href="#mreg" data-lang="ja">重回帰分析</a><a href="#mreg" data-lang="en">Multiple Regression</a>
-      </div>
-    </div>
-    <a href="about.html" class="nav-about" data-lang="ja">About</a>
-    <a href="en/about.html" class="nav-about" data-lang="en">About</a>
-    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
-    <button class="lang-toggle" id="langToggle" type="button" title="Switch language">EN</button>
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="index.html#columns">一覧へ</a><a href="columns/deviation.html">偏差値って何？</a><a href="columns/birthday.html">誕生日のパラドックス</a><a href="columns/standardization.html">標準化って何？</a><a href="columns/income_prediction.html">年収と統計</a><a href="columns/error_types.html">過誤の2×2</a><a href="columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="index.html#dist-tables">一覧へ</a><a href="tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="index.html#cat-probability">一覧へ</a><a href="topics/stdnorm.html">標準正規分布</a><a href="topics/normal.html">正規分布と標準化</a><a href="topics/prob.html">確率の基本法則</a><a href="topics/bayes.html">ベイズの定理</a><a href="topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="index.html#cat-inference">一覧へ</a><a href="topics/clt.html">中心極限定理</a><a href="topics/lln.html">大数の法則</a><a href="topics/ci.html">信頼区間</a><a href="topics/test.html">仮説検定</a><a href="topics/proptest.html">母比率の検定と推定</a><a href="topics/dists.html">三大検定分布</a><a href="topics/chitest.html">カイ二乗検定</a><a href="topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="index.html#cat-modeling">一覧へ</a><a href="topics/corr.html">相関係数</a><a href="topics/reg.html">単回帰分析</a><a href="topics/mreg.html">重回帰分析</a></div></div><a href="bayesplay/index.html" class="site-experience" data-draft-experience="bayesplay">BayesPlay</a><a href="about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="en/index.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
 
 <!-- ============ HERO ============ -->
 <div class="hero">

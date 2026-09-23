@@ -84,17 +84,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
 <script defer src="./js/katex-render.js"></script>
+<script type="module" src="./js/modules/site-shell.js"></script>
 </head>
 <body class="column-page">
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
-<a class="logo" href="index.html" title="Back to hub">StatPlay</a>
-<div class="nav-links" id="navLinks">
-<a href="index.html">&larr; StatPlay</a>
-<a href="en/about.html" style="font-size:12px">EN</a>
-<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
-</div>
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="index.html#columns">一覧へ</a><a href="columns/deviation.html">偏差値って何？</a><a href="columns/birthday.html">誕生日のパラドックス</a><a href="columns/standardization.html">標準化って何？</a><a href="columns/income_prediction.html">年収と統計</a><a href="columns/error_types.html">過誤の2×2</a><a href="columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="index.html#dist-tables">一覧へ</a><a href="tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="index.html#cat-probability">一覧へ</a><a href="topics/stdnorm.html">標準正規分布</a><a href="topics/normal.html">正規分布と標準化</a><a href="topics/prob.html">確率の基本法則</a><a href="topics/bayes.html">ベイズの定理</a><a href="topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="index.html#cat-inference">一覧へ</a><a href="topics/clt.html">中心極限定理</a><a href="topics/lln.html">大数の法則</a><a href="topics/ci.html">信頼区間</a><a href="topics/test.html">仮説検定</a><a href="topics/proptest.html">母比率の検定と推定</a><a href="topics/dists.html">三大検定分布</a><a href="topics/chitest.html">カイ二乗検定</a><a href="topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="index.html#cat-modeling">一覧へ</a><a href="topics/corr.html">相関係数</a><a href="topics/reg.html">単回帰分析</a><a href="topics/mreg.html">重回帰分析</a></div></div><a href="bayesplay/index.html" class="site-experience" data-draft-experience="bayesplay">BayesPlay</a><a href="about.html" aria-current="page">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="en/about.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
 <div class="about-header">
 <h1>About</h1>
 </div>
@@ -190,17 +202,6 @@
 </footer>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle
-  const btn = document.getElementById('themeToggle');
-  const saved = localStorage.getItem('svl_theme');
-  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
-  btn?.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('theme-light');
-    btn.textContent = isLight ? 'DARK' : 'LIGHT';
-    btn.setAttribute('aria-pressed', String(isLight));
-    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
-  });
-
   // Progress bar
   const bar = document.getElementById('progressBar');
   window.addEventListener('scroll', () => {

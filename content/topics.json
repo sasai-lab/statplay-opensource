@@ -1548,5 +1548,43 @@
       "en_name": "MODEL",
       "anchor": "cat-modeling"
     }
+  ],
+  "experiences": [
+    {
+      "slug": "bayesplay",
+      "name": "BayesPlay",
+      "path": "/bayesplay/index.html",
+      "published": false,
+      "labs": [
+        {
+          "path": "lab-01.html",
+          "label": "01 更新"
+        },
+        {
+          "path": "lab-03.html",
+          "label": "03 観測の強さ"
+        },
+        {
+          "path": "lab-02.html",
+          "label": "02 予測"
+        },
+        {
+          "path": "lab-04.html",
+          "label": "04 平均"
+        },
+        {
+          "path": "lab-05.html",
+          "label": "05 件数"
+        },
+        {
+          "path": "lab-06.html",
+          "label": "06 縮約"
+        },
+        {
+          "path": "lab-07.html",
+          "label": "07 階層"
+        }
+      ]
+    }
   ]
 }

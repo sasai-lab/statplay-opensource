@@ -1,6 +1,6 @@
 {
   "name": "statplay",
-  "version": "3.15.0",
+  "version": "3.15.1",
   "description": "Interactive cyberpunk visualizer for introductory statistics — covers standard normal, 中心極限定理, confidence intervals, hypothesis testing, regression, and Bayes.",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "python scripts/build_topics.py",
     "minify": "node scripts/minify.mjs --clean",
     "build:prod": "npm run build && npm run minify",
-    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs && node scripts/test_cf_function.mjs && node scripts/test_multivariate_math.mjs && node scripts/test_multivariate_motion.mjs && node scripts/test_multivariate_controls.mjs && node scripts/test_column_shell.mjs && python3 scripts/test_seo.py",
+    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs && node scripts/test_cf_function.mjs && node scripts/test_multivariate_math.mjs && node scripts/test_multivariate_motion.mjs && node scripts/test_multivariate_controls.mjs && node scripts/test_column_shell.mjs && node scripts/test_site_shell.mjs && python3 scripts/test_seo.py",
     "test:layout": "node scripts/test_layout.mjs",
     "test:layout:cross": "node scripts/test_layout.mjs --browser=all",
     "test:a11y": "node scripts/test_a11y.mjs",

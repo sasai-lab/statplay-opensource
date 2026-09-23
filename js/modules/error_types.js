@@ -214,7 +214,7 @@ function initInteractive1() {
     });
   }
 
-  function selectCell(cellId) {
+  function selectCell(cellId, scrollToResult = true) {
     state.cell = cellId;
     cells.forEach(c => {
       const active = c.dataset.cell === cellId;
@@ -227,7 +227,7 @@ function initInteractive1() {
     }
     sched();
     // Mobile: scroll the canvas into view so the user sees the result of the tap.
-    if (window.innerWidth < 720) {
+    if (scrollToResult && window.innerWidth < 720) {
       try { canvas.scrollIntoView({ block: 'nearest', behavior: reduced() ? 'auto' : 'smooth' }); } catch (_) {}
     }
   }
@@ -255,7 +255,7 @@ function initInteractive1() {
   });
 
   // Initialize visible state.
-  selectCell(state.cell);
+  selectCell(state.cell, false);
 
   window.addEventListener('themechange', sched);
   window.addEventListener('resize', debouncedResize(sched));

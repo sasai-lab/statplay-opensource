@@ -11,9 +11,19 @@
 //   - Hero canvas stays dark — it's the site's brand. Other canvases are
 //     filter-inverted for light mode so neon graphs become dark-on-light.
 
+const themeInitialized = new WeakSet();
 export function initTheme(){
   const btn = document.getElementById('themeToggle');
-  if(!btn) return;
+  if(!btn || themeInitialized.has(btn)) return;
+  themeInitialized.add(btn);
+  let explicitChoice = false;
+  try {
+    if (!localStorage.getItem('svl_theme')) {
+      const legacy = localStorage.getItem('bayesplay-theme');
+      if (legacy === 'light' || legacy === 'dark') localStorage.setItem('svl_theme', legacy);
+    }
+    explicitChoice = !!localStorage.getItem('svl_theme');
+  } catch (_) {}
 
   function applyTheme(mode){
     if(mode === 'light') document.body.classList.add('theme-light');
@@ -35,12 +45,13 @@ export function initTheme(){
     try{
       const u = new URL(location.href);
       if(mode === 'light') u.searchParams.set('theme', 'light');
-      else u.searchParams.delete('theme');
+      else u.searchParams.set('theme', 'dark');
       history.replaceState(null, '', u.toString());
     }catch(_){ /* ignore */ }
     // Ping canvases to redraw — some modules cache gradients/colors.
     window.dispatchEvent(new Event('resize'));
-    document.querySelectorAll('input[type="range"],select').forEach(el=>{
+    window.dispatchEvent(new CustomEvent('themechange'));
+    if (!document.body.classList.contains('bayesplay-page')) document.querySelectorAll('input[type="range"],select').forEach(el=>{
       try{ el.dispatchEvent(new Event('input',{bubbles:true})); }catch(_){}
     });
   }
@@ -59,13 +70,14 @@ export function initTheme(){
   // React to live OS color-scheme changes (when no URL override).
   window.addEventListener('prefs:colorscheme', (e)=>{
     const urlTheme = new URLSearchParams(location.search).get('theme');
-    if(urlTheme) return; // user choice wins
+    if(urlTheme || explicitChoice) return; // URL and saved/manual choice win
     applyTheme(e.detail && e.detail.osPrefersLight ? 'light' : 'dark');
     // Drop the URL param we might have added during a prior manual toggle
     // reset - but only when no URL override exists, which we already checked.
   });
 
   btn.addEventListener('click', ()=>{
+    explicitChoice = true;
     applyTheme(document.body.classList.contains('theme-light') ? 'dark' : 'light');
   });
 }

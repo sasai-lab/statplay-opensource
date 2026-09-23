@@ -74,7 +74,7 @@
 html,body{overflow-x:clip}
 
 .dt-layout{display:flex;max-width:1200px;margin:0 auto;position:relative;align-items:flex-start}
-.dt-sidebar{width:240px;flex-shrink:0;position:sticky;top:60px;align-self:flex-start;max-height:calc(100vh - 60px);overflow-y:auto;background:var(--bg,#060a1a);border-right:1px solid rgba(0,243,255,.15);padding:16px}
+.dt-sidebar{width:240px;flex-shrink:0;position:sticky;top:var(--page-content-top);align-self:flex-start;max-height:calc(100dvh - var(--page-content-top) - 16px);overflow-y:auto;background:var(--bg,#060a1a);border-right:1px solid rgba(0,243,255,.15);padding:16px}
 .dt-sidebar-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid rgba(0,243,255,.10)}
 .dt-sidebar-header span{font-family:'Courier New',monospace;font-size:9px;color:var(--dim);letter-spacing:2px;opacity:.5;text-transform:uppercase}
 .dt-sidebar-close{display:none;background:transparent;border:none;color:var(--dim);font-size:18px;cursor:pointer;padding:4px 8px}
@@ -258,14 +258,25 @@ body.theme-light .dt-how-list li b{color:#1a1a2e}
 <body class="topic-page">
 <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
 
-<nav id="mainNav">
-  <a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
-  <div class="nav-links" id="navLinks">
-    <a href="../index.html">← StatPlay</a>
-    <a href="../en/tables/index.html" hreflang="en" rel="alternate">EN</a>
-    <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to light theme" title="Switch to light theme">LIGHT</button>
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools" aria-current="location">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="index.html" aria-current="page">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="../bayesplay/index.html" class="site-experience" data-draft-experience="bayesplay">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/tables/index.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
   </div>
 </nav>
+
+
+
+
+
+
+
+
+
+
 
 <main id="main-content">
   <section class="reveal in dt-header" id="tables">
@@ -449,7 +460,8 @@ body.theme-light .dt-how-list li b{color:#1a1a2e}
           <li><b>操作時の再計算</b> — モード切替（累積 / 上側 / 両側）やスライダーによるパラメータ変更を行うと、変更に応じた数学関数が再び呼ばれ、表の全セルが即座に書き換わります。静的な表では不可能な操作です。</li>
         </ul>
         <h4>算出方法と精度</h4>
-        <table class="dt-method-table">
+        <div class="table-scroll" role="region" aria-label="算出方法と精度" tabindex="0">
+<table class="dt-method-table">
           <thead><tr><th>分布</th><th>算出方法</th><th>精度</th></tr></thead>
           <tbody>
             <tr>
@@ -474,6 +486,7 @@ body.theme-light .dt-how-list li b{color:#1a1a2e}
             </tr>
           </tbody>
         </table>
+</div>
         <p>計算ロジックはすべてオープンソースで公開しています：<a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/utils.js" target="_blank" rel="noopener">utils.js</a> / <a href="https://github.com/sasai-lab/statplay-opensource/blob/main/js/modules/tables.js" target="_blank" rel="noopener">tables.js</a></p>
       </div>
     </details>

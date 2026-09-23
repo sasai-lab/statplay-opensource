@@ -14,6 +14,7 @@ function persistLangChoice(lang){
   } catch(_) {}
 }
 
+const langInitialized = new WeakSet();
 export function initLang(){
   const htmlLang = document.documentElement.lang || 'ja';
   window.__LANG = htmlLang === 'en' ? 'en' : 'ja';
@@ -27,8 +28,18 @@ export function initLang(){
   // Set lang-en class for CSS data-lang visibility rules
   if(htmlLang==='en') document.body.classList.add('lang-en');
 
+  const links = [...document.querySelectorAll('[data-site-lang]')];
+  if (links.length) {
+    links.forEach(link => {
+      if (langInitialized.has(link)) return;
+      langInitialized.add(link);
+      link.addEventListener('click', () => persistLangChoice(link.dataset.siteLang));
+    });
+    return;
+  }
   const btn=document.getElementById('langToggle');
-  if(!btn) return;
+  if(!btn || langInitialized.has(btn)) return;
+  langInitialized.add(btn);
 
   // Hub pages: navigate to other language hub
   btn.textContent=htmlLang==='en'?'日本語':'EN';
