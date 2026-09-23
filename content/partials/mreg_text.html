@@ -1,29 +1,18 @@
 <div data-lang="ja" class="detail-section">
-<h3>// 交絡って何が起きている？</h3>
-<p>上の比較パネルで「単回帰のβ₁」と「重回帰のβ₁」が違う値になったのを見た。<br>
-なぜ同じデータなのに、変数を1つ加えただけで傾きが変わるのか？</p>
-<p>データの裏ではこういうことが起きている：</p>
-<p class="quote-box">
-<b>勉強時間↑ → 睡眠↓ → 成績↓</b>（間接的なマイナス効果）
-</p>
-<p>単回帰のβ₁は「直接効果＋間接効果」のごちゃ混ぜ。<br>
-勉強の直接効果は+3点/hなのに、睡眠を削ることで間接的に点数が下がるから、単回帰では+2.2のように過小評価される。</p>
-<p>重回帰のβ₁は「睡眠を統計的に固定した上での、勉強だけの効果」。<br>
-間接経路を遮断して、直接効果だけを取り出している——これが<b>偏回帰係数</b>の意味。</p>
-<p>上のパネルで相関を0にすると、間接経路が消えて単回帰と重回帰のβ₁が一致する——これが「交絡がない状態」。</p>
+<h3>// 変数を加えると、なぜ係数が変わる？</h3>
+<p>上のパネルは、勉強時間と睡眠時間に相関を持たせた架空のデータです。成績は「40 ＋ 3 × 勉強時間 ＋ 2 × 睡眠時間 ＋ ノイズ」で作っています。</p>
+<p>勉強時間だけで予測すると、勉強時間と一緒に変わる睡眠時間の分も、一本の傾きに含まれます。負の相関がある設定では、単回帰の係数は、生成に使った3より小さくなる傾向があります。</p>
+<p>重回帰の<b>偏回帰係数</b>は、ほかの説明変数を同じ値にそろえたときの、予測値の差を表します。睡眠時間を加えると、勉強時間の係数が生成に使った3に近づく様子を見られます。ただし、標本やノイズによって値は変わります。</p>
+<p>変数を加えれば因果関係が分かる、ということではありません。現実のデータで因果効果と読むには、交絡要因の選び方や測定、モデルの仮定を別に検討する必要があります。</p>
+<p>相関の設定を0にすると、二つの係数は近づきやすくなります。有限の標本なので、完全に一致するとは限りません。</p>
 </div>
 <div data-lang="en" class="detail-section">
-<h3>// What's happening with confounding?</h3>
-<p>In the comparison panel above, simple and multiple regression gave different β₁ values for the same data.<br>
-Why does adding one variable change the slope?</p>
-<p>Here's what's happening behind the scenes:</p>
-<p class="quote-box">
-<b>More study → less sleep → lower scores</b> (indirect negative effect)
-</p>
-<p>Simple regression β₁ mixes "direct effect + indirect effect."<br>
-The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple regression underestimates at ~+2.2.</p>
-<p>Multiple regression β₁ holds sleep constant and extracts only studying's direct effect — that's what <b>partial regression coefficient</b> means.</p>
-<p>Set correlation to 0 in the panel above and the indirect path vanishes — β₁ values converge. That's the "no confounding" state.</p>
+<h3>// Why does adding a variable change the coefficient?</h3>
+<p>The panel uses synthetic data with correlated study and sleep hours. Scores are generated as 40 + 3 × study hours + 2 × sleep hours + noise.</p>
+<p>With study hours alone, the slope also reflects the sleep hours that vary alongside them. With negative correlation, the simple-regression coefficient tends to be smaller than the value of 3 used to generate the data.</p>
+<p>A <b>partial regression coefficient</b> describes the change in the prediction when one predictor changes and the others stay fixed. Adding sleep hours tends to bring the study coefficient closer to 3, though sampling and noise still affect the estimate.</p>
+<p>Adding predictors does not, by itself, establish causation. Interpreting a coefficient as a causal effect requires separate assumptions about confounders, measurement, and the model.</p>
+<p>With the correlation setting at zero, the two coefficients tend to be closer. In a finite sample, they need not be identical.</p>
 </div>
 
 <div data-lang="ja" class="detail-section">
@@ -34,11 +23,11 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 ・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
 ・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</p>
 <p><b>単回帰との違い</b><br/>
-・単回帰のβ₁ = x₁の直接効果 ＋ x₂を経由した間接効果（ごちゃ混ぜ）<br/>
-・重回帰のβ₁ = x₁の直接効果だけ（x₂の影響を「統計的に固定」して取り出す）<br/>
-・上のパネルで相関=0にすると間接経路が消え、両者が一致するのはこのため</p>
+・単回帰のβ₁：x₁だけから予測するときの傾き<br/>
+・重回帰のβ₁：モデル上でx₂を同じ値にそろえたときの、x₁に対する傾き<br/>
+・生成時の相関を0にすると二つの係数は近づきやすいが、標本による差は残る</p>
 <p><b>幾何的イメージ</b><br/>
-・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の距離（残差）の二乗和が最小になる傾きを選ぶ</p>
+・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の成績方向の差（残差）の二乗和が最小になる傾きを選ぶ</p>
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Formula used here</h3>
@@ -48,29 +37,29 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 • β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
 • β₂x₂: same idea — the isolated contribution of x₂</p>
 <p><b>How it differs from simple regression</b><br/>
-• Simple regression β₁ = direct effect of x₁ + indirect effect via x₂ (mixed together)<br/>
-• Multiple regression β₁ = direct effect of x₁ only (x₂ is statistically "held constant")<br/>
-• Set correlation to 0 in the panel above and the indirect path vanishes — that's why both β₁ values converge</p>
+• Simple regression β₁: the slope when predicting with x₁ alone<br/>
+• Multiple regression β₁: the slope for x₁ with x₂ held fixed in the model<br/>
+• At a correlation setting of zero, the estimates tend to be closer, but sampling differences remain</p>
 <p><b>Geometric picture</b><br/>
-• With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+• With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes the sum of squared vertical residuals from points to the plane</p>
 </div>
 
 <div data-lang="ja" class="detail-section">
 <h3>// 手を動かしてみよう — 具体例</h3>
-<p>30人の学生のテスト成績を、勉強時間と睡眠時間で予測する。</p>
+<p>架空の30人の成績を予測する計算例です。以下の値は説明用で、上のパネルとは連動しません。</p>
 <p>① まず平均を確認<br/>
 　勉強時間の平均 = 5.0h、睡眠時間の平均 = 7.0h、点数の平均 = 65点<br/>
 　勉強と睡眠の相関 r = −0.45（たくさん勉強するほど睡眠が短い）</p>
 <p>② 単回帰 y ~ x₁（勉強時間だけ）<br/>
 　β₁ = +2.4 点/h、R² = 0.32<br/>
-　→ 勉強1時間あたり2.4点UP…でもこれは<b>過小評価</b></p>
+　→ 勉強時間が1時間長いと、予測値は2.4点高い</p>
 <p>③ 重回帰 y ~ x₁ + x₂（睡眠時間を追加）<br/>
 　β₁ = +3.1 点/h、β₂ = +2.0 点/h、R² = 0.57<br/>
-　→ 睡眠をコントロールしたら、勉強の効果は<b>3.1点に上がった</b></p>
+　→ 同じ睡眠時間で比べるモデルでは、勉強時間の係数は<b>3.1</b></p>
 <p>④ なぜ変わった？<br/>
-　このデータでは 勉強↑ → 睡眠↓ (r = −0.45)。<br/>
-　単回帰は「勉強が増えると同時に睡眠が減ることのマイナス」まで勉強のせいにしていた。<br/>
-　重回帰が睡眠を分離したことで、<b>勉強の本当の効果</b>が見えた。</p>
+　この例では、勉強時間と睡眠時間に負の相関がある。<br/>
+　睡眠時間も含めて予測することで、勉強時間の係数が変わった。<br/>
+　この違いだけから、勉強や睡眠の因果効果を決めることはできない。</p>
 <p>⑤ 予測してみる<br/>
 　β₀ は ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 と決まる（OLS回帰は必ず平均点を通る）。<br/>
 　勉強6h・睡眠7hの学生 → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1点</b><br/>
@@ -78,20 +67,20 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 </div>
 <div data-lang="en" class="detail-section">
 <h3>// Worked example — try it by hand</h3>
-<p>Predicting test scores for 30 students using study hours and sleep hours.</p>
+<p>A worked example with 30 fictional students. These illustrative values do not track the panel above.</p>
 <p>① Check the averages<br/>
 　Mean study = 5.0h, mean sleep = 7.0h, mean score = 65 pts<br/>
 　Correlation between study and sleep: r = −0.45 (heavy studiers sleep less)</p>
 <p>② Simple regression y ~ x₁ (study hours only)<br/>
 　β₁ = +2.4 pts/h, R² = 0.32<br/>
-　→ Each study hour adds 2.4 pts... but this <b>underestimates</b> the true effect</p>
+　→ One more study hour corresponds to a prediction 2.4 points higher</p>
 <p>③ Multiple regression y ~ x₁ + x₂ (add sleep hours)<br/>
 　β₁ = +3.1 pts/h, β₂ = +2.0 pts/h, R² = 0.57<br/>
-　→ Controlling for sleep, study effect rises to <b>+3.1 pts/h</b></p>
+　→ With sleep held fixed in the model, the study coefficient is <b>+3.1 pts/h</b></p>
 <p>④ Why the change?<br/>
-　In this data, study↑ → sleep↓ (r = −0.45).<br/>
-　Simple regression blamed studying for the negative impact of lost sleep.<br/>
-　Multiple regression separated sleep out, revealing <b>studying's true effect</b>.</p>
+　Study and sleep hours are negatively correlated in this example.<br/>
+　Including sleep changes the study coefficient.<br/>
+　That difference alone does not establish a causal effect of study or sleep.</p>
 <p>⑤ Make a prediction<br/>
 　β₀ = ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 (OLS always passes through the means).<br/>
 　Student with 6h study, 7h sleep → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1 pts</b><br/>
@@ -133,7 +122,7 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <p>重回帰のまわりでは、係数の解釈と検定の対比が同じ形で繰り返し顔を出します。</p>
 <ul>
 <li><b>偏回帰係数の絵</b>：β₁ = 3 のとき、「x₂ を固定したまま x₁ を1増やすと y が平均3増える」という形に読める。「他の変数を止める」という条件付きが、いつもこの絵に張り付いている</li>
-<li><b>単回帰と重回帰でβ₁がずれる場面</b>：変数間に相関があると、単回帰は直接効果と間接効果を一つの数字に混ぜてしまう。上のパネルで相関をゼロにすると両者が一致する形になる</li>
+<li><b>単回帰と重回帰でβ₁がずれる場面</b>：説明変数同士が相関していると、変数を加える前後で傾きが変わる。相関の設定をゼロにすると、両者は近づきやすい</li>
 <li><b>R² と自由度調整済み R² の対比</b>：変数を足したときに、R² は必ず上がるが、調整済みは下がることがある。「下がったら、その変数は分の悪い追加だった」という形がここに現れる</li>
 <li><b>F検定と t検定の役割分担</b>：F検定は「すべての偏回帰係数 = 0」を一括で見る形、t検定は「個別に 0 か」を見る形。モデル全体と個別係数で問いが分かれている</li>
 <li><b>多重共線性のシグナル</b>：VIF > 10 が目安として顔を出し、係数がガタつく場面の前触れになる</li>
@@ -144,7 +133,7 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <p>Around multiple regression, the same coefficient-interpretation and test-comparison shapes keep returning.</p>
 <ul>
 <li><b>The partial-coefficient picture</b>: with β₁ = 3, the reading "holding x₂ constant, raising x₁ by 1 lifts y by 3 on average" appears. "Hold the others fixed" is the conditional clause that travels with this picture</li>
-<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, simple regression fuses direct and indirect effects into one number. Setting correlation to 0 in the panel above brings the two estimates back into alignment</li>
+<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, adding a variable can change the slope. At a correlation setting of zero, the two estimates tend to be closer</li>
 <li><b>R² vs. adjusted R² as a pair</b>: adding a variable always raises R², but adjusted R² can fall. The shape "if adjusted drops, the new variable wasn't worth its cost" lives here</li>
 <li><b>How F-tests and t-tests divide the labor</b>: the F-test takes "all partial coefficients = 0" at once; the t-test asks "is this one coefficient = 0?" — the model-wide and per-coefficient questions split along these two shapes</li>
 <li><b>The multicollinearity signal</b>: VIF > 10 appears as the rule-of-thumb threshold, foreshadowing scenes where coefficients become erratic</li>

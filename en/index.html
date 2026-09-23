@@ -119,6 +119,7 @@
 <a href="columns/income_prediction.html">Predicting Income</a>
 <a href="columns/error_types.html">Type I vs Type II</a>
 <a href="columns/se_vs_sd.html">SD vs SE</a>
+<a href="columns/multivariate_analysis.html">Uses of Multivariate Analysis</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -216,6 +217,11 @@
 <h2 class="sec-title sec-title--small">Columns</h2>
 
 <div class="col-intro">Formulas alone rarely make the picture vivid. Start from everyday surprises and the math behind them becomes intuitive.</div>
+<!-- source-column:multivariate_analysis -->
+
+<div class="col-card"><a class="col-card__title" href="columns/multivariate_analysis.html">Multivariate Analysis: What Can It Do? →</a><br/><span class="col-card__desc">Explore prediction, dimensionality reduction, common factors, and clustering with a café survey.</span>
+<span class="col-card__related">Related: <a href="#mreg">Multiple Regression</a> · <a href="#corr">Correlation</a></span></div>
+<!-- /source-column:multivariate_analysis -->
 
 
 
@@ -1661,7 +1667,7 @@
 <p class="cat-preview-desc">
       You can now test for differences and independence. Next: <b>finding relationships and predicting</b>.<br/>
 <b>Correlation</b> measures the "link" between two variables, then <b>simple regression</b> turns it into prediction.
-      Then <b>multiple regression</b> controls for confounders to measure true effects —
+      Then <b>multiple regression</b> combines several predictors in one model —
       tests, CIs, and the F-distribution all converge here. The full statistical toolkit comes together.
     </p>
 </div>
@@ -1759,6 +1765,10 @@
 
 <a href="topics/corr.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
+<!-- source-column-links:corr -->
+<div class="learn-more-link learn-more-link--col lab-col-link">
+<a class="ln-yellow" href="columns/multivariate_analysis.html">📊 Column: Multivariate Analysis: What Can It Do? →</a></div>
+<!-- /source-column-links:corr -->
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="#reg">M1 Simple Regression</a></div>
 </section>
@@ -1812,6 +1822,10 @@
 
 <a href="topics/reg.html">📖 Formulas &amp; detailed explanation → dedicated page</a>
 </div>
+<!-- source-column-links:reg -->
+<div class="learn-more-link learn-more-link--col lab-col-link">
+<a class="ln-yellow" href="columns/multivariate_analysis.html">📊 Column: Multivariate Analysis: What Can It Do? →</a></div>
+<!-- /source-column-links:reg -->
 
 <div class="story-next"><span class="lbl">UP NEXT —</span>controlling for everything else <span class="story-arrow">▸</span> <a href="#mreg">M2 Multiple Regression</a></div>
 </section>
@@ -1821,32 +1835,22 @@
 <div class="sec-tag">M2 / Multiple Regression</div>
 
 <h2 class="sec-title">Multiple Regression <span class="sec-sub">— Predict with Multiple Variables</span></h2>
+<!-- @panel:mreg_intro -->
 
-<div class="story-bridge">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
-
-<p class="sec-desc">
-    One variable gives a line; two give a <b>plane in 3D</b>.
-    But the point isn't geometry — it's <b>removing confounding to isolate each variable's true effect</b>.
-    Start with the side-by-side comparison to see the moment β₁ shifts.
-  </p>
+<div class="story-bridge">Predict scores with study hours alone, then add sleep hours. <b>The study coefficient can change even though the data stays the same.</b> <span class="next">Multiple regression</span> lets us work with several predictors together.</div><p class="sec-desc">One predictor gives a line; two give a plane in 3D. Start by comparing the coefficients in the panel below. This example uses synthetic data; whether a coefficient represents a causal effect is a separate question.</p>
+<!-- /@panel -->
 <div class="sim-layout">
+<!-- @panel:mreg_guide -->
 
-<div class="guided-steps">
-<b>Experiment Guide — Feel Confounding</b>
-<ol>
-<li><b>Step 1:</b> At default (corr = −0.5), compare β₁ left vs. right. Simple regression is <b>smaller</b> — the study effect is underestimated.</li>
-<li><b>Step 2:</b> Set correlation to <b>0</b> → both β₁ values nearly match. "No confounding, no bias."</li>
-<li><b>Step 3:</b> Set correlation to <b>+0.5</b> → now simple regression β₁ is <b>too large</b>. Confounding can bias in either direction.</li>
-<li><b>Step 4:</b> Check R² too. Multiple regression is always ≥ simple — adding a variable improved explanatory power.</li>
-</ol>
-</div>
+<div class="guided-steps"><b>Experiment guide — Watch the coefficients change</b><ol><li>Compare the two β₁ estimates at a correlation setting of −0.5.</li><li>Try zero correlation. The gap tends to shrink, but sampling variation remains.</li><li>Try +0.5. Does the direction of the gap change? Regenerate the data and compare.</li><li>Compare R² too. Adding a predictor cannot worsen the fit to the same data, but it need not improve predictions on unseen data.</li></ol></div>
+<!-- /@panel -->
 <!-- @panel:mreg_vs -->
 <div class="panel">
 
 <h3 class="cy-head cy-head--compact">▶ Simple vs. Multiple Regression — Watch β₁ Shift</h3>
 <div class="drag-hint drag-hint--tight">
 
-<span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
+<span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation between the predictors.</span>
 </div>
 <div class="controls controls--tight">
 <div class="ctrl">
@@ -1871,7 +1875,7 @@
 <div class="info">
 <div><span>Simple β₁</span> <strong id="mvSimpleB1">—</strong></div>
 <div><span>Multiple β₁</span> <strong id="mvMultiB1">—</strong></div>
-<div><span>Gap (confounding bias)</span> <strong id="mvGap">—</strong></div>
+<div><span>Coefficient gap</span> <strong id="mvGap">—</strong></div>
 <div><span>Simple R²</span> <strong id="mvSimpleR2">—</strong></div>
 <div><span>Multiple R²</span> <strong id="mvMultiR2">—</strong></div>
 </div>
@@ -1925,6 +1929,10 @@
 
 <a class="ln-yellow" href="columns/income_prediction.html">📊 Column: Feel multiple regression through income prediction →</a>
 </div>
+<!-- source-column-links:mreg -->
+<div class="learn-more-link learn-more-link--col lab-col-link">
+<a class="ln-yellow" href="columns/multivariate_analysis.html">📊 Column: Multivariate Analysis: What Can It Do? →</a></div>
+<!-- /source-column-links:mreg -->
 </section>
 <div class="category-preview reveal">
 <div class="cat-preview-inner">

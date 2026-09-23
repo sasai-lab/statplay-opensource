@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>多変量解析でできること | StatPlay</title>
+<meta content="多変量解析では、いくつもの項目をどう扱うのでしょう。カフェのアンケートを使い、重回帰分析・主成分分析・因子分析・クラスター分析を動く図で眺めます。" name="description"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://statplay.sasailab.com/columns/multivariate_analysis.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/multivariate_analysis.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/multivariate_analysis.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/multivariate_analysis.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="多変量解析でできること" property="og:title"/>
+<meta content="多変量解析では、いくつもの項目をどう扱うのでしょう。カフェのアンケートを使い、重回帰分析・主成分分析・因子分析・クラスター分析を動く図で眺めます。" property="og:description"/>
+<meta content="https://statplay.sasailab.com/columns/multivariate_analysis.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — 多変量解析でできること" property="og:image:alt"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="多変量解析でできること" name="twitter:title"/>
+<meta content="多変量解析では、いくつもの項目をどう扱うのでしょう。カフェのアンケートを使い、重回帰分析・主成分分析・因子分析・クラスター分析を動く図で眺めます。" name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<meta content="StatPlay — 多変量解析でできること" name="twitter:image:alt"/>
+<link href="../manifest.webmanifest" rel="manifest"/>
+<link href="../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../icons/icon-192.png" rel="apple-touch-icon"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../css/stat_cyber.css" rel="stylesheet"/>
+<link href="../css/multivariate.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "@id": "https://statplay.sasailab.com/columns/multivariate_analysis.html#article", "url": "https://statplay.sasailab.com/columns/multivariate_analysis.html", "name": "多変量解析でできること", "headline": "多変量解析でできること", "description": "多変量解析では、いくつもの項目をどう扱うのでしょう。カフェのアンケートを使い、重回帰分析・主成分分析・因子分析・クラスター分析を動く図で眺めます。", "inLanguage": "ja", "learningResourceType": "Interactive explanation", "isAccessibleForFree": true, "image": "https://statplay.sasailab.com/stat_cyber_og.png", "author": {"@type": "Organization", "name": "Sasai Lab", "url": "https://statplay.sasailab.com/"}, "publisher": {"@type": "Organization", "name": "StatPlay", "url": "https://statplay.sasailab.com/"}, "teaches": ["重回帰分析", "主成分分析", "因子分析", "クラスター分析"], "datePublished": "2026-09-23", "dateModified": "2026-09-23"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "コラム", "item": "https://statplay.sasailab.com/#columns"}, {"@type": "ListItem", "position": 3, "name": "多変量解析でできること", "item": "https://statplay.sasailab.com/columns/multivariate_analysis.html"}]}]}</script>
+</head>
+<body class="column-page multivariate-column">
+<a class="skip-to-main" href="#main">本文へ</a>
+<!-- Shared column header. Edit this template, then run scripts/build_topics.py. -->
+<nav aria-label="サイトナビゲーション" class="column-nav" id="mainNav">
+<a aria-label="StatPlay トップ" class="logo" href="../index.html">StatPlay</a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="メニュー" class="nav-toggle" id="navToggle" type="button"><span aria-hidden="true" class="bars"></span></button>
+<div class="nav-links" id="navLinks">
+<a href="../index.html#columns">コラム</a>
+<a href="../index.html#cat-probability">ラボ</a>
+<a aria-label="英語で読む" href="../en/columns/multivariate_analysis.html" hreflang="en" id="columnLangSwitch" lang="en">EN</a>
+<button aria-label="明るいテーマに切り替える" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" type="button">LIGHT</button>
+</div>
+</nav>
+<div aria-label="パンくず" class="col-breadcrumb"><a href="../index.html">StatPlay</a><span aria-hidden="true" class="sep">›</span><a href="../index.html#columns">コラム</a><span aria-hidden="true" class="sep">›</span><span aria-current="page">多変量解析でできること</span></div>
+<main id="main"><div class="hero-draft" id="fig-hero"><div class="hero-copy"><div class="eyebrow">// MULTIVARIATE ANALYSIS</div><h1>多変量解析で<br/><em>できること</em></h1>
+<p>多変量解析。名前は難しそうですが、実際には何をしているんでしょうか。図を動かしながら、少し眺めてみたいと思います。</p>
+</div><div class="mv-hero-visual">
+<div class="hero-scene-heading"><span id="hero-method-name">カフェのアンケートから</span><span aria-hidden="true" id="hero-count">01 / 05</span></div>
+<canvas aria-describedby="hero-summary hero-caption" aria-label="カフェのアンケートを使って、多変量解析の処理を順に見る" id="hero-canvas" role="img"></canvas>
+<div aria-atomic="true" aria-live="polite" class="hero-narration"><p id="hero-summary">まずは、カフェのアンケートを並べてみます。</p><p id="hero-caption">架空のカフェアンケート90人分から、6人を表示</p></div>
+<div aria-label="見る場面を選ぶ" class="hero-scenes" role="group">
+<button aria-pressed="true" data-method="0" type="button">データ</button>
+<button aria-pressed="false" data-method="1" type="button">予測する</button>
+<button aria-pressed="false" data-method="2" type="button">まとめる</button>
+<button aria-pressed="false" data-method="3" type="button">関係を探る</button>
+<button aria-pressed="false" data-method="4" type="button">分ける</button>
+</div>
+<div class="hero-playback"><button class="action" id="hero-play" type="button">はじめから見る</button><a href="#mv-1" id="hero-detail">このデータを見る ↓</a></div>
+<p class="hero-sequence-note">同じアンケートを使った、別々の分析の例です。</p>
+</div><a class="hero-scroll" href="#mv-1">図を動かしてみる <span aria-hidden="true">↓</span></a></div>
+<aside aria-label="このページのゴール" class="concept-note"><p><strong>まずは、何をしているのかを眺めてみる。</strong></p><p>多変量解析には、いくつもの項目をまとめたり、予測に使ったりする手法があります。今回はカフェのアンケートを題材に、データがどう扱われるのかを図にしてみます。「こんな処理をしているんだ」と、ざっくりしたイメージを持てるくらいを目指しています。細かい式は、気になったときに補足を開いてみてください。</p></aside>
+<section class="reveal in" id="mv-1"><h2 class="sec-title">1. カフェのアンケートから</h2>
+<p class="sec-desc">カフェの味はよかったけれど、席は落ち着かなかった。そんな感想を、六つの点数にしてみます。</p>
+<figure aria-labelledby="title-data" class="viz" id="fig-data"><div class="figure-no">FIG. 01</div><h3 id="title-data">まずは、六つの評価を並べてみる。</h3><p class="figure-sub">味・接客・静かさ・席・内装・価格への納得感 ／ 各0〜100点</p>
+<div class="table-guide"><span>1行が、ひとり分の回答です。</span></div>
+<table aria-label="架空のアンケート回答6人分" class="heatmap" id="heatmap"></table>
+<div class="data-legend"><span>低い</span><span aria-hidden="true" class="heat-scale"></span><span>高い</span></div>
+<p class="figure-summary">90人分の架空データから6人を抜粋。各マスの数値で、色を使わずにも比較できます。</p></figure>
+<p><em>図1：90人分の架空データの一部。各項目は0〜100点。総合満足度は別に尋ねています。</em></p>
+<p>味の点数が同じでも、接客や席の点数まで同じとは限りません。そんな違いを、いくつかの項目を一緒に扱うことで見てみます。ここでは重回帰も含め、複数の変数を扱う手法を広く取り上げます。</p>
+</section>
+<section class="reveal in" id="mv-2"><h2 class="sec-title">2. 重回帰分析：満足度を予測してみる</h2>
+<p class="sec-desc">味や接客、席の評価から、総合満足度を予測してみます。まずは味の点数だけを動かして、予測がどのくらい変わるか見てみましょう。</p>
+<figure aria-labelledby="title-regression" class="viz" id="fig-regression"><div class="figure-no">FIG. 02</div><h3 id="title-regression">味や席の点数を変えてみる。</h3><p class="figure-sub">6項目 → 総合満足度の予測 ／ 架空データに当てはめたモデル</p>
+<div class="controls">
+<label for="reg-taste">味の評価 <output for="reg-taste" id="reg-taste-value"></output><input id="reg-taste" max="90" min="30" step="1" type="range" value="80"/></label>
+<label for="reg-seat">席の快適さ <output for="reg-seat" id="reg-seat-value"></output><input id="reg-seat" max="90" min="30" step="1" type="range" value="50"/></label>
+</div>
+<div class="result"><output aria-label="総合満足度の予測値" for="reg-taste reg-seat" id="reg-output"></output><span>総合満足度の予測<br/><span id="reg-base"></span></span></div>
+<canvas aria-busy="true" aria-describedby="reg-summary" aria-label="味と席の評価による予測値の増減を表す棒グラフ" class="" id="reg-canvas" role="img">図の状態は下の文章で確認できます。</canvas>
+<div class="legend"><span>右の棒：予測値にプラス</span><span>左の棒：予測値にマイナス</span></div>
+<p aria-live="polite" class="figure-summary" id="reg-summary"></p><button class="action play" id="reg-demo" type="button">▶ 味を50→70点に</button> <button class="action" id="reg-reset" type="button">平均付近へ戻す</button>
+<details><summary>棒と予測式の関係</summary><p>各棒は bⱼ ×（評価 xⱼ − その項目の平均）。予測値は、平均的な回答の予測値に六項目の寄与を足した値です。固定した四項目の寄与は0なので、図では味と席の二本を表示しています。通常の式 ŷ = b₀ + b₁x₁ + … + b₆x₆ と同じ計算です。</p></details></figure>
+<p><em>図2：六項目の重回帰モデル。動かす二項目だけを表示し、残り四項目は平均値に固定。棒は平均的な回答からの予測の増減です。</em></p>
+<p>味の点数を動かすと、予測の数字も動きます。次は味をそのままにして、席の点数を変えてみます。どちらを動かすかで、変わり方も少し違いますね。</p>
+<p>ほかの条件を固定したとき、一項目が1点違うと予測が何点変わるか。その大きさが、偏回帰係数に当たります。</p>
+<details><summary>予測と、実際に変えたときの効果</summary><p>この図はモデル上の予測です。料理を改善すれば同じ分だけ満足度が上がると、アンケートだけで確かめたわけではありません。</p></details>
+<aside aria-label="StatPlayの関連コンテンツ" class="related-reading"><span class="related-reading-label">StatPlayで、もう少し</span><a href="../topics/mreg.html">重回帰分析を図で見てみる <span aria-hidden="true">→</span></a><p>勉強時間と睡眠時間から、成績を予測する例です。</p></aside>
+</section>
+<section class="reveal in" id="mv-3"><h2 class="sec-title">3. 主成分分析：二つの点数を、一本の軸へ</h2>
+<p class="sec-desc">次は、味と接客の二つの点数を、一本の数直線にまとめてみます。項目を減らしたときに、元の違いがどのくらい残るのか。図のAとBを追ってみます。</p>
+<figure aria-labelledby="title-pca" class="viz" id="fig-pca"><div class="figure-no">FIG. 03</div><h3 id="title-pca">向きを変えて、AとBを見比べてみる。</h3><p class="figure-sub">同じ90人・同じ2項目。変えるのは、見る向きだけ。</p><div class="pca-actions"><button class="action" id="pca-bad" type="button">つぶれる向き</button><button class="action" id="pca-best" type="button">広がる向き</button><button class="action play" id="pca-demo" type="button">▶ 向きで見比べる</button></div>
+<canvas aria-busy="true" aria-describedby="pca-summary" aria-label="元のA・Bの2点から、一本の数直線の同じA・Bまでを追う" class="pca" id="pca-canvas" role="img">図の状態は下の文章で確認できます。</canvas><div class="pca-observation"><p id="pca-insight"></p><div class="pair-values"><span class="person-a">● A <output id="pca-a"></output></span><span class="person-b">◆ B <output id="pca-b"></output></span></div></div>
+<div class="pca-retained"><span>残るばらつき</span><div aria-hidden="true" class="meter-track"><div id="pca-meter"></div></div><output aria-label="残るばらつきの割合" for="pca-angle" id="pca-output"></output></div>
+<div class="controls single"><label for="pca-angle">向きを自由に回す <output for="pca-angle" id="pca-angle-value"></output><input id="pca-angle" max="180" min="-180" step="1" type="range" value="-45"/></label><button class="action subtle" id="pca-trace" type="button">点を線に写す動きを見る</button></div>
+<p class="figure-sub">味と接客を標準化。A・Bの色と形は、写す前後で同じです。</p>
+<p aria-live="polite" class="figure-summary" id="pca-summary"></p><details><summary>この動きが「主成分」になる理由</summary><p>一本に写した値は、元の二項目を重みつきで足したもの。重みの長さを一定にして、その値の分散が最大になる向きが第1主成分です。「残るばらつき」は投影後の分散を元の二項目の分散の和で割った割合。A・Bは対応を追うための例で、向きは90人全体のばらつきで決まります。</p></details></figure>
+<p><em>図3：味・接客を標準化した例。元の点と写した点は、同じ色・同じ形。数直線の尺度は、向きを変えても固定です。</em></p>
+<p>「つぶれる向き」では、離れていたAとBがほぼ同じ位置に来ます。「広がる向き」に変えると、今度は別々の位置に写ります。</p>
+<p>同じ点でも、まとめる向きでこんなに変わるんですね。</p>
+<p>この図では、一本に写したときに90人全体のばらつきが最も大きくなる向きを探しています。それが第1主成分の向きです。</p>
+<p>項目が六つになると絵にはしづらいですが、少ない軸にまとめる、という考え方は同じです。元の数値を組み合わせて、新しい座標を作ります。</p>
+<details><summary>一本にすると、何が失われる？</summary><p>その軸と垂直な方向の違いです。表示された「残るばらつき」は、元の二項目の分散のうち、一本に残せた割合。ばらつきを多く残すことと、総合満足度をよく予測することは別の目的です。</p></details>
+<aside aria-label="StatPlayの関連コンテンツ" class="related-reading"><span class="related-reading-label">StatPlayで、もう少し</span><a href="./standardization.html">標準化って何？ <span aria-hidden="true">→</span></a><p>「平均からどれくらい離れているか」を、同じ基準で比べてみます。</p></aside>
+</section>
+<section class="reveal in" id="mv-4"><h2 class="sec-title">4. 因子分析：共通するものがあるとしたら</h2>
+<p class="sec-desc">静かさ、席、内装への評価が、一緒に高くなったり低くなったりするとしたら。何か共通するものがあるのかもしれません。ここでは、ひとまず「居心地への評価」という共通因子を置いて、動きを見てみます。</p>
+<figure aria-labelledby="title-factor" class="viz" id="fig-factor"><div class="figure-no">FIG. 04</div><h3 id="title-factor">「居心地」を仮に置いてみる。</h3><p class="figure-sub">共通因子を仮定した模式図 ／ 固有部分は固定</p>
+<div class="controls"><label for="factor-score">仮定した「居心地」の因子 <output for="factor-score" id="factor-value"></output><input id="factor-score" max="2" min="-2" step="0.1" type="range" value="0.5"/></label></div>
+<div class="result"><output aria-label="仮定した因子の値" for="factor-score" id="factor-output"></output><span>共通因子の値<br/>動かすと、三項目がそれぞれの重みで変わる</span></div>
+<button class="action play" id="factor-demo" type="button">▶ 共通の動きを見る</button><canvas aria-busy="true" aria-describedby="factor-summary" aria-label="共通因子から三項目へのモデル図と、各項目の点数の棒" class="" id="factor-canvas" role="img">図の状態は下の文章で確認できます。</canvas><p aria-live="polite" class="figure-summary" id="factor-summary"></p>
+<details><summary>この図で置いたモデル</summary><p>各評価 = 60 + 15 × 重み × 共通因子 + 固有部分。重みは静かさ0.85、席0.75、内装0.65。固有部分は順に−3点、＋4点、−1点で固定しています。矢印は仮定したモデルの関係で、因果関係を実証したものではありません。実際の因子分析では、観測項目の相関からモデルを推定します。</p></details></figure>
+<p><em>図4：共通因子を仮定した模式図。実際の回答から因子を推定した結果ではありません。</em></p>
+<p>「共通の動きを見る」を押すと、三本の棒が一緒に伸び縮みします。動く幅は少しずつ違います。因子との結びつきに、それぞれ違う重みを置いているためです。</p>
+<p>実際の因子分析では、回答の相関をもとに、このような共通因子を使ったモデルを当てはめます。項目ごとの変動や測定誤差も含めて考えます。</p>
+<p>主成分分析と似て見えるところもありますが、こちらは共通因子を仮定して項目どうしの関係を考えます。元の数字を組み合わせて座標を作る主成分分析とは、出発点が違います。</p>
+<details><summary>「居心地」は、計算で見つかる？</summary><p>名前は項目の内容を見てつける解釈です。計算だけで「居心地」という心理的な実体や、因果関係が確かめられるわけではありません。</p></details>
+<aside aria-label="StatPlayの関連コンテンツ" class="related-reading"><span class="related-reading-label">StatPlayで、もう少し</span><a href="../topics/corr.html">相関係数と散布図を見てみる <span aria-hidden="true">→</span></a><p>二つの項目の関係が、点の並びと相関係数にどう表れるかを見られます。</p></aside>
+</section>
+<section class="reveal in" id="mv-5"><h2 class="sec-title">5. クラスター分析：回答が似た人を同じ組に</h2>
+<p class="sec-desc">最後は、味と席への評価が似た人をグループに分けてみます。「分かれる過程を見る」を押すと、点の位置はそのままで、所属するグループや中心が変わっていきます。</p>
+<figure aria-labelledby="title-cluster" class="viz" id="fig-cluster"><div class="figure-no">FIG. 05</div><h3 id="title-cluster">点はそのまま。まとまり方が変わる。</h3><p class="figure-sub">味・席の2項目で分類 ／ 同じ0〜100点の尺度</p>
+<fieldset class="group-controls"><legend>グループ数を変える</legend><label><input name="cluster-k" type="radio" value="2"/>2組</label><label><input checked="" name="cluster-k" type="radio" value="3"/>3組</label><label><input name="cluster-k" type="radio" value="4"/>4組</label></fieldset>
+<button class="action play" id="cluster-demo" type="button">▶ 分かれる過程を見る</button><p aria-live="polite" class="step-status" id="cluster-step"></p><canvas aria-busy="true" aria-describedby="cluster-summary" aria-label="味と席の評価の散布図。グループを色と形で区別し、十字で中心を示す" class="" id="cluster-canvas" role="img">図の状態は下の文章で確認できます。</canvas><div class="legend" id="cluster-legend"></div><p aria-live="polite" class="figure-summary" id="cluster-summary"></p>
+<details><summary>この図の「似ている」の決め方</summary><p>味と席の点数から、通常のユークリッド距離を使います。k-means法でグループ内の中心からの距離の二乗和を小さくします。初期値や使う変数を変えると、結果も変わることがあります。この図の分類には残り四項目を使っていません。</p></details></figure>
+<p><em>図5：味・席の二項目を使ったk-means法。色と形はグループ、十字は中心です。</em></p>
+<p>近い中心の組に入り、その組の平均位置へ中心が動く。この繰り返しで、グループができていきます。</p>
+<p>ただ、三組に分かれたからといって、お客さんが本当に三種類いるとまでは言えません。グループ数を変えてみると、同じデータでも別の分かれ方になります。</p>
+</section>
+<section class="reveal in" id="mv-6"><h2 class="sec-title">6. 同じデータで、いくつか試してみると</h2>
+<table class="method-comparison">
+<thead>
+<tr>
+<th>知りたいこと</th>
+<th>手法</th>
+<th>計算するもの</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一つの結果を予測したい</td>
+<td>重回帰分析</td>
+<td>係数と、目的変数の予測値</td>
+</tr>
+<tr>
+<td>少数の座標で全体を見たい</td>
+<td>主成分分析</td>
+<td>新しい軸と、各人の座標</td>
+</tr>
+<tr>
+<td>共通した動きを表したい</td>
+<td>因子分析</td>
+<td>因子と各項目の結びつきなど</td>
+</tr>
+<tr>
+<td>似た回答の人をまとめたい</td>
+<td>クラスター分析</td>
+<td>グループへの所属など</td>
+</tr>
+</tbody>
+</table>
+<p class="sec-desc">どれも同じアンケートですが、予測したり、項目をまとめたり、似た回答を探したりと、やっていることは少しずつ違います。</p>
+<p>「多変量解析」とひとまとめにすると難しそうですが、まずはこのくらいのイメージからでもよさそうです。気になった手法があれば、図を動かしたり、参考書の説明と見比べたりしてもらえればと思います。</p></section>
+
+<aside id="col-relations">
+<div class="col-topic-cta">
+<h3>// 触って動かす</h3>
+<a href="../topics/mreg.html" class="col-card-topic-cta">
+  <span class="col-card-topic-cta__icon" aria-hidden="true">▶</span>
+  <span class="col-card-topic-cta__body">
+    <span class="col-card-topic-cta__title">重回帰の係数と予測を、もう少し</span>
+    <span class="col-card-topic-cta__desc">勉強時間と睡眠時間の例で、説明変数を加えたときの違いを見てみます。</span>
+  </span>
+  <span class="col-card-topic-cta__arrow" aria-hidden="true">&rarr;</span>
+</a>
+</div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<p style="margin:0 0 10px;color:var(--dim)">触って動かすトピックで、コラムの内容を実際に確認できます。</p>
+<ul>
+<li><a href="../topics/mreg.html">重回帰分析</a> &mdash; 説明変数を組み合わせた予測を、係数や回帰平面でも見てみます。</li>
+<li><a href="../topics/corr.html">相関係数</a> &mdash; 二つの項目が一緒に変わる様子を、散布図で確かめます。</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="./standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">主成分分析の前に使った標準化を、身近な数字で試します。</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="./income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">あなたの年収は、統計でどこまで当てられるか</span>
+    <span class="fr-desc">重回帰分析を使った予測の、もう一つの例です。</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+</aside>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+</div>
+</footer>
+<script src="../js/modules/column-shell.js" type="module"></script>
+<script src="../js/modules/multivariate.js" type="module"></script>
+</body></html>

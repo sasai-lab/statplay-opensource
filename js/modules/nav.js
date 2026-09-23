@@ -12,16 +12,22 @@ export function initNav(){
       if(!open) navEl.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open'));
     });
     window.addEventListener('resize',()=>{
-      if(window.innerWidth>760){ close(); navEl.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open')); }
+      if(window.innerWidth>1024){ close(); navEl.querySelectorAll('.nav-dropdown.open').forEach(d=>d.classList.remove('open')); }
     });
     document.addEventListener('click',e=>{
       if(!navEl.classList.contains('open')) return;
       if(!navEl.contains(e.target)) close();
     });
+    navEl.addEventListener('keydown', e=>{
+      if(e.key === 'Escape' && navEl.classList.contains('open')) {
+        close();
+        toggle.focus();
+      }
+    });
   }
 
   // Dropdown toggle on mobile (tap category link to expand/collapse)
-  const isMobile=()=>window.innerWidth<=760;
+  const isMobile=()=>window.innerWidth<=1024;
   document.querySelectorAll('.nav-dropdown').forEach(dd=>{
     const catLink=dd.querySelector('.nav-cat-link');
     if(!catLink) return;
@@ -67,6 +73,8 @@ export function initNav(){
       if(e.defaultPrevented) return;
       if(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button===1) return;
       if(document.body.classList.contains('topic-page')) return;
+      // Linked logos on standalone pages must navigate back to the hub.
+      if(new URL(el.href, location.href).pathname !== location.pathname) return;
       e.preventDefault();
       try{ window.scrollTo({top:0,left:0,behavior:'smooth'}); }
       catch(_){ window.scrollTo(0,0); }

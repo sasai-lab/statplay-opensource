@@ -702,27 +702,6 @@ function initFAQ() {
 }
 
 // ──────────────────────────────────────────────────────────────────────
-// Theme toggle (column-local copy, mirrors error_types.js)
-// ──────────────────────────────────────────────────────────────────────
-function initThemeToggle() {
-  const btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  const saved = localStorage.getItem('svl_theme');
-  if (saved === 'light') {
-    document.body.classList.add('theme-light');
-    btn.textContent = 'DARK';
-    btn.setAttribute('aria-pressed', 'true');
-  }
-  btn.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('theme-light');
-    btn.textContent = isLight ? 'DARK' : 'LIGHT';
-    btn.setAttribute('aria-pressed', String(isLight));
-    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
-    window.dispatchEvent(new CustomEvent('themechange'));
-  });
-}
-
-// ──────────────────────────────────────────────────────────────────────
 // Progress bar + scroll reveal (mirrors error_types.js)
 // ──────────────────────────────────────────────────────────────────────
 function initProgressBar() {
@@ -784,7 +763,6 @@ function initHeroScroll() {
 function boot() {
   // Guard: only run on the se_vs_sd column page.
   if (!document.getElementById('seHero') && !document.getElementById('seCanvasTier1')) return;
-  initThemeToggle();
   initProgressBar();
   initScrollReveal();
   initHeroScroll();

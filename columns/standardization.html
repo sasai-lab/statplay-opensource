@@ -36,8 +36,6 @@
 <link href="../icons/icon-192.png" rel="icon" type="image/png"/>
 <link href="../css/stat_cyber.css" rel="stylesheet"/>
 <style>
-body.column-page #mainNav .nav-links a,
-body.column-page #mainNav .nav-links button { font-size: 12px; }
 body.column-page section { padding-top: 0; }
 body.column-page .col-breadcrumb {
   max-width: 800px; margin: 48px auto 4px; padding: 0 24px;
@@ -398,15 +396,17 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
   ]
 }
 </script>
-</head>
+<script src="../js/modules/column-shell.js" type="module"></script></head>
 <body class="column-page">
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
-<a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+<nav aria-label="サイトナビゲーション" class="column-nav" id="mainNav">
+<a aria-label="StatPlay トップ" class="logo" href="../index.html">StatPlay</a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="メニュー" class="nav-toggle" id="navToggle" type="button"><span aria-hidden="true" class="bars"></span></button>
 <div class="nav-links" id="navLinks">
-<a href="../index.html">← StatPlay</a>
-<a href="../en/columns/standardization.html" style="font-size:12px">EN</a>
-<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+<a href="../index.html#columns">コラム</a>
+<a href="../index.html#cat-probability">ラボ</a>
+<a aria-label="英語で読む" href="../en/columns/standardization.html" hreflang="en" id="columnLangSwitch" lang="en">EN</a>
+<button aria-label="明るいテーマに切り替える" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" type="button">LIGHT</button>
 </div>
 </nav>
 <!-- ═══ 1. CINEMATIC HERO ═══ -->
@@ -430,11 +430,7 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 <div class="chevron"></div>
 </button>
 </div>
-<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px">
-<a href="../index.html">StatPlay</a><span class="sep">›</span>
-<span>コラム</span><span class="sep">›</span>
-<span>標準化って何？</span>
-</div>
+<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px"><a href="../index.html">StatPlay</a><span aria-hidden="true" class="sep">›</span><a href="../index.html#columns">コラム</a><span aria-hidden="true" class="sep">›</span><span aria-current="page">標準化って何？</span></div>
 <main>
 <!-- ═══ INTRO ═══ -->
 <div class="col-section">
@@ -779,6 +775,14 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>
+<a href="./multivariate_analysis.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">多変量解析でできること</span>
+    <span class="fr-desc">いくつもの項目を使った分析を、同じアンケートの動く図で見渡します。</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
 <p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
 </div>
 </aside>
@@ -819,17 +823,6 @@ body.theme-light .hero-scroll .chevron { border-color: rgba(0,100,130,.5); }
 </footer>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle
-  const btn = document.getElementById('themeToggle');
-  const saved = localStorage.getItem('svl_theme');
-  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = 'DARK'; btn.setAttribute('aria-pressed', 'true'); }
-  btn?.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('theme-light');
-    btn.textContent = isLight ? 'DARK' : 'LIGHT';
-    btn.setAttribute('aria-pressed', String(isLight));
-    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
-  });
-
   // Progress bar
   const bar = document.getElementById('progressBar');
   window.addEventListener('scroll', () => {

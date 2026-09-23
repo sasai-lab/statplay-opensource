@@ -37,9 +37,6 @@
 <link href="../css/stat_cyber.css" rel="stylesheet"/>
 <style>
 
-body.column-page #mainNav .nav-links a,
-
-body.column-page #mainNav .nav-links button { font-size: 12px; }
 
 body.column-page section { padding-top: 0; }
 
@@ -933,15 +930,17 @@ body.theme-light .progress-bar { box-shadow: none; }
 }
 
 </script>
-</head>
+<script src="../js/modules/column-shell.js" type="module"></script></head>
 <body class="column-page">
 <div class="progress-bar" id="progressBar"></div>
-<nav id="mainNav">
-<a class="logo" href="../index.html" title="Back to hub">StatPlay</a>
+<nav aria-label="サイトナビゲーション" class="column-nav" id="mainNav">
+<a aria-label="StatPlay トップ" class="logo" href="../index.html">StatPlay</a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="メニュー" class="nav-toggle" id="navToggle" type="button"><span aria-hidden="true" class="bars"></span></button>
 <div class="nav-links" id="navLinks">
-<a href="../index.html">← StatPlay</a>
-<a href="../en/columns/se_vs_sd.html" style="font-size:12px">EN</a>
-<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" title="Switch to light theme" type="button">LIGHT</button>
+<a href="../index.html#columns">コラム</a>
+<a href="../index.html#cat-probability">ラボ</a>
+<a aria-label="英語で読む" href="../en/columns/se_vs_sd.html" hreflang="en" id="columnLangSwitch" lang="en">EN</a>
+<button aria-label="明るいテーマに切り替える" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" type="button">LIGHT</button>
 </div>
 </nav>
 <!-- ═══ HERO ═══ -->
@@ -970,11 +969,7 @@ n を動かすと、2つは別の方向に動き出す。
 <div class="chevron"></div>
 </button>
 </div>
-<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px">
-<a href="../index.html">StatPlay</a><span class="sep">›</span>
-<span>コラム</span><span class="sep">›</span>
-<span>標準誤差って何？</span>
-</div>
+<div aria-label="パンくず" class="col-breadcrumb" style="margin-top:16px"><a href="../index.html">StatPlay</a><span aria-hidden="true" class="sep">›</span><a href="../index.html#columns">コラム</a><span aria-hidden="true" class="sep">›</span><span aria-current="page">標準偏差と標準誤差</span></div>
 <main>
 <!-- ═══ 01. INTRO ═══ -->
 <div class="col-divider"></div>

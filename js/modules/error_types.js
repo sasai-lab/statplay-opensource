@@ -446,25 +446,6 @@ function initFAQ() {
   });
 }
 
-// ─── Theme toggle (column-local copy, mirrors other column scripts) ────
-function initThemeToggle() {
-  const btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  const saved = localStorage.getItem('svl_theme');
-  if (saved === 'light') {
-    document.body.classList.add('theme-light');
-    btn.textContent = 'DARK';
-    btn.setAttribute('aria-pressed', 'true');
-  }
-  btn.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('theme-light');
-    btn.textContent = isLight ? 'DARK' : 'LIGHT';
-    btn.setAttribute('aria-pressed', String(isLight));
-    localStorage.setItem('svl_theme', isLight ? 'light' : 'dark');
-    window.dispatchEvent(new CustomEvent('themechange'));
-  });
-}
-
 // ─── Progress bar ──────────────────────────────────────────────────────
 function initProgressBar() {
   const bar = document.getElementById('progressBar');
@@ -500,7 +481,6 @@ function initHeroScroll() {
 function boot() {
   // Only run when the column page is loaded — guard with one of its IDs.
   if (!document.getElementById('etHero') && !document.getElementById('judgeMatrix')) return;
-  initThemeToggle();
   initProgressBar();
   initScrollReveal();
   initHeroScroll();

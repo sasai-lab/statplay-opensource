@@ -14,7 +14,7 @@
 
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
 
-<meta name="description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+<meta name="description" content="Predict scores from study and sleep hours. Compare simple and multiple regression to see how adding a predictor changes coefficients and the fitted plane.">
 
 <meta name="keywords" content="multiple regression, partial coefficients, confounding, 3D visualization, controlling for variables">
 
@@ -22,7 +22,7 @@
 
 <meta name="robots" content="index, follow, max-image-preview:large">
 
-<title>Multiple Regression — Control Confounders to Find True Effects — StatPlay</title>
+<title>Multiple Regression — Predicting with Several Variables — StatPlay</title>
 
 
 
@@ -40,9 +40,9 @@
 
 <meta property="og:site_name" content="StatPlay">
 
-<meta property="og:title" content="Multiple Regression — Control Confounders to Find True Effects">
+<meta property="og:title" content="Multiple Regression — Predicting with Several Variables">
 
-<meta property="og:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+<meta property="og:description" content="Predict scores from study and sleep hours. Compare simple and multiple regression to see how adding a predictor changes coefficients and the fitted plane.">
 
 <meta property="og:url" content="https://statplay.sasailab.com/en/topics/mreg.html">
 
@@ -56,9 +56,9 @@
 
 <meta name="twitter:card" content="summary_large_image">
 
-<meta name="twitter:title" content="Multiple Regression — Control Confounders to Find True Effects">
+<meta name="twitter:title" content="Multiple Regression — Predicting with Several Variables">
 
-<meta name="twitter:description" content="Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what &#x27;controlling for confounders&#x27; really means.">
+<meta name="twitter:description" content="Predict scores from study and sleep hours. Compare simple and multiple regression to see how adding a predictor changes coefficients and the fitted plane.">
 
 <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
 
@@ -94,111 +94,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
-      "name": "Multiple Regression — Control Confounders to Find True Effects",
-
-      "description": "Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.",
-
+      "name": "Multiple Regression — Predicting with Several Variables",
+      "description": "Predict scores from study and sleep hours. Compare simple and multiple regression to see how adding a predictor changes coefficients and the fitted plane.",
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["Multiple regression", "Partial regression coefficients", "Controlling for confounders", "Simple vs. multiple regression comparison"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/mreg.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
           "item": "https://statplay.sasailab.com/"
-
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
           "item": "https://statplay.sasailab.com/topics/"
-
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "Multiple Regression"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -272,9 +219,9 @@
 
 <main id="main-content">
 
-  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Control Confounders to Find True Effects</a></h1>
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Multiple Regression — Predicting with Several Variables</a></h1>
 
-  <p class="topic-lead">"More study time means lower scores" — a result that flips the moment you add one more variable. That moment is what confounding looks like.</p>
+  <p class="topic-lead">Predict with study hours alone, then add sleep hours. Even with the same data, the coefficient for study hours can change.</p>
 
   <section class="reveal in" id="mreg">
 
@@ -288,49 +235,25 @@
 
 
 
-<div class="story-bridge">Simple regression predicted scores from study hours alone. But what if heavy studiers <b>sleep less</b> — and lost sleep drags scores down? The true effect of studying gets <b>masked by a hidden variable</b>. <span class="next">Multiple regression</span> controls for other factors to isolate each variable's real contribution.</div>
+<!-- @panel:mreg_intro -->
 
-
-
-<p class="sec-desc">
-
-    One variable gives a line; two give a <b>plane in 3D</b>.
-
-    But the point isn't geometry — it's <b>removing confounding to isolate each variable's true effect</b>.
-
-    Start with the side-by-side comparison to see the moment β₁ shifts.
-
-  </p>
-
+<div class="story-bridge">Predict scores with study hours alone, then add sleep hours. <b>The study coefficient can change even though the data stays the same.</b> <span class="next">Multiple regression</span> lets us work with several predictors together.</div><p class="sec-desc">One predictor gives a line; two give a plane in 3D. Start by comparing the coefficients in the panel below. This example uses synthetic data; whether a coefficient represents a causal effect is a separate question.</p>
+<!-- /@panel -->
 <div class="sim-layout">
 
 
 
-<div class="guided-steps">
+<!-- @panel:mreg_guide -->
 
-<b>Experiment Guide — Feel Confounding</b>
-
-<ol>
-
-<li><b>Step 1:</b> At default (corr = −0.5), compare β₁ left vs. right. Simple regression is <b>smaller</b> — the study effect is underestimated.</li>
-
-<li><b>Step 2:</b> Set correlation to <b>0</b> → both β₁ values nearly match. "No confounding, no bias."</li>
-
-<li><b>Step 3:</b> Set correlation to <b>+0.5</b> → now simple regression β₁ is <b>too large</b>. Confounding can bias in either direction.</li>
-
-<li><b>Step 4:</b> Check R² too. Multiple regression is always ≥ simple — adding a variable improved explanatory power.</li>
-
-</ol>
-
-</div>
-
+<div class="guided-steps"><b>Experiment guide — Watch the coefficients change</b><ol><li>Compare the two β₁ estimates at a correlation setting of −0.5.</li><li>Try zero correlation. The gap tends to shrink, but sampling variation remains.</li><li>Try +0.5. Does the direction of the gap change? Regenerate the data and compare.</li><li>Compare R² too. Adding a predictor cannot worsen the fit to the same data, but it need not improve predictions on unseen data.</li></ol></div>
+<!-- /@panel -->
 <!-- @panel:mreg_vs -->
 <div class="panel">
 
 <h3 class="cy-head cy-head--compact">▶ Simple vs. Multiple Regression — Watch β₁ Shift</h3>
 <div class="drag-hint drag-hint--tight">
 
-<span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation slider to change confounding strength.</span>
+<span>Same data, two models: "study hours only" vs. "study + sleep." Adjust the correlation between the predictors.</span>
 </div>
 <div class="controls controls--tight">
 <div class="ctrl">
@@ -355,7 +278,7 @@
 <div class="info">
 <div><span>Simple β₁</span> <strong id="mvSimpleB1">—</strong></div>
 <div><span>Multiple β₁</span> <strong id="mvMultiB1">—</strong></div>
-<div><span>Gap (confounding bias)</span> <strong id="mvGap">—</strong></div>
+<div><span>Coefficient gap</span> <strong id="mvGap">—</strong></div>
 <div><span>Simple R²</span> <strong id="mvSimpleR2">—</strong></div>
 <div><span>Multiple R²</span> <strong id="mvMultiR2">—</strong></div>
 </div>
@@ -429,17 +352,12 @@
 <!-- @panel:mreg_text -->
 
 <div class="detail-section">
-<h3>// What's happening with confounding?</h3>
-<p>In the comparison panel above, simple and multiple regression gave different β₁ values for the same data.<br/>
-Why does adding one variable change the slope?</p>
-<p>Here's what's happening behind the scenes:</p>
-<p class="quote-box">
-<b>More study → less sleep → lower scores</b> (indirect negative effect)
-</p>
-<p>Simple regression β₁ mixes "direct effect + indirect effect."<br/>
-The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple regression underestimates at ~+2.2.</p>
-<p>Multiple regression β₁ holds sleep constant and extracts only studying's direct effect — that's what <b>partial regression coefficient</b> means.</p>
-<p>Set correlation to 0 in the panel above and the indirect path vanishes — β₁ values converge. That's the "no confounding" state.</p>
+<h3>// Why does adding a variable change the coefficient?</h3>
+<p>The panel uses synthetic data with correlated study and sleep hours. Scores are generated as 40 + 3 × study hours + 2 × sleep hours + noise.</p>
+<p>With study hours alone, the slope also reflects the sleep hours that vary alongside them. With negative correlation, the simple-regression coefficient tends to be smaller than the value of 3 used to generate the data.</p>
+<p>A <b>partial regression coefficient</b> describes the change in the prediction when one predictor changes and the others stay fixed. Adding sleep hours tends to bring the study coefficient closer to 3, though sampling and noise still affect the estimate.</p>
+<p>Adding predictors does not, by itself, establish causation. Interpreting a coefficient as a causal effect requires separate assumptions about confounders, measurement, and the model.</p>
+<p>With the correlation setting at zero, the two coefficients tend to be closer. In a finite sample, they need not be identical.</p>
 </div>
 
 <div class="detail-section">
@@ -450,29 +368,29 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 • β₁x₁: "holding x₂ fixed, how much does y change per unit of x₁" × the value of x₁<br/>
 • β₂x₂: same idea — the isolated contribution of x₂</p>
 <p><b>How it differs from simple regression</b><br/>
-• Simple regression β₁ = direct effect of x₁ + indirect effect via x₂ (mixed together)<br/>
-• Multiple regression β₁ = direct effect of x₁ only (x₂ is statistically "held constant")<br/>
-• Set correlation to 0 in the panel above and the indirect path vanishes — that's why both β₁ values converge</p>
+• Simple regression β₁: the slope when predicting with x₁ alone<br/>
+• Multiple regression β₁: the slope for x₁ with x₂ held fixed in the model<br/>
+• At a correlation setting of zero, the estimates tend to be closer, but sampling differences remain</p>
 <p><b>Geometric picture</b><br/>
-• With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes total squared distance from points to plane</p>
+• With 2 predictors, the fit is a plane in 3D. Least squares picks the tilt that minimizes the sum of squared vertical residuals from points to the plane</p>
 </div>
 
 <div class="detail-section">
 <h3>// Worked example — try it by hand</h3>
-<p>Predicting test scores for 30 students using study hours and sleep hours.</p>
+<p>A worked example with 30 fictional students. These illustrative values do not track the panel above.</p>
 <p>① Check the averages<br/>
 　Mean study = 5.0h, mean sleep = 7.0h, mean score = 65 pts<br/>
 　Correlation between study and sleep: r = −0.45 (heavy studiers sleep less)</p>
 <p>② Simple regression y ~ x₁ (study hours only)<br/>
 　β₁ = +2.4 pts/h, R² = 0.32<br/>
-　→ Each study hour adds 2.4 pts... but this <b>underestimates</b> the true effect</p>
+　→ One more study hour corresponds to a prediction 2.4 points higher</p>
 <p>③ Multiple regression y ~ x₁ + x₂ (add sleep hours)<br/>
 　β₁ = +3.1 pts/h, β₂ = +2.0 pts/h, R² = 0.57<br/>
-　→ Controlling for sleep, study effect rises to <b>+3.1 pts/h</b></p>
+　→ With sleep held fixed in the model, the study coefficient is <b>+3.1 pts/h</b></p>
 <p>④ Why the change?<br/>
-　In this data, study↑ → sleep↓ (r = −0.45).<br/>
-　Simple regression blamed studying for the negative impact of lost sleep.<br/>
-　Multiple regression separated sleep out, revealing <b>studying's true effect</b>.</p>
+　Study and sleep hours are negatively correlated in this example.<br/>
+　Including sleep changes the study coefficient.<br/>
+　That difference alone does not establish a causal effect of study or sleep.</p>
 <p>⑤ Make a prediction<br/>
 　β₀ = ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 (OLS always passes through the means).<br/>
 　Student with 6h study, 7h sleep → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1 pts</b><br/>
@@ -500,7 +418,7 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <p>Around multiple regression, the same coefficient-interpretation and test-comparison shapes keep returning.</p>
 <ul>
 <li><b>The partial-coefficient picture</b>: with β₁ = 3, the reading "holding x₂ constant, raising x₁ by 1 lifts y by 3 on average" appears. "Hold the others fixed" is the conditional clause that travels with this picture</li>
-<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, simple regression fuses direct and indirect effects into one number. Setting correlation to 0 in the panel above brings the two estimates back into alignment</li>
+<li><b>When β₁ shifts between simple and multiple regression</b>: with correlated predictors, adding a variable can change the slope. At a correlation setting of zero, the two estimates tend to be closer</li>
 <li><b>R² vs. adjusted R² as a pair</b>: adding a variable always raises R², but adjusted R² can fall. The shape "if adjusted drops, the new variable wasn't worth its cost" lives here</li>
 <li><b>How F-tests and t-tests divide the labor</b>: the F-test takes "all partial coefficients = 0" at once; the t-test asks "is this one coefficient = 0?" — the model-wide and per-coefficient questions split along these two shapes</li>
 <li><b>The multicollinearity signal</b>: VIF &gt; 10 appears as the rule-of-thumb threshold, foreshadowing scenes where coefficients become erratic</li>
@@ -515,6 +433,7 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
 <li><a href="./anova.html">ANOVA</a> &mdash; multiple regression's F-test uses the same framework as ANOVA to judge overall model significance</li>
 <li><a href="./dists.html#dists-f">Three Test Distributions</a> &mdash; the F-distribution supplies the critical values for testing "all partial coefficients = 0"</li>
 <li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; wires age, gender, and prefecture together to read income ranges from real data — multiple regression in the field</li>
+<li><a href="../../en/columns/multivariate_analysis.html">"Uses of Multivariate Analysis" column</a> &mdash; See how the same survey can support prediction, dimensionality reduction, and other analyses.</li>
 </ul>
 </div>
 
@@ -525,6 +444,14 @@ The true direct effect is +3 pts/h, but lost sleep drags scores down, so simple 
   <span class="fr-body">
     <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
     <span class="fr-desc">Reading income ranges from age, gender, and prefecture — multiple regression as a story</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../../en/columns/multivariate_analysis.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">Multivariate Analysis: What Can It Do?</span>
+    <span class="fr-desc">Explore prediction, dimensionality reduction, common factors, and clustering with a café survey.</span>
   </span>
   <span class="fr-arrow" aria-hidden="true">&rarr;</span>
 </a>

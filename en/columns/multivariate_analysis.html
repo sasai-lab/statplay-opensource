@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Multivariate Analysis: What Can It Do? | StatPlay</title>
+<meta content="What can we do with data that has many variables? Explore multiple regression, PCA, factor analysis, and clustering through interactive café-survey examples." name="description"/>
+<meta content="Sasai Lab" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://statplay.sasailab.com/en/columns/multivariate_analysis.html" rel="canonical"/>
+<link href="https://statplay.sasailab.com/columns/multivariate_analysis.html" hreflang="ja" rel="alternate"/>
+<link href="https://statplay.sasailab.com/en/columns/multivariate_analysis.html" hreflang="en" rel="alternate"/>
+<link href="https://statplay.sasailab.com/columns/multivariate_analysis.html" hreflang="x-default" rel="alternate"/>
+<meta content="article" property="og:type"/>
+<meta content="StatPlay" property="og:site_name"/>
+<meta content="Multivariate Analysis: What Can It Do?" property="og:title"/>
+<meta content="What can we do with data that has many variables? Explore multiple regression, PCA, factor analysis, and clustering through interactive café-survey examples." property="og:description"/>
+<meta content="https://statplay.sasailab.com/en/columns/multivariate_analysis.html" property="og:url"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" property="og:image"/>
+<meta content="StatPlay — Multivariate Analysis: What Can It Do?" property="og:image:alt"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="ja_JP" property="og:locale:alternate"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Multivariate Analysis: What Can It Do?" name="twitter:title"/>
+<meta content="What can we do with data that has many variables? Explore multiple regression, PCA, factor analysis, and clustering through interactive café-survey examples." name="twitter:description"/>
+<meta content="https://statplay.sasailab.com/stat_cyber_og.png" name="twitter:image"/>
+<meta content="StatPlay — Multivariate Analysis: What Can It Do?" name="twitter:image:alt"/>
+<link href="../../manifest.webmanifest" rel="manifest"/>
+<link href="../../icons/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="../../icons/icon-192.png" rel="apple-touch-icon"/>
+<meta content="#00f3ff" name="theme-color"/>
+<link href="../../css/stat_cyber.css" rel="stylesheet"/>
+<link href="../../css/multivariate.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "@id": "https://statplay.sasailab.com/en/columns/multivariate_analysis.html#article", "url": "https://statplay.sasailab.com/en/columns/multivariate_analysis.html", "name": "Multivariate Analysis: What Can It Do?", "headline": "Multivariate Analysis: What Can It Do?", "description": "What can we do with data that has many variables? Explore multiple regression, PCA, factor analysis, and clustering through interactive café-survey examples.", "inLanguage": "en", "learningResourceType": "Interactive explanation", "isAccessibleForFree": true, "image": "https://statplay.sasailab.com/stat_cyber_og.png", "author": {"@type": "Organization", "name": "Sasai Lab", "url": "https://statplay.sasailab.com/"}, "publisher": {"@type": "Organization", "name": "StatPlay", "url": "https://statplay.sasailab.com/"}, "teaches": ["Multiple regression", "Principal component analysis", "Factor analysis", "Clustering"], "datePublished": "2026-09-23", "dateModified": "2026-09-23"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/en/"}, {"@type": "ListItem", "position": 2, "name": "Columns", "item": "https://statplay.sasailab.com/en/#columns"}, {"@type": "ListItem", "position": 3, "name": "Multivariate Analysis: What Can It Do?", "item": "https://statplay.sasailab.com/en/columns/multivariate_analysis.html"}]}]}</script>
+</head>
+<body class="column-page multivariate-column lang-en">
+<a class="skip-to-main" href="#main">Skip to content</a>
+<!-- Shared column header. Edit this template, then run scripts/build_topics.py. -->
+<nav aria-label="Site navigation" class="column-nav" id="mainNav">
+<a aria-label="StatPlay home" class="logo" href="../index.html">StatPlay</a>
+<button aria-controls="navLinks" aria-expanded="false" aria-label="Menu" class="nav-toggle" id="navToggle" type="button"><span aria-hidden="true" class="bars"></span></button>
+<div class="nav-links" id="navLinks">
+<a href="../index.html#columns">Columns</a>
+<a href="../index.html#cat-probability">Labs</a>
+<a aria-label="Read in Japanese" href="../../columns/multivariate_analysis.html" hreflang="ja" id="columnLangSwitch" lang="ja">日本語</a>
+<button aria-label="Switch to light theme" aria-pressed="false" class="lang-toggle theme-toggle" id="themeToggle" type="button">LIGHT</button>
+</div>
+</nav>
+<div aria-label="Breadcrumb" class="col-breadcrumb"><a href="../index.html">StatPlay</a><span aria-hidden="true" class="sep">›</span><a href="../index.html#columns">Columns</a><span aria-hidden="true" class="sep">›</span><span aria-current="page">Uses of Multivariate Analysis</span></div>
+<main id="main"><div class="hero-draft" id="fig-hero"><div class="hero-copy"><div class="eyebrow">// MULTIVARIATE ANALYSIS</div><h1>Multivariate analysis:<br/><em>what can it do?</em></h1>
+<p>Multivariate analysis sounds rather technical. What is actually happening to the data? Let's move a few diagrams and take a look.</p>
+</div><div class="mv-hero-visual">
+<div class="hero-scene-heading"><span id="hero-method-name">Starting with a café survey</span><span aria-hidden="true" id="hero-count">01 / 05</span></div>
+<canvas aria-describedby="hero-summary hero-caption" aria-label="See several multivariate methods using a café survey" id="hero-canvas" role="img"></canvas>
+<div aria-atomic="true" aria-live="polite" class="hero-narration"><p id="hero-summary">First, let's lay out the café survey responses.</p><p id="hero-caption">Six responses from a fictional café survey of 90 people</p></div>
+<div aria-label="Choose a scene" class="hero-scenes" role="group">
+<button aria-pressed="true" data-method="0" type="button">Data</button>
+<button aria-pressed="false" data-method="1" type="button">Predict</button>
+<button aria-pressed="false" data-method="2" type="button">Summarize</button>
+<button aria-pressed="false" data-method="3" type="button">Explore</button>
+<button aria-pressed="false" data-method="4" type="button">Group</button>
+</div>
+<div class="hero-playback"><button class="action" id="hero-play" type="button">Watch from the start</button><a href="#mv-1" id="hero-detail">See the data ↓</a></div>
+<p class="hero-sequence-note">These are separate analyses using the same survey, not steps in one procedure.</p>
+</div><a class="hero-scroll" href="#mv-1">Try the diagrams <span aria-hidden="true">↓</span></a></div>
+<aside aria-label="The aim of this page" class="concept-note"><p><strong>Start by watching what happens to the data.</strong></p><p>Some methods combine several measurements; others use them to make predictions. Here, a café survey gives us a way to see these operations. The aim is a rough sense of what each method does. Open the notes if you want to look at the formulas.</p></aside>
+<section class="reveal in" id="mv-1"><h2 class="sec-title">1. Starting with a café survey</h2>
+<p class="sec-desc">The food was good, but the seating wasn't comfortable. Let's turn impressions like these into six scores.</p>
+<figure aria-labelledby="title-data" class="viz" id="fig-data"><div class="figure-no">FIG. 01</div><h3 id="title-data">Six ratings, side by side.</h3><p class="figure-sub">Taste, service, quietness, seating, décor and value for money / 0–100 each</p>
+<div class="table-guide"><span>Each row is one person's response.</span></div>
+<table aria-label="Six fictional survey responses" class="heatmap" id="heatmap"></table>
+<div class="data-legend"><span>Low</span><span aria-hidden="true" class="heat-scale"></span><span>High</span></div>
+<p class="figure-summary">Six of the 90 fictional responses. The numbers let you compare cells without relying on color.</p></figure>
+<p><em>Figure 1: Part of a fictional dataset of 90 people. Each rating is on a 0–100 scale. Overall satisfaction is a separate question.</em></p>
+<p>Two people may give the same taste score but different scores for service or seating. Looking at several variables together lets us explore these differences. This page uses “multivariate analysis” broadly, including multiple regression with a single outcome.</p>
+</section>
+<section class="reveal in" id="mv-2"><h2 class="sec-title">2. Multiple regression: predicting satisfaction</h2>
+<p class="sec-desc">Let's predict overall satisfaction from ratings such as taste, service and seating. Start by changing just the taste score and watch the prediction.</p>
+<figure aria-labelledby="title-regression" class="viz" id="fig-regression"><div class="figure-no">FIG. 02</div><h3 id="title-regression">Change the taste and seating scores.</h3><p class="figure-sub">Six ratings → predicted overall satisfaction / model fitted to fictional data</p>
+<div class="controls">
+<label for="reg-taste">Taste score <output for="reg-taste" id="reg-taste-value"></output><input id="reg-taste" max="90" min="30" step="1" type="range" value="80"/></label>
+<label for="reg-seat">Seating comfort <output for="reg-seat" id="reg-seat-value"></output><input id="reg-seat" max="90" min="30" step="1" type="range" value="50"/></label>
+</div>
+<div class="result"><output aria-label="Predicted overall satisfaction" for="reg-taste reg-seat" id="reg-output"></output><span>Predicted overall satisfaction<br/><span id="reg-base"></span></span></div>
+<canvas aria-busy="true" aria-describedby="reg-summary" aria-label="Bars showing how taste and seating change the prediction" class="" id="reg-canvas" role="img">The text below describes the current state of the diagram.</canvas>
+<div class="legend"><span>Bar to the right: raises the prediction</span><span>Bar to the left: lowers the prediction</span></div>
+<p aria-live="polite" class="figure-summary" id="reg-summary"></p><button class="action play" id="reg-demo" type="button">▶ Change taste from 50 to 70</button> <button class="action" id="reg-reset" type="button">Reset near the averages</button>
+<details><summary>How the bars relate to the prediction</summary><p>Each bar is bⱼ × (rating xⱼ − that rating's mean). Add all six contributions to the prediction for an average response. The four ratings held at their means contribute zero, so only the taste and seating bars are shown. This is the same calculation as ŷ = b₀ + b₁x₁ + … + b₆x₆.</p></details></figure>
+<p><em>Figure 2: A regression model using six ratings. Only the two adjustable ratings are shown; the other four stay at their means. Bars show changes from the prediction for an average response.</em></p>
+<p>The prediction moves as you change taste. Now leave taste alone and change seating. The two scores change the prediction by different amounts.</p>
+<p>Holding the other ratings fixed, how much does the prediction change when one rating increases by one point? That change is its partial regression coefficient.</p>
+<details><summary>A prediction is not an intervention effect</summary><p>The diagram shows a model prediction. The survey alone does not establish that improving the food would raise satisfaction by the same amount.</p></details>
+<aside aria-label="Related StatPlay content" class="related-reading"><span class="related-reading-label">Explore more on StatPlay</span><a href="../topics/mreg.html">Explore multiple regression <span aria-hidden="true">→</span></a><p>Try predicting test scores from study time and sleep.</p></aside>
+</section>
+<section class="reveal in" id="mv-3"><h2 class="sec-title">3. Principal component analysis: two scores, one axis</h2>
+<p class="sec-desc">Next, let's combine taste and service scores on one number line. How much of the original difference remains when we use fewer dimensions? Follow A and B in the diagram.</p>
+<figure aria-labelledby="title-pca" class="viz" id="fig-pca"><div class="figure-no">FIG. 03</div><h3 id="title-pca">Rotate the axis and compare A with B.</h3><p class="figure-sub">The same 90 people and two ratings. Only the direction changes.</p><div class="pca-actions"><button class="action" id="pca-bad" type="button">Collapse</button><button class="action" id="pca-best" type="button">Spread out</button><button class="action play" id="pca-demo" type="button">▶ Compare directions</button></div>
+<canvas aria-busy="true" aria-describedby="pca-summary" aria-label="Follow A and B from the original scatterplot to the same A and B on one number line" class="pca" id="pca-canvas" role="img">The text below describes the current state of the diagram.</canvas><div class="pca-observation"><p id="pca-insight"></p><div class="pair-values"><span class="person-a">● A <output id="pca-a"></output></span><span class="person-b">◆ B <output id="pca-b"></output></span></div></div>
+<div class="pca-retained"><span>Variation retained</span><div aria-hidden="true" class="meter-track"><div id="pca-meter"></div></div><output aria-label="Proportion of variation retained" for="pca-angle" id="pca-output"></output></div>
+<div class="controls single"><label for="pca-angle">Rotate the axis <output for="pca-angle" id="pca-angle-value"></output><input id="pca-angle" max="180" min="-180" step="1" type="range" value="-45"/></label><button class="action subtle" id="pca-trace" type="button">Watch the points move to the line</button></div>
+<p class="figure-sub">Taste and service are standardized. A and B keep their colors and shapes throughout.</p>
+<p aria-live="polite" class="figure-summary" id="pca-summary"></p><details><summary>Why this direction is a principal component</summary><p>The value on the line is a weighted sum of the two original ratings. With the weight vector's length held fixed, the direction giving the largest variance is the first principal component. “Variation retained” is the projected variance divided by the sum of the two original variances. A and B help us follow individual points; the direction is chosen using all 90 people.</p></details></figure>
+<p><em>Figure 3: Standardized taste and service scores. Each point keeps its color and shape. The number line's scale stays fixed as the direction changes.</em></p>
+<p>In the “Collapse” direction, A and B end up in almost the same place. Choose “Spread out” and they appear at different positions on the line.</p>
+<p>The points haven't changed, but the direction makes quite a difference.</p>
+<p>This diagram finds the direction that retains the most variation across all 90 people after projection onto one line. That is the first principal component direction.</p>
+<p>Six ratings are harder to draw, but the idea is similar: combine the original values into fewer coordinates.</p>
+<details><summary>What is lost when we use one axis?</summary><p>Differences perpendicular to that axis. The displayed percentage tells us how much of the two ratings' total variance remains on the line. Preserving variation and predicting satisfaction are different goals.</p></details>
+<aside aria-label="Related StatPlay content" class="related-reading"><span class="related-reading-label">Explore more on StatPlay</span><a href="./standardization.html">What is standardization? <span aria-hidden="true">→</span></a><p>Compare how far values are from their averages, using a common scale.</p></aside>
+</section>
+<section class="reveal in" id="mv-4"><h2 class="sec-title">4. Factor analysis: suppose there is something in common</h2>
+<p class="sec-desc">What if quietness, seating and décor ratings tend to rise and fall together? They might have something in common. For this diagram, let's assume a shared factor called “comfort” and see what happens.</p>
+<figure aria-labelledby="title-factor" class="viz" id="fig-factor"><div class="figure-no">FIG. 04</div><h3 id="title-factor">Suppose there is a “comfort” factor.</h3><p class="figure-sub">Illustration of an assumed common-factor model / unique components held fixed</p>
+<div class="controls"><label for="factor-score">Assumed “comfort” factor <output for="factor-score" id="factor-value"></output><input id="factor-score" max="2" min="-2" step="0.1" type="range" value="0.5"/></label></div>
+<div class="result"><output aria-label="Value of the assumed factor" for="factor-score" id="factor-output"></output><span>Common factor value<br/>Each of the three ratings changes according to its own weight</span></div>
+<button class="action play" id="factor-demo" type="button">▶ Watch the shared movement</button><canvas aria-busy="true" aria-describedby="factor-summary" aria-label="An assumed common factor connected to three ratings and their score bars" class="" id="factor-canvas" role="img">The text below describes the current state of the diagram.</canvas><p aria-live="polite" class="figure-summary" id="factor-summary"></p>
+<details><summary>The model used in this diagram</summary><p>Each rating = 60 + 15 × weight × common factor + unique component. The weights are 0.85 for quietness, 0.75 for seating and 0.65 for décor. The unique components are fixed at −3, +4 and −1 points. Arrows show an assumed model, not evidence of causation. In an actual factor analysis, the model is estimated from correlations among observed variables.</p></details></figure>
+<p><em>Figure 4: An assumed common-factor model, not a factor estimated from the survey responses.</em></p>
+<p>Press “Watch the shared movement” and the three bars grow and shrink together. They move by different amounts because each rating has a different weight linking it to the factor.</p>
+<p>In an actual factor analysis, correlations among responses are used to fit a model like this. Variation specific to each item and measurement error also matter.</p>
+<p>This can look similar to principal component analysis. The starting point is different, though: factor analysis assumes common factors to model relationships among items, while PCA combines the observed values into new coordinates.</p>
+<details><summary>Does the calculation discover “comfort”?</summary><p>The name is an interpretation based on the items. The calculation alone cannot establish a psychological entity called “comfort” or a causal relationship.</p></details>
+<aside aria-label="Related StatPlay content" class="related-reading"><span class="related-reading-label">Explore more on StatPlay</span><a href="../topics/corr.html">Explore correlation and scatterplots <span aria-hidden="true">→</span></a><p>See how a relationship between two variables appears in a scatterplot and a correlation coefficient.</p></aside>
+</section>
+<section class="reveal in" id="mv-5"><h2 class="sec-title">5. Cluster analysis: grouping similar responses</h2>
+<p class="sec-desc">Finally, let's group people with similar taste and seating scores. Press “Watch the grouping” to see memberships and centers change while the observed points stay in place.</p>
+<figure aria-labelledby="title-cluster" class="viz" id="fig-cluster"><div class="figure-no">FIG. 05</div><h3 id="title-cluster">The points stay put. Their groups change.</h3><p class="figure-sub">Grouping by taste and seating / both on a 0–100 scale</p>
+<fieldset class="group-controls"><legend>Choose the number of groups</legend><label><input name="cluster-k" type="radio" value="2"/>2 groups</label><label><input checked="" name="cluster-k" type="radio" value="3"/>3 groups</label><label><input name="cluster-k" type="radio" value="4"/>4 groups</label></fieldset>
+<button class="action play" id="cluster-demo" type="button">▶ Watch the grouping</button><p aria-live="polite" class="step-status" id="cluster-step"></p><canvas aria-busy="true" aria-describedby="cluster-summary" aria-label="Scatterplot of taste and seating. Groups use different colors and shapes; crosses show centers" class="" id="cluster-canvas" role="img">The text below describes the current state of the diagram.</canvas><div class="legend" id="cluster-legend"></div><p aria-live="polite" class="figure-summary" id="cluster-summary"></p>
+<details><summary>What counts as “similar” here?</summary><p>The diagram uses Euclidean distance between taste and seating scores. K-means reduces the sum of squared distances from points to their group centers. Different starting centers or variables can produce different results. The other four ratings are not used in this grouping.</p></details></figure>
+<p><em>Figure 5: K-means using taste and seating scores. Colors and shapes show groups; crosses show centers.</em></p>
+<p>Assign each point to the nearest center, then move each center to the average position of its group. Repeat these steps to form the groups.</p>
+<p>Three groups do not establish that customers fall into three natural types. Change the number of groups and the same data will be divided differently.</p>
+</section>
+<section class="reveal in" id="mv-6"><h2 class="sec-title">6. Different questions, the same data</h2>
+<table class="method-comparison">
+<thead>
+<tr>
+<th>What you want to do</th>
+<th>Method</th>
+<th>What is calculated</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Predict one outcome</td>
+<td>Multiple regression</td>
+<td>Coefficients and predicted outcome values</td>
+</tr>
+<tr>
+<td>View the data with fewer coordinates</td>
+<td>Principal component analysis</td>
+<td>New axes and each person's coordinates</td>
+</tr>
+<tr>
+<td>Model shared variation</td>
+<td>Factor analysis</td>
+<td>Factors and their links to observed items</td>
+</tr>
+<tr>
+<td>Group people with similar responses</td>
+<td>Cluster analysis</td>
+<td>Group memberships</td>
+</tr>
+</tbody>
+</table>
+<p class="sec-desc">All four examples use the same survey, but the tasks differ: predict an outcome, combine measurements, model shared variation or find similar responses.</p>
+<p>“Multivariate analysis” may sound like a lot at once. These diagrams offer a place to start. If one method catches your interest, try its controls and compare what you see with a textbook explanation.</p></section>
+
+<aside id="col-relations">
+<div class="col-topic-cta">
+<h3>// Try it live</h3>
+<a href="../topics/mreg.html" class="col-card-topic-cta">
+  <span class="col-card-topic-cta__icon" aria-hidden="true">▶</span>
+  <span class="col-card-topic-cta__body">
+    <span class="col-card-topic-cta__title">Explore regression coefficients and predictions</span>
+    <span class="col-card-topic-cta__desc">Use study and sleep hours to see what changes when a predictor is added.</span>
+  </span>
+  <span class="col-card-topic-cta__arrow" aria-hidden="true">&rarr;</span>
+</a>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<p style="margin:0 0 10px;color:var(--dim)">Apply what you just read by dragging through the matching interactive topics.</p>
+<ul>
+<li><a href="../topics/mreg.html">Multiple Regression</a> &mdash; Explore predictions through coefficients and a regression plane.</li>
+<li><a href="../topics/corr.html">Correlation</a> &mdash; See how two variables vary together in a scatterplot.</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="./standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">Try the standardization used before PCA with familiar examples.</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="./income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
+    <span class="fr-desc">Explore another example of prediction with multiple regression.</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; See all columns</a></p>
+</div>
+</aside>
+</main>
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+<script src="../../js/modules/column-shell.js" type="module"></script>
+<script src="../../js/modules/multivariate.js" type="module"></script>
+</body></html>

@@ -2,7 +2,8 @@
 export function initScrolltop(){
   const btn = document.createElement('button');
   btn.className = 'scroll-top-btn';
-  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.type = 'button';
+  btn.setAttribute('aria-label', document.documentElement.lang === 'en' ? 'Scroll to top' : 'ページの先頭へ');
   btn.innerHTML = '&#x25B2;';
   document.body.appendChild(btn);
 
@@ -18,6 +19,7 @@ export function initScrolltop(){
   window.addEventListener('scroll', toggle, {passive:true});
 
   btn.addEventListener('click', function(){
-    window.scrollTo({top:0, behavior:'smooth'});
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({top:0, behavior:reduce ? 'auto' : 'smooth'});
   });
 }

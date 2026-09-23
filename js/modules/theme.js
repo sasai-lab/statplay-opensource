@@ -24,8 +24,11 @@ export function initTheme(){
     //   Currently dark  -> show "LIGHT"  (click to go light)
     //   Currently light -> show "DARK"   (click to go dark)
     btn.textContent = mode === 'light' ? 'DARK' : 'LIGHT';
-    btn.setAttribute('aria-label', mode === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
-    btn.setAttribute('title', mode === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
+    const targetLabel = document.documentElement.lang === 'en'
+      ? (mode === 'light' ? 'Switch to dark theme' : 'Switch to light theme')
+      : (mode === 'light' ? '暗いテーマに切り替える' : '明るいテーマに切り替える');
+    btn.setAttribute('aria-label', targetLabel);
+    btn.setAttribute('title', targetLabel);
     btn.setAttribute('aria-pressed', mode === 'light' ? 'true' : 'false');
     window.__THEME = mode;
     // Update URL param so shared links carry the theme.

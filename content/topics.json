@@ -738,8 +738,8 @@
         },
         {
           "slug": "proptest",
-          "ja_why": "比率の検定が CLT で正規近似に乗ったあと、サンプルが小さくなると t 分布の裾の太さに乗り換える受け皿として家族が控えている",
-          "en_why": "the proportion test rides the CLT into a normal approximation; when n shrinks, the family's t-tail steps in to take over"
+          "ja_why": "比率の検定で使う正規近似と、t・χ²・F分布の用途の違いを確認する。",
+          "en_why": "Compare the normal approximation for a proportion test with the uses of t, chi-squared, and F distributions."
         },
         {
           "slug": "reg",
@@ -753,7 +753,6 @@
         },
         {
           "slug": "mreg",
-          "anchor": "dists-f",
           "ja_why": "重回帰の全体検定 F = (SSR/k)/(SSE/(n−k−1)) の臨界値を F 分布から取り出して、モデル全体の有意性を判定する場で家族が前に出る",
           "en_why": "the overall F = (SSR/k)/(SSE/(n−k−1)) test in multiple regression pulls its critical value from the F-distribution — the family steps forward when the whole model is on trial"
         }
@@ -945,6 +944,11 @@
           "slug": "income_prediction",
           "ja_why": "相関と回帰を実データに乗せて、変数同士の絡みがモデルをどう動かすかを物語として読み解く",
           "en_why": "puts correlation and regression onto real data — reading as a story how predictor entanglement reshapes the model"
+        },
+        {
+          "slug": "multivariate_analysis",
+          "ja_why": "同じアンケートから、予測したり、項目をまとめたりする様子を動く図で見てみます。",
+          "en_why": "See how the same survey can support prediction, dimensionality reduction, and other analyses."
         }
       ],
       "featured_columns": [
@@ -1004,6 +1008,11 @@
           "slug": "income_prediction",
           "ja_why": "「年齢だけで年収を説明できるか」を実データで動かして、単回帰の限界が重回帰への必要性を浮かび上がらせる",
           "en_why": "runs \"can age alone predict income?\" against real data — the limits of simple regression surface the case for multiple regression"
+        },
+        {
+          "slug": "multivariate_analysis",
+          "ja_why": "同じアンケートから、予測したり、項目をまとめたりする様子を動く図で見てみます。",
+          "en_why": "See how the same survey can support prediction, dimensionality reduction, and other analyses."
         }
       ],
       "featured_columns": [
@@ -1014,12 +1023,12 @@
       "slug": "mreg",
       "ja_sidebar": "重回帰分析",
       "en_sidebar": "Multiple Regression",
-      "ja_title": "重回帰分析 — 交絡を制御して本当の効果を見る",
-      "en_title": "Multiple Regression — Control Confounders to Find True Effects",
-      "ja_desc": "勉強時間だけで成績を予測すると、なぜ効果が過小評価されるのか。変数を加えてβ₁が変わる瞬間を体感し、「他の要因をコントロールする」偏回帰係数の意味を掴む。",
-      "en_desc": "Why does predicting scores from study hours alone underestimate the effect? Watch β₁ shift the moment you add a variable, and feel what 'controlling for confounders' really means.",
-      "ja_lead": "「勉強時間が長いほど成績が悪い」── 変数を1つ加えるだけで、結論がひっくり返る瞬間がある。これが交絡の正体。",
-      "en_lead": "\"More study time means lower scores\" — a result that flips the moment you add one more variable. That moment is what confounding looks like.",
+      "ja_title": "重回帰分析 — いくつかの変数から予測する",
+      "en_title": "Multiple Regression — Predicting with Several Variables",
+      "ja_desc": "勉強時間と睡眠時間から成績を予測。説明変数を加えると係数がどう変わるか、単回帰との比較と回帰平面で確かめます。",
+      "en_desc": "Predict scores from study and sleep hours. Compare simple and multiple regression to see how adding a predictor changes coefficients and the fitted plane.",
+      "ja_lead": "勉強時間だけで予測したときと、睡眠時間も加えたとき。同じデータでも、勉強時間の係数が変わることがあります。",
+      "en_lead": "Predict with study hours alone, then add sleep hours. Even with the same data, the coefficient for study hours can change.",
       "ja_kw": "重回帰分析, 偏回帰係数, 交絡, 多重回帰, 3D 可視化, 回帰分析",
       "en_kw": "multiple regression, partial coefficients, confounding, 3D visualization, controlling for variables",
       "teaches": [
@@ -1063,10 +1072,16 @@
           "slug": "income_prediction",
           "ja_why": "年齢・性別・都道府県の 3 変数を組み合わせて年収の幅を実データで読み解く、重回帰の現場",
           "en_why": "wires age, gender, and prefecture together to read income ranges from real data — multiple regression in the field"
+        },
+        {
+          "slug": "multivariate_analysis",
+          "ja_why": "同じアンケートから、予測したり、項目をまとめたりする様子を動く図で見てみます。",
+          "en_why": "See how the same survey can support prediction, dimensionality reduction, and other analyses."
         }
       ],
       "featured_columns": [
-        "income_prediction"
+        "income_prediction",
+        "multivariate_analysis"
       ]
     }
   ],
@@ -1210,6 +1225,11 @@
           "slug": "se_vs_sd",
           "ja_why": "z = (X−μ)/σ が単位を超える横の翻訳機なら、SE は個体から平均値への縦の翻訳機、対をなす姉妹コラム",
           "en_why": "if z = (X−μ)/σ is the horizontal translator across units, SE is the vertical translator from individuals to means — the paired sister column"
+        },
+        {
+          "slug": "multivariate_analysis",
+          "ja_why": "いくつもの項目を使った分析を、同じアンケートの動く図で見渡します。",
+          "en_why": "Explore several ways to analyze multiple variables using the same survey."
         }
       ],
       "featured_topic": {
@@ -1258,6 +1278,11 @@
           "slug": "error_types",
           "ja_why": "回帰係数の有意性を判断する場面で第 1 種・第 2 種の枠組みが必ず動き出す、判定のロジックを共有する姉妹コラム",
           "en_why": "the Type I/II framework kicks into motion every time regression coefficient significance is judged — the sister column that shares the decision logic"
+        },
+        {
+          "slug": "multivariate_analysis",
+          "ja_why": "いくつもの項目を使った分析を、同じアンケートの動く図で見渡します。",
+          "en_why": "Explore several ways to analyze multiple variables using the same survey."
         }
       ],
       "featured_topic": {
@@ -1389,6 +1414,66 @@
         "en_title": "Drag the live confidence interval",
         "ja_why": "信頼水準を動かすと幅 ±k·SE がそのままスライドし、SE が CI の心臓部であることが画面で確かめられる",
         "en_why": "Slide the confidence level and watch ±k·SE breathe — SE turns out to be the heart of every CI, visible in real time"
+      }
+    },
+    {
+      "slug": "multivariate_analysis",
+      "source": "content/columns/multivariate_analysis",
+      "ja_title": "多変量解析でできること",
+      "en_title": "Multivariate Analysis: What Can It Do?",
+      "ja_path": "/columns/multivariate_analysis.html",
+      "en_path": "/en/columns/multivariate_analysis.html",
+      "ja_nav": "多変量解析でできること",
+      "en_nav": "Uses of Multivariate Analysis",
+      "icon": "📊",
+      "ja_lead": "カフェのアンケートを使って、予測する・まとめる・関係を探る・分ける動きを見てみます。",
+      "en_lead": "Explore prediction, dimensionality reduction, common factors, and clustering with a café survey.",
+      "ja_desc": "多変量解析では、いくつもの項目をどう扱うのでしょう。カフェのアンケートを使い、重回帰分析・主成分分析・因子分析・クラスター分析を動く図で眺めます。",
+      "en_desc": "What can we do with data that has many variables? Explore multiple regression, PCA, factor analysis, and clustering through interactive café-survey examples.",
+      "ja_teaches": [
+        "重回帰分析",
+        "主成分分析",
+        "因子分析",
+        "クラスター分析"
+      ],
+      "en_teaches": [
+        "Multiple regression",
+        "Principal component analysis",
+        "Factor analysis",
+        "Clustering"
+      ],
+      "date_published": "2026-09-23",
+      "date_modified": "2026-09-23",
+      "related_topics": [
+        {
+          "slug": "mreg",
+          "ja_why": "説明変数を組み合わせた予測を、係数や回帰平面でも見てみます。",
+          "en_why": "Explore predictions through coefficients and a regression plane."
+        },
+        {
+          "slug": "corr",
+          "ja_why": "二つの項目が一緒に変わる様子を、散布図で確かめます。",
+          "en_why": "See how two variables vary together in a scatterplot."
+        }
+      ],
+      "related_columns": [
+        {
+          "slug": "standardization",
+          "ja_why": "主成分分析の前に使った標準化を、身近な数字で試します。",
+          "en_why": "Try the standardization used before PCA with familiar examples."
+        },
+        {
+          "slug": "income_prediction",
+          "ja_why": "重回帰分析を使った予測の、もう一つの例です。",
+          "en_why": "Explore another example of prediction with multiple regression."
+        }
+      ],
+      "featured_topic": {
+        "slug": "mreg",
+        "ja_title": "重回帰の係数と予測を、もう少し",
+        "en_title": "Explore regression coefficients and predictions",
+        "ja_why": "勉強時間と睡眠時間の例で、説明変数を加えたときの違いを見てみます。",
+        "en_why": "Use study and sleep hours to see what changes when a predictor is added."
       }
     }
   ],

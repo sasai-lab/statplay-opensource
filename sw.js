@@ -1,9 +1,11 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v3.14.11.1784419211';
-const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types", "se_vs_sd"];
+const CACHE = 'sp-v3.15.0.1790160344';
+const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types", "se_vs_sd", "multivariate_analysis"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
 const MODULE_FILES = [
+  'column-shell.js','multivariate.js','multivariate-hero.js','multivariate-i18n.js',
+  'multivariate-model.js','multivariate-motion.js','multivariate-pca.js',
   'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
   'chitest_common.js','chitest_gof.js','chitest_independence.js',
   'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
@@ -18,6 +20,7 @@ const ASSETS = [
   './index.html',
   './en/index.html',
   './css/stat_cyber.css',
+  './css/multivariate.css',
   './js/main.js',
   './js/utils.js',
   './js/katex-render.js',
