@@ -1,7 +1,7 @@
 import {
   $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize, throttledDraw
 } from '../../../js/utils.js';
-import { likelihoodShape } from '../math/beta.js';
+import { likelihoodShape, likelihoodHalfWidth } from '../math/beta.js';
 import { createStateAnimator, interpolateNumberState } from '../ui/graph-motion.js';
 
 const els = {};
@@ -29,21 +29,16 @@ function successes(n, viewState = state) {
   return Math.round(viewState.rate * n);
 }
 
-function approxWidth(n, viewState = state) {
-  const se = Math.sqrt(Math.max(1e-9, viewState.rate * (1 - viewState.rate) / n));
-  return 1.96 * se * 2;
-}
-
 function syncOutputs() {
   els.lsRateValue.textContent = pct(state.rate, 0);
   els.lsSmallNValue.textContent = String(state.smallN);
   els.lsLargeNValue.textContent = String(state.largeN);
   els.lsSmallCase.textContent = `${successes(state.smallN)} / ${state.smallN}`;
   els.lsLargeCase.textContent = `${successes(state.largeN)} / ${state.largeN}`;
-  els.lsWidthRatio.textContent = `${(approxWidth(state.smallN) / approxWidth(state.largeN)).toFixed(1)}倍`;
+  els.lsWidthRatio.textContent = `${(likelihoodHalfWidth(successes(state.smallN), state.smallN - successes(state.smallN)) / likelihoodHalfWidth(successes(state.largeN), state.largeN - successes(state.largeN))).toFixed(1)}倍`;
   if (els.lsGuideText) {
     els.lsGuideText.textContent =
-      `観測割合はどちらも ${pct(state.rate, 0)}。${successes(state.largeN)}/${state.largeN} の尤度は、${successes(state.smallN)}/${state.smallN} と比べて約 ${(approxWidth(state.smallN) / approxWidth(state.largeN)).toFixed(1)} 倍細くなる。`;
+      `ケースAは ${successes(state.smallN)}/${state.smallN}（${pct(successes(state.smallN) / state.smallN)}）、ケースBは ${successes(state.largeN)}/${state.largeN}（${pct(successes(state.largeN) / state.largeN)}）。観測数を変えて、山の幅を比べる。`;
   }
 }
 
@@ -70,10 +65,10 @@ function draw(viewState = visualState) {
   ctx.lineTo(right, bottom);
   ctx.stroke();
 
-  const smallN = Math.max(1, viewState.smallN);
-  const largeN = Math.max(1, viewState.largeN);
-  const smallX = viewState.rate * smallN;
-  const largeX = viewState.rate * largeN;
+  const smallN = Math.max(1, Math.round(viewState.smallN));
+  const largeN = Math.max(1, Math.round(viewState.largeN));
+  const smallX = successes(smallN, viewState);
+  const largeX = successes(largeN, viewState);
   const points = [];
   for (let i = 0; i <= 360; i += 1) {
     const pValue = i / 360;
@@ -103,10 +98,10 @@ function draw(viewState = visualState) {
   if (!mobile) {
     ctx.fillStyle = tc.text;
     ctx.font = `bold 13px ${jpFont}`;
-    ctx.fillText('割合をそろえて比較', left, top + 2);
+    ctx.fillText('近い割合で観測数を比較', left, top + 2);
     ctx.fillStyle = tc.dim;
     ctx.font = `10px ${jpFont}`;
-    ctx.fillText('観測割合', Math.min(xRate + 5, right - 54), top + 18);
+    ctx.fillText('指定割合', Math.min(xRate + 5, right - 54), top + 18);
   }
   ctx.fillStyle = tc.dim;
   ctx.font = `${mobile ? 10 : 12}px ${jpFont}`;
@@ -129,10 +124,7 @@ const animateGraph = createStateAnimator({
   interpolateState: (from, to, progress) => interpolateNumberState(from, to, progress, ['rate', 'smallN', 'largeN']),
   render: renderGraph
 });
-const scheduleDraw = throttledDraw(() => {
-  visualState = { ...state };
-  renderGraph();
-});
+const scheduleDraw = throttledDraw(() => animateGraph.snap());
 
 function readControls() {
   state.rate = Number(els.lsRate.value);

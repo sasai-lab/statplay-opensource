@@ -1,38 +1,87 @@
 # BayesPlay
 
-BayesPlay は、ベイズ統計学を「触って更新を追う」ための StatPlay 派生コンテンツです。既存の StatPlay 本体が統計トピックを横断的に扱うのに対して、このディレクトリではベイズ統計だけに集中し、事前分布、尤度、事後分布、予測、縮約、階層ベイズの入口を段階的に可視化する。
+BayesPlay は、ベイズ統計の更新や予測をグラフで試せる、StatPlayの学習コンテンツです。成功や失敗を1件加えると、分布はどちらへ動くのか。観測数が増えると、残る幅はどう変わるのか。7つのラボで条件を変えながら比べられます。
 
-現フェーズでは、`index.html` を目次ページとし、`lab-01.html` から `lab-07.html` までを個別ラボページとして実装している。ローカル HTTP サーバーで確認する。
+トップページは `index.html`、各ラボは `lab-01.html` から `lab-07.html` です。事前分布・尤度・事後分布から、予測、縮約、階層ベイズの入口までを扱います。
 
-## 設計資料
+## 現在の状態（2026-09-23）
 
-- [プロダクト設計](docs/product-design.md)
-- [コンテンツマップ](docs/content-map.md)
-- [実装計画](docs/implementation-plan.md)
+StatPlay v4.0.0のコンテンツとして、全7ラボを日本語で公開する構成です。[BayesPlayを開く](https://statplay.sasailab.com/bayesplay/)。共通ヘッダーから、StatPlay本体のトピックやコラムへ移動できます。
 
-## 初期方針
+トップでは、成功・失敗を追加しながら分布と数値を比較できます。ラボの詳しい説明は開閉でき、Lab 01・03〜07はPCでグラフと操作パネルを横に並べています。スマートフォンでは縦に並びます。
 
-- 各ラボは、グラフの前に「何を見ているか」、グラフの後に「何が分かればよいか」を置く。
-- 既存の `../topics/bayes.html` は、検査・陽性的中率の例として残す。
-- BayesPlay では、より一般的なベイズ推定の学習導線を作る。
-- フレームワークは追加せず、Vanilla JS + Canvas 2D + CSS で進める。
-- 初期は日本語のみ。ただし後から日英切替できる構成を前提にする。
+## ラボ一覧
 
-## 想定する公開形
+| ラボ | 試せること |
+|---|---|
+| [01 更新の基本](lab-01.html) | 成功・失敗を加え、事前分布と事後分布、95%信用区間を比較する。観測条件をLab 02へ引き継げる |
+| [03 観測の強さ](lab-03.html) | 7/10と70/100のように、近い割合で観測数が違うときの尤度の幅を比べる |
+| [02 予測分布](lab-02.html) | 次の5・20・50回の成功数を予測する。成功率を固定した二項分布と比較できる |
+| [04 平均の推定](lab-04.html) | 観測数やばらつきを変え、更新後の平均と幅がどう動くかを見る |
+| [05 件数の推定](lab-05.html) | 件数と観測時間を変え、発生率の推定を比べる |
+| [06 縮約](lab-06.html) | グループごとの観測比率と更新後の平均を比べる。平均の移動量と信用区間を別に表示する |
+| [07 階層ベイズの入口](lab-07.html) | グループ間の違いと、情報を共有したときの点の動きを概念図で見る |
 
-初期案:
+ナビゲーションの順序は **01 → 03 → 02 → 04 → 05 → 06 → 07** です。Lab 06・07の値は数値表でも確認できます。Lab 07は部分プーリングの概念図で、階層モデルの事後分布を計算するものではありません。
 
-- ローカル開発: `projects/statplay/bayesplay/index.html`
-- ラボページ: `projects/statplay/bayesplay/lab-01.html` から `lab-07.html`
-- 将来公開: `https://statplay.sasailab.com/bayesplay/`
-- StatPlay 本体からは、既存 Bayes トピックまたは関連コラムから導線を張る。
+## ローカルで開く
 
-本体の `content/topics.json`、`sw.js`、`sitemap.xml` への接続は、実装が一定品質に達してから行う。
+StatPlayのルートでHTTPサーバーを起動します。
 
-## Git 管理と公開方針
+```bash
+python3 -m http.server 8080
+# http://localhost:8080/bayesplay/index.html
+```
 
-BayesPlay は StatPlay リポジトリ内で Git 管理する。ただし、正式公開までは StatPlay 本体の本番デプロイ対象に含めない。
+ES modulesを使うため、HTMLファイルの直接起動ではなくHTTP経由で開きます。
 
-- `scripts/minify.mjs` の `EXCLUDE_DIRS` に `bayesplay` を入れ、`dist/bayesplay/` が生成されないようにする。
-- `/bayesplay/` として公開する段階でのみ、この除外を外す。
-- 除外を外す前に、canonical、sitemap、robots、Service Worker、StatPlay 本体からの導線をまとめて確認する。
+## 検証
+
+以下は開発用リポジトリの手順です。OSSリポジトリにはビルド・検証用スクリプトを含めていません。開発用の依存関係は [StatPlayのREADME](../README.md#development--開発) に記載しています。以下はStatPlayルートから実行します。
+
+```bash
+npm run test:bayesplay
+node scripts/test_site_shell.mjs
+
+# 公開用の配布物を準備した後に確認
+npm run build:prod
+npm run test:dist
+```
+
+`test:bayesplay` は数理テストとブラウザテストを実行します。ブラウザテストは一時HTTPサーバーとChromiumを起動し、全8ページを375px / 1280px・明暗両テーマで確認します。数値更新、キーボード操作、アクセシビリティ、段階切替、リサイズなどアニメーション中の入力も検証します。
+
+## 動作と説明の確認
+
+- アニメーション中の入力で以前の図に戻らないよう、最新の条件へ同期します。
+- Lab 01の区間比較は、更新後の段階で表示します。
+- Lab 04は、狭い分布も中心と幅に応じて描画点を補い、縦軸を分布の最大密度に合わせます。
+- 専用ブラウザ検査をCIで実行し、公開用の配布物も確認します。
+- 「見るべき」「読む必要がある」といった言い方を見直し、図で何を比べられるかを先に伝えています。
+
+## StatPlayとの共通部分
+
+- ヘッダーの編集箇所は `../content/partials/column_header.html` と `../content/topics.json`。`../scripts/site_header.py` が各ページへ反映します。Aboutへのリンク、テーマ切替、言語メニューを共用しています。
+- `experiences[].labs` にラボの順序を定義し、ローカルナビと前後リンクに使っています。
+- ヘッダーの操作は `../js/modules/site-shell.js`、BayesPlayの追加スタイルは `css/site-shell.css` です。
+- テーマの保存先は `svl_theme`。旧設定 `bayesplay-theme` は、共通設定が未設定の場合に移行します。
+- ENボタンでは、日本語のみのコンテンツであることと、StatPlay英語トップへのリンクを表示します。案内を開くだけでは言語設定を変更しません。
+
+## 表現と実装の方針
+
+- 図で何を比べられるかを先に伝え、専門用語はその動きと結びつけて説明します。
+- 読者の理解や感じ方を決めつけず、具体的な問いと観測できる変化を言葉にします。
+- 数値、モデルの前提、可視化で扱う範囲を明記します。Canvasの内容はDOMの数値でも確認できるようにします。
+- Vanilla JavaScript、ES modules、Canvas 2D、CSSを使います。
+- 既存の `../topics/bayes.html` は、検査と陽性的中率のトピックとして残します。
+
+## 公開方針
+
+BayesPlayはStatPlayリポジトリ内で管理し、StatPlay共通ヘッダーの1コンテンツとして、`https://statplay.sasailab.com/bayesplay/` で公開します。
+
+- `../content/topics.json` の `experiences` では `published: true` です。全7ラボとトップページを配布物とサイトマップに含めます。開発用のdocs・scriptsは配布しません。
+- 全8ページにcanonical、共有用メタ情報、構造化データを設定しています。英語のラボがないため、英語版への代替リンクは付けません。
+- Service Workerは全ラボと必要なJS・CSSを保存します。配布用のCSS・JS参照にはバージョンを付け、更新時はHTTPキャッシュを再取得します。
+
+## 開発用の資料
+
+統合設計、コンテンツマップ、実装・検証記録は、開発用リポジトリの `docs/` にまとめています。これらの内部資料はOSSリポジトリには含めていません。

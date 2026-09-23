@@ -3,8 +3,8 @@ export function clampRate(value, min = 0.02, max = 0.98) {
 }
 
 export function pooledPosteriorMean({ overallMean, priorStrength, successes, trials }) {
-  if (trials <= 0) return clampRate(overallMean);
-  return clampRate((overallMean * priorStrength + successes) / (priorStrength + trials));
+  if (trials <= 0) return overallMean;
+  return (overallMean * priorStrength + successes) / (priorStrength + trials);
 }
 
 export function weightedRate(groups) {

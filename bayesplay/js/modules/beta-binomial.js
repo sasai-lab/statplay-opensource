@@ -2,7 +2,7 @@ import {
   $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize, throttledDraw
 } from '../../../js/utils.js';
 import {
-  betaPdf, betaMean, betaMode, betaQuantile, betaBinomialPmf, betaUpdate, likelihoodShape
+  betaPdf, betaMean, betaMode, betaQuantile, betaBinomialPmf, binomialPmf, betaUpdate, likelihoodShape
 } from '../math/beta.js';
 import { createStateAnimator, interpolateNumberState } from '../ui/graph-motion.js';
 
@@ -39,6 +39,7 @@ function snapshotState(source = state) {
 }
 
 let visualState = snapshotState();
+let previousPosterior = null;
 
 const futurePresets = {
   short: 5,
@@ -113,7 +114,7 @@ function syncOutputs() {
   if (els.observedRatio) {
     els.observedRatio.textContent = observed
       ? `${state.successes}/${observed} (${pct(ratio, 1)})`
-      : '0/0';
+      : '観測なし';
   }
   if (els.predictiveGuideText) {
     els.predictiveGuideText.textContent =
@@ -123,8 +124,18 @@ function syncOutputs() {
     const predictive = predictiveSummary(summary);
     els.predictiveMode.textContent = `${predictive.mode}回`;
     els.predictiveRange.textContent = `${predictive.low} - ${predictive.high}回`;
+    const comparison = document.getElementById('predictiveComparisonTable');
+    if (comparison) comparison.innerHTML = '<caption>同じ事後分布から予測した成功数</caption><thead><tr><th scope="col">試行数</th><th scope="col">平均</th><th scope="col">80%予測範囲</th></tr></thead><tbody>' + [5, 20, 50].map(futureTrials => {
+      const range = predictiveSummary(summary, { ...state, futureTrials });
+      return `<tr><th scope="row">${futureTrials}回</th><td>${range.mean.toFixed(1)}回</td><td>${range.low}–${range.high}回</td></tr>`;
+    }).join('') + '</tbody>';
   }
   if (els.trialDots) renderTrialDots();
+  const conditions = document.getElementById('predictionConditions');
+  if (conditions) conditions.textContent = `事前分布 Beta(${countText(summary.alpha)}, ${countText(summary.beta)}) と成功${state.successes}回・失敗${state.failures}回から得た Beta(${countText(summary.posteriorAlpha)}, ${countText(summary.posteriorBeta)}) を使います。`;
+  const continueLink = document.getElementById('continuePrediction');
+  if (continueLink) continueLink.href = `lab-02.html?${new URLSearchParams({ priorMean: state.priorMean, priorStrength: state.priorStrength, successes: state.successes, failures: state.failures })}`;
+  renderIntervalComparison(summary);
   syncProcessGuide(summary);
 }
 
@@ -153,24 +164,48 @@ function syncProcessGuide(summary) {
   const dataRate = observed ? state.successes / observed : 0;
   const text = {
     prior: `観測前には、候補の山が出発点として置かれる。事前平均 ${pct(state.priorMean, 0)} は中心、事前分布の強さ ${state.priorStrength}件分は、実観測ではない仮の重みとして表れる。`,
-    evidence: `観測が重なる。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。観測が支持する山は ${pct(dataRate, 1)} 付近に立つ。`,
+    evidence: observed ? `観測が重なる。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。観測が支持する山は ${pct(dataRate, 1)} 付近に立つ。` : '観測がないため、尤度は一定。どの成功率も同じ重みになり、事後分布は事前分布と一致する。',
     posterior: `出発点と観測が合わさり、更新後の分布が現れる。成功側は ${countText(summary.alpha)} + ${state.successes}、失敗側は ${countText(summary.beta)} + ${state.failures} として積み上がる。`
   };
   els.processNarrative.textContent = text[state.updateStep];
   const detail = {
     prior: `成功側 ${countText(summary.alpha)}・失敗側 ${countText(summary.beta)} に近い仮の重みが、出発点の形を作る。強さ ${state.priorStrength} は、観測が少ないときに出発点がどれだけ動きにくいかを表す。`,
-    evidence: `観測割合は ${pct(dataRate, 1)}。マゼンタの尤度が出発点に重なる。`,
-    posterior: `更新後の平均は ${pct(summary.mean, 1)}。95%信用区間は信頼区間とは別に、更新後の山の幅をこのモデルと事前分布のもとで切り出した ${pct(summary.low, 1)} - ${pct(summary.high, 1)} と読む。`
+    evidence: observed ? `観測割合は ${pct(dataRate, 1)}。マゼンタの尤度が出発点に重なる。` : '成功率の観測割合は、まだ計算できません。成功または失敗を加えてみてください。',
+    posterior: `更新後の平均は ${pct(summary.mean, 1)}。95%信用区間は ${pct(summary.low, 1)}〜${pct(summary.high, 1)}。このモデルと事前分布のもとで、成功率がこの範囲にある確率は95%です。信頼区間とは定義が異なります。`
   };
   if (els.processDetail) els.processDetail.textContent = detail[state.updateStep];
 }
 
 function renderTrialDots() {
   const total = state.successes + state.failures;
-  const ratio = total ? state.successes / total : 0;
-  els.trialDots.textContent = total
-    ? `成功側に +${state.successes}、失敗側に +${state.failures}（観測割合 ${pct(ratio, 1)}）`
-    : 'まだ観測はない';
+  els.trialDots.textContent = total ? `成功 ${state.successes} / 失敗 ${state.failures}（●成功・×失敗、1つが1回）` : 'まだ観測はない';
+  const dots = document.createElement('span');
+  dots.className = 'bp-observations';
+  dots.setAttribute('aria-hidden', 'true');
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('i');
+    dot.className = 'bp-observation' + (i >= state.successes ? ' failure' : '');
+    dot.textContent = i >= state.successes ? '×' : '';
+    dots.append(dot);
+  }
+  els.trialDots.append(dots);
+}
+
+function renderIntervalComparison(summary) {
+  const box = document.getElementById('intervalComparison');
+  if (!box) return;
+  box.hidden = state.updateStep !== 'posterior';
+  if (box.hidden) return;
+  const before = previousPosterior || {
+    low: betaQuantile(.025, summary.alpha, summary.beta),
+    high: betaQuantile(.975, summary.alpha, summary.beta)
+  };
+  const width = summary.high - summary.low;
+  const oldWidth = before.high - before.low;
+  const change = Math.abs(width - oldWidth) < .00005 ? 'ほぼ同じ' : width < oldWidth ? '狭く' : '広く';
+  box.innerHTML = [[previousPosterior ? '直前の更新後' : '観測前', before], ['今回の更新後', summary]].map(([label, range]) =>
+    `<div class="bp-interval-row"><span>${label}</span><div class="bp-interval-track" aria-label="${pct(range.low)}から${pct(range.high)}"><i style="left:${range.low * 100}%;width:${(range.high - range.low) * 100}%"></i></div></div>`
+  ).join('') + `<p>0〜100%の共通目盛りで95%信用区間を比較。幅は ${(oldWidth * 100).toFixed(1)} → ${(width * 100).toFixed(1)} ポイント。この条件では${change}${change === 'ほぼ同じ' ? 'です' : 'なりました'}。</p>`;
 }
 
 function sampleCurves(width = 360, viewState = state) {
@@ -178,23 +213,29 @@ function sampleCurves(width = 360, viewState = state) {
   const points = [];
   let maxDensity = 0;
   let maxLikelihood = 0;
+  let interiorMax = 0;
   for (let i = 0; i <= width; i += 1) {
     const pValue = i / width;
     const x = Math.min(1 - 1e-5, Math.max(1e-5, pValue));
     const prior = betaPdf(x, model.alpha, model.beta);
     const posterior = betaPdf(x, model.posteriorAlpha, model.posteriorBeta);
+    const previous = previousPosterior ? betaPdf(x, previousPosterior.posteriorAlpha, previousPosterior.posteriorBeta) : 0;
     const likelihood = likelihoodShape(x, viewState.successes, viewState.failures);
-    maxDensity = Math.max(maxDensity, prior, posterior);
+    maxDensity = Math.max(maxDensity, prior, posterior, previous);
+    if (i > 0 && i < width) interiorMax = Math.max(interiorMax, prior, posterior, previous);
     maxLikelihood = Math.max(maxLikelihood, likelihood);
-    points.push({ pValue, prior, posterior, likelihood });
+    points.push({ pValue, prior, posterior, previous, likelihood });
   }
-  const likelihoodScale = maxDensity * 0.82 / Math.max(maxLikelihood, 1e-12);
-  const yMax = Math.max(maxDensity, maxDensity * 0.82) * 1.08;
-  return { points, yMax, likelihoodScale };
+  // Beta shapes below 1 have infinite density at a boundary. Keep the
+  // interior readable and disclose clipping instead of flattening every curve.
+  const displayMax = Math.min(maxDensity, interiorMax * 1.5);
+  const likelihoodScale = displayMax * 0.82 / Math.max(maxLikelihood, 1e-12);
+  const yMax = displayMax * 1.08;
+  return { points, yMax, likelihoodScale, clipped: maxDensity > yMax };
 }
 
 function drawAxis(ctx, bounds, tc, yLabel) {
-  const { left, right, top, bottom, width, height } = bounds;
+  const { left, right, top, bottom, width } = bounds;
   ctx.save();
   ctx.strokeStyle = withAlpha(tc.dim, 0.45);
   ctx.lineWidth = 1;
@@ -274,7 +315,7 @@ function drawMarkers(ctx, bounds, summary, tc, viewState = state) {
   ctx.save();
   ctx.font = `10px ${jpFont}`;
   ctx.textBaseline = 'top';
-  for (const item of lines) {
+  for (const [index, item] of lines.entries()) {
     const x = left + item.x * width;
     ctx.globalAlpha = item.alpha ?? 1;
     ctx.strokeStyle = withAlpha(item.color, 0.7);
@@ -286,7 +327,7 @@ function drawMarkers(ctx, bounds, summary, tc, viewState = state) {
     ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle = item.color;
-    ctx.fillText(item.label, Math.min(x + 5, left + width - 42), top + 8);
+    ctx.fillText(item.label, Math.min(x + 5, left + width - 42), top + 8 + index * 16);
     ctx.globalAlpha = 1;
   }
   ctx.restore();
@@ -311,7 +352,9 @@ function drawPosterior(viewState = visualState) {
   bounds.width = bounds.right - bounds.left;
   bounds.height = bounds.bottom - bounds.top;
 
-  const { points, yMax, likelihoodScale } = sampleCurves(mobile ? 240 : 420, viewState);
+  const { points, yMax, likelihoodScale, clipped } = sampleCurves(mobile ? 240 : 420, viewState);
+  const scaleNote = document.getElementById('densityScaleNote');
+  if (scaleNote) scaleNote.hidden = !clipped;
   const summary = posteriorSummary(viewState);
   const stepLevel = viewState.stepLevel ?? stepLevels[viewState.updateStep] ?? 0;
   const displayStep = levelToStep(stepLevel);
@@ -336,6 +379,11 @@ function drawPosterior(viewState = visualState) {
     ctx.setLineDash([8, 5]);
     neonLine(ctx, likelihoodPath, tc.magenta, 8, mobile ? 1.5 : 2);
     ctx.setLineDash([]);
+    ctx.restore();
+  }
+  if (posteriorAlpha > 0 && previousPosterior) {
+    ctx.save(); ctx.setLineDash([2, 5]);
+    neonLine(ctx, pathFrom(points, bounds, yMax, p => p.previous), tc.dim, 0, 1.3);
     ctx.restore();
   }
   if (posteriorAlpha > 0) {
@@ -370,63 +418,50 @@ function drawPredictive(viewState = visualState) {
   const canvas = els.predictiveCanvas;
   if (!canvas) return;
   const mobile = canvas.clientWidth < 560;
-  canvas.style.height = mobile ? '240px' : '320px';
+  canvas.style.height = mobile ? '420px' : '450px';
   const { ctx, w, h } = resizeCanvas(canvas);
   if (!ctx) return;
   const tc = themeColors();
-  drawGrid(ctx, w, h, withAlpha(tc.cyan, 0.05));
+  drawGrid(ctx, w, h, withAlpha(tc.cyan, .04));
   const summary = posteriorSummary(viewState);
-  const { n, pmf, low, high, mean } = predictiveSummary(summary, viewState);
-  const maxP = Math.max(...pmf, 1e-9);
-  const left = mobile ? 34 : 48;
-  const right = w - (mobile ? 12 : 24);
-  const top = mobile ? 22 : 28;
-  const bottom = h - (mobile ? 38 : 48);
-  const innerW = right - left;
-  const innerH = bottom - top;
-  const barGap = n > 36 ? 1 : 3;
-  const barW = Math.max(2, innerW / (n + 1) - barGap);
-
-  ctx.strokeStyle = withAlpha(tc.dim, 0.45);
+  const { n, pmf } = predictiveSummary(summary, viewState);
+  const known = pmf.map((_, k) => binomialPmf(k, n, summary.mean));
+  const maxP = Math.max(...pmf, ...known) * 1.15;
+  const left = mobile ? 42 : 64, right = w - 18, top = 40, bottom = h - 192;
+  const x = k => left + (k + .5) / 61 * (right - left);
+  const y = p => bottom - p / maxP * (bottom - top);
+  ctx.font = '11px sans-serif'; ctx.fillStyle = tc.text;
+  ctx.fillText(`未来 ${n}回 / 予測平均 ${(n * summary.mean).toFixed(1)}回`, left, 17);
+  ctx.fillStyle = tc.dim; ctx.fillText('確率', left, 33);
   ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(left, top);
-  ctx.lineTo(left, bottom);
-  ctx.lineTo(right, bottom);
-  ctx.stroke();
-
-  const bandStart = left + low * innerW / (n + 1);
-  const bandEnd = left + (high + 1) * innerW / (n + 1);
-  ctx.fillStyle = withAlpha(tc.yellow, 0.12);
-  ctx.fillRect(bandStart, top, Math.max(2, bandEnd - bandStart), innerH);
-
-  for (let k = 0; k <= n; k += 1) {
-    const x = left + k * innerW / (n + 1) + barGap / 2;
-    const bh = pmf[k] / maxP * innerH;
-    ctx.fillStyle = withAlpha(tc.yellow, 0.68);
-    ctx.fillRect(x, bottom - bh, barW, bh);
-  }
-
-  const meanX = left + mean * innerW / (n + 1) + barGap / 2;
-  ctx.strokeStyle = withAlpha(tc.text, 0.82);
-  ctx.lineWidth = mobile ? 1.3 : 1.6;
-  ctx.setLineDash([5, 5]);
-  ctx.beginPath();
-  ctx.moveTo(meanX, top);
-  ctx.lineTo(meanX, bottom);
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  ctx.fillStyle = tc.text;
-  ctx.font = `bold ${mobile ? 11 : 13}px ${jpFont}`;
-  ctx.fillText(`未来の試行数: ${n}`, left, top + 2);
-  ctx.fillStyle = tc.dim;
-  ctx.font = `${mobile ? 10 : 12}px ${jpFont}`;
-  ctx.fillText('縦軸: 確率', left, top + (mobile ? 17 : 20));
-  ctx.fillText('成功数', right - 48, bottom + 19);
-  ctx.fillText('0', left, bottom + 17);
-  ctx.textAlign = 'right';
-  ctx.fillText(String(n), right, bottom + 17);
+  [0, .5, 1].forEach(t => {
+    ctx.strokeStyle = withAlpha(tc.dim, .22);
+    ctx.beginPath(); ctx.moveTo(left, y(maxP * t)); ctx.lineTo(right, y(maxP * t)); ctx.stroke();
+    ctx.textAlign = 'right'; ctx.fillText(`${(maxP * t * 100).toFixed(0)}%`, left - 6, y(maxP * t) + 4);
+  });
+  const bw = Math.max(1, (right - left) / 61 - 1);
+  pmf.forEach((p, k) => {
+    ctx.fillStyle = withAlpha(tc.yellow, .72);
+    ctx.fillRect(x(k) - bw / 2, y(p), bw, bottom - y(p));
+  });
+  ctx.strokeStyle = tc.cyan; ctx.lineWidth = 1.7; ctx.setLineDash([4, 3]);
+  ctx.beginPath(); known.forEach((p, k) => { if (k) ctx.lineTo(x(k), y(p)); else ctx.moveTo(x(k), y(p)); }); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = tc.dim; ctx.textAlign = 'center';
+  for (let k = 0; k <= 60; k += 10) ctx.fillText(String(k), x(k), bottom + 18);
+  ctx.textAlign = 'right'; ctx.fillText('成功数（回）', right, bottom + 36);
+  ctx.textAlign = 'left'; ctx.fillStyle = tc.text;
+  ctx.fillText('80%予測範囲を同じ目盛りで比べる', left, bottom + 65);
+  [5, 20, 50].forEach((futureTrials, index) => {
+    const range = predictiveSummary(summary, { ...viewState, futureTrials });
+    const rowY = bottom + 88 + index * 32;
+    ctx.textAlign = 'right'; ctx.fillStyle = tc.dim; ctx.fillText(`${futureTrials}回`, left - 5, rowY + 4);
+    ctx.strokeStyle = withAlpha(tc.dim, .18); ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x(0), rowY); ctx.lineTo(x(60), rowY); ctx.stroke();
+    ctx.strokeStyle = tc.yellow; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.moveTo(x(range.low), rowY); ctx.lineTo(x(range.high), rowY); ctx.stroke();
+    ctx.fillStyle = tc.text; ctx.beginPath(); ctx.arc(x(range.mean), rowY, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.textAlign = 'left'; ctx.fillStyle = tc.dim; ctx.fillText(`${range.low}–${range.high}`, Math.min(x(range.high) + 8, right - 32), rowY + 4);
+  });
   ctx.textAlign = 'left';
 }
 
@@ -453,10 +488,7 @@ const animateGraph = createStateAnimator({
   interpolateState: interpolateVisualState,
   render: renderGraph
 });
-const scheduleDraw = throttledDraw(() => {
-  visualState = snapshotState(state);
-  renderGraph();
-});
+const scheduleDraw = throttledDraw(() => animateGraph.snap());
 
 function readControls() {
   if (els.priorMean) state.priorMean = Number(els.priorMean.value);
@@ -492,9 +524,10 @@ function bindControls() {
   ].forEach((id) => {
     if (!els[id]) return;
     els[id].addEventListener('input', () => {
+      previousPosterior = (id === 'successes' || id === 'failures') ? posteriorSummary() : null;
       readControls();
-      if ((id === 'successes' || id === 'failures') && state.updateStep === 'prior') {
-        state.updateStep = 'evidence';
+      if ((id === 'successes' || id === 'failures') ) {
+        state.updateStep = 'posterior';
       }
       syncFuturePresetButtons();
       if (id === 'showLikelihood' || id === 'showCredible') animateGraph();
@@ -503,18 +536,22 @@ function bindControls() {
   });
 
   els.addSuccess?.addEventListener('click', () => {
+    previousPosterior = posteriorSummary();
     state.successes = Math.min(80, state.successes + 1);
-    if (state.updateStep === 'prior') state.updateStep = 'evidence';
+    state.updateStep = 'posterior';
     clampDataInputs();
     animateGraph();
   });
   els.addFailure?.addEventListener('click', () => {
+    previousPosterior = posteriorSummary();
     state.failures = Math.min(80, state.failures + 1);
-    if (state.updateStep === 'prior') state.updateStep = 'evidence';
+    state.updateStep = 'posterior';
     clampDataInputs();
     animateGraph();
   });
   els.resetData?.addEventListener('click', () => {
+    previousPosterior = null;
+    state.updateStep = 'posterior';
     state.successes = 7;
     state.failures = 3;
     clampDataInputs();
@@ -555,6 +592,14 @@ export function initBetaBinomialLab() {
   els.futurePresetButtons = [...document.querySelectorAll('[data-future-preset]')];
   if (!els.posteriorCanvas && !els.predictiveCanvas) return;
   readControls();
+  if (els.predictiveCanvas) {
+    const params = new URLSearchParams(location.search);
+    for (const [key, min, max] of [['priorMean', .05, .95], ['priorStrength', 2, 120], ['successes', 0, 80], ['failures', 0, 80]]) {
+      if (!params.has(key)) continue;
+      const value = Number(params.get(key));
+      if (Number.isFinite(value) && value >= min && value <= max && (!['successes', 'failures'].includes(key) || Number.isInteger(value))) state[key] = value;
+    }
+  }
   syncFuturePresetButtons();
   bindControls();
   scheduleDraw();

@@ -1,7 +1,8 @@
 import {
-  $, resizeCanvas, drawGrid, neonLine, normPDF, themeColors, withAlpha, debouncedResize, throttledDraw
+  $, resizeCanvas, drawGrid, neonLine, themeColors, withAlpha, debouncedResize, throttledDraw
 } from '../../../js/utils.js';
 import { createStateAnimator, interpolateNumberState } from '../ui/graph-motion.js';
+import { sampleNormalCurves } from '../math/normal.js';
 
 const els = {};
 const state = {
@@ -63,24 +64,17 @@ function draw(viewState = visualState) {
   const tc = themeColors();
   drawGrid(ctx, w, h, withAlpha(tc.cyan, 0.05));
   const m = model(viewState);
-  const lo = Math.min(viewState.priorMean - 4 * viewState.priorSd, viewState.observedMean - 4 * m.likelihoodSd, m.posteriorMean - 4 * m.posteriorSd);
-  const hi = Math.max(viewState.priorMean + 4 * viewState.priorSd, viewState.observedMean + 4 * m.likelihoodSd, m.posteriorMean + 4 * m.posteriorSd);
+  const { lo, hi, yMax, values } = sampleNormalCurves({
+    prior: { mean: viewState.priorMean, sd: viewState.priorSd },
+    likelihood: { mean: viewState.observedMean, sd: m.likelihoodSd },
+    posterior: { mean: m.posteriorMean, sd: m.posteriorSd }
+  });
   const left = mobile ? 40 : 54;
   const right = w - (mobile ? 14 : 24);
   const top = mobile ? 24 : 30;
   const bottom = h - (mobile ? 40 : 48);
   const width = right - left;
   const height = bottom - top;
-  const values = [];
-  let yMax = 0;
-  for (let i = 0; i <= 360; i += 1) {
-    const x = lo + (hi - lo) * i / 360;
-    const prior = normPDF(x, viewState.priorMean, viewState.priorSd);
-    const likelihood = normPDF(x, viewState.observedMean, m.likelihoodSd);
-    const posterior = normPDF(x, m.posteriorMean, m.posteriorSd);
-    yMax = Math.max(yMax, prior, likelihood, posterior);
-    values.push({ x, prior, likelihood, posterior });
-  }
   const toPx = x => left + (x - lo) / (hi - lo) * width;
   const toPath = key => values.map(p => [toPx(p.x), bottom - p[key] / yMax * height * 0.96]);
   ctx.strokeStyle = withAlpha(tc.dim, 0.45);
@@ -90,13 +84,15 @@ function draw(viewState = visualState) {
   ctx.lineTo(right, bottom);
   ctx.stroke();
   neonLine(ctx, toPath('prior'), tc.cyan, 9, mobile ? 1.8 : 2.2);
+  ctx.setLineDash([7, 5]);
   neonLine(ctx, toPath('likelihood'), tc.magenta, 9, mobile ? 1.8 : 2.2);
+  ctx.setLineDash([]);
   neonLine(ctx, toPath('posterior'), tc.yellow, 14, mobile ? 2.1 : 2.8);
   [
     { x: viewState.priorMean, label: '出発点', color: tc.cyan },
     { x: viewState.observedMean, label: '観測', color: tc.magenta },
     { x: m.posteriorMean, label: '更新後', color: tc.yellow }
-  ].forEach((line) => {
+  ].forEach((line, index) => {
     const px = toPx(line.x);
     ctx.strokeStyle = withAlpha(line.color, 0.65);
     ctx.setLineDash([4, 5]);
@@ -105,10 +101,10 @@ function draw(viewState = visualState) {
     ctx.lineTo(px, bottom);
     ctx.stroke();
     ctx.setLineDash([]);
-    if (!mobile) {
+    {
       ctx.fillStyle = line.color;
       ctx.font = `10px ${jpFont}`;
-      ctx.fillText(line.label, Math.min(px + 5, right - 42), top + 8);
+      ctx.fillText(line.label, Math.min(px + 5, right - 42), top + 8 + index * 16);
     }
   });
   ctx.fillStyle = tc.dim;
@@ -134,10 +130,7 @@ const animateGraph = createStateAnimator({
   ]),
   render: renderGraph
 });
-const scheduleDraw = throttledDraw(() => {
-  visualState = { ...state };
-  renderGraph();
-});
+const scheduleDraw = throttledDraw(() => animateGraph.snap());
 
 function readControls() {
   state.priorMean = Number(els.nnPriorMean.value);

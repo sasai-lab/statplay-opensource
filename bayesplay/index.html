@@ -3,237 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BayesPlay の目次。ベイズ更新、予測分布、観測の強さ、平均、件数、縮約、階層ベイズ入口を個別ラボで学ぶ。">
-  <meta name="robots" content="noindex, nofollow">
-  <title>BayesPlay - ベイズ更新ラボ目次</title>
+  <meta name="description" content="事前分布から観測、更新、予測へ。分布を動かしてベイズ統計の直感をつかむ、StatPlayのベイズ統計ラボ。7つのインタラクティブなラボ。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>BayesPlay — 触って見えるベイズ統計</title>
   <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
   <link rel="stylesheet" href="../css/stat_cyber.css">
   <link rel="stylesheet" href="css/bayesplay.css">
+  <link rel="stylesheet" href="css/site-shell.css">
   <script type="module" src="js/main.js"></script>
+<!-- experience-meta:start -->
+<link rel="canonical" href="https://statplay.sasailab.com/bayesplay/">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/bayesplay/">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/bayesplay/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BayesPlay — 触って見えるベイズ統計">
+<meta property="og:description" content="事前分布から観測、更新、予測へ。分布を動かしてベイズ統計の直感をつかむ、StatPlayのベイズ統計ラボ。7つのインタラクティブなラボ。">
+<meta property="og:url" content="https://statplay.sasailab.com/bayesplay/">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="StatPlay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BayesPlay — 触って見えるベイズ統計">
+<meta name="twitter:description" content="事前分布から観測、更新、予測へ。分布を動かしてベイズ統計の直感をつかむ、StatPlayのベイズ統計ラボ。7つのインタラクティブなラボ。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "BayesPlay — 触って見えるベイズ統計", "description": "事前分布から観測、更新、予測へ。分布を動かしてベイズ統計の直感をつかむ、StatPlayのベイズ統計ラボ。7つのインタラクティブなラボ。", "url": "https://statplay.sasailab.com/bayesplay/", "inLanguage": "ja", "isAccessibleForFree": true, "learningResourceType": "Interactive visualization", "publisher": {"@type": "Organization", "name": "Sasai Lab"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "BayesPlay", "item": "https://statplay.sasailab.com/bayesplay/"}]}]}</script>
+<!-- experience-meta:end -->
 </head>
 <body class="topic-page bayesplay-page">
   <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
-
-  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
-    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
-      <span class="bars"></span>
-    </button>
-    <div class="nav-links" id="navLinks">
-
-      <a href="../topics/bayes.html">ベイズ定理</a>
-      <a href="index.html" class="current">目次</a>
-      <a href="lab-01.html">01 更新</a>
-      <a href="lab-02.html">02 予測</a>
-      <a href="lab-03.html">03 観測の強さ</a>
-      <a href="lab-04.html">04 平均</a>
-      <a href="lab-05.html">05 件数</a>
-      <a href="lab-06.html">06 縮約</a>
-      <a href="lab-07.html">07 階層</a>
-      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
-    </div>
-  </nav>
-
-  <div class="bayes-hero bayes-hero--index" id="bayesHero">
-    <canvas id="bayesHeroCanvas" aria-hidden="true"></canvas>
-    <div class="bayes-hero__content">
-      <div class="bayes-hero__impact" id="bayesHeroImpact">BayesPlay</div>
-      <h1 id="bayesHeroTitle">
-        <span class="hero-title-line">ベイズ更新を、</span>
-        <span class="hero-title-line">順番に手で動かして読む。</span>
-      </h1>
-      <p class="bayes-hero__sub" id="bayesHeroSub">
-        事前分布、尤度、事後分布、予測、縮約、階層ベイズの入口までを、短いラボに分けて進む。
-      </p>
-      <div class="bayes-hero__meta" id="bayesHeroMeta" aria-label="BayesPlay metadata">
-        <span>7 labs</span>
-        <span>Bayesian updating</span>
-        <span>StatPlay project</span>
-      </div>
-    </div>
-    <button class="bayes-hero__scroll" id="bayesHeroScroll" type="button" aria-label="目次へスクロール">
-      <span>INDEX</span>
-      <i aria-hidden="true"></i>
-    </button>
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="index.html" aria-current="page" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <div class="site-language"><button id="siteLanguageToggle" type="button" class="lang-toggle" aria-expanded="false" aria-controls="siteLanguageNotice" aria-label="言語メニュー">EN</button><div id="siteLanguageNotice" class="site-language-notice" hidden><p>このコンテンツは日本語のみです。</p><a href="../en/index.html" data-site-lang="en" hreflang="en" lang="en">StatPlay in English</a></div></div>
   </div>
+</nav>
+<!-- bayes-local:start --><div class="bp-local-nav" role="navigation" aria-label="BayesPlay ラボ"><a href="index.html" aria-current="page">BayesPlay</a><a href="lab-01.html">01 更新</a><a href="lab-03.html">03 観測の強さ</a><a href="lab-02.html">02 予測</a><a href="lab-04.html">04 平均</a><a href="lab-05.html">05 件数</a><a href="lab-06.html">06 縮約</a><a href="lab-07.html">07 階層</a></div><!-- bayes-local:end -->
 
-  <main id="main-content" class="bayesplay-main">
-    <section class="project-note reveal in" aria-labelledby="project-note-title">
-      <div class="story-kicker">WHAT IS BAYESIAN STATISTICS</div>
-      <h2 id="project-note-title" class="sec-title">ベイズ統計学は、情報を更新しながら候補のありそうさを見直す統計</h2>
-      <p>
-        ベイズ統計学は、まだ本当の値がわからないときに、ありそうな値を幅のある候補として置き、データを見るたびにその候補の山を更新していく見方です。候補を単純に消していくというより、候補ごとの「ありそうさ」を観測に合わせて付け替えていきます。
-      </p>
-      <p>
-        StatPlay で扱ってきた統計可視化の流れを引き継ぎ、ここではベイズ統計学にフォーカスした可視化を扱います。教科書のほうが詳しく正確ですが、式を読む前に流れのイメージが持てるだけでも、学習の入り口は少し軽くなります。BayesPlay では、出発点（事前分布）、データが支持する形（尤度）、更新後の候補（事後分布）を、可視化のラボ（実験場）として順番に確認できます。
-      </p>
 
-      <div class="bayes-update-diagram" aria-label="ベイズ統計学の更新の流れ">
-        <div class="update-node update-node--prior">
-          <span>1</span>
-          <strong>出発点</strong>
-          <p>まだ観測が少ない段階で、ありそうな候補を幅のある分布として置く。</p>
-        </div>
-        <div class="update-arrow" aria-hidden="true">×</div>
-        <div class="update-node update-node--data">
-          <span>2</span>
-          <strong>観測</strong>
-          <p>新しく得たデータが、どの候補を強く支持しているかを見る。</p>
-        </div>
-        <div class="update-arrow" aria-hidden="true">→</div>
-        <div class="update-node update-node--posterior">
-          <span>3</span>
-          <strong>更新後</strong>
-          <p>出発点と観測を合わせて、候補の山を動かし、幅も変える。</p>
-        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <main id="main-content" class="bp-home">
+    <section class="bp-intro" aria-labelledby="bp-title">
+      <div class="bp-intro-copy">
+        <p class="bp-eyebrow">SASAI LAB / INTERACTIVE STATISTICS</p>
+        <h1 id="bp-title">BAYES<span>PLAY</span></h1>
+        <p class="bp-tagline">観測するたび、<br>見方が変わる。</p>
+        <p class="bp-lead">まだ分からないことを、分布で表す。<br>データが加わると、その形はどう変わる？<br>触って、比べて、ベイズ統計の直感をつかむ。</p>
+        <div class="bp-actions"><a class="bp-primary" href="lab-01.html">01 更新から始める <span aria-hidden="true">→</span></a><a class="bp-text-link" href="#lab-index">7つのラボを見る ↓</a></div>
+        <p class="bp-sister-note"><a href="../index.html">StatPlay</a> のベイズ統計ラボ。観測から更新、予測へ。</p>
       </div>
-      <p class="diagram-note">
-        正確には、候補ごとに出発点の高さと観測の支持の強さを掛け合わせ、最後に全体が1つの分布として読める高さに整えます。
-      </p>
-
-      <div class="stats-compare" aria-label="通常の統計学とベイズ統計学の違い">
-        <article>
-          <span>初学でよく学ぶ統計学の入口</span>
-          <strong>データの揺れから、固定された未知量を推定する</strong>
-          <p>母平均や成功率はどこかに固定されていると考え、標本がどれくらい揺れるかを使って推定や検定を行う。</p>
-        </article>
-        <article>
-          <span>ベイズ統計学の入口</span>
-          <strong>未知量についての見方を、情報で更新する</strong>
-          <p>未知の値そのものが揺れるというより、未知量についての不確実性を分布で表し、観測でその分布を更新する。</p>
-        </article>
-      </div>
-      <p class="compare-note">
-        どちらもデータから未知量を読む方法です。ベイズ統計学は自動的に正解を出す方法ではなく、事前分布やモデルの仮定を明示したうえで更新する方法として扱います。
-      </p>
-    </section>
-
-    <section class="update-compare-section reveal in" id="update-compare" aria-labelledby="update-compare-title">
-      <div class="section-copy">
-        <div class="sec-tag">STEP PLAY 1 / 2 / 3</div>
-        <h2 id="update-compare-title" class="sec-title">
-          <span class="compare-title-line">1、2、3を押して、</span>
-          <span class="compare-title-line">グラフの変化を</span>
-          <span class="compare-title-line">追ってみる</span>
-        </h2>
-        <p>
-          ベイズ更新は、1つのグラフの中で「何を見ている段階か」を切り替えると流れが追いやすくなります。ここでは成功7回・失敗3回という同じ観測を使い、出発点、観測、更新後へ曲線が移っていく様子を確認します。
-        </p>
-      </div>
-      <div class="update-compare-tool">
-        <div class="compare-step-controls" role="group" aria-label="比較する更新段階">
-          <button type="button" class="compare-step-btn is-active" data-compare-stage="prior" aria-pressed="true">
-            <span>1</span>
-            <strong>出発点</strong>
-          </button>
-          <button type="button" class="compare-step-btn" data-compare-stage="evidence" aria-pressed="false">
-            <span>2</span>
-            <strong>観測</strong>
-          </button>
-          <button type="button" class="compare-step-btn" data-compare-stage="posterior" aria-pressed="false">
-            <span>3</span>
-            <strong>更新後</strong>
-          </button>
+      <div class="bp-demo" id="update-compare" aria-labelledby="demo-title">
+        <div class="bp-demo-heading"><span class="bp-eyebrow">TRY BAYES / まずは触ってみる</span><span class="bp-live">INTERACTIVE</span></div>
+        <h2 id="demo-title">7回成功した。成功率は70%？</h2>
+        <p class="bp-demo-prompt">1 → 2 → 3で、分布を重ねてみよう。</p>
+        <div class="compare-step-controls" role="group" aria-label="表示する更新段階">
+          <button type="button" class="compare-step-btn" data-compare-stage="prior" aria-pressed="false"><span>1</span><strong>事前</strong></button>
+          <button type="button" class="compare-step-btn" data-compare-stage="evidence" aria-pressed="false"><span>2</span><strong>観測</strong></button>
+          <button type="button" class="compare-step-btn is-active" data-compare-stage="posterior" aria-pressed="true"><span>3</span><strong>更新後</strong></button>
         </div>
-        <canvas id="updateCompareCanvas" class="update-compare-canvas" aria-busy="true" aria-label="出発点、観測、更新後へ変化する更新チャート"></canvas>
-        <div class="compare-readout" aria-live="polite">
-          <span id="compareStageName">1 / 出発点</span>
-          <strong id="compareStagePoint">まだ観測を見ない段階では、成功率の候補を幅のある山として置く。</strong>
-          <p id="compareStageDetail">高さは見やすくそろえています。ここでは山の位置と幅を比べます。</p>
+        <canvas id="updateCompareCanvas" class="update-compare-canvas" role="img" aria-busy="true" aria-label="成功率の事前分布、尤度、事後分布" aria-describedby="compareNumbers compareScaleNote"></canvas>
+        <div class="bp-demo-numbers" id="compareNumbers" aria-live="polite" aria-atomic="true">
+          <div><span><i class="legend-swatch legend-prior"></i>事前平均</span><strong>50.0%</strong></div>
+          <div><span><i class="legend-swatch legend-likelihood"></i>観測の成功率</span><strong id="compareObserved">70.0%</strong></div>
+          <div><span><i class="legend-swatch legend-posterior"></i>事後平均</span><strong id="compareMean">60.0%</strong></div>
         </div>
+        <div class="bp-demo-controls"><span id="compareCounts">成功 7 / 失敗 3</span><button type="button" id="compareSuccess">成功 +1</button><button type="button" id="compareFailure">失敗 +1</button><button type="button" id="compareReset" aria-label="観測を成功7回・失敗3回に戻す">↺ リセット</button></div>
+        <div class="compare-readout" aria-live="polite" aria-atomic="true"><span id="compareStageName">3 / 更新後</span><strong id="compareStagePoint">事前と観測を合わせると、事後平均は60%。</strong><p id="compareStageDetail">更新後にも、不確実性の幅が残ります。</p></div>
+        <p class="bp-chart-note" id="compareScaleNote">横軸は未知の成功率、縦軸は確率密度。尤度（破線）は形を比べるため高さを調整。帯は95%信用区間。</p>
       </div>
     </section>
 
-    <section class="story-opening reveal in" aria-labelledby="story-opening-title">
-      <div class="story-kicker">READING GUIDE</div>
-      <h2 id="story-opening-title" class="sec-title">グラフを見る前に、読み方をそろえる</h2>
-      <p>
-        BayesPlay では、毎回、何を推定しているのか、観測は何を支持しているのか、更新後にどれだけ不確実性が残るのかを見る。
-      </p>
-      <ol class="story-path" aria-label="BayesPlay の読み進め方">
-        <li><span>1</span><strong>問いを決める</strong><p>成功率、平均、発生率、グループ差のどれを読んでいるかを確認する。</p></li>
-        <li><span>2</span><strong>色を読む</strong><p><i class="legend-swatch legend-prior"></i>シアンは出発点、<i class="legend-swatch legend-likelihood"></i>マゼンタは観測、<i class="legend-swatch legend-posterior"></i>グラフの黄色はそのラボで読みたい最終結果として見る。</p></li>
-        <li><span>3</span><strong>操作する</strong><p>指定されたスライダーを動かし、山の位置と幅の変化を見る。</p></li>
-        <li><span>4</span><strong>言葉に戻す</strong><p>何が分かり、何はまだ言い切れないのかを整理する。</p></li>
+    <section class="bp-labs" id="lab-index" aria-labelledby="lab-index-title">
+      <div class="bp-section-heading"><div><span class="bp-eyebrow">EXPLORE / 07 LABS</span><h2 id="lab-index-title">ひとつの更新から、広がる見方。</h2></div><p>はじめてなら01から。<br>気になる問いから試しても。</p></div>
+      <div class="bp-lab-grid">
+        <p class="bp-lab-group">01 → 03 / 更新と予測</p>
+        <a class="bp-lab-card" href="lab-01.html">
+          <div class="bp-card-top"><span>LAB 01</span><span>更新の基本</span><span aria-hidden="true">↗</span></div>
+          <h3>成功率を更新する</h3><p>成功と失敗を1件ずつ加える。事前・尤度・事後の関係を見る。</p><span class="bp-card-model">BETA × BINOMIAL</span>
+        </a>
+        <a class="bp-lab-card" href="lab-02.html">
+          <div class="bp-card-top"><span>LAB 02</span><span>予測分布</span><span aria-hidden="true">↗</span></div>
+          <h3>次の結果を予測する</h3><p>成功率に残る不確実性は、次の20回の結果にどう表れる？</p><span class="bp-card-model">POSTERIOR PREDICTIVE</span>
+        </a>
+        <a class="bp-lab-card" href="lab-03.html">
+          <div class="bp-card-top"><span>LAB 03</span><span>観測の強さ</span><span aria-hidden="true">↗</span></div>
+          <h3>7/10と70/100を比べる</h3><p>同じ70%でも、観測数が違うと山の幅はどう変わる？</p><span class="bp-card-model">LIKELIHOOD</span>
+        </a>
+        <p class="bp-lab-group">04 → 05 / 題材を変える</p>
+        <a class="bp-lab-card" href="lab-04.html">
+          <div class="bp-card-top"><span>LAB 04</span><span>連続量の推定</span><span aria-hidden="true">↗</span></div>
+          <h3>平均はどちらへ動く？</h3><p>観測数とばらつきを変えて、事前平均と観測平均の重みを見る。</p><span class="bp-card-model">NORMAL × NORMAL</span>
+        </a>
+        <a class="bp-lab-card" href="lab-05.html">
+          <div class="bp-card-top"><span>LAB 05</span><span>件数の推定</span><span aria-hidden="true">↗</span></div>
+          <h3>10件を、何時間で観測した？</h3><p>件数と観測時間を合わせて、1時間あたりの発生率を推定する。</p><span class="bp-card-model">GAMMA × POISSON</span>
+        </a>
+        <p class="bp-lab-group">06 → 07 / 情報を共有する</p>
+        <a class="bp-lab-card" href="lab-06.html">
+          <div class="bp-card-top"><span>LAB 06</span><span>小標本と縮約</span><span aria-hidden="true">↗</span></div>
+          <h3>少ないデータをどう読む？</h3><p>小標本の極端な比率が、共有する情報でどう動くかを見る。</p><span class="bp-card-model">SHRINKAGE</span>
+        </a>
+        <a class="bp-lab-card" href="lab-07.html">
+          <div class="bp-card-top"><span>LAB 07</span><span>階層ベイズの入口</span><span aria-hidden="true">↗</span></div>
+          <h3>違いを残して、情報を借りる</h3><p>全体の中心とグループの違いから、部分プーリングの入口へ。</p><span class="bp-card-model">PARTIAL POOLING</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="bp-principle" aria-labelledby="principle-title">
+      <div><span class="bp-eyebrow">THE CORE IDEA</span><h2 id="principle-title">答えの位置と、<br>残っている幅を見る。</h2><p>ベイズ統計は、未知の値についての不確実性を分布で表し、観測で更新する見方です。</p><a class="bp-text-link" href="../topics/bayes.html">ベイズの定理から確かめる ↗</a></div>
+      <ol class="bp-flow">
+        <li><span>01 / PRIOR</span><h3>事前分布</h3><p>観測前に、どの値がどれくらいありそうか。</p></li>
+        <li><span>02 / LIKELIHOOD</span><h3>尤度</h3><p>その値なら、今回の観測はどれくらい起こりやすいか。</p></li>
+        <li><span>03 / POSTERIOR</span><h3>事後分布</h3><p>両者を掛け合わせ、面積が1になるように整えた更新後の分布。</p></li>
       </ol>
-      <p class="color-note">
-        グラフの黄色は、Lab 01 では更新後の分布、Lab 02 ではその更新後から出した未来の予測を表します。
-      </p>
-    </section>
-
-    <section class="lab-index-section reveal in" id="lab-index" aria-labelledby="lab-index-title">
-      <div class="section-copy">
-        <div class="sec-tag">VISUAL LABS</div>
-        <h2 id="lab-index-title" class="sec-title">ここから試せる可視化ラボ</h2>
-        <p>
-          以下では、情報を更新しながら候補のありそうさを見直すという見方を、さまざまな題材で確認します。まず Lab 01 で基本の更新を見て、そこから予測、観測の強さ、平均、件数、小標本の縮約、階層ベイズの入口へ進みます。
-        </p>
-      </div>
-      <div class="lab-index-grid">
-        <a class="lab-index-card" href="lab-01.html">
-          <span>LAB 01</span>
-          <strong>見えない成功率を、観測で少しずつ読み直す</strong>
-          <p>成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。</p>
-        </a>
-        <a class="lab-index-card" href="lab-02.html">
-          <span>LAB 02</span>
-          <strong>次の結果にも不確実性が残る</strong>
-          <p>更新後の平均が分かっても、次の観測がその通りに出るとは限らない。推定の不確実性と、次に起きるばらつきの両方を予測分布として見る。</p>
-        </a>
-        <a class="lab-index-card" href="lab-03.html">
-          <span>LAB 03</span>
-          <strong>同じ割合でも、観測の強さは違う</strong>
-          <p>7/10 と 70/100 はどちらも 70%。しかし、観測数が多いほど「70% 付近を支持する力」は強く、尤度の山は細くなる。</p>
-        </a>
-        <a class="lab-index-card" href="lab-04.html">
-          <span>LAB 04</span>
-          <strong>平均は、観測の強さで動く</strong>
-          <p>テスト点、反応時間、測定値のような連続量では、未知の平均を推定する。事前平均と観測平均が、どちらをどれくらい信じられるかで混ざる。</p>
-        </a>
-        <a class="lab-index-card" href="lab-05.html">
-          <span>LAB 05</span>
-          <strong>件数の観測は、観測時間と一緒に扱う</strong>
-          <p>事故、問い合わせ、アクセスのような件数では、発生率を推定する。件数だけでなく、どれくらいの時間や露出で観測したかが意味を変える。</p>
-        </a>
-        <a class="lab-index-card" href="lab-06.html">
-          <span>LAB 06</span>
-          <strong>小標本の極端な比率は、少し中央へ戻して読む</strong>
-          <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。</p>
-        </a>
-        <a class="lab-index-card" href="lab-07.html">
-          <span>LAB 07</span>
-          <strong>グループごとの違いを残しながら、全体の情報も借りる</strong>
-          <p>階層ベイズの入口として、全体中心をデータから読み、各グループの推定がそこへ部分的に寄る様子を見る。</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="flow-recap-section reveal in" aria-labelledby="flow-recap-title">
-      <div class="section-copy">
-        <div class="sec-tag">CORE IDEA</div>
-        <h2 id="flow-recap-title" class="sec-title">毎回見るのは、平均だけではなく幅</h2>
-        <p>
-          ベイズ更新では、更新後の平均だけを答えとして読むと大事な部分を落とす。観測がどれくらい強く、更新後にどれくらい幅が残るかを見ることで、次の予測や小標本の扱いまでつながる。
-        </p>
-      </div>
-      <div class="recap-list">
-        <article class="recap-row">
-          <span>1</span>
-          <h3>出発点は、仮の答えではなく不確実性</h3>
-          <p>事前分布は「最初から決めた正解」ではなく、観測前の候補の置き方として読む。</p>
-        </article>
-        <article class="recap-row">
-          <span>2</span>
-          <h3>観測は、中心と強さを持つ</h3>
-          <p>同じ割合や平均でも、観測数やばらつきによって支持する範囲は変わる。</p>
-        </article>
-        <article class="recap-row">
-          <span>3</span>
-          <h3>更新後にも、まだ幅が残る</h3>
-          <p>事後分布の幅は、予測や意思決定へ持ち越される。</p>
-        </article>
-      </div>
     </section>
   </main>
+  <footer class="bp-footer">
+    <div><a class="bp-footer-brand" href="index.html">BAYESPLAY</a><p>触って見えたら、また参考書へ。</p></div>
+    <div class="bp-family"><span>SASAI LAB / VISUAL LEARNING</span><a href="../index.html">StatPlay <small>統計学を広く</small> ↗</a><a href="index.html" aria-current="location">BayesPlay <small>ベイズ統計を深く</small></a></div>
+    <p class="bp-footer-note">StatPlay から生まれた、ベイズ統計の可視化ラボ。</p>
+  </footer>
 </body>
 </html>

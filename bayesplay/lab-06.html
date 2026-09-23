@@ -3,42 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="小標本の極端な比率は、少し中央へ戻して読む。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。">
-  <meta name="robots" content="noindex, nofollow">
-  <title>BayesPlay Lab 06 - 小標本の極端な比率は、少し中央へ戻して読む</title>
+  <meta name="description" content="5回中5回の100%、どう見る？。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>BayesPlay Lab 06 - 5回中5回の100%、どう見る？</title>
   <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
   <link rel="stylesheet" href="../css/stat_cyber.css">
   <link rel="stylesheet" href="css/bayesplay.css">
+  <link rel="stylesheet" href="css/site-shell.css">
   <script type="module" src="js/main.js"></script>
+<!-- experience-meta:start -->
+<link rel="canonical" href="https://statplay.sasailab.com/bayesplay/lab-06.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/bayesplay/lab-06.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/bayesplay/lab-06.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BayesPlay Lab 06 - 5回中5回の100%、どう見る？">
+<meta property="og:description" content="5回中5回の100%、どう見る？。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。">
+<meta property="og:url" content="https://statplay.sasailab.com/bayesplay/lab-06.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="StatPlay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BayesPlay Lab 06 - 5回中5回の100%、どう見る？">
+<meta name="twitter:description" content="5回中5回の100%、どう見る？。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "BayesPlay Lab 06 - 5回中5回の100%、どう見る？", "description": "5回中5回の100%、どう見る？。複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。", "url": "https://statplay.sasailab.com/bayesplay/lab-06.html", "inLanguage": "ja", "isAccessibleForFree": true, "learningResourceType": "Interactive visualization", "publisher": {"@type": "Organization", "name": "Sasai Lab"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "BayesPlay", "item": "https://statplay.sasailab.com/bayesplay/"}, {"@type": "ListItem", "position": 3, "name": "BayesPlay Lab 06 - 5回中5回の100%、どう見る？", "item": "https://statplay.sasailab.com/bayesplay/lab-06.html"}]}]}</script>
+<!-- experience-meta:end -->
 </head>
 <body class="topic-page bayesplay-page">
   <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
 
-  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
-    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
-      <span class="bars"></span>
-    </button>
-    <div class="nav-links" id="navLinks">
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="index.html" class="site-experience" aria-current="location">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <div class="site-language"><button id="siteLanguageToggle" type="button" class="lang-toggle" aria-expanded="false" aria-controls="siteLanguageNotice" aria-label="言語メニュー">EN</button><div id="siteLanguageNotice" class="site-language-notice" hidden><p>このコンテンツは日本語のみです。</p><a href="../en/index.html" data-site-lang="en" hreflang="en" lang="en">StatPlay in English</a></div></div>
+  </div>
+</nav>
+<!-- bayes-local:start --><div class="bp-local-nav" role="navigation" aria-label="BayesPlay ラボ"><a href="index.html">BayesPlay</a><a href="lab-01.html">01 更新</a><a href="lab-03.html">03 観測の強さ</a><a href="lab-02.html">02 予測</a><a href="lab-04.html">04 平均</a><a href="lab-05.html">05 件数</a><a href="lab-06.html" aria-current="page">06 縮約</a><a href="lab-07.html">07 階層</a></div><!-- bayes-local:end -->
 
-      <a href="../topics/bayes.html">ベイズ定理</a>
-      <a href="index.html">目次</a>
-      <a href="lab-01.html">01 更新</a>
-      <a href="lab-02.html">02 予測</a>
-      <a href="lab-03.html">03 観測の強さ</a>
-      <a href="lab-04.html">04 平均</a>
-      <a href="lab-05.html">05 件数</a>
-      <a href="lab-06.html" class="current">06 縮約</a>
-      <a href="lab-07.html">07 階層</a>
-      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
-    </div>
-  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <main id="main-content" class="bayesplay-main lab-page-main">
     <section class="lab-page-header reveal in" aria-labelledby="page-title-06">
       <div class="sec-tag">LAB 06 / SMALL SAMPLE SHRINKAGE</div>
-      <h1 id="page-title-06" class="sec-title">小標本の極端な比率は、少し中央へ戻して読む</h1>
-      <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。全体の中心を使い、小標本の読みを少し戻す。</p>
+      <h1 id="page-title-06" class="sec-title">5回中5回の100%、どう見る？</h1>
+      <p>複数グループの成功率を並べると、観測数が少ないグループほど極端な値を取りやすい。共通の事前分布を使うと、各グループの推定値がどこへ動くかを比べます。</p>
+      <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 06</a>
       <div class="lesson-strip" aria-label="このラボの読みどころ">
         <span>何を推定しているか</span>
         <span>観測はどこを支持するか</span>
@@ -46,9 +75,11 @@
       </div>
     </section>
 
+    <details class="bp-reading">
+      <summary>このラボの問いと、グラフの読み方</summary>
     <section class="learning-section reveal in" aria-labelledby="learn-before-06">
       <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-06" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <h2 id="learn-before-06" class="sec-title">グラフで確かめること</h2>
       <div class="learning-grid">
         <article class="learning-card">
           <span>扱う問い</span>
@@ -60,68 +91,65 @@
         </article>
         <article class="learning-card">
           <span>グラフの読み方</span>
-          <p>マゼンタの点が観測比率、黄色の点が縮約後。縦線が長いグループほど、観測だけでは読み切りにくい。</p>
+          <p>マゼンタの点が観測比率、黄色の点が縮約後。点を結ぶ線は平均の移動量、下の細い横棒は更新後の95%信用区間です。</p>
         </article>
       </div>
     </section>
 
     <section class="column-note-section reveal in" aria-labelledby="column-note-06">
       <div class="story-kicker">COLUMN NOTE</div>
-      <h2 id="column-note-06" class="sec-title">小さいサンプルの極端さは、そのまま順位にしない</h2>
+      <h2 id="column-note-06" class="sec-title">100%という結果と、残っている幅</h2>
       <div class="column-note-prose">
-        <p>5回中5回成功は100%です。ただ、その100%をそのまま「最も高い成功率」と読むと、少ない観測の偶然を大きく見すぎることがあります。小標本ほど極端な比率が出やすいからです。</p>
-        <p>縮約は、極端な観測を無視する処理ではありません。観測数が少ないグループほど全体の中心を多めに借り、観測数が多いグループほど各グループの観測を残します。マゼンタから黄色への線の長さが、その借り方の強さを表します。</p>
-        <p>ランキングや比較でこの発想はよく効きます。上位に小標本が並んだとき、観測比率だけでなく、どれくらい確かな読みなのかを一緒に見るための足場になります。</p>
+        <p>5回中5回成功は100%です。ただ、その100%をそのまま「最も高い成功率」と読むと、偶然による偏りが順位に強く表れることがあります。小標本ほど極端な比率が出やすいからです。</p>
+        <p>縮約は、極端な観測を無視する処理ではありません。観測数が少ないグループほど全体の中心を多めに借り、観測数が多いグループほど各グループの観測を残します。マゼンタから黄色への線の長さが、平均の移動量を表します。移動量は観測と中心の距離にも左右され、不確実性の大きさとは一致しません。</p>
+        <p>グループを比べるときは、観測比率が同じでも、観測数が違うことがあります。点の位置と信用区間を並べると、その違いも見えてきます。</p>
       </div>
     </section>
+    </details>
 
     <section class="mini-lab-section reveal in" id="small-sample-shrinkage" aria-labelledby="shrinkage-title">
-      <div class="section-copy">
-        <div class="sec-tag">LAB 06 / SMALL SAMPLE SHRINKAGE</div>
-        <h2 id="shrinkage-title" class="sec-title">小標本の極端な比率は、少し中央へ戻して読む</h2>
-        <p>
-          グループごとの成功率を並べると、観測数の少ないグループほど極端な値を取りやすい。全体の中心を出発点として置くと、小さいグループの推定値はその中心へ強く寄る。
-        </p>
-      </div>
-      <div class="mini-lab-card">
-        <div class="mini-guide" aria-label="Lab 06 操作の流れ">
-          <span class="mini-guide__label">実験ガイド</span>
-          <p class="mini-guide__prompt">マゼンタの点が観測比率、黄色の点が縮約後の読み。点を結ぶ線が長いほど、観測だけでは読み切りにくい。</p>
-          <p id="shGuideText" class="mini-guide__readout" aria-live="polite">共有する中心を強くすると、小さいグループほど黄色の点が中央へ寄る。</p>
-        </div>
-        <div class="preset-row preset-row--thirds control-preset" aria-label="縮約の強さ プリセット">
-          <button type="button" class="preset-btn" data-sh-preset="weak">弱い</button>
-          <button type="button" class="preset-btn" data-sh-preset="middle">標準</button>
-          <button type="button" class="preset-btn" data-sh-preset="strong">強い</button>
-        </div>
-        <div class="mini-controls">
-          <label class="control">
-            <span>全体の中心 <output id="shOverallMeanValue" for="shOverallMean">55%</output></span>
-            <input id="shOverallMean" type="range" min="0.25" max="0.85" step="0.01" value="0.55">
-          </label>
-          <label class="control">
-            <span>共有する強さ <output id="shPriorStrengthValue" for="shPriorStrength">24</output></span>
-            <input id="shPriorStrength" type="range" min="2" max="90" step="1" value="24">
-          </label>
-          <label class="control">
-            <span>観測数の倍率 <output id="shSampleScaleValue" for="shSampleScale">1.0</output></span>
-            <input id="shSampleScale" type="range" min="0.5" max="3" step="0.1" value="1">
-          </label>
-        </div>
-        <div class="mini-lab-viz">
-          <canvas id="shrinkageCanvas" class="mini-lab-canvas" aria-busy="true" aria-label="小標本の観測比率と縮約後の推定値"></canvas>
-          <div class="legend-row">
-            <span><i class="legend-swatch legend-likelihood"></i>観測比率</span>
-            <span><i class="legend-swatch legend-posterior"></i>縮約後の読み</span>
-            <span><i class="legend-swatch legend-prior"></i>全体の中心</span>
-          </div>
-        </div>
-        <div class="metrics-grid metrics-grid--compact mini-lab-metrics">
-          <div class="metric"><span>一番動くグループ</span><strong id="shMostPulled">-</strong></div>
-          <div class="metric"><span>平均の移動幅</span><strong id="shAvgPull">-</strong></div>
-          <div class="metric"><span>読みの中心</span><strong id="shCenterReadout">-</strong></div>
-        </div>
-      </div>
+      <div class="section-copy bp-workspace-heading"><h2 id="shrinkage-title" class="sec-title">共有する情報の強さを変える</h2></div>
+<div class="mini-lab-card bp-compact-lab">
+
+
+
+
+
+<div class="bp-lab-figure"><div class="mini-lab-viz">
+<canvas aria-busy="true" aria-describedby="shGuideText poolingReadoutNote groupDataTable" aria-label="小標本の観測比率と縮約後の推定値" class="mini-lab-canvas" id="shrinkageCanvas" role="img"></canvas>
+<p class="canvas-note" id="poolingReadoutNote">○は観測比率、◆は更新後の平均、細い横棒は95%信用区間です。事前分布の中心と強さを固定したBeta-Binomialモデルで計算しています。観測数を変える際、成功数は整数に丸めます。</p>
+<details class="bp-table-details"><summary>グラフの数値を見る</summary><table class="bp-data-table" id="groupDataTable"></table></details>
+<div class="legend-row">
+<span><i class="legend-swatch legend-likelihood"></i>観測比率</span>
+<span><i class="legend-swatch legend-posterior"></i>更新後の平均</span>
+<span><i class="legend-swatch legend-prior"></i>全体の中心</span>
+</div>
+</div><div class="metrics-grid metrics-grid--compact mini-lab-metrics">
+<div class="metric"><span>一番動くグループ</span><strong id="shMostPulled">-</strong></div>
+<div class="metric"><span>平均の移動幅</span><strong id="shAvgPull">-</strong></div>
+<div class="metric"><span>事前分布の中心</span><strong id="shCenterReadout">-</strong></div>
+</div></div><aside aria-label="実験の条件" class="bp-lab-controls"><div aria-label="Lab 06 操作の流れ" class="mini-guide">
+<span class="mini-guide__label">実験ガイド</span>
+<p class="mini-guide__prompt">マゼンタの点が観測比率、黄色の点が更新後の平均。点を結ぶ線は平均の移動量です。不確実性は下の細い横棒（95%信用区間）で比べます。</p>
+<p aria-live="polite" class="mini-guide__readout" id="shGuideText">共有する中心を強くすると、小さいグループほど黄色の点が中央へ寄る。</p>
+</div><div aria-label="縮約の強さ プリセット" class="preset-row preset-row--thirds control-preset">
+<button class="preset-btn" data-sh-preset="weak" type="button">弱い</button>
+<button class="preset-btn" data-sh-preset="middle" type="button">標準</button>
+<button class="preset-btn" data-sh-preset="strong" type="button">強い</button>
+</div><div class="mini-controls">
+<label class="control">
+<span>全体の中心 <output for="shOverallMean" id="shOverallMeanValue">55%</output></span>
+<input id="shOverallMean" max="0.85" min="0.25" step="0.01" type="range" value="0.55"/>
+</label>
+<label class="control">
+<span>共有する強さ <output for="shPriorStrength" id="shPriorStrengthValue">24</output></span>
+<input id="shPriorStrength" max="90" min="2" step="1" type="range" value="24"/>
+</label>
+<label class="control">
+<span>観測数の倍率 <output for="shSampleScale" id="shSampleScaleValue">1.0</output></span>
+<input id="shSampleScale" max="3" min="0.5" step="0.1" type="range" value="1"/>
+</label>
+</div></aside></div>
     </section>
 
     <section class="learning-section learning-section--after reveal in" aria-labelledby="learn-after-06">
@@ -135,8 +163,8 @@
         </article>
         <article class="recap-row">
           <span>2</span>
-          <h3>見えたらよいこと</h3>
-          <p>ランキングの上位に小標本が出てきたとき、その極端さは不確実性も含めて読む必要がある。</p>
+          <h3>比べてみるところ</h3>
+          <p>観測数が少ないグループでは、比率が高くても、成功率の候補には広い幅が残ることがあります。</p>
         </article>
         <article class="recap-row">
           <span>3</span>
@@ -146,11 +174,12 @@
       </div>
     </section>
 
-    <nav class="lab-page-nav" aria-label="ラボページ移動">
-      <a href="lab-05.html">← Lab 05</a>
-      <a href="index.html">目次へ戻る</a>
-      <a href="lab-07.html">Lab 07 →</a>
-    </nav>
+    <nav class="lab-page-nav" aria-label="ラボページ移動"><a href="lab-05.html">← Lab 05</a><a href="index.html">目次へ戻る</a><a href="lab-07.html">Lab 07 →</a></nav>
   </main>
+  <footer class="bp-footer">
+    <div><a class="bp-footer-brand" href="index.html">BAYESPLAY</a><p>触って見えたら、また参考書へ。</p></div>
+    <div class="bp-family"><span>SASAI LAB / VISUAL LEARNING</span><a href="../index.html">StatPlay <small>統計学を広く</small> ↗</a><a href="index.html" aria-current="location">BayesPlay <small>ベイズ統計を深く</small></a></div>
+    <p class="bp-footer-note">StatPlay から生まれた、ベイズ統計の可視化ラボ。</p>
+  </footer>
 </body>
 </html>

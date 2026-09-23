@@ -81,3 +81,28 @@ export function likelihoodShape(pValue, successes, failures) {
   const logLik = successes * Math.log(t) + failures * Math.log(1 - t);
   return Math.exp(logLik - peak);
 }
+
+// Same success probability as the predictive mean, with no uncertainty in p.
+export function binomialPmf(k, n, p) {
+  if (k < 0 || k > n) return 0;
+  if (p === 0) return k === 0 ? 1 : 0;
+  if (p === 1) return k === n ? 1 : 0;
+  return Math.exp(lgamma(n + 1) - lgamma(k + 1) - lgamma(n - k + 1)
+    + k * Math.log(p) + (n - k) * Math.log1p(-p));
+}
+
+// Full width at half maximum of the actual (possibly boundary-peaked) likelihood.
+export function likelihoodHalfWidth(successes, failures) {
+  const mode = successes / (successes + failures);
+  function boundary(lo, hi, left) {
+    for (let i = 0; i < 55; i++) {
+      const mid = (lo + hi) / 2;
+      if ((likelihoodShape(mid, successes, failures) >= .5) === left) hi = mid;
+      else lo = mid;
+    }
+    return (lo + hi) / 2;
+  }
+  const low = successes === 0 ? 0 : boundary(0, mode, true);
+  const high = failures === 0 ? 1 : boundary(mode, 1, false);
+  return high - low;
+}

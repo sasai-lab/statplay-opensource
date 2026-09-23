@@ -1554,7 +1554,7 @@
       "slug": "bayesplay",
       "name": "BayesPlay",
       "path": "/bayesplay/index.html",
-      "published": false,
+      "published": true,
       "labs": [
         {
           "path": "lab-01.html",

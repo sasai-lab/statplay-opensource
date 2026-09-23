@@ -1,5 +1,6 @@
+import { drawGroupPlot, renderGroupTable } from '../ui/group-plot.js';
 import {
-  $, resizeCanvas, drawGrid, themeColors, withAlpha, debouncedResize, throttledDraw
+  $, debouncedResize, throttledDraw
 } from '../../../js/utils.js';
 import { createStateAnimator, interpolateNumberState } from '../ui/graph-motion.js';
 import { withPooledMeans } from '../math/pooling.js';
@@ -28,7 +29,6 @@ const baseGroups = [
   { label: 'F', trials: 96, rate: 0.46 }
 ];
 
-const jpFont = '"Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif';
 
 function pct(value, digits = 0) {
   return `${(value * 100).toFixed(digits)}%`;
@@ -40,11 +40,11 @@ function fixed(value, digits = 1) {
 
 function groupsFor(viewState = state) {
   return baseGroups.map((group) => {
-    const trials = Math.max(1, group.trials * viewState.sampleScale);
+    const trials = Math.max(1, Math.round(group.trials * viewState.sampleScale));
     return {
       label: group.label,
       trials,
-      successes: group.rate * trials
+      successes: Math.round(group.rate * trials)
     };
   });
 }
@@ -71,8 +71,9 @@ function syncOutputs() {
   els.shPriorStrengthValue.textContent = String(Math.round(state.priorStrength));
   els.shSampleScaleValue.textContent = fixed(state.sampleScale, 1);
   const stats = shrinkageStats();
-  els.shMostPulled.textContent = `${stats.mostPulled.label} (${pct(stats.maxPull, 1)})`;
-  els.shAvgPull.textContent = pct(stats.avgPull, 1);
+  renderGroupTable(stats.groups, state.overallMean, state.priorStrength, true);
+  els.shMostPulled.textContent = `${stats.mostPulled.label} (${(stats.maxPull * 100).toFixed(1)}pt)`;
+  els.shAvgPull.textContent = `${(stats.avgPull * 100).toFixed(1)}pt`;
   els.shCenterReadout.textContent = pct(state.overallMean, 1);
   if (els.shGuideText) {
     els.shGuideText.textContent =
@@ -81,88 +82,7 @@ function syncOutputs() {
 }
 
 function draw(viewState = visualState) {
-  const canvas = els.shrinkageCanvas;
-  const mobile = canvas.clientWidth < 560;
-  canvas.style.height = mobile ? '280px' : '350px';
-  const { ctx, w, h } = resizeCanvas(canvas);
-  if (!ctx) return;
-  const tc = themeColors();
-  drawGrid(ctx, w, h, withAlpha(tc.cyan, 0.05));
-
-  const groups = pooledGroups(viewState);
-  const left = mobile ? 36 : 54;
-  const right = w - (mobile ? 18 : 28);
-  const top = mobile ? 24 : 30;
-  const bottom = h - (mobile ? 50 : 60);
-  const width = right - left;
-  const height = bottom - top;
-  const xFor = index => left + (groups.length === 1 ? 0.5 : index / (groups.length - 1)) * width;
-  const yFor = rate => bottom - rate * height;
-
-  ctx.strokeStyle = withAlpha(tc.dim, 0.45);
-  ctx.beginPath();
-  ctx.moveTo(left, top);
-  ctx.lineTo(left, bottom);
-  ctx.lineTo(right, bottom);
-  ctx.stroke();
-
-  const centerY = yFor(viewState.overallMean);
-  ctx.strokeStyle = withAlpha(tc.cyan, 0.72);
-  ctx.setLineDash([7, 6]);
-  ctx.beginPath();
-  ctx.moveTo(left, centerY);
-  ctx.lineTo(right, centerY);
-  ctx.stroke();
-  ctx.setLineDash([]);
-
-  groups.forEach((group, index) => {
-    const x = xFor(index);
-    const observedY = yFor(group.observedRate);
-    const pooledY = yFor(group.pooledRate);
-    ctx.strokeStyle = withAlpha(tc.dim, 0.55);
-    ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.moveTo(x, observedY);
-    ctx.lineTo(x, pooledY);
-    ctx.stroke();
-
-    ctx.strokeStyle = tc.magenta;
-    ctx.fillStyle = withAlpha(tc.magenta, 0.12);
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.arc(x, observedY, mobile ? 5 : 6, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = tc.yellow;
-    ctx.shadowColor = tc.yellow;
-    ctx.shadowBlur = mobile ? 8 : 12;
-    ctx.beginPath();
-    ctx.arc(x, pooledY, mobile ? 4.5 : 5.5, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.shadowBlur = 0;
-
-    ctx.fillStyle = tc.dim;
-    ctx.font = `${mobile ? 10 : 11}px ${jpFont}`;
-    ctx.textAlign = 'center';
-    ctx.fillText(group.label, x, bottom + 17);
-    if (!mobile) {
-      ctx.fillText(`n=${Math.round(group.trials)}`, x, bottom + 34);
-    }
-  });
-
-  ctx.fillStyle = tc.dim;
-  ctx.font = `${mobile ? 10 : 12}px ${jpFont}`;
-  ctx.textAlign = 'left';
-  ctx.fillText('成功率', left, top - 8);
-  ctx.fillText('0%', left, bottom + 17);
-  ctx.textAlign = 'right';
-  ctx.fillText('100%', left - 4, top + 4);
-  ctx.textAlign = 'left';
-  if (!mobile) {
-    ctx.fillStyle = tc.cyan;
-    ctx.fillText(`全体の中心 ${pct(viewState.overallMean)}`, right - 118, centerY - 8);
-  }
+  drawGroupPlot(els.shrinkageCanvas, pooledGroups(viewState), viewState.overallMean, viewState.priorStrength, true);
 }
 
 function renderGraph() {
@@ -180,10 +100,7 @@ const animateGraph = createStateAnimator({
   render: renderGraph
 });
 
-const scheduleDraw = throttledDraw(() => {
-  visualState = { ...state };
-  renderGraph();
-});
+const scheduleDraw = throttledDraw(() => animateGraph.snap());
 
 function readControls() {
   state.overallMean = Number(els.shOverallMean.value);

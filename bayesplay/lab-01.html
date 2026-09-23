@@ -4,41 +4,70 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="見えない成功率を、観測で少しずつ読み直す。成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <title>BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す</title>
   <link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
   <link rel="stylesheet" href="../css/stat_cyber.css">
   <link rel="stylesheet" href="css/bayesplay.css">
+  <link rel="stylesheet" href="css/site-shell.css">
   <script type="module" src="js/main.js"></script>
+<!-- experience-meta:start -->
+<link rel="canonical" href="https://statplay.sasailab.com/bayesplay/lab-01.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/bayesplay/lab-01.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/bayesplay/lab-01.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す">
+<meta property="og:description" content="見えない成功率を、観測で少しずつ読み直す。成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。">
+<meta property="og:url" content="https://statplay.sasailab.com/bayesplay/lab-01.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="StatPlay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す">
+<meta name="twitter:description" content="見えない成功率を、観測で少しずつ読み直す。成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す", "description": "見えない成功率を、観測で少しずつ読み直す。成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。", "url": "https://statplay.sasailab.com/bayesplay/lab-01.html", "inLanguage": "ja", "isAccessibleForFree": true, "learningResourceType": "Interactive visualization", "publisher": {"@type": "Organization", "name": "Sasai Lab"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "BayesPlay", "item": "https://statplay.sasailab.com/bayesplay/"}, {"@type": "ListItem", "position": 3, "name": "BayesPlay Lab 01 - 見えない成功率を、観測で少しずつ読み直す", "item": "https://statplay.sasailab.com/bayesplay/lab-01.html"}]}]}</script>
+<!-- experience-meta:end -->
 </head>
 <body class="topic-page bayesplay-page">
   <a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
 
-  <nav id="mainNav" class="bayesplay-nav" aria-label="BayesPlay navigation">
-    <a class="logo" href="index.html" title="BayesPlay home">BayesPlay</a>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="メニュー" aria-expanded="false">
-      <span class="bars"></span>
-    </button>
-    <div class="nav-links" id="navLinks">
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="index.html" class="site-experience" aria-current="location">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <div class="site-language"><button id="siteLanguageToggle" type="button" class="lang-toggle" aria-expanded="false" aria-controls="siteLanguageNotice" aria-label="言語メニュー">EN</button><div id="siteLanguageNotice" class="site-language-notice" hidden><p>このコンテンツは日本語のみです。</p><a href="../en/index.html" data-site-lang="en" hreflang="en" lang="en">StatPlay in English</a></div></div>
+  </div>
+</nav>
+<!-- bayes-local:start --><div class="bp-local-nav" role="navigation" aria-label="BayesPlay ラボ"><a href="index.html">BayesPlay</a><a href="lab-01.html" aria-current="page">01 更新</a><a href="lab-03.html">03 観測の強さ</a><a href="lab-02.html">02 予測</a><a href="lab-04.html">04 平均</a><a href="lab-05.html">05 件数</a><a href="lab-06.html">06 縮約</a><a href="lab-07.html">07 階層</a></div><!-- bayes-local:end -->
 
-      <a href="../topics/bayes.html">ベイズ定理</a>
-      <a href="index.html">目次</a>
-      <a href="lab-01.html" class="current">01 更新</a>
-      <a href="lab-02.html">02 予測</a>
-      <a href="lab-03.html">03 観測の強さ</a>
-      <a href="lab-04.html">04 平均</a>
-      <a href="lab-05.html">05 件数</a>
-      <a href="lab-06.html">06 縮約</a>
-      <a href="lab-07.html">07 階層</a>
-      <button class="lang-toggle theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="ライトテーマへ切り替え">LIGHT</button>
-    </div>
-  </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <main id="main-content" class="bayesplay-main lab-page-main">
     <section class="lab-page-header reveal in" aria-labelledby="page-title-01">
       <div class="sec-tag">LAB 01 / PRIOR + DATA -> POSTERIOR</div>
       <h1 id="page-title-01" class="sec-title">見えない成功率を、観測で少しずつ読み直す</h1>
       <p>成功/失敗が出る場面で、未知の成功率を 1 点ではなく「候補の山」として置く。観測が入ると、その山がどちらへ寄り、幅がどう変わるかを見る。</p>
+      <a class="bp-breadcrumb" href="index.html#lab-index">← 7つのラボ / LAB 01</a>
       <div class="lesson-strip" aria-label="このラボの読みどころ">
         <span>何を推定しているか</span>
         <span>観測はどこを支持するか</span>
@@ -46,9 +75,11 @@
       </div>
     </section>
 
+    <details class="bp-reading">
+      <summary>このラボの問いと、グラフの読み方</summary>
     <section class="learning-section reveal in" aria-labelledby="learn-before-01">
       <div class="story-kicker">BEFORE GRAPH</div>
-      <h2 id="learn-before-01" class="sec-title">グラフを見る前に、この問いを置く</h2>
+      <h2 id="learn-before-01" class="sec-title">グラフで確かめること</h2>
       <div class="learning-grid">
         <article class="learning-card">
           <span>扱う問い</span>
@@ -56,7 +87,7 @@
         </article>
         <article class="learning-card">
           <span>中心の考え方</span>
-          <p>事前分布は観測前の出発点。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。事後分布は両方を合わせた更新後の読み。</p>
+          <p>事前分布は観測前の出発点。尤度は、その成功率だったとしたら今回の観測がどれくらい起こりやすいかを表す。事後分布は両方を合わせた更新後の分布。</p>
         </article>
         <article class="learning-card">
           <span>グラフの読み方</span>
@@ -69,23 +100,15 @@
       <div class="story-kicker">COLUMN NOTE</div>
       <h2 id="column-note-01" class="sec-title">「成功率はいくつか」を、いきなり1つに決めない</h2>
       <div class="column-note-prose">
-        <p>成功率を推定するとき、最初に欲しくなるのは「答えは何%か」という1つの数字です。ただ、観測が少ない段階では、1つの数字だけを出すと読みすぎになります。BayesPlay では、答えを点ではなく候補の山として置きます。</p>
+        <p>成功率を推定するとき、最初に欲しくなるのは「答えは何%か」という1つの数字です。観測が少ないときは、1つの数字だけでは、ほかの値がどれくらいありそうかまでは分かりません。BayesPlay では、答えを点ではなく候補の山として置きます。</p>
         <p>シアンの山は、観測前の置き方です。ここでの「成功側5・失敗側5」は実際の観測ではなく、出発点に持たせる仮の重みです。観測が少ないうちはこの重みが効き、観測が増えるほど実データの形が前に出ます。</p>
-        <p>黄色の山が出たら、平均だけで止まらず、幅を見ます。幅が広いなら、まだ言い切れない部分が残っています。この幅が、次の Lab 02 の予測分布へそのまま持ち越されます。</p>
+        <p>黄色の山には、平均の位置と、候補が広がる幅があります。幅が広いなら、まだ言い切れない部分が残っています。この幅が、次の Lab 02 の予測分布へそのまま持ち越されます。</p>
       </div>
     </section>
+    </details>
 
     <section class="lab-workspace reveal in" id="beta-binomial" aria-labelledby="lab-title">
-      <div class="section-copy lab-intro-copy">
-        <div class="sec-tag">LAB 01 / PRIOR + DATA -> POSTERIOR</div>
-        <h2 id="lab-title" class="sec-title">見えない成功率を、観測で少しずつ読み直す</h2>
-        <p>
-          最初の題材は、コイン、フリースロー、クリック率のような「成功/失敗」が出る場面。未知の成功率 <span class="math-inline">p</span> を、まだ見えていない値として扱う。
-        </p>
-        <p>
-          ここで大事なのは、観測が入ってもいきなり答えが 1 点に決まるわけではないこと。シアンの出発点にマゼンタの観測が重なると、黄色の更新後の山が現れる。
-        </p>
-      </div>
+      <div class="section-copy bp-workspace-heading"><h2 id="lab-title" class="sec-title">成功と失敗を加えて、分布を更新する</h2></div>
 
       <div class="lab-stage">
         <div class="update-guide" id="updateGuide" aria-label="ベイズ更新の流れ">
@@ -104,23 +127,6 @@
             </button>
           </div>
 
-          <div class="update-equation" aria-label="更新式">
-            <div class="equation-part equation-part--prior">
-              <span class="flow-label">出発点（事前分布）</span>
-              <strong id="flowPrior">仮の成功側 5 / 仮の失敗側 5</strong>
-            </div>
-            <div class="flow-operator flow-operator--plus">×</div>
-            <div class="equation-part equation-part--data">
-              <span class="flow-label">観測が支持する形（尤度）</span>
-              <strong id="flowEvidence" class="is-pending">観測で重みづける</strong>
-            </div>
-            <div class="flow-operator flow-operator--equals">→</div>
-            <div class="equation-part equation-part--posterior">
-              <span class="flow-label">更新後（事後分布）</span>
-              <strong id="flowPosterior" class="is-pending">更新後で現れる</strong>
-            </div>
-          </div>
-
           <div class="process-narrative" id="processNarrative" aria-live="polite">
             観測前は、この出発点から始まる。事前平均は中心、事前の強さは仮の重みとして表れる。
           </div>
@@ -128,14 +134,17 @@
         </div>
 
         <div class="viz-panel" aria-label="Beta-Binomial visualization panel">
-          <canvas id="posteriorCanvas" class="posterior-canvas" aria-busy="true" aria-label="事前分布、尤度、事後分布を重ねたグラフ"></canvas>
+          <canvas id="posteriorCanvas" class="posterior-canvas" aria-busy="true" aria-label="事前分布、尤度、事後分布を重ねたグラフ" role="img" aria-describedby="processNarrative credibleInterval"></canvas>
           <div class="legend-row" aria-label="Graph legend">
             <span><i class="legend-swatch legend-prior"></i>出発点（事前分布）</span>
-            <span><i class="legend-swatch legend-likelihood"></i>観測が支持する形（尤度）</span>
+            <span><i class="legend-swatch legend-likelihood"></i>観測が支持する形（尤度・相対値）</span>
             <span><i class="legend-swatch legend-posterior"></i>更新後（事後分布）</span>
-            <span><i class="legend-band"></i>95%信用区間</span>
+            <span><i class="legend-band"></i>95%信用区間</span><span>点線：直前の更新後（観測を変えると表示）</span>
           </div>
-          <p class="canvas-note">ここでの <span class="math-inline">p</span> は、まだ分からない成功率のことです。</p>
+          <p class="canvas-note">横軸の p は未知の成功率、縦軸は確率密度。尤度（破線）は形の比較用に高さを調整しています。</p>
+          <p><a class="bp-text-link" id="continuePrediction" href="lab-02.html">この観測条件で予測を見る →</a></p>
+          <div id="intervalComparison" class="bp-intervals" aria-live="polite"></div>
+          <p id="densityScaleNote" class="canvas-note" hidden>端の密度が大きいため、縦軸の表示上限で切り取っています。分布の面積の比較には使えません。</p>
         </div>
 
         <div class="result-readout" id="resultReadout" aria-label="Posterior summary">
@@ -156,6 +165,24 @@
             <strong id="priorWeight">-</strong>
           </span>
         </div>
+
+          <div class="update-equation" aria-label="更新式">
+            <div class="equation-part equation-part--prior">
+              <span class="flow-label">出発点（事前分布）</span>
+              <strong id="flowPrior">仮の成功側 5 / 仮の失敗側 5</strong>
+            </div>
+            <div class="flow-operator flow-operator--plus">×</div>
+            <div class="equation-part equation-part--data">
+              <span class="flow-label">観測が支持する形（尤度・相対値）</span>
+              <strong id="flowEvidence" class="is-pending">観測で重みづける</strong>
+            </div>
+            <div class="flow-operator flow-operator--equals">→</div>
+            <div class="equation-part equation-part--posterior">
+              <span class="flow-label">更新後（事後分布）</span>
+              <strong id="flowPosterior" class="is-pending">更新後で現れる</strong>
+            </div>
+          </div>
+
 
         <div class="observation-line" aria-label="Observed data">
           <span>観測 <strong id="observedRatio">-</strong></span>
@@ -227,22 +254,23 @@
         </article>
         <article class="recap-row">
           <span>2</span>
-          <h3>見えたらよいこと</h3>
-          <p>同じ観測割合のまま観測数が増えるほど、黄色の山は細くなる。ただし、事前分布が強いと、少ない観測では急には動かない。</p>
+          <h3>比べてみるところ</h3>
+          <p>観測数を増やしたとき、黄色の山の位置と95%信用区間を比べます。事前分布と観測が大きく違う場合、更新の途中で幅が広がることもあります。</p>
         </article>
         <article class="recap-row">
           <span>3</span>
           <h3>次へのつながり</h3>
-          <p>このページでは、更新後にも幅が残る。次は、その幅が未来の予測へどう持ち込まれるかを見る。</p>
+          <p>更新後にも幅が残ります。次はLab 03で観測数による違いを比較します。今の条件の予測は、グラフ下のリンクから確認できます。</p>
         </article>
       </div>
     </section>
 
-    <nav class="lab-page-nav" aria-label="ラボページ移動">
-      <span></span>
-      <a href="index.html">目次へ戻る</a>
-      <a href="lab-02.html">Lab 02 →</a>
-    </nav>
+    <nav class="lab-page-nav" aria-label="ラボページ移動"><a href="index.html">← BayesPlay</a><a href="index.html">目次へ戻る</a><a href="lab-03.html">Lab 03 →</a></nav>
   </main>
+  <footer class="bp-footer">
+    <div><a class="bp-footer-brand" href="index.html">BAYESPLAY</a><p>触って見えたら、また参考書へ。</p></div>
+    <div class="bp-family"><span>SASAI LAB / VISUAL LEARNING</span><a href="../index.html">StatPlay <small>統計学を広く</small> ↗</a><a href="index.html" aria-current="location">BayesPlay <small>ベイズ統計を深く</small></a></div>
+    <p class="bp-footer-note">StatPlay から生まれた、ベイズ統計の可視化ラボ。</p>
+  </footer>
 </body>
 </html>

@@ -27,10 +27,15 @@ export function createStateAnimator({
   let token = 0;
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  return function animateState() {
+  function cancel() {
     token += 1;
-    const currentToken = token;
     if (frameId) cancelAnimationFrame(frameId);
+    frameId = 0;
+  }
+
+  function animateState() {
+    cancel();
+    const currentToken = token;
 
     const from = getVisualState();
     const to = getTargetState();
@@ -57,7 +62,14 @@ export function createStateAnimator({
       }
     }
     frameId = requestAnimationFrame(step);
+  }
+
+  animateState.snap = () => {
+    cancel();
+    setVisualState(getTargetState());
+    render();
   };
+  return animateState;
 }
 
 export function createGraphAnimator(render, { duration = 520 } = {}) {

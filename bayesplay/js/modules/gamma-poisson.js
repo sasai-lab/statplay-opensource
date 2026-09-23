@@ -37,9 +37,19 @@ function syncOutputs() {
   els.gpPosteriorMean.textContent = fixed(m.posteriorMean, 2);
   els.gpCredible.textContent = `${fixed(low, 2)} - ${fixed(high, 2)}`;
   els.gpObservedRate.textContent = fixed(state.events / state.exposure, 2);
+  const events = document.getElementById('gpEventMarks');
+  if (events) {
+    events.textContent = `${state.events}件 / 観測時間 ${fixed(state.exposure, 1)}（●1つが1件。配置は件数表示用）`;
+    const marks = document.createElement('span');
+    marks.className = 'bp-observations'; marks.setAttribute('aria-hidden', 'true');
+    for (let i = 0; i < state.events; i++) {
+      const dot = document.createElement('i'); dot.className = 'bp-observation'; marks.append(dot);
+    }
+    events.append(marks);
+  }
   if (els.gpGuideText) {
     els.gpGuideText.textContent =
-      `${state.events}件を ${fixed(state.exposure, 1)} の時間で観測。観測レートは ${fixed(state.events / state.exposure, 2)}、更新後の平均は ${fixed(m.posteriorMean, 2)}。`;
+      `${state.events}件を ${fixed(state.exposure, 1)} の時間で観測。観測された発生率は ${fixed(state.events / state.exposure, 2)}、更新後の平均は ${fixed(m.posteriorMean, 2)}。`;
   }
 }
 
@@ -63,21 +73,30 @@ function draw(viewState = visualState) {
   const height = bottom - top;
   const values = [];
   let yMax = 0;
+  let interiorMax = 0;
   for (let i = 0; i <= 360; i += 1) {
     const rate = Math.max(1e-4, hi * i / 360);
     const prior = gammaPdf(rate, m.priorShape, m.priorRate);
     const posterior = gammaPdf(rate, m.posteriorShape, m.posteriorRate);
     yMax = Math.max(yMax, prior, posterior);
+    if (i > 0) interiorMax = Math.max(interiorMax, prior, posterior);
     values.push({ rate, prior, posterior });
   }
+  const displayMax = Math.min(yMax, interiorMax * 1.5);
+  const scaleNote = document.getElementById('gpDensityScaleNote');
+  if (scaleNote) scaleNote.hidden = yMax <= displayMax;
   const toPx = x => left + x / hi * width;
-  const toPath = key => values.map(p => [toPx(p.rate), bottom - p[key] / yMax * height * 0.96]);
+  const toPath = key => values.map(p => [toPx(p.rate), bottom - Math.min(1, p[key] / displayMax) * height * 0.96]);
   ctx.strokeStyle = withAlpha(tc.dim, 0.45);
   ctx.beginPath();
   ctx.moveTo(left, top);
   ctx.lineTo(left, bottom);
   ctx.lineTo(right, bottom);
   ctx.stroke();
+  const credibleLow = gammaQuantile(.025, m.posteriorShape, m.posteriorRate);
+  const credibleHigh = gammaQuantile(.975, m.posteriorShape, m.posteriorRate);
+  ctx.fillStyle = withAlpha(tc.yellow, .10);
+  ctx.fillRect(toPx(credibleLow), top, toPx(credibleHigh) - toPx(credibleLow), height);
   const observedRate = viewState.events / viewState.exposure;
   neonLine(ctx, toPath('prior'), tc.cyan, 9, mobile ? 1.8 : 2.2);
   neonLine(ctx, toPath('posterior'), tc.yellow, 14, mobile ? 2.2 : 2.8);
@@ -125,10 +144,7 @@ const animateGraph = createStateAnimator({
   ]),
   render: renderGraph
 });
-const scheduleDraw = throttledDraw(() => {
-  visualState = { ...state };
-  renderGraph();
-});
+const scheduleDraw = throttledDraw(() => animateGraph.snap());
 
 function readControls() {
   state.priorMean = Number(els.gpPriorMean.value);
