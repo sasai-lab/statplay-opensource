@@ -80,15 +80,6 @@ body.bayesplay-page .bp-home .bp-principle { display: grid; grid-template-column
 .bp-flow span { color: var(--dim); font: 10px/1.6 'Courier New', monospace; letter-spacing: 1px; }
 .bp-flow h3 { font-size: 15px; margin: 5px 0; letter-spacing: 0; }
 .bp-flow p { font-size: 12px; line-height: 1.8; color: var(--dim); }
-.bp-footer { position: relative; z-index: 2; width: min(1200px, calc(100% - 64px)); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--bp-line); text-align: left; }
-.bp-footer-brand { color: var(--yellow); font: 700 18px 'Courier New', monospace; letter-spacing: 1px; text-decoration: none; }
-.bp-footer p { color: var(--dim); font-size: 11px; line-height: 1.8; margin: 10px 0 0; }
-.bp-family { display: grid; gap: 10px; justify-content: end; }
-.bp-family > span { color: var(--dim); font: 10px 'Courier New', monospace; letter-spacing: 1px; }
-.bp-family a { color: var(--cyan); font: 700 13px 'Courier New', monospace; text-decoration: none; }
-.bp-family a[aria-current] { color: var(--yellow); }
-.bp-family small { color: var(--dim); font: 11px sans-serif; margin-left: 14px; }
-.bp-footer .bp-footer-note { grid-column: 1 / -1; margin-top: 0; font-size: 10px; }
 /* Each lab starts with its question, a reading disclosure, and the working graph. */
 .bayesplay-page .lab-page-main { width: 100%; padding: 100px 0 40px; overflow: visible; }
 body.bayesplay-page .lab-page-main > section { width: min(1120px, calc(100% - 64px)); max-width: none; padding: 24px 0; }
@@ -163,7 +154,6 @@ body.bayesplay-page .lab-workspace { grid-template-columns: minmax(0, 1fr) 280px
   .bp-lab-card h3 { margin-top: 18px; }
   .bp-lab-card p { padding-bottom: 18px; }
   body.bayesplay-page .bp-home .bp-principle { grid-template-columns: 1fr; padding-bottom: 48px; }
-  .bp-footer { width: calc(100% - 32px); grid-template-columns: 1fr; gap: 24px; }
   .bp-family { justify-content: start; }
   .bayesplay-page .lab-page-main { padding-top: 80px; }
   body.bayesplay-page .lab-page-main > section, .bp-reading, .lab-page-main .lab-page-nav { width: calc(100% - 32px); }

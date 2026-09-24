@@ -1026,6 +1026,15 @@
       ],
       "featured_columns": [
         "income_prediction"
+      ],
+      "related_experiences": [
+        {
+          "slug": "mathplay",
+          "ja_label": "MathPlay：偏微分から最小二乗法の谷底へ",
+          "en_label": "MathPlay: partial derivatives and least squares (Japanese)",
+          "ja_why": "切片と傾きを動かし、残差の2乗和が小さくなる場所を曲面で確かめる",
+          "en_why": "See how changing the intercept and slope moves the sum of squared residuals on a surface"
+        }
       ]
     },
     {
@@ -1091,6 +1100,15 @@
       "featured_columns": [
         "income_prediction",
         "multivariate_analysis"
+      ],
+      "related_experiences": [
+        {
+          "slug": "mathplay",
+          "ja_label": "MathPlay：2つの入力と偏微分を図で追う",
+          "en_label": "MathPlay: two inputs and partial derivatives (Japanese)",
+          "ja_why": "ほかの入力を止めて1つだけ動かすときの傾きを、3D曲面の切り口で見る",
+          "en_why": "See the slope of one input while holding the other fixed on a 3D surface"
+        }
       ]
     }
   ],
@@ -1559,6 +1577,27 @@
     }
   ],
   "experiences": [
+    {
+      "slug": "mathplay",
+      "name": "MathPlay",
+      "path": "/math/index.html",
+      "published": true,
+      "assets": [
+        "/css/math-lab.css",
+        "/js/modules/mathplay-preview.js",
+        "/js/modules/partial-derivative.js",
+        "/js/modules/partial-derivative-model.js"
+      ],
+      "labs": [
+        {
+          "slug": "partial-derivative",
+          "path": "partial-derivative.html",
+          "en_path": "/en/math/partial-derivative.html",
+          "label": "01 偏微分",
+          "en_label": "01 Partial derivatives"
+        }
+      ]
+    },
     {
       "slug": "bayesplay",
       "name": "BayesPlay",

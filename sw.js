@@ -1,29 +1,18 @@
 // StatPlay - Service Worker
 // Cache-first for static assets; bumps version to invalidate on deploy.
-const CACHE = 'sp-v4.0.2.1790202544';
-const EXPERIENCE_ASSETS = ["./bayesplay/", "./bayesplay/css/bayesplay.css", "./bayesplay/css/site-shell.css", "./bayesplay/index.html", "./bayesplay/js/main.js", "./bayesplay/js/math/beta.js", "./bayesplay/js/math/gamma.js", "./bayesplay/js/math/normal.js", "./bayesplay/js/math/pooling.js", "./bayesplay/js/modules/beta-binomial.js", "./bayesplay/js/modules/gamma-poisson.js", "./bayesplay/js/modules/hero.js", "./bayesplay/js/modules/hierarchical-bayes.js", "./bayesplay/js/modules/likelihood-strength.js", "./bayesplay/js/modules/normal-normal.js", "./bayesplay/js/modules/shrinkage.js", "./bayesplay/js/modules/update-comparison.js", "./bayesplay/js/ui/graph-motion.js", "./bayesplay/js/ui/group-plot.js", "./bayesplay/lab-01.html", "./bayesplay/lab-02.html", "./bayesplay/lab-03.html", "./bayesplay/lab-04.html", "./bayesplay/lab-05.html", "./bayesplay/lab-06.html", "./bayesplay/lab-07.html"];
-const ASSET_VERSION = '4.0.2';
+const CACHE = 'sp-v4.0.3.1790293669';
+const EXPERIENCE_ASSETS = ["./bayesplay/", "./bayesplay/css/bayesplay.css", "./bayesplay/css/site-shell.css", "./bayesplay/index.html", "./bayesplay/js/main.js", "./bayesplay/js/math/beta.js", "./bayesplay/js/math/gamma.js", "./bayesplay/js/math/normal.js", "./bayesplay/js/math/pooling.js", "./bayesplay/js/modules/beta-binomial.js", "./bayesplay/js/modules/gamma-poisson.js", "./bayesplay/js/modules/hero.js", "./bayesplay/js/modules/hierarchical-bayes.js", "./bayesplay/js/modules/likelihood-strength.js", "./bayesplay/js/modules/normal-normal.js", "./bayesplay/js/modules/shrinkage.js", "./bayesplay/js/modules/update-comparison.js", "./bayesplay/js/ui/graph-motion.js", "./bayesplay/js/ui/group-plot.js", "./bayesplay/lab-01.html", "./bayesplay/lab-02.html", "./bayesplay/lab-03.html", "./bayesplay/lab-04.html", "./bayesplay/lab-05.html", "./bayesplay/lab-06.html", "./bayesplay/lab-07.html", "./en/math/partial-derivative.html", "./math/", "./math/index.html", "./math/partial-derivative.html"];
+const ASSET_VERSION = '4.0.3';
 const COLUMN_SLUGS = ["deviation", "birthday", "standardization", "income_prediction", "error_types", "se_vs_sd", "multivariate_analysis"];
 const TOPIC_SLUGS = /* __TOPIC_SLUGS__ */ ["stdnorm", "normal", "prob", "bayes", "morep", "clt", "lln", "ci", "test", "proptest", "dists", "chitest", "anova", "corr", "reg", "mreg"];
-const MODULE_FILES = [
-  'site-shell.js','column-shell.js','multivariate.js','multivariate-hero.js','multivariate-i18n.js',
-  'multivariate-model.js','multivariate-motion.js','multivariate-pca.js',
-  'a11y.js','anchor.js','anova.js','autorun.js','bayes.js','chitest.js',
-  'chitest_common.js','chitest_gof.js','chitest_independence.js',
-  'ci.js','clt.js','corr.js','descriptive.js','deviation.js','dist.js',
-  'dist_chi2.js','dist_f.js','dist_t.js',
-  'error_types.js','errs.js','graphDrag.js','hero.js','htest.js','income_prediction.js','lang.js','lln.js',
-  'morep.js','mreg.js','nav.js','normal.js','prefs.js','prob.js','proptest.js',
-  'pwa.js','reg.js','reveal.js','scrolltop.js','se_vs_sd.js','share.js','stdnorm.js','tables.js','theme.js',
-  'toc.js','urlParams.js','version.js'
-];
+const MODULE_FILES = ["a11y.js", "anchor.js", "anova.js", "autorun.js", "bayes.js", "birthday.js", "chitest.js", "chitest_common.js", "chitest_gof.js", "chitest_independence.js", "ci.js", "clt.js", "column-shell.js", "corr.js", "descriptive.js", "deviation.js", "dist.js", "dist_chi2.js", "dist_f.js", "dist_t.js", "error_types.js", "errs.js", "graphDrag.js", "hero.js", "htest.js", "income_prediction.js", "lang.js", "lln.js", "mathplay-preview.js", "morep.js", "mreg.js", "multivariate-hero.js", "multivariate-i18n.js", "multivariate-model.js", "multivariate-motion.js", "multivariate-pca.js", "multivariate.js", "nav.js", "normal.js", "partial-derivative-model.js", "partial-derivative.js", "prefs.js", "prob.js", "proptest.js", "pwa.js", "reg.js", "reveal.js", "scrolltop.js", "se_vs_sd.js", "share.js", "site-shell.js", "stdnorm.js", "tables.js", "theme.js", "toc.js", "urlParams.js", "version.js"];
+const CSS_FILES = ["./css/math-lab.css", "./css/multivariate.css", "./css/stat_cyber.css"];
 const ASSETS = [
   ...EXPERIENCE_ASSETS,
   './',
   './index.html',
   './en/index.html',
-  './css/stat_cyber.css',
-  './css/multivariate.css',
+  ...CSS_FILES,
   './js/main.js',
   './js/utils.js',
   './js/katex-render.js',

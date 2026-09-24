@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathPlay — 統計につながる数学を、図で動かす</title>
+  <meta name="description" content="偏微分を曲面と2本の坂で確かめる、StatPlayの数学ラボ。点を動かして傾きを比べ、最小二乗法の「偏微分して0とおく」までたどります。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="theme-color" content="#00f3ff">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="../css/math-lab.css">
+  <script type="module" src="../js/modules/site-shell.js"></script>
+  <script type="module" src="../js/modules/mathplay-preview.js"></script>
+<!-- experience-meta:start -->
+<link rel="canonical" href="https://statplay.sasailab.com/math/">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/math/">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/math/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MathPlay — 統計につながる数学を、図で動かす">
+<meta property="og:description" content="偏微分を曲面と2本の坂で確かめる、StatPlayの数学ラボ。点を動かして傾きを比べ、最小二乗法の「偏微分して0とおく」までたどります。">
+<meta property="og:url" content="https://statplay.sasailab.com/math/">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="StatPlay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MathPlay — 統計につながる数学を、図で動かす">
+<meta name="twitter:description" content="偏微分を曲面と2本の坂で確かめる、StatPlayの数学ラボ。点を動かして傾きを比べ、最小二乗法の「偏微分して0とおく」までたどります。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "MathPlay — 統計につながる数学を、図で動かす", "description": "偏微分を曲面と2本の坂で確かめる、StatPlayの数学ラボ。点を動かして傾きを比べ、最小二乗法の「偏微分して0とおく」までたどります。", "url": "https://statplay.sasailab.com/math/", "inLanguage": "ja", "isAccessibleForFree": true, "learningResourceType": "Interactive visualization", "publisher": {"@type": "Organization", "name": "Sasai Lab"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "MathPlay", "item": "https://statplay.sasailab.com/math/"}]}]}</script>
+<!-- experience-meta:end -->
+</head>
+<body class="topic-page mathplay-home-page mathplay-page">
+  <a class="skip-to-main" href="#main-content">本文へ</a>
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="index.html" aria-current="page" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <div class="site-language"><button id="siteLanguageToggle" type="button" class="lang-toggle" aria-expanded="false" aria-controls="siteLanguageNotice" aria-label="言語メニュー">EN</button><div id="siteLanguageNotice" class="site-language-notice" hidden><p>このコンテンツは日本語のみです。</p><a href="../en/index.html" data-site-lang="en" hreflang="en" lang="en">StatPlay in English</a></div></div>
+  </div>
+</nav>
+<!-- math-local:start --><div class="mp-local-nav" role="navigation" aria-label="MathPlay labs"><a href="index.html" aria-current="page">MathPlay</a><a href="partial-derivative.html">01 偏微分</a></div><!-- math-local:end -->
+<main id="main-content" class="mp-home">
+    <section class="mp-hero" aria-labelledby="mp-title">
+      <div class="mp-intro">
+        <p class="mp-eyebrow">SASAI LAB / INTERACTIVE MATHEMATICS</p>
+        <h1 id="mp-title">MATH<span>PLAY</span></h1>
+        <p class="mp-tagline">式の前に、<br>動く図をひとつ。</p>
+        <p class="mp-lead">統計の式を追っていると、「偏微分して0とおく」で急に手が止まることがあります。何を動かし、何を止めているのか。まずは点を動かして、2つの向きの坂を比べてみてください。</p>
+        <div class="mp-actions">
+          <a class="mp-primary" href="partial-derivative.html">01 偏微分を触ってみる <span aria-hidden="true">→</span></a>
+          <a class="mp-text-link" href="#lab-index">ラボの内容を見る ↓</a>
+        </div>
+        <p class="mp-sister-note"><a href="../index.html">StatPlay</a> の数学ラボ。図で確かめたら、参考書の式に戻れます。</p>
+      </div>
+      <div class="mp-demo" aria-labelledby="mp-demo-title">
+        <div class="mp-demo-head"><span class="mp-eyebrow">TRY MATH / まずは点を動かす</span><span class="mp-live">INTERACTIVE</span></div>
+        <h2 id="mp-demo-title">同じ点でも、坂は2つ。</h2>
+        <p>この曲面の高さは f(x, y) = x² + xy + y²。x だけ動かす坂と、y だけ動かす坂を色で分けています。</p>
+        <canvas id="mathplayPreview" role="img" aria-busy="true" aria-label="曲面上の点Pと、x方向・y方向の2本の切り口" aria-describedby="mp-demo-summary"></canvas>
+        <div class="mp-controls">
+          <label for="mp-x">点 P の x <input id="mp-x" type="range" min="-1.5" max="1.5" step="0.05" value="1"><output id="mp-x-value" for="mp-x">1.00</output></label>
+          <label for="mp-y">点 P の y <input id="mp-y" type="range" min="-1.5" max="1.5" step="0.05" value="-1"><output id="mp-y-value" for="mp-y">−1.00</output></label>
+        </div>
+        <p class="mp-readout" id="mp-demo-summary" aria-live="polite"><span id="mp-demo-summary-lead">点 P (1.00, −1.00) では、x 方向の傾き </span><strong class="mp-x" id="mp-fx">+1.00</strong>、y 方向の傾き <strong class="mp-y" id="mp-fy">−1.00</strong>。</p>
+        <p class="mp-demo-note">片方だけ動かすと、もう片方の坂まで変わることがあります。なぜそうなるかは、ラボの切り口で追えます。</p>
+      </div>
+    </section>
+
+    <section class="mp-labs" id="lab-index" aria-labelledby="mp-labs-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">EXPLORE / MATH LAB 01</p>
+        <h2 id="mp-labs-title">偏微分から、回帰直線まで。</h2>
+        <p>今あるラボは1つ。曲面を動かしながら、参考書に出てくる記号を順番に図へ重ねます。</p>
+      </div>
+      <a class="mp-lab-card" href="partial-derivative.html">
+        <span class="mp-card-top"><span>LAB 01</span><span>偏微分・勾配・最小二乗法</span><span aria-hidden="true">↗</span></span>
+        <strong>「偏微分して0とおく」は、どこを探している？</strong>
+        <span>1本の接線から2本の坂へ。最後は、残差の2乗和がいちばん小さい谷底で、2つの偏微分がともに0になる様子を見ます。</span>
+        <span class="mp-card-model">PARTIAL DERIVATIVES × LEAST SQUARES</span>
+      </a>
+      <div class="mp-connections">
+        <h3>// StatPlayでつながるテーマ</h3>
+        <p><a href="../topics/reg.html">単回帰分析</a>では、データに合わせた直線を動かせます。<a href="../topics/mreg.html">重回帰分析</a>では、ほかの変数をそろえたときの係数の変化を見られます。</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+</body>
+</html>

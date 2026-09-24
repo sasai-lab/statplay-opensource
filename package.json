@@ -1,24 +1,25 @@
 {
   "name": "statplay",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Interactive cyberpunk visualizer for introductory statistics — covers standard normal, 中心極限定理, confidence intervals, hypothesis testing, regression, and Bayes.",
   "private": true,
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "build": "python scripts/build_topics.py",
+    "build": "python3 scripts/build_topics.py",
     "minify": "node scripts/minify.mjs --clean",
     "build:prod": "npm run build && npm run minify && npm run test:dist",
-    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs && node scripts/test_cf_function.mjs && node scripts/test_multivariate_math.mjs && node scripts/test_multivariate_motion.mjs && node scripts/test_multivariate_controls.mjs && node scripts/test_column_shell.mjs && node scripts/test_site_shell.mjs && node bayesplay/scripts/test_bayesplay.mjs && python3 scripts/test_seo.py",
+    "test": "node scripts/test_routing.mjs && node scripts/test_math.mjs && node scripts/test_a11y_map.mjs && node scripts/test_a11y_canvas.mjs && node scripts/test_a11y_aria.mjs && node scripts/test_content_guards.mjs && node scripts/test_cf_function.mjs && node scripts/test_multivariate_math.mjs && node scripts/test_multivariate_motion.mjs && node scripts/test_multivariate_controls.mjs && node scripts/test_column_shell.mjs && node scripts/test_site_shell.mjs && node scripts/test_partial_derivative.mjs && node scripts/test_experience_publication.mjs && node bayesplay/scripts/test_bayesplay.mjs && python3 scripts/test_experience_catalog.py && python3 scripts/test_seo.py",
     "test:layout": "node scripts/test_layout.mjs",
     "test:layout:cross": "node scripts/test_layout.mjs --browser=all",
     "test:a11y": "node scripts/test_a11y.mjs",
-    "test:e2e": "node scripts/test_e2e.mjs",
+    "test:e2e": "node scripts/test_e2e.mjs && node scripts/test_partial_derivative_ui.mjs && node scripts/test_mathplay_ui.mjs",
     "ci": "npm run lint && npm run build && npm run test && npm run test:layout && npm run test:a11y && npm run test:e2e && npm run test:bayesplay:ui && npm run minify && npm run test:dist",
     "bump": "python scripts/bump_version.py",
     "test:bayesplay": "node bayesplay/scripts/test_bayesplay.mjs && node bayesplay/scripts/test_bayesplay_ui.mjs",
     "test:bayesplay:ui": "node bayesplay/scripts/test_bayesplay_ui.mjs",
-    "test:dist": "node scripts/test_site_shell.mjs --dist && node bayesplay/scripts/test_bayesplay_ui.mjs --dist"
+    "test:mathplay:ui": "node scripts/test_partial_derivative_ui.mjs && node scripts/test_mathplay_ui.mjs",
+    "test:dist": "node scripts/test_site_shell.mjs --dist && node bayesplay/scripts/test_bayesplay_ui.mjs --dist && node scripts/test_mathplay_ui.mjs --dist"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.2",

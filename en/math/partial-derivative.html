@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partial Derivatives: Two Slopes at One Point | MathPlay</title>
+  <meta name="description" content="Move a point on a surface and compare the x- and y-direction slopes. See how partial derivatives combine to describe a small change in a function of two variables.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://statplay.sasailab.com/en/math/partial-derivative.html">
+  <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/math/partial-derivative.html">
+  <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/math/partial-derivative.html">
+  <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/math/partial-derivative.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="StatPlay">
+  <meta property="og:title" content="Partial Derivatives: Two Slopes at One Point">
+  <meta property="og:description" content="Move a point and compare two tangent slopes on the same surface.">
+  <meta property="og:url" content="https://statplay.sasailab.com/en/math/partial-derivative.html">
+  <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Partial Derivatives: Two Slopes at One Point">
+  <meta name="twitter:description" content="Move a point and compare two tangent slopes on the same surface.">
+  <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+  <link rel="manifest" href="../../manifest.webmanifest">
+  <link rel="icon" href="../../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../../icons/icon-192.png">
+  <meta name="theme-color" content="#00f3ff">
+  <link rel="stylesheet" href="../../css/stat_cyber.css">
+  <link rel="stylesheet" href="../../css/math-lab.css">
+  <script type="module" src="../../js/modules/site-shell.js"></script>
+  <script type="module" src="../../js/modules/mathplay-preview.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"LearningResource","name":"Partial Derivatives: Two Slopes at One Point","description":"Move a point on a surface and compare the x- and y-direction slopes.","url":"https://statplay.sasailab.com/en/math/partial-derivative.html","inLanguage":"en","isAccessibleForFree":true,"learningResourceType":"Interactive visualization","publisher":{"@type":"Organization","name":"Sasai Lab"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"StatPlay","item":"https://statplay.sasailab.com/en/"},{"@type":"ListItem","position":2,"name":"MathPlay","item":"https://statplay.sasailab.com/math/"},{"@type":"ListItem","position":3,"name":"Partial derivatives","item":"https://statplay.sasailab.com/en/math/partial-derivative.html"}]}]}</script>
+</head>
+<body class="topic-page mathplay-home-page mathplay-page">
+  <a class="skip-to-main" href="#main-content">Skip to content</a>
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="../topics/stdnorm.html">Standard Normal</a><a href="../topics/normal.html">Normal Distribution</a><a href="../topics/prob.html">Probability Rules</a><a href="../topics/bayes.html">Bayes&#x27; Theorem</a><a href="../topics/morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="../topics/clt.html">Central Limit Theorem</a><a href="../topics/lln.html">Law of Large Numbers</a><a href="../topics/ci.html">Confidence Interval</a><a href="../topics/test.html">Hypothesis Testing</a><a href="../topics/proptest.html">Proportion Test</a><a href="../topics/dists.html">Three Test Distributions</a><a href="../topics/chitest.html">Chi-Squared Test</a><a href="../topics/anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="../topics/corr.html">Correlation</a><a href="../topics/reg.html">Simple Regression</a><a href="../topics/mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience" aria-current="location">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../math/partial-derivative.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+<!-- math-local:start --><div class="mp-local-nav" role="navigation" aria-label="MathPlay labs"><a href="../../math/index.html">MathPlay</a><a href="partial-derivative.html" aria-current="page">01 Partial derivatives</a></div><!-- math-local:end -->
+<main id="main-content" class="mp-home">
+    <section class="mp-hero" aria-labelledby="mp-title">
+      <div class="mp-intro">
+        <p class="mp-eyebrow">MATHPLAY 01 / PARTIAL DERIVATIVES</p>
+        <h1 id="mp-title">Two inputs.<br><span>Two slopes.</span></h1>
+        <p class="mp-tagline">What changes when<br>only one input moves?</p>
+        <p class="mp-lead">For a curve with one input, a derivative is the tangent slope at a point. A surface has two inputs, x and y. The slope depends on which direction you move, so one number is not enough.</p>
+        <div class="mp-actions"><a class="mp-primary" href="../../math/partial-derivative.html" lang="ja">Open the full interactive lesson (Japanese) <span aria-hidden="true">→</span></a><a class="mp-text-link" href="#explanation">Read the explanation ↓</a></div>
+        <p class="mp-sister-note">This English page has a short interactive preview. The 13-step lesson, including least squares, is currently available in Japanese.</p>
+      </div>
+      <div class="mp-demo" aria-labelledby="mp-demo-title">
+        <div class="mp-demo-head"><span class="mp-eyebrow">TRY MATH / MOVE THE POINT</span><span class="mp-live">INTERACTIVE</span></div>
+        <h2 id="mp-demo-title">One point, two cuts through the surface</h2>
+        <p>The surface is f(x, y) = x² + xy + y². Cyan follows x while y stays fixed; magenta follows y while x stays fixed.</p>
+        <canvas id="mathplayPreview" role="img" aria-busy="true" aria-label="Point P on a surface with x- and y-direction cross-sections" aria-describedby="mp-demo-summary"></canvas>
+        <div class="mp-controls">
+          <label for="mp-x">Point P: x <input id="mp-x" type="range" min="-1.5" max="1.5" step="0.05" value="1"><output id="mp-x-value" for="mp-x">1.00</output></label>
+          <label for="mp-y">Point P: y <input id="mp-y" type="range" min="-1.5" max="1.5" step="0.05" value="-1"><output id="mp-y-value" for="mp-y">−1.00</output></label>
+        </div>
+        <p class="mp-readout" id="mp-demo-summary" aria-live="polite"><span id="mp-demo-summary-lead">At P (1.00, −1.00), the x-slope is </span><strong class="mp-x" id="mp-fx">+1.00</strong> and the y-slope is <strong class="mp-y" id="mp-fy">−1.00</strong>.</p>
+        <p class="mp-demo-note">Change one coordinate at a time. The other slope may change too, because this surface contains an xy term.</p>
+      </div>
+    </section>
+    <section class="mp-labs" id="explanation" aria-labelledby="mp-explanation-title">
+      <div class="mp-section-head">
+        <p class="mp-eyebrow">FROM A CURVE TO A SURFACE</p>
+        <h2 id="mp-explanation-title">Hold one input fixed, then take the slope.</h2>
+        <p>Keep y fixed and move only x: that cross-section is a curve, and its tangent slope is ∂f/∂x = 2x + y. Keep x fixed instead, and the other slope is ∂f/∂y = x + 2y.</p>
+        <p>At P = (1, −1), the two slopes are +1 and −1. A small move (Δx, Δy) changes the height by approximately (∂f/∂x)Δx + (∂f/∂y)Δy. These two slopes form the gradient, ∇f = (∂f/∂x, ∂f/∂y).</p>
+        <p>The full lesson follows these ideas into the tangent plane and the bottom of a least-squares surface, where both partial derivatives are zero.</p>
+      </div>
+      <div class="mp-connections"><h3>// CONTINUE IN STATPLAY</h3><p><a href="../topics/reg.html">Simple regression</a> shows the fitted line move with the data. <a href="../topics/mreg.html">Multiple regression</a> shows what changes when another predictor enters the model.</p></div>
+    </section>
+  </main>
+  <footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+</body>
+</html>

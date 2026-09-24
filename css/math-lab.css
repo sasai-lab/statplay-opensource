@@ -1,0 +1,518 @@
+/* StatPlay Math Lab — scroll-driven interactive explanations.
+ * One sticky stage (canvas) + step cards that change what the stage shows. */
+.math-lab-page {
+  --pd-top: 74px;
+  --pd-x: var(--cyan);
+  --pd-y: var(--magenta);
+  --pd-point: var(--yellow);
+  --pd-panel: rgba(8, 12, 32, .82);
+  --pd-panel-strong: rgba(6, 9, 26, .94);
+  --pd-line: rgba(122, 138, 166, .24);
+}
+body.theme-light.math-lab-page {
+  --pd-panel: rgba(255, 255, 255, .9);
+  --pd-panel-strong: rgba(255, 255, 255, .97);
+  --pd-line: rgba(26, 26, 46, .14);
+}
+
+.math-lab-page .col-breadcrumb {
+  max-width: 1760px;
+  margin: 76px auto 0;
+  padding: 0 24px;
+  color: var(--dim);
+  font: 12px "Courier New", monospace;
+}
+.math-lab-page .col-breadcrumb a { color: var(--cyan); text-decoration: none; }
+.math-lab-page .col-breadcrumb a:hover { text-decoration: underline; }
+.math-lab-page .col-breadcrumb .sep { margin: 0 8px; opacity: .5; }
+
+body.math-lab-page main.pd { display: block; width: 100%; max-width: 1760px; margin: 0 auto; padding: 0 24px 72px; }
+.math-lab-page section { padding: 0; }
+
+/* ---------- scrollytelling grid ---------- */
+.pd-scrolly {
+  display: grid;
+  grid-template-columns: minmax(340px, 460px) minmax(0, 1fr);
+  column-gap: 36px;
+  align-items: start;
+}
+.pd-stage-wrap {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: var(--pd-top);
+  height: calc(100vh - var(--pd-top) - 18px);
+  height: calc(100svh - var(--pd-top) - 18px);
+  min-height: 440px;
+  z-index: 2;
+}
+.pd-steps { grid-column: 1; grid-row: 1; padding: 22px 0 34vh; }
+
+/* ---------- stage ---------- */
+.pd-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(0, 243, 255, .2);
+  border-radius: 12px;
+  background:
+    linear-gradient(rgba(0, 243, 255, .03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, .03) 1px, transparent 1px),
+    radial-gradient(ellipse at 55% 60%, rgba(139, 92, 255, .14), transparent 60%),
+    rgba(3, 5, 16, .92);
+  background-size: 36px 36px, 36px 36px, auto, auto;
+  box-shadow: 0 0 60px rgba(0, 243, 255, .06) inset, 0 18px 50px rgba(0, 0, 0, .35);
+}
+body.theme-light .pd-stage {
+  border-color: rgba(26, 107, 122, .22);
+  background:
+    linear-gradient(rgba(26, 107, 122, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 107, 122, .05) 1px, transparent 1px),
+    radial-gradient(ellipse at 55% 60%, rgba(74, 48, 144, .07), transparent 60%),
+    #f7f9fd;
+  background-size: 36px 36px, 36px 36px, auto, auto;
+  box-shadow: 0 10px 30px rgba(26, 26, 46, .08);
+}
+#partialSurface {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+  border: 0;
+  background: transparent;
+  cursor: grab;
+  touch-action: pan-y;
+  outline: none;
+}
+#partialSurface:focus-visible { box-shadow: inset 0 0 0 2px var(--yellow); }
+#partialSurface.is-point-hover { cursor: pointer; }
+#partialSurface.is-grabbing { cursor: grabbing; }
+.pd-stage[data-step] #partialSurface { cursor: grab; }
+
+.pd-hud {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  right: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  pointer-events: none;
+}
+.pd-hud div {
+  min-width: 0;
+  padding: 6px 10px 7px;
+  border: 1px solid var(--pd-line);
+  border-radius: 6px;
+  background: var(--pd-panel);
+  backdrop-filter: blur(6px);
+}
+.pd-hud dt { margin: 0 0 2px; color: var(--dim); font: 10px/1.2 "Courier New", monospace; letter-spacing: .06em; white-space: nowrap; }
+.pd-hud dd { margin: 0; color: var(--pd-point); font: bold 15px/1.2 "Courier New", monospace; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.pd-hud .is-x dd { color: var(--pd-x); }
+.pd-hud .is-y dd { color: var(--pd-y); }
+.pd-hud .is-green dd { color: var(--green); }
+.pd-hud .is-orange dd { color: var(--orange); }
+.pd-hud .is-text dd { color: var(--text); }
+.pd-counter {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: var(--dim);
+  font: 11px "Courier New", monospace;
+  letter-spacing: .12em;
+  pointer-events: none;
+}
+.pd-progress {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transform: translateY(-50%);
+}
+.pd-progress button {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.pd-progress button span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(122, 138, 166, .55);
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.pd-progress button:hover span { background: var(--text); }
+.pd-progress button.is-active span { transform: scale(1.7); background: var(--yellow); box-shadow: 0 0 10px rgba(255, 230, 0, .6); }
+.pd-progress button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 1px; border-radius: 4px; }
+.pd-caption {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  max-width: calc(100% - 360px);
+  margin: 0;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.45;
+  pointer-events: none;
+}
+.pd-caption::before { content: "▸ "; color: var(--yellow); }
+.pd-gesture {
+  position: absolute;
+  bottom: 14px;
+  right: 72px;
+  max-width: 260px;
+  margin: 0;
+  color: var(--dim);
+  font: 11.5px/1.4 "Courier New", monospace;
+  letter-spacing: .03em;
+  text-align: right;
+  pointer-events: none;
+}
+
+/* ---------- step cards ---------- */
+.pd-step { margin: 0 0 46vh; transition: opacity .35s ease; opacity: .35; }
+.pd-step.is-active { opacity: 1; }
+.pd-step:last-child { margin-bottom: 18vh; }
+.pd-card {
+  position: relative;
+  padding: 22px 22px 20px;
+  border: 1px solid var(--pd-line);
+  border-left: 3px solid var(--pd-x);
+  border-radius: 10px;
+  background: var(--pd-panel);
+  backdrop-filter: blur(8px);
+}
+.pd-card--x { border-left-color: var(--pd-x); }
+.pd-card--y { border-left-color: var(--pd-y); }
+.pd-card--point { border-left-color: var(--pd-point); }
+.pd-card--green { border-left-color: var(--green); }
+.pd-hero .pd-card { border: 0; padding: 18px 0 8px; background: transparent; backdrop-filter: none; }
+.pd-card p { margin: 0 0 12px; color: var(--text); font-size: 15px; line-height: 1.85; }
+.pd-card h2 { margin: 2px 0 12px; color: var(--text); font-size: 21px; line-height: 1.45; }
+.pd-no { display: block; color: var(--dim); font: bold 12px "Courier New", monospace; letter-spacing: .2em; }
+.pd-eyebrow { color: var(--cyan); font: 12px "Courier New", monospace; letter-spacing: .14em; }
+.pd-hero h1 { margin: 14px 0 18px; font-size: clamp(34px, 3.6vw, 52px); line-height: 1.16; }
+.pd-hero h1 em { color: var(--yellow); font-style: normal; white-space: nowrap; }
+.pd-kicker { display: block; margin-bottom: 10px; color: var(--cyan); font-size: 15px; font-weight: normal; letter-spacing: .04em; }
+.pd-lead { color: var(--text); font-size: 16px !important; }
+.pd-hero p { color: var(--dim); }
+.pd-hero .pd-lead { color: var(--text); }
+.pd-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 18px 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.pd-map a {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--pd-line);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 12px;
+  text-decoration: none;
+}
+.pd-map a:hover { border-color: var(--cyan); color: var(--cyan); }
+.pd-map a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+.pd-map a span { margin-right: 6px; color: var(--dim); font: 10px "Courier New", monospace; }
+/* Jump links land with the card in the reading zone, below the sticky header. */
+.pd-step h2 { scroll-margin-top: 30vh; }
+.pd-scroll-hint { color: var(--dim) !important; font-size: 13px !important; }
+.pd-scroll-hint span { display: inline-block; margin-right: 6px; color: var(--yellow); font-weight: bold; animation: pd-bob 1.8s ease-in-out infinite; }
+@keyframes pd-bob { 50% { transform: translateY(4px); } }
+
+.pd-formula {
+  overflow-x: auto;
+  margin: 14px 0;
+  padding: 12px 14px;
+  border: 1px dashed rgba(255, 230, 0, .34);
+  border-radius: 6px;
+  color: var(--yellow);
+  background: rgba(255, 230, 0, .035);
+  font: 15px/1.7 "Courier New", monospace;
+  text-align: center;
+  white-space: nowrap;
+}
+.pd-formula u { text-decoration: none; border-bottom: 2px solid var(--pd-x); }
+.pd-calc {
+  display: grid;
+  gap: 5px;
+  margin: 12px 0 14px;
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: rgba(122, 138, 166, .08);
+  color: var(--text);
+  font: 13.5px/1.6 "Courier New", monospace;
+  overflow-x: auto;
+}
+.pd-calc > div { display: grid; grid-template-columns: 6.6em minmax(0, 1fr); column-gap: 10px; align-items: baseline; }
+.pd-calc-k { color: var(--dim); font-size: 11px; letter-spacing: .04em; }
+.pd-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 2px; line-height: 1.35; }
+.pd-frac > span:first-child { padding: 0 4px 2px; border-bottom: 1px solid currentColor; }
+.pd-frac > span:last-child { padding-top: 2px; }
+.pd-calc-v { min-width: 0; overflow-wrap: anywhere; }
+.pd-calc-note { display: block; margin-top: 2px; color: var(--dim); font-size: 11px; }
+/* Overline bars (x̄, ȳ): combining macrons drift off the letter in monospace fonts. */
+.pd-bar { text-decoration: overline; text-decoration-thickness: 1px; }
+.pd-small { color: var(--dim) !important; font-size: 13px !important; line-height: 1.7 !important; }
+
+.pd-control { margin: 10px 0; }
+.pd-control label {
+  display: grid;
+  grid-template-columns: 7.2em minmax(0, 1fr) 4.2em;
+  align-items: center;
+  gap: 10px;
+  color: var(--dim);
+  font-size: 13px;
+}
+.pd-control input { width: 100%; margin: 0; }
+.pd-control output { color: var(--yellow); font: bold 14px "Courier New", monospace; text-align: right; font-variant-numeric: tabular-nums; }
+
+.pd-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 12px 0 14px; }
+.pd-compare--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.pd-compare:has(> div:only-child) { grid-template-columns: minmax(0, 1fr); }
+.pd-compare div { min-width: 0; padding: 8px 10px; border: 1px solid var(--pd-line); border-radius: 6px; background: rgba(5, 6, 15, .28); }
+body.theme-light .pd-compare div { background: rgba(240, 243, 250, .7); }
+.pd-compare dt { margin-bottom: 3px; color: var(--dim); font-size: 11px; }
+.pd-compare dd { margin: 0; color: var(--text); font: bold 17px "Courier New", monospace; font-variant-numeric: tabular-nums; }
+
+.pd-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 14px; }
+.pd-btn {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--cyan);
+  border-radius: 6px;
+  color: var(--cyan);
+  background: rgba(0, 243, 255, .06);
+  font-size: 13px;
+  cursor: pointer;
+}
+.pd-btn:hover { background: rgba(0, 243, 255, .14); }
+.pd-btn--ghost { border-color: var(--pd-line); color: var(--dim); background: transparent; }
+.pd-btn--ghost:hover { color: var(--text); background: rgba(122, 138, 166, .1); }
+.pd-btn:focus-visible, .pd-control input:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+
+.pd-watch {
+  margin: 14px 0 0 !important;
+  padding: 10px 12px;
+  border-left: 2px solid var(--yellow);
+  background: rgba(255, 230, 0, .045);
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+}
+.pd-watch > span:first-child {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--yellow);
+  font: bold 10px "Courier New", monospace;
+  letter-spacing: .14em;
+}
+.pd-question {
+  margin: 14px 0 0 !important;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 43, 214, .3);
+  border-radius: 8px;
+  background: rgba(255, 43, 214, .05);
+}
+
+.pd-wave { margin: 12px 0 10px; }
+.pd-wave canvas { display: block; width: 100%; height: 150px; max-height: none; aspect-ratio: auto; border: 1px solid var(--pd-line); border-radius: 6px; background: rgba(5, 6, 15, .3); }
+body.theme-light .pd-wave canvas { background: rgba(240, 243, 250, .7); }
+.pd-wave figcaption { margin-top: 6px; color: var(--dim); font-size: 11.5px; line-height: 1.6; }
+.pd-wave figcaption b { color: var(--text); font-weight: bold; }
+
+.c-x { color: var(--pd-x); }
+.c-y { color: var(--pd-y); }
+.c-point { color: var(--pd-point); }
+.c-green { color: var(--green); }
+.c-orange { color: var(--orange); }
+.pd-card b { font-weight: bold; }
+.pd-card b.c-x, .pd-card b.c-y, .pd-card b.c-point, .pd-card b.c-green, .pd-card b.c-orange { font-weight: bold; }
+
+/* ---------- outro ---------- */
+.pd-outro { width: min(980px, 100%); margin: 24px auto 0; }
+.pd-outro h2 { margin: 10px 0 12px; color: var(--text); font-size: 26px; }
+.pd-outro > p { color: var(--text); font-size: 16px; line-height: 1.9; }
+.pd-table-wrap { overflow-x: auto; margin: 18px 0 26px; }
+.pd-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.pd-table th, .pd-table td { padding: 11px 12px; border-bottom: 1px solid var(--pd-line); text-align: left; vertical-align: top; line-height: 1.6; }
+.pd-table th { color: var(--dim); font: 11px "Courier New", monospace; letter-spacing: .08em; }
+.pd-table td:first-child { font: bold 14px "Courier New", monospace; white-space: nowrap; }
+.pd-table td { color: var(--text); }
+.pd-next { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 0 0 22px; }
+.pd-next-card {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  padding: 16px 44px 16px 16px;
+  border: 1px solid rgba(0, 243, 255, .24);
+  border-radius: 10px;
+  color: var(--text);
+  text-decoration: none;
+  background: rgba(0, 243, 255, .04);
+  line-height: 1.6;
+}
+.pd-next-card:hover { border-color: var(--cyan); background: rgba(0, 243, 255, .08); }
+.pd-next-k { color: var(--cyan); font-weight: bold; }
+.pd-next-go { position: absolute; right: 16px; top: 50%; color: var(--cyan); transform: translateY(-50%); }
+.pd-caveat { padding: 14px 16px; border-left: 3px solid var(--magenta); background: rgba(255, 43, 214, .045); color: var(--text); font-size: 14.5px; line-height: 1.85; }
+.pd-verify { margin-top: 14px; padding: 12px 16px; border: 1px dashed var(--pd-line); border-radius: 8px; color: var(--dim); font-size: 13px; line-height: 1.8; }
+.pd-verify strong { color: var(--text); }
+
+/* ---------- tablet / mobile: stage on top, cards scroll beneath ---------- */
+@media (max-width: 899px) {
+  .math-lab-page { --pd-top: 58px; }
+  .math-lab-page .col-breadcrumb { margin-top: 70px; padding: 0 16px; }
+  body.math-lab-page main.pd { padding: 0 12px 56px; }
+  .pd-scrolly { display: block; }
+  .pd-stage-wrap {
+    position: sticky;
+    top: var(--pd-top);
+    height: 46vh;
+    height: 46svh;
+    min-height: 300px;
+    max-height: 520px;
+    margin: 10px -12px 0;
+    z-index: 5;
+  }
+  .pd-stage { border-radius: 0; border-left: 0; border-right: 0; background-color: #03050f; box-shadow: 0 10px 24px rgba(0, 0, 0, .45); }
+  body.theme-light .pd-stage { background-color: #f7f9fd; box-shadow: 0 8px 18px rgba(26, 26, 46, .1); }
+  .pd-steps { position: relative; z-index: 1; padding: 14px 0 30vh; }
+  .pd-step { margin: 0 0 30vh; opacity: .55; }
+  .pd-step:first-child { margin-top: 4px; }
+  .pd-hero .pd-card { padding: 10px 2px 4px; }
+  .pd-hero h1 { font-size: clamp(30px, 8.4vw, 40px); margin: 10px 0 14px; }
+  .pd-card { padding: 18px 16px 16px; }
+  .pd-card h2 { font-size: 19px; }
+  .pd-card p { font-size: 14.5px; line-height: 1.8; }
+  .pd-hud { top: 8px; left: 8px; right: 54px; gap: 4px; }
+  .pd-hud div { padding: 4px 7px 5px; }
+  .pd-hud dt { font-size: 9px; }
+  .pd-hud dd { font-size: 12.5px; }
+  .pd-counter { top: 10px; right: 10px; font-size: 10px; }
+  .pd-progress { right: 4px; gap: 0; }
+  .pd-progress button { width: 20px; height: 17px; }
+  .pd-caption { left: 10px; bottom: 8px; max-width: calc(100% - 50px); font-size: 11.5px; }
+  .pd-gesture { display: none; }
+  .pd-step h2 { scroll-margin-top: calc(46svh + 80px); }
+  .pd-next { grid-template-columns: 1fr; }
+  .pd-table td:first-child { white-space: normal; }
+  .pd-table td:nth-child(2) { min-width: 6.5em; }
+  .pd-outro h2 { font-size: 22px; }
+  .pd-outro > p { font-size: 15px; }
+}
+@media (max-width: 420px) {
+  .pd-control label { grid-template-columns: 6.4em minmax(0, 1fr) 3.8em; gap: 8px; font-size: 12px; }
+  .pd-compare--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  .pd-compare dd { font-size: 14px; }
+  .pd-calc { font-size: 12.5px; padding: 10px 11px; }
+  .pd-calc > div { grid-template-columns: minmax(0, 1fr); }
+  .pd-calc-k { margin-top: 4px; }
+  .pd-formula { font-size: 13.5px; padding: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-step { transition: none; }
+  .pd-scroll-hint span { animation: none; }
+}
+
+/* MathPlay entrance and the small local lab navigation. */
+.mp-local-nav {
+  margin-top: 72px;
+  padding: 9px max(24px, calc((100vw - 1200px) / 2));
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid color-mix(in srgb, var(--cyan) 24%, transparent);
+  background: var(--bg2);
+  position: relative;
+  z-index: 3;
+}
+.mp-local-nav a { min-height: 40px; display: inline-flex; align-items: center; padding: 7px 10px; font: 12px "Courier New", monospace; color: var(--dim); text-decoration: none; }
+.mp-local-nav a:first-child { color: var(--yellow); font-weight: 700; }
+.mp-local-nav a[aria-current] { color: var(--yellow); box-shadow: inset 0 -2px var(--yellow); }
+.mp-local-nav a:hover, .mp-local-nav a:focus-visible { color: var(--cyan); }
+.math-lab-page .mp-local-nav { padding-top: 0; padding-bottom: 0; }
+.math-lab-page .mp-local-nav a { min-height: 30px; padding-top: 4px; padding-bottom: 4px; }
+.math-lab-page .mp-local-nav + .col-breadcrumb { margin-top: 6px; }
+
+.mathplay-home-page { --mp-panel: rgba(8, 13, 31, .88); --mp-line: rgba(0, 243, 255, .2); }
+body.theme-light.mathplay-home-page { --mp-panel: #fff; --mp-line: rgba(26, 107, 122, .22); }
+body.mathplay-home-page main.mp-home { max-width: 1320px; margin: 0 auto; padding: 32px 24px 40px; }
+body.mathplay-home-page .mp-home section { max-width: none; padding: 0; }
+.mp-hero { display: grid; grid-template-columns: minmax(280px, .88fr) minmax(0, 1.12fr); align-items: center; gap: clamp(28px, 5vw, 72px); min-height: 650px; }
+.mp-intro, .mp-demo { min-width: 0; }
+.mp-eyebrow { margin: 0 0 16px; color: var(--cyan); font: 700 11px "Courier New", monospace; letter-spacing: .14em; }
+.mp-intro h1 { margin: 0 0 14px; color: var(--text); font: 900 clamp(54px, 7vw, 98px)/.95 "Courier New", monospace; letter-spacing: -.08em; }
+.mp-intro h1 span { color: var(--magenta); }
+.mp-tagline { margin: 0 0 22px; color: var(--yellow); font-size: clamp(28px, 3vw, 43px); font-weight: 800; line-height: 1.3; letter-spacing: .03em; }
+.mp-lead { max-width: 32em; margin: 0; color: var(--text); font-size: 16px; line-height: 1.9; }
+.mp-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin: 30px 0 19px; }
+.mp-primary { min-height: 48px; display: inline-flex; align-items: center; gap: 20px; padding: 12px 18px; color: var(--bg); background: var(--cyan); font-weight: 800; text-decoration: none; border: 1px solid var(--cyan); }
+.mp-primary:hover, .mp-primary:focus-visible { color: var(--bg); box-shadow: 0 0 20px color-mix(in srgb, var(--cyan) 35%, transparent); }
+.mp-text-link, .mp-sister-note a, .mp-connections a { color: var(--cyan); }
+.mp-text-link { padding: 10px 0; font-size: 13px; }
+.mp-sister-note { color: var(--dim); font-size: 13px; line-height: 1.7; }
+.mp-demo { padding: clamp(18px, 2.8vw, 30px); border: 1px solid var(--mp-line); background: var(--mp-panel); box-shadow: 0 18px 50px rgba(0, 0, 0, .2); }
+.mp-demo-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.mp-demo-head .mp-eyebrow { margin-bottom: 10px; }
+.mp-live { color: var(--green); font: 700 10px "Courier New", monospace; letter-spacing: .14em; }
+.mp-demo h2 { margin: 0 0 8px; color: var(--text); font-size: clamp(21px, 2vw, 27px); }
+.mp-demo > p { margin: 0 0 16px; color: var(--dim); font-size: 13px; line-height: 1.7; }
+#mathplayPreview { display: block; width: 100%; height: 330px; border: 1px solid var(--mp-line); background: radial-gradient(circle at 55% 60%, color-mix(in srgb, var(--purple) 16%, transparent), transparent 65%), var(--bg); }
+.mp-controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0 12px; }
+.mp-controls label { display: grid; grid-template-columns: 1fr auto; gap: 8px; color: var(--text); font: 12px "Courier New", monospace; }
+.mp-controls input { grid-column: 1 / -1; width: 100%; accent-color: var(--cyan); }
+.mp-controls output { color: var(--yellow); }
+.mp-demo .mp-readout { min-height: 48px; margin: 6px 0 10px; color: var(--text); font-size: 13px; }
+.mp-x { color: var(--cyan); }
+.mp-y { color: var(--magenta); }
+.mp-demo .mp-demo-note { margin-bottom: 0; }
+.mp-labs { margin-top: 30px; border-top: 1px solid var(--mp-line); }
+.mp-section-head { max-width: 760px; margin: 54px 0 26px; }
+.mp-section-head h2 { margin: 0 0 10px; color: var(--text); font-size: clamp(25px, 3vw, 37px); }
+.mp-section-head p:last-child { color: var(--dim); font-size: 15px; line-height: 1.8; }
+.mp-lab-card { display: grid; gap: 16px; max-width: 900px; padding: 25px; border: 1px solid var(--mp-line); color: var(--text); text-decoration: none; background: var(--mp-panel); }
+.mp-lab-card:hover, .mp-lab-card:focus-visible { border-color: var(--cyan); box-shadow: 0 0 20px color-mix(in srgb, var(--cyan) 10%, transparent); }
+.mp-card-top { display: flex; justify-content: space-between; gap: 12px; color: var(--cyan); font: 700 11px "Courier New", monospace; letter-spacing: .08em; }
+.mp-lab-card > strong { color: var(--text); font-size: clamp(20px, 2.3vw, 29px); }
+.mp-lab-card > span:nth-of-type(2) { max-width: 55em; color: var(--dim); font-size: 14px; line-height: 1.8; }
+.mp-card-model { color: var(--magenta); font: 700 11px "Courier New", monospace; letter-spacing: .09em; }
+.mp-connections { max-width: 900px; margin: 36px 0 0; padding: 20px 0; border-top: 1px solid var(--mp-line); }
+.mp-connections h3 { margin: 0 0 8px; color: var(--cyan); font: 700 13px "Courier New", monospace; }
+.mp-connections p { margin: 0; color: var(--dim); font-size: 14px; line-height: 1.8; }
+@media (max-width: 900px) {
+  .mp-local-nav { margin-top: 64px; padding: 6px 16px; }
+  .mp-hero { grid-template-columns: 1fr; min-height: 0; padding-top: 16px; }
+  .mp-intro h1 { font-size: clamp(54px, 11vw, 84px); }
+}
+@media (max-width: 560px) {
+  body.mathplay-home-page main.mp-home { padding: 20px 16px 36px; }
+  .mp-local-nav { gap: 0; padding: 6px 10px; }
+  .mp-local-nav a { font-size: 11px; }
+  .mp-hero { gap: 26px; }
+  .mp-intro h1 { font-size: clamp(50px, 12vw, 68px); }
+  .mp-lead { font-size: 15px; }
+  .mp-demo { padding: 16px; }
+  #mathplayPreview { height: 270px; }
+  .mp-controls { gap: 10px; }
+  .mp-card-top { flex-wrap: wrap; }
+}

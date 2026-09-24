@@ -1695,6 +1695,7 @@
   /* footer .foot-copy inherits color:var(--dim) via semantic layer; only the dashed border needs neutral grey in light mode */
   body.theme-light footer .foot-copy{border-bottom-color:#d8dce6}
   body.theme-light footer .foot-copy b{color:var(--text)}
+  body.theme-light footer .foot-dim-strong{opacity:1}
   /* footer .built itself has no base color (body inherits --text); only .built b needs to drop cyan in light mode */
   body.theme-light footer .built b{color:var(--text)}
 

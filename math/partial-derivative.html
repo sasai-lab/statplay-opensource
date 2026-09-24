@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>偏微分して0とおく、とは？ 曲面を切って確かめる偏微分 | MathPlay</title>
+  <meta name="description" content="参考書の「偏微分して0とおく」は、何をしているのか。動かせる3D曲面で断面の接線・接平面・勾配をたどり、最小二乗法の正規方程式までつなげるインタラクティブ教材です。">
+  <meta name="author" content="Sasai Lab">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://statplay.sasailab.com/math/partial-derivative.html">
+  <link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/math/partial-derivative.html">
+  <link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/math/partial-derivative.html">
+  <link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/math/partial-derivative.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="StatPlay">
+  <meta property="og:title" content="偏微分して0とおく、とは？ 曲面を切って確かめる偏微分">
+  <meta property="og:description" content="スクロールすると同じ曲面が姿を変えます。断面の接線、接平面、勾配、そして最小二乗法の谷底まで。">
+  <meta property="og:url" content="https://statplay.sasailab.com/math/partial-derivative.html">
+  <meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+  <meta property="og:image:alt" content="MathPlay | 偏微分して0とおく、とは？">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="偏微分して0とおく、とは？ 曲面を切って確かめる偏微分">
+  <meta name="twitter:description" content="1本の接線から、接平面・勾配・最小二乗法まで。同じ3D曲面を動かしながら偏微分をたどります。">
+  <meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="icon" href="../icons/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icons/icon-192.png">
+  <meta name="theme-color" content="#00f3ff">
+  <link rel="stylesheet" href="../css/stat_cyber.css">
+  <link rel="stylesheet" href="../css/math-lab.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"LearningResource",
+        "@id":"https://statplay.sasailab.com/math/partial-derivative.html#resource",
+        "url":"https://statplay.sasailab.com/math/partial-derivative.html",
+        "name":"偏微分して0とおく、とは？ 曲面を切って確かめる偏微分",
+        "description":"動かせる3D曲面で、偏微分・接平面・全微分・勾配を確かめ、最小二乗法の正規方程式までつなげるインタラクティブ教材です。",
+        "inLanguage":"ja",
+        "learningResourceType":"Interactive explanation",
+        "isAccessibleForFree":true,
+        "teaches":["偏微分","偏導関数","接平面","全微分","方向微分","勾配ベクトル","最小二乗法","正規方程式"],
+        "author":{"@type":"Organization","name":"Sasai Lab","url":"https://statplay.sasailab.com/"},
+        "publisher":{"@type":"Organization","name":"StatPlay","url":"https://statplay.sasailab.com/"},
+        "datePublished":"2026-09-23",
+        "dateModified":"2026-09-24"
+      },
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"StatPlay","item":"https://statplay.sasailab.com/"},
+          {"@type":"ListItem","position":2,"name":"MathPlay","item":"https://statplay.sasailab.com/math/"},
+          {"@type":"ListItem","position":3,"name":"偏微分して0とおく、とは？","item":"https://statplay.sasailab.com/math/partial-derivative.html"}
+        ]
+      }
+    ]
+  }
+  </script>
+<!-- experience-meta:start -->
+<link rel="canonical" href="https://statplay.sasailab.com/math/partial-derivative.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/math/partial-derivative.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/math/partial-derivative.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="偏微分して0とおく、とは？ 曲面を切って確かめる偏微分 | MathPlay">
+<meta property="og:description" content="参考書の「偏微分して0とおく」は、何をしているのか。動かせる3D曲面で断面の接線・接平面・勾配をたどり、最小二乗法の正規方程式までつなげるインタラクティブ教材です。">
+<meta property="og:url" content="https://statplay.sasailab.com/math/partial-derivative.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="StatPlay">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="偏微分して0とおく、とは？ 曲面を切って確かめる偏微分 | MathPlay">
+<meta name="twitter:description" content="参考書の「偏微分して0とおく」は、何をしているのか。動かせる3D曲面で断面の接線・接平面・勾配をたどり、最小二乗法の正規方程式までつなげるインタラクティブ教材です。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "LearningResource", "name": "偏微分して0とおく、とは？ 曲面を切って確かめる偏微分 | MathPlay", "description": "参考書の「偏微分して0とおく」は、何をしているのか。動かせる3D曲面で断面の接線・接平面・勾配をたどり、最小二乗法の正規方程式までつなげるインタラクティブ教材です。", "url": "https://statplay.sasailab.com/math/partial-derivative.html", "inLanguage": "ja", "isAccessibleForFree": true, "learningResourceType": "Interactive visualization", "publisher": {"@type": "Organization", "name": "Sasai Lab"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "StatPlay", "item": "https://statplay.sasailab.com/"}, {"@type": "ListItem", "position": 2, "name": "MathPlay", "item": "https://statplay.sasailab.com/math/"}, {"@type": "ListItem", "position": 3, "name": "偏微分して0とおく、とは？ 曲面を切って確かめる偏微分 | MathPlay", "item": "https://statplay.sasailab.com/math/partial-derivative.html"}]}]}</script>
+<!-- experience-meta:end -->
+</head>
+<body class="column-page math-lab-page mathplay-page">
+  <a class="skip-to-main" href="#main">本文へ</a>
+  <nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="../topics/stdnorm.html">標準正規分布</a><a href="../topics/normal.html">正規分布と標準化</a><a href="../topics/prob.html">確率の基本法則</a><a href="../topics/bayes.html">ベイズの定理</a><a href="../topics/morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="../topics/clt.html">中心極限定理</a><a href="../topics/lln.html">大数の法則</a><a href="../topics/ci.html">信頼区間</a><a href="../topics/test.html">仮説検定</a><a href="../topics/proptest.html">母比率の検定と推定</a><a href="../topics/dists.html">三大検定分布</a><a href="../topics/chitest.html">カイ二乗検定</a><a href="../topics/anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="../topics/corr.html">相関係数</a><a href="../topics/reg.html">単回帰分析</a><a href="../topics/mreg.html">重回帰分析</a></div></div><a href="index.html" class="site-experience" aria-current="location">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/math/partial-derivative.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+<!-- math-local:start --><div class="mp-local-nav" role="navigation" aria-label="MathPlay labs"><a href="index.html">MathPlay</a><a href="partial-derivative.html" aria-current="page">01 偏微分</a></div><!-- math-local:end -->
+<div class="col-breadcrumb" aria-label="パンくず">
+    <a href="../index.html">StatPlay</a><span class="sep" aria-hidden="true">›</span><a href="index.html">MathPlay</a><span class="sep" aria-hidden="true">›</span><span aria-current="page">偏微分</span>
+  </div>
+
+  <main id="main" class="pd">
+    <div class="pd-scrolly">
+      <div class="pd-stage-wrap">
+        <div class="pd-stage">
+          <canvas id="partialSurface" tabindex="0" role="img" aria-busy="true" aria-roledescription="インタラクティブ図" aria-describedby="partialSummary">曲面の状態は、各ステップの数値とスライダーでも確認できます。</canvas>
+          <dl class="pd-hud" id="pdHud" aria-hidden="true"></dl>
+          <div class="pd-counter" id="pdCounter" aria-hidden="true">00 / 12</div>
+          <ol class="pd-progress" id="pdProgress" aria-label="ステップ一覧"></ol>
+          <p class="pd-caption" id="pdCaption" aria-hidden="true"></p>
+          <p class="pd-gesture" id="partialInteraction" aria-hidden="true"></p>
+        </div>
+      </div>
+
+      <div class="pd-steps">
+        <section class="pd-step pd-hero" data-step="intro" data-label="はじめに" aria-labelledby="pd-title">
+          <div class="pd-card">
+            <div class="pd-eyebrow">// MATHPLAY 01 · PARTIAL DERIVATIVES</div>
+            <h1 id="pd-title"><span class="pd-kicker">「偏微分して0とおく」の意味まで</span>この地点の坂は、<em>いくつ？</em></h1>
+            <p class="pd-lead">図は、x と y の2つの入力で高さ f(x, y) が決まる曲面です。<b class="c-point">点 P</b> での傾きを聞かれても、1つの数では答えられません。進む向きで坂が変わるからです。</p>
+            <p>1本の曲線の接線から始めて、同じ図を動かしながら、最小二乗法の谷底までたどります。</p>
+            <ol class="pd-map" aria-label="このページの流れ">
+              <li><a href="#pd-s1"><span>01</span>1本の坂</a></li>
+              <li><a href="#pd-s3"><span>03</span>切って測る</a></li>
+              <li><a href="#pd-s6"><span>06</span>接平面</a></li>
+              <li><a href="#pd-s7"><span>07</span>勾配</a></li>
+              <li><a href="#pd-s8"><span>08</span>谷底</a></li>
+              <li><a href="#pd-s9"><span>09</span>最小二乗法</a></li>
+            </ol>
+            <p class="pd-scroll-hint"><span aria-hidden="true">↓</span> スクロールすると、図が次の姿に変わります。点 P はドラッグで動かせます。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="single" data-label="01 1本の坂" aria-labelledby="pd-s1">
+          <div class="pd-card">
+            <span class="pd-no">01</span>
+            <h2 id="pd-s1">1本の道なら、坂は1つ</h2>
+            <p>まずは入力が1つの場合。進める向きは右か左だけです。</p>
+            <p>P から Δx だけ右へ進んだ点を取り、2点を<b class="c-orange">オレンジの直線</b>で結びます。その傾き Δf/Δx は、この区間の平均の坂です。Δx を縮めると直線は P での<b class="c-x">接線</b>に近づき、その傾きが微分 f′(x) になります。</p>
+            <div class="pd-formula">f′(x) = lim<sub>Δx→0</sub> <span class="pd-frac"><span>f(x + Δx) − f(x)</span><span>Δx</span></span></div>
+            <div class="pd-control"><label for="pd-h"><span>Δx を縮める</span><input id="pd-h" type="range" data-bind="h" min="0.02" max="1" step="0.01" value="1"><output data-out="h" for="pd-h">1.00</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>Δx を小さくするほど、図の左上の Δf/Δx が接線の傾き <b class="c-x" data-read="fx">+1.00</b> に近づきます。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="directions" data-label="02 向きで変わる坂" aria-labelledby="pd-s2">
+          <div class="pd-card">
+            <span class="pd-no">02</span>
+            <h2 id="pd-s2">地形の上では、坂は向きで変わる</h2>
+            <p>さっきの曲線は、この曲面を <b class="c-x">y = <span data-read="py">−1.00</span></b> で切った断面でした。入力が2つになると、グラフは地形のような曲面になります。</p>
+            <p>P から向き θ へ進むと、上り坂にも下り坂にもなり、平らな向きもあります。θ（x 軸の向きから左回りに測る角度）を1周させてみてください。</p>
+            <div class="pd-control"><label for="pd-theta1"><span>向き θ</span><input id="pd-theta1" type="range" data-bind="theta" min="0" max="359" step="1" value="0"><output data-out="theta" for="pd-theta1">0°</output></label></div>
+            <p class="pd-question">向きは無数にあり、1つずつ測るわけにはいきません。では、どの向きを測れば足りるのでしょうか。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="cut-x" data-label="03 切って測る" aria-labelledby="pd-s3">
+          <div class="pd-card">
+            <span class="pd-no">03</span>
+            <h2 id="pd-s3">y を止めると、曲面は1本の曲線に戻る</h2>
+            <p>01 の「1本の坂」に戻すには、y の値を1つに止めて x だけを動かします。進める道は、<b class="c-x">シアンの面</b>で切った1本の曲線だけになります。</p>
+            <div class="pd-control"><label for="pd-y3"><span>止める y</span><input id="pd-y3" type="range" data-bind="py" min="-2" max="2" step="0.01" value="-1"><output data-out="py" for="pd-y3">−1.00</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>止める y を変えると切り口が入れ替わりますが、どこで止めても1本の曲線です。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="partial-x" data-label="04 ∂f/∂x" aria-labelledby="pd-s4">
+          <div class="pd-card pd-card--x">
+            <span class="pd-no">04</span>
+            <h2 id="pd-s4">切り口の接線の傾きが、∂f/∂x</h2>
+            <p>切り口を真横から見ると、01 と同じ1本の曲線です。P での接線の傾きを <b class="c-x">∂f/∂x</b> と書き、「x についての偏微分」と呼びます。∂ は「ラウンド」「パーシャル」などと読まれ、参考書では f<sub>x</sub> とも書きます。</p>
+            <div class="pd-formula">∂f/∂x = lim<sub>Δx→0</sub> <span class="pd-frac"><span>f(x + Δx, <u>y</u>) − f(x, <u>y</u>)</span><span>Δx</span></span></div>
+            <p>01 の式と違うのは、2つの項で y が同じ値のままという点だけ。計算では y をただの数として扱います。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k">関数</span><span class="pd-calc-v">f(x, y) = x² + xy + y²</span></div>
+              <div><span class="pd-calc-k">y を数に</span><span class="pd-calc-v">y = <span data-read="py">−1.00</span> なら<br>f = x² + (<span data-read="py">−1.00</span>)x + (<span data-read="py">−1.00</span>)²</span></div>
+              <div><span class="pd-calc-k">x で微分</span><span class="pd-calc-v">2x + (<span data-read="py">−1.00</span>)　<span class="pd-calc-note">※ (<span data-read="py">−1.00</span>)x を x で微分すると (<span data-read="py">−1.00</span>)、定数項は 0</span></span></div>
+              <div><span class="pd-calc-k">y に戻すと</span><span class="pd-calc-v"><b class="c-x">∂f/∂x = 2x + y</b></span></div>
+              <div><span class="pd-calc-k">P では</span><span class="pd-calc-v">2 × (<span data-read="px">1.00</span>) + (<span data-read="py">−1.00</span>) = <b class="c-x" data-read="fx">+1.00</b></span></div>
+            </div>
+            <div class="pd-control"><label for="pd-x4"><span>P を x 方向へ</span><input id="pd-x4" type="range" data-bind="px" min="-2" max="2" step="0.01" value="1"><output data-out="px" for="pd-x4">1.00</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>式 2x + y に y が残るのは、この関数に xy の項があるからです。止める y を変えると、切り口は上下にずれるだけでなく傾き方も変わります。f = x² + y² なら ∂f/∂x = 2x で、y をどこで止めても変わりません。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="partial-y" data-label="05 ∂f/∂y" aria-labelledby="pd-s5">
+          <div class="pd-card pd-card--y">
+            <span class="pd-no">05</span>
+            <h2 id="pd-s5">x を止めれば、∂f/∂y</h2>
+            <p>今度は x を止めて y だけを動かします。図は90°回って<b class="c-y">マゼンタの切り口</b>を横から見ています。この接線の傾きが <b class="c-y">∂f/∂y</b> です。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k">x を数に</span><span class="pd-calc-v">x = <span data-read="px">1.00</span> なら<br>f = (<span data-read="px">1.00</span>)² + (<span data-read="px">1.00</span>)y + y²</span></div>
+              <div><span class="pd-calc-k">y で微分</span><span class="pd-calc-v">(<span data-read="px">1.00</span>) + 2y</span></div>
+              <div><span class="pd-calc-k">x に戻すと</span><span class="pd-calc-v"><b class="c-y">∂f/∂y = x + 2y</b></span></div>
+              <div><span class="pd-calc-k">P では</span><span class="pd-calc-v">(<span data-read="px">1.00</span>) + 2 × (<span data-read="py">−1.00</span>) = <b class="c-y" data-read="fy">−1.00</b></span></div>
+            </div>
+            <div class="pd-control"><label for="pd-y5"><span>P を y 方向へ</span><input id="pd-y5" type="range" data-bind="py" min="-2" max="2" step="0.01" value="-1"><output data-out="py" for="pd-y5">−1.00</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>同じ点 P でも、x 方向の坂は <b class="c-x" data-read="fx">+1.00</b>、y 方向の坂は <b class="c-y" data-read="fy">−1.00</b>。偏微分で測っているのは、ほかの入力を止め、一部の入力だけを動かしたときの変化です。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="tangent-plane" data-label="06 接平面" aria-labelledby="pd-s6">
+          <div class="pd-card pd-card--point">
+            <span class="pd-no">06</span>
+            <h2 id="pd-s6">2本の接線が、1枚の平面を決める</h2>
+            <p>P を通る2本の接線を含む平面が<b class="c-point">接平面</b>です。なめらかな曲面を P のごく近くで見ると、曲面と接平面のずれは小さくなります。</p>
+            <p>x 方向に Δx、y 方向に Δy 進んだときの高さの変化 Δf を、2本の坂の足し算で近似します。図の階段は、<b class="c-x">x 方向</b>と<b class="c-y">y 方向</b>の上り下りを順に足したものです。</p>
+            <div class="pd-formula">Δf ≈ (∂f/∂x) Δx + (∂f/∂y) Δy</div>
+            <p class="pd-small">いまの一歩：Δx = <span data-read="dx">0.40</span>、Δy = <span data-read="dy">−0.20</span></p>
+            <dl class="pd-compare pd-compare--3">
+              <div><dt>接平面での変化</dt><dd class="c-point" data-read="pred">+0.600</dd></div>
+              <div><dt>実際の変化 Δf</dt><dd data-read="actual">+0.720</dd></div>
+              <div><dt>ずれ</dt><dd class="c-orange" data-read="err">+0.120</dd></div>
+            </dl>
+            <div class="pd-actions">
+              <button type="button" class="pd-btn" data-action="halve">一歩を半分に</button>
+              <button type="button" class="pd-btn pd-btn--ghost" data-action="delta-reset">元に戻す</button>
+            </div>
+            <p class="pd-watch"><span>ここを見る</span>「一歩を半分に」を押すと、予測は半分になり、ずれは 1/4 になります（この関数の場合）。ずれのほうが速く縮むため、P に近づくほど接平面による近似が合ってきます。参考書の全微分 df = (∂f/∂x)dx + (∂f/∂y)dy は、接平面の上での変化を表す式です。そのため、≈ ではなく = で書かれます。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="gradient" data-label="07 勾配" aria-labelledby="pd-s7">
+          <div class="pd-card pd-card--green">
+            <span class="pd-no">07</span>
+            <h2 id="pd-s7">どの向きの坂も、2本から作れる</h2>
+            <p>真上から見た等高線の地図です（中心が谷底）。接平面の上で向き θ へ長さ1進むと、x 方向に cos θ、y 方向に sin θ 進むので、高さは次の分だけ変わります。これがその向きの坂で、参考書では方向微分と呼ばれます。</p>
+            <div class="pd-formula">(∂f/∂x) cos θ + (∂f/∂y) sin θ</div>
+            <p>02 では坂の向きが無数に見えました。ここでは、x と y の2方向の偏微分を組み合わせると、ほかの向きの坂も計算できます。</p>
+            <figure class="pd-wave">
+              <canvas id="pdWave" role="img" aria-busy="true" aria-label="向き θ ごとの坂を表す波形。シアンとマゼンタの2つの波の和になっている"></canvas>
+              <figcaption><b>太い実線</b>：向きごとの坂　<b class="c-x">シアンの点線</b>：(∂f/∂x) cos θ　<b class="c-y">マゼンタの点線</b>：(∂f/∂y) sin θ　<b class="c-green">緑の点</b>：最大の坂</figcaption>
+            </figure>
+            <div class="pd-control"><label for="pd-theta2"><span>向き θ</span><input id="pd-theta2" type="range" data-bind="theta" min="0" max="359" step="1" value="0"><output data-out="theta" for="pd-theta2">0°</output></label></div>
+            <div class="pd-actions"><button type="button" class="pd-btn" data-action="steepest">いちばん急な上りの向きへ</button></div>
+            <p>2つの偏微分を並べた <b class="c-green">∇f = (∂f/∂x, ∂f/∂y)</b>（∇ はナブラ）を<b class="c-green">勾配</b>と呼びます。いちばん急な上りはこの向きで、その坂は |∇f| = <b class="c-green" data-read="grad">1.41</b> です。</p>
+            <p class="pd-watch"><span>ここを見る</span>緑の矢印は、P を通る等高線（<b class="c-point">点線</b>）と直角に交わります。等高線に沿う向きでは坂が0、勾配の反対向きがいちばん急な下りです。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="zero" data-label="08 谷底" aria-labelledby="pd-s8">
+          <div class="pd-card pd-card--green">
+            <span class="pd-no">08</span>
+            <h2 id="pd-s8">2つの坂が、両方0になる場所</h2>
+            <p>∂f/∂x と ∂f/∂y が両方0の点では、07 の式からどの向きの坂も0になり、接平面は水平になります。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k c-x">x 方向</span><span class="pd-calc-v">∂f/∂x = 2x + y = 0</span></div>
+              <div><span class="pd-calc-k c-y">y 方向</span><span class="pd-calc-v">∂f/∂y = x + 2y = 0</span></div>
+              <div><span class="pd-calc-k c-green">交点</span><span class="pd-calc-v">(x, y) = (0, 0)</span></div>
+            </div>
+            <p>図の<b class="c-x">シアン</b>と<b class="c-y">マゼンタ</b>の点線は、それぞれの偏微分が0になる場所です。2本が交わる1点で、はじめて両方0になります。</p>
+            <div class="pd-actions">
+              <button type="button" class="pd-btn" data-action="descend">坂を下る</button>
+              <button type="button" class="pd-btn pd-btn--ghost" data-action="restart">別の場所から</button>
+            </div>
+            <p class="pd-watch"><span>ここを見る</span>勾配の反対向きへ少しずつ進むと、交点に近づきます。これが勾配降下法の考え方です。両方0の点は形によって山頂や鞍点（馬の鞍のように、向きによって上りにも下りにもなる点）のこともあり、この曲面では谷底です。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="least-squares" data-label="09 最小二乗法" aria-labelledby="pd-s9">
+          <div class="pd-card">
+            <span class="pd-no">09</span>
+            <h2 id="pd-s9">統計へ：直線の当てはまりも、谷になる</h2>
+            <p>5つの点に直線 y = a + bx を引きます。点と直線の縦のずれ（残差）e<sub>i</sub> = y<sub>i</sub> − (a + bx<sub>i</sub>) を2乗して足した量が S です。</p>
+            <div class="pd-formula">S(a, b) = Σ e<sub>i</sub>² = Σ ( y<sub>i</sub> − a − bx<sub>i</sub> )²</div>
+            <p>ここでの入力は x ではなく、直線を決める <b class="c-x">a（切片）</b>と <b class="c-y">b（傾き）</b>です。a と b を横と奥にとると、S は図のような谷になります。</p>
+            <div class="pd-control"><label for="pd-a9"><span>a（切片）</span><input id="pd-a9" type="range" data-bind="a" min="-0.5" max="2.5" step="0.01" value="2"><output data-out="a" for="pd-a9">2.00</output></label></div>
+            <div class="pd-control"><label for="pd-b9"><span>b（傾き）</span><input id="pd-b9" type="range" data-bind="b" min="0.2" max="1.7" step="0.01" value="0.3"><output data-out="b" for="pd-b9">0.30</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>直線を点に近づけるほど S は小さくなり、谷の上の点 (a, b) が下がります。最小二乗法は、この谷底を探す方法です。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="ls-a" data-label="10 ∂S/∂a" aria-labelledby="pd-s10">
+          <div class="pd-card pd-card--x">
+            <span class="pd-no">10</span>
+            <h2 id="pd-s10">b を止めて a だけ動かす：残差の合計</h2>
+            <p>03〜04 と同じく、b を止めて a だけを動かします。谷を切った<b class="c-x">シアンの曲線</b>の傾きが ∂S/∂a です。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k">a で微分</span><span class="pd-calc-v">∂S/∂a = Σ 2( y<sub>i</sub> − a − bx<sub>i</sub> ) × (−1)<br>= <b class="c-x">−2 Σ e<sub>i</sub></b></span></div>
+              <div><span class="pd-calc-k">いまの値</span><span class="pd-calc-v">Σ e<sub>i</sub> = <span data-read="sumE">+2.00</span><br>∂S/∂a = <b class="c-x" data-read="dSa">−4.00</b></span></div>
+            </div>
+            <p class="pd-small">かっこの中 ( y<sub>i</sub> − a − bx<sub>i</sub> ) は、a が1増えると1減ります。そのため、2乗を微分した 2( … ) に −1 がかかります（参考書では「合成関数の微分」と呼ばれる計算です）。</p>
+            <p>∂S/∂a = 0 は「残差の合計が0」。直線が点の上下でつり合う状態で、このとき直線は<b class="c-x">平均の点 (<span class="pd-bar">x</span>, <span class="pd-bar">y</span>) = (2, 3)</b> を通ります。</p>
+            <div class="pd-control"><label for="pd-a10"><span>a（切片）</span><input id="pd-a10" type="range" data-bind="a" min="-0.5" max="2.5" step="0.01" value="2"><output data-out="a" for="pd-a10">2.00</output></label></div>
+            <div class="pd-actions"><button type="button" class="pd-btn" data-action="best-a">この b で ∂S/∂a = 0 へ</button></div>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="ls-b" data-label="11 ∂S/∂b" aria-labelledby="pd-s11">
+          <div class="pd-card pd-card--y">
+            <span class="pd-no">11</span>
+            <h2 id="pd-s11">a を止めて b だけ動かす：残差と x</h2>
+            <p>今度は a を止めて b だけを動かします。<b class="c-y">マゼンタの切り口</b>の傾きが ∂S/∂b です。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k">b で微分</span><span class="pd-calc-v">∂S/∂b = Σ 2( y<sub>i</sub> − a − bx<sub>i</sub> ) × (−x<sub>i</sub>)<br>= <b class="c-y">−2 Σ x<sub>i</sub>e<sub>i</sub></b></span></div>
+              <div><span class="pd-calc-k">いまの値</span><span class="pd-calc-v">Σ x<sub>i</sub>e<sub>i</sub> = <span data-read="sumXE">+10.40</span><br>∂S/∂b = <b class="c-y" data-read="dSb">−20.80</b></span></div>
+            </div>
+            <p>∂S/∂b = 0 は、残差に x をかけて足すと0になること。10 の条件と合わせると、残差と x の共分散が0、つまり残差に x との直線的な傾向が残っていない状態です。</p>
+            <div class="pd-control"><label for="pd-b11"><span>b（傾き）</span><input id="pd-b11" type="range" data-bind="b" min="0.2" max="1.7" step="0.01" value="0.3"><output data-out="b" for="pd-b11">0.30</output></label></div>
+            <p class="pd-watch"><span>ここを見る</span>b を大きくしすぎると、右側の点ほど直線が上に外れ、∂S/∂b がプラスに転じます。</p>
+          </div>
+        </section>
+
+        <section class="pd-step" data-step="ls-solve" data-label="12 回帰直線" aria-labelledby="pd-s12">
+          <div class="pd-card pd-card--green">
+            <span class="pd-no">12</span>
+            <h2 id="pd-s12">両方0の点が、回帰直線</h2>
+            <p>08 と同じく、谷底では2つの偏微分が両方0です。2つの条件を並べた連立方程式が、参考書で「正規方程式」と呼ばれるものです。</p>
+            <div class="pd-calc">
+              <div><span class="pd-calc-k c-x">∂S/∂a = 0</span><span class="pd-calc-v">Σ( y<sub>i</sub> − a − bx<sub>i</sub> ) = 0<br>→ Σy<sub>i</sub> − n·a − b Σx<sub>i</sub> = 0<br>→ n·a + b Σx<sub>i</sub> = Σy<sub>i</sub></span></div>
+              <div><span class="pd-calc-k c-y">∂S/∂b = 0</span><span class="pd-calc-v">Σx<sub>i</sub>( y<sub>i</sub> − a − bx<sub>i</sub> ) = 0<br>→ a Σx<sub>i</sub> + b Σx<sub>i</sub>² = Σx<sub>i</sub>y<sub>i</sub></span></div>
+              <div><span class="pd-calc-k">この5点</span><span class="pd-calc-v">5a + 10b = 15<br>10a + 30b = 39.4</span></div>
+              <div><span class="pd-calc-k c-green">解</span><span class="pd-calc-v">b = <b data-read="lsB">0.94</b>、a = <b data-read="lsA">1.12</b></span></div>
+            </div>
+            <p class="pd-small">S(a, b) は a と b の2次式で、x<sub>i</sub> がすべて同じ値でない限りお椀型です。山頂や鞍点はなく、両方0の点はただ1つ、それが谷底です。</p>
+            <div class="pd-actions">
+              <button type="button" class="pd-btn" data-action="solve">正規方程式を解いて谷底へ</button>
+              <button type="button" class="pd-btn pd-btn--ghost" data-action="reg-reset">最初の直線に戻す</button>
+            </div>
+            <p>連立方程式を解くと、b = Σ(x<sub>i</sub> − <span class="pd-bar">x</span>)(y<sub>i</sub> − <span class="pd-bar">y</span>) ⁄ Σ(x<sub>i</sub> − <span class="pd-bar">x</span>)²、a = <span class="pd-bar">y</span> − b <span class="pd-bar">x</span> という回帰係数の公式になります。この5点では b = 9.4 ⁄ 10 = 0.94 です。</p>
+            <p>参考書の「S を a と b で偏微分して0とおく」という1行は、この谷底の条件を書いています。</p>
+            <p class="pd-watch"><span>ここを見る</span><b class="c-x">シアン</b>と<b class="c-y">マゼンタ</b>の点線（それぞれの偏微分が0になる線）の交点が、回帰直線の (a, b) です。</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <p class="sr-only" id="partialSummary" aria-live="polite"></p>
+
+    <section class="pd-outro" aria-labelledby="pd-outro-title">
+      <div class="pd-eyebrow">// BACK TO THE TEXTBOOK</div>
+      <h2 id="pd-outro-title">参考書に戻る前に</h2>
+      <p>このページで動かしたものと、参考書で出会う記号の対応です。</p>
+      <div class="pd-table-wrap">
+        <table class="pd-table">
+          <thead><tr><th scope="col">記号</th><th scope="col">呼び方</th><th scope="col">このページで見たもの</th></tr></thead>
+          <tbody>
+            <tr><td class="c-x">∂f/∂x</td><td>x についての偏微分</td><td>y を止めた切り口の接線の傾き（04）</td></tr>
+            <tr><td class="c-y">∂f/∂y</td><td>y についての偏微分</td><td>x を止めた切り口の接線の傾き（05）</td></tr>
+            <tr><td class="c-point">df = f<sub>x</sub>dx + f<sub>y</sub>dy</td><td>全微分</td><td>接平面による高さの変化の予測（06）</td></tr>
+            <tr><td class="c-green">(∂f/∂x) cos θ + (∂f/∂y) sin θ</td><td>方向微分</td><td>向き θ の坂（07）</td></tr>
+            <tr><td class="c-green">∇f</td><td>勾配</td><td>いちばん急な上りの向きと、その坂の大きさ（07）</td></tr>
+            <tr><td>∂S/∂a = ∂S/∂b = 0</td><td>正規方程式</td><td>最小二乗法の谷底、つまり回帰直線（12）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pd-next">
+        <a class="pd-next-card" href="../topics/reg.html"><span class="pd-next-k">単回帰分析</span><span>直線を動かして、残差の2乗和が小さくなる位置を探す</span><span class="pd-next-go" aria-hidden="true">→</span></a>
+        <a class="pd-next-card" href="../topics/mreg.html"><span class="pd-next-k">重回帰分析</span><span>偏回帰係数は、ほかの説明変数をそろえたまま、その変数だけ1違うときの予測値の差</span><span class="pd-next-go" aria-hidden="true">→</span></a>
+      </div>
+      <p class="pd-caveat">重回帰の偏回帰係数は、ほかの説明変数を固定したまま、その変数だけを1増やしたときの予測値の変化です。予測式 ŷ をその変数で偏微分した値にあたります（09〜12 で a と b について偏微分したのとは、微分する相手が違います）。これを因果効果と読むには、交絡要因（その変数と結果の両方に影響するほかの要因）の選び方や測定、モデルの仮定を別に検討する必要があります。</p>
+      <aside class="pd-verify"><strong>数値の確かめ方：</strong>図に使う偏微分の式は、いくつかの点で中央差分による数値微分と照合しています。回帰直線の a と b も、正規方程式を直接解いた値と回帰係数の公式が同じ値になることをテストしています。</aside>
+    </section>
+  </main>
+
+  <footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+  <script type="module" src="../js/modules/column-shell.js"></script>
+  <script type="module" src="../js/modules/partial-derivative.js"></script>
+</body>
+</html>
