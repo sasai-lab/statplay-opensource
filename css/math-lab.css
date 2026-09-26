@@ -185,8 +185,8 @@ body.theme-light .pd-stage {
 }
 
 /* ---------- step cards ---------- */
-.pd-step { margin: 0 0 46vh; transition: opacity .35s ease; opacity: .35; }
-.pd-step.is-active { opacity: 1; }
+.pd-step { margin: 0 0 46vh; }
+.pd-step.is-active .pd-card { box-shadow: 0 0 0 1px var(--pd-x); }
 .pd-step:last-child { margin-bottom: 18vh; }
 .pd-card {
   position: relative;
@@ -201,12 +201,12 @@ body.theme-light .pd-stage {
 .pd-card--y { border-left-color: var(--pd-y); }
 .pd-card--point { border-left-color: var(--pd-point); }
 .pd-card--green { border-left-color: var(--green); }
-.pd-hero .pd-card { border: 0; padding: 18px 0 8px; background: transparent; backdrop-filter: none; }
+.pd-hero .pd-card { border: 0; padding: 24px; background: transparent; backdrop-filter: none; }
 .pd-card p { margin: 0 0 12px; color: var(--text); font-size: 15px; line-height: 1.85; }
 .pd-card h2 { margin: 2px 0 12px; color: var(--text); font-size: 21px; line-height: 1.45; }
 .pd-no { display: block; color: var(--dim); font: bold 12px "Courier New", monospace; letter-spacing: .2em; }
 .pd-eyebrow { color: var(--cyan); font: 12px "Courier New", monospace; letter-spacing: .14em; }
-.pd-hero h1 { margin: 14px 0 18px; font-size: clamp(34px, 3.6vw, 52px); line-height: 1.16; }
+.pd-hero h1 { margin: 14px 0 18px; font-size: clamp(34px, 3.6vw, 48px); line-height: 1.16; }
 .pd-hero h1 em { color: var(--yellow); font-style: normal; white-space: nowrap; }
 .pd-kicker { display: block; margin-bottom: 10px; color: var(--cyan); font-size: 15px; font-weight: normal; letter-spacing: .04em; }
 .pd-lead { color: var(--text); font-size: 16px !important; }
@@ -397,7 +397,7 @@ body.theme-light .pd-wave canvas { background: rgba(240, 243, 250, .7); }
   .pd-steps { position: relative; z-index: 1; padding: 14px 0 30vh; }
   .pd-step { margin: 0 0 30vh; opacity: .55; }
   .pd-step:first-child { margin-top: 4px; }
-  .pd-hero .pd-card { padding: 10px 2px 4px; }
+  .pd-hero .pd-card { padding: 20px; }
   .pd-hero h1 { font-size: clamp(30px, 8.4vw, 40px); margin: 10px 0 14px; }
   .pd-card { padding: 18px 16px 16px; }
   .pd-card h2 { font-size: 19px; }

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and see why the Central Limit Theorem is the backbone of inferential statistics.">
+
+<meta name="keywords" content="central limit theorem, sample mean, convergence to normal, inferential statistics, sample size">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>See the Central Limit Theorem in Action — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/clt.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/clt.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/clt.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/clt.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="See the Central Limit Theorem in Action">
+
+<meta property="og:description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and see why the Central Limit Theorem is the backbone of inferential statistics.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/clt.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — See the Central Limit Theorem in Action">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="See the Central Limit Theorem in Action">
+
+<meta name="twitter:description" content="Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and see why the Central Limit Theorem is the backbone of inferential statistics.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — See the Central Limit Theorem in Action">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "See the Central Limit Theorem in Action",
+      "description": "Watch sample means from any skewed population pile up into a normal curve as sample size grows. Drag to change n and see why the Central Limit Theorem is the backbone of inferential statistics.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Central Limit Theorem", "Distribution of sample means", "Convergence to normal"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/clt.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "See the Central Limit Theorem in Action"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html" aria-current="page">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/clt.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">See the Central Limit Theorem in Action</a></h1>
+
+  <p class="topic-lead">However twisted the population, its sample mean still bends back into a bell. A hidden engine that keeps reappearing behind the rest of inferential statistics.</p>
+
+  <section class="reveal in" id="clt">
+
+
+
+<div class="sec-tag">I.01 / CENTRAL LIMIT THEOREM</div>
+
+
+
+<h2 class="sec-title">Central Limit Theorem <span class="sec-sub">— Why Normal Is King</span></h2>
+
+
+
+<div class="story-bridge">Normal distribution basics down. Now for <b>statistical inference</b>. What shape does the <i>average</i> of many samples take? Here comes <span class="next">the Central Limit Theorem</span>: whatever you start with — dice, Poisson, anything — the <b>average</b> is pulled toward that same normal curve.</div>
+
+
+
+<p class="sec-desc">
+
+<b>A fact worth pausing on</b> — no matter how skewed the base distribution is,
+
+    if you take <code>n</code> samples and average, then repeat, the <b>distribution of those averages</b>
+
+    converges on its own to <b>a bell (normal)</b>.<br/>
+
+    The lab below shows <b>left = the raw skewed source</b> side-by-side with <b>right = the sample-mean distribution</b>,
+
+    so you can watch the bell emerge. Crank <code>n</code> up and the bell tightens (<span class="term-gloss" title="Standard Error: how much the sample mean varies. Population σ divided by √sample size">SE</span> = σ/√n).
+
+  </p>
+
+
+
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+
+<!-- @panel:clt_main -->
+<div class="panel" data-autorun="cltRun">
+<div class="controls">
+<div class="ctrl"><label><span>Base distribution (the skewed one)</span></label>
+<select aria-label="Base distribution" id="cltDist">
+<option data-en="Exponential λ=1 (heavy right-skew)" data-ja="指数分布 λ=1（右に超歪み）" selected="" value="exp">Exponential λ=1 (heavy right-skew)</option>
+<option data-en="Uniform [0,1] (flat)" data-ja="一様分布 [0,1]（平ら）" value="uniform">Uniform [0,1] (flat)</option>
+<option data-en="Bimodal (two peaks)" data-ja="二峰分布（山が2つ）" value="bimodal">Bimodal (two peaks)</option>
+</select>
+</div>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="cltNVal">30</span></label>
+<input aria-label="Sample size n" id="cltN" max="50" min="1" type="range" value="30"/>
+</div>
+<button class="btn" id="cltRun"><span>▶ Run 3000 trials</span></button>
+<button class="btn magenta" id="cltClear"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Central Limit Theorem simulation" height="300" id="cltCanvas"></canvas>
+
+<div class="bayes-story" id="cltStoryEn"></div>
+<div class="info">
+<div><span>Trials</span><strong id="cltCount">0</strong></div>
+<div><span>Mean of sample means</span><strong id="cltMean">—</strong></div>
+<div><span>SD of sample means</span><strong id="cltSD">—</strong></div>
+<div><span>Theoretical SE = σ/√n</span><strong id="cltSE">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="cltCanvas" data-title="Central Limit Theorem"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<!-- @panel:clt_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0,\,1)"></div>
+<p><b>What this says in plain English</b><br/>
+• "Take the average of n test scores, subtract the true mean, divide by the standard error — and no matter what the original scores' distribution looks like, as n grows, this ratio follows a standard normal distribution"</p>
+<p><b>Each part</b><br/>
+• X̄ₙ − μ: the gap between the sample mean and the true mean — raw units make this hard to interpret<br/>
+• ÷ σ/√n: standardize the gap by the standard error (SE) → converts to "how many SEs off"<br/>
+• →d N(0,1): as n → ∞, this quantity's distribution converges to the standard normal</p>
+<p><b>Why this unlocks confidence intervals and hypothesis tests</b><br/>
+• Thanks to the Central Limit Theorem, we can say "X̄ is approximately N(μ, σ²/n)"<br/>
+• The confidence interval X̄ ± 1.96·σ/√n works because the Central Limit Theorem guarantees ±1.96σ covers 95%<br/>
+• The test statistic z = (X̄−μ₀)/(σ/√n) can be judged against the N(0,1) table — again, thanks to the Central Limit Theorem<br/>
+• In short, the Central Limit Theorem is "the reason normal-distribution tools work on everything"</p>
+</div>
+
+<div class="detail-section">
+<h3>// Why does averaging produce a bell curve?</h3>
+<p>Intuitively — when you average n values, individual outliers cancel out. High values offset low values, making extreme averages rare. The pattern of "how rare" matches the bell curve exactly.</p>
+<p>Try it in the simulator above:<br/>
+• Pick the exponential distribution (heavily right-skewed), set n=5 → the mean distribution is still skewed<br/>
+• Set n=30 → already quite bell-shaped. No matter how skewed the original, averaging brings it toward normal</p>
+<h3>// Is "n ≥ 30" really enough?</h3>
+<p>Textbooks often say "n ≥ 30 is sufficient for the Central Limit Theorem." This isn't a mathematical threshold — it's a rule of thumb.</p>
+<ul>
+<li>Uniform distribution (symmetric): n = 12 already looks very normal</li>
+<li>Exponential (strong skew): n = 40–50 needed</li>
+<li>Bimodal: n = 30 may still show bumps</li>
+</ul>
+<h3>// σ vs. SE — easy to confuse</h3>
+<ul>
+<li><b>σ (standard deviation)</b>: spread of individual data points. A property of the data itself</li>
+<li><b>SE = σ/√n (standard error)</b>: spread of the sample mean. Depends on sample size</li>
+<li>Quadruple n → SE halves (√4 = 2). Doubling precision requires 4× the data — that's the true "cost of research"</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The Central Limit Theorem says the data itself becomes normal"</b>
+<p>The original data stays exactly the same shape. What becomes normal is the distribution of the sample mean. Data drawn from an exponential distribution is still right-skewed — only the average of many such draws approaches a bell.</p>
+</div>
+<div class="misc-item">
+<b>❌ "n = 30 is a hard rule"</b>
+<p>As noted above, it depends on the parent distribution. The simulator lets you test different distributions and sample sizes to see for yourself.</p>
+</div>
+<div class="misc-item">
+<b>❌ "With the Central Limit Theorem, you don't need to know anything about the population"</b>
+<p>The Central Limit Theorem requires finite variance (σ² &lt; ∞). For the Cauchy distribution (which has infinite variance), the sample mean doesn't converge to normal no matter how large n gets.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>The Central Limit Theorem isn't a topic that ends here — it's the silent machinery underneath several other topics. The same √n structure keeps reappearing, just dressed in different clothes.</p>
+<ul>
+<li><b>Reappears in the width of a confidence interval</b>: the CI for a mean is X̄ ± 1.96·σ/√n. The width scales with σ/√n precisely because the Central Limit Theorem guarantees X̄ is close to N(μ, σ²/n)</li>
+<li><b>Reappears in proportion tests</b>: the SE of the one-sample z-test, √(p₀(1−p₀)/n), is the same "spread divided by √n" pattern in disguise. The proptest condition np ≥ 5 is the Central Limit Theorem's threshold translated into the world of proportions</li>
+<li><b>Reappears in the SE of a regression slope</b>: SE(β̂₁) divides the residual standard deviation by "spread of x times √n." The reason adding observations tightens the slope estimate is, again, the √n in the denominator</li>
+<li><b>"Quadruple n to double the precision"</b>: with √n sitting in every denominator, precision can only grow as the square root of sample size. That's the shared "cost of measurement" across every inference shape</li>
+</ul>
+<p class="pattern-companion">The interval width that sits on the CLT guarantee is at <a class="pattern-companion-link" href="./ci.html">Confidence Intervals</a>.</p></div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; whatever the original distribution, the sample mean walks toward the normal — that's where CLT lands</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; CLT lays the distribution shape on top of the convergence LLN guarantees — twin theorems working together</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; CLT guarantees the spread SE = σ/√n, and the CI multiplier stacks on top</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; after CLT lands you on the normal, swapping σ for s pulls the t / χ² / F family forward</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; the binomial-to-normal approximation kicks off as CLT's earliest concrete example in motion</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; with CLT's normalization guarantee in place, the z-score lifts different-unit measurements onto a common yardstick</li>
+<li><a href="../../en/columns/deviation.html">"What Is Hensachi?" column</a> &mdash; CLT props up "averages go normal," and Japan's school score, hensachi, stands as the everyday tool on that base</li>
+<li><a href="../../en/columns/se_vs_sd.html">"SD vs SE" column</a> &mdash; puts the CLT guarantee for the SE = σ/√n width next to the two-tier picture where SD and SE live on different floors — CLT in its SE-precision register</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">What Is Standardization? — The Universal Translator for "Normal"</span>
+    <span class="fr-desc">182 cm vs. TOEIC 860 — which is further from "average"? Compare across units via z</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>does the sample mean really converge? <span class="story-arrow">▸</span> <a href="./lln.html">I2 Law of Large Numbers</a></div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./clt.html">Central Limit Theorem</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html" class="current">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./morep.html" rel="prev">← Prev</a>
+  <a href="./lln.html" rel="next">Next →</a>
+</nav>
+
+</body>
+
+</html>

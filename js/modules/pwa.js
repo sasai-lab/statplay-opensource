@@ -5,12 +5,8 @@ export function initPwa(){
   if(!('serviceWorker' in navigator)) return;
   if(location.protocol !== 'http:' && location.protocol !== 'https:') return;
   if(location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
-  let reloading = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if(reloading) return;
-    reloading = true;
-    location.reload();
-  });
+  // A first-time clients.claim() also fires controllerchange. Do not reload an
+  // in-progress lesson; the next navigation will use the active worker.
   window.addEventListener('load', () => {
     // sw.js lives at the deploy root, but this page may be at /topics/<x>.html
     // or /en/topics/<x>.html. Register relative to the root rather than the

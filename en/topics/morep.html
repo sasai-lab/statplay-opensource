@@ -87,111 +87,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
       "name": "Binomial, Poisson, and Exponential Distributions",
-
       "description": "Play with three foundational distributions: binomial success counts, Poisson event counts, and exponential waiting times. Feel the bridge from discrete to continuous.",
-
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["Binomial distribution B(n,p)", "Poisson distribution Pois(λ)", "Exponential distribution Exp(λ)"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/morep.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
-          "item": "https://statplay.sasailab.com/"
-
+          "item": "https://statplay.sasailab.com/en/"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
-          "item": "https://statplay.sasailab.com/topics/"
-
+          "item": "https://statplay.sasailab.com/en/#cat-probability"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "Binomial, Poisson, and Exponential Distributions"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -266,19 +213,12 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Binomial</b>
-
 <ol>
-
 <li><b>Step 1:</b> n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>
-
 <li><b>Step 2:</b> Set n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) below — nearly identical.</li>
-
 <li><b>Step 3:</b> Keep n large, p small → watch binomial converge toward Poisson.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:morep_binom -->
@@ -324,19 +264,12 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Poisson</b>
-
 <ol>
-
 <li><b>Step 1:</b> λ=1 → concentrated near 0. λ=5 → approaches a bell shape.</li>
-
 <li><b>Step 2:</b> Raise λ to <b>20</b> → looks just like a normal bell (Central Limit Theorem preview).</li>
-
 <li><b>Step 3:</b> λ is both the mean and variance. Set λ=3 and check "E[X] = Var[X] = λ = 3.00" at the top-left of the graph.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:morep_poisson -->
@@ -380,19 +313,12 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Exponential</b>
-
 <ol>
-
 <li><b>Step 1:</b> λ=1 → mean wait = 1. λ=2 → mean wait = 0.5. Larger λ = "happens sooner."</li>
-
 <li><b>Step 2:</b> Set λ to 0.1 → long tail. Rare events have long waits.</li>
-
 <li><b>Step 3:</b> Memoryless: having waited 10 min doesn't change how much longer you'll wait.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:morep_exp -->
@@ -671,4 +597,3 @@ Normal approximation           Exponential</div>
 </body>
 
 </html>
-

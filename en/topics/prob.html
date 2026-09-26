@@ -87,111 +87,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
       "name": "Probability Rules — Venn Diagrams",
-
       "description": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
-
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["Addition rule", "Conditional probability P(A|B)", "Event independence"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/prob.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
-          "item": "https://statplay.sasailab.com/"
-
+          "item": "https://statplay.sasailab.com/en/"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
-          "item": "https://statplay.sasailab.com/topics/"
-
+          "item": "https://statplay.sasailab.com/en/#cat-probability"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "Probability Rules"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -288,21 +235,13 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — try these in order</b>
-
 <ol>
-
 <li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → check the <b>P(A∪B)</b> readout below the graph: it shows <b>0.58</b>. That's 0.4+0.3−0.12, the addition rule in action.</li>
-
 <li><b>Step 2:</b> Press "Set Independent" → P(A∩B) auto-adjusts to P(A)·P(B). That's what independence means.</li>
-
 <li><b>Step 3:</b> Drag P(A∩B) near <b>0</b> → the circles separate. This is "mutually exclusive" (can't happen together).</li>
-
 <li><b>Step 4:</b> Push P(A∩B) close to P(B) → the <b>P(A|B)</b> readout approaches 1. If B happens, A almost certainly happens too.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:prob_venn -->
@@ -519,4 +458,3 @@ Two mutually exclusive events (with P &gt; 0) are never independent. If A happen
 </body>
 
 </html>
-

@@ -1,6 +1,6 @@
 # StatPlay
 
-Current version: **v4.0.3** · [Live site / 公開サイト](https://statplay.sasailab.com/)
+Current version: **v4.0.4** · [Live site / 公開サイト](https://statplay.sasailab.com/)
 
 **JA** | 参考書の数式で止まった——そんな統計学習者のための、直感を取り戻す可視化ラボ。スライダーを動かすと、式の意味が絵で見えてくる。式が見えたら、参考書に戻ってください。
 **EN** | A visualization lab for statistics learners who got stuck at the formulas in a textbook. Move a slider and the meaning behind the equation comes into view — then go back to the textbook.
@@ -13,6 +13,14 @@ A cyberpunk-themed interactive visualizer for learning statistics by doing.
 - ダーク（サイバーパンク）& ライトモード対応 / Dark & light theme
 - PWA — オフラインで動作 / Works offline
 - 検索エンジンが各トピックを個別にインデックスできる per-page 構成（sitemap / hreflang / JSON-LD 付き）
+
+## v4.0.4
+
+- 教材ガイドの日英差分を編集元として明示し、トピックページの生成元と公開HTMLを分離。
+- 無変更ビルドでファイル時刻を維持し、配布版のPWA更新とアクセシビリティを実ブラウザで確認。
+- 任意のオフライン資産が1件取得できなくても、Service Worker全体の更新が止まらないよう修正。
+
+Version 4.0.4 clarifies the editable sources for topic guides and pages, keeps no-op builds stable, and strengthens offline updates and accessibility checks.
 
 ## v4.0.3
 
@@ -196,9 +204,10 @@ python3 -m http.server 8080
 # Lint
 npm run lint
 
-# Build (per-topic pages + sitemap + robots + sw.js cache bump)
+# Build (per-topic pages + sitemap + robots + content-derived SW cache)
 npm run build
 # If `python` is unavailable: python3 scripts/build_topics.py
+python3 scripts/build_topics.py --check  # detect stale generated files without writing
 
 # Tests
 npm run test              # routing, math, a11y maps, content, shared shell, and SEO
@@ -209,6 +218,8 @@ npm run test:bayesplay    # BayesPlay math and browser checks
 
 # Full CI pipeline (lint, build, math, layout, a11y, E2E, BayesPlay, production output)
 npm run ci
+# If pages were built with a specific domain, verify that exact build before deploying
+npm run verify:built
 
 # Production build (build + minify → dist/)
 npm run build:prod
@@ -220,6 +231,16 @@ npm run bump -- --level patch   # explicit level
 ```
 
 Requires Node >= 20 and Python 3 for builds and SEO checks. Dev dependencies: `eslint`, `jsdom`, `@playwright/test`, `@axe-core/playwright`, `terser`, `clean-css-cli`, `beautifulsoup4`, and `lxml`.
+
+### Adding a lesson or column
+
+Register topics, columns, navigation and published experiences in `content/topics.json`. For bilingual content, add both paths and the corresponding HTML. Existing topic-page editorial bodies live in `content/topic_sources/{ja,en}/`; `topics/` and `en/topics/` are generated outputs. A new topic may be bootstrapped from the hub section, but if it has page-only partials, create its editable topic source with the required `@panel` slots before building. A new topic also needs a lazy widget entry in `js/main.js`; `test_catalog_contract.mjs` detects a missing entry.
+
+Source-backed columns declare `styles`, `module`, `body_class` and `source_dependencies` in the catalog. Shared experiment guides come from the hub. Intentional page-specific guides are editable in `content/topic_guide_overrides.json` with a classification and reason; the builder applies both sources to topic pages. Do not edit generated guides in `topics/` directly. Keep shared numerical examples consistent in both languages.
+
+Run `npm run build` and `npm run ci` before proposing a release. `scripts/public_files.mjs` defines what may enter `dist/`; an unregistered root file stops packaging. CI and deployment both test generated pages. Deployment builds with the production domain before running `verify:built`.
+
+The Service Worker cache key follows content. Its first install requires the hub shell and eagerly imported modules, then caches other lessons independently; a failed optional asset no longer aborts the entire update. The builder stages intermediate output in memory and writes only changed final files; a no-op build must preserve `sw.js`, sitemap and page mtimes.
 
 ---
 

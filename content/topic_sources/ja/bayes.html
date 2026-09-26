@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta name="keywords" content="ベイズ定理, 陽性的中率, 感度, 特異度, 有病率, 偽陽性, 条件付き確率">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>ベイズ定理 — 陽性的中率を直感で — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/bayes.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="ベイズ定理 — 陽性的中率を直感で">
+<meta property="og:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/bayes.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — ベイズ定理">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ベイズ定理 — 陽性的中率を直感で">
+<meta name="twitter:description" content="有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — ベイズ定理">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "ベイズ定理 — 陽性的中率を直感で",
+      "description": "有病率・感度・特異度を動かし、陽性と診断された人が実際に病気である確率（陽性的中率）がどう変わるかを可視化。偽陽性の多さに驚くベイズの直感を掴む。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["ベイズ定理", "条件付き確率", "陽性的中率"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/bayes.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-probability"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ベイズ定理"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability" aria-current="location">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html">正規分布と標準化</a><a href="prob.html">確率の基本法則</a><a href="bayes.html" aria-current="page">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/bayes.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">ベイズ定理 — 陽性的中率を直感で</a></h1>
+  <p class="topic-lead">答え：わずか 16.7%。医師の半数も外すこのクイズ、決め手は感度や特異度ではなく **有病率** にある。下で「1000人の町」の数字を追えば、その理由が目に見える。</p>
+  <section class="reveal in" id="bayes">
+
+<div class="sec-tag">P.04 / BAYES THEOREM</div>
+<h2 class="sec-title">ベイズの定理 <span class="sec-sub">— 事後確率の逆転劇</span></h2>
+
+<div class="story-bridge">分布の道具箱が揃った。最後に<b>条件付き確率を反転させる</b>——これが<span class="next">ベイズの定理</span>。検査で陽性が出た→病気の確率は？ ここで直感はよく裏切られる。</div>
+
+<p class="sec-desc">
+<b>「感度99%・特異度95%の検査で陽性」＝ 99%病気？</b><br/>
+    …<b>答え：わずか 16.7%</b>。「え、99%じゃないの？」と最初に固まる地点。医師ですら半分以上が間違える超有名クイズだから、直感が外れて当然のように設計されている。<br/>
+    数字で追ってみよう。<b>1000人の町</b>のうち 10人が病気、990人が健康。全員に検査すると、陽性と判定されるのは合計 <b>60人</b>。内訳は——本当に病気の10人（真陽性）＋ 健康なのに誤って陽性の50人（偽陽性）。もしあなたがこの60人の中にいるなら、本当に病気の確率は <b>10 ÷ 60 ＝ 16.7%</b>。健康な人の母数が圧倒的に多いほど、偽陽性が"本物"を薄めてしまう。
+  </p>
+
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:bayes_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl">
+<label><span>有病率 — 1000人のうち何人が病気？</span> = <span class="val" id="bPdVal"><span>50人 / 1000</span></span></label>
+<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl">
+<label><span>感度 — 病気の人を「陽性」と当てる割合</span> = <span class="val" id="bSensVal">99%</span></label>
+<input aria-label="Sensitivity" id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+</div>
+<div class="ctrl">
+<label><span>特異度 — 健康な人を「陰性」と判定する割合</span> = <span class="val" id="bSpecVal">95%</span></label>
+<input aria-label="Specificity" id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Bayes theorem visualization" class="canvas-bayes" id="bayesCanvas"></canvas>
+<div class="info">
+<div><span>真陽性 TP（病気 &amp; 陽性）</span><strong id="bTp">—</strong></div>
+<div><span>偽陽性 FP（健康なのに陽性）</span><strong id="bFp">—</strong></div>
+<div><span>陽性だった人が本当に病気の確率</span><strong id="bPpv">—</strong></div>
+<div><span>陰性だった人が本当に健康な確率</span><strong id="bNpv">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="ベイズの定理"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:bayes_text -->
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+<p><span class="symbol-note">ここでは A＝「本当に病気」、B＝「検査で陽性」と読む</span><br/>
+P(A|B)＝陽性→病気の確率（陽性的中率）、P(B|A)＝感度、P(A)＝有病率、P(B)＝陽性が出る確率全体。<br/>
+有病率が小さいと分子が縮み、偽陽性を含む分母が相対的に大きくなる——上の「60人中10人」がまさにこれ。</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「陽性 = 病気」</b>
+<p>有病率1%, 感度95%, 特異度90% だと、陽性的中率はたった 8.8%。陽性100人中、実際に病気なのは9人だけ。残りの91人は健康なのに陽性（偽陽性）。上のシミュレーションで有病率を下げていくと、この比率が目で見てじわじわ変化していきます。</p>
+</div>
+<div class="misc-item">
+<b>❌「感度と特異度が高ければ安心」</b>
+<p>有病率が低すぎる集団に使うと、感度・特異度が両方99%でも陽性的中率は50%程度。「誰に対して検査するか」（事前確率の選び方）が結果を大きく左右する。</p>
+</div>
+<div class="misc-item">
+<b>❌「ベイズの定理は1回使って終わり」</b>
+<p>1回目の事後確率を2回目の事前確率として更新できる。2回連続で陽性なら、事後確率はぐっと上がる。これが「ベイズ更新」の考え方。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>ベイズの定理は、形を変えて何度も同じ場所に顔を出します。</p>
+<ul>
+<li><b>典型的なシナリオの形</b>：「有病率 p%, 感度 a%, 特異度 b%。検査陽性のとき病気の確率は？」 — 数値は変わっても、構造はいつもこの形</li>
+<li><b>分母にいる全確率</b>：<span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> がベイズの分母として顔を出す。上の「真陽性 + 偽陽性」を足すという絵がこの式そのもの</li>
+<li><b>自然頻度の絵</b>：1000人の表に分けて数えると、同じ問題が割り算なしの数え上げに見える形に変わる</li>
+</ul>
+<p class="pattern-companion">ベイズの分母 P(B) を組み立てる全確率の公式は <a class="pattern-companion-link" href="./prob.html">確率の基本法則</a>。</p></div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="../bayesplay/index.html">BayesPlay：更新・予測をグラフで試す</a> &mdash; 観測を加えると、分布や次の結果の予測はどう変わるか。7つのラボで比べられます</li>
+<li><a href="./prob.html">確率の基本法則</a> &mdash; 条件付き確率と全確率の公式が、ベイズの分母をそのまま組み立てて事後確率に橋を渡す</li>
+<li><a href="./test.html">仮説検定</a> &mdash; 「陽性なのに病気じゃない」のような偽陽性が、第1種の誤り α と同じ確率空間に並ぶ</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 感度・特異度・有病率を確率モデルに乗せると、二項とポアソンが裏側で顔を出す</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; 感度・特異度・有病率は標本から推定する以上 CI で挟む必要がある、不確かさを区間で扱う側</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 過誤の 2×2 と PPV の関係を 1 枚に並べて、偽陽性と第 1 種の誤りが同じ確率空間に重なる場面を読み解く</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">次は —</span>二項分布・ポアソン分布・指数分布 <span class="story-arrow">▸</span> <a href="./morep.html">P5 二項・ポアソン・指数分布</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./bayes.html">ベイズの定理</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html" class="current">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./prob.html" rel="prev">← 前へ</a>
+  <a href="./morep.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

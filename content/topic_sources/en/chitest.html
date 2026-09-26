@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
+<meta name="keywords" content="chi-squared test, goodness of fit, test of independence, contingency table, expected frequency">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Chi-Squared Test — Goodness-of-Fit & Independence — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/chitest.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/chitest.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/chitest.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/chitest.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="Chi-Squared Test — Goodness-of-Fit &amp; Independence">
+
+<meta property="og:description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/chitest.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — Chi-Squared Test">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Chi-Squared Test — Goodness-of-Fit &amp; Independence">
+
+<meta name="twitter:description" content="Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — Chi-Squared Test">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Chi-Squared Test — Goodness-of-Fit & Independence",
+      "description": "Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/chitest.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Chi-Squared Test"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html" aria-current="page">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/chitest.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Chi-Squared Test — Goodness-of-Fit & Independence</a></h1>
+
+  <p class="topic-lead">Whether a die is fair, whether two categorical variables are independent — the same formula answers both. Observed minus expected, compressed into one number.</p>
+
+  <section class="reveal in" id="chitest">
+
+
+
+<div class="sec-tag">I.06 / CHI-SQUARED TEST</div>
+
+
+
+<h2 class="sec-title">Chi-Squared Test <span class="sec-sub">— Quantifying the Gap</span></h2>
+
+
+
+<div class="story-bridge">So far we've tested <b>means</b>. But some data is purely <b>categorical</b> — survey choices, dice outcomes, disease × smoking. The <span class="next">chi-squared test</span> quantifies "deviation from expectation" for these counts. The bigger the mismatch, the brighter the χ² statistic glows.</div>
+
+
+
+<p class="sec-desc">
+
+<b>Goodness-of-fit</b> asks: "Does the observed category distribution match a theoretical one?" Classic example: is the die fair?<br/>
+
+<b>Test of independence</b> asks: "Are two categorical variables independent?" Compute χ² = Σ (O−E)²/E across every cell of the contingency table.<br/>
+
+<span class="text-sub">Why divide by E? → A deviation of 2 from an expected 10 matters more than 2 from an expected 1,000. Dividing by E turns raw gaps into <b>relative</b> ones.<br/>Both use a χ²-distributed statistic; the p-value is the right-tail area. df = k−1 for goodness-of-fit, (r−1)(c−1) for independence.</span>
+
+</p>
+
+
+
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+
+<!-- @panel:chitest_gof -->
+<div class="panel">
+
+<h3 class="cy-head cy-head--compact">▶ ① Goodness-of-Fit — Is the Die Fair?</h3>
+<div class="drag-hint drag-hint--tight"><span>🎲 Click a bar on the left to add one roll (Shift+click to subtract)</span></div>
+<div class="controls controls--tight">
+<div class="ctrl">
+<label>
+
+<span>Significance α</span>
+          = <span class="val" id="gofAVal">0.05</span>
+</label>
+<input aria-label="Significance alpha" id="gofA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+</div>
+<div class="ctrl ctrl--narrow">
+<select aria-label="Die type" class="select-cyan" id="gofDie">
+<option data-en="Fair die" data-ja="公正なサイコロ" value="fair">Fair die</option>
+<option data-en="Loaded (⚅ heavy)" data-ja="イカサマ（⚅ 重め）" value="loaded">Loaded (⚅ heavy)</option>
+</select>
+</div>
+<button class="btn" id="gofAutoRoll"><span>▶ Auto-roll</span></button>
+<button class="btn magenta" id="gofReset"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Goodness-of-fit test visualization. Click to add dice rolls and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="chitestCanvas"></canvas>
+<div class="info">
+<div><span>Rolls n</span> <strong id="gofN">0</strong></div>
+<div><span>Test statistic χ²</span> <strong id="gofStat">—</strong></div>
+<div><span>df</span> <strong id="gofDf">—</strong></div>
+<div><span>p-value</span> <strong id="gofP">—</strong></div>
+<div><span>Decision</span> <strong id="gofResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="chitestCanvas" data-title="Goodness-of-Fit Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<div class="sim-layout">
+
+<!-- @guide:2 -->
+
+<!-- @panel:chitest_ind -->
+<div class="panel">
+
+<h3 class="cy-head cy-head--compact">▶ ② Test of Independence — Are Two Variables Independent?</h3>
+<div class="drag-hint drag-hint--tight"><span>Click a cell on the left to add +1 (Shift+click for −1)</span></div>
+<div class="controls controls--tight">
+<div class="ctrl">
+<label>
+
+<span>Significance α</span>
+          = <span class="val" id="indAVal">0.05</span>
+</label>
+<input aria-label="Significance alpha" id="indA" max="0.10" min="0.01" step="0.01" type="range" value="0.05"/>
+</div>
+<button class="btn magenta" id="indReset"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Independence test visualization. Click cells to add observations and watch the chi-squared statistic change" class="canvas-crosshair" height="300" id="indCanvas"></canvas>
+<div class="info">
+<div><span>Total n</span> <strong id="indN">0</strong></div>
+<div><span>Test statistic χ²</span> <strong id="indStat">—</strong></div>
+<div><span>df</span> <strong id="indDf">—</strong></div>
+<div><span>p-value</span> <strong id="indP">—</strong></div>
+<div><span>Decision</span> <strong id="indResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="indCanvas" data-title="Test of Independence"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
+
+<a href="../../en/tables/index.html?dist=chi2" class="ln-cyan">Interactive Distribution Tables</a> — look up χ² critical values for any df
+
+</div>
+
+
+
+<!-- @panel:chitest_detail_gof -->
+
+<div class="detail-section">
+<h3>// Formula used here — Goodness of fit</h3>
+<div class="formula" data-tex="\chi^2 = \sum_{i=1}^{k} \frac{(O_i - E_i)^2}{E_i}\,,\quad df = k - 1"></div>
+<p><b>Worked example (120 rolls of a die)</b><br/>
+• A fair die should give E = 20 per face<br/>
+• Actual results: [25, 17, 15, 23, 22, 18]<br/>
+• Face 1: (25−20)²/20 = 1.25<br/>
+• Face 2: (17−20)²/20 = 0.45 … sum all → χ² = 3.80<br/>
+• df = 6−1 = 5, critical value at α = 0.05 is 11.07. Since 3.80 &lt; 11.07 → fail to reject. Consistent with a fair die</p>
+<p><b>Each part</b><br/>
+• O: observed frequency (what you actually counted)<br/>
+• E: expected frequency (what the theory predicts)<br/>
+• (O−E)²/E: using raw (O−E)² would unfairly penalize large categories. Dividing by E gives "relative departure from expectation"<br/>
+• Sum across all categories → a single number measuring overall fit</p>
+</div>
+<!-- /@panel -->
+
+<!-- @panel:chitest_text -->
+
+<div class="detail-section">
+<h3>// Formula used here — Independence test</h3>
+<div class="formula" data-tex="E_{ij} = \frac{R_i \times C_j}{n}\,,\quad df = (r-1)(c-1)"></div>
+<p><b>Worked example (2×2 table: gender × smoking)</b><br/>
+• 200 men (60 smokers), 300 women (60 smokers), 500 total<br/>
+• If gender and smoking are independent, expected male smokers?<br/>
+• E = 200 × 120/500 = 48 ← row total × column total ÷ grand total<br/>
+• "Under independence we'd expect 48, but observed 60" → the larger the gap, the stronger the evidence against independence</p>
+<p><b>Why df = (r−1)(c−1)</b><br/>
+• In a 2×2 table: once row and column totals are fixed, choosing one cell determines the rest → df = 1<br/>
+• A 3×4 table: df = 2 × 3 = 6</p>
+<p><b>Caution: expected counts below 5</b><br/>
+• The χ² approximation becomes unreliable. Rule of thumb: if more than 20% of cells have E &lt; 5, use an exact test for small frequencies or merge categories</p>
+</div>
+
+<div class="detail-section">
+<h3>// Goodness of fit vs. independence test — what's the difference?</h3>
+<p>Both use χ² = Σ(O−E)²/E, but the question is different:</p>
+<ul>
+<li><b>Goodness of fit</b>: "Is this die fair?" "Does this data follow a normal distribution?" → compares <b>one variable</b> to a theoretical distribution</li>
+<li><b>Independence test</b>: "Is gender associated with smoking?" → examines the relationship between <b>two variables</b></li>
+</ul>
+<p>Expected frequencies are computed differently:</p>
+<ul>
+<li>Goodness of fit: directly from theory (e.g., n/6 for a fair die)</li>
+<li>Independence: row total × column total ÷ grand total (back-calculated from the independence assumption)</li>
+</ul>
+<h3>// Why always a right-tail test?</h3>
+<p>χ² values are sums of squared deviations, so they're always ≥ 0. Larger values mean worse fit.</p>
+<ul>
+<li>Large χ² → data doesn't match the theory → reject</li>
+<li>Small χ² → good fit → fail to reject</li>
+<li>The rejection region is always in the right tail. There's no left-tail rejection</li>
+</ul>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Significant χ² test = causal relationship"</b>
+<p>All it can say is "there's an association." "Smoking is associated with lung cancer" ≠ "smoking causes lung cancer." Confounding variables can't be ruled out by a χ² test alone.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Both tests use df = k−1"</b>
+<p>Goodness of fit uses k−1, but the independence test uses (r−1)(c−1). For a 2×3 table, df = 2, not 5.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Smaller χ² is a better result"</b>
+<p>A small χ² means the data fits the theory well — but whether that's "good" or "bad" depends on what you're testing. The test just measures agreement, not quality.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>The same parts keep showing up whenever χ² tests are involved.</p>
+<ul>
+<li><b>The shape of df</b>: independence tests always carry (r−1)(c−1). For a 2×3 table that lands at (2−1)(3−1) = 2</li>
+<li><b>The shape of expected frequencies</b>: "row total × column total ÷ grand total" — the same picture appears as the expected value under independence</li>
+<li><b>How χ² is built</b>: each category's (O−E)²/E gets added up. "Square the gap, divide by what was expected, sum" is the same shape across goodness-of-fit and independence</li>
+<li><b>The "E &lt; 5" branch</b>: the path forks toward an exact test for small frequencies or toward merging categories — this fork tags along whenever χ² is in play</li>
+</ul>
+<p class="pattern-companion pattern-companion--mt">Look up χ² critical values by df in the <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=chi2">Interactive Distribution Tables</a></p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./dists.html#dists-chi">Three Test Distributions</a> &mdash; stacks squared standard normals to build χ² and walks through pulling critical values back out</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; the 5-step recipe, rejection region, and α framework all step through the chi-squared test the same way</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; the basic probability rules quietly carry the load when you build expected frequencies and test independence</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the 2×2 independence test returns the same verdict as a two-proportion test — the χ² ↔ z² bridge becomes visible</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; the question "is this collision really random?" connects to goodness-of-fit testing, where observed-vs-expected gaps get measured as χ²</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">The complement-event picture exposes how badly intuition fails on probability</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>comparing three or more groups at once <span class="story-arrow">▸</span> <a href="./anova.html">I8 ANOVA</a></div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./chitest.html">Chi-Squared Test</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html" class="current">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./dists.html" rel="prev">← Prev</a>
+  <a href="./anova.html" rel="next">Next →</a>
+</nav>
+
+</body>
+
+</html>

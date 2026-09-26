@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.">
+<meta name="keywords" content="Bayes theorem, positive predictive value, sensitivity, specificity, prevalence, false positives">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Bayes' Theorem — Positive Predictive Value — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/bayes.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/bayes.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/bayes.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/bayes.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Bayes&#x27; Theorem — Positive Predictive Value">
+<meta property="og:description" content="Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/bayes.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Bayes' Theorem">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bayes&#x27; Theorem — Positive Predictive Value">
+<meta name="twitter:description" content="Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — Bayes&#x27; Theorem">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Bayes' Theorem — Positive Predictive Value",
+      "description": "Slide prevalence, sensitivity, and specificity to see the positive predictive value jump around. A hands-on look at why false positives matter so much in screening tests.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Bayes' theorem", "Conditional probability", "Positive predictive value"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/bayes.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-probability"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Bayes' Theorem"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability" aria-current="location">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html" aria-current="page">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/bayes.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Bayes' Theorem — Positive Predictive Value</a></h1>
+  <p class="topic-lead">Answer: just 16.7%. Even doctors get this question wrong half the time — and the deciding factor isn't sensitivity or specificity, but **prevalence**. Trace the numbers in the "town of 1,000" diagram below.</p>
+  <section class="reveal in" id="bayes">
+
+<div class="sec-tag">P.04 / BAYES THEOREM</div>
+
+<h2 class="sec-title">Bayes' Theorem <span class="sec-sub">— The Posterior Plot Twist</span></h2>
+
+<div class="story-bridge">Distribution toolbox complete. Finally, <span class="next">Bayes' theorem</span> <b>flips the conditioning</b>. You test positive — what's the chance you're actually sick? Intuition fails here; let's build it.</div>
+
+<p class="sec-desc">
+<b>"The test has 99% sensitivity &amp; 95% specificity, and you tested positive" — is there a 99% chance you're sick?</b><br/>
+    …<b>Answer: only 16.7%</b>. More than half of doctors get this classic quiz wrong.<br/>
+    Walk through the numbers. In a <b>town of 1,000</b>, 10 people are sick and 990 are healthy. Test everyone and <b>60 come back positive</b> — 10 truly sick (true positives) + 50 healthy but wrongly flagged (false positives). If you're one of those 60, your chance of actually being sick is <b>10 ÷ 60 = 16.7%</b>. The larger the healthy majority, the more false positives dilute the real cases.
+  </p>
+
+<div class="sim-layout">
+<!-- @guide:1 -->
+<!-- @panel:bayes_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl">
+<label><span>Prevalence — how many of 1,000 are sick?</span> = <span class="val" id="bPdVal"><span>50 / 1,000</span></span></label>
+<input aria-label="Prevalence" id="bPd" max="0.5" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl">
+<label><span>Sensitivity — % of sick people the test correctly flags</span> = <span class="val" id="bSensVal">99%</span></label>
+<input aria-label="Sensitivity" id="bSens" max="0.999" min="0.5" step="0.001" type="range" value="0.99"/>
+</div>
+<div class="ctrl">
+<label><span>Specificity — % of healthy people correctly cleared</span> = <span class="val" id="bSpecVal">95%</span></label>
+<input aria-label="Specificity" id="bSpec" max="0.999" min="0.5" step="0.001" type="range" value="0.95"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Bayes theorem visualization" class="canvas-bayes" id="bayesCanvas"></canvas>
+<div class="info">
+<div><span>True positives (sick &amp; tested +)</span><strong id="bTp">—</strong></div>
+<div><span>False positives (healthy but tested +)</span><strong id="bFp">—</strong></div>
+<div><span>If you tested +, chance you're sick</span><strong id="bPpv">—</strong></div>
+<div><span>If you tested −, chance you're healthy</span><strong id="bNpv">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="bayesCanvas" data-title="Bayes' Theorem"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:bayes_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(B|A)\,P(A)}{P(B)}"></div>
+<p><span class="symbol-note">Here A = "truly sick" and B = "tested positive"</span><br/>
+P(A|B) = probability of being sick given a positive test (PPV), P(B|A) = sensitivity, P(A) = prevalence, P(B) = overall probability of testing positive.<br/>
+When prevalence is tiny the numerator shrinks while the denominator, swollen with false positives, stays large — that's exactly the "10 out of 60" above.</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Positive test = disease"</b>
+<p>With 1% prevalence, 95% sensitivity, and 90% specificity, the positive predictive value is only about 8.8%. Of 100 people who test positive, roughly 9 actually have the disease — the other 91 are healthy false positives. Drag the prevalence slider down in the simulation above and watch this ratio shift before your eyes.</p>
+</div>
+<div class="misc-item">
+<b>❌ "High sensitivity and specificity are enough"</b>
+<p>Screen a low-prevalence population and even with 99% sensitivity and 99% specificity, the positive predictive value is only about 50%. Who you test (the prior probability) matters as much as how good the test is.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Bayes' theorem is a one-shot calculation"</b>
+<p>The posterior from the first test can become the prior for the second. Two consecutive positives dramatically raise the posterior probability. This is the idea behind Bayesian updating.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>Bayes' theorem keeps reappearing in the same handful of shapes.</p>
+<ul>
+<li><b>The classic scenario shape</b>: "Prevalence p%, sensitivity a%, specificity b%. Given a positive test, what's the probability of disease?" — the numbers change, the structure doesn't</li>
+<li><b>Total probability sitting in the denominator</b>: <span class="math" data-tex="P(B) = P(B|A)\,P(A) + P(B|\bar{A})\,P(\bar{A})"></span> is the shape Bayes' denominator always takes. The "true positives + false positives" picture above is this same equation</li>
+<li><b>The natural-frequency picture</b>: split 1,000 people into a table and the same problem looks like simple counting instead of fractions</li>
+</ul>
+<p class="pattern-companion">The law of total probability that assembles Bayes' denominator P(B) lives at <a class="pattern-companion-link" href="./prob.html">Probability Rules</a>.</p></div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="../../bayesplay/index.html">BayesPlay: explore updating and prediction (Japanese)</a> &mdash; compare how observations change distributions and predictions across seven interactive labs</li>
+<li><a href="./prob.html">Probability Rules</a> &mdash; conditional probability and the law of total probability assemble Bayes' denominator and bridge it to the posterior</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; false positives like "positive yet not diseased" line up in the same probability space as Type I error α</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; putting sensitivity, specificity, and prevalence onto a probability model pulls binomial and Poisson out from underneath</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; sensitivity, specificity, and prevalence are estimated from samples — CIs hold the uncertainty in interval form</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lays the error 2×2 and PPV onto a single page so that false positives and Type I error overlap in the same probability space</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">UP NEXT —</span>discrete and exponential distributions <span class="story-arrow">▸</span> <a href="./morep.html">P5 Discrete &amp; Exponential</a></div>
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./bayes.html">Bayes' Theorem</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html" class="current">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./prob.html" rel="prev">← Prev</a>
+  <a href="./morep.html" rel="next">Next →</a>
+</nav>
+</body>
+</html>

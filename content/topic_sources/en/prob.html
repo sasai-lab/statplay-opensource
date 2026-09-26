@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
+<meta name="keywords" content="probability, conditional probability, addition rule, Venn diagram, independence, multiplication rule">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Probability Rules — Venn Diagrams — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/prob.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="Probability Rules — Venn Diagrams">
+
+<meta property="og:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/prob.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — Probability Rules">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Probability Rules — Venn Diagrams">
+
+<meta name="twitter:description" content="Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — Probability Rules">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Probability Rules — Venn Diagrams",
+      "description": "Visualize addition rule, conditional probability, and independence with interactive Venn diagrams. See P(A∪B) and P(A|B) as areas.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Addition rule", "Conditional probability P(A|B)", "Event independence"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/prob.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-probability"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Probability Rules"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability" aria-current="location">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html" aria-current="page">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/prob.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Probability Rules — Venn Diagrams</a></h1>
+
+  <p class="topic-lead">P(A∪B), P(A|B) — none of it needs memorizing once you stop seeing formulas and start seeing two overlapping circles.</p>
+
+  <section class="reveal in" id="prob">
+
+
+
+<div class="sec-tag">P.03 / PROBABILITY RULES</div>
+
+
+
+<h2 class="sec-title">Probability Rules <span class="sec-sub">— Intuition with Venn Diagrams</span></h2>
+
+
+
+<div class="story-bridge">You've got the shape of the normal. Now let's step back to the <b>foundations</b> — the probability rules that make all of it work. <span class="next">Addition, multiplication, and conditional probability</span> visualized as overlapping areas.</div>
+
+
+
+<p class="sec-desc">
+
+    Addition rule, multiplication rule, conditional probability — see them as areas before memorizing formulas.<br/>
+
+<b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> is just "area of two circles minus the overlap."
+
+    Conditional probability P(A|B) is "the fraction of B's circle occupied by A."<br/>
+
+    Press the <b>Independence button</b> to snap P(A∩B) = P(A)·P(B) — that's what independence means.
+
+  </p>
+
+
+
+<div class="example-box">
+
+<b>Concrete example</b><br/>
+
+    Draw one card from a 52-card deck. A = heart (13/52 = 0.25), B = face card (12/52 ≈ 0.23).<br/>
+
+    A∩B = heart face card (3/52 ≈ 0.06). → P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>.<br/>
+
+<span class="inline-dim">Independence example: two dice. A = 1st is even, B = 2nd is ≥3. The 1st roll doesn't affect the 2nd, so independent. P(A∩B) = 1/2 × 2/3 = 1/3.</span>
+
+</div>
+
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+
+<!-- @panel:prob_venn -->
+<div class="panel">
+
+<h3 class="cy-head">▶ Interactive Venn Diagram</h3>
+<div class="controls">
+<div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+<input aria-label="P(A)" id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+</div>
+<div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+<input aria-label="P(B)" id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+</div>
+<div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
+<input aria-label="P(A intersect B)" id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+</div>
+<button class="btn yellow" id="probIndep"><span>Set Independent</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Probability rules: Venn diagram visualization" height="320" id="probCanvas"></canvas>
+<div class="info">
+<div>P(A∪B)<strong id="probUnion">—</strong></div>
+<div>P(A|B)<strong id="probCondAB">—</strong></div>
+<div>P(B|A)<strong id="probCondBA">—</strong></div>
+<div><span>Independent?</span><strong id="probIndepCheck">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="Basic Rules of Probability"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<!-- @panel:prob_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
+<p><b>Left: Conditional probability P(A|B)</b><br/>
+• P(A∩B): probability both A and B happen (the overlap in a Venn diagram)<br/>
+• ÷ P(B): restrict the universe to "B happened"<br/>
+• Meaning: within the world where B occurred, what fraction also had A?</p>
+<p><b>Right: Addition rule P(A∪B)</b><br/>
+• P(A) + P(B): naively adding double-counts the overlap<br/>
+• − P(A∩B): subtract it once to correct<br/>
+• If mutually exclusive (A∩B = ∅): just add — no overlap to worry about</p>
+<p><b>Connection to independence</b><br/>
+• A and B independent ⇔ P(A|B) = P(A) (knowing B doesn't change A's probability)<br/>
+• Equivalent: P(A∩B) = P(A)·P(B) — the multiplication rule</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Mutually exclusive = independent" — the #1 mix-up</b>
+<p>Mutually exclusive: A∩B = ∅ (rolling a 1 and a 2 on the same roll of a die).<br/>
+Independent: P(A∩B) = P(A)P(B) (first roll being 1 doesn't affect the second roll).<br/>
+Two mutually exclusive events (with P &gt; 0) are never independent. If A happens, B's probability drops to 0 — that's the opposite of independence.</p>
+</div>
+<div class="misc-item">
+<b>❌ "The denominator of conditional probability is P(A∪B)"</b>
+<p>P(A|B) divides by P(B), not P(A∪B). You're restricting the universe to "B happened," so you divide by B's probability.</p>
+</div>
+<div class="misc-item">
+<b>❌ "P(A∪B) = P(A) + P(B) always holds"</b>
+<p>Only when A and B are mutually exclusive. In general, you must subtract P(A∩B) to avoid double-counting. Forgetting this can push probabilities above 1.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>Around basic probability, the three Venn regions and a small set of recurring rewrites keep reappearing.</p>
+<ul>
+<li><b>The three-region Venn shape</b>: once "A only," "B only," and "A∩B" are pinned down, P(A|B) and P(A∪B) become rearrangements of those three numbers</li>
+<li><b>The independence-check shape</b>: with P(A)=0.3, P(B)=0.4, P(A∩B)=0.12, the product 0.3 × 0.4 lands at 0.12. "If multiplication recovers the joint, they're independent" is a check that appears on this single line</li>
+<li><b>The complement rewrite</b>: "probability of at least one hit" reshapes into 1 − P(all misses). When cases pile up, flipping to the complement collapses them into one picture</li>
+<li><b>Mutually exclusive vs. independent as a contrast</b>: "they don't co-occur" and "knowing one doesn't change the other" describe different structures. The very fact that they get confused is itself a recurring shape</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./bayes.html">Bayes' Theorem</a> &mdash; conditional probability P(A|B) and prior→posterior updating sit on these basic rules</li>
+<li><a href="./normal.html">Normal Distribution</a> &mdash; lifts the Venn-diagram rules into continuous distributions and bridges them to standardization</li>
+<li><a href="./morep.html">Discrete & Exponential</a> &mdash; applying independent-trial and mutual-exclusion reasoning produces the binomial, Poisson, and exponential</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; the standard normal steps forward as the first concrete tool for computing probabilities</li>
+<li><a href="../../en/columns/birthday.html">"Birthday Paradox" column</a> &mdash; stacks complement events with independent trials and watches a counter-intuitive probability rise — the classic showcase</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">The Birthday Paradox — 50% with Just 23 People</span>
+    <span class="fr-desc">The complement-event picture exposes how badly intuition fails on probability</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<!-- ═══ Column ═══ -->
+
+<div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,0,128,.15);background:rgba(255,0,128,.03)">
+
+<h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--magenta);margin:0 0 8px;letter-spacing:1px">// COLUMN</h3>
+
+<p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">"In a class of 23, the chance of a shared birthday exceeds 50%." See how far off our probability intuition can be — through simulation.</p>
+
+<a href="../../en/columns/birthday.html" style="color:var(--magenta);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 The Birthday Paradox — 50% with just 23 people →</a>
+
+</div>
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>flipping the conditional <span class="story-arrow">▸</span> <a href="./bayes.html">P4 Bayes' Theorem</a></div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./prob.html">Probability Rules</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html" class="current">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./normal.html" rel="prev">← Prev</a>
+  <a href="./bayes.html" rel="next">Next →</a>
+</nav>
+
+</body>
+
+</html>

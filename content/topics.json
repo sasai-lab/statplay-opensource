@@ -1446,6 +1446,18 @@
     {
       "slug": "multivariate_analysis",
       "source": "content/columns/multivariate_analysis",
+      "styles": ["css/multivariate.css"],
+      "module": "js/modules/multivariate.js",
+      "body_class": "multivariate-column",
+      "source_dependencies": [
+        "css/multivariate.css",
+        "js/modules/multivariate.js",
+        "js/modules/multivariate-i18n.js",
+        "js/modules/multivariate-pca.js",
+        "js/modules/multivariate-hero.js",
+        "js/modules/multivariate-motion.js",
+        "js/modules/multivariate-model.js"
+      ],
       "ja_title": "多変量解析でできること",
       "en_title": "Multivariate Analysis: What Can It Do?",
       "ja_path": "/columns/multivariate_analysis.html",

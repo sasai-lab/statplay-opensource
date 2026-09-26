@@ -1,0 +1,208 @@
+{
+  "schema": 1,
+  "variants": {
+    "ja": {
+      "stdnorm": {
+        "2": {
+          "kind": "editorial",
+          "reason": "dedicated-page animation guidance",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 標準化アニメーション</b>\n<ol>\n<li><b>Step 1:</b> ▶ 標準化する を押す → μ=2, σ=1.5 の曲線がスーッと N(0,1) に変身する。</li>\n<li><b>Step 2:</b> μ を <b>−2</b>、σ を <b>2.5</b> に変えて再度 ▶ → 全然違う形なのに、同じピンクの曲線にピタッ。</li>\n<li><b>Step 3:</b> 進度スライダーを途中で止める → 変換の途中経過を観察。μ が0に、σ が1に近づいていく。</li>\n</ol>\n</div>"
+        }
+      },
+      "morep": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 二項分布</b>\n<ol>\n<li><b>Step 1:</b> n=20, p=0.5 → 左右対称のベル型。p を 0.1 に → 右に歪む。</li>\n<li><b>Step 2:</b> n を <b>50</b>、p を <b>0.06</b> に → np≈3。下のポアソン(λ=3)とほぼ同じ形になる。</li>\n<li><b>Step 3:</b> n を大きく、p を小さく保つ → ポアソンに収束していく過程が見える。</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — ポアソン分布</b>\n<ol>\n<li><b>Step 1:</b> λ=1 → 0付近に集中した急降下の形。λ=5 → ベル型に近づく。</li>\n<li><b>Step 2:</b> λ を <b>20</b> まで上げる → 正規分布のベル型にそっくり（中心極限定理の予告）。</li>\n<li><b>Step 3:</b> λ が平均でもあり分散でもある。λ=3 にしてグラフ左上の「E[X] = Var[X] = λ = 3.00」で確認。</li>\n</ol>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 指数分布</b>\n<ol>\n<li><b>Step 1:</b> λ=1 → 平均待ち時間1。λ=2 → 平均0.5。λ が大きいほど「すぐ起きる」。</li>\n<li><b>Step 2:</b> λ を 0.1 に → 裾が長い。稀にしか起きない事象の待ち時間。</li>\n<li><b>Step 3:</b> 無記憶性：もう10分待っても、あと何分待つかは今来た人と同じ。</li>\n</ol>\n</div>"
+        }
+      },
+      "clt": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page controls wording",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 順番に試してみよう</b>\n<ol>\n<li><b>Step 1:</b> 元の分布を「指数分布」にして n=<b>1</b> で ▶ → 右に歪んだまま。まだ全然ベルじゃない。</li>\n<li><b>Step 2:</b> n を <b>5</b> にして ▶ → 少しベルっぽくなるが、まだ歪み。</li>\n<li><b>Step 3:</b> n を <b>30</b> にして ▶ → ほぼ正規分布。「n≥30」は定理が保証する値ではなく、経験的な目安。元の分布が極端に歪んでいると、もっと必要なこともある。</li>\n<li><b>Step 4:</b> 「二峰分布」に切り替えて同じことをやる → 山2つのやつですらベルに化ける衝撃。</li>\n</ol>\n</div>"
+        }
+      },
+      "ci": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page sampling wording",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 順番に試してみよう</b>\n<ol>\n<li><b>Step 1:</b> 信頼度95%, n=30 で ▶ 300回生成 → ピンク（外した区間）がちょうど5%前後になることを確認。</li>\n<li><b>Step 2:</b> 信頼度を <b>80%</b> に下げて再生成 → ピンクが増える。幅を狭めた分、当たりにくい。</li>\n<li><b>Step 3:</b> 信頼度95%に戻し、n を <b>200</b> にする → 区間の幅がグッと狭くなる。サンプル数の力。</li>\n<li><b>Step 4:</b> n を <b>5</b> にする → 幅がめちゃ広い。少ないサンプルでは\"掴む網\"が大きくないと当たらない。</li>\n</ol>\n</div>"
+        }
+      },
+      "test": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page hypothesis-test and power interpretation",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 順番に試してみよう</b>\n<ol>\n<li><b>Step 1:</b> ① で z=1.96, α=0.05, 両側 → ギリギリ棄却域の境界。p値≈0.05。ここが分水嶺。<br/><span class=\"inline-dim\">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>\n<li><b>Step 2:</b> z を <b>2.5</b> に → 棄却域に深く入り、p値が小さくなる。「強い証拠」。</li>\n<li><b>Step 3:</b> 検定タイプを「右側」に切替 → 同じ z=1.96 でも棄却域が片側に集中し、p値が半分に。</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "dedicated-page hypothesis-test and power interpretation",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — α・β・検出力</b>\n<ol>\n<li><b>Step 1:</b> 効果量 δ を <b>0</b> に → H₁ が H₀ と重なる。検出力はゼロではなく α と同じ値になる。差がなくても、一定の割合で棄却してしまう。</li>\n<li><b>Step 2:</b> δ を <b>2→3</b> にスライド → 紫の曲線(H₁)が右に離れ、検出力が上がる。</li>\n<li><b>Step 3:</b> α を <b>0.01</b> に下げる → 冤罪は減るが、見逃し(β)が増える。トレードオフを実感。</li>\n</ol>\n</div>"
+        }
+      },
+      "proptest": {
+        "2": {
+          "kind": "editorial",
+          "reason": "dedicated-page confidence-interval and test explanation",
+          "html": "<div class=\"guided-steps\">\n<b>シミュレーション — 「95%」の意味を確かめる</b>\n<p>「95%信頼区間って、つまり何？」── 最初に立ち止まりやすい場所。答えは「同じ調査を何回もやったら、そのうち約95%の区間が真の母比率を捕まえる」ということ。<br/>\nRun を押して200回試してみると、この「95%」が本当かどうか確かめられる。</p>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "dedicated-page confidence-interval and test explanation",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 比率の検定を体験</b>\n<ol>\n<li><b>Step 1:</b> n=100, p̂=0.60, p₀=0.50, 有意水準 α=0.05, 両側 → 「60%は50%と有意に違うか？」<br/><span class=\"inline-dim\">α（有意水準）＝「これより極端なら偶然じゃないと判断する」基準線。α が棄却域の広さを決める。</span></li>\n<li><b>Step 2:</b> p₀ を 0.55 に → z が小さくなり棄却できなくなる。差が小さいと見分けがつかない。</li>\n<li><b>Step 3:</b> n を 400 に → 同じ p̂=0.60, p₀=0.55 でも今度は棄却できる。サンプルサイズの威力。</li>\n<li><b>Step 4:</b> 検定タイプを「右側」に → 「50%より大きいか」だけを問う片側検定。p値が半分に。</li>\n</ol>\n</div>"
+        }
+      },
+      "dists": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — t分布</b>\n<ol>\n<li><b>Step 1:</b> n=<b>3</b> → 自由度2。正規分布より裾が重いことを見比べてみよう。</li>\n<li><b>Step 2:</b> n=<b>10</b> → まだ正規より裾が厚いが、近づいてきた。</li>\n<li><b>Step 3:</b> n=<b>31</b> → ほぼ N(0,1) と区別がつかない。信頼区間の2本のバーもほぼ重なる。</li>\n</ol>\n<b>信頼区間で体感</b>\n<ol start=\"4\">\n<li><b>Step A:</b> n=5、95%のまま → t分布の方がかなり広い（正規だと過信）。</li>\n<li><b>Step B:</b> n=50にする → どの信頼水準でもほぼ一致。大標本の威力。</li>\n<li><b>Step C:</b> 信頼水準を99%にする → 差がさらに広がる（小標本ほど顕著）。</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — χ²分布</b>\n<ol>\n<li><b>Step 1:</b> 「公正なサイコロ」のまま試行ボタンを何度か押す → 均等なはずでも毎回バラつく。棒グラフの偏りとχ²統計量の変化を見る。</li>\n<li><b>Step 2:</b> セレクトを「イカサマ」に切り替えて試行 → 1の目だけ飛び出て、χ²が棄却域に入る。</li>\n<li><b>Step 3:</b> 試行回数スライダーを増やす → サンプルが多いほど小さな偏りでも検出できる（検出力が上がる）。</li>\n</ol>\n<b>分布の形で体感</b>\n<ol start=\"4\">\n<li><b>Step A:</b> dfスライダーを<b>1</b>にする → 右に激しく歪む。</li>\n<li><b>Step B:</b> df=<b>30</b> → ベル型に近づく。平均=dfを確認。</li>\n<li><b>Step C:</b> 正規近似（紫の破線）との一致度合いを見ながらdfを動かす。</li>\n</ol>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — F分布</b>\n<ol>\n<li><b>Step 1:</b> AとBのSDを同じ（例：10と10）にする → F≈1、棄却されない。</li>\n<li><b>Step 2:</b> BのSDだけ大きくする（例：A=5, B=15）→ Fが大きくなり棄却域に入る。</li>\n<li><b>Step 3:</b> nを増やす → 同じSD差でもp値が下がる（検出力が上がる）。</li>\n</ol>\n<b>分布の形で体感</b>\n<ol start=\"4\">\n<li><b>Step A:</b> n=<b>6</b> → 裾が重い不安定な形。</li>\n<li><b>Step B:</b> n=<b>50</b> → ベル型に近づく。F=1のラインを確認。</li>\n<li><b>Step C:</b> AとBのSDを交互に変えて「分散比」の意味を体感する。</li>\n</ol>\n</div>"
+        }
+      },
+      "chitest": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "separate goodness-of-fit and independence experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 適合度検定</b>\n<ol>\n<li><b>Step 1:</b> 「公正なサイコロ」で ▶ 自動試行 → n が増えても χ² と p 値は揺れる。公正なサイコロでも、たまに棄却される。</li>\n<li><b>Step 2:</b> 「イカサマ」に切り替えて自動試行 → χ² が急上昇し、p値が α 以下に。不正検出の瞬間。</li>\n<li><b>Step 3:</b> α を 0.01 に下げると判定が厳しくなる。少しのズレでは棄却されない。</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "separate goodness-of-fit and independence experiments",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 独立性検定</b>\n<ol>\n<li><b>Step 1:</b> 左上のセルだけクリックして偏りを作る → χ² が跳ね上がり、独立性が棄却される。</li>\n<li><b>Step 2:</b> ↺ リセットして各セルを均等にクリック → χ² は小さいまま。偏りなし＝独立。</li>\n<li><b>Step 3:</b> α を変えて「どこまでの偏りなら独立と判定されるか」を確認。</li>\n</ol>\n</div>"
+        }
+      },
+      "corr": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "additional dedicated-page panel guidance",
+          "html": "<div class=\"guided-steps\">\n<b>実験ガイド — 相関係数を体感する</b>\n<ol>\n<li><b>Step 1:</b> r = 0.80 で「生成」→ 右上がりの帯。<b>緑の象限</b>に点が集中している。</li>\n<li><b>Step 2:</b> r = −0.60 に変えて「生成」→ 右下がり。<b>赤の象限</b>に点が多い。</li>\n<li><b>Step 3:</b> r = 0.00 で「生成」→ 四象限にほぼ均等に散らばる。帯ではなく「雲」。</li>\n<li><b>Step 4:</b> CLEAR して、<b>U字型</b>に手で点を配置 → r ≈ 0 なのに明らかに関係がある！<br/>→ r は「直線関係」しか捉えられない。Panel 2 へ。</li>\n</ol>\n</div>"
+        }
+      }
+    },
+    "en": {
+      "stdnorm": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page animation guidance",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — try these in order</b>\n<ol>\n<li><b>Step 1:</b> Set k to <b>1.0</b> → area is ~68%. That's \"±1σ covers about 70%.\"</li>\n<li><b>Step 2:</b> Set k to <b>1.96</b> → area is ~95%. You'll see this number everywhere in testing and CIs.</li>\n<li><b>Step 3:</b> Stretch k to <b>3.0</b> → nearly 100%. Almost nothing lies outside.</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "editorial",
+          "reason": "dedicated-page animation guidance",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Standardization Animation</b>\n<ol>\n<li><b>Step 1:</b> Press ▶ Standardize → the μ=2, σ=1.5 curve morphs smoothly into N(0,1).</li>\n<li><b>Step 2:</b> Change μ to <b>−2</b>, σ to <b>2.5</b>, then ▶ again → a totally different curve snaps onto the same pink one.</li>\n<li><b>Step 3:</b> Pause the progress slider midway → watch μ approach 0 and σ approach 1 in real time.</li>\n</ol>\n</div>"
+        }
+      },
+      "prob": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page wording for the same probability experiment",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — try these in order</b>\n<ol>\n<li><b>Step 1:</b> Set P(A)=0.4, P(B)=0.3, P(A∩B)=0.12 → check the <b>P(A∪B)</b> readout below the graph: it shows <b>0.58</b>. That's 0.4+0.3−0.12, the addition rule in action.</li>\n<li><b>Step 2:</b> Press \"Set Independent\" → P(A∩B) auto-adjusts to P(A)·P(B). That's what independence means.</li>\n<li><b>Step 3:</b> Drag P(A∩B) near <b>0</b> → the circles separate. This is \"mutually exclusive\" (can't happen together).</li>\n<li><b>Step 4:</b> Push P(A∩B) close to P(B) → the <b>P(A|B)</b> readout approaches 1. If B happens, A almost certainly happens too.</li>\n</ol>\n</div>"
+        }
+      },
+      "morep": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Binomial</b>\n<ol>\n<li><b>Step 1:</b> n=20, p=0.5 → symmetric bell. Change p to 0.1 → skews right.</li>\n<li><b>Step 2:</b> Set n=<b>50</b>, p=<b>0.06</b> → np≈3. Compare with Poisson(λ=3) below — nearly identical.</li>\n<li><b>Step 3:</b> Keep n large, p small → watch binomial converge toward Poisson.</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Poisson</b>\n<ol>\n<li><b>Step 1:</b> λ=1 → concentrated near 0. λ=5 → approaches a bell shape.</li>\n<li><b>Step 2:</b> Raise λ to <b>20</b> → looks just like a normal bell (Central Limit Theorem preview).</li>\n<li><b>Step 3:</b> λ is both the mean and variance. Set λ=3 and check \"E[X] = Var[X] = λ = 3.00\" at the top-left of the graph.</li>\n</ol>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "separate binomial, Poisson, and exponential experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Exponential</b>\n<ol>\n<li><b>Step 1:</b> λ=1 → mean wait = 1. λ=2 → mean wait = 0.5. Larger λ = \"happens sooner.\"</li>\n<li><b>Step 2:</b> Set λ to 0.1 → long tail. Rare events have long waits.</li>\n<li><b>Step 3:</b> Memoryless: having waited 10 min doesn't change how much longer you'll wait.</li>\n</ol>\n</div>"
+        }
+      },
+      "clt": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page controls wording",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — try these in order</b>\n<ol>\n<li><b>Step 1:</b> Choose \"Exponential\" and set n=<b>1</b>, hit ▶ → still heavily skewed. Not a bell at all.</li>\n<li><b>Step 2:</b> Set n to <b>5</b> and run → starting to look bell-ish, but still skewed.</li>\n<li><b>Step 3:</b> Set n to <b>30</b> and run → nearly normal. \"n≥30\" is a practical rule of thumb, not a theorem — heavily skewed distributions may need more.</li>\n<li><b>Step 4:</b> Switch to \"Bimodal\" and repeat → even a two-peaked distribution morphs into a bell. Worth watching twice.</li>\n</ol>\n</div>"
+        }
+      },
+      "test": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page hypothesis-test and power interpretation",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — try these in order</b>\n<ol>\n<li><b>Step 1:</b> Panel ①: z=1.96, α=0.05, two-sided → right on the boundary. p≈0.05. The watershed.<br/><span class=\"inline-dim\">α (significance level) = the threshold for \"too extreme to be coincidence.\" It sets the width of the rejection zone.</span></li>\n<li><b>Step 2:</b> Push z to <b>2.5</b> → deep in the rejection zone, p-value shrinks. \"Strong evidence.\"</li>\n<li><b>Step 3:</b> Switch to \"Right\" test → same z=1.96 but rejection area is one-sided; p-value halves.</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "dedicated-page hypothesis-test and power interpretation",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — α, β &amp; Power</b>\n<ol>\n<li><b>Step 1:</b> Set effect size δ to <b>0</b> → H₁ overlaps H₀ completely. Power equals α, not zero: even with no difference, rejection still occurs at the false-positive rate.</li>\n<li><b>Step 2:</b> Slide δ from <b>2 to 3</b> → the purple (H₁) curve separates, power climbs.</li>\n<li><b>Step 3:</b> Lower α to <b>0.01</b> → fewer false alarms, but more misses (β rises). Feel the trade-off.</li>\n</ol>\n</div>"
+        }
+      },
+      "proptest": {
+        "1": {
+          "kind": "editorial",
+          "reason": "dedicated-page confidence-interval and test explanation",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — try these in order</b>\n<ol>\n<li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people isn't enough precision.</li>\n<li><b>Step 2:</b> Push n to 100 → the interval tightens up fast. Feel the power of sample size.</li>\n<li><b>Step 3:</b> Set p̂ to 0.90 → variance p(1−p) shrinks, so the CI narrows. p̂=0.50 gives the widest interval.</li>\n<li><b>Step 4:</b> Keep p̂=0.90, drop n to 10 → if ⚠ appears, the normal approximation conditions aren't met.</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "editorial",
+          "reason": "dedicated-page confidence-interval and test explanation",
+          "html": "<div class=\"guided-steps\">\n<b>Simulation — verify what \"95%\" really means</b>\n<p>\"What does a 95% CI actually mean?\" — one of the easier spots to stall on. The answer: \"if you repeated the same survey many times, about 95% of the intervals would capture the true proportion.\"<br/>\nRun it 200 times and see whether that 95% claim holds up.</p>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "dedicated-page confidence-interval and test explanation",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — experience proportion testing</b>\n<ol>\n<li><b>Step 1:</b> n=100, p̂=0.60, p₀=0.50, α=0.05, two-sided → \"Is 60% significantly different from 50%?\"<br/><span class=\"inline-dim\">α (significance level) = the threshold for \"too extreme to be coincidence.\" It determines the size of the rejection region.</span></li>\n<li><b>Step 2:</b> Change p₀ to 0.55 → z shrinks and you can no longer reject. Small differences are hard to detect.</li>\n<li><b>Step 3:</b> Increase n to 400 → same p̂=0.60, p₀=0.55 but now you reject. The power of sample size.</li>\n<li><b>Step 4:</b> Switch test type to \"Right\" → one-sided test asking only \"greater than 50%?\" The p-value halves.</li>\n</ol>\n</div>"
+        }
+      },
+      "dists": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — t distribution</b>\n<ol>\n<li><b>Step 1:</b> n=<b>3</b> → df=2. Compare the heavier tails with the normal curve.</li>\n<li><b>Step 2:</b> n=<b>10</b> → heavier tails than normal, but getting closer.</li>\n<li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>\n</ol>\n<b>Feel it with confidence intervals</b>\n<ol start=\"4\">\n<li><b>Step A:</b> n=5, 95% confidence → the t bar is much wider (normal is overconfident).</li>\n<li><b>Step B:</b> Set n=50 → the bars nearly overlap at every confidence level.</li>\n<li><b>Step C:</b> Switch to 99% → the gap widens further (especially for small n).</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — χ² distribution</b>\n<ol>\n<li><b>Step 1:</b> Keep \"Fair die\" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>\n<li><b>Step 2:</b> Switch to \"Loaded\" and roll → face 1 jumps out, χ² enters the rejection region.</li>\n<li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>\n</ol>\n<b>Explore the distribution shape</b>\n<ol start=\"4\">\n<li><b>Step A:</b> Set df to <b>1</b> → sharply right-skewed.</li>\n<li><b>Step B:</b> df=<b>30</b> → approaches a bell shape. Confirm mean = df.</li>\n<li><b>Step C:</b> Move df and watch how the normal approximation (purple dashes) lines up.</li>\n</ol>\n</div>"
+        },
+        "3": {
+          "kind": "dedicated",
+          "reason": "additional distribution-shape experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — F distribution</b>\n<ol>\n<li><b>Step 1:</b> Set both SDs equal (e.g. 10 and 10) → F≈1, stays outside rejection zone.</li>\n<li><b>Step 2:</b> Increase only B's SD (e.g. A=5, B=15) → F grows and enters the rejection zone.</li>\n<li><b>Step 3:</b> Increase n → the same SD gap gives a lower p-value (more power).</li>\n</ol>\n<b>Explore the distribution shape</b>\n<ol start=\"4\">\n<li><b>Step A:</b> n=<b>6</b> → heavy tails, unstable shape.</li>\n<li><b>Step B:</b> n=<b>50</b> → approaches a bell. Check the F=1 line.</li>\n<li><b>Step C:</b> Swap A and B's SD values to feel what \"variance ratio\" means.</li>\n</ol>\n</div>"
+        }
+      },
+      "chitest": {
+        "1": {
+          "kind": "dedicated",
+          "reason": "separate goodness-of-fit and independence experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Goodness-of-Fit</b>\n<ol>\n<li><b>Step 1:</b> Select \"Fair die\" and ▶ auto-roll → χ² and the p-value still fluctuate as n grows. Even a fair die is sometimes rejected.</li>\n<li><b>Step 2:</b> Switch to \"Loaded\" and auto-roll → χ² shoots up, p-value drops below α. Cheat detected.</li>\n<li><b>Step 3:</b> Lower α to 0.01 → stricter threshold. Small deviations won't reject.</li>\n</ol>\n</div>"
+        },
+        "2": {
+          "kind": "dedicated",
+          "reason": "separate goodness-of-fit and independence experiments",
+          "html": "<div class=\"guided-steps\">\n<b>Experiment Guide — Independence Test</b>\n<ol>\n<li><b>Step 1:</b> Click only the top-left cell to create imbalance → χ² spikes, independence is rejected.</li>\n<li><b>Step 2:</b> ↺ Reset and click cells evenly → χ² stays small. No imbalance = independence holds.</li>\n<li><b>Step 3:</b> Change α to see \"how much imbalance is needed to reject independence.\"</li>\n</ol>\n</div>"
+        }
+      }
+    }
+  }
+}

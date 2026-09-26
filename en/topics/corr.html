@@ -94,111 +94,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
       "name": "Correlation — Feel r Through Scatter Plots",
-
       "description": "Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.",
-
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["Correlation coefficient", "Covariance", "R²", "Anscombe's quartet"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/corr.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
-          "item": "https://statplay.sasailab.com/"
-
+          "item": "https://statplay.sasailab.com/en/"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
-          "item": "https://statplay.sasailab.com/topics/"
-
+          "item": "https://statplay.sasailab.com/en/#cat-modeling"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "Correlation"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -276,21 +223,13 @@
 
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Feel the Correlation</b>
-
 <ol>
-
 <li><b>Step 1:</b> Set r = 0.80, click Generate → an upward-sloping band. Points cluster in the <b>green quadrants</b>.</li>
-
 <li><b>Step 2:</b> Change to r = −0.60, Generate → downward slope. More points in the <b>red quadrants</b>.</li>
-
 <li><b>Step 3:</b> Set r = 0.00, Generate → points spread evenly across all four quadrants. A "cloud," not a band.</li>
-
 <li><b>Step 4:</b> CLEAR, then manually place a <b>U-shape</b> → r ≈ 0 yet there's an obvious pattern! r only captures <b>linear</b> relationships.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:corr_main -->
@@ -355,21 +294,13 @@
 
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Peek Behind the Numbers</b>
-
 <ol>
-
 <li><b>Step 1:</b> Watch the animation. Points appear one by one, patterns look totally different…</li>
-
 <li><b>Step 2:</b> Check each plot's r ≈ 0.816. They're all nearly identical!</li>
-
 <li><b>Step 3:</b> Regression lines appear → lines are nearly identical too. Yet II is curved, III has an outlier, IV is dominated by one point.</li>
-
 <li><b>Step 4:</b> Click "Replay" to watch again. Numbers alone don't tell the whole story.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:corr_anscombe -->
@@ -553,4 +484,3 @@
 </body>
 
 </html>
-

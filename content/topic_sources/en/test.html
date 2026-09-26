@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.">
+
+<meta name="keywords" content="hypothesis testing, p-value, significance level, rejection region, z-test, one-sided, two-sided">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Hypothesis Testing — Reject Regions & p-values — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/test.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/test.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/test.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/test.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="Hypothesis Testing — Reject Regions &amp; p-values">
+
+<meta property="og:description" content="Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/test.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — Hypothesis Testing">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Hypothesis Testing — Reject Regions &amp; p-values">
+
+<meta name="twitter:description" content="Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — Hypothesis Testing">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Hypothesis Testing — Reject Regions & p-values",
+      "description": "Drag through two-sided and one-sided tests, watch α and the rejection region move, and see p-values take shape in real time. The anatomy of a z-test, visualized.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Hypothesis testing", "p-value and significance level", "Rejection region"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/test.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hypothesis Testing"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html" aria-current="page">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/test.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Hypothesis Testing — Reject Regions & p-values</a></h1>
+
+  <p class="topic-lead">Hypothesis testing has the structure of a courtroom. H₀ is presumed innocent; the rejection region is where conviction begins — z just shows which side it falls on.</p>
+
+  <section class="reveal in" id="test">
+
+
+
+<div class="sec-tag">I.04 / HYPOTHESIS TESTING</div>
+
+
+
+<h2 class="sec-title">Hypothesis Testing <span class="sec-sub">— Reject or Fail to Reject</span></h2>
+
+
+
+<div class="story-bridge">If a CI expresses uncertainty as a <i>width</i>, <span class="next">hypothesis testing</span> turns it into a <b>yes/no</b> decision. Under the <b>null world</b>, could this data have happened? If it's too unlikely, reject. Same distribution, same σ/n — just a different question.</div>
+
+
+
+<p class="sec-desc">
+
+    Think of <b>testing as a trial</b>.<br/>
+
+    You start by assuming <code>H₀</code> ("the drug has no effect" = "innocent"). Then if your computed <b>test statistic z</b> lands in the <b>pre-chosen rejection region</b>, you convict — that is, <b>reject H₀</b>.<br/>
+
+    Two panels below: <b>① geometry of z and rejection regions (two-sided, right, left)</b>, and <b>② false alarms (α) vs. misses (β)</b>.
+
+  </p>
+
+
+
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+
+<!-- @panel:test_main -->
+<div class="panel">
+
+<h3 class="cy-head">▶ ① Basics: z-statistic &amp; rejection region</h3>
+<div class="controls">
+<div class="ctrl"><label><span>Observed z</span> = <span class="val" id="tZVal">1.96</span></label>
+<input aria-label="Observed z" id="tZ" max="4" min="-4" step="0.01" type="range" value="1.96"/>
+</div>
+<div class="ctrl"><label>α = <span class="val" id="tAVal">0.05</span></label>
+<input aria-label="Significance alpha" id="tA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>Test type</span></label>
+<select aria-label="Test type" id="tType">
+<option data-en="Two-sided" data-ja="両側" value="two">Two-sided</option>
+<option data-en="Right" data-ja="右側" value="right">Right</option>
+<option data-en="Left" data-ja="左側" value="left">Left</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Hypothesis testing visualization. Explore the relationship between test statistic and rejection region" height="260" id="testCanvas"></canvas>
+<div class="info">
+<div><span>Test statistic z</span><strong id="tZstat">—</strong></div>
+<div><span>Critical value</span><strong id="tCrit">—</strong></div>
+<div><span>p-value</span><strong id="tPval">—</strong></div>
+<div><span>Decision</span><strong id="tDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="testCanvas" data-title="Hypothesis Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<div class="sim-layout">
+
+<!-- @guide:2 -->
+
+<!-- @panel:test_err -->
+<div class="panel" id="test_err">
+
+<h3 class="cy-head">▶ ② Two kinds of errors: α, β, power</h3>
+
+<p class="sec-desc sec-desc--tight">
+      This panel is a <b>hands-on playground</b> for the α (Type I) / β (Type II) / power trade-off.<br/>
+      Come back whenever you want to feel the trade-off. For the deeper conceptual write-up (the 2×2 matrix, why α and β live in different worlds), see the <a class="ln-cyan" href="../../en/columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.
+      <br/><i class="tip-line">Tip: drag horizontally on the chart to slide the critical boundary (α).</i>
+</p>
+<div class="controls">
+<div class="ctrl"><label><span>Effect size δ</span> = <span class="val" id="eDVal">2.0</span></label>
+<input aria-label="Effect size delta" id="eD" max="5" min="0" step="0.1" type="range" value="2"/>
+</div>
+<div class="ctrl"><label>α = <span class="val" id="eAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="eA" max="0.3" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Visualize the relationship between Type I/II errors and statistical power" height="260" id="errCanvas"></canvas>
+<div class="info">
+<div><span>α (Type I error)</span><strong id="eAlpha">—</strong></div>
+<div><span>Critical value</span><strong id="eCrit">—</strong></div>
+<div><span>β (Type II error)</span><strong id="eBeta">—</strong></div>
+<div><span>Power 1−β</span><strong id="ePower">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="errCanvas" data-title="α · β · Power"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<div class="panel" style="padding:12px 18px;margin:16px 0;border-left:3px solid var(--cyan)">
+
+<a href="../../en/tables/index.html?dist=norm" class="ln-cyan">Interactive Distribution Tables</a> — look up critical z/t values with live graph sync
+
+</div>
+
+
+
+<!-- @panel:test_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\,,\quad \text{p-value} = P\!\left(|Z| \geq |z_{\text{obs}}|\;\middle|\;H_0\right)"></div>
+<p><b>Left formula in plain English</b><br/>
+• "If this drug truly has no effect (H₀: μ = μ₀), how many standard errors is our sample mean from μ₀?"</p>
+<p><b>Each part</b><br/>
+• X̄ − μ₀: the gap between observed and "no effect" — bigger means more suspicious<br/>
+• ÷ σ/√n: converts to "how many SEs?" — 1 SE is normal, 3 SEs is extremely rare</p>
+<p><b>Right formula: p-value (two-sided)</b><br/>
+• "Assuming H₀ is true, the probability of seeing a |z| this extreme or more" — that's what we want to know<br/>
+• p-value ≤ α (significance level) → reject. "A result this extreme is too unlikely to be chance"<br/>
+• p-value &gt; α → fail to reject. "This could easily happen by chance"</p>
+<p><b>⚠️ p-value ≠ "probability that H₀ is true"</b><br/>
+• The p-value is computed assuming H₀ is true. It cannot tell you whether H₀ is actually true or false<br/>
+• This is a common point of confusion</p>
+</div>
+
+<div class="detail-section">
+<h3>// The 5-step testing recipe — use this order every time</h3>
+<ol>
+<li><b>State hypotheses</b>: H₀: "no difference" vs. H₁: "there is a difference"</li>
+<li><b>Choose α before collecting data</b> (e.g., 0.05)</li>
+<li><b>Compute the test statistic</b>: z, t, χ², etc. — a single number summarizing "how far the data is from H₀"</li>
+<li><b>Find the p-value</b>: look up the probability from the statistic</li>
+<li><b>Decide</b>: p ≤ α → reject; p &gt; α → fail to reject</li>
+</ol>
+<h3>// The courtroom analogy — going deeper</h3>
+<ul>
+<li>H₀ = "defendant is innocent"; H₁ = "defendant is guilty"</li>
+<li>Rejecting H₀ = guilty verdict: "it's implausible that an innocent person would produce this evidence"</li>
+<li>Failing to reject = insufficient evidence: not "proven innocent," just "not enough to convict"</li>
+<li>That's why we say "fail to reject H₀" rather than "accept H₀"</li>
+</ul>
+<h3>// Connection to confidence intervals</h3>
+<p>μ₀ inside the 95% CI ⟺ fail to reject at α = 0.05. Same math, different lens: the CI shows "width," the test gives "yes/no." The conclusions always agree.</p>
+<h3>// The α-β trade-off</h3>
+<p>For a full breakdown of α, β, and power, see the <a class="ln-cyan" href="../columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "Small p-value = large effect"</b>
+<p>The p-value measures how surprising the data is, not how big the effect is. With n = 1,000,000 a tiny difference can yield p &lt; 0.001. Always check effect size separately.</p>
+</div>
+<p class="mt-10">Misconceptions about errors and power ("not significant = no difference," "smaller α is always better," etc.) are collected in the FAQ of the <a class="ln-cyan" href="../../en/columns/error_types.html">"Type I &amp; II in a 2×2 table" column</a>.</p>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>Across hypothesis tests, the same cast keeps returning: comparing p with α, choosing one-sided vs. two-sided, and the 2×2 of error types.</p>
+<ul>
+<li><b>The p-value-vs-α comparison</b>: with p = 0.03, α = 0.01, the relation 0.03 &gt; 0.01 lands on "fail to reject." "Is the observed p inside α or not?" is the recurring decision shape</li>
+<li><b>One-sided vs. two-sided sorting</b>: "does the drug raise the mean?" calls for one-sided; "does it change in either direction?" calls for two-sided. The question's orientation forks into this shape</li>
+<li><b>The 2×2 of errors</b>: rejecting a true H₀ is Type I, failing to reject a false H₀ is Type II. Wherever a test lives, this 2×2 table tags along</li>
+<li><b>Where power sits</b>: 1 − β = "the probability of detecting a real difference when one exists." It appears in this same shape, as the flip side of Type II error</li>
+</ul>
+<p class="pattern-companion pattern-companion--mt">Look up critical values in the <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=norm">Interactive Distribution Tables</a> — z and t values with live graph sync</p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; tests and CIs project the same verdict through different pictures — the conclusions always move together</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; reads t / χ² / F critical values out of the test statistic's world to draw the decision boundary</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the proportion test quietly swaps p̂ for p₀ in the SE — and a testing-specific structure rises</li>
+<li><a href="./anova.html">ANOVA</a> &mdash; folds repeated t-tests for 3+ groups into a single F-test — testing extending itself naturally</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; categorical data shifts the test statistic to chi-squared — branching off into another arm of the family</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; every z-test critical value and rejection region lines up on the standard normal — testing's home address</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; lays the error 2×2, power, and the α-β trade-off onto one page to read together</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; treats the standard normal that produces z-test critical values as a universal translator — where the test multipliers come from</li>
+<li><a href="../../en/columns/se_vs_sd.html">"SD vs SE" column</a> &mdash; shows on screen that the denominator of (x̄−μ₀)/SE shares the same SE component used by CIs — rebuilds the test from its building blocks</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>from means to proportions <span class="story-arrow">▸</span> <a href="./proptest.html">I5 Proportion Test</a></div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./test.html">Hypothesis Testing</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html" class="current">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./ci.html" rel="prev">← Prev</a>
+  <a href="./proptest.html" rel="next">Next →</a>
+</nav>
+
+</body>
+
+</html>

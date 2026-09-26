@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta name="keywords" content="確率, 条件付き確率, 加法定理, ベン図, 独立性, 乗法定理">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>確率の基本法則 — ベン図で直感をつかむ — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/prob.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/prob.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/prob.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/prob.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="確率の基本法則 — ベン図で直感をつかむ">
+<meta property="og:description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/prob.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 確率の基本法則">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="確率の基本法則 — ベン図で直感をつかむ">
+<meta name="twitter:description" content="加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 確率の基本法則">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "確率の基本法則 — ベン図で直感をつかむ",
+      "description": "加法定理、条件付き確率、独立性をインタラクティブなベン図で可視化。P(A∪B)やP(A|B)を面積として直感的に理解する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["加法定理", "条件付き確率 P(A|B)", "事象の独立性"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/prob.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-probability"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "確率の基本法則"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability" aria-current="location">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html">正規分布と標準化</a><a href="prob.html" aria-current="page">確率の基本法則</a><a href="bayes.html">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/prob.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">確率の基本法則 — ベン図で直感をつかむ</a></h1>
+  <p class="topic-lead">P(A∪B) も P(A|B) も、暗記ではなく面積で見れば一発。2つの円を重ねるだけの話だった。</p>
+  <section class="reveal in" id="prob">
+
+<div class="sec-tag">P.03 / PROBABILITY RULES</div>
+<h2 class="sec-title">確率の基本法則 <span class="sec-sub">— ベン図で直感をつかむ</span></h2>
+
+<div class="story-bridge">正規分布の形を掴んだ。ここで<b>基礎に立ち返る</b>——すべてを支える<span class="next">確率の基本法則</span>。加法定理、乗法定理、条件付き確率を<b>面積</b>で直感的に掴む。</div>
+
+<p class="sec-desc">
+    加法定理、乗法定理、条件付き確率 — 公式を暗記する前に、面積で「見て」しまおう。<br/>
+<b>P(A∪B) = P(A) + P(B) − P(A∩B)</b> は「2つの円を重ねた面積から、重なりを引く」だけ。
+    条件付き確率 P(A|B) は「B の円の中で A が占める割合」。<br/>
+<b>独立ボタン</b>を押すと P(A∩B) = P(A)·P(B) に自動調整 — 独立ってこういうこと。
+  </p>
+
+<div class="example-box">
+<b>具体例で考えてみよう</b><br/>
+    52枚のトランプから1枚引く。A = ハートが出る（13/52 = 0.25）、B = 絵札が出る（12/52 ≈ 0.23）。<br/>
+    A∩B = ハートの絵札（3/52 ≈ 0.06）。→ P(A∪B) = 0.25 + 0.23 − 0.06 = <b>0.42</b>。<br/>
+<span class="inline-dim">独立の例：サイコロ2個。A = 1個目が偶数、B = 2個目が3以上。1個目の結果は2個目に影響しないので独立。P(A∩B) = 1/2 × 2/3 = 1/3。</span>
+</div>
+
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:prob_venn -->
+<div class="panel">
+<h3 class="cy-head">▶ インタラクティブ・ベン図</h3>
+
+<div class="controls">
+<div class="ctrl"><label>P(A) = <span class="val" id="probPAVal">0.40</span></label>
+<input aria-label="P(A)" id="probPA" max="0.95" min="0.05" step="0.01" type="range" value="0.4"/>
+</div>
+<div class="ctrl"><label>P(B) = <span class="val" id="probPBVal">0.30</span></label>
+<input aria-label="P(B)" id="probPB" max="0.95" min="0.05" step="0.01" type="range" value="0.3"/>
+</div>
+<div class="ctrl"><label>P(A∩B) = <span class="val" id="probPABVal">0.12</span></label>
+<input aria-label="P(A intersect B)" id="probPAB" max="0.30" min="0" step="0.01" type="range" value="0.12"/>
+</div>
+<button class="btn yellow" id="probIndep"><span>独立にする</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Probability rules: Venn diagram visualization" height="320" id="probCanvas"></canvas>
+<div class="info">
+<div>P(A∪B)<strong id="probUnion">—</strong></div>
+<div>P(A|B)<strong id="probCondAB">—</strong></div>
+<div>P(B|A)<strong id="probCondBA">—</strong></div>
+<div><span>独立？</span><strong id="probIndepCheck">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="probCanvas" data-title="確率の基本法則"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:prob_text -->
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P(A|B) = \frac{P(A \cap B)}{P(B)}\,,\quad P(A \cup B) = P(A) + P(B) - P(A \cap B)"></div>
+<p><b>左の式：条件付き確率 P(A|B)</b><br/>
+・P(A∩B)：A と B が同時に起きる確率（ベン図の重なり部分）<br/>
+・÷ P(B)：「B が起きた」という条件で世界を絞り込む<br/>
+・意味：B が起きたと分かったあと、その中で A も起きている割合</p>
+<p><b>右の式：加法定理 P(A∪B)</b><br/>
+・P(A) + P(B)：単純に足すと、重なり（A∩B）を二重カウントしてしまう<br/>
+・− P(A∩B)：二重カウント分を引いて正しい値にする<br/>
+・排反（A∩B = ∅）なら単純に足すだけでOK</p>
+<p><b>独立との関係</b><br/>
+・A と B が独立 ⇔ P(A|B) = P(A)（B を知っても A の確率が変わらない）<br/>
+・このとき P(A∩B) = P(A)·P(B) が成り立つ（掛け算で求まる）</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「排反 = 独立」← 最頻出の混同</b>
+<p>排反：A∩B = ∅（サイコロで1の目と2の目は同時に出ない）<br/>
+独立：P(A∩B) = P(A)P(B)（1回目が1の目でも2回目の確率は変わらない）<br/>
+排反な2事象（P&gt;0）は独立ではない。AとBが同時に起きないなら、Aが起きた時点でBの確率は0に下がるから。</p>
+</div>
+<div class="misc-item">
+<b>❌「条件付き確率の分母は P(A∪B)」</b>
+<p>P(A|B) の分母は P(B)。「Bが起きた世界」に絞り込むから、Bの確率で割る。∪ ではない。</p>
+</div>
+<div class="misc-item">
+<b>❌「P(A∪B) = P(A) + P(B) はいつでも成立」</b>
+<p>排反のときだけ。一般には重なり P(A∩B) を引く必要がある。引き忘れると二重カウントで確率が1を超えることもある。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>確率の基本まわりでは、ベン図の三領域と少数の同じ書き換えが繰り返し顔を出します。</p>
+<ul>
+<li><b>ベン図の三領域の形</b>：A だけ、B だけ、A∩B の三つの数字が揃うと、P(A|B) や P(A∪B) はこの三つの並び替えで読める形になっている</li>
+<li><b>独立の判定の形</b>：P(A)=0.3, P(B)=0.4, P(A∩B)=0.12 のとき、0.3×0.4 = 0.12 と一致する。「掛け算で復元できれば独立」というチェックの形が、いつもこの一行で見える</li>
+<li><b>余事象の書き換え</b>：「少なくとも1回当たる確率」は 1 − (全部はずれる確率) という形になる。場合分けが多いときに、裏返すと一発で見える絵</li>
+<li><b>排反と独立の対比</b>：「同時に起きない」と「片方を知っても確率が変わらない」は別の構造。両者がしばしば取り違えられる、というのも一つの定型の形</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./bayes.html">ベイズの定理</a> &mdash; 条件付き確率 P(A|B) と事前→事後の更新が、ここでの基本法則を土台にする</li>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; ベン図の確率法則を連続分布へ持ち上げて、標準化の話に橋を渡す</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 独立試行と排反事象の組み立てを応用すると、二項・ポアソン・指数が顔を出す</li>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; 確率を計算する最初の道具として標準正規が前に出てくる</li>
+<li><a href="../columns/birthday.html">『誕生日のパラドックス』コラム</a> &mdash; 余事象と独立試行を組み立てると、直感を裏切る確率が立ち上がる代表例</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/birthday.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🎂</span>
+  <span class="fr-body">
+    <span class="fr-title">誕生日のパラドックス — 23人で50%超え</span>
+    <span class="fr-desc">余事象の絵で「直感が裏切られる確率」を一発で読み解く古典コラム</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+<!-- ═══ コラム ═══ -->
+<div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,0,128,.15);background:rgba(255,0,128,.03)">
+<h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--magenta);margin:0 0 8px;letter-spacing:1px">// コラム</h3>
+<p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">「23人のクラスで誕生日が被る確率は50%超え」——確率の基本法則がどれだけ直感を裏切るか、シミュレーションで体感できます。</p>
+<a href="../columns/birthday.html" style="color:var(--magenta);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 誕生日のパラドックス — 23人で50%超え →</a>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>条件を反転させる <span class="story-arrow">▸</span> <a href="./bayes.html">P4 ベイズの定理</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./prob.html">確率の基本法則</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html" class="current">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./normal.html" rel="prev">← 前へ</a>
+  <a href="./bayes.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

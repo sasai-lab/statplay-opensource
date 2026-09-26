@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="&quot;60 out of 100 agree&quot; — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
+<meta name="keywords" content="proportion test, proportion estimation, confidence interval, z-test, sample proportion, pooled proportion">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>Proportion Testing & Estimation — Visualize the z-test for Proportions — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/proptest.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/proptest.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/proptest.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/proptest.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="Proportion Testing &amp; Estimation — Visualize the z-test for Proportions">
+<meta property="og:description" content="&quot;60 out of 100 agree&quot; — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/proptest.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — Proportion Testing &amp; Estimation">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proportion Testing &amp; Estimation — Visualize the z-test for Proportions">
+<meta name="twitter:description" content="&quot;60 out of 100 agree&quot; — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — Proportion Testing &amp; Estimation">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Proportion Testing & Estimation — Visualize the z-test for Proportions",
+      "description": "\"60 out of 100 agree\" — is that really a majority? Build confidence intervals from sample proportions and experience one-sample and two-sample z-tests with interactive sliders.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Confidence interval for a proportion", "One-sample proportion test", "Two-proportion test", "Normal approximation conditions"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/proptest.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Proportion Testing & Estimation"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html" aria-current="page">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/proptest.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Proportion Testing & Estimation — Visualize the z-test for Proportions</a></h1>
+  <p class="topic-lead">Estimation uses p̂; testing uses p₀. A single character swaps the standard-error formula — and the whole proportion test pivots on that one letter.</p>
+
+  <section class="reveal in" id="proptest">
+
+<div class="sec-tag">PROPORTION TEST &amp; ESTIMATION</div>
+<h2 class="sec-title">Proportion Test &amp; Estimation <span class="sec-sub">&#x2014; from sample proportion to the truth</span></h2>
+
+<div class="story-bridge">The logic is exactly the same as when we did confidence intervals and hypothesis tests for means. The only twist: data is now "success or failure" counts instead of continuous measurements, so <span class="next">the standard error formula</span> changes shape. Play with the sliders here and the textbook formulas start to read like a recipe you've already followed.</div>
+
+<p class="sec-desc">
+    A world where every data point is just "success" or "failure." <b>The sample proportion p&#x0302; = x/n</b> is the starting point, and when n is large enough the normal approximation kicks in (thanks to the Central Limit Theorem).<br/>
+    We'll work through <b>&#x2460; interval estimation</b> &#x2192; <b>&#x2461; one-sample test</b> &#x2192; <b>&#x2462; two-sample test</b>. Compare each step with what you learned for means &#x2014; spotting the similarities makes the differences easy to absorb.
+</p>
+
+<!-- Panel 1: Confidence Interval -->
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:proptest_ci -->
+<div class="panel">
+
+<h3 class="cy-head">▶ ① Confidence interval for a proportion</h3>
+<div class="controls">
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiNVal">15</span></label>
+<input aria-label="Sample size n" id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
+</div>
+<div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptCiPVal">0.50</span></label>
+<input aria-label="Sample proportion" id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>Confidence level</span></label>
+<select aria-label="Confidence level" id="ptCiLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Confidence interval for a proportion. Interactively see how the interval widens or narrows around the sample proportion" class="canvas-aspect-16-9" id="ptCiCanvas"></canvas>
+<div class="info">
+<div><span>Standard error SE</span><strong id="ptCiSE">—</strong></div>
+<div><span>CI lower bound</span><strong id="ptCiLo">—</strong></div>
+<div><span>CI upper bound</span><strong id="ptCiHi">—</strong></div>
+<div><span>Margin of error E</span><strong id="ptCiMoe">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptCiCanvas" data-title="Proportion CI"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- Panel 1-b: CI Simulation -->
+<div class="sim-layout">
+<!-- @guide:2 -->
+
+<!-- @panel:proptest_sim -->
+<div class="panel">
+
+<h3 class="cy-head">▶ ①-b CI simulation</h3>
+<div class="controls">
+<div class="ctrl"><label><span>True proportion p</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
+<input aria-label="True proportion p" id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
+<input aria-label="Sample size n" id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
+</div>
+<div class="ctrl"><label><span>Confidence level</span></label>
+<select aria-label="Confidence level" id="ptCiSimLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
+</select>
+</div>
+</div>
+<div class="controls controls--my-8">
+<button class="btn" id="ptCiSimRun"><span>▶ Run</span></button>
+<button class="btn magenta" id="ptCiSimReset"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="CI simulation. Visualize how often confidence intervals capture the true proportion across 200 samples" class="canvas-aspect-16-9" id="ptCiSimCanvas"></canvas>
+<div class="info">
+<div><span>Generated</span><strong id="ptCiSimMade">0</strong></div>
+<div><span>Coverage rate</span><strong id="ptCiSimCov">—</strong></div>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- Panel 2: One-sample z-test -->
+<div class="sim-layout">
+<!-- @guide:3 -->
+
+<!-- @panel:proptest_test -->
+<div class="panel">
+
+<h3 class="cy-head">▶ ② One-sample z-test for a proportion</h3>
+
+<p class="sec-desc sec-desc--tight">
+    Same flow as testing a population mean. Set up H₀: p = p₀, compute z from the sample, and check whether it lands in the rejection region.<br/>
+    The only twist is that the standard error becomes √(p₀(1−p₀)/n). Nail that, and the rest is familiar.
+  </p>
+<div class="controls">
+<div class="ctrl"><label><span>Sample size n</span> = <span class="val" id="ptTNVal">100</span></label>
+<input aria-label="Sample size n" id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label><span>Sample proportion p̂</span> = <span class="val" id="ptTPVal">0.60</span></label>
+<input aria-label="Sample proportion" id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+</div>
+<div class="ctrl"><label><span>Null hypothesis p₀</span> = <span class="val" id="ptTP0Val">0.50</span></label>
+<input aria-label="Null hypothesis p0" id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>Test type</span></label>
+<select aria-label="Test type" id="ptTType">
+<option data-en="Two-sided" data-ja="両側" value="two">Two-sided</option>
+<option data-en="Right" data-ja="右側" value="right">Right</option>
+<option data-en="Left" data-ja="左側" value="left">Left</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Proportion test visualization. Interactively explore the relationship between the z-statistic and the rejection region" height="260" id="ptTestCanvas"></canvas>
+<div class="info">
+<div><span>Test statistic z</span><strong id="ptTZstat">—</strong></div>
+<div><span>Critical value</span><strong id="ptTCrit">—</strong></div>
+<div><span>p-value</span><strong id="ptTPval">—</strong></div>
+<div><span>Decision</span><strong id="ptTDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptTestCanvas" data-title="Proportion Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- Panel 3: Two-proportion z-test -->
+<div class="sim-layout">
+<!-- @guide:4 -->
+
+<!-- @panel:proptest_two -->
+<div class="panel">
+
+<h3 class="cy-head">▶ ③ Two-proportion z-test</h3>
+
+<p class="sec-desc sec-desc--tight">
+    "Drug A vs. Drug B — which works better?" "Ad A vs. Ad B — is the click-through rate really different?" This test is for comparing two groups.<br/>
+    The key idea: under H₀: p₁ = p₂, both samples are pooled into a single <b>pooled proportion</b> to build a shared SE. Get that, and the rest mirrors the one-sample test.
+  </p>
+<div class="controls">
+<div class="ctrl"><label>n₁ = <span class="val" id="ptTwoN1Val">100</span></label>
+<input aria-label="Sample size n1" id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label>p̂₁ = <span class="val" id="ptTwoP1Val">0.60</span></label>
+<input aria-label="Sample proportion p1" id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+</div>
+<div class="ctrl"><label>n₂ = <span class="val" id="ptTwoN2Val">100</span></label>
+<input aria-label="Sample size n2" id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label>p̂₂ = <span class="val" id="ptTwoP2Val">0.45</span></label>
+<input aria-label="Sample proportion p2" id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
+</div>
+<div class="ctrl"><label><span>Significance level α</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>Test type</span></label>
+<select aria-label="Test type" id="ptTwoType">
+<option data-en="Two-sided" data-ja="両側" value="two">Two-sided</option>
+<option data-en="Right" data-ja="右側" value="right">Right</option>
+<option data-en="Left" data-ja="左側" value="left">Left</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Two-proportion z-test. Compute z from two sample proportions and visualize its position relative to the rejection region" height="260" id="ptTwoCanvas"></canvas>
+<div class="info">
+<div><span>Pooled proportion p̂</span><strong id="ptTwoPool">—</strong></div>
+<div><span>Test statistic z</span><strong id="ptTwoZstat">—</strong></div>
+<div><span>p-value</span><strong id="ptTwoPval">—</strong></div>
+<div><span>Decision</span><strong id="ptTwoDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptTwoCanvas" data-title="Two-Proportion Test"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- Formulas -->
+<!-- @panel:proptest_text -->
+
+<div class="detail-section">
+<h3>// Formulas used here</h3>
+<p class="star-note">
+<b class="star-note__title">★ Estimation and testing put different content inside SE</b><br/>
+<b>Estimation uses SE = √(p̂(1−p̂)/n); testing uses SE = √(p₀(1−p₀)/n).</b> The label "SE of a proportion" is shared, but <b>estimation grounds the SE in the sample world</b> (your data is the reference) while <b>testing grounds it in the H₀ world</b> (the hypothesized proportion is the reference). Compare the denominators of the first two formulas below — that's the only line that changes.
+</p>
+<h4 class="h4-cyan">Confidence interval for a proportion (Wald interval)</h4>
+<div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
+<p>
+· p̂ = x/n: sample proportion (x successes out of n trials)<br/>
+· z<sub>α/2</sub>: upper α/2 quantile of the standard normal. For a 95% CI, α = 0.05 and z<sub>0.025</sub> = 1.96<br/>
+· √(p̂(1−p̂)/n): <b>standard error of the sample proportion</b>. Similar to SE = σ/√n for means, but the variance is p(1−p) — that's what makes proportions special
+</p>
+<h4 class="h4-cyan">One-sample z-test for a proportion</h4>
+<div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
+<p>
+· p₀: the proportion assumed under the null hypothesis (e.g., p₀ = 0.5 for "50%")<br/>
+· The denominator uses <b>p₀</b>, not p̂ — because in a test we work inside the H₀ world<br/>
+· Under H₀ this z follows a standard normal, which lets us compute the p-value
+</p>
+<h4 class="h4-cyan">Two-proportion z-test</h4>
+<div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
+<p>
+· p̂: the <b>pooled proportion</b> — both groups combined. Under H₀: p₁ = p₂ the true rates are the same, so pooling gives a better estimate<br/>
+· The denominator is the SE of the difference. The 1/n₁ + 1/n₂ term means the smaller sample is the bottleneck
+</p>
+</div>
+
+<div class="detail-section">
+<h3>// Normal approximation conditions — when can you use this method?</h3>
+<p>
+The z-test and CI for proportions rely on the sample proportion following a normal distribution.<br/>
+The rule of thumb for this approximation to hold:
+</p>
+<ul>
+<li><b>np ≥ 5</b> and <b>n(1−p) ≥ 5</b> (use p₀ for tests)</li>
+<li>Intuitively: "both successes and failures should occur at least 5 times"</li>
+<li>When p is close to 0 or 1, the distribution becomes skewed and the normal approximation breaks down</li>
+</ul>
+<p>
+If the conditions aren't met, use an <b>exact binomial test</b> or go back and collect more data.<br/>
+In panel ① above, try shrinking n or pushing p̂ toward 0.01 — the ⚠ warning appears for exactly this reason.
+</p>
+</div>
+
+<div class="detail-section">
+<h3>// Estimation vs. testing — when to use which</h3>
+<ul>
+<li><b>Interval estimation</b>: "Roughly where is the true proportion?" → present a confidence interval</li>
+<li><b>Hypothesis test</b>: "Is the true proportion different from p₀? Yes or no?" → decide via the p-value</li>
+<li>They are two sides of the same coin: <b>p₀ outside the 95% CI ⟺ reject H₀ at α = 0.05</b></li>
+</ul>
+<p>
+Flip between panels ① and ② with the same n and p̂ to see this relationship in action. If p₀ sits outside the CI in ①, panel ② will reject.
+</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "The SE for estimation and the SE for testing are the same"</b>
+<p>For estimation, SE = √(p̂(1−p̂)/n) uses the sample proportion; for testing, SE = √(p₀(1−p₀)/n) uses the null value. The difference comes down to "which world are we basing our calculation on?"</p>
+</div>
+<div class="misc-item">
+<b>❌ "Large n means the normal approximation always works"</b>
+<p>If p is as extreme as 0.001, even n = 1,000 gives np = 1, which fails the condition. The "rule of 5" checks both p and n together.</p>
+</div>
+<div class="misc-item">
+<b>❌ "For the two-sample test, compute each group's SE separately and add them"</b>
+<p>Under H₀: p₁ = p₂, the true proportions are the same, so we pool them into a single estimate to build a shared SE. You compute separate SEs only when constructing a confidence interval for the difference.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>Across proportion tests and intervals, the swap between the estimation SE and the testing SE — plus the normal-approximation check — keeps reappearing.</p>
+<ul>
+<li><b>The CI assembly shape</b>: with 120 of 200 in favor, p̂ = 0.6, SE = √(0.6 × 0.4 / 200), and the 95% CI lands at 0.6 ± 1.96 × SE. The "center ± multiplier × standard error" three-layer structure carries straight over to proportions</li>
+<li><b>The test-statistic shape</b>: with 35 defects in 500, p̂ = 0.07, p₀ = 0.05, z = (0.07 − 0.05) / √(0.05 × 0.95 / 500). The "H₀-world SE in the denominator" is the distinguishing detail against the estimation case</li>
+<li><b>The normal-approximation condition</b>: np ≥ 5 and n(1−p) ≥ 5. With n = 20 and p₀ = 0.1, np₀ = 2 falls below the threshold — that's the shape this checkpoint takes</li>
+<li><b>The two-sample difference shape</b>: scenarios like "Group A: 60/100 improved, Group B: 45/100 improved" carry a distinctive structure — pooled proportion sitting inside the SE in the denominator</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; the "center ± multiplier × SE" three-layer assembly slides into motion for proportions too</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; carries testing's skeleton — H₀-world SE plus rejection region — straight into the proportion setting</li>
+<li><a href="./dists.html">Three Test Distributions</a> &mdash; step beyond the normal-approximation range and the exact binomial test moves forward — repositioning within the distribution family</li>
+<li><a href="./bayes.html">Bayes' Theorem</a> &mdash; sensitivity, specificity, and prevalence are estimated as proportions — the same proportion-test machinery powers the PPV assembly</li>
+<li><a href="./chitest.html">Chi-Squared Test</a> &mdash; the z² of a two-proportion test equals the χ² of a 2×2 independence test — proportion testing and chi-squared sit on the same coin</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; the α / β / power framework keeps moving when applied to proportion tests — the error 2×2 fits without modification</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">UP NEXT —</span>into the world where σ is unknown <span class="story-arrow">▸</span> <a href="./dists.html">I6 t, χ², F</a></div>
+  </section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./proptest.html">Proportion Test</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html" class="current">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./test.html" rel="prev">← Prev</a>
+  <a href="./dists.html" rel="next">Next →</a>
+</nav>
+</body>
+</html>

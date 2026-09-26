@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="勉強時間と睡眠時間から成績を予測。説明変数を加えると係数がどう変わるか、単回帰との比較と回帰平面で確かめます。">
+<meta name="keywords" content="重回帰分析, 偏回帰係数, 交絡, 多重回帰, 3D 可視化, 回帰分析">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>重回帰分析 — いくつかの変数から予測する — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/mreg.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/mreg.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/mreg.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/mreg.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="重回帰分析 — いくつかの変数から予測する">
+<meta property="og:description" content="勉強時間と睡眠時間から成績を予測。説明変数を加えると係数がどう変わるか、単回帰との比較と回帰平面で確かめます。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/mreg.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 重回帰分析">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="重回帰分析 — いくつかの変数から予測する">
+<meta name="twitter:description" content="勉強時間と睡眠時間から成績を予測。説明変数を加えると係数がどう変わるか、単回帰との比較と回帰平面で確かめます。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 重回帰分析">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "重回帰分析 — いくつかの変数から予測する",
+      "description": "勉強時間と睡眠時間から成績を予測。説明変数を加えると係数がどう変わるか、単回帰との比較と回帰平面で確かめます。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["重回帰分析", "偏回帰係数", "交絡の制御", "単回帰との比較"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/mreg.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-modeling"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "重回帰分析"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html">正規分布と標準化</a><a href="prob.html">確率の基本法則</a><a href="bayes.html">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling" aria-current="location">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html" aria-current="page">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/mreg.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">重回帰分析 — いくつかの変数から予測する</a></h1>
+  <p class="topic-lead">勉強時間だけで予測したときと、睡眠時間も加えたとき。同じデータでも、勉強時間の係数が変わることがあります。</p>
+  <section class="reveal in" id="mreg">
+
+<div class="sec-tag">M2 / 重回帰分析</div>
+<h2 class="sec-title">重回帰分析 <span class="sec-sub">— 複数の変数で予測する</span></h2>
+
+<!-- @panel:mreg_intro -->
+<div class="story-bridge">勉強時間だけで成績を予測したときと、睡眠時間も加えたとき。<b>同じデータでも、勉強時間の係数が変わる</b>ことがあります。<span class="next">重回帰</span>で、複数の説明変数を一緒に扱ってみます。</div><p class="sec-desc">説明変数が一つなら直線、二つなら3D空間の平面になります。まずは比較パネルで係数の変化を見てみましょう。ここでは架空のデータを使います。係数を因果効果と読めるかどうかは、別の検討が必要です。</p>
+
+<!-- /@panel -->
+<div class="sim-layout">
+<!-- @panel:mreg_guide -->
+<!-- @guide:1 -->
+
+<!-- /@panel -->
+<!-- @panel:mreg_vs -->
+<div class="panel">
+<h3 class="cy-head cy-head--compact">▶ 単回帰 vs 重回帰 — β₁が変わる瞬間</h3>
+
+<div class="drag-hint drag-hint--tight">
+<span>同じデータで「勉強時間だけ」と「勉強＋睡眠」で回帰する。相関スライダーで、説明変数どうしの関係を変えてみよう。</span>
+
+</div>
+<div class="controls controls--tight">
+<div class="ctrl">
+<label>
+<span>勉強↔睡眠の相関</span>
+
+          = <span class="val" id="mvCorrVal">−0.50</span>
+</label>
+<input aria-label="Study-Sleep correlation" id="mvCorr" max="0.8" min="-0.8" step="0.05" type="range" value="-0.5"/>
+</div>
+<div class="ctrl">
+<label>
+<span>サンプルサイズ n</span>
+
+          = <span class="val" id="mvNVal">50</span>
+</label>
+<input aria-label="Sample size n" id="mvN" max="100" min="20" step="5" type="range" value="50"/>
+</div>
+<button class="btn" id="mvGen"><span>↻ 再生成</span></button>
+</div>
+<canvas aria-busy="true" aria-label="単回帰と重回帰のβ₁比較" class="canvas-block" height="320" id="mvCanvas"></canvas>
+<div class="info">
+<div><span>単回帰 β₁</span> <strong id="mvSimpleB1">—</strong></div>
+<div><span>重回帰 β₁</span> <strong id="mvMultiB1">—</strong></div>
+<div><span>係数の差</span> <strong id="mvGap">—</strong></div>
+<div><span>単回帰 R²</span> <strong id="mvSimpleR2">—</strong></div>
+<div><span>重回帰 R²</span> <strong id="mvMultiR2">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mvCanvas" data-title="単回帰 vs 重回帰"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+<!-- @guide:2 -->
+
+<!-- @panel:mreg_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl"><label><span>勉強時間 x₁</span> = <span class="val" id="mStudyVal">5.0</span><span>時間</span></label>
+<input aria-label="Study hours x1" id="mStudy" max="9" min="1" step="0.1" type="range" value="5"/>
+</div>
+<div class="ctrl"><label><span>睡眠時間 x₂</span> = <span class="val" id="mSleepVal">7.0</span><span>時間</span></label>
+<input aria-label="Sleep hours x2" id="mSleep" max="10" min="4" step="0.1" type="range" value="7"/>
+</div>
+<button class="btn" id="mGen"><span>↺ 再サンプリング</span></button>
+</div>
+<canvas aria-busy="true" aria-label="3D回帰平面の散布図" height="500" id="mregCanvas"></canvas>
+<div class="info">
+<div><span id="mPredLabel"></span><strong id="mPredBig">—</strong></div>
+<div><span>β̂₁（勉強1hあたり）</span><strong id="mCoefStudy">—</strong></div>
+<div><span>β̂₂（睡眠1hあたり）</span><strong id="mCoefSleep">—</strong></div>
+<div>R²<strong id="mR2">—</strong></div>
+</div>
+<div class="mpred-sub" id="mPredSub"></div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mregCanvas" data-title="重回帰分析"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<div class="learn-more-link" style="margin:8px 0 16px;text-align:center">
+<a href="../columns/income_prediction.html" class="ln-yellow">📊 コラム：年収予測で重回帰を体感する →</a>
+
+</div>
+<!-- @panel:mreg_text -->
+<div class="detail-section">
+<h3>// 変数を加えると、なぜ係数が変わる？</h3>
+<p>上のパネルは、勉強時間と睡眠時間に相関を持たせた架空のデータです。成績は「40 ＋ 3 × 勉強時間 ＋ 2 × 睡眠時間 ＋ ノイズ」で作っています。</p>
+<p>勉強時間だけで予測すると、勉強時間と一緒に変わる睡眠時間の分も、一本の傾きに含まれます。負の相関がある設定では、単回帰の係数は、生成に使った3より小さくなる傾向があります。</p>
+<p>重回帰の<b>偏回帰係数</b>は、ほかの説明変数を同じ値にそろえたときの、予測値の差を表します。睡眠時間を加えると、勉強時間の係数が生成に使った3に近づく様子を見られます。ただし、標本やノイズによって値は変わります。</p>
+<p>変数を加えれば因果関係が分かる、ということではありません。現実のデータで因果効果と読むには、交絡要因の選び方や測定、モデルの仮定を別に検討する必要があります。</p>
+<p>相関の設定を0にすると、二つの係数は近づきやすくなります。有限の標本なので、完全に一致するとは限りません。</p>
+</div>
+
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="\hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2"></div>
+<p><b>各パーツの役割</b><br/>
+・β₀（切片）：すべての変数が0のときの予測値。ベースライン<br/>
+・β₁x₁：「x₂ を固定したまま x₁ が1増えたら y がいくつ変わるか」× x₁ の値<br/>
+・β₂x₂：同様に「x₁ を固定したまま x₂ が1増えたら」の貢献分</p>
+<p><b>単回帰との違い</b><br/>
+・単回帰のβ₁：x₁だけから予測するときの傾き<br/>
+・重回帰のβ₁：モデル上でx₂を同じ値にそろえたときの、x₁に対する傾き<br/>
+・生成時の相関を0にすると二つの係数は近づきやすいが、標本による差は残る</p>
+<p><b>幾何的イメージ</b><br/>
+・2変数なら予測面は平面（3Dグラフの半透明の面）。データ点と平面の成績方向の差（残差）の二乗和が最小になる傾きを選ぶ</p>
+</div>
+
+<div class="detail-section">
+<h3>// 手を動かしてみよう — 具体例</h3>
+<p>架空の30人の成績を予測する計算例です。以下の値は説明用で、上のパネルとは連動しません。</p>
+<p>① まず平均を確認<br/>
+　勉強時間の平均 = 5.0h、睡眠時間の平均 = 7.0h、点数の平均 = 65点<br/>
+　勉強と睡眠の相関 r = −0.45（たくさん勉強するほど睡眠が短い）</p>
+<p>② 単回帰 y ~ x₁（勉強時間だけ）<br/>
+　β₁ = +2.4 点/h、R² = 0.32<br/>
+　→ 勉強時間が1時間長いと、予測値は2.4点高い</p>
+<p>③ 重回帰 y ~ x₁ + x₂（睡眠時間を追加）<br/>
+　β₁ = +3.1 点/h、β₂ = +2.0 点/h、R² = 0.57<br/>
+　→ 同じ睡眠時間で比べるモデルでは、勉強時間の係数は<b>3.1</b></p>
+<p>④ なぜ変わった？<br/>
+　この例では、勉強時間と睡眠時間に負の相関がある。<br/>
+　睡眠時間も含めて予測することで、勉強時間の係数が変わった。<br/>
+　この違いだけから、勉強や睡眠の因果効果を決めることはできない。</p>
+<p>⑤ 予測してみる<br/>
+　β₀ は ȳ − β₁x̄₁ − β₂x̄₂ = 65 − 3.1×5 − 2.0×7 = 35.5 と決まる（OLS回帰は必ず平均点を通る）。<br/>
+　勉強6h・睡眠7hの学生 → ŷ = 35.5 + 3.1×6 + 2.0×7 = 35.5 + 18.6 + 14.0 = <b>68.1点</b><br/>
+　β₀ は「勉強0h・睡眠0hの仮想スコア」で、ここでは直感的な意味を持たない（外挿に注意）。</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「偏回帰係数が大きい変数ほど重要」</b>
+<p>「勉強時間（0〜10時間）」と「睡眠時間（4〜10時間）」ではスケールが違う。係数の大きさを比べるには標準化偏回帰係数（どちらも標準偏差1に揃えた係数）を使う必要がある。</p>
+</div>
+<div class="misc-item">
+<b>❌「説明変数は多ければ多いほど良い」</b>
+<p>R² は変数を増やせば必ず上がるが、自由度調整済み R² は下がることがある。不要な変数はノイズを増やして推定を不安定にする。上のシミュレーションで、係数がほぼ0の変数があるなら、それは不要かもしれない。</p>
+</div>
+<div class="misc-item">
+<b>❌「多重共線性は気にしなくていい」</b>
+<p>「勉強時間」と「図書館にいた時間」のように強く相関する2変数を同時に入れると、個々の係数がガタつく（片方の符号が逆転することも）。VIF &gt; 10 が危険信号。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>重回帰のまわりでは、係数の解釈と検定の対比が同じ形で繰り返し顔を出します。</p>
+<ul>
+<li><b>偏回帰係数の絵</b>：β₁ = 3 のとき、「x₂ を固定したまま x₁ を1増やすと y が平均3増える」という形に読める。「他の変数を止める」という条件付きが、いつもこの絵に張り付いている</li>
+<li><b>単回帰と重回帰でβ₁がずれる場面</b>：説明変数同士が相関していると、変数を加える前後で傾きが変わる。相関の設定をゼロにすると、両者は近づきやすい</li>
+<li><b>R² と自由度調整済み R² の対比</b>：変数を足したときに、R² は必ず上がるが、調整済みは下がることがある。「下がったら、その変数は分の悪い追加だった」という形がここに現れる</li>
+<li><b>F検定と t検定の役割分担</b>：F検定は「すべての偏回帰係数 = 0」を一括で見る形、t検定は「個別に 0 か」を見る形。モデル全体と個別係数で問いが分かれている</li>
+<li><b>多重共線性のシグナル</b>：VIF &gt; 10 が目安として顔を出し、係数がガタつく場面の前触れになる</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="../math/index.html">MathPlay：2つの入力と偏微分を図で追う</a> &mdash; ほかの入力を止めて1つだけ動かすときの傾きを、3D曲面の切り口で見る</li>
+<li><a href="./reg.html">単回帰分析</a> &mdash; 単回帰の β₁ と重回帰の β₁ が違う数字になる現象を読み解くベースライン</li>
+<li><a href="./corr.html">相関係数</a> &mdash; 説明変数同士の相関（多重共線性、交絡）が β₁ を不安定にする原因</li>
+<li><a href="./anova.html">分散分析（ANOVA）</a> &mdash; 重回帰の F 検定はモデル全体の有意性を ANOVA と同じ枠組みで判定する</li>
+<li><a href="./dists.html#dists-f">三大検定分布</a> &mdash; F 分布が「すべての偏回帰係数 = 0」の検定の臨界値を提供する</li>
+<li><a href="../columns/income_prediction.html">『年収と統計』コラム</a> &mdash; 年齢・性別・都道府県の 3 変数を組み合わせて年収の幅を実データで読み解く、重回帰の現場</li>
+<li><a href="../columns/multivariate_analysis.html">『多変量解析でできること』コラム</a> &mdash; 同じアンケートから、予測したり、項目をまとめたりする様子を動く図で見てみます。</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">あなたの年収は、統計でどこまで当てられるか</span>
+    <span class="fr-desc">年齢・性別・都道府県の3変数で年収の幅を読む、重回帰分析の物語版</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../columns/multivariate_analysis.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">多変量解析でできること</span>
+    <span class="fr-desc">カフェのアンケートを使って、予測する・まとめる・関係を探る・分ける動きを見てみます。</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./reg.html" rel="prev">← 前へ</a>
+  <a class="empty" aria-hidden="true">—</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./mreg.html">重回帰分析</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html" class="current">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+</body>
+</html>

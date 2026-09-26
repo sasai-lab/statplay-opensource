@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta name="keywords" content="大数の法則, LLN, 試行回数, 標本平均, 期待値への収束">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>大数の法則 — 試行回数と真の平均 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/lln.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/lln.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/lln.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/lln.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="大数の法則 — 試行回数と真の平均">
+<meta property="og:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/lln.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 大数の法則">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="大数の法則 — 試行回数と真の平均">
+<meta name="twitter:description" content="コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 大数の法則">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "大数の法則 — 試行回数と真の平均",
+      "description": "コインや乱数の試行を重ねるほど、標本平均が理論平均に収束していく様子を可視化。大数の法則 (LLN) がなぜ成立するか、アニメーションで体感する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["大数の法則", "標本平均の収束", "期待値"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/lln.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "大数の法則"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html">正規分布と標準化</a><a href="prob.html">確率の基本法則</a><a href="bayes.html">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html" aria-current="page">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/lln.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">大数の法則 — 試行回数と真の平均</a></h1>
+  <p class="topic-lead">コインで10連続の表が出ても珍しくない。1万回投げれば必ず半々に近づく。データが「証拠」になり得る根拠がここにある。</p>
+  <section class="reveal in" id="lln">
+
+<div class="sec-tag">I.02 / LAW OF LARGE NUMBERS</div>
+<h2 class="sec-title">大数の法則 <span class="sec-sub">— 試行を重ねれば真値に近づく</span></h2>
+
+<div class="story-bridge">中心極限定理で「平均を取ると正規分布になる」と分かった。でもそもそも <b>標本平均</b> は、n を増やすと本当の平均に<b>近づく</b>のか？ それを保証するのが<span class="next">大数の法則</span>。中心極限定理が「形」の話なら、LLN は<b>「中心が動かない」</b>話。</div>
+
+<p class="sec-desc">
+    コイン投げで最初の10回連続で表が出た — これ、別に珍しいことじゃない。
+    でも <b>1万回</b>投げたら、表の割合はほぼ <b>ぴったり 0.5</b> に収まる。<br/>
+    これが<b>大数の法則</b>。サンプルを増やすほど、観測値は"真の値"に吸い寄せられていく。
+    <b>統計が"なんとなく"じゃなく"証拠"になる理由</b>がここにある。
+  </p>
+
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:lln_main -->
+<div class="panel" data-autorun="llnRun">
+<div class="controls">
+<div class="ctrl"><label><span>確率 p</span> = <span class="val" id="llnPVal">0.5</span></label>
+<input aria-label="Probability p" id="llnP" max="0.95" min="0.05" step="0.01" type="range" value="0.5"/>
+</div>
+<button class="btn" id="llnRun"><span>▶ シミュレート</span></button>
+<button class="btn magenta" id="llnReset"><span>↺ リセット</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Law of Large Numbers simulation" height="240" id="llnCanvas"></canvas>
+<div class="info">
+<div><span>試行回数</span><strong id="llnN">0</strong></div>
+<div><span>現在の平均</span><strong id="llnCur">—</strong></div>
+<div><span>理論値</span><strong id="llnTrue">0.50</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="llnCanvas" data-title="大数の法則"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:lln_text -->
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="P\!\left(|\bar{X}_n - \mu| \geq \varepsilon\right) \leq \frac{\sigma^2}{n\varepsilon^2} \xrightarrow{n\to\infty} 0"></div>
+<p><b>左辺を日本語にすると</b><br/>
+・「n人の平均身長が、日本人全体の平均身長から ε cm 以上ずれちゃう確率」</p>
+<p><b>右辺の意味</b><br/>
+・σ²/nε²：この確率の<b>上限</b>。実際にはもっと小さいかもしれないけど、少なくともこれ以下<br/>
+・分母に n がある → n を大きくすれば上限がどんどんゼロに近づく<br/>
+・つまり「サンプルを増やせば、平均はいくらでも真値に近づけられる」← これが大数の法則</p>
+<p><b>具体例（コイン投げ）</b><br/>
+・p=0.5（表の確率）、σ²=0.25、ε=0.01（1%以内のズレ）のとき——<br/>
+・n=100：P ≤ 0.25/(100×0.0001) = 25 → 上限が25じゃ何も言えない（確率は1以下なので）<br/>
+・n=100,000：P ≤ 0.025 → 2.5%以下に抑えられる<br/>
+・n=1,000,000：P ≤ 0.0025 → 0.25%以下。ほぼ真値に張り付く<br/>
+・チェビシェフの不等式は"ゆるい"上限なので、実際にはもっと速く収束する</p>
+</div>
+
+<div class="detail-section">
+<h3>// なぜこの定理が統計学の「免許証」なのか</h3>
+<p>地味に見える定理だが、大数の法則がないと「サンプルから全体を推測する」が正当化できない。つまり統計の根っこが折れる。</p>
+<ul>
+<li>世論調査で1000人に聞いて「支持率48%」と出ても、それが全体に近い保証がない</li>
+<li>新薬の治験で「改善率が高い」と出ても、偶然かもしれない</li>
+<li>保険会社が過去データから事故率を見積もって保険料を決める、あれも成り立たない</li>
+</ul>
+<p>LLN が「n を大きくすれば標本平均は母平均に近づく」と保証してくれてるから、上のぜんぶが正当化される。地味だけど、ないと困る定理。</p>
+<h3>// 「ギャンブラーの誤謬」に注意</h3>
+<p>コインで5回連続で表が出ても、6回目に裏が出る確率は 0.5 のまま。LLN は「次の1回を当てられる」とは言っていない。「何万回も平均すれば 0.5 に近づく」と言っているだけ。個々の試行は相変わらずランダム。</p>
+<h3>// LLN と 中心極限定理の違い — ここは混同しやすい</h3>
+<div aria-label="大数の法則と中心極限定理の比較表" class="table-scroll" role="region" tabindex="0">
+<table>
+<tr><th></th><th>LLN（大数の法則）</th><th>中心極限定理</th></tr>
+<tr><td>何の話？</td><td>平均の<b>値</b>が真値に近づく</td><td>平均の<b>分布の形</b>が正規分布に近づく</td></tr>
+<tr><td>一言で</td><td>「どこに向かうか」</td><td>「途中でどう散らばるか」</td></tr>
+<tr><td>必要な条件</td><td>平均が存在すること</td><td>平均と分散が存在すること</td></tr>
+</table>
+</div>
+<p>ざっくり言えば：LLN が「ゴールの場所」を教えてくれて、中心極限定理が「ゴールまでの道の形」を教えてくれる。</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「100回投げれば表がちょうど50回出る」</b>
+<p>LLN が言っているのは"割合"が 0.5 に近づくこと。回数の<b>差</b>（|表の回数 − 50|）はむしろ広がることがある。100回で48回（割合48%、差2）、10000回で4950回（割合49.5%、差50）。割合は近づいたけど差は広がっている。</p>
+</div>
+<div class="misc-item">
+<b>❌「大数の法則があれば中心極限定理は要らない」</b>
+<p>LLN は「平均が真値に近づく」としか言わない。「どれくらいの精度で？」「誤差の分布は？」には答えられない。それを教えてくれるのが中心極限定理。両方必要。</p>
+</div>
+<div class="misc-item">
+<b>❌「どんな分布でも LLN は成り立つ」</b>
+<p>「平均が存在する」ことが条件。コーシー分布のように平均が定義できない分布では、サンプルをどれだけ増やしても平均は収束しない。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>大数の法則のまわりでは、上限の式と「双子の定理」との対比が繰り返し顔を出します。</p>
+<ul>
+<li><b>チェビシェフの上限の形</b>：σ²=4, n=100 のとき P(|X̄−μ|≥1) ≤ 4/(100×1) = 0.04 と並ぶ。「分散 ÷（n × ε²）」の形が、n が大きいほど上限を細らせていく構造になっている</li>
+<li><b>LLN が答える問い</b>：「標本平均は母平均に近づくのか？」 — この問いに対する答えとして、LLN が顔を出す。「どこに向かうか」を保証する定理という形</li>
+<li><b>LLN と中心極限定理の住み分け</b>：「平均の値が真値に近づく」のが LLN、「平均の分布の形が正規になる」のが中心極限定理。役割の違いがこの一対の形で見えてくる</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./clt.html">中心極限定理</a> &mdash; LLN が収束の目的地を指し、CLT がその道筋に分布の形を載せる、双子の定理</li>
+<li><a href="./normal.html">正規分布と標準化</a> &mdash; 標本平均が真値に向かって動いていく LLN の終点と、正規分布の中心 μ が同じ場所で重なる</li>
+<li><a href="./ci.html">信頼区間</a> &mdash; LLN が「サンプルから母数を推定できる」根拠を立て、その上に CI の幅を組み上げる</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; 指数分布の無記憶性やコーシー分布の収束失敗を扱う場面で、LLN の前提（有限期待値）が前に出てくる</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; LLN が保証する「平均が真値に近づく」上に、z スコアが単位を揃えて働き始める</li>
+<li><a href="../columns/se_vs_sd.html">『標準偏差と標準誤差』コラム</a> &mdash; n が増えると SE が √n で縮む現象を絵にすると、LLN が言う「真値への収束」がどの速さで起きているかが見える、LLN の量的な姉妹コラム</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">次は —</span>有限サンプルで不確実性をどう表す？ <span class="story-arrow">▸</span> <a href="./ci.html">I3 信頼区間</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./lln.html">大数の法則</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html" class="current">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./clt.html" rel="prev">← 前へ</a>
+  <a href="./ci.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

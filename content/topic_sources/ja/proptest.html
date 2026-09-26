@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="「100人中60人が賛成」── この60%は本当に過半数？ 標本比率から信頼区間を構築し、1標本・2標本のz検定をスライダーで直感的に体験する。">
+<meta name="keywords" content="母比率, 比率の検定, 比率の推定, 信頼区間, z検定, 標本比率, プール比率">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>母比率の検定と推定 — 比率のz検定を可視化 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/proptest.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/proptest.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/proptest.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/proptest.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="母比率の検定と推定 — 比率のz検定を可視化">
+<meta property="og:description" content="「100人中60人が賛成」── この60%は本当に過半数？ 標本比率から信頼区間を構築し、1標本・2標本のz検定をスライダーで直感的に体験する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/proptest.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 母比率の検定と推定">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="母比率の検定と推定 — 比率のz検定を可視化">
+<meta name="twitter:description" content="「100人中60人が賛成」── この60%は本当に過半数？ 標本比率から信頼区間を構築し、1標本・2標本のz検定をスライダーで直感的に体験する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 母比率の検定と推定">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "母比率の検定と推定 — 比率のz検定を可視化",
+      "description": "「100人中60人が賛成」── この60%は本当に過半数？ 標本比率から信頼区間を構築し、1標本・2標本のz検定をスライダーで直感的に体験する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["母比率の区間推定", "母比率の検定", "2標本比率の検定", "正規近似条件"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/proptest.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "母比率の検定と推定"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html">正規分布と標準化</a><a href="prob.html">確率の基本法則</a><a href="bayes.html">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html" aria-current="page">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/proptest.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1">母比率の検定と推定 — 比率のz検定を可視化</h1>
+  <p class="topic-lead">推定では p̂、検定では p₀。一文字違いが標準誤差の式を変える——比率の検定の急所はここに尽きる。</p>
+
+  <section class="reveal in" id="proptest">
+
+<div class="sec-tag">PROPORTION TEST &amp; ESTIMATION</div>
+<h2 class="sec-title">母比率の検定と推定 <span class="sec-sub">— 標本比率から母比率を探る</span></h2>
+
+<div class="story-bridge">母平均で信頼区間や検定をやったときと、考え方はまったく同じ。ただ「連続的なデータの平均」から「成功 or 失敗のカウント」に変わると、<span class="next">標準誤差の形</span>がちょっと違ってくる。ここを触って慣れておくと、参考書の公式がスッと入ってくるはず。</div>
+
+<p class="sec-desc">
+    データが「成功 / 失敗」の二択しかない世界。<b>標本比率 p̂ = x/n</b> がすべての出発点で、n が十分大きければ正規分布で近似できる（中心極限定理のおかげ）。<br/>
+    ここでは <b>① 区間推定</b> → <b>② 1標本検定</b> → <b>③ 2標本検定</b> の順に触っていく。平均のときと何が同じで何が違うのか、比べながら進めると整理しやすい。
+</p>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- Panel ① 母比率の区間推定                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:proptest_ci -->
+<div class="panel">
+<h3 class="cy-head">▶ ① 母比率の区間推定</h3>
+
+<div class="controls">
+<div class="ctrl"><label><span>標本サイズ n</span> = <span class="val" id="ptCiNVal">15</span></label>
+<input aria-label="Sample size n" id="ptCiN" max="200" min="10" step="1" type="range" value="15"/>
+</div>
+<div class="ctrl"><label><span>標本比率 p̂</span> = <span class="val" id="ptCiPVal">0.50</span></label>
+<input aria-label="Sample proportion" id="ptCiP" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>信頼水準</span></label>
+<select aria-label="Confidence level" id="ptCiLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="母比率の信頼区間の可視化。標本比率を中心に信頼区間がどう広がるかをインタラクティブに確認できる" class="canvas-aspect-16-9" id="ptCiCanvas"></canvas>
+<div class="info">
+<div><span>標準誤差 SE</span><strong id="ptCiSE">—</strong></div>
+<div><span>信頼区間 下限</span><strong id="ptCiLo">—</strong></div>
+<div><span>信頼区間 上限</span><strong id="ptCiHi">—</strong></div>
+<div><span>誤差幅 E</span><strong id="ptCiMoe">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptCiCanvas" data-title="母比率の区間推定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- Panel ①-b 信頼区間シミュレーション                               -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="sim-layout">
+<!-- @guide:2 -->
+
+<!-- @panel:proptest_sim -->
+<div class="panel">
+<h3 class="cy-head">▶ ①-b 信頼区間シミュレーション</h3>
+
+<div class="controls">
+<div class="ctrl"><label><span>母比率 p（真の値）</span> = <span class="val" id="ptCiSimPVal">0.50</span></label>
+<input aria-label="True proportion p" id="ptCiSimP" max="0.95" min="0.05" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>標本サイズ n</span> = <span class="val" id="ptCiSimNVal">30</span></label>
+<input aria-label="Sample size n" id="ptCiSimN" max="200" min="10" step="1" type="range" value="30"/>
+</div>
+<div class="ctrl"><label><span>信頼水準</span></label>
+<select aria-label="Confidence level" id="ptCiSimLvl">
+<option data-en="90%" data-ja="90%" value="90">90%</option>
+<option data-en="95%" data-ja="95%" selected="" value="95">95%</option>
+<option data-en="99%" data-ja="99%" value="99">99%</option>
+</select>
+</div>
+</div>
+<div class="controls controls--my-8">
+<button class="btn" id="ptCiSimRun"><span>▶ 生成</span></button>
+<button class="btn magenta" id="ptCiSimReset"><span>↺ リセット</span></button>
+</div>
+<canvas aria-busy="true" aria-label="信頼区間シミュレーション。200回の標本抽出で信頼区間が母比率を捕捉する割合を視覚化" class="canvas-aspect-16-9" id="ptCiSimCanvas"></canvas>
+<div class="info">
+<div><span>生成数</span><strong id="ptCiSimMade">0</strong></div>
+<div><span>捕捉率</span><strong id="ptCiSimCov">—</strong></div>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- Panel ② 母比率の検定（1標本z検定）                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="sim-layout">
+<!-- @guide:3 -->
+
+<!-- @panel:proptest_test -->
+<div class="panel">
+<h3 class="cy-head">▶ ② 母比率の検定（1標本z検定）</h3>
+
+<p class="sec-desc sec-desc--tight">
+    母平均の検定でやったことと同じ流れ。帰無仮説 H₀: p = p₀ を立てて、標本から計算した z が棄却域に入るかどうかを見るだけ。<br/>
+    標準誤差の式が √(p₀(1−p₀)/n) に変わるところだけ押さえれば、もう迷わないはず。
+  </p>
+
+<div class="controls">
+<div class="ctrl"><label><span>標本サイズ n</span> = <span class="val" id="ptTNVal">100</span></label>
+<input aria-label="Sample size n" id="ptTN" max="1000" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label><span>標本比率 p̂</span> = <span class="val" id="ptTPVal">0.60</span></label>
+<input aria-label="Sample proportion" id="ptTP" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+</div>
+<div class="ctrl"><label><span>帰無仮説 p₀</span> = <span class="val" id="ptTP0Val">0.50</span></label>
+<input aria-label="Null hypothesis p0" id="ptTP0" max="0.99" min="0.01" step="0.01" type="range" value="0.50"/>
+</div>
+<div class="ctrl"><label><span>有意水準 α</span> = <span class="val" id="ptTAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>検定タイプ</span></label>
+<select aria-label="Test type" id="ptTType">
+<option data-en="Two-sided" data-ja="両側" value="two">両側</option>
+<option data-en="Right" data-ja="右側" value="right">右側</option>
+<option data-en="Left" data-ja="左側" value="left">左側</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="母比率の検定の可視化。検定統計量zと棄却域の関係をインタラクティブに確認できる" height="260" id="ptTestCanvas"></canvas>
+<div class="info">
+<div><span>検定統計量 z</span><strong id="ptTZstat">—</strong></div>
+<div><span>臨界値</span><strong id="ptTCrit">—</strong></div>
+<div><span>p値</span><strong id="ptTPval">—</strong></div>
+<div><span>判定</span><strong id="ptTDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptTestCanvas" data-title="母比率の検定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- Panel ③ 2つの母比率の差の検定                                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="sim-layout">
+<!-- @guide:4 -->
+
+<!-- @panel:proptest_two -->
+<div class="panel">
+<h3 class="cy-head">▶ ③ 2つの母比率の差の検定</h3>
+
+<p class="sec-desc sec-desc--tight">
+    「薬Aと薬B、どっちが効く？」「広告A vs B、クリック率に差はある？」── そういう2群比較のための検定。<br/>
+    H₀: p₁ = p₂ を仮定して<b>プール比率</b>で共通のSEを作るところがポイント。ここだけ押さえれば1標本と同じ。
+  </p>
+
+<div class="controls">
+<div class="ctrl"><label>n₁ = <span class="val" id="ptTwoN1Val">100</span></label>
+<input aria-label="Sample size n1" id="ptTwoN1" max="500" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label>p̂₁ = <span class="val" id="ptTwoP1Val">0.60</span></label>
+<input aria-label="Sample proportion p1" id="ptTwoP1" max="0.99" min="0.01" step="0.01" type="range" value="0.60"/>
+</div>
+<div class="ctrl"><label>n₂ = <span class="val" id="ptTwoN2Val">100</span></label>
+<input aria-label="Sample size n2" id="ptTwoN2" max="500" min="10" step="1" type="range" value="100"/>
+</div>
+<div class="ctrl"><label>p̂₂ = <span class="val" id="ptTwoP2Val">0.45</span></label>
+<input aria-label="Sample proportion p2" id="ptTwoP2" max="0.99" min="0.01" step="0.01" type="range" value="0.45"/>
+</div>
+<div class="ctrl"><label><span>有意水準 α</span> = <span class="val" id="ptTwoAVal">0.050</span></label>
+<input aria-label="Significance alpha" id="ptTwoA" max="0.2" min="0.001" step="0.001" type="range" value="0.05"/>
+</div>
+<div class="ctrl"><label><span>検定タイプ</span></label>
+<select aria-label="Test type" id="ptTwoType">
+<option data-en="Two-sided" data-ja="両側" value="two">両側</option>
+<option data-en="Right" data-ja="右側" value="right">右側</option>
+<option data-en="Left" data-ja="左側" value="left">左側</option>
+</select>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="2つの母比率の差の検定。2群の標本比率からz値を計算し棄却域との関係を可視化" height="260" id="ptTwoCanvas"></canvas>
+<div class="info">
+<div><span>プール比率 p̂</span><strong id="ptTwoPool">—</strong></div>
+<div><span>検定統計量 z</span><strong id="ptTwoZstat">—</strong></div>
+<div><span>p値</span><strong id="ptTwoPval">—</strong></div>
+<div><span>判定</span><strong id="ptTwoDecision">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ptTwoCanvas" data-title="2つの母比率の差の検定"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- 解説セクション                                                  -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- @panel:proptest_text -->
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<p class="star-note">
+<b class="star-note__title">★ 推定と検定で SE の中身が違う</b><br/>
+<b>推定では SE = √(p̂(1−p̂)/n)、検定では SE = √(p₀(1−p₀)/n)。</b> 同じ「比率の SE」という名前でも、<b>推定は標本の世界</b>（手元のデータが基準）、<b>検定は H₀ の世界</b>（仮定した母比率が基準）を基準にする。下の最初の2式の分母を見比べると、ここだけが違う。
+</p>
+<h4 class="h4-cyan">母比率の区間推定（Wald型信頼区間）</h4>
+<div class="formula" data-tex="\hat{p} \;\pm\; z_{\alpha/2}\,\sqrt{\frac{\hat{p}\,(1-\hat{p})}{n}}"></div>
+<p>
+・p̂ = x/n：標本比率（n人中x人が「成功」）<br/>
+・z<sub>α/2</sub>：標準正規分布の上側 α/2 点。α は<b>有意水準</b>（＝「信頼区間の外側に出る確率」）。95% CI なら α=0.05 で z<sub>0.025</sub>=1.96<br/>
+・√(p̂(1−p̂)/n)：<b>標本比率の標準誤差</b>。平均の SE = σ/√n と似ているが、分散が p(1−p) で決まるのが比率ならではの特徴
+</p>
+<h4 class="h4-cyan">母比率の検定（1標本z検定）</h4>
+<div class="formula" data-tex="z = \frac{\hat{p} - p_0}{\sqrt{\dfrac{p_0\,(1-p_0)}{n}}}"></div>
+<p>
+・p₀：帰無仮説で想定する母比率（「50%である」なら p₀ = 0.5）<br/>
+・分母の SE は <b>p₀ を使う</b>（推定ではなく検定なので、H₀ の世界を基準にする）<br/>
+・この z が標準正規分布に従うことを使って p値を計算する
+</p>
+<h4 class="h4-cyan">2つの母比率の差の検定</h4>
+<div class="formula" data-tex="z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}\,(1-\hat{p})\left(\dfrac{1}{n_1}+\dfrac{1}{n_2}\right)}}\,,\quad \hat{p} = \frac{x_1 + x_2}{n_1 + n_2}"></div>
+<p>
+・p̂：<b>プール比率</b>（2群を合算した全体の比率）。H₀: p₁ = p₂ の下では2群の母比率は同じはずなので、合算して推定する<br/>
+・分母は「差の標準誤差」。1/n₁ + 1/n₂ が入ることで、サンプルサイズが小さい方がボトルネックになる構造
+</p>
+</div>
+
+<div class="detail-section">
+<h3>// 正規近似の条件 — いつこの方法が使えるのか</h3>
+<p>
+比率のz検定・信頼区間は「標本比率 p̂ が正規分布に従う」ことを前提にしている。<br/>
+この近似が成り立つ目安は：
+</p>
+<ul>
+<li><b>np ≥ 5</b> かつ <b>n(1−p) ≥ 5</b>（検定では p₀ を使う）</li>
+<li>直感的には「成功も失敗も5回以上は起きそう」ということ</li>
+<li>p が 0 や 1 に近いと、分布が歪んでしまい正規近似が崩れる</li>
+</ul>
+<p>
+条件を満たさない場合は、<b>二項検定（正確検定 / exact binomial test）</b>を使うか、n を増やして出直す。<br/>
+上の ① のグラフで n を小さくしたり p̂ を 0.01 に近づけると、⚠ 警告が出るのはこのため。
+</p>
+</div>
+
+<div class="detail-section">
+<h3>// 推定と検定の使い分け</h3>
+<ul>
+<li><b>区間推定</b>：「母比率はだいたいどのあたりか？」を知りたいとき → 信頼区間で幅を提示</li>
+<li><b>検定</b>：「母比率は p₀ と違うのか？」にYES/NOで答えたいとき → p値で判定</li>
+<li>両者は表裏一体：<b>95% CIに p₀ が含まれない ⟺ 有意水準 α=0.05 で H₀ を棄却</b></li>
+</ul>
+<p>
+この対応関係を ① と ② を行き来しながら確認すると、両者が同じことを言っているのが目で見える。同じ n と p̂ で、① の CI に p₀ が入っていなければ ② では棄却される。
+</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「推定の SE と検定の SE は同じ」</b>
+<p>推定では SE = √(p̂(1−p̂)/n) と標本比率を使うが、検定では SE = √(p₀(1−p₀)/n) と帰無仮説の値を使う。「どの世界を基準にするか」が違う。</p>
+</div>
+<div class="misc-item">
+<b>❌「n が大きければ何でも正規近似でOK」</b>
+<p>p が 0.001 のように極端に小さいと、n=1000 でも np=1 で条件を満たさない。「5以上ルール」は p と n の両方を見る。</p>
+</div>
+<div class="misc-item">
+<b>❌「2群の検定で、各群の SE を個別に計算して足す」</b>
+<p>H₀: p₁=p₂ の下では母比率は同じはず。だからプール比率で共通の SE を計算する。個別に計算するのは信頼区間を作るとき。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>比率の検定・推定では、推定の SE と検定の SE の使い分けと、正規近似の条件チェックが繰り返し顔を出します。</p>
+<ul>
+<li><b>区間推定の組み立ての形</b>：200人中120人賛成のとき、p̂=0.6, SE=√(0.6×0.4/200), 95%CI = 0.6 ± 1.96×SE。「中心 ± 倍率 × 標準誤差」という三層構造が、比率でもそのまま顔を出している</li>
+<li><b>検定統計量の形</b>：500個中35個不良なら、p̂=0.07, p₀=0.05, z = (0.07−0.05)/√(0.05×0.95/500)。分母に「H₀ の世界の SE」が入る、という違いが推定との対比で見える</li>
+<li><b>正規近似が成立する条件</b>：np ≥ 5 かつ n(1−p) ≥ 5。n=20, p₀=0.1 だと np₀=2 で条件を外れる、という形でチェックポイントが登場する</li>
+<li><b>2標本の差の検定の形</b>：「A群 60/100 改善、B群 45/100 改善」のような場面では、プール比率を分母の SE に使うという特徴的な構造が顔を出す</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./ci.html">信頼区間</a> &mdash; 「中心 ± 倍率 × SE」の三層の組み立てが、比率でも同じ並びで動き出す</li>
+<li><a href="./test.html">仮説検定</a> &mdash; H₀ の世界の SE を使い、棄却域で判定するという検定の骨格を、比率の場面にそのまま持ち込む</li>
+<li><a href="./dists.html">三大検定分布</a> &mdash; 正規近似で扱える領域を抜けると、二項分布の正確検定が前に出てくる、分布の家族の中での位置取り</li>
+<li><a href="./bayes.html">ベイズの定理</a> &mdash; 感度・特異度・有病率を比率として推定し、PPV を組み立てる場面でこの比率の検定の道具がそのまま効く</li>
+<li><a href="./chitest.html">カイ二乗検定</a> &mdash; 2 標本比率の z² が 2×2 独立性検定の χ² と同じ値を返す、比率検定とカイ二乗検定が表裏で繋がる</li>
+<li><a href="../columns/error_types.html">『過誤の2×2』コラム</a> &mdash; 比率の検定でも α・β・検出力の枠組みがそのまま動いて、誤りの 2×2 が当てはまる</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">第一種・第二種の過誤って何が違うの？ — 2×2の表で全部見える</span>
+    <span class="fr-desc">第一種・第二種の誤りと検出力を、別々ではなく同じ 2×2 上で同時に追える</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">次は —</span>σ を知らない世界へ <span class="story-arrow">▸</span> <a href="./dists.html">I6 t・χ²・F</a></div>
+  </section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./proptest.html">母比率の検定と推定</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html" class="current">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./test.html" rel="prev">← 前へ</a>
+  <a href="./dists.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

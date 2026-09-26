@@ -87,111 +87,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
       "name": "Chi-Squared Test — Goodness-of-Fit & Independence",
-
       "description": "Test whether a die is fair (goodness-of-fit) or whether two categorical variables are independent. Visualize how observed-vs-expected deviations accumulate into a χ² statistic and see the rejection region in real time.",
-
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["Chi-squared test", "Goodness-of-fit test", "Test of independence", "Contingency table"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/chitest.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
-          "item": "https://statplay.sasailab.com/"
-
+          "item": "https://statplay.sasailab.com/en/"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
-          "item": "https://statplay.sasailab.com/topics/"
-
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "Chi-Squared Test"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -274,19 +221,12 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Goodness-of-Fit</b>
-
 <ol>
-
-<li><b>Step 1:</b> Select "Fair die" and ▶ auto-roll → as n grows, χ² stays low, p-value stays high.</li>
-
+<li><b>Step 1:</b> Select "Fair die" and ▶ auto-roll → χ² and the p-value still fluctuate as n grows. Even a fair die is sometimes rejected.</li>
 <li><b>Step 2:</b> Switch to "Loaded" and auto-roll → χ² shoots up, p-value drops below α. Cheat detected.</li>
-
 <li><b>Step 3:</b> Lower α to 0.01 → stricter threshold. Small deviations won't reject.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:chitest_gof -->
@@ -333,19 +273,12 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — Independence Test</b>
-
 <ol>
-
 <li><b>Step 1:</b> Click only the top-left cell to create imbalance → χ² spikes, independence is rejected.</li>
-
 <li><b>Step 2:</b> ↺ Reset and click cells evenly → χ² stays small. No imbalance = independence holds.</li>
-
 <li><b>Step 3:</b> Change α to see "how much imbalance is needed to reject independence."</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:chitest_ind -->
@@ -597,4 +530,3 @@
 </body>
 
 </html>
-

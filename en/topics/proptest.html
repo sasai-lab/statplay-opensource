@@ -76,13 +76,13 @@
           "@type": "ListItem",
           "position": 1,
           "name": "StatPlay",
-          "item": "https://statplay.sasailab.com/"
+          "item": "https://statplay.sasailab.com/en/"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Topics",
-          "item": "https://statplay.sasailab.com/topics/"
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
         },
         {
           "@type": "ListItem",
@@ -143,12 +143,12 @@
 <!-- Panel 1: Confidence Interval -->
 <div class="sim-layout">
 <div class="guided-steps">
-<b>Experiment Guide &#x2014; try these in order</b>
+<b>Experiment Guide — try these in order</b>
 <ol>
-<li><b>Step 1:</b> n=15, p&#x0302;=0.50, 95% &#x2192; the interval is really wide. Just 15 people isn't enough precision.</li>
-<li><b>Step 2:</b> Push n to 100 &#x2192; the interval tightens up fast. Feel the power of sample size.</li>
-<li><b>Step 3:</b> Set p&#x0302; to 0.90 &#x2192; variance p(1&#x2212;p) shrinks, so the CI narrows. p&#x0302;=0.50 gives the widest interval.</li>
-<li><b>Step 4:</b> Keep p&#x0302;=0.90, drop n to 10 &#x2192; if &#x26A0; appears, the normal approximation conditions aren't met.</li>
+<li><b>Step 1:</b> n=15, p̂=0.50, 95% → the interval is really wide. Just 15 people isn't enough precision.</li>
+<li><b>Step 2:</b> Push n to 100 → the interval tightens up fast. Feel the power of sample size.</li>
+<li><b>Step 3:</b> Set p̂ to 0.90 → variance p(1−p) shrinks, so the CI narrows. p̂=0.50 gives the widest interval.</li>
+<li><b>Step 4:</b> Keep p̂=0.90, drop n to 10 → if ⚠ appears, the normal approximation conditions aren't met.</li>
 </ol>
 </div>
 
@@ -188,8 +188,8 @@
 <!-- Panel 1-b: CI Simulation -->
 <div class="sim-layout">
 <div class="guided-steps">
-<b>Simulation &#x2014; verify what "95%" really means</b>
-<p>"What does a 95% CI actually mean?" &#x2014; one of the easier spots to stall on. The answer: "if you repeated the same survey many times, about 95% of the intervals would capture the true proportion."<br/>
+<b>Simulation — verify what "95%" really means</b>
+<p>"What does a 95% CI actually mean?" — one of the easier spots to stall on. The answer: "if you repeated the same survey many times, about 95% of the intervals would capture the true proportion."<br/>
 Run it 200 times and see whether that 95% claim holds up.</p>
 </div>
 
@@ -228,12 +228,12 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 <!-- Panel 2: One-sample z-test -->
 <div class="sim-layout">
 <div class="guided-steps">
-<b>Experiment Guide &#x2014; experience proportion testing</b>
+<b>Experiment Guide — experience proportion testing</b>
 <ol>
-<li><b>Step 1:</b> n=100, p&#x0302;=0.60, p&#x2080;=0.50, &#x03B1;=0.05, two-sided &#x2192; "Is 60% significantly different from 50%?"<br/><span class="inline-dim">&#x03B1; (significance level) = the threshold for "too extreme to be coincidence." It determines the size of the rejection region.</span></li>
-<li><b>Step 2:</b> Change p&#x2080; to 0.55 &#x2192; z shrinks and you can no longer reject. Small differences are hard to detect.</li>
-<li><b>Step 3:</b> Increase n to 400 &#x2192; same p&#x0302;=0.60, p&#x2080;=0.55 but now you reject. The power of sample size.</li>
-<li><b>Step 4:</b> Switch test type to "Right" &#x2192; one-sided test asking only "greater than 50%?" The p-value halves.</li>
+<li><b>Step 1:</b> n=100, p̂=0.60, p₀=0.50, α=0.05, two-sided → "Is 60% significantly different from 50%?"<br/><span class="inline-dim">α (significance level) = the threshold for "too extreme to be coincidence." It determines the size of the rejection region.</span></li>
+<li><b>Step 2:</b> Change p₀ to 0.55 → z shrinks and you can no longer reject. Small differences are hard to detect.</li>
+<li><b>Step 3:</b> Increase n to 400 → same p̂=0.60, p₀=0.55 but now you reject. The power of sample size.</li>
+<li><b>Step 4:</b> Switch test type to "Right" → one-sided test asking only "greater than 50%?" The p-value halves.</li>
 </ol>
 </div>
 
@@ -284,12 +284,12 @@ Run it 200 times and see whether that 95% claim holds up.</p>
 <!-- Panel 3: Two-proportion z-test -->
 <div class="sim-layout">
 <div class="guided-steps">
-<b>Experiment Guide &#x2014; compare two groups</b>
+<b>Experiment Guide — compare two groups</b>
 <ol>
-<li><b>Step 1:</b> n&#x2081;=n&#x2082;=100, p&#x0302;&#x2081;=0.60, p&#x0302;&#x2082;=0.45 &#x2192; is the difference significant?</li>
-<li><b>Step 2:</b> Move p&#x0302;&#x2082; toward 0.55 &#x2192; z shrinks, rejection gets harder.</li>
-<li><b>Step 3:</b> Increase both to n&#x2081;=n&#x2082;=400 &#x2192; same gap, more power.</li>
-<li><b>Step 4:</b> Try n&#x2081;=50, n&#x2082;=200 (asymmetric) &#x2192; the smaller n is the bottleneck.</li>
+<li><b>Step 1:</b> n₁=n₂=100, p̂₁=0.60, p̂₂=0.45 → is the difference significant?</li>
+<li><b>Step 2:</b> Move p̂₂ toward 0.55 → z shrinks, rejection gets harder.</li>
+<li><b>Step 3:</b> Increase both to n₁=n₂=400 → same gap, more power.</li>
+<li><b>Step 4:</b> Try n₁=50, n₂=200 (asymmetric) → the smaller n is the bottleneck.</li>
 </ol>
 </div>
 

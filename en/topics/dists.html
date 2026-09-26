@@ -87,111 +87,58 @@
 <script type="application/ld+json">
 
 {
-
   "@context": "https://schema.org",
-
   "@graph": [
-
     {
-
       "@type": "LearningResource",
-
       "name": "The Three Test Distributions — t, χ², and F",
-
       "description": "Compare the t, chi-squared, and F distributions side by side. Drag degrees of freedom to see how each curve morphs — and why each appears in its own corner of statistical inference.",
-
       "inLanguage": "en",
-
       "educationalLevel": "intermediate",
-
       "learningResourceType": "interactive visualization",
-
       "teaches": ["t-distribution", "χ² distribution", "F-distribution", "Degrees of freedom"],
-
       "isPartOf": {
-
         "@type": "WebSite",
-
         "name": "StatPlay",
-
         "url": "https://statplay.sasailab.com/"
-
       },
-
       "url": "https://statplay.sasailab.com/en/topics/dists.html",
-
       "image": "https://statplay.sasailab.com/stat_cyber_og.png",
-
       "author": {
-
         "@type": "Organization",
-
         "name": "Sasai Lab"
-
       },
-
       "license": "https://creativecommons.org/licenses/by-nc/4.0/",
-
       "isAccessibleForFree": true,
-
       "audience": {
-
         "@type": "EducationalAudience",
-
         "educationalRole": "student",
-
         "audienceType": "Statistics learners"
-
       }
-
     },
-
     {
-
       "@type": "BreadcrumbList",
-
       "itemListElement": [
-
         {
-
           "@type": "ListItem",
-
           "position": 1,
-
           "name": "StatPlay",
-
-          "item": "https://statplay.sasailab.com/"
-
+          "item": "https://statplay.sasailab.com/en/"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 2,
-
           "name": "Topics",
-
-          "item": "https://statplay.sasailab.com/topics/"
-
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
         },
-
         {
-
           "@type": "ListItem",
-
           "position": 3,
-
           "name": "The Three Test Distributions"
-
         }
-
       ]
-
     }
-
   ]
-
 }
 
 </script>
@@ -278,31 +225,18 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — t distribution</b>
-
 <ol>
-
-<li><b>Step 1:</b> n=<b>3</b> → df=2, extremely heavy tails (nearly Cauchy).</li>
-
+<li><b>Step 1:</b> n=<b>3</b> → df=2. Compare the heavier tails with the normal curve.</li>
 <li><b>Step 2:</b> n=<b>10</b> → heavier tails than normal, but getting closer.</li>
-
 <li><b>Step 3:</b> n=<b>31</b> → nearly indistinguishable from N(0,1). The CI bars nearly overlap.</li>
-
 </ol>
-
 <b>Feel it with confidence intervals</b>
-
 <ol start="4">
-
 <li><b>Step A:</b> n=5, 95% confidence → the t bar is much wider (normal is overconfident).</li>
-
 <li><b>Step B:</b> Set n=50 → the bars nearly overlap at every confidence level.</li>
-
 <li><b>Step C:</b> Switch to 99% → the gap widens further (especially for small n).</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:dists_t -->
@@ -349,31 +283,18 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — χ² distribution</b>
-
 <ol>
-
 <li><b>Step 1:</b> Keep "Fair die" selected and press Roll a few times → even a fair die varies each time. Watch the bar chart and χ² statistic change.</li>
-
 <li><b>Step 2:</b> Switch to "Loaded" and roll → face 1 jumps out, χ² enters the rejection region.</li>
-
 <li><b>Step 3:</b> Increase the rolls slider → more samples detect smaller biases (higher power).</li>
-
 </ol>
-
 <b>Explore the distribution shape</b>
-
 <ol start="4">
-
 <li><b>Step A:</b> Set df to <b>1</b> → sharply right-skewed.</li>
-
 <li><b>Step B:</b> df=<b>30</b> → approaches a bell shape. Confirm mean = df.</li>
-
 <li><b>Step C:</b> Move df and watch how the normal approximation (purple dashes) lines up.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:dists_chi -->
@@ -426,31 +347,18 @@
 <div class="sim-layout">
 
 <div class="guided-steps">
-
 <b>Experiment Guide — F distribution</b>
-
 <ol>
-
 <li><b>Step 1:</b> Set both SDs equal (e.g. 10 and 10) → F≈1, stays outside rejection zone.</li>
-
 <li><b>Step 2:</b> Increase only B's SD (e.g. A=5, B=15) → F grows and enters the rejection zone.</li>
-
 <li><b>Step 3:</b> Increase n → the same SD gap gives a lower p-value (more power).</li>
-
 </ol>
-
 <b>Explore the distribution shape</b>
-
 <ol start="4">
-
 <li><b>Step A:</b> n=<b>6</b> → heavy tails, unstable shape.</li>
-
 <li><b>Step B:</b> n=<b>50</b> → approaches a bell. Check the F=1 line.</li>
-
 <li><b>Step C:</b> Swap A and B's SD values to feel what "variance ratio" means.</li>
-
 </ol>
-
 </div>
 
 <!-- @panel:dists_f -->
@@ -705,4 +613,3 @@
 </body>
 
 </html>
-

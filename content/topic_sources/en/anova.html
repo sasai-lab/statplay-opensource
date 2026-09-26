@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="Why can&#x27;t you just repeat t-tests for three or more groups? Move the sliders to see how the ratio of between-group to within-group variance becomes the F-statistic — and feel when it crosses the rejection threshold.">
+<meta name="keywords" content="ANOVA, analysis of variance, F-statistic, one-way ANOVA, between-group variance, within-group variance, multiple comparisons">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>ANOVA — Feel What the F-Statistic Really Means — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/anova.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/anova.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/anova.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/anova.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="ANOVA — Feel What the F-Statistic Really Means">
+<meta property="og:description" content="Why can&#x27;t you just repeat t-tests for three or more groups? Move the sliders to see how the ratio of between-group to within-group variance becomes the F-statistic — and feel when it crosses the rejection threshold.">
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/anova.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — ANOVA">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ANOVA — Feel What the F-Statistic Really Means">
+<meta name="twitter:description" content="Why can&#x27;t you just repeat t-tests for three or more groups? Move the sliders to see how the ratio of between-group to within-group variance becomes the F-statistic — and feel when it crosses the rejection threshold.">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — ANOVA">
+
+<link rel="manifest" href="../../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../../js/katex-render.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "ANOVA — Feel What the F-Statistic Really Means",
+      "description": "Why can't you just repeat t-tests for three or more groups? Move the sliders to see how the ratio of between-group to within-group variance becomes the F-statistic — and feel when it crosses the rejection threshold.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Analysis of variance", "F-statistic", "Between- and within-group variance", "Multiple comparisons problem"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/anova.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ANOVA"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html" aria-current="page">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/anova.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">ANOVA — Feel What the F-Statistic Really Means</a></h1>
+  <p class="topic-lead">Run a hundred experiments and the reason you can't just repeat t-tests becomes visible: the false-positive rate jumps from 5% to 14.3%.</p>
+  <section class="reveal in" id="anova">
+
+<div class="sec-tag">I.07 / ANOVA</div>
+
+<h2 class="sec-title">ANOVA <span class="sec-sub">— Feel What the F-Statistic Really Means</span></h2>
+
+<div class="story-bridge">The chi-squared test quantified "category deviations." But how do we test whether <b>means</b> differ across three or more groups? Repeating t-tests inflates false positives — <span class="next">ANOVA</span> compares all groups in a single test.</div>
+
+<p class="sec-desc">
+    ANOVA compares "how different the groups are" vs. "how spread out each group is."<br/>
+    When the difference outweighs the spread, we conclude the groups really differ. Move the sliders to feel it.
+  </p>
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+<!-- @panel:anova_sim -->
+<div class="panel">
+
+<h3 class="cy-head cy-head--compact">▶ Why You Can't Just Repeat t-Tests</h3>
+<div class="drag-hint drag-hint--tight">
+
+<span>First, experience why ANOVA is needed. With 3 identical groups (N(0,1), n=20), run 3 pairwise t-tests — how bad does the false-positive rate get?</span>
+</div>
+<div class="controls controls--tight">
+<button class="btn" id="mcRun"><span>▶ 100 trials</span></button>
+<button class="btn" id="mcRun1000"><span>▶ 1000 trials</span></button>
+<button class="btn magenta" id="mcReset"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Multiple comparisons simulation" class="canvas-block" height="260" id="mcSimCanvas"></canvas>
+<div class="info">
+<div><span>Trials</span> <strong id="mcTotal">0</strong></div>
+<div><span>False positives</span> <strong id="mcFP">0</strong></div>
+<div><span>FP rate</span> <strong id="mcRate">0.0%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="mcSimCanvas" data-title="Multiple Comparisons Simulation"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+<div class="sim-layout">
+
+<!-- @guide:2 -->
+<!-- @panel:anova_main -->
+<div class="panel">
+
+<h3 class="cy-head cy-head--compact">▶ Between vs. Within — Feel the F-Statistic</h3>
+<div class="controls controls--tight">
+<div class="ctrl">
+<label>
+
+<span>Between-group diff</span>
+          = <span class="val" id="anovaEffectVal">1.5</span>
+</label>
+<input aria-label="Between-group difference" id="anovaEffect" max="5" min="0" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+
+<span>Within-group spread (σ)</span>
+          = <span class="val" id="anovaWithinVal">1.5</span>
+</label>
+<input aria-label="Within-group spread sigma" id="anovaWithin" max="5" min="0.3" step="0.1" type="range" value="1.5"/>
+</div>
+<div class="ctrl">
+<label>
+
+<span>n per group</span>
+          = <span class="val" id="anovaNkVal">20</span>
+</label>
+<input aria-label="n per group" id="anovaNk" max="80" min="5" step="1" type="range" value="20"/>
+</div>
+<button class="btn" id="anovaGen"><span>↻ Regenerate</span></button>
+</div>
+<canvas aria-busy="true" aria-label="ANOVA visualization. Move sliders to change between-group difference and within-group variance and observe the F-statistic" class="canvas-block" height="320" id="anovaCanvas"></canvas>
+<div class="info">
+<div><span>F</span> <strong id="anovaF">—</strong></div>
+<div><span>Between df</span> <strong id="anovaDfB">—</strong></div>
+<div><span>Within df</span> <strong id="anovaDfW">—</strong></div>
+<div><span>p</span> <strong id="anovaP">—</strong></div>
+<div><span>SSB</span> <strong id="anovaSSB">—</strong></div>
+<div><span>SSW</span> <strong id="anovaSSW">—</strong></div>
+<div><span>η²</span> <strong id="anovaEta2">—</strong></div>
+<div><span>Decision</span> <strong id="anovaResult">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anovaCanvas" data-title="ANOVA"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+
+<!-- @panel:anova_text -->
+<div class="detail-section">
+
+<h3>// ANOVA Table</h3>
+<div aria-label="ANOVA" class="table-scroll" role="region" tabindex="0">
+<table class="anova-tbl" id="anovaTable">
+<thead><tr>
+<th><span>Source</span></th><th>SS</th><th>df</th><th>MS</th><th>F</th><th>p</th>
+</tr></thead>
+<tbody>
+<tr><td><span>Between (B)</span></td><td data-cell="ssb">—</td><td data-cell="dfb">—</td><td data-cell="msb">—</td><td data-cell="f">—</td><td data-cell="p">—</td></tr>
+<tr><td><span>Within (W)</span></td><td data-cell="ssw">—</td><td data-cell="dfw">—</td><td data-cell="msw">—</td><td></td><td></td></tr>
+<tr class="total"><td><span>Total</span></td><td data-cell="sst">—</td><td data-cell="dft">—</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="detail-section">
+<h3>// What the F-statistic actually does</h3>
+<p>Suppose you want to compare test scores across three classes.<br/>
+"The class averages are far apart" → maybe the teaching method matters.<br/>
+"But the scores within each class also vary a lot" → could just be noise.</p>
+<p>The F-statistic puts a number on that comparison:<br/>
+<b>between-group spread ÷ within-group spread</b> — that's really all it is.<br/>
+The bigger the numerator relative to the denominator, the more evidence that the groups genuinely differ.</p>
+<p>Here's the formula. Don't worry about memorizing it right away — try dragging the graph above and watching how F reacts first.</p>
+<div class="formula" data-tex="F = \frac{\text{MSB}}{\text{MSW}} = \frac{SS_B / (k-1)}{SS_W / (N-k)}"></div>
+<p>· SS<sub>B</sub> (between-group) = how far each group mean is from the overall mean<br/>
+· SS<sub>W</sub> (within-group) = how much the data scatter inside each group<br/>
+· Dividing by df gives MS — "variation per degree of freedom"<br/>
+· <b>F ≈ 1</b> → "no evidence of differences"; <b>F large</b> → "groups likely differ"</p>
+<p>How large is "large enough"? That depends on degrees of freedom and significance level α.<br/>
+Check critical values in the <a class="ln-cyan" href="../../en/tables/index.html?dist=f">Interactive Distribution Tables</a>.</p>
+</div>
+
+<div class="detail-section">
+<h3>// Walk through it — test-score example</h3>
+<p>Three teaching methods A, B, C with 15 students each.</p>
+<p>① Look at the means<br/>
+　Group A = 65, Group B = 72, Group C = 73, Grand mean = 70</p>
+<p>② Between-group SS<sub>B</sub><br/>
+　n × (group mean − grand mean)² summed up<br/>
+　= 15×(65−70)² + 15×(72−70)² + 15×(73−70)² = 15×(25+4+9) = <b>570</b></p>
+<p>③ Within-group SS<sub>W</sub><br/>
+　Total scatter of data around their own group means = say <b>2520</b></p>
+<p>④ Degrees of freedom<br/>
+　df<sub>B</sub> = k−1 = 3−1 = 2<br/>
+　df<sub>W</sub> = N−k = 45−3 = 42</p>
+<p>⑤ Compute MS and F<br/>
+　MSB = 570÷2 = 285, MSW = 2520÷42 = 60<br/>
+　<b>F = 285÷60 = 4.75</b></p>
+<p>⑥ Verdict<br/>
+　The critical value of F(2, 42) at α = 0.05 is about 3.22.<br/>
+　4.75 &gt; 3.22 → <b>Reject H₀</b> (at least one group differs).<br/>
+　— But we still don't know <em>which</em> groups differ (→ post-hoc tests needed).</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Easy-to-trip-on points</h3>
+<div class="misc-item">
+<b>"ANOVA tells you which groups differ" — not quite</b>
+<p>ANOVA only tells you "there's a difference somewhere." To pin down which pairs, you need post-hoc tests like Tukey's HSD or Bonferroni correction.</p>
+</div>
+<div class="misc-item">
+<b>"Why not just run multiple t-tests?"</b>
+<p>Check the simulation at the top of this page. With 3 groups and repeated t-tests, the false-positive rate jumps to about 14.3% even when no real difference exists. ANOVA keeps the overall α at 5%.</p>
+</div>
+<div class="misc-item">
+<b>"Bigger F = bigger effect" — careful</b>
+<p>A large sample size can inflate F even for a tiny real difference. To measure how large the effect actually is, use effect size (η²).</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>The same structure shows up again and again whenever ANOVA is around.</p>
+<ul>
+<li><b>The shape of an ANOVA table</b> — once SS and df are lined up, MS and F fall into the next columns automatically. The worked example above traces this exact shape</li>
+<li><b>How degrees of freedom slot in</b> — between = k−1, within = N−k, total = N−1. These three always appear together</li>
+<li><b>Why repeated t-tests inflate</b> — the multiple-comparisons story. The 14.3% from the simulation reappears in this same shape</li>
+<li><b>The three assumptions in the background</b> — normality, homogeneity of variance, independence. The F-distribution picture above only takes shape when these three are in place</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; folds three repeated t-tests into a single F — ANOVA extending testing in one move</li>
+<li><a href="./dists.html#dists-f">Three Test Distributions</a> &mdash; casts the F-distribution as ANOVA's protagonist — MSB/MSW critical values come straight from here</li>
+<li><a href="./mreg.html">Multiple Regression</a> &mdash; multiple regression's F-test for overall model significance shares the same equation structure ANOVA uses</li>
+<li><a href="./ci.html">Confidence Interval</a> &mdash; once ANOVA flags a group difference, group-mean CIs read "which group differs and by how much" as intervals</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; ties together how multiple comparisons inflate α with the effect-size and power picture, all on one page</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+<div class="story-next"><span class="lbl">UP NEXT —</span>measuring the "link" between two variables <span class="story-arrow">▸</span> <a href="./corr.html">M0 Correlation</a></div>
+</section>
+</main>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./chitest.html" rel="prev">← Prev</a>
+  <a href="./corr.html" rel="next">Next →</a>
+</nav>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+<script type="module" src="../../js/main.js"></script>
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./anova.html">ANOVA</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html" class="current">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+</body>
+</html>

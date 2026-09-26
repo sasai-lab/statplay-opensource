@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
+<meta name="keywords" content="correlation coefficient, Pearson, scatter plot, covariance, Anscombe, R squared, statistics">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Correlation — Feel r Through Scatter Plots — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/corr.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/corr.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/corr.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/corr.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="Correlation — Feel r Through Scatter Plots">
+
+<meta property="og:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/corr.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — Correlation">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Correlation — Feel r Through Scatter Plots">
+
+<meta name="twitter:description" content="Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula&#x27;s meaning. Anscombe&#x27;s quartet shows why numbers alone aren&#x27;t enough.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — Correlation">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Correlation — Feel r Through Scatter Plots",
+      "description": "Draw scatter plots freely and feel how the correlation coefficient r shifts between −1 and +1. Four-quadrant coloring reveals the formula's meaning. Anscombe's quartet shows why numbers alone aren't enough.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Correlation coefficient", "Covariance", "R²", "Anscombe's quartet"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/corr.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-modeling"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Correlation"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling" aria-current="location">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html" aria-current="page">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/corr.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Correlation — Feel r Through Scatter Plots</a></h1>
+
+  <p class="topic-lead">Anscombe's quartet — four scatterplots that look nothing alike yet share the exact same r. A single number can't see what your eyes can.</p>
+
+  <section class="reveal in" id="corr">
+
+
+
+<div class="sec-tag">M.00 / CORRELATION</div>
+
+
+
+<h2 class="sec-title">Correlation <span class="sec-sub">— Measuring the Link Between Two Variables</span></h2>
+
+
+
+<div class="story-bridge">The chi-squared test quantified associations between <b>categories</b>. But how do we measure the relationship between <b>continuous numbers</b> — height vs. weight, study time vs. test scores? → The <span class="next">correlation coefficient r</span> compresses "how much they move together" into a single number from <b>−1 to +1</b>.</div>
+
+
+
+<p class="sec-desc">
+
+    The <b>correlation coefficient r</b> measures whether two variables move together.
+
+    +1 means a perfect positive linear relationship, −1 a perfect negative one, 0 means no linear relationship.
+
+    <b>Click</b> the canvas to add points and watch r update in real time.
+
+    The yellow dashed lines mark the means, splitting the space into four quadrants — more points in <b>green quadrants</b> means positive correlation, more in <b>red</b> means negative.
+
+    This coloring is the "tug-of-war of signs" in the formula Σ(x−x̄)(y−ȳ).
+
+  </p>
+
+<div class="sim-layout">
+
+
+
+<!-- @guide:1 -->
+
+<!-- @panel:corr_main -->
+<div class="panel" data-autorun="corrGen">
+<div class="controls">
+<div class="ctrl">
+<label><span>Target r</span>
+          = <span class="val" id="corrTargetR">0.80</span>
+</label>
+<input aria-label="Target r" id="corrR" max="1" min="-1" step="0.01" type="range" value="0.80"/>
+</div>
+<div class="ctrl">
+<label><span>Points n</span>
+          = <span class="val" id="corrTargetN">50</span>
+</label>
+<input aria-label="Points n" id="corrN" max="200" min="10" step="1" type="range" value="50"/>
+</div>
+<button class="btn" id="corrGen"><span>▶ Generate</span></button>
+<button class="btn magenta" id="corrClear"><span>↺ Reset</span></button>
+<span class="click-hint"><span>↑ Click canvas to add points</span></span>
+</div>
+<canvas aria-busy="true" aria-label="Scatter plot and correlation coefficient. Click to add points and watch r change" class="canvas-crosshair" height="320" id="corrCanvas"></canvas>
+<div class="info">
+<div>n<strong id="corrNval">0</strong></div>
+<div><span>Correlation r</span><strong id="corrRval">—</strong></div>
+<div>R²<strong id="corrR2val">—</strong></div>
+<div><span>Covariance</span><strong id="corrCov">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="corrCanvas" data-title="Correlation"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<!-- @panel:corr_detail_formula -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="r = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum(x_i - \bar{x})^2 \cdot \sum(y_i - \bar{y})^2}}"></div>
+<p><b>Numerator — the four-quadrant story</b><br/>
+• (xᵢ − x̄): how far each point's x is from the mean<br/>
+• (yᵢ − ȳ): how far each point's y is from the mean<br/>
+• Multiply: same direction → <b>positive</b> (green quadrants), opposite → <b>negative</b> (red quadrants)<br/>
+• Sum: a tug-of-war between positive and negative contributions. Positive wins → r &gt; 0, negative wins → r &lt; 0</p>
+<p><b>Denominator</b><br/>
+• Divides by each variable's standard deviation to normalize r into −1 ≤ r ≤ 1<br/>
+• Unit-free: centimeters or inches give the same r</p>
+<div class="formula" data-tex="R^2 = r^2"></div>
+<p><b>What R² means</b><br/>
+• "Fraction of y's variation explained by a linear relationship with x"<br/>
+• R² = 0.64 → 64% of y's spread is accounted for by x<br/>
+• The remaining 36% comes from other factors or randomness</p>
+</div>
+<!-- /@panel -->
+
+<div class="sim-layout">
+
+
+
+<!-- @guide:2 -->
+
+<!-- @panel:corr_anscombe -->
+<div class="panel" data-autorun="anscombeReplay">
+<h3 class="cy-head cy-head--compact"><span>▶ The pitfall of r — Anscombe's Quartet</span></h3>
+<div class="controls controls--tight">
+<button class="btn" id="anscombeReplay"><span>▶ Replay</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Anscombe's quartet. Four datasets with the same correlation but entirely different patterns" class="canvas-block" height="360" id="anscombeCanvas"></canvas>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="anscombeCanvas" data-title="Anscombe's Quartet"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+<!-- @panel:corr_text -->
+
+<div class="detail-section">
+<h3>// Anscombe's Quartet — what it teaches</h3>
+<p>In 1973, statistician Francis Anscombe created this dataset to show that identical summary statistics can hide completely different data patterns.</p>
+<ul>
+<li><b>I</b>: ideal linear relationship. r accurately reflects what's going on</li>
+<li><b>II</b>: a quadratic relationship. r only measures linear correlation, so it misses the curve</li>
+<li><b>III</b>: one outlier drags r down. r is fragile against outliers</li>
+<li><b>IV</b>: a single distant x-value creates the entire correlation. High leverage from one point</li>
+</ul>
+<p><b>Takeaway</b>: always plot your data before computing r or a regression equation. This is a foundational principle of statistical analysis.</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "High correlation = causation"</b>
+<p>Ice cream sales and drowning deaths are strongly correlated. But ice cream doesn't cause drowning — temperature drives both (confounding variable). Correlation says "they move together," not "one causes the other."</p>
+</div>
+<div class="misc-item">
+<b>❌ "r = 0 means no relationship"</b>
+<p>U-shaped data can have r ≈ 0 despite a strong relationship. r measures only linear association. Non-linear patterns go undetected.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Just looking at r is enough"</b>
+<p>As Anscombe's quartet shows, identical r values can arise from wildly different data structures. "Plot first, compute second" is the golden rule.</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>A handful of recurring shapes surround the correlation coefficient.</p>
+<ul>
+<li><b>How r is assembled</b>: Σ(xᵢ−x̄)(yᵢ−ȳ) / √{Σ(xᵢ−x̄)² · Σ(yᵢ−ȳ)²}. "Co-variation divided by the geometric mean of each side's variation" — the same shape that the scatter slope above traces</li>
+<li><b>r and R² correspondence</b>: when R² = 0.49, r = ±0.7. The sign aligns with the scatter slope's direction</li>
+<li><b>The shape of the zero-correlation test</b>: t = r√(n−2) / √(1−r²), df = n−2. "Larger r and larger n both push t up" is built into the structure</li>
+<li><b>How covariance becomes correlation</b>: r = Cov(X,Y) / (s<sub>x</sub>·s<sub>y</sub>). Dividing covariance by the two standard deviations is the shape that strips out units</li>
+</ul>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./reg.html">Simple Regression</a> &mdash; links r and β₁ through r = β₁(s_x/s_y) — viewing the same relationship from another angle</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; the test of zero correlation hops onto the t-distribution via t = r√(n−2)/√(1−r²) and walks through the verdict</li>
+<li><a href="./mreg.html">Multiple Regression</a> &mdash; correlation among predictors pushes β₁ between simple and multiple regression — understanding correlation bridges to understanding confounding</li>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; puts "is r = 0?" onto the hypothesis-testing framework — correlation in action as a test instrument</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; puts correlation and regression onto real data — reading as a story how predictor entanglement reshapes the model</li>
+<li><a href="../../en/columns/multivariate_analysis.html">"Uses of Multivariate Analysis" column</a> &mdash; See how the same survey can support prediction, dimensionality reduction, and other analyses.</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/income_prediction.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">💰</span>
+  <span class="fr-body">
+    <span class="fr-title">How Far Can Statistics Predict Your Income?</span>
+    <span class="fr-desc">Reading income ranges from age, gender, and prefecture — multiple regression as a story</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>turning relationships into predictions <span class="story-arrow">▸</span> <a href="./reg.html">M1 Simple Regression</a></div>
+
+</section>
+
+</main>
+
+
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./anova.html" rel="prev">← Prev</a>
+  <a href="./reg.html" rel="next">Next →</a>
+</nav>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./corr.html">Correlation</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html" class="current">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+</body>
+
+</html>

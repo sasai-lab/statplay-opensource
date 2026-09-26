@@ -1865,7 +1865,7 @@
 <div class="guided-steps" data-lang="ja">
     <b>実験ガイド — 順番に試してみよう</b>
     <ol>
-      <li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動試行 → n が増えるほど χ² が安定し、p値が大きいまま（帰無仮説を棄却しない）。</li>
+      <li><b>Step 1:</b> ① 適合度：「公正なサイコロ」で自動試行 → n を増やしても χ² と p 値は揺れる。公正でも、α=0.05 なら約5%の確率で棄却される。</li>
       <li><b>Step 2:</b> 「イカサマ」に切り替えて自動試行 → χ² が急上昇し、p値が α を下回る。不正が検出される瞬間。</li>
       <li><b>Step 3:</b> ② 独立性：左上のセルだけクリックして偏りを作る → χ² が跳ね上がり、独立性が棄却される。</li>
       <li><b>Step 4:</b> リセットして、各セルを均等にクリック → χ² は小さいまま。偏りがなければ独立と判定。</li>
@@ -1874,7 +1874,7 @@
   <div class="guided-steps" data-lang="en">
     <b>Experiment Guide — try these in order</b>
     <ol>
-      <li><b>Step 1:</b> ① Goodness-of-fit: select "Fair die" and auto-roll → as n grows, χ² stays low, p-value stays high (fail to reject).</li>
+      <li><b>Step 1:</b> ① Goodness-of-fit: select "Fair die" and auto-roll → χ² and the p-value still fluctuate as n grows. Even a fair die is rejected about 5% of the time at α=0.05.</li>
       <li><b>Step 2:</b> Switch to "Loaded" and auto-roll → χ² shoots up, p-value drops below α. The cheat is caught.</li>
       <li><b>Step 3:</b> ② Independence: click only the top-left cell to create imbalance → χ² spikes, independence is rejected.</li>
       <li><b>Step 4:</b> Reset and click cells evenly → χ² stays small. No imbalance = independence holds.</li>

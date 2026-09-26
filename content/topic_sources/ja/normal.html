@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+<meta name="description" content="一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。日常の計算の裏側を体感する。">
+<meta name="keywords" content="正規分布, 標準化, Z変換, 区間確率, μ σ, 確率計算">
+<meta name="author" content="Sasai Lab">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<title>正規分布と標準化 — μ・σの役割を可視化 — StatPlay</title>
+
+<link rel="canonical" href="https://statplay.sasailab.com/topics/normal.html">
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/normal.html">
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/normal.html">
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/normal.html">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="StatPlay">
+<meta property="og:title" content="正規分布と標準化 — μ・σの役割を可視化">
+<meta property="og:description" content="一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。日常の計算の裏側を体感する。">
+<meta property="og:url" content="https://statplay.sasailab.com/topics/normal.html">
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta property="og:image:alt" content="StatPlay — 正規分布と標準化">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="正規分布と標準化 — μ・σの役割を可視化">
+<meta name="twitter:description" content="一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。日常の計算の裏側を体感する。">
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+<meta name="twitter:image:alt" content="StatPlay — 正規分布と標準化">
+
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#00f3ff">
+<link rel="apple-touch-icon" href="../icons/icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/favicon.svg">
+<link rel="icon" href="../icons/icon-192.png" type="image/png">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+<link rel="stylesheet" href="../css/stat_cyber.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "正規分布と標準化 — μ・σの役割を可視化",
+      "description": "一般の正規分布 N(μ,σ²) から任意区間 [a,b] の確率を計算し、標準化 Z=(X-μ)/σ との対応を直感的に理解。日常の計算の裏側を体感する。",
+      "inLanguage": "ja",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["正規分布 N(μ,σ²)", "標準化 Z=(X-μ)/σ", "区間確率 P(a≤X≤b)"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/topics/normal.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "統計学初学者全般"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "トピック",
+          "item": "https://statplay.sasailab.com/#cat-probability"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "正規分布と標準化"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="../js/katex-render.js"></script>
+</head>
+<body class="topic-page">
+<a href="#main-content" class="skip-to-main">メインコンテンツへスキップ</a>
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay ナビゲーション">
+  <a class="logo" href="../index.html" aria-label="StatPlay ホーム">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">コラム <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">一覧へ</a><a href="../columns/deviation.html">偏差値って何？</a><a href="../columns/birthday.html">誕生日のパラドックス</a><a href="../columns/standardization.html">標準化って何？</a><a href="../columns/income_prediction.html">年収と統計</a><a href="../columns/error_types.html">過誤の2×2</a><a href="../columns/se_vs_sd.html">標準偏差と標準誤差</a><a href="../columns/multivariate_analysis.html">多変量解析でできること</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">ツール <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">一覧へ</a><a href="../tables/index.html">インタラクティブ確率分布表</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability" aria-current="location">確率分布 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">一覧へ</a><a href="stdnorm.html">標準正規分布</a><a href="normal.html" aria-current="page">正規分布と標準化</a><a href="prob.html">確率の基本法則</a><a href="bayes.html">ベイズの定理</a><a href="morep.html">二項・ポアソン・指数分布</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference">推測統計 <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">一覧へ</a><a href="clt.html">中心極限定理</a><a href="lln.html">大数の法則</a><a href="ci.html">信頼区間</a><a href="test.html">仮説検定</a><a href="proptest.html">母比率の検定と推定</a><a href="dists.html">三大検定分布</a><a href="chitest.html">カイ二乗検定</a><a href="anova.html">分散分析（ANOVA）</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">モデリング <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">一覧へ</a><a href="corr.html">相関係数</a><a href="reg.html">単回帰分析</a><a href="mreg.html">重回帰分析</a></div></div><a href="../math/index.html" class="site-experience">MathPlay</a><a href="../bayesplay/index.html" class="site-experience">BayesPlay</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="明るいテーマに切り替える" aria-pressed="false">LIGHT</button>
+    <a href="../en/topics/normal.html" id="langToggle" class="lang-toggle" data-site-lang="en" hreflang="en" lang="en">EN</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+  <h1 class="topic-h1"><a href="../index.html" style="color:inherit;text-decoration:none">正規分布と標準化 — μ・σの役割を可視化</a></h1>
+  <p class="topic-lead">身長 165〜175cm の男性は何%? 答えは約59.6%。μ と σ を動かすだけで「割合」が面積として目に見える。</p>
+  <section class="reveal in" id="normal">
+
+<div class="sec-tag">P.02 / NORMAL DISTRIBUTION</div>
+<h2 class="sec-title">正規分布と標準化 <span class="sec-sub">— 平均と散らばりを操る</span></h2>
+
+<div class="story-bridge">標準正規は μ=0, σ=1 に固定されていた。実際のデータは<b>平均も散らばりも自由</b>。<span class="next">μ と σ</span> を動かして正規分布を道具として使いこなそう。<b>標準化</b>で Z に戻せば、どんな正規分布も標準正規と行き来できる。</div>
+
+<p class="sec-desc">
+    さっきの標準正規の <b>一般バージョン</b>が正規分布 <code>N(μ, σ²)</code>。
+    <code>μ</code> が位置（どこが真ん中か）、<code>σ</code> が広がり（どれくらい散らばるか）。
+    スライダーを動かすと曲線がぬるっと動いて、指定した区間 <code>[a, b]</code> に入る確率（ピンクの面積）が
+    リアルタイムで出る。<br/>
+<b>このピンクの面積こそ「割合」の正体。</b>
+    たとえば成人男性の身長が <code>N(170, 36)</code>（平均170cm, σ=6cm）に従うとすると、
+    <b>165〜175cm の人は全体の何%？</b> → 標準化して z を計算すれば <b>約 59.6%</b> と分かる。
+    偏差値、テストの点、測定誤差——だいたい正規で近似できるものは、<b>ぜんぶこの面積計算</b>で「〜%の人がこの範囲」が求まる。
+    下のスライダーでは標準化済みのスケール（μ=0, σ=1 付近）で同じ原理を体感できる。
+    <br/><i class="tip-line">Tip: グラフ上を直接ドラッグすると、近い方の <code>a</code>/<code>b</code> の境界を動かせる。</i>
+</p>
+
+<div class="sim-layout">
+<!-- @guide:1 -->
+
+<!-- @panel:normal_main -->
+<div class="panel">
+<div class="controls">
+<div class="ctrl"><label><span>μ (平均)</span> = <span class="val" id="nMuVal">0</span></label>
+<input aria-label="mu (mean)" id="nMu" max="4" min="-4" step="0.1" type="range" value="0"/>
+</div>
+<div class="ctrl"><label><span>σ (標準偏差)</span> = <span class="val" id="nSdVal">1</span></label>
+<input aria-label="sigma (std dev)" id="nSd" max="3" min="0.3" step="0.1" type="range" value="1"/>
+</div>
+<div class="ctrl"><label><span>区間 [a,b] : a</span> = <span class="val" id="nAVal">-1</span></label>
+<input aria-label="Interval a" id="nA" max="5" min="-5" step="0.1" type="range" value="-1"/>
+</div>
+<div class="ctrl"><label>b = <span class="val" id="nBVal">1</span></label>
+<input aria-label="Interval b" id="nB" max="5" min="-5" step="0.1" type="range" value="1"/>
+</div>
+</div>
+<canvas aria-busy="true" aria-label="Normal distribution N(μ,σ²) PDF" height="260" id="normalCanvas"></canvas>
+<div class="info">
+<div>P(a ≤ X ≤ b)<strong id="nProb">—</strong></div>
+<div>z-score (a)<strong id="nZa">—</strong></div>
+<div>z-score (b)<strong id="nZb">—</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="normalCanvas" data-title="正規分布"><span>💾 画像保存</span></button>
+</div>
+</div>
+<!-- /@panel -->
+</div>
+
+<!-- @panel:normal_text -->
+<div class="detail-section">
+<h3>// ここで使われる公式</h3>
+<div class="formula" data-tex="f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\,\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)"></div>
+<p><b>各パーツの役割</b><br/>
+・(x − μ)²：平均 μ からの距離の二乗 → 左右対称の釣鐘型を作る原因<br/>
+・÷ 2σ²：σ が大きいほど指数の減衰がゆるやか → 裾が広がり、山が低くなる<br/>
+・exp(…)：距離が増えると急激にゼロへ向かう → 「極端な値はめったに出ない」を表現<br/>
+・1/√(2πσ²)：σ に応じて高さを調整し、面積の合計を常に1に保つ係数</p>
+<p><b>標準正規との関係</b><br/>
+・μ=0, σ=1 を代入するとそのまま φ(z) = e<sup>−z²/2</sup>/√(2π) になる<br/>
+・つまり一般正規は「標準正規を横に σ 倍引き伸ばし、μ だけ平行移動」したもの</p>
+</div>
+
+<div class="misconception-box">
+<h3>// よくある誤解</h3>
+<div class="misc-item">
+<b>❌「σ が大きい = 推定が不安定」</b>
+<p>σ は「1個1個のデータがどれだけばらつくか」。推定の不安定さは SE = σ/√n で表す。σ=100 でも n=10000 なら SE=1 で推定はかなり安定。</p>
+</div>
+<div class="misc-item">
+<b>❌「現実のデータはだいたい正規分布」</b>
+<p>身長や測定誤差は正規分布に近いが、所得分布（右に歪む）、クリック率（0近辺に偏る）、故障時間（指数分布的）など、正規分布に従わないデータはたくさんある。</p>
+</div>
+<div class="misc-item">
+<b>❌「平均 = 最頻値 = 中央値 は正規分布の証拠」</b>
+<p>正規分布ならこの3つは一致する。しかし逆は成り立たない。たとえば対称なベータ分布 Beta(2,2) でも3つは一致する。なお一様分布は平均と中央値は一致するが、すべての値が同じ確率で出るため特定の最頻値が存在しない。</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// よく出会う形</h3>
+<p>正規分布のまわりでは、標準化と表引きを軸にした同じ流れが何度も顔を出します。</p>
+<ul>
+<li><b>z 変換から表引きへの流れ</b>：N(50, 10²) で X ≥ 65 を見るなら、z = (65−50)/10 = 1.5 という形に揃える。「一般正規 → z スケールに翻訳」という同じ動きが、確率を扱うときに繰り返し顔を出す</li>
+<li><b>上側・下側のα%点の形</b>：x = μ + z_α·σ。「中心 + 倍率 × ばらつき」という三層構造が、ここでも姿を現す</li>
+<li><b>正規分布の加法性</b>：独立な X〜N(μ₁,σ₁²), Y〜N(μ₂,σ₂²) を足すと X+Y〜N(μ₁+μ₂, σ₁²+σ₂²)。平均は素直に足し算、分散も素直に足し算（標準偏差は足し算でない）という形になっている</li>
+<li><b>標準化の絵</b>：z = (x−μ)/σ。「中心からのズレを、ばらつきの単位で測る」という同じ絵が、t統計量や検定統計量にも引き継がれていく</li>
+</ul>
+<p class="pattern-companion">N(0,1) のベースだけを単独で触りたいときは <a class="pattern-companion-link" href="./stdnorm.html">標準正規分布</a>。</p></div>
+
+<div class="related-topics">
+<h3>// 関連トピック</h3>
+<ul>
+<li><a href="./stdnorm.html">標準正規分布</a> &mdash; z = (x−μ)/σ が一般正規を着地させる先。ここで表を引いて確率を取り出す</li>
+<li><a href="./clt.html">中心極限定理</a> &mdash; どんな分布の平均でも正規へ近づいていく流れが、正規分布の使える領域を一気に広げる</li>
+<li><a href="./dists.html#dists-t">三大検定分布</a> &mdash; σ が分からない場面で正規の代わりに t / χ² / F の家族が前に出てくる</li>
+<li><a href="./morep.html">二項・ポアソン・指数分布</a> &mdash; n が大きくなると二項や指数の上に正規近似が重なって、離散と連続を繋げる</li>
+<li><a href="./lln.html">大数の法則</a> &mdash; 標本平均が真値に近づいていく LLN の収束先と、正規分布の中心 μ が同じ場所に重なる</li>
+<li><a href="../columns/standardization.html">『標準化って何？』コラム</a> &mdash; 正規分布の応用として、身長と TOEIC を z で同じ物差しに乗せて比較する</li>
+<li><a href="../columns/deviation.html">『偏差値って何？』コラム</a> &mdash; 10 点差の意味を z で読み解いて、偏差値を正規分布の身近な顔に降ろす</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// もっと読む</h3>
+<a href="../columns/standardization.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">🌍</span>
+  <span class="fr-body">
+    <span class="fr-title">標準化って何？ — 世界中の「ふつう」を比べる翻訳機</span>
+    <span class="fr-desc">身長 182cm と TOEIC 860、どっちが「ふつう」から遠い？ z で単位を超えて比べる</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<a href="../columns/deviation.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">📊</span>
+  <span class="fr-body">
+    <span class="fr-title">偏差値って何？ — 3秒で「上位何%」が見える</span>
+    <span class="fr-desc">偏差値60と70の差はたった10、でもレア度は5倍。z = (X−μ)/σ の最も身近な応用例</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../index.html#columns">&laquo; 全コラム一覧を見る</a></p>
+</div>
+<!-- /@panel -->
+<!-- ═══ コラム ═══ -->
+<div class="related-column" style="margin:32px 0 16px;padding:20px 24px;border:1px solid rgba(255,230,0,.2);background:rgba(255,230,0,.03)">
+<h3 style="font-family:'Courier New',monospace;font-size:14px;color:var(--yellow);margin:0 0 8px;letter-spacing:1px">// コラム</h3>
+<p style="font-size:14px;line-height:1.8;color:var(--text);margin:0 0 12px">偏差値は、じつは正規分布と標準化を使って「上位何%か」を一目で読むための仕組み。ここで学んだ知識がそのまま活きます。</p>
+<a href="../columns/deviation.html" style="color:var(--yellow);font-family:'Courier New',monospace;font-size:14px;text-decoration:none">📊 偏差値って何？ — 「上位○%」が一瞬でわかる →</a>
+</div>
+<div class="story-next"><span class="lbl">次は —</span>確率の基本法則をベン図で <span class="story-arrow">▸</span> <a href="./prob.html">P3 確率の基本法則</a></div>
+
+</section>
+</main>
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+<span>本サイトのコード・デザイン・コンテンツは Creative Commons 表示-非営利 4.0 国際 (CC BY-NC 4.0) ライセンスで提供されています。商用利用はできません。</span>
+
+</span>
+</div>
+<div>StatPlay · <span class="mg" id="app-version"></span> · <a href="/privacy.html">プライバシーポリシー</a></div>
+
+</div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
+<nav class="side-toc" aria-label="トピック一覧">
+  <div class="side-toc-current" aria-label="現在のトピック">
+    <span class="side-toc-section-label">現在のトピック</span>
+    <a class="current" aria-current="page" href="./normal.html">正規分布と標準化</a>
+  </div>
+  <div class="side-toc-related" aria-label="関連トピック">
+    <span class="side-toc-section-label">関連トピック</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>全16トピックを開く</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>確率分布</span></li>
+      <li><a href="./stdnorm.html">標準正規分布</a></li>
+      <li><a href="./normal.html" class="current">正規分布と標準化</a></li>
+      <li><a href="./prob.html">確率の基本法則</a></li>
+      <li><a href="./bayes.html">ベイズの定理</a></li>
+      <li><a href="./morep.html">二項・ポアソン・指数分布</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>推測統計</span></li>
+      <li><a href="./clt.html">中心極限定理</a></li>
+      <li><a href="./lln.html">大数の法則</a></li>
+      <li><a href="./ci.html">信頼区間</a></li>
+      <li><a href="./test.html">仮説検定</a></li>
+      <li><a href="./proptest.html">母比率の検定と推定</a></li>
+      <li><a href="./dists.html">三大検定分布</a></li>
+      <li><a href="./chitest.html">カイ二乗検定</a></li>
+      <li><a href="./anova.html">分散分析（ANOVA）</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>モデリング</span></li>
+      <li><a href="./corr.html">相関係数</a></li>
+      <li><a href="./reg.html">単回帰分析</a></li>
+      <li><a href="./mreg.html">重回帰分析</a></li>
+    </ol>
+  </details>
+</nav>
+<nav class="topic-nav" aria-label="前後のトピック">
+  <a href="./stdnorm.html" rel="prev">← 前へ</a>
+  <a href="./prob.html" rel="next">次へ →</a>
+</nav>
+</body>
+</html>

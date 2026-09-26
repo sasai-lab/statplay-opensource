@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KSDDV3KMKL"></script>
+
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KSDDV3KMKL');</script>
+
+<meta name="description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
+<meta name="keywords" content="confidence interval, coverage probability, 95 percent, inferential statistics, common misreading">
+
+<meta name="author" content="Sasai Lab">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<title>Confidence Intervals — What 95% Really Means — StatPlay</title>
+
+
+
+<link rel="canonical" href="https://statplay.sasailab.com/en/topics/ci.html">
+
+<link rel="alternate" hreflang="ja" href="https://statplay.sasailab.com/topics/ci.html">
+
+<link rel="alternate" hreflang="en" href="https://statplay.sasailab.com/en/topics/ci.html">
+
+<link rel="alternate" hreflang="x-default" href="https://statplay.sasailab.com/topics/ci.html">
+
+
+
+<meta property="og:type" content="article">
+
+<meta property="og:site_name" content="StatPlay">
+
+<meta property="og:title" content="Confidence Intervals — What 95% Really Means">
+
+<meta property="og:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
+<meta property="og:url" content="https://statplay.sasailab.com/en/topics/ci.html">
+
+<meta property="og:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta property="og:image:alt" content="StatPlay — Confidence Intervals">
+
+<meta property="og:locale" content="en_US">
+
+<meta property="og:locale:alternate" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Confidence Intervals — What 95% Really Means">
+
+<meta name="twitter:description" content="Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.">
+
+<meta name="twitter:image" content="https://statplay.sasailab.com/stat_cyber_og.png">
+
+<meta name="twitter:image:alt" content="StatPlay — Confidence Intervals">
+
+
+
+<link rel="manifest" href="../../manifest.webmanifest">
+
+<meta name="theme-color" content="#00f3ff">
+
+<link rel="apple-touch-icon" href="../../icons/icon-192.png">
+
+<link rel="icon" type="image/svg+xml" href="../../icons/favicon.svg">
+
+<link rel="icon" href="../../icons/icon-192.png" type="image/png">
+
+
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src https://cdn.jsdelivr.net/npm/katex@0.16.22/ 'self' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https://www.google-analytics.com https://www.google.com; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.google.com; font-src 'self' https://cdn.jsdelivr.net/npm/katex@0.16.22/; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.16.22/">
+
+<link rel="stylesheet" href="../../css/stat_cyber.css">
+
+
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LearningResource",
+      "name": "Confidence Intervals — What 95% Really Means",
+      "description": "Display 100 confidence intervals to clear up the classic 95% misreading. Slide the confidence level and watch the coverage rate change — experimentally, not just in theory.",
+      "inLanguage": "en",
+      "educationalLevel": "intermediate",
+      "learningResourceType": "interactive visualization",
+      "teaches": ["Confidence interval", "Coverage probability", "Correct interpretation of 95%"],
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "StatPlay",
+        "url": "https://statplay.sasailab.com/"
+      },
+      "url": "https://statplay.sasailab.com/en/topics/ci.html",
+      "image": "https://statplay.sasailab.com/stat_cyber_og.png",
+      "author": {
+        "@type": "Organization",
+        "name": "Sasai Lab"
+      },
+      "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+      "isAccessibleForFree": true,
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student",
+        "audienceType": "Statistics learners"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "StatPlay",
+          "item": "https://statplay.sasailab.com/en/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Topics",
+          "item": "https://statplay.sasailab.com/en/#cat-inference"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Confidence Intervals"
+        }
+      ]
+    }
+  ]
+}
+
+</script>
+
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<script defer src="../../js/katex-render.js"></script>
+
+</head>
+
+<body class="topic-page">
+
+<a href="#main-content" class="skip-to-main">Skip to main content</a>
+
+
+
+<nav id="mainNav" class="site-nav" aria-label="StatPlay navigation">
+  <a class="logo" href="../index.html" aria-label="StatPlay home">StatPlay</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" type="button"><span class="bars" aria-hidden="true"></span></button>
+  <div class="nav-links" id="navLinks"><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="columns" aria-expanded="false" aria-controls="site-menu-columns">COLUMN <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-columns"><a href="../index.html#columns">Overview</a><a href="../columns/deviation.html">What Is Hensachi?</a><a href="../columns/birthday.html">Birthday Paradox</a><a href="../columns/standardization.html">What Is Standardization?</a><a href="../columns/income_prediction.html">Predicting Income</a><a href="../columns/error_types.html">Type I vs Type II</a><a href="../columns/se_vs_sd.html">SD vs SE</a><a href="../columns/multivariate_analysis.html">Uses of Multivariate Analysis</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="tools" aria-expanded="false" aria-controls="site-menu-tools">TOOLS <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-tools"><a href="../index.html#dist-tables">Overview</a><a href="../tables/index.html">Interactive Distribution Tables</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="probability" aria-expanded="false" aria-controls="site-menu-probability">PROB <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-probability"><a href="../index.html#cat-probability">Overview</a><a href="stdnorm.html">Standard Normal</a><a href="normal.html">Normal Distribution</a><a href="prob.html">Probability Rules</a><a href="bayes.html">Bayes&#x27; Theorem</a><a href="morep.html">Discrete &amp; Exponential</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="inference" aria-expanded="false" aria-controls="site-menu-inference" aria-current="location">INFER <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-inference"><a href="../index.html#cat-inference">Overview</a><a href="clt.html">Central Limit Theorem</a><a href="lln.html">Law of Large Numbers</a><a href="ci.html" aria-current="page">Confidence Interval</a><a href="test.html">Hypothesis Testing</a><a href="proptest.html">Proportion Test</a><a href="dists.html">Three Test Distributions</a><a href="chitest.html">Chi-Squared Test</a><a href="anova.html">ANOVA</a></div></div><div class="nav-dropdown topic-dropdown"><button type="button" class="nav-cat-link" data-cat="modeling" aria-expanded="false" aria-controls="site-menu-modeling">MODEL <span aria-hidden="true">⌄</span></button><div class="nav-dropdown-menu" id="site-menu-modeling"><a href="../index.html#cat-modeling">Overview</a><a href="corr.html">Correlation</a><a href="reg.html">Simple Regression</a><a href="mreg.html">Multiple Regression</a></div></div><a href="../../math/index.html" class="site-experience">MathPlay (JA)</a><a href="../../bayesplay/index.html" class="site-experience">BayesPlay (JA)</a><a href="../about.html">About</a></div>
+  <div class="site-utilities">
+    <button id="themeToggle" class="lang-toggle theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">LIGHT</button>
+    <a href="../../topics/ci.html" id="langToggle" class="lang-toggle" data-site-lang="ja" hreflang="ja" lang="ja">日本語</a>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main id="main-content">
+
+  <h1 class="topic-h1"><a href="../../en/index.html" style="color:inherit;text-decoration:none">Confidence Intervals — What 95% Really Means</a></h1>
+
+  <p class="topic-lead">"There's a 95% chance the true value is inside" — actually wrong. Stack a hundred intervals side by side and the real definition becomes visible.</p>
+
+  <section class="reveal in" id="ci">
+
+
+
+<div class="sec-tag">I.03 / CONFIDENCE INTERVAL</div>
+
+
+
+<h2 class="sec-title">Confidence Interval <span class="sec-sub">— What 95% Really Means</span></h2>
+
+
+
+<div class="story-bridge">LLN says "at infinity, you're right." But in practice we always have a <b>finite sample</b>. So instead of a single point, <b>drape a net around it</b> — that's a <span class="next">confidence interval</span>. Wider net, easier to catch; narrower, more precise. Watch the trade-off play out.</div>
+
+
+
+<p class="sec-desc">
+
+    The <b>95% confidence interval</b> is <b>famously misunderstood</b>.<br/>
+
+    It does <b>NOT</b> mean "the true value is inside with 95% probability". The correct reading:
+
+    "repeat this sampling many times, and ~95% of the resulting intervals will capture the true value".<br/>
+
+    The lab below brute-forces that intuition. Thin pink = the unlucky intervals that missed.
+
+    Once the pink share settles around <b>~5%</b>, you've got it.
+
+  </p>
+
+<div class="sim-layout">
+
+<!-- @guide:1 -->
+
+<!-- @panel:ci_main -->
+<div class="panel" data-autorun="ciRun">
+<div class="controls">
+<div class="ctrl"><label>n = <span class="val" id="ciNVal">30</span></label>
+<input aria-label="Sample size n" id="ciN" max="200" min="5" step="1" type="range" value="30"/>
+</div>
+<div class="ctrl"><label><span>Confidence</span> = <span class="val" id="ciLvlVal">95%</span></label>
+<input aria-label="Confidence level" id="ciLvl" max="99" min="80" step="1" type="range" value="95"/>
+</div>
+<button class="btn" id="ciRun"><span>▶ Generate 300</span></button>
+<button class="btn magenta" id="ciReset"><span>↺ Reset</span></button>
+</div>
+<canvas aria-busy="true" aria-label="Confidence interval simulation. Repeated sampling shows 95% of intervals contain the population mean" height="240" id="ciCanvas"></canvas>
+<div class="info">
+<div><span>Intervals built</span><strong id="ciMade">0</strong></div>
+<div><span>Coverage</span><strong id="ciCov">—</strong></div>
+<div><span>Expected</span><strong id="ciExp">95%</strong></div>
+</div>
+<div class="share-row">
+<button class="share-btn dl" data-kind="dl" data-share="ciCanvas" data-title="Confidence Interval"><span>💾 Save image</span></button>
+</div>
+</div>
+<!-- /@panel -->
+
+</div>
+
+
+
+<!-- @panel:ci_text -->
+
+<div class="detail-section">
+<h3>// Formula used here</h3>
+<div class="formula" data-tex="\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}"></div>
+<p><b>Each part</b><br/>
+• x̄ (sample mean): center of the interval — our best single guess<br/>
+• z<sub>α/2</sub>: width multiplier determined by confidence level (95% → 1.96, 99% → 2.576)<br/>
+• σ/√n (standard error): the estimation wobble. Larger σ widens it; larger n shrinks it</p>
+<p><b>How it fits together</b><br/>
+• "center ± multiplier × wobble" casts a net around the truth<br/>
+• Quadruple n → √n doubles → interval width halves. Precision costs data<br/>
+• Raising confidence increases the multiplier: wider net, but more likely to catch the true value</p>
+<p><b>What if σ is unknown?</b><br/>
+The formula above assumes the population standard deviation σ is known. In practice, σ is almost never known — you replace it with the sample standard deviation s and swap z for the <b>t-distribution</b> critical value. As n grows, the t-distribution approaches the standard normal, so the z-interval becomes a good approximation. Details are in the <a class="ln-cyan" href="dists.html#dists-t">t-distribution section</a>.</p>
+</div>
+
+<div class="misconception-box">
+<h3>// Common misconceptions</h3>
+<div class="misc-item">
+<b>❌ "95% CI = 95% probability the true value is inside" — the most common trap</b>
+<p>The true value μ is a fixed constant — it's either inside the interval or it isn't. "95%" means "if we repeat this procedure 100 times, about 95 intervals will contain the truth." It's a statement about the method's long-run performance, not about one particular interval. In the simulation above, generate 300 intervals and watch the pink ones (misses) hover near 5%.</p>
+</div>
+<div class="misc-item">
+<b>❌ "A narrow interval means a correct answer"</b>
+<p>Narrow means "precise," not "right." Lower the confidence level and the interval shrinks — but the chance of missing the true value grows. Narrowness reflects precision, not accuracy.</p>
+</div>
+<div class="misc-item">
+<b>❌ "Confidence intervals only work for means"</b>
+<p>You can build confidence intervals for variances, proportions, regression coefficients, differences — any estimator. The structure is always the same: "estimate ± multiplier × standard error."</p>
+</div>
+</div>
+
+<div class="pattern-note">
+<h3>// Shapes you'll meet again</h3>
+<p>Confidence intervals keep rearranging the same set of parts.</p>
+<ul>
+<li><b>The "center ± multiplier × standard error" shape</b>: with x̄=50, σ=10, n=25, the 95% CI is 50 ± 1.96×(10/5) = [46.08, 53.92]. The numbers vary, the three-layer structure doesn't</li>
+<li><b>How width and n relate</b>: width shrinks as 1/√n. "Halve the width → quadruple n" is this proportional shape in disguise</li>
+<li><b>The CI–test twin relationship</b>: when 95% CI = [2.1, 4.3], μ₀ = 2 sits outside, and the two-sided test at α=0.05 lands on "reject." The two views are flip sides of the same decision</li>
+<li><b>Confidence level mirrors the multiplier</b>: switching 95% → 99% shifts the multiplier 1.96 → 2.576, and the wider interval follows directly</li>
+</ul>
+<p class="pattern-companion pattern-companion--mt">See where z = 1.96 and 2.576 come from in <a class="pattern-companion-link ln-cyan" href="../../en/tables/index.html?dist=norm&amp;mode=twosided">Interactive Distribution Tables</a> (two-sided mode)</p>
+</div>
+
+<div class="related-topics">
+<h3>// Related topics</h3>
+<ul>
+<li><a href="./test.html">Hypothesis Testing</a> &mdash; CIs and tests project the same decision through different pictures — μ₀ leaving the 95% CI and rejection at α = 0.05 fire together</li>
+<li><a href="./dists.html#dists-t">Three Test Distributions</a> &mdash; with σ unknown, the multiplier shifts from z to t — and the smaller n is, the wider the t-tails stretch the CI</li>
+<li><a href="./clt.html">Central Limit Theorem</a> &mdash; CLT sets up the "sample mean approaches normal" scene that CIs rest on, guaranteeing the SE = σ/√n width</li>
+<li><a href="./proptest.html">Proportion Test</a> &mdash; the three-layer "center ± multiplier × SE" assembly carries straight over to proportion CIs and tests</li>
+<li><a href="./stdnorm.html">Standard Normal</a> &mdash; pulls the 1.96 multiplier off the standard normal table to lock down the CI width</li>
+<li><a href="./lln.html">Law of Large Numbers</a> &mdash; LLN supplies the right to infer a population from a sample, and the CI structure rises on top</li>
+<li><a href="../../en/columns/error_types.html">"Type I vs Type II" column</a> &mdash; 95% confidence and a 5% miss rate share one probability space — the column that reads α and CI together</li>
+<li><a href="../../en/columns/standardization.html">"What Is Standardization?" column</a> &mdash; treats the z-scale that produces the 1.96 multiplier as a universal translator across units</li>
+<li><a href="../../en/columns/income_prediction.html">"Predicting Income" column</a> &mdash; where CIs split into prediction and confidence intervals — the two-tier structure shows up in real income data</li>
+<li><a href="../../en/columns/se_vs_sd.html">"SD vs SE" column</a> &mdash; reframes the SE inside center ± 1.96 × SE as a quantity distinct from SD — confirms that the source of CI width lives on the SE floor</li>
+</ul>
+</div>
+
+<div class="further-reading">
+<h3>// Further reading</h3>
+<a href="../../en/columns/error_types.html" class="fr-card">
+  <span class="fr-icon" aria-hidden="true">⚠️</span>
+  <span class="fr-body">
+    <span class="fr-title">Type I vs Type II Errors — One 2×2 Table Sorts It Out</span>
+    <span class="fr-desc">α, β, power, and effect size all live on a single 2×2 picture — confusion disappears</span>
+  </span>
+  <span class="fr-arrow" aria-hidden="true">&rarr;</span>
+</a>
+<p class="fr-more"><a href="../../en/index.html#columns">&laquo; See all columns</a></p>
+</div>
+<!-- /@panel -->
+
+<div class="story-next"><span class="lbl">UP NEXT —</span>from width to yes/no <span class="story-arrow">▸</span> <a href="./test.html">I4 Hypothesis Testing</a></div>
+
+</section>
+
+</main>
+
+
+
+<footer>
+<div class="foot-grid">
+<div class="foot-col">
+<div class="foot-head">// TECH STACK</div>
+<div class="built">
+        Vanilla JS · Canvas 2D · ES Modules<br/>
+<span class="foot-dim">Zero dependencies · PWA · Static hosting</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// BUILT WITH</div>
+<div class="built">
+        Crafted with Claude<br/>
+<span class="foot-dim">Anthropic · 2026</span>
+</div>
+</div>
+<div class="foot-col">
+<div class="foot-head">// LICENSE</div>
+<div class="built">
+<a class="ln-cyan" href="https://creativecommons.org/licenses/by-nc/4.0/" rel="noopener" target="_blank">CC BY-NC 4.0 ↗</a><br/>
+<a class="ln-cyan-sm" href="https://github.com/sasai-lab/statplay-opensource" rel="noopener" target="_blank">GitHub ↗</a>
+</div>
+</div>
+</div>
+<div class="foot-bottom">
+<div class="foot-copy">
+      © 2026 <b>Sasai Lab</b><br/>
+<span class="foot-dim-strong">
+
+<span>All code, design, and content of this site are licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Commercial use is prohibited.</span>
+</span>
+</div>
+
+<div>StatPlay · <span class="mg" id="app-version-en"></span> · <a href="/en/privacy.html">Privacy Policy</a></div>
+</div>
+</footer>
+
+
+
+<script type="module" src="../../js/main.js"></script>
+
+<nav class="side-toc" aria-label="All Topics">
+  <div class="side-toc-current" aria-label="Current topic">
+    <span class="side-toc-section-label">Current topic</span>
+    <a class="current" aria-current="page" href="./ci.html">Confidence Interval</a>
+  </div>
+  <div class="side-toc-related" aria-label="Related topics">
+    <span class="side-toc-section-label">Related topics</span>
+    <ol class="side-toc-related-list">
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+    </ol>
+  </div>
+  <details class="side-toc-all">
+    <summary>Open all 16 topics</summary>
+    <ol class="side-toc-list">
+      <li class="side-toc-cat-header" aria-hidden="true"><span>PROB</span></li>
+      <li><a href="./stdnorm.html">Standard Normal</a></li>
+      <li><a href="./normal.html">Normal Distribution</a></li>
+      <li><a href="./prob.html">Probability Rules</a></li>
+      <li><a href="./bayes.html">Bayes' Theorem</a></li>
+      <li><a href="./morep.html">Discrete & Exponential</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>INFER</span></li>
+      <li><a href="./clt.html">Central Limit Theorem</a></li>
+      <li><a href="./lln.html">Law of Large Numbers</a></li>
+      <li><a href="./ci.html" class="current">Confidence Interval</a></li>
+      <li><a href="./test.html">Hypothesis Testing</a></li>
+      <li><a href="./proptest.html">Proportion Test</a></li>
+      <li><a href="./dists.html">Three Test Distributions</a></li>
+      <li><a href="./chitest.html">Chi-Squared Test</a></li>
+      <li><a href="./anova.html">ANOVA</a></li>
+      <li class="side-toc-cat-header" aria-hidden="true"><span>MODEL</span></li>
+      <li><a href="./corr.html">Correlation</a></li>
+      <li><a href="./reg.html">Simple Regression</a></li>
+      <li><a href="./mreg.html">Multiple Regression</a></li>
+    </ol>
+  </details>
+</nav>
+
+<nav class="topic-nav" aria-label="Previous / Next topic">
+  <a href="./lln.html" rel="prev">← Prev</a>
+  <a href="./test.html" rel="next">Next →</a>
+</nav>
+
+</body>
+
+</html>
